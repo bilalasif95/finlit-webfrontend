@@ -2,7 +2,7 @@
 
 exports[`<WebinarsList /> should render and match the snapshot 1`] = `
 <div
-  className="Wrapper-sc-1qqyq0m-0 bgWjMo"
+  className="Wrapper-sc-1qqyq0m-0 jKHaqe"
   id="list"
 >
   <div
@@ -49,7 +49,7 @@ exports[`<WebinarsList /> should render and match the snapshot 1`] = `
                 >
                   <p>
                     <span>
-                      Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.
+                      Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est. Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est. Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.
                     </span>
                   </p>
                 </div>

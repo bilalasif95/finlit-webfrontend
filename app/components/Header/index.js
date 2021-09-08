@@ -8,17 +8,23 @@ import {
   Navbar,
   NavbarToggler,
   Nav,
-  NavItem,
+  // NavItem,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   Container,
 } from 'reactstrap';
+import { HiUser } from 'react-icons/hi';
+import { RiDashboardFill } from 'react-icons/ri';
+import { FiHeart, FiLogOut } from 'react-icons/fi';
+import { MdNotificationsActive, MdChat } from 'react-icons/md';
+import { IoMdCart, IoIosHelpCircle } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import Logo from '../../images/logo.svg';
 import Menubar from './Menubar';
 import Img from './Img';
+import User from '../../images/user.jpg';
 import messages from './messages';
 
 const Header = () => {
@@ -140,7 +146,7 @@ const Header = () => {
               </UncontrolledDropdown>
             </Nav>
             <div className="registration">
-              <Nav navbar>
+              {/* <Nav navbar>
                 <NavItem>
                   <Link className="nav-link" to="/login">
                     <FormattedMessage {...messages.Login} />
@@ -151,7 +157,78 @@ const Header = () => {
                     <FormattedMessage {...messages.Signup} />
                   </Link>
                 </NavItem>
-              </Nav>
+              </Nav> */}
+              <UncontrolledDropdown nav>
+                <DropdownToggle nav caret>
+                  <div className="user_account">
+                    <div className="user_icon">
+                      <Img src={User} alt="User" />
+                    </div>
+                    <div className="user_name">
+                      <p>John Smith</p>
+                      <span>example@finlit.com</span>
+                    </div>
+                  </div>
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    <div>
+                      <RiDashboardFill />
+                      <FormattedMessage {...messages.MyDashboard} />
+                    </div>
+                    <div />
+                  </DropdownItem>
+                  <DropdownItem>
+                    <div>
+                      <HiUser />
+                      <FormattedMessage {...messages.AccountSetting} />
+                    </div>
+                    <div />
+                  </DropdownItem>
+                  <DropdownItem>
+                    <div>
+                      <FiHeart />
+                      <FormattedMessage {...messages.MyFavorite} />
+                    </div>
+                    <div />
+                  </DropdownItem>
+                  <DropdownItem>
+                    <div>
+                      <MdNotificationsActive />
+                      <FormattedMessage {...messages.Notifications} />
+                    </div>
+                    <div className="notify">200</div>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <div>
+                      <MdChat />
+                      <FormattedMessage {...messages.Messages} />
+                    </div>
+                    <div className="notify">200</div>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <div>
+                      <IoMdCart />
+                      <FormattedMessage {...messages.MyCart} />
+                    </div>
+                    <div />
+                  </DropdownItem>
+                  <DropdownItem>
+                    <div>
+                      <IoIosHelpCircle />
+                      <FormattedMessage {...messages.Help} />
+                    </div>
+                    <div />
+                  </DropdownItem>
+                  <DropdownItem>
+                    <div>
+                      <FiLogOut />
+                      <FormattedMessage {...messages.LogOut} />
+                    </div>
+                    <div />
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </div>
           </Collapse>
         </Container>

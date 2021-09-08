@@ -261,12 +261,9 @@ const Wrapper = styled.div`
         .course_outcomes {
           margin: 0 !important;
           .outcomes {
-            .date_time {
-              flex-wrap: wrap;
-              .date_level {
-                margin: 0 !important;
-                width: 100% !important;
-              }
+            .date {
+              margin: 0 !important;
+              width: 100% !important;
             }
           }
         }

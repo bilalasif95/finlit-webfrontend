@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CoursesFilters /> should render and match the snapshot 1`] = `
+exports[`<LiveSessionFilters /> should render and match the snapshot 1`] = `
 <div
-  className="Wrapper-sc-702whz-0 jNYjEN"
+  className="Wrapper-sc-11qopo4-0 bYmxvQ"
   id="filters"
 >
   <div
@@ -218,41 +218,6 @@ exports[`<CoursesFilters /> should render and match the snapshot 1`] = `
             </div>
           </div>
         </div>
-        <div
-          className="form-group"
-        >
-          <label
-            className=""
-            htmlFor="price"
-          >
-            <span>
-              Price
-            </span>
-          </label>
-          <div
-            className="input-group"
-          >
-            <div
-              className="input-group-prepend"
-            >
-              <span
-                className="input-group-text"
-              >
-                $
-              </span>
-            </div>
-            <input
-              className="form-control"
-              id="price"
-              max={100}
-              min={0}
-              name="price"
-              placeholder=""
-              step="1"
-              type="number"
-            />
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -265,7 +230,7 @@ exports[`<CoursesFilters /> should render and match the snapshot 1`] = `
       <div
         className="total_results"
       >
-        Showing 200 total results for management
+        Showing 200 total results for live Live Session
       </div>
     </div>
   </div>
