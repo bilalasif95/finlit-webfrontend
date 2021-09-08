@@ -13,34 +13,43 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
+import AccreditedEducationListPage from 'containers/AccreditedEducationList/Loadable';
+import LiveWebinarsList from 'containers/LiveWebinarsList/Loadable';
+import BootCampList from 'containers/BootCampList/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import SigninPage from 'containers/SigninPage/Loadable';
+import SignupPage from 'containers/SignupPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
 
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
   margin: 0 auto;
   display: flex;
   min-height: 100%;
-  padding: 0 16px;
+  padding: 0;
   flex-direction: column;
 `;
 
 export default function App() {
   return (
     <AppWrapper>
-      <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
-      >
-        <meta name="description" content="A React.js Boilerplate application" />
+      <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
+        <meta name="description" content="FinLit" />
       </Helmet>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/features" component={FeaturePage} />
+        <Route
+          path="/accredited_education_list"
+          component={AccreditedEducationListPage}
+        />
+        <Route path="/live_webinars_list" component={LiveWebinarsList} />
+        <Route path="/bootcamp_list" component={BootCampList} />
+        <Route path="/login" component={SigninPage} />
+        <Route path="/signup" component={SignupPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />

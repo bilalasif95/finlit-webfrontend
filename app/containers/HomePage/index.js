@@ -32,6 +32,12 @@ import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import MainSearch from '../../components/HomePage/MainSearch';
+import MainServices from '../../components/HomePage/MainServices';
+import FinancialLiteracy from '../../components/HomePage/FinancialLiteracy';
+import Entrepreneurship from '../../components/HomePage/Entrepreneurship';
+import Articles from '../../components/HomePage/Articles';
+import Events from '../../components/HomePage/Events';
 
 const key = 'home';
 
@@ -58,7 +64,7 @@ export function HomePage({
   };
 
   return (
-    <article>
+    <div className="main_page">
       <Helmet>
         <title>Home Page</title>
         <meta
@@ -66,7 +72,7 @@ export function HomePage({
           content="A React.js Boilerplate application homepage"
         />
       </Helmet>
-      <div>
+      <div className="no_display">
         <CenteredSection>
           <H2>
             <FormattedMessage {...messages.startProjectHeader} />
@@ -97,7 +103,13 @@ export function HomePage({
           <ReposList {...reposListProps} />
         </Section>
       </div>
-    </article>
+      <MainSearch />
+      <MainServices />
+      <FinancialLiteracy />
+      <Entrepreneurship />
+      <Articles />
+      <Events />
+    </div>
   );
 }
 

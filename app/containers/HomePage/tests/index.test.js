@@ -6,7 +6,7 @@ import React from 'react';
 import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import { browserHistory } from 'react-router-dom';
+import { browserHistory, BrowserRouter } from 'react-router-dom';
 
 import { HomePage, mapDispatchToProps } from '../index';
 import { changeUsername } from '../actions';
@@ -26,7 +26,9 @@ describe('<HomePage />', () => {
     } = render(
       <Provider store={store}>
         <IntlProvider locale="en">
-          <HomePage loading={false} error={false} repos={[]} />
+          <BrowserRouter>
+            <HomePage loading={false} error={false} repos={[]} />
+          </BrowserRouter>
         </IntlProvider>
       </Provider>,
     );
@@ -38,11 +40,13 @@ describe('<HomePage />', () => {
     render(
       <Provider store={store}>
         <IntlProvider locale="en">
-          <HomePage
-            username="Not Empty"
-            onChangeUsername={() => {}}
-            onSubmitForm={submitSpy}
-          />
+          <BrowserRouter>
+            <HomePage
+              username="Not Empty"
+              onChangeUsername={() => {}}
+              onSubmitForm={submitSpy}
+            />
+          </BrowserRouter>
         </IntlProvider>
       </Provider>,
     );
@@ -54,7 +58,9 @@ describe('<HomePage />', () => {
     render(
       <Provider store={store}>
         <IntlProvider locale="en">
-          <HomePage onChangeUsername={() => {}} onSubmitForm={submitSpy} />
+          <BrowserRouter>
+            <HomePage onChangeUsername={() => {}} onSubmitForm={submitSpy} />
+          </BrowserRouter>
         </IntlProvider>
       </Provider>,
     );
@@ -66,11 +72,13 @@ describe('<HomePage />', () => {
     render(
       <Provider store={store}>
         <IntlProvider locale="en">
-          <HomePage
-            username=""
-            onChangeUsername={() => {}}
-            onSubmitForm={submitSpy}
-          />
+          <BrowserRouter>
+            <HomePage
+              username=""
+              onChangeUsername={() => {}}
+              onSubmitForm={submitSpy}
+            />
+          </BrowserRouter>
         </IntlProvider>
       </Provider>,
     );

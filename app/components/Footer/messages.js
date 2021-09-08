@@ -8,14 +8,32 @@ import { defineMessages } from 'react-intl';
 export const scope = 'boilerplate.components.Footer';
 
 export default defineMessages({
-  licenseMessage: {
-    id: `${scope}.license.message`,
-    defaultMessage: 'This project is licensed under the MIT license.',
+  AllRightsReserved: {
+    id: `${scope}.AllRightsReserved`,
+    defaultMessage: '&copy; 2021 FinLit Inc. All rights reserved.',
   },
-  authorMessage: {
-    id: `${scope}.author.message`,
-    defaultMessage: `
-      Made with love by {author}.
-    `,
+  Category: {
+    id: `${scope}.Category`,
+    defaultMessage: `Category`,
+  },
+  AboutCompany: {
+    id: `${scope}.AboutCompany`,
+    defaultMessage: `About Company`,
+  },
+  Terms: {
+    id: `${scope}.Terms`,
+    defaultMessage: `Terms`,
+  },
+  PrivacyPolicy: {
+    id: `${scope}.PrivacyPolicy`,
+    defaultMessage: `Privacy Policy`,
+  },
+  HelpCenter: {
+    id: `${scope}.HelpCenter`,
+    defaultMessage: `Help Center`,
+  },
+  ContactUs: {
+    id: `${scope}.ContactUs`,
+    defaultMessage: `Contact us`,
   },
 });
