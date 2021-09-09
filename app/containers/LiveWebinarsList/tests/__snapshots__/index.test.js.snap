@@ -257,7 +257,7 @@ exports[`<LiveWebinarsList /> should render its heading 1`] = `
                     >
                       <p>
                         <span>
-                          Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.
+                          Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est. Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est. Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.
                         </span>
                       </p>
                     </div>

@@ -49,7 +49,7 @@ exports[`<WebinarsList /> should render and match the snapshot 1`] = `
                 >
                   <p>
                     <span>
-                      Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.
+                      Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est. Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est. Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.
                     </span>
                   </p>
                 </div>

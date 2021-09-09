@@ -82,8 +82,10 @@ exports[`SigninPage /> should render its heading 1`] = `
             </span>
           </a>
         </div>
+        
         <button
           class="btn btn-secondary"
+          type="button"
         >
           <span>
             Log in

@@ -117,6 +117,10 @@ const GlobalStyle = createGlobalStyle`
   display: flex;
   justify-content: space-between;
   height: 100vh;
+  .error {
+    color: red;
+    margin-bottom: 20px;
+  }
   .form_container {
       width: 50%;
       display: flex;

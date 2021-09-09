@@ -20,9 +20,13 @@ export default defineMessages({
     id: `${scope}.SelectType`,
     defaultMessage: 'Select Type',
   },
-  YourName: {
-    id: `${scope}.YourName`,
-    defaultMessage: 'Your Name',
+  FName: {
+    id: `${scope}.FName`,
+    defaultMessage: 'First Name',
+  },
+  LName: {
+    id: `${scope}.LName`,
+    defaultMessage: 'Last Name',
   },
   CreatePassword: {
     id: `${scope}.CreatePassword`,

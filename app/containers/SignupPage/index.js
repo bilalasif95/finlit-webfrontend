@@ -1,14 +1,57 @@
 /*
  * Sign Up Page
  */
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import messages from './messages';
+import { API } from '../../config/config';
 
 export default function SignupPage() {
+  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [roleId, setRoleId] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [error, setError] = useState('');
+
+  const signup = () => {
+    setError('');
+    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
+      setError('Please enter valid email');
+    } else if (
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+        password,
+      )
+    ) {
+      setError('Please enter valid password');
+    }
+    if (password !== passwordConfirmation) {
+      setError('**Password are not matching');
+      // setDisabled(false);
+    } else {
+      axios
+        .post(`${API}api/auth/register`, {
+          email,
+          firstName,
+          lastName,
+          roleId,
+          password,
+          passwordConfirmation,
+        })
+        .then(() => {
+          // console.log('signup', response);
+        })
+        .catch(err => {
+          setError(err.response && err.response.data.message);
+        });
+    }
+  };
+
   return (
     <div className="registration_page">
       <Helmet>
@@ -29,38 +72,59 @@ export default function SignupPage() {
                 type="email"
                 name="email"
                 id="email"
+                onChange={e => setEmail(e.target.value)}
                 placeholder="Your email"
               />
             </FormGroup>
             <Row>
               <Col lg={6} md={6} sm={12}>
                 <FormGroup>
-                  <Label for="select">
-                    <FormattedMessage {...messages.SelectType} />
-                  </Label>
-                  <Input type="select" name="select" id="select">
-                    <option>Type 1</option>
-                    <option>Type 2</option>
-                    <option>Type 3</option>
-                    <option>Type 4</option>
-                    <option>Type 5</option>
-                  </Input>
-                </FormGroup>
-              </Col>
-              <Col lg={6} md={6} sm={12}>
-                <FormGroup>
                   <Label for="name">
-                    <FormattedMessage {...messages.YourName} />
+                    <FormattedMessage {...messages.FName} />
                   </Label>
                   <Input
                     type="text"
                     name="name"
                     id="name"
-                    placeholder="Enter name"
+                    onChange={e => setFirstName(e.target.value)}
+                    placeholder="First name"
+                  />
+                </FormGroup>
+              </Col>
+              <Col lg={6} md={6} sm={12}>
+                <FormGroup>
+                  <Label for="name">
+                    <FormattedMessage {...messages.LName} />
+                  </Label>
+                  <Input
+                    type="text"
+                    name="name"
+                    id="name"
+                    onChange={e => setLastName(e.target.value)}
+                    placeholder="Last name"
                   />
                 </FormGroup>
               </Col>
             </Row>
+            <Col lg={12} md={12} sm={12}>
+              <FormGroup>
+                <Label for="select">
+                  <FormattedMessage {...messages.SelectType} />
+                </Label>
+                <Input
+                  type="select"
+                  name="select"
+                  id="select"
+                  onChange={e => setRoleId(e.target.value)}
+                >
+                  <option>Type 1</option>
+                  <option>Type 2</option>
+                  <option>Type 3</option>
+                  <option>Type 4</option>
+                  <option>Type 5</option>
+                </Input>
+              </FormGroup>
+            </Col>
             <FormGroup>
               <Label for="password">
                 <FormattedMessage {...messages.CreatePassword} />
@@ -69,6 +133,7 @@ export default function SignupPage() {
                 type="password"
                 name="createpassword"
                 id="createpassword"
+                onChange={e => setPassword(e.target.value)}
                 placeholder="******"
               />
             </FormGroup>
@@ -80,10 +145,12 @@ export default function SignupPage() {
                 type="password"
                 name="confirmpassword"
                 id="confirmpassword"
+                onChange={e => setPasswordConfirmation(e.target.value)}
                 placeholder="******"
               />
             </FormGroup>
-            <Button>
+            {error && <p className="error">{error}</p>}
+            <Button onClick={signup}>
               <FormattedMessage {...messages.SignUp} />
             </Button>
             <div className="reg_footer">
