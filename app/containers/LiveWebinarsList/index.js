@@ -6,8 +6,6 @@ import { Helmet } from 'react-helmet';
 import { Container } from 'reactstrap';
 import WebinarsFilters from '../../components/LiveWebinarsList/WebinarsFilters';
 import WebinarsList from '../../components/LiveWebinarsList/WebinarsList';
-// import WebinarsFilters from '../../components/LiveWebinarsList/WebinarsFilters';
-// import WebinarsList from '../../components/LiveWebinarsList/WebinarsList';
 
 export default function LiveWebinarsList() {
   return (
@@ -17,8 +15,6 @@ export default function LiveWebinarsList() {
         <meta name="description" content="Live Webinars List" />
       </Helmet>
       <Container fluid="xl">
-        {/* <WebinarsFilters />
-        <WebinarsList /> */}
         <WebinarsFilters />
         <WebinarsList />
       </Container>

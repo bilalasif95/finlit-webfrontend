@@ -16,6 +16,8 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import AccreditedEducationListPage from 'containers/AccreditedEducationList/Loadable';
 import LiveWebinarsList from 'containers/LiveWebinarsList/Loadable';
 import BootCampList from 'containers/BootCampList/Loadable';
+import HackathonList from 'containers/HackathonList/Loadable';
+import LiveSessionList from 'containers/LiveSessionList/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import SigninPage from 'containers/SigninPage/Loadable';
 import SignupPage from 'containers/SignupPage/Loadable';
@@ -48,6 +50,8 @@ export default function App() {
         />
         <Route path="/live_webinars_list" component={LiveWebinarsList} />
         <Route path="/bootcamp_list" component={BootCampList} />
+        <Route path="/hackathon_list" component={HackathonList} />
+        <Route path="/live_session_list" component={LiveSessionList} />
         <Route path="/login" component={SigninPage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="" component={NotFoundPage} />

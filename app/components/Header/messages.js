@@ -44,4 +44,36 @@ export default defineMessages({
     id: `${scope}.Signup`,
     defaultMessage: 'Sign up',
   },
+  MyDashboard: {
+    id: `${scope}.MyDashboard`,
+    defaultMessage: 'My Dashboard',
+  },
+  AccountSetting: {
+    id: `${scope}.AccountSetting`,
+    defaultMessage: 'Account Setting',
+  },
+  MyFavorite: {
+    id: `${scope}.MyFavorite`,
+    defaultMessage: 'My Favorite',
+  },
+  Notifications: {
+    id: `${scope}.Notifications`,
+    defaultMessage: 'Notifications',
+  },
+  Messages: {
+    id: `${scope}.Messages`,
+    defaultMessage: 'Messages',
+  },
+  MyCart: {
+    id: `${scope}.MyCart`,
+    defaultMessage: 'My Cart',
+  },
+  Help: {
+    id: `${scope}.Help`,
+    defaultMessage: 'Help',
+  },
+  LogOut: {
+    id: `${scope}.LogOut`,
+    defaultMessage: 'Log Out',
+  },
 });

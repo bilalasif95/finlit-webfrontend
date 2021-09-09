@@ -32,7 +32,7 @@ const Circle = props => {
       margin: 0 auto;
       width: 15%;
       height: 15%;
-      background-color: #004d9b;
+      background-color: #255f2b;
       border-radius: 100%;
       animation: ${circleFadeDelay} 1.2s infinite ease-in-out both;
       ${props.delay &&

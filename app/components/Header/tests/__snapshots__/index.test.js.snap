@@ -2,7 +2,7 @@
 
 exports[`<Header /> should render a div 1`] = `
 <div
-  class="Menubar-sc-9x80bq-0 iwFqts"
+  class="Menubar-sc-9x80bq-0 eOMXst"
 >
   <nav
     class="navbar navbar-expand-lg"
@@ -367,34 +367,284 @@ exports[`<Header /> should render a div 1`] = `
         <div
           class="registration"
         >
-          <ul
-            class="navbar-nav"
+          <li
+            class="dropdown nav-item"
           >
-            <li
-              class="nav-item"
+            <a
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="dropdown-toggle nav-link"
+              href="#"
             >
-              <a
-                class="nav-link"
-                href="/login"
+              <div
+                class="user_account"
               >
-                <span>
-                  Log in
-                </span>
-              </a>
-            </li>
-            <li
-              class="nav-item"
+                <div
+                  class="user_icon"
+                >
+                  <img
+                    alt="User"
+                    class="Img-sc-9pa8on-0 beSokC"
+                    src="IMAGE_MOCK"
+                  />
+                </div>
+                <div
+                  class="user_name"
+                >
+                  <p>
+                    John Smith
+                  </p>
+                  <span>
+                    example@finlit.com
+                  </span>
+                </div>
+              </div>
+            </a>
+            <div
+              aria-hidden="true"
+              class="dropdown-menu dropdown-menu-right"
+              role="menu"
+              tabindex="-1"
             >
-              <a
-                class="nav-link"
-                href="/signup"
+              <button
+                class="dropdown-item"
+                role="menuitem"
+                tabindex="0"
+                type="button"
               >
-                <span>
-                  Sign up
-                </span>
-              </a>
-            </li>
-          </ul>
+                <div>
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g>
+                      <path
+                        d="M0 0h24v24H0z"
+                        fill="none"
+                      />
+                      <path
+                        d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"
+                      />
+                    </g>
+                  </svg>
+                  <span>
+                    My Dashboard
+                  </span>
+                </div>
+                <div />
+              </button>
+              <button
+                class="dropdown-item"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                <div>
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 20 20"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                  <span>
+                    Account Setting
+                  </span>
+                </div>
+                <div />
+              </button>
+              <button
+                class="dropdown-item"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                <div>
+                  <svg
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                    />
+                  </svg>
+                  <span>
+                    My Favorite
+                  </span>
+                </div>
+                <div />
+              </button>
+              <button
+                class="dropdown-item"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                <div>
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.58 4.08L6.15 2.65C3.75 4.48 2.17 7.3 2.03 10.5h2c.15-2.65 1.51-4.97 3.55-6.42zm12.39 6.42h2c-.15-3.2-1.73-6.02-4.12-7.85l-1.42 1.43c2.02 1.45 3.39 3.77 3.54 6.42zM18 11c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2v-5zm-6 11c.14 0 .27-.01.4-.04.65-.14 1.18-.58 1.44-1.18.1-.24.15-.5.15-.78h-4c.01 1.1.9 2 2.01 2z"
+                    />
+                  </svg>
+                  <span>
+                    Notifications
+                  </span>
+                </div>
+                <div
+                  class="notify"
+                >
+                  200
+                </div>
+              </button>
+              <button
+                class="dropdown-item"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                <div>
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"
+                    />
+                  </svg>
+                  <span>
+                    Messages
+                  </span>
+                </div>
+                <div
+                  class="notify"
+                >
+                  200
+                </div>
+              </button>
+              <button
+                class="dropdown-item"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                <div>
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M169.6 377.6c-22.882 0-41.6 18.718-41.6 41.601 0 22.882 18.718 41.6 41.6 41.6s41.601-18.718 41.601-41.6c-.001-22.884-18.72-41.601-41.601-41.601zM48 51.2v41.6h41.6l74.883 151.682-31.308 50.954c-3.118 5.2-5.2 12.482-5.2 19.765 0 27.85 19.025 41.6 44.825 41.6H416v-40H177.893c-3.118 0-5.2-2.082-5.2-5.2 0-1.036 2.207-5.2 2.207-5.2l20.782-32.8h154.954c15.601 0 29.128-8.317 36.4-21.836l74.882-128.8c1.237-2.461 2.082-6.246 2.082-10.399 0-11.446-9.364-19.765-20.8-19.765H135.364L115.6 51.2H48zm326.399 326.4c-22.882 0-41.6 18.718-41.6 41.601 0 22.882 18.718 41.6 41.6 41.6S416 442.082 416 419.2c0-22.883-18.719-41.6-41.601-41.6z"
+                    />
+                  </svg>
+                  <span>
+                    My Cart
+                  </span>
+                </div>
+                <div />
+              </button>
+              <button
+                class="dropdown-item"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                <div>
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm-4.3 304c-11.8 0-21.4-9-21.4-20.6 0-11.5 9.6-20.6 21.4-20.6 11.9 0 21.5 9 21.5 20.6 0 11.6-9.5 20.6-21.5 20.6zm40.2-96.9c-17.4 10.1-23.3 17.5-23.3 30.3v7.9h-34.7l-.3-8.6c-1.7-20.6 5.5-33.4 23.6-44 16.9-10.1 24-16.5 24-28.9s-12-21.5-26.9-21.5c-15.1 0-26 9.8-26.8 24.6H192c.7-32.2 24.5-55 64.7-55 37.5 0 63.3 20.8 63.3 50.7 0 19.9-9.6 33.6-28.1 44.5z"
+                    />
+                  </svg>
+                  <span>
+                    Help
+                  </span>
+                </div>
+                <div />
+              </button>
+              <button
+                class="dropdown-item"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                <div>
+                  <svg
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                    />
+                    <polyline
+                      points="16 17 21 12 16 7"
+                    />
+                    <line
+                      x1="21"
+                      x2="9"
+                      y1="12"
+                      y2="12"
+                    />
+                  </svg>
+                  <span>
+                    Log Out
+                  </span>
+                </div>
+                <div />
+              </button>
+            </div>
+          </li>
         </div>
       </div>
     </div>

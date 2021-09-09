@@ -38,6 +38,14 @@ exports[`<App /> should render and match the snapshot 1`] = `
     />
     <Route
       component={[Function]}
+      path="/hackathon_list"
+    />
+    <Route
+      component={[Function]}
+      path="/live_session_list"
+    />
+    <Route
+      component={[Function]}
       path="/login"
     />
     <Route

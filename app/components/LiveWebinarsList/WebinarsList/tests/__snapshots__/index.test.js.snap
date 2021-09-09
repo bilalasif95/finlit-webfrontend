@@ -2,7 +2,7 @@
 
 exports[`<WebinarsList /> should render and match the snapshot 1`] = `
 <div
-  className="Wrapper-sc-1qqyq0m-0 bgWjMo"
+  className="Wrapper-sc-1qqyq0m-0 jKHaqe"
   id="list"
 >
   <div

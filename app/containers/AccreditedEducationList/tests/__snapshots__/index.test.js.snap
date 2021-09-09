@@ -8,7 +8,7 @@ exports[`<AccreditedEducationListPage /> should render its heading 1`] = `
     class="container-xl"
   >
     <div
-      class="Wrapper-sc-702whz-0 jNYjEN"
+      class="Wrapper-sc-1vk9u1v-0 ggsIWr"
       id="filters"
     >
       <div
@@ -245,7 +245,7 @@ exports[`<AccreditedEducationListPage /> should render its heading 1`] = `
       </div>
     </div>
     <div
-      class="Wrapper-uvy7fz-0 eljtLs"
+      class="Wrapper-usqj9k-0 eRyPXz"
       id="list"
     >
       <div
