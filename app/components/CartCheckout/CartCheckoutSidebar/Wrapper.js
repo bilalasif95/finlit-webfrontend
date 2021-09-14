@@ -49,6 +49,11 @@ const Wrapper = styled.div`
       background-color: transparent;
       border-color: #255f2b;
     }
+    .form-check-input:checked[type='radio'] {
+      background-image: url(https://cdn.discordapp.com/attachments/548125906472796170/887240829683507240/checkdot.png);
+      background-size: 6px;
+      background-position: center;
+    }
   }
   .form-group {
     margin: 0 0 1rem;
@@ -62,11 +67,21 @@ const Wrapper = styled.div`
       &:focus {
         box-shadow: none;
       }
+      &::placeholder {
+        color: #e6e6e6;
+      }
     }
   }
   .form-check {
     label {
       color: #8b8b8b;
+    }
+    .form-check-input:checked {
+      background-color: #47a135;
+      border-color: #47a135;
+    }
+    .form-check-input:focus {
+      box-shadow: none;
     }
   }
   ul {
