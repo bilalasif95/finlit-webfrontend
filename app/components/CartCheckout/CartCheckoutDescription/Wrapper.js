@@ -39,8 +39,11 @@ const Wrapper = styled.div`
         align-items: center;
         display: flex;
         justify-content: center;
-        position: relative;
         width: 7%;
+        .num_cont {
+          position: relative;
+          width: 2.2rem;
+        }
         svg {
           color: #8b8b8b;
           height: 1rem;
@@ -106,6 +109,7 @@ const Wrapper = styled.div`
       justify-content: flex-start;
       .icon {
         max-height: 60px;
+        min-width: 65px;
         overflow: hidden;
         width: 15%;
         img {
@@ -139,6 +143,71 @@ const Wrapper = styled.div`
       p {
         color: #404041;
         font-size: 0.875rem;
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    .cart_checkout {
+      .header {
+        .cart {
+          width: 10%;
+        }
+      }
+    }
+  }
+  @media (max-width: 991px) {
+    .cart_checkout {
+      .header {
+        .input-group {
+          width: 100%;
+          .form-control {
+            padding: 0.25rem 0.75rem 0.25rem 0;
+          }
+        }
+      }
+      table {
+        th,
+        td {
+          min-width: 130px;
+          width: 28%;
+        }
+        th:first-child,
+        td:first-child {
+          min-width: 270px;
+          width: 60%;
+        }
+        th:last-child,
+        td:last-child {
+          min-width: 60px;
+          width: 12%;
+        }
+      }
+    }
+  }
+  @media (max-width: 575px) {
+    .cart_checkout {
+      table {
+        th,
+        td {
+          width: 28%;
+        }
+        th:first-child,
+        td:first-child {
+          width: 60%;
+        }
+        th:last-child,
+        td:last-child {
+          width: 12%;
+        }
+      }
+    }
+  }
+  @media (max-width: 424px) {
+    .cart_checkout {
+      .header {
+        .cart {
+          width: 15%;
+        }
       }
     }
   }

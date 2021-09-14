@@ -16,10 +16,10 @@ export default function CartCheckout() {
       </Helmet>
       <Container fluid="xl">
         <Row>
-          <Col lg={8} md={8} sm={12}>
+          <Col lg={8} md={7} sm={12}>
             <CartCheckoutDescription />
           </Col>
-          <Col lg={4} md={4} sm={12}>
+          <Col lg={4} md={5} sm={12}>
             <CartCheckoutSidebar />
           </Col>
         </Row>
