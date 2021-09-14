@@ -7,8 +7,8 @@ BRANCH=$( git branch --show-current)
 LABEL=$(git log -1 --format=%h)
 
 # Label the docker container
-CONTAINER_NAME=rnssolutions/boa-wallet
-CONTAINER_CURRENT=rnssolutions/boa-wallet:$LABEL
+CONTAINER_NAME=rnssolutions/finlit
+CONTAINER_CURRENT=rnssolutions/finlit:$LABEL
 CONTAINER_LATEST=${CONTAINER_NAME}:latest
 
 # DOCKER_PASSWORD is controller by jenkins env

@@ -10,7 +10,7 @@
 # Get current git commit number
 LABEL=$(git log -1 --format=%h)
 
-CONTAINER_NAME=boa-wallet
+CONTAINER_NAME=finlit
 CONTAINER_CURRENT=rnssolutions/$CONTAINER_NAME:$LABEL
 echo $HOST_USER
 echo $HOST_IP
