@@ -50,7 +50,7 @@ export default function SigninPage() {
                   <FormattedMessage {...messages.RememberMe} />
                 </Label>
               </FormGroup>
-              <Link to="/">
+              <Link to="/forgot_password">
                 <FormattedMessage {...messages.ForgotPassword} />
               </Link>
             </div>

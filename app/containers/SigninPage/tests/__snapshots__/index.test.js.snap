@@ -75,7 +75,7 @@ exports[`SigninPage /> should render its heading 1`] = `
             </label>
           </div>
           <a
-            href="/"
+            href="/forgot_password"
           >
             <span>
               Forgot Password?

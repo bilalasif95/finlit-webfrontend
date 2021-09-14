@@ -576,13 +576,6 @@ exports[`<HomePage /> should render and match the snapshot 1`] = `
                 Articles
               </span>
             </h4>
-            <a
-              href="/"
-            >
-              <span>
-                View all
-              </span>
-            </a>
           </div>
         </div>
       </div>
@@ -614,7 +607,7 @@ exports[`<HomePage /> should render and match the snapshot 1`] = `
               </p>
               <a
                 class="read_more"
-                href="/"
+                href="/article_details"
               >
                 <span>
                   Read more
@@ -656,7 +649,7 @@ exports[`<HomePage /> should render and match the snapshot 1`] = `
               </p>
               <a
                 class="read_more"
-                href="/"
+                href="/article_details"
               >
                 <span>
                   Read more

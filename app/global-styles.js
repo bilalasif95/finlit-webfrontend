@@ -114,6 +114,7 @@ const GlobalStyle = createGlobalStyle`
 // Registration Form Pages Styles
 
 .registration_page {
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   height: 100vh;
@@ -177,6 +178,9 @@ const GlobalStyle = createGlobalStyle`
               .form-group {
                   width: 48%;
               }
+              p {
+                font-size: 0.825rem;
+              }
           }
           .reg_footer {
               display: flex;
@@ -227,7 +231,10 @@ const GlobalStyle = createGlobalStyle`
 
 .sub_pages {
   background-color: #fff;
-  padding: 2rem 0
+  padding: 2rem 0;
+  @media (max-width: 991px) {
+    padding: 1rem 0;
+  }
 }
 
 `;

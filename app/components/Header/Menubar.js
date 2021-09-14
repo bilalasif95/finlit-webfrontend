@@ -155,6 +155,20 @@ const Menubar = styled.div`
       }
     }
   }
+  @media (max-width: 1100px) and (min-width: 992px) {
+    .navbar-collapse {
+      width: 90%;
+    }
+    .registration {
+      width: 15%;
+      .dropdown {
+        padding: 0 0.5rem 0 1rem;
+      }
+      .user_name {
+        display: none;
+      }
+    }
+  }
 `;
 
 export default Menubar;

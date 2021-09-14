@@ -207,11 +207,13 @@ const Header = () => {
                     <div className="notify">200</div>
                   </DropdownItem>
                   <DropdownItem>
-                    <div>
-                      <IoMdCart />
-                      <FormattedMessage {...messages.MyCart} />
-                    </div>
-                    <div />
+                    <Link to="/cart_checkout">
+                      <div>
+                        <IoMdCart />
+                        <FormattedMessage {...messages.MyCart} />
+                      </div>
+                      <div />
+                    </Link>
                   </DropdownItem>
                   <DropdownItem>
                     <div>

@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateNewPasswordPage /> should render its heading 1`] = `
+<div
+  class="registration_page"
+>
+  <div
+    class="form_container"
+  >
+    <div
+      class="form_content"
+    >
+      <h2>
+        <span>
+          Create New Password
+        </span>
+      </h2>
+      <div
+        class="form"
+      >
+        <div
+          class="form-group"
+        >
+          <label
+            class=""
+            for="password"
+          >
+            <span>
+              New Password
+            </span>
+          </label>
+          <input
+            class="form-control"
+            id="password"
+            name="newpassword"
+            placeholder="New password"
+            type="password"
+          />
+        </div>
+        <div
+          class="form-group"
+        >
+          <label
+            class=""
+            for="password"
+          >
+            <span>
+              Confirm Password
+            </span>
+          </label>
+          <input
+            class="form-control"
+            id="password"
+            name="confirmpassword"
+            placeholder="Confirm password"
+            type="password"
+          />
+        </div>
+        <div
+          class="remember_forgot"
+        >
+          <p>
+            <span>
+              Both password must match
+            </span>
+          </p>
+        </div>
+        <button
+          class="btn btn-secondary"
+        >
+          <span>
+            Reset Password
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="img_container"
+  />
+</div>
+`;

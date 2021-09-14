@@ -18,9 +18,13 @@ import LiveWebinarsList from 'containers/LiveWebinarsList/Loadable';
 import BootCampList from 'containers/BootCampList/Loadable';
 import HackathonList from 'containers/HackathonList/Loadable';
 import LiveSessionList from 'containers/LiveSessionList/Loadable';
+import ArticleDetails from 'containers/ArticleDetails/Loadable';
+import CartCheckout from 'containers/CartCheckout/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import SigninPage from 'containers/SigninPage/Loadable';
 import SignupPage from 'containers/SignupPage/Loadable';
+import ForgotPasswordPage from 'containers/ForgotPasswordPage/Loadable';
+import CreateNewPasswordPage from 'containers/CreateNewPasswordPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
@@ -52,8 +56,12 @@ export default function App() {
         <Route path="/bootcamp_list" component={BootCampList} />
         <Route path="/hackathon_list" component={HackathonList} />
         <Route path="/live_session_list" component={LiveSessionList} />
+        <Route path="/article_details" component={ArticleDetails} />
+        <Route path="/cart_checkout" component={CartCheckout} />
         <Route path="/login" component={SigninPage} />
         <Route path="/signup" component={SignupPage} />
+        <Route path="/forgot_password" component={ForgotPasswordPage} />
+        <Route path="/create_new_password" component={CreateNewPasswordPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />

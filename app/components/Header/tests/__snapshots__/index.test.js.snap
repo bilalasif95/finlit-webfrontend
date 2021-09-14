@@ -2,7 +2,7 @@
 
 exports[`<Header /> should render a div 1`] = `
 <div
-  class="Menubar-sc-9x80bq-0 eOMXst"
+  class="Menubar-sc-9x80bq-0 cnwRFU"
 >
   <nav
     class="navbar navbar-expand-lg"

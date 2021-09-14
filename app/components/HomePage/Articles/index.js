@@ -21,9 +21,6 @@ function Articles() {
               <h4>
                 <FormattedMessage {...messages.Articles} />
               </h4>
-              <Link to="/">
-                <FormattedMessage {...messages.ViewAll} />
-              </Link>
             </div>
           </Col>
         </Row>
@@ -38,7 +35,7 @@ function Articles() {
                 <p>
                   <FormattedMessage {...messages.InteractiveToolsDesc} />
                 </p>
-                <Link className="read_more" to="/">
+                <Link className="read_more" to="/article_details">
                   <FormattedMessage {...messages.ReadMore} />
                 </Link>
               </div>
@@ -57,7 +54,7 @@ function Articles() {
                 <p>
                   <FormattedMessage {...messages.LiveWebinarsDesc} />
                 </p>
-                <Link className="read_more" to="/">
+                <Link className="read_more" to="/article_details">
                   <FormattedMessage {...messages.ReadMore} />
                 </Link>
               </div>
