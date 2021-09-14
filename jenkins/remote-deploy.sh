@@ -17,6 +17,6 @@ echo $HOST_IP
 ssh $HOST_USER@$HOST_IP<<EOF
     docker stop $CONTAINER_NAME-$BRANCH_NAME
     docker rm -f $CONTAINER_NAME-$BRANCH_NAME
-    docker run -d -p $PORT:3020 --name $CONTAINER_NAME-$BRANCH_NAME $CONTAINER_CURRENT
+    docker run -d -p $PORT:3021 --name $CONTAINER_NAME-$BRANCH_NAME $CONTAINER_CURRENT
    exit
 EOF
