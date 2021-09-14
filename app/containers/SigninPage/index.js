@@ -1,14 +1,41 @@
 /*
  * Sign In Page
  */
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import messages from './messages';
+import { API } from '../../config/config';
+// import { response } from 'express';
 
 export default function SigninPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const login = () => {
+    setError('');
+    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
+      setError('Please enter valid email');
+    } else if (
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+        password,
+      )
+    ) {
+      setError('Please enter valid password');
+    }
+    axios
+      .post(`${API}api/auth/login`, { email, password })
+      .then(() => {
+        // console.log('login', response);
+      })
+      .catch(err => {
+        setError(err.response && err.response.data.message);
+      });
+  };
   return (
     <div className="registration_page">
       <Helmet>
@@ -29,6 +56,7 @@ export default function SigninPage() {
                 type="email"
                 name="email"
                 id="email"
+                onChange={e => setEmail(e.target.value)}
                 placeholder="Your email"
               />
             </FormGroup>
@@ -40,6 +68,7 @@ export default function SigninPage() {
                 type="password"
                 name="password"
                 id="password"
+                onChange={e => setPassword(e.target.value)}
                 placeholder="******"
               />
             </FormGroup>
@@ -54,7 +83,8 @@ export default function SigninPage() {
                 <FormattedMessage {...messages.ForgotPassword} />
               </Link>
             </div>
-            <Button>
+            {error && <p className="error">{error}</p>}
+            <Button onClick={login}>
               <FormattedMessage {...messages.Login} />
             </Button>
             <div className="reg_footer">
