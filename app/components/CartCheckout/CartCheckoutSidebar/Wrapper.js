@@ -1,27 +1,61 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  background-color: #f8f9fb;
+  border: 1px solid #e4e4e4;
+  border-radius: 0.313rem;
   padding: 2rem;
   margin: 0 0 2rem;
   width: 100%;
-  h4 {
-    color: #000;
-    font-size: 1.5rem;
-    padding: 0 0 0.625rem;
-    position: relative;
-    .btm_line {
-      background-color: #ffd416;
-      bottom: 0;
-      display: block;
-      height: 0.313rem;
-      left: 0;
-      position: absolute;
-      width: 3.313rem;
+  .heading {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 1rem;
+    h4 {
+      color: #484848;
+      font-size: 1.25rem;
+      margin: 0;
+      position: relative;
+    }
+    svg {
+      color: #484848;
+      font-size: 1.5rem;
     }
   }
-  .input-group {
-    margin: 2rem 0 0;
+  p {
+    color: #8b8b8b;
+    font-size: 0.875rem;
+    margin: 0 0 1rem;
+  }
+  fieldset {
+    margin: 0 0 1rem;
+    padding: 0;
+    .form-check {
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      margin: 0 0 0.5rem;
+      label {
+        color: #484848;
+        font-size: 0.875rem;
+        margin: 0;
+      }
+    }
+    .form-check-input:focus {
+      box-shadow: none;
+    }
+    .form-check-input:checked {
+      background-color: transparent;
+      border-color: #255f2b;
+    }
+  }
+  .form-group {
+    margin: 0 0 1rem;
+    label {
+      color: #484848;
+      font-size: 0.875rem;
+    }
     .form-control {
       border-top-right-radius: 0.25rem !important;
       border-bottom-right-radius: 0.25rem !important;
@@ -29,34 +63,87 @@ const Wrapper = styled.div`
         box-shadow: none;
       }
     }
-    button {
-      background-color: transparent;
-      border-color: transparent;
-      color: #000;
-      position: absolute;
-      right: 0;
-      top: -2px;
-      z-index: 4;
-      &:focus {
-        box-shadow: none;
-      }
-    }
-    .btn-secondary {
-      background-color: transparent;
-      border-color: transparent;
+  }
+  .form-check {
+    label {
+      color: #8b8b8b;
     }
   }
   ul {
     margin: 1rem 0 0;
     li {
-      border-bottom: 1px solid #e4e4e4;
-      padding: 1rem 0;
-      a {
-        color: #000;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 0 1rem;
+      p {
+        color: #484848;
         font-size: 0.875rem;
         line-height: 16px;
-        text-decoration: none;
+        margin: 0;
+        width: 50%;
+        &:last-child {
+          text-align: right;
+        }
       }
+      h4 {
+        color: #ec5252;
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 24px;
+        margin: 0;
+        text-align: right;
+        width: 50%;
+      }
+    }
+  }
+  .term_service {
+    p {
+      color: #8b8b8b;
+      font-size: 0.625rem;
+      line-height: 12px;
+    }
+    a {
+      color: #46a135;
+      font-size: 0.625rem;
+      line-height: 12px;
+      text-decoration: none;
+    }
+  }
+  button {
+    background-color: #46a135;
+    border: 1px solid #46a135;
+    border-radius: 0.313rem;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 550;
+    line-height: 17px;
+    margin: 1rem 0 0;
+    padding: 0.85rem;
+    width: 100%;
+    &:hover {
+      background-color: #46a135;
+      border: 1px solid #46a135;
+    }
+    &:focus {
+      background-color: #46a135;
+      border: 1px solid #46a135;
+      box-shadow: none;
+    }
+  }
+  .secure_payment {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 0;
+    width: 100%;
+    svg {
+      color: #8b8b8b;
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    p {
+      margin: 0;
     }
   }
   @media (max-width: 960px) and (min-width: 768px) {

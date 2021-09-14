@@ -77,8 +77,10 @@ function CartCheckoutDescription() {
             </Button>
           </InputGroup>
           <div className="cart">
-            <IoMdCart />
-            <span className="no_item">20</span>
+            <div className="num_cont">
+              <IoMdCart />
+              <span className="no_item">20</span>
+            </div>
           </div>
         </div>
         <div className="table-responsive">
