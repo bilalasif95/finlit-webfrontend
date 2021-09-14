@@ -13,7 +13,7 @@
 // ***********************
 
 
-def CONTAINER_NAME="rnssolution/boa-wallet"
+def CONTAINER_NAME="rnssolution/finlit"
 def CONTAINER_TAG="0.0.1"
 def DOCKER_HUB_USER="rnssolutions"
 
@@ -38,7 +38,7 @@ pipeline {
     }
     post {
             always {
-            discordSend description: 'Jenkins Pipeline Build', footer:  'Service is available at ' , link: env.BUILD_URL, result: currentBuild.currentResult, unstable: false, title: JOB_NAME, webhookURL: 'https://discord.com/api/webhooks/824954886600261664/WdJjsekFwCSphk5auWL-tpNhm0KI4qVUX1tRksvjyIv4M2HRWJLhoWAAptaHMZ36-7bz'
+            discordSend description: 'Jenkins Pipeline Build', footer:  'Service is available at ' , link: env.BUILD_URL, result: currentBuild.currentResult, unstable: false, title: JOB_NAME, webhookURL: 'https://discord.com/api/webhooks/887246542627557437/VgthgPCl8PbUGRnogekBFxpfLkuQ9nYwaBZXRdirGeIbQ3GC76JtJrWilULfAwfF_ekh'
             }
     }
     stages {
