@@ -11,22 +11,34 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
+// Student Panel Panel pages routes
+
+// import HomePage from 'containers/student-panel/HomePage/Loadable';
+import HomePage from 'containers/student-panel/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
-import AccreditedEducationListPage from 'containers/AccreditedEducationList/Loadable';
-import LiveWebinarsList from 'containers/LiveWebinarsList/Loadable';
-import BootCampList from 'containers/BootCampList/Loadable';
-import HackathonList from 'containers/HackathonList/Loadable';
-import LiveSessionList from 'containers/LiveSessionList/Loadable';
-import ArticleDetails from 'containers/ArticleDetails/Loadable';
-import CartCheckout from 'containers/CartCheckout/Loadable';
+import AccreditedEducationListPage from 'containers/student-panel/AccreditedEducationList/Loadable';
+import LiveWebinarsList from 'containers/student-panel/LiveWebinarsList/Loadable';
+import BootCampList from 'containers/student-panel/BootCampList/Loadable';
+import HackathonList from 'containers/student-panel/HackathonList/Loadable';
+import LiveSessionList from 'containers/student-panel/LiveSessionList/Loadable';
+import ArticleDetails from 'containers/student-panel/ArticleDetails/Loadable';
+import CartCheckout from 'containers/student-panel/CartCheckout/Loadable';
+import AddCartHackathon from 'containers/student-panel/AddCartHackathon/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+
+// Instructor Panel pages routes
+import Home from 'containers/instructor-panel/HomePage/Loadable';
+import AddWebinarPage from 'containers/instructor-panel/AddWebinarPage/Loadable';
+import AddHackathonPage from 'containers/instructor-panel/AddHackathonPage/Loadable';
+import AddBootCampPage from 'containers/instructor-panel/AddBootCampPage/Loadable';
+
 import SigninPage from 'containers/SigninPage/Loadable';
 import SignupPage from 'containers/SignupPage/Loadable';
 import ForgotPasswordPage from 'containers/ForgotPasswordPage/Loadable';
 import CreateNewPasswordPage from 'containers/CreateNewPasswordPage/Loadable';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
+import Header from 'components/student-panel/Header';
+// import InstructorHeader from 'components/instructor-panel/Header';
+import Footer from 'components/student-panel/Footer';
 
 import GlobalStyle from '../../global-styles';
 
@@ -44,7 +56,14 @@ export default function App() {
       <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
         <meta name="description" content="FinLit" />
       </Helmet>
+      {/* {window.location.pathname === '/login' ||
+      window.location.pathname === '/signup' ? (
+          ''
+        ) : ( */}
       <Header />
+      {/* )} */}
+
+      {/* <InstructorHeader /> */}
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/features" component={FeaturePage} />
@@ -58,13 +77,25 @@ export default function App() {
         <Route path="/live_session_list" component={LiveSessionList} />
         <Route path="/article_details" component={ArticleDetails} />
         <Route path="/cart_checkout" component={CartCheckout} />
+        <Route path="/addcart_hackathon" component={AddCartHackathon} />
+        {/* Instructor Panel pages routes */}
+        <Route path="/dashboard" component={Home} />
+        <Route path="/add_webinar" component={AddWebinarPage} />
+        <Route path="/add_hackathon" component={AddHackathonPage} />
+        <Route path="/add_bootcamp" component={AddBootCampPage} />
+
         <Route path="/login" component={SigninPage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="/forgot_password" component={ForgotPasswordPage} />
         <Route path="/create_new_password" component={CreateNewPasswordPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
+      {/* {window.location.pathname === '/login' ||
+      window.location.pathname === '/signup' ? (
+        ''
+      ) : ( */}
       <Footer />
+      {/* )} */}
       <GlobalStyle />
     </AppWrapper>
   );

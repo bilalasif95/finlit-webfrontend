@@ -117,11 +117,8 @@ export default function SignupPage() {
                   id="select"
                   onChange={e => setRoleId(e.target.value)}
                 >
-                  <option>Type 1</option>
-                  <option>Type 2</option>
-                  <option>Type 3</option>
-                  <option>Type 4</option>
-                  <option>Type 5</option>
+                  <option value="student">Student</option>
+                  <option value="instructor">Instructor</option>
                 </Input>
               </FormGroup>
             </Col>
@@ -149,7 +146,9 @@ export default function SignupPage() {
                 placeholder="******"
               />
             </FormGroup>
-            {error && <p className="error">{error}</p>}
+            <div className="error-box">
+              {error && <p className="error">{error}</p>}
+            </div>
             <Button onClick={signup}>
               <FormattedMessage {...messages.SignUp} />
             </Button>

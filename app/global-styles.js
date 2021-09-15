@@ -67,6 +67,96 @@ const GlobalStyle = createGlobalStyle`
       outline: none;
     }
   }
+  // Page Footer Btns Styles
+  .form_footer {
+    .top_btns {
+      align-items: center;
+      display: flex;
+      justigy-content: flex-start;
+      button {
+        color: #fff;
+        margin: 0 1rem 0 0;
+        min-width: 150px;
+      }
+    }
+    .bottom_btns {
+      align-items: center;
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      button {
+        color: #fff;
+        margin: 0 0 0 1rem;
+        min-width: 200px;
+      }
+    }
+    .btn_add {
+      background-color: #8b8b8b;
+      border: 1px solid #8b8b8b;
+    }
+    .btn_del {
+      background-color: #d7d7d7;
+      border: 1px solid #d7d7d7;
+    }
+    .btn_save {
+      background-color: #adadad;
+      border: 1px solid #adadad;
+    }
+    .btn_submit {
+      background-color: #47a135;
+      border: 1px solid #47a135;
+    }
+    @media (max-width: 480px) {
+      .top_btns {
+        justify-content: space-between;
+        margin : 0 0 1rem;
+        button {
+          margin: 0;
+          min-width: 100px;
+          width: 48%;
+        }
+      }
+      .bottom_btns {
+        justify-content: space-between;
+        margin : 0 0 1rem;
+        button {
+          margin: 0;
+          min-width: 100px;
+          width: 40%;
+          &:last-child {
+            min-width: 100px;
+            width: 56%;
+          }
+        }
+      }
+    }
+  }
+  .camera {
+    .form-control {
+      color: #8b8b8b;
+      display: flex;
+      justify-content: space-between;
+      p {
+        margin: 0;
+      }
+    }
+    .input--file {
+      cursor: pointer;
+      position: relative;
+      color: #7f7f7f;
+      display: flex;
+      justify-content: flex-end;
+      width: 40px;
+    }
+    .input--file input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      width: 40px;
+    }
+  }
+
   #services {
     background-color: #F8F9FB;
     padding: 4rem 0 0;
@@ -232,12 +322,33 @@ const GlobalStyle = createGlobalStyle`
       }
   }
 }
-
+.custom_container {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0.5rem 3rem;
+}
+@media (max-width: 991px) {
+  .custom_container {
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0.5rem 0;
+  }
+}
 .sub_pages {
   background-color: #fff;
   padding: 2rem 0;
   @media (max-width: 991px) {
     padding: 1rem 0;
+  }
+}
+
+.error-box {
+  position: relative;
+  height: 20px;
+  margin: 0px 0px 10px;
+  .error {
+    position: absolute;
+    color: red;
   }
 }
 

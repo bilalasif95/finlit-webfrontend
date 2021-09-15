@@ -83,7 +83,9 @@ export default function SigninPage() {
                 <FormattedMessage {...messages.ForgotPassword} />
               </Link>
             </div>
-            {error && <p className="error">{error}</p>}
+            <div className="error-box">
+              {error && <p className="error">{error}</p>}
+            </div>
             <Button onClick={login}>
               <FormattedMessage {...messages.Login} />
             </Button>

@@ -1,0 +1,142 @@
+import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+import {
+  Container,
+  Row,
+  Col,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from 'reactstrap';
+import { Link } from 'react-router-dom';
+import Wrapper from './Wrapper';
+import messages from './messages';
+
+function MainSection() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
+  return (
+    <Wrapper>
+      <div className="custom_container">
+        <Container fluid>
+          <div className="main_section">
+            <h4>
+              <FormattedMessage {...messages.HiEveryone} />
+            </h4>
+            <ul className="top_links">
+              <li>
+                <Link className="link" to="/my_profile">
+                  <FormattedMessage {...messages.MyProfile} />
+                </Link>
+              </li>
+              <li>
+                <Link className="link" to="/courses_list">
+                  <FormattedMessage {...messages.MyCourses} />
+                </Link>
+              </li>
+              <li>
+                <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                  <DropdownToggle caret>Add Category</DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>
+                      <Link className="dropdown_link" to="/add_course">
+                        <FormattedMessage {...messages.AddCourses} />
+                      </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link className="dropdown_link" to="/add_webinar">
+                        <FormattedMessage {...messages.AddWebinar} />
+                      </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link className="dropdown_link" to="/add_bootcamp">
+                        <FormattedMessage {...messages.AddBootCamp} />
+                      </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link className="dropdown_link" to="/add_hackathon">
+                        <FormattedMessage {...messages.AddHackathon} />
+                      </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link className="dropdown_link" to="/">
+                        <FormattedMessage {...messages.AddEvents} />
+                      </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link className="dropdown_link" to="/">
+                        <FormattedMessage {...messages.AddArticles} />
+                      </Link>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              </li>
+            </ul>
+            <div className="main_links">
+              <Link to="/webinars_list">
+                <FormattedMessage {...messages.Webinars} />
+              </Link>
+              <Link to="/bootcamp_list">
+                <FormattedMessage {...messages.BootCamp} />
+              </Link>
+              <Link to="/">
+                <FormattedMessage {...messages.LiveWebinars} />
+              </Link>
+              <Link to="/hackathon_list">
+                <FormattedMessage {...messages.Hackathon} />
+              </Link>
+              <Link to="/">
+                <FormattedMessage {...messages.FreeGiftsRewards} />
+              </Link>
+            </div>
+            <div className="stats">
+              <Row>
+                <Col lg={3} md={6} sm={6} xs={12}>
+                  <div className="single_item">
+                    <h2>510$</h2>
+                    <span className="vl" />
+                    <p>
+                      <FormattedMessage {...messages.TotalRevenue} />
+                    </p>
+                  </div>
+                </Col>
+                <Col lg={3} md={6} sm={6} xs={12}>
+                  <div className="single_item">
+                    <h2>40+</h2>
+                    <span />
+                    <p>
+                      <FormattedMessage {...messages.Webinars} />
+                    </p>
+                  </div>
+                </Col>
+                <Col lg={3} md={6} sm={6} xs={12}>
+                  <div className="single_item">
+                    <h2>25+</h2>
+                    <span />
+                    <p>
+                      <FormattedMessage {...messages.Courses} />
+                    </p>
+                  </div>
+                </Col>
+                <Col lg={3} md={6} sm={6} xs={12}>
+                  <div className="single_item">
+                    <h2>510$</h2>
+                    <span />
+                    <p>
+                      <FormattedMessage {...messages.Events} />
+                    </p>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </div>
+        </Container>
+      </div>
+    </Wrapper>
+  );
+}
+
+export default MainSection;
