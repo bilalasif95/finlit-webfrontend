@@ -24,6 +24,7 @@ import LiveSessionList from 'containers/student-panel/LiveSessionList/Loadable';
 import ArticleDetails from 'containers/student-panel/ArticleDetails/Loadable';
 import CartCheckout from 'containers/student-panel/CartCheckout/Loadable';
 import AddCartHackathon from 'containers/student-panel/AddCartHackathon/Loadable';
+import AddCartBootcamp from 'containers/student-panel/AddCartBootcamp/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 // Instructor Panel pages routes
@@ -78,6 +79,7 @@ export default function App() {
         <Route path="/article_details" component={ArticleDetails} />
         <Route path="/cart_checkout" component={CartCheckout} />
         <Route path="/addcart_hackathon" component={AddCartHackathon} />
+        <Route path="/addcart_bootcamp" component={AddCartBootcamp} />
         {/* Instructor Panel pages routes */}
         <Route path="/dashboard" component={Home} />
         <Route path="/add_webinar" component={AddWebinarPage} />

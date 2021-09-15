@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Entrepreneurship /> should render and match the snapshot 1`] = `
+<div
+  className="Wrapper-hzz68y-0 fAJGsz"
+  id="services"
+>
+  <div
+    className="container-xl"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-lg-12"
+      >
+        <div
+          className="header"
+        >
+          <h4>
+            <span>
+              Entrepreneurship
+            </span>
+          </h4>
+          <a
+            href="/"
+            onClick={[Function]}
+          >
+            <span>
+              View all
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-12 col-sm-6 col-md-3 col-lg-3"
+      >
+        <div
+          className="single_item"
+        >
+          <img
+            alt="Accredited Education"
+            src="IMAGE_MOCK"
+          />
+          <h5>
+            <span>
+              Accredited Education
+            </span>
+          </h5>
+          <p>
+            <span>
+              Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.
+            </span>
+          </p>
+          <a
+            className="read_more"
+            href="/"
+            onClick={[Function]}
+          >
+            <span>
+              Read more
+            </span>
+          </a>
+        </div>
+      </div>
+      <div
+        className="col-12 col-sm-6 col-md-3 col-lg-3"
+      >
+        <div
+          className="single_item"
+        >
+          <img
+            alt="Live Webinars"
+            src="IMAGE_MOCK"
+          />
+          <h5>
+            <span>
+              Live Webinars
+            </span>
+          </h5>
+          <p>
+            <span>
+              Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.
+            </span>
+          </p>
+          <a
+            className="read_more"
+            href="/"
+            onClick={[Function]}
+          >
+            <span>
+              Read more
+            </span>
+          </a>
+        </div>
+      </div>
+      <div
+        className="col-12 col-sm-6 col-md-3 col-lg-3"
+      >
+        <div
+          className="single_item"
+        >
+          <img
+            alt="Goal Based Education"
+            src="IMAGE_MOCK"
+          />
+          <h5>
+            <span>
+              Goal Based Education
+            </span>
+          </h5>
+          <p>
+            <span>
+              Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.
+            </span>
+          </p>
+          <a
+            className="read_more"
+            href="/"
+            onClick={[Function]}
+          >
+            <span>
+              Read more
+            </span>
+          </a>
+        </div>
+      </div>
+      <div
+        className="col-12 col-sm-6 col-md-3 col-lg-3"
+      >
+        <div
+          className="single_item"
+        >
+          <img
+            alt="Free Gifts &amp; Rewards"
+            src="IMAGE_MOCK"
+          />
+          <h5>
+            <span>
+              Free Gifts & Rewards
+            </span>
+          </h5>
+          <p>
+            <span>
+              Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.
+            </span>
+          </p>
+          <a
+            className="read_more"
+            href="/"
+            onClick={[Function]}
+          >
+            <span>
+              Read more
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

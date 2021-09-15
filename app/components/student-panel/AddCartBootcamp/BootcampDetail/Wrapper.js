@@ -56,13 +56,15 @@ const Wrapper = styled.div`
       }
     }
     .tabs_cont {
-      border: 1px solid #e4e4e4;
-      border-radius: 0.313rem;
-      margin: 1.5rem 0 0;
-      padding: 1rem 2rem 2rem;
+      margin: 30px 0 0 25px;
+      width: 64.2%;
+      .shedule-head {
+        color: #484848;
+        font-size: 20px;
+      }
       .nav-tabs {
         border-bottom: 1px solid #e4e4e4;
-        padding: 0 1rem;
+        padding: 0 0 0 1rem;
         .nav-link.active {
           color: #000;
           background-color: #fff;
@@ -90,6 +92,22 @@ const Wrapper = styled.div`
       }
       .tab-content > .tab-pane {
         padding: 1rem 0 0;
+        .weekdays {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          &:not(:last-child) {
+            margin-bottom: 15px;
+          }
+          .name {
+            font-size: 14px;
+            color: #b8b8b;
+          }
+          .time {
+            font-size: #000000;
+            color: #000000;
+          }
+        }
         h4 {
           color: #484848;
           font-size: 1.25rem;
@@ -104,19 +122,19 @@ const Wrapper = styled.div`
     }
     .requirement {
       padding: 1.5rem;
+      border: 1px solid #e4e4e4;
+      border-radius: 0.313rem;
+      margin-top: 30px;
       h4 {
         color: #484848;
         font-size: 1.25rem;
         line-height: 24px;
+        margin-bottom: 15px;
       }
-      ul {
-        margin: 0 0 0 1.2rem;
-        li {
-          color: #8b8b8b;
-          font-size: 0.875rem;
-          line-height: 24px;
-          list-style: disc;
-        }
+      p {
+        color: #8b8b8b;
+        font-size: 0.875rem;
+        line-height: 24px;
       }
     }
   }

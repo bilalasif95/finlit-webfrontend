@@ -14,7 +14,7 @@ exports[`<CartCheckout /> should render its heading 1`] = `
         class="col-sm-12 col-md-7 col-lg-8"
       >
         <div
-          class="Wrapper-sc-1mx59rh-0 hVdyyw"
+          class="Wrapper-yoca5k-0 kBiCOS"
           id="list"
         >
           <div
@@ -457,7 +457,7 @@ exports[`<CartCheckout /> should render its heading 1`] = `
             class="col-lg-12"
           >
             <div
-              class="Wrapper-bn506n-0 ettmvZ"
+              class="Wrapper-sc-8on6gx-0 dvkBbM"
             >
               <div
                 class="heading"
@@ -568,6 +568,15 @@ exports[`<CartCheckout /> should render its heading 1`] = `
                   </div>
                 </div>
               </fieldset>
+              <div
+                class="paypal"
+              >
+                <p>
+                  <span>
+                    In order to complete your transaction, we will transfer you over PayPal's secure servers.
+                  </span>
+                </p>
+              </div>
               <div
                 class="form-group"
               >

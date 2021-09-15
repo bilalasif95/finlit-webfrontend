@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AddCartBootcamp /> should render its heading 1`] = `
+exports[`<AddCartHackathon /> should render its heading 1`] = `
 <div
   class="sub_pages"
 >
@@ -14,7 +14,7 @@ exports[`<AddCartBootcamp /> should render its heading 1`] = `
         class="col-sm-12 col-md-7 col-lg-8"
       >
         <div
-          class="Wrapper-sc-1oullqf-0 kLAIuN"
+          class="Wrapper-sc-19670zq-0 gJNcBd"
           id="list"
         >
           <div
@@ -33,7 +33,7 @@ exports[`<AddCartBootcamp /> should render its heading 1`] = `
             >
               <h4>
                 <span>
-                  Hackathon TechnoDiva Fresher
+                  BootCamp of the printing and typesetting
                 </span>
               </h4>
               <div
@@ -122,28 +122,50 @@ exports[`<AddCartBootcamp /> should render its heading 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M12,22 C12,22 4,16 4,10 C4,5 8,2 12,2 C16,2 20,5 20,10 C20,16 12,22 12,22 Z M12,13 C13.657,13 15,11.657 15,10 C15,8.343 13.657,7 12,7 C10.343,7 9,8.343 9,10 C9,11.657 10.343,13 12,13 L12,13 Z"
-                    fill="none"
-                    stroke="#000"
-                    stroke-width="2"
+                    d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8s3.589-8,8-8 s8,3.589,8,8S16.411,20,12,20z"
+                  />
+                  <path
+                    d="M13 7L11 7 11 12.414 14.293 15.707 15.707 14.293 13 11.586z"
                   />
                 </svg>
+                 
                 <p>
                   <span>
-                    Location:
+                    Timings:
                   </span>
-                   
                 </p>
                 <p
                   class="value"
                 >
-                  Online
+                  10:00 pm - 12:00 pm
                 </p>
               </div>
             </div>
             <div
+              class="requirement"
+            >
+              <h4>
+                About the Bootcamp
+              </h4>
+              <p>
+                <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem Ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of type
+    and scrambled it to make a type specimen book. It has survived not
+    only five centuries, but also the leap into electronic typesetting,
+    remaining essentially unchanged.
+                </span>
+              </p>
+            </div>
+            <div
               class="tabs_cont"
             >
+              <h4
+                class="shedule-head"
+              >
+                Shedule
+              </h4>
               <ul
                 class="nav nav-tabs"
               >
@@ -153,7 +175,7 @@ exports[`<AddCartBootcamp /> should render its heading 1`] = `
                   <a
                     class="active nav-link"
                   >
-                    About
+                    Monday
                   </a>
                 </li>
                 <li
@@ -162,7 +184,7 @@ exports[`<AddCartBootcamp /> should render its heading 1`] = `
                   <a
                     class="nav-link"
                   >
-                    Flow
+                    Tuesday
                   </a>
                 </li>
                 <li
@@ -171,7 +193,34 @@ exports[`<AddCartBootcamp /> should render its heading 1`] = `
                   <a
                     class="nav-link"
                   >
-                    FAQs
+                    Wednesday
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                >
+                  <a
+                    class="nav-link"
+                  >
+                    Thursday
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                >
+                  <a
+                    class="nav-link"
+                  >
+                    Friday
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                >
+                  <a
+                    class="nav-link"
+                  >
+                    Saturday
                   </a>
                 </li>
               </ul>
@@ -181,52 +230,532 @@ exports[`<AddCartBootcamp /> should render its heading 1`] = `
                 <div
                   class="tab-pane active"
                 >
-                  <h4>
-                    About hackathon
-                  </h4>
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                  </p>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Orientation :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      10:00 pm - 12:00 am
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture #1 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      12:00 pm - 01:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture#2 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      02:00 pm - 04:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Brainstorming Excercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      04:00 pm - 06:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Physical Exercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      06:00 pm - 07:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Testing Period :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      07:00 pm - 09:00 pm
+                    </p>
+                  </div>
                 </div>
                 <div
                   class="tab-pane"
                 >
-                  <h4>
-                    About Flow
-                  </h4>
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                  </p>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Orientation :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      10:00 pm - 12:00 am
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture #1 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      12:00 pm - 01:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture#2 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      02:00 pm - 04:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Brainstorming Excercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      04:00 pm - 06:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Physical Exercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      06:00 pm - 07:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Testing Period :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      07:00 pm - 09:00 pm
+                    </p>
+                  </div>
                 </div>
                 <div
                   class="tab-pane"
                 >
-                  <h4>
-                    FAQs
-                  </h4>
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                  </p>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Orientation :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      10:00 pm - 12:00 am
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture #1 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      12:00 pm - 01:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture#2 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      02:00 pm - 04:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Brainstorming Excercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      04:00 pm - 06:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Physical Exercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      06:00 pm - 07:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Testing Period :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      07:00 pm - 09:00 pm
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="tab-pane"
+                >
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Orientation :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      10:00 pm - 12:00 am
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture #1 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      12:00 pm - 01:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture#2 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      02:00 pm - 04:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Brainstorming Excercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      04:00 pm - 06:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Physical Exercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      06:00 pm - 07:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Testing Period :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      07:00 pm - 09:00 pm
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="tab-pane"
+                >
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Orientation :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      10:00 pm - 12:00 am
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture #1 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      12:00 pm - 01:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture#2 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      02:00 pm - 04:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Brainstorming Excercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      04:00 pm - 06:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Physical Exercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      06:00 pm - 07:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Testing Period :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      07:00 pm - 09:00 pm
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="tab-pane"
+                >
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Orientation :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      10:00 pm - 12:00 am
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture #1 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      12:00 pm - 01:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Lecture#2 :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      02:00 pm - 04:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Brainstorming Excercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      04:00 pm - 06:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Physical Exercises :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      06:00 pm - 07:00 pm
+                    </p>
+                  </div>
+                  <div
+                    class="weekdays"
+                  >
+                    <p
+                      class="name"
+                    >
+                      Testing Period :
+                    </p>
+                    <p
+                      class="time"
+                    >
+                      07:00 pm - 09:00 pm
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              class="requirement"
-            >
-              <h4>
-                Registration Requirements:
-              </h4>
-              <ul>
-                <li>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                </li>
-                <li>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                </li>
-                <li>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                </li>
-              </ul>
             </div>
           </div>
         </div>
@@ -235,7 +764,7 @@ exports[`<AddCartBootcamp /> should render its heading 1`] = `
         class="col-sm-12 col-md-5 col-lg-4"
       >
         <div
-          class="Wrapper-ohw4ub-0 icoWNK"
+          class="Wrapper-sc-17rbylo-0 ezcUnI"
         >
           <div
             class="top_detail"
