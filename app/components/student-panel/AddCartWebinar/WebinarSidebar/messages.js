@@ -16,9 +16,9 @@ export default defineMessages({
     id: `${scope}.AddtoCart`,
     defaultMessage: `Add to Cart`,
   },
-  HackathonDetails: {
-    id: `${scope}.HackathonDetails`,
-    defaultMessage: `Hackathon Details`,
+  WebinarDetails: {
+    id: `${scope}.WebinarDetails`,
+    defaultMessage: `Webinar Details`,
   },
   Apply: {
     id: `${scope}.Apply`,

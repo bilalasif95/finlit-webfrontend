@@ -44,7 +44,7 @@ function HackathonSidebar() {
       </div>
       <div className="details">
         <h4>
-          <FormattedMessage {...messages.HackathonDetails} />
+          <FormattedMessage {...messages.WebinarDetails} />
         </h4>
         <ul clasName="list">
           <li>

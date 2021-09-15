@@ -117,6 +117,19 @@ const Wrapper = styled.div`
       }
     }
   }
+  @media (max-width: 991px) {
+    .addcart_detail {
+      .main_img {
+        margin: 0;
+      }
+      .tabs_cont {
+        padding: 0 1rem 1rem;
+      }
+      .requirement {
+        padding: 1rem;
+      }
+    }
+  }
 `;
 
 export default Wrapper;
