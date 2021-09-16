@@ -21,7 +21,7 @@ import {
 import { BiTimeFive } from 'react-icons/bi';
 import { RiStarSFill } from 'react-icons/ri';
 import { HiUsers, HiOutlineHeart } from 'react-icons/hi';
-// import { AiFillHeart } from 'react-icons/hi';
+import { AiOutlineHeart } from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import messages from './messages';
@@ -306,7 +306,7 @@ function CoursesList() {
                             </div>
                             <div className="like_enroll">
                               <Button>
-                                <AiOutlineHeart />
+                                <HiOutlineHeart />
                                 {/* <AiFillHeart /> */}
                               </Button>
                               <Button>{item.enrollnow}</Button>
