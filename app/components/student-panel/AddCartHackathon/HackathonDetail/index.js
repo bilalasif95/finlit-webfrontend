@@ -48,7 +48,7 @@ function HackathonDetail() {
             </p>
             <p className="value">August 24, 2021</p>
           </div>
-          <div className="item">
+          <div className="item time-item">
             <GrLocation />
             <p>
               <FormattedMessage {...messages.Location} />{' '}

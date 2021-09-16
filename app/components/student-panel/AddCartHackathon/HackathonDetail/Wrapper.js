@@ -51,6 +51,9 @@ const Wrapper = styled.div`
           color: #000;
         }
       }
+      .time-item {
+        margin-top: 10px;
+      }
     }
     .tabs_cont {
       border: 1px solid #e4e4e4;
