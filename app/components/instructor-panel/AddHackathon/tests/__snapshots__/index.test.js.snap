@@ -1,0 +1,338 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddHackathon /> should render and match the snapshot 1`] = `
+<div
+  className="Wrapper-sc-1br6m2f-0 gbFjYn"
+>
+  <div
+    className="add_forms"
+  >
+    <p>
+      <span>
+        All fileds marked with are mandatory
+      </span>
+    </p>
+    <div
+      className="add_form"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-12 col-sm-6 col-md-6 col-lg-4"
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className=""
+              htmlFor="maintitle"
+            >
+              <span>
+                Main Title
+              </span>
+            </label>
+            <input
+              className="form-control"
+              id="maintitle"
+              name="maintitle"
+              placeholder="Course title"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          className="col-12 col-sm-6 col-md-6 col-lg-4"
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className=""
+              htmlFor="subtitle"
+            >
+              <span>
+                Sub Title
+              </span>
+            </label>
+            <input
+              className="form-control"
+              id="subtitle"
+              name="subtitle"
+              placeholder="Sub title"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          className="col-12 col-sm-6 col-md-6 col-lg-4"
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className=""
+              htmlFor="uploadimage"
+            >
+              <span>
+                Upload Image
+              </span>
+            </label>
+            <div
+              className="camera"
+            >
+              <div
+                className="form-control"
+              >
+                <p>
+                  Upload Image
+                </p>
+                <div
+                  className="input--file"
+                >
+                  <span>
+                    <svg
+                      fill="none"
+                      height="1em"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      style={
+                        Object {
+                          "color": undefined,
+                        }
+                      }
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
+                      />
+                      <circle
+                        cx="12"
+                        cy="13"
+                        r="4"
+                      />
+                    </svg>
+                  </span>
+                  <input
+                    id="uploadimage"
+                    name="uploadimage"
+                    placeholder="Upload Image"
+                    type="file"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-12 col-sm-6 col-md-6 col-lg-4"
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className=""
+              htmlFor="startdate"
+            >
+              <span>
+                Starting Date
+              </span>
+            </label>
+            <input
+              className="form-control"
+              id="startdate"
+              name="startdate"
+              placeholder="00/00/0000"
+              type="date"
+            />
+          </div>
+        </div>
+        <div
+          className="col-12 col-sm-6 col-md-6 col-lg-4"
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className=""
+              htmlFor="enddate"
+            >
+              <span>
+                Ending Date
+              </span>
+            </label>
+            <input
+              className="form-control"
+              id="enddate"
+              name="enddate"
+              placeholder="00/00/0000"
+              type="date"
+            />
+          </div>
+        </div>
+        <div
+          className="col-12 col-sm-6 col-md-6 col-lg-4"
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className=""
+              htmlFor="starttime"
+            >
+              <span>
+                Starting Time
+              </span>
+            </label>
+            <input
+              className="form-control"
+              id="starttime"
+              name="starttime"
+              placeholder="00/00/0000"
+              type="time"
+            />
+          </div>
+        </div>
+        <div
+          className="col-12 col-sm-6 col-md-6 col-lg-4"
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className=""
+              htmlFor="endtime"
+            >
+              <span>
+                Ending Time
+              </span>
+            </label>
+            <input
+              className="form-control"
+              id="endtime"
+              name="endtime"
+              placeholder="00/00/0000"
+              type="time"
+            />
+          </div>
+        </div>
+        <div
+          className="col-12 col-sm-6 col-md-6 col-lg-4"
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className=""
+              htmlFor="addpresenter"
+            >
+              <span>
+                Add Presenter
+              </span>
+            </label>
+            <input
+              className="form-control"
+              id="addpresenter"
+              name="addpresenter"
+              placeholder="Add Presenter"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          className="col-12 col-sm-6 col-md-6 col-lg-4"
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className=""
+              htmlFor="price"
+            >
+              <span>
+                Price
+              </span>
+            </label>
+            <input
+              className="form-control"
+              id="price"
+              name="price"
+              placeholder="Course Price"
+              type="number"
+            />
+          </div>
+        </div>
+        <div
+          className="col-12 col-sm-12 col-md-12 col-lg-12"
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className=""
+              htmlFor="description"
+            >
+              <span>
+                Description
+              </span>
+            </label>
+            <textarea />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="form_footer"
+    >
+      <div
+        className="top_btns"
+      >
+        <button
+          aria-label={null}
+          className="btn_add btn btn-secondary"
+          onClick={[Function]}
+        >
+          <span>
+            Add
+          </span>
+        </button>
+        <button
+          aria-label={null}
+          className="btn_del btn btn-secondary"
+          onClick={[Function]}
+        >
+          <span>
+            Delete
+          </span>
+        </button>
+      </div>
+      <div
+        className="bottom_btns"
+      >
+        <button
+          aria-label={null}
+          className="btn_save btn btn-secondary"
+          onClick={[Function]}
+        >
+          <span>
+            Save as Draft
+          </span>
+        </button>
+        <button
+          aria-label={null}
+          className="btn_submit btn btn-secondary"
+          onClick={[Function]}
+        >
+          <span>
+            Submit & Continue
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

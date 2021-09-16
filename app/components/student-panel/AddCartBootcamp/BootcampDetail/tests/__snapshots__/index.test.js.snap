@@ -1,0 +1,780 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BootcampDetail /> should render and match the snapshot 1`] = `
+<div
+  className="Wrapper-sc-19670zq-0 gJNcBd"
+  id="list"
+>
+  <div
+    className="addcart_detail"
+  >
+    <div
+      className="main_img"
+    >
+      <img
+        alt="main"
+        src="IMAGE_MOCK"
+      />
+    </div>
+    <div
+      className="header"
+    >
+      <h4>
+        <span>
+          BootCamp of the printing and typesetting
+        </span>
+      </h4>
+      <div
+        className="like_share"
+      >
+        <button
+          aria-label={null}
+          className="btn btn-secondary"
+          onClick={[Function]}
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label={null}
+          className="btn btn-secondary"
+          onClick={[Function]}
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M383.822 344.427c-16.045 0-31.024 5.326-41.721 15.979l-152.957-88.42c1.071-5.328 2.142-9.593 2.142-14.919 0-5.328-1.071-9.593-2.142-14.919l150.826-87.35c11.762 10.653 26.741 17.041 43.852 17.041 35.295 0 64.178-28.766 64.178-63.92C448 72.767 419.117 44 383.822 44c-35.297 0-64.179 28.767-64.179 63.92 0 5.327 1.065 9.593 2.142 14.919l-150.821 87.35c-11.767-10.654-26.741-17.041-43.856-17.041-35.296 0-63.108 28.766-63.108 63.92 0 35.153 28.877 63.92 64.178 63.92 17.115 0 32.089-6.389 43.856-17.042l151.891 88.421c-1.076 4.255-2.141 8.521-2.141 13.847 0 34.094 27.806 61.787 62.037 61.787 34.229 0 62.036-27.693 62.036-61.787.001-34.094-27.805-61.787-62.035-61.787z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div
+      className="date_location"
+    >
+      <div
+        className="item"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7 11H9V13H7zM7 15H9V17H7zM11 11H13V13H11zM11 15H13V17H11zM15 11H17V13H15zM15 15H17V17H15z"
+          />
+          <path
+            d="M5,22h14c1.103,0,2-0.897,2-2V8V6c0-1.103-0.897-2-2-2h-2V2h-2v2H9V2H7v2H5C3.897,4,3,4.897,3,6v2v12 C3,21.103,3.897,22,5,22z M19,8l0.001,12H5V8H19z"
+          />
+        </svg>
+         
+        <p>
+          <span>
+            Date:
+          </span>
+        </p>
+        <p
+          className="value"
+        >
+          August 24, 2021
+        </p>
+      </div>
+      <div
+        className="item time-item"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8s3.589-8,8-8 s8,3.589,8,8S16.411,20,12,20z"
+          />
+          <path
+            d="M13 7L11 7 11 12.414 14.293 15.707 15.707 14.293 13 11.586z"
+          />
+        </svg>
+         
+        <p>
+          <span>
+            Timings:
+          </span>
+        </p>
+        <p
+          className="value"
+        >
+          10:00 pm - 12:00 pm
+        </p>
+      </div>
+    </div>
+    <div
+      className="requirement"
+    >
+      <h4>
+        About the Bootcamp
+      </h4>
+      <p>
+        <span>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem Ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of type
+    and scrambled it to make a type specimen book. It has survived not
+    only five centuries, but also the leap into electronic typesetting,
+    remaining essentially unchanged.
+        </span>
+      </p>
+    </div>
+    <div
+      className="tabs_cont"
+    >
+      <h4
+        className="shedule-head"
+      >
+        Shedule
+      </h4>
+      <ul
+        className="nav nav-tabs"
+      >
+        <li
+          className="nav-item"
+        >
+          <a
+            className="active nav-link"
+            onClick={[Function]}
+          >
+            Monday
+          </a>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            onClick={[Function]}
+          >
+            Tuesday
+          </a>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            onClick={[Function]}
+          >
+            Wednesday
+          </a>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            onClick={[Function]}
+          >
+            Thursday
+          </a>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            onClick={[Function]}
+          >
+            Friday
+          </a>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            onClick={[Function]}
+          >
+            Saturday
+          </a>
+        </li>
+      </ul>
+      <div
+        className="tab-content"
+      >
+        <div
+          className="tab-pane active"
+        >
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Orientation :
+            </p>
+            <p
+              className="time"
+            >
+              10:00 pm - 12:00 am
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture #1 :
+            </p>
+            <p
+              className="time"
+            >
+              12:00 pm - 01:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture#2 :
+            </p>
+            <p
+              className="time"
+            >
+              02:00 pm - 04:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Brainstorming Excercises :
+            </p>
+            <p
+              className="time"
+            >
+              04:00 pm - 06:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Physical Exercises :
+            </p>
+            <p
+              className="time"
+            >
+              06:00 pm - 07:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Testing Period :
+            </p>
+            <p
+              className="time"
+            >
+              07:00 pm - 09:00 pm
+            </p>
+          </div>
+        </div>
+        <div
+          className="tab-pane"
+        >
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Orientation :
+            </p>
+            <p
+              className="time"
+            >
+              10:00 pm - 12:00 am
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture #1 :
+            </p>
+            <p
+              className="time"
+            >
+              12:00 pm - 01:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture#2 :
+            </p>
+            <p
+              className="time"
+            >
+              02:00 pm - 04:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Brainstorming Excercises :
+            </p>
+            <p
+              className="time"
+            >
+              04:00 pm - 06:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Physical Exercises :
+            </p>
+            <p
+              className="time"
+            >
+              06:00 pm - 07:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Testing Period :
+            </p>
+            <p
+              className="time"
+            >
+              07:00 pm - 09:00 pm
+            </p>
+          </div>
+        </div>
+        <div
+          className="tab-pane"
+        >
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Orientation :
+            </p>
+            <p
+              className="time"
+            >
+              10:00 pm - 12:00 am
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture #1 :
+            </p>
+            <p
+              className="time"
+            >
+              12:00 pm - 01:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture#2 :
+            </p>
+            <p
+              className="time"
+            >
+              02:00 pm - 04:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Brainstorming Excercises :
+            </p>
+            <p
+              className="time"
+            >
+              04:00 pm - 06:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Physical Exercises :
+            </p>
+            <p
+              className="time"
+            >
+              06:00 pm - 07:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Testing Period :
+            </p>
+            <p
+              className="time"
+            >
+              07:00 pm - 09:00 pm
+            </p>
+          </div>
+        </div>
+        <div
+          className="tab-pane"
+        >
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Orientation :
+            </p>
+            <p
+              className="time"
+            >
+              10:00 pm - 12:00 am
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture #1 :
+            </p>
+            <p
+              className="time"
+            >
+              12:00 pm - 01:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture#2 :
+            </p>
+            <p
+              className="time"
+            >
+              02:00 pm - 04:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Brainstorming Excercises :
+            </p>
+            <p
+              className="time"
+            >
+              04:00 pm - 06:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Physical Exercises :
+            </p>
+            <p
+              className="time"
+            >
+              06:00 pm - 07:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Testing Period :
+            </p>
+            <p
+              className="time"
+            >
+              07:00 pm - 09:00 pm
+            </p>
+          </div>
+        </div>
+        <div
+          className="tab-pane"
+        >
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Orientation :
+            </p>
+            <p
+              className="time"
+            >
+              10:00 pm - 12:00 am
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture #1 :
+            </p>
+            <p
+              className="time"
+            >
+              12:00 pm - 01:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture#2 :
+            </p>
+            <p
+              className="time"
+            >
+              02:00 pm - 04:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Brainstorming Excercises :
+            </p>
+            <p
+              className="time"
+            >
+              04:00 pm - 06:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Physical Exercises :
+            </p>
+            <p
+              className="time"
+            >
+              06:00 pm - 07:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Testing Period :
+            </p>
+            <p
+              className="time"
+            >
+              07:00 pm - 09:00 pm
+            </p>
+          </div>
+        </div>
+        <div
+          className="tab-pane"
+        >
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Orientation :
+            </p>
+            <p
+              className="time"
+            >
+              10:00 pm - 12:00 am
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture #1 :
+            </p>
+            <p
+              className="time"
+            >
+              12:00 pm - 01:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Lecture#2 :
+            </p>
+            <p
+              className="time"
+            >
+              02:00 pm - 04:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Brainstorming Excercises :
+            </p>
+            <p
+              className="time"
+            >
+              04:00 pm - 06:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Physical Exercises :
+            </p>
+            <p
+              className="time"
+            >
+              06:00 pm - 07:00 pm
+            </p>
+          </div>
+          <div
+            className="weekdays"
+          >
+            <p
+              className="name"
+            >
+              Testing Period :
+            </p>
+            <p
+              className="time"
+            >
+              07:00 pm - 09:00 pm
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

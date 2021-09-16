@@ -1,0 +1,338 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CoursesListPage /> should render its heading 1`] = `
+<div
+  class="sub_page"
+>
+  <div
+    class="Wrapper-gkw36-0 ilFtCo"
+    id="list"
+  >
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col-12 col-sm-12 col-md-4 col-lg-4"
+        >
+          <div
+            class="my_profile"
+          >
+            <h4>
+              <span>
+                My Profile
+              </span>
+            </h4>
+            <div
+              class="pro_img"
+            >
+              <img
+                alt="Profile"
+                src="IMAGE_MOCK"
+              />
+            </div>
+            <h4>
+              Li Jordan
+            </h4>
+            <p
+              class="user_type"
+            >
+              <span>
+                Educator
+              </span>
+            </p>
+            <h4>
+              <span>
+                My Biography
+              </span>
+            </h4>
+            <p>
+              <span>
+                Lorem ipsum, or lipsum as it is sometimes known, it
+  is dummy text used in laying out, graphic or web designs.
+              </span>
+            </p>
+            <button
+              class="btn btn-secondary"
+            >
+              <span>
+                Edit Profile
+              </span>
+            </button>
+          </div>
+        </div>
+        <div
+          class="col-12 col-sm-12 col-md-8 col-lg-8"
+        >
+          <div
+            class="basic_info"
+          >
+            <h4>
+              <span>
+                Basic Info
+              </span>
+            </h4>
+            <div
+              class="row"
+            >
+              <div
+                class="col-12 col-sm-6 col-md-6 col-lg-6"
+              >
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class=""
+                    for="fname"
+                  >
+                    <span>
+                      First Name
+                    </span>
+                  </label>
+                  <input
+                    class="form-control"
+                    id="fname"
+                    name="fname"
+                    placeholder="Enter first name"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div
+                class="col-12 col-sm-6 col-md-6 col-lg-6"
+              >
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class=""
+                    for="lname"
+                  >
+                    <span>
+                      Last Name
+                    </span>
+                  </label>
+                  <input
+                    class="form-control"
+                    id="lname"
+                    name="lname"
+                    placeholder="Enter last name"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div
+                class="col-12 col-sm-6 col-md-6 col-lg-6"
+              >
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class=""
+                    for="title"
+                  >
+                    <span>
+                      Title
+                    </span>
+                  </label>
+                  <input
+                    class="form-control"
+                    id="title"
+                    name="title"
+                    placeholder="Enter title"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div
+                class="col-12 col-sm-6 col-md-6 col-lg-6"
+              >
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class=""
+                    for="email"
+                  >
+                    <span>
+                      Email
+                    </span>
+                  </label>
+                  <input
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter email"
+                    type="email"
+                  />
+                </div>
+              </div>
+              <div
+                class="col-12 col-sm-6 col-md-6 col-lg-6"
+              >
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class=""
+                    for="changepassword"
+                  >
+                    <span>
+                      Change Password
+                    </span>
+                  </label>
+                  <div
+                    class="input-group"
+                  >
+                    <input
+                      class="form-control"
+                      id="changepassword"
+                      name="changepassword"
+                      type="text"
+                      value="Change Password"
+                    />
+                    <div
+                      class="input-group-append"
+                    >
+                      <button
+                        class="btn btn-secondary"
+                        type="button"
+                      >
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          stroke="currentColor"
+                          stroke-width="0"
+                          viewBox="0 0 16 16"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
+                            fill-rule="evenodd"
+                          />
+                          <path
+                            clip-rule="evenodd"
+                            d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 00.5.5H4v.5a.5.5 0 00.5.5H5v.5a.5.5 0 00.5.5H6v-1.5a.5.5 0 00-.5-.5H5v-.5a.5.5 0 00-.5-.5H3z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-12 col-sm-6 col-md-6 col-lg-6"
+              >
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class=""
+                    for="twofa"
+                  >
+                    <span>
+                      Two-Factor Authentication (2FA)
+                    </span>
+                  </label>
+                  <div
+                    class="input-group"
+                  >
+                    <input
+                      class="form-control"
+                      id="twofa"
+                      name="twofa"
+                      type="text"
+                      value="Enable 2FA"
+                    />
+                    <div
+                      class="input-group-append"
+                    >
+                      <span
+                        class="MuiSwitch-root"
+                      >
+                        <span
+                          aria-disabled="false"
+                          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiSwitch-switchBase MuiSwitch-colorPrimary"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <input
+                              aria-label="primary checkbox"
+                              class="PrivateSwitchBase-input-4 MuiSwitch-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="MuiSwitch-thumb"
+                            />
+                          </span>
+                          <span
+                            class="MuiTouchRipple-root"
+                          />
+                        </span>
+                        <span
+                          class="MuiSwitch-track"
+                        />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12"
+              >
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class=""
+                    for="aboutme"
+                  >
+                    <span>
+                      About Me
+                    </span>
+                  </label>
+                  <textarea
+                    class="form-control"
+                    id="aboutme"
+                    name="aboutme"
+                    placeholder="Enter"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="form_footer"
+            >
+              <div
+                class="bottom_btns"
+              >
+                <button
+                  class="btn_save btn btn-secondary"
+                >
+                  <span>
+                    Cancel
+                  </span>
+                </button>
+                <button
+                  class="btn_submit btn btn-secondary"
+                >
+                  <span>
+                    Save
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

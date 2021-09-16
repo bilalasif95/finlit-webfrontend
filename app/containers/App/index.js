@@ -25,6 +25,7 @@ import ArticleDetails from 'containers/student-panel/ArticleDetails/Loadable';
 import CartCheckout from 'containers/student-panel/CartCheckout/Loadable';
 import AddCartHackathon from 'containers/student-panel/AddCartHackathon/Loadable';
 import AddCartWebinar from 'containers/student-panel/AddCartWebinar/Loadable';
+import AddCartBootcamp from 'containers/student-panel/AddCartBootcamp/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 // Instructor Panel pages routes
@@ -33,6 +34,7 @@ import AddWebinarPage from 'containers/instructor-panel/AddWebinarPage/Loadable'
 import AddHackathonPage from 'containers/instructor-panel/AddHackathonPage/Loadable';
 import AddBootCampPage from 'containers/instructor-panel/AddBootCampPage/Loadable';
 import AddCoursesPage from 'containers/instructor-panel/AddCoursesPage/Loadable';
+import AddArticlePage from 'containers/instructor-panel/AddArticlePage/Loadable';
 import CoursesListPage from 'containers/instructor-panel/CoursesListPage/Loadable';
 import WebinarsListPage from 'containers/instructor-panel/WebinarsListPage/Loadable';
 import HackathonListPage from 'containers/instructor-panel/HackathonListPage/Loadable';
@@ -63,12 +65,7 @@ export default function App() {
       <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
         <meta name="description" content="FinLit" />
       </Helmet>
-      {/* {window.location.pathname === '/login' ||
-      window.location.pathname === '/signup' ? (
-          ''
-        ) : ( */}
-      <Header />
-      {/* )} */}
+      {window.location.pathname === '/login' ? null : <Header />}
 
       {/* <InstructorHeader /> */}
       <Switch>
@@ -83,6 +80,7 @@ export default function App() {
         <Route path="/cart_checkout" component={CartCheckout} />
         <Route path="/addcart_hackathon" component={AddCartHackathon} />
         <Route path="/addcart_webinar" component={AddCartWebinar} />
+        <Route path="/addcart_bootcamp" component={AddCartBootcamp} />
 
         {/* Instructor Panel pages routes */}
         <Route path="/dashboard" component={Home} />
@@ -90,6 +88,7 @@ export default function App() {
         <Route path="/add_hackathon" component={AddHackathonPage} />
         <Route path="/add_bootcamp" component={AddBootCampPage} />
         <Route path="/add_course" component={AddCoursesPage} />
+        <Route path="/add_article" component={AddArticlePage} />
         <Route path="/courses_list" component={CoursesListPage} />
         <Route path="/webinars_list" component={WebinarsListPage} />
         <Route path="/hackathons_list" component={HackathonListPage} />
@@ -102,12 +101,10 @@ export default function App() {
         <Route path="/create_new_password" component={CreateNewPasswordPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      {/* {window.location.pathname === '/login' ||
-      window.location.pathname === '/signup' ? (
-        ''
-      ) : ( */}
-      <Footer />
-      {/* )} */}
+      {window.location.pathname === '/login' ||
+      window.location.pathname === '/signup' ? null : (
+        <Footer />
+      )}
       <GlobalStyle />
     </AppWrapper>
   );
