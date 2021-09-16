@@ -24,6 +24,7 @@ import {
 import Switch from '@material-ui/core/Switch';
 import { BsPencil } from 'react-icons/bs';
 import { FaCheckCircle } from 'react-icons/fa';
+import axios from 'axios';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import Img from '../../components/Img';
@@ -31,6 +32,7 @@ import Profile from '../../images/profile.jpg';
 import GooglePlay from '../../images/GooglePlay.png';
 import AppStore from '../../images/AppStore.png';
 import QR from '../../images/QR.png';
+import { API } from '../../config/config';
 
 export default function MyProfilePage() {
   // const [state, setState] = React.useState({
@@ -43,6 +45,7 @@ export default function MyProfilePage() {
   const [modalQR, setModalQR] = useState(false);
   const [modalEnable, setModalEnable] = useState(false);
   const [modalTY, setModalTY] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleChange = () => {
     setModalSV(!modalSV);
@@ -76,6 +79,87 @@ export default function MyProfilePage() {
 
   const toggleTYClose = () => setModalTY(!modalTY);
 
+  const [changePassword, setChangePassword] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+  });
+  const clearModalData = () => {
+    setChangePassword({
+      currentPassword: '',
+      newPassword: '',
+      confirmPassword: '',
+    });
+    toggle();
+  };
+  const handleChangeEvent = event => {
+    if (event.target.type === 'password') {
+      setChangePassword({
+        ...changePassword,
+        [event.target.name]: event.target.value,
+      });
+    }
+  };
+
+  const handleChangePasswordSave = () => {
+    if (Object.keys(passwordValidator(changePassword)).length > 0) {
+      setErrors(passwordValidator(changePassword));
+      setTimeout(() => {
+        setErrors({});
+      }, 4000);
+    } else {
+      const token = localStorage.getItem('token');
+      const authHeaders = token
+        ? {
+          Authorization: `Bearer ${token}`,
+        }
+        : {};
+      const { currentPassword, newPassword } = changePassword;
+      const postData = {
+        currentPassword,
+        password: newPassword,
+      };
+      axios
+        .post(`${API}api/auth/changePassword`, postData, {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        })
+        .then(() => {
+          setChangePassword({
+            currentPassword: '',
+            newPassword: '',
+            confirmPassword: '',
+          });
+          setModal(!modal);
+        })
+        .catch(err => {
+          setModal(!modal);
+          setErrors(err.response && err.response.data.message);
+        });
+    }
+  };
+
+  const passwordValidator = values => {
+    const error = {};
+    if (!values.currentPassword) {
+      error.currentPassword = 'Current Password Is required';
+    } else if (!values.newPassword) {
+      error.newPassword = 'New Password Is required';
+    } else if (!values.confirmPassword) {
+      error.confirmPassword = 'Password Confirmation Is required';
+    }
+    if (
+      values.confirmPassword &&
+      values.newPassword !== values.confirmPassword
+    ) {
+      error.passwordMatching =
+        'New Password and Confirm Password Does Not Match';
+    }
+    return error;
+  };
   return (
     <div className="sub_page">
       <Helmet>
@@ -179,7 +263,7 @@ export default function MyProfilePage() {
                           value="Change Password"
                         />
                         <InputGroupAddon addonType="append">
-                          <Button onClick={toggle}>
+                          <Button onClick={clearModalData}>
                             <BsPencil />
                           </Button>
                         </InputGroupAddon>
@@ -252,10 +336,14 @@ export default function MyProfilePage() {
               </Label>
               <Input
                 type="password"
-                name="currentpassword"
+                name="currentPassword"
                 id="password"
                 placeholder="**********"
+                onChange={e => handleChangeEvent(e)}
               />
+              <Label for="password">
+                {errors.currentPassword ? errors.currentPassword : ''}
+              </Label>
             </FormGroup>
             <FormGroup>
               <Label for="password">
@@ -263,10 +351,14 @@ export default function MyProfilePage() {
               </Label>
               <Input
                 type="password"
-                name="newpassword"
+                name="newPassword"
                 id="password"
                 placeholder="**********"
+                onChange={e => handleChangeEvent(e)}
               />
+              <Label for="password">
+                {errors.newPassword ? errors.newPassword : ''}
+              </Label>
             </FormGroup>
             <FormGroup>
               <Label for="password">
@@ -274,10 +366,17 @@ export default function MyProfilePage() {
               </Label>
               <Input
                 type="password"
-                name="confirmpassword"
+                name="confirmPassword"
                 id="password"
                 placeholder="**********"
+                onChange={e => handleChangeEvent(e)}
               />
+              <Label for="password">
+                {errors.confirmPassword ? errors.confirmPassword : ''}
+              </Label>
+              <Label for="password">
+                {errors.passwordMatching ? errors.passwordMatching : ''}
+              </Label>
             </FormGroup>
           </div>
         </ModalBody>
@@ -285,7 +384,7 @@ export default function MyProfilePage() {
           <Button className="btn_save" onClick={toggle}>
             <FormattedMessage {...messages.Cancel} />
           </Button>
-          <Button className="btn_submit" onClick={toggle}>
+          <Button className="btn_submit" onClick={handleChangePasswordSave}>
             <FormattedMessage {...messages.Confirm} />
           </Button>
         </ModalFooter>
