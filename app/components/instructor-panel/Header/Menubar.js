@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Menubar = styled.div`
-  background-color: #255f2b;
+  background-color: #225f2b;
   .navbar {
     margin: 0 auto;
     max-width: 1440px;

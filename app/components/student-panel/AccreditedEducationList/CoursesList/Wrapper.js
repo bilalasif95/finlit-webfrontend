@@ -143,7 +143,8 @@ const Wrapper = styled.div`
               background-color: transparent;
               border: 1px solid #e4e4e4;
               border-radius: 2rem;
-              color: #ec5252;
+              color: #8b8b8b;
+              font-size: 1rem;
               padding: 0.375rem 0.65rem;
             }
             button:last-child {

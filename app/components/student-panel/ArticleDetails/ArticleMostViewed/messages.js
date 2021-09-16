@@ -1,16 +1,16 @@
 /*
- * Articles Messages
+ * Most Viewed Articles Messages
  *
- * This contains all the text for the Articles component.
+ * This contains all the text for the Most Viewed Articles component.
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.components.Articles';
+export const scope = 'boilerplate.components.CoursesList';
 
 export default defineMessages({
   Articles: {
     id: `${scope}.Articles`,
-    defaultMessage: 'Articles',
+    defaultMessage: 'People interested in this course also viewed',
   },
   ViewAll: {
     id: `${scope}.ViewAll`,

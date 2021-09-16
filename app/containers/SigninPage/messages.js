@@ -30,7 +30,7 @@ export default defineMessages({
   },
   Login: {
     id: `${scope}.Login`,
-    defaultMessage: 'Log in',
+    defaultMessage: 'Log In',
   },
   DontHaveAccount: {
     id: `${scope}.DontHaveAccount`,
