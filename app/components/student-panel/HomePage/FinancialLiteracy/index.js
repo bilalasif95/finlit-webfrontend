@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import education from '../../../../images/education.png';
+import education from '../../../../images/flicon.svg';
 
 function FinancialLiteracy() {
   const FinancialLiteracyList = [

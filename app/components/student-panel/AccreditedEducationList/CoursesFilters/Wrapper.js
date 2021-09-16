@@ -12,6 +12,9 @@ const Wrapper = styled.div`
     .form-group {
       padding: 0 0.5rem;
       width: 20%;
+      label {
+        color: #484848;
+      }
       .input-group {
         .form-control {
           border-top-left-radius: 0.25rem !important;

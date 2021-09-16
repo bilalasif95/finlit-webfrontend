@@ -60,7 +60,7 @@ export default function SigninPage() {
                 placeholder="Your email"
               />
             </FormGroup>
-            <FormGroup>
+            <FormGroup className="form_err">
               <Label for="password">
                 <FormattedMessage {...messages.Password} />
               </Label>
@@ -71,6 +71,9 @@ export default function SigninPage() {
                 onChange={e => setPassword(e.target.value)}
                 placeholder="******"
               />
+              <div className="error-box">
+                {error && <p className="error">{error}</p>}
+              </div>
             </FormGroup>
             <div className="remember_forgot">
               <FormGroup check>
@@ -82,9 +85,6 @@ export default function SigninPage() {
               <Link to="/forgot_password">
                 <FormattedMessage {...messages.ForgotPassword} />
               </Link>
-            </div>
-            <div className="error-box">
-              {error && <p className="error">{error}</p>}
             </div>
             <Button onClick={login}>
               <FormattedMessage {...messages.Login} />

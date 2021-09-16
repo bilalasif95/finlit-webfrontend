@@ -45,9 +45,9 @@ const BootstrapInput = withStyles(theme => ({
 
 function CoursesFilters() {
   const [courses, setCourses] = useState('0');
-  const [coursesType, setCoursesType] = useState('0');
+  const [coursesType, setCoursesType] = useState('1');
   const [language, setLanguage] = useState('0');
-  const [level, setLevel] = useState('0');
+  const [level, setLevel] = useState('1');
   const handleChangeCourses = event => {
     setCourses(event.target.value);
   };
@@ -158,10 +158,9 @@ function CoursesFilters() {
                     getContentAnchorEl: null,
                   }}
                 >
-                  <MenuItem value={0}>Level 1</MenuItem>
-                  <MenuItem value={1}>Level 2</MenuItem>
-                  <MenuItem value={2}>Level 3</MenuItem>
-                  <MenuItem value={3}>Level 4</MenuItem>
+                  <MenuItem value={0}>High</MenuItem>
+                  <MenuItem value={1}>Medium</MenuItem>
+                  <MenuItem value={2}>Low</MenuItem>
                 </Select>
               </FormControl>
             </FormGroup>
@@ -188,7 +187,7 @@ function CoursesFilters() {
       <Row>
         <Col lg={12}>
           <div className="total_results">
-            Showing 200 total results for management
+            Showing 200 total results for `courses`
           </div>
         </Col>
       </Row>
