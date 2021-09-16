@@ -9,12 +9,146 @@ import messages from './messages';
 function AddHackathon() {
   const editor = useRef(null);
   const [content, setContent] = useState('');
+  const [errors, setErrors] = useState({});
+  const [loader, setLoader] = useState(false);
 
   const config = {
     readonly: false,
   };
+
+  const [webinarStatus, setWebinarStatus] = useState({
+    mainTitle: '',
+    subTitle: '',
+    image: '',
+    startDate: '',
+    endDate: '',
+    startTime: '',
+    endTime: '',
+    presenter: '',
+    price: '',
+    description: '',
+  });
+
+  const handleChangeEvent = event => {
+    if (event.target.type === 'checkbox') {
+      setWebinarStatus({
+        ...webinarStatus,
+        [event.target.name]: event.target.checked,
+      });
+    } else if (event.target.type === 'file') {
+      setWebinarStatus({
+        ...webinarStatus,
+        [event.target.name]: event.target.files[0],
+      });
+    } else {
+      setWebinarStatus({
+        ...webinarStatus,
+        [event.target.name]: event.target.value,
+      });
+    }
+  };
+
+  const handleSave = () => {
+    if (Object.keys(validatetor(webinarStatus)).length > 0) {
+      setErrors(validatetor(webinarStatus));
+      setTimeout(() => {
+        setErrors({});
+      }, 4000);
+    } else {
+      setLoader(true);
+      const token = localStorage.getItem('token');
+      const authHeaders = token
+        ? {
+          Authorization: `Bearer${token}`,
+        }
+        : {};
+      const {
+        mainTitle,
+        subTitle,
+        startDate,
+        endDate,
+        startTime,
+        endTime,
+        price,
+        presenter,
+      } = webinarStatus;
+      const subData = {
+        mainTitle,
+        subTitle,
+        startDate,
+        endDate,
+        startTime,
+        endTime,
+        price,
+        presentor: presenter,
+        description: content,
+      };
+
+      const subDataString = encodeURIComponent(JSON.stringify(subData));
+      const bodyFormData = new FormData();
+      bodyFormData.append('type', 'Webinar');
+      bodyFormData.append('eventImage', webinarStatus.image);
+      bodyFormData.append('data', subDataString);
+      axios
+        .post(`${API}api/events`, bodyFormData, {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        })
+        .then(() => {
+          setContent('');
+          setWebinarStatus({
+            mainTitle: '',
+            subTitle: '',
+            image: {},
+            startDate: '',
+            endDate: '',
+            startTime: '',
+            endTime: '',
+            presenter: '',
+            price: '',
+            description: '',
+          });
+          setLoader(false);
+        })
+        .catch(err => {
+          setLoader(false);
+          setErrors(err.response && err.response.data.message);
+        });
+    }
+  };
+
+  const validatetor = values => {
+    const error = {};
+    if (!values.mainTitle) {
+      error.mainTitle = 'Title is required';
+    } else if (!values.subTitle) {
+      error.subTitle = 'Sub title is required';
+    } else if (!values.image) {
+      error.image = 'Image is required';
+    } else if (!values.startDate) {
+      error.startDate = 'Start Date  is required';
+    } else if (!values.endDate) {
+      error.endDate = 'End Date is required';
+    } else if (!values.startTime) {
+      error.startTime = 'Start Time is required';
+    } else if (!values.endTime) {
+      error.endTime = 'End time is required';
+    } else if (!values.presenter) {
+      error.presenter = 'Presenter is required';
+    } else if (!values.price) {
+      error.price = 'Price is required ';
+    } else if (!content) {
+      error.description = 'Description is required';
+    }
+
+    return error;
+  };
+
   return (
-    <Wrapper>
+     <Wrapper>
       <div className="add_forms">
         <p>
           <FormattedMessage {...messages.AllFields} />
@@ -28,10 +162,15 @@ function AddHackathon() {
                 </Label>
                 <Input
                   type="text"
-                  name="maintitle"
+                  name="mainTitle"
                   id="maintitle"
                   placeholder="Course title"
+                  value={webinarStatus.mainTitle}
+                  onChange={e => handleChangeEvent(e)}
                 />
+                <Label for="maintitle">
+                  {errors.mainTitle ? errors.mainTitle : ''}
+                </Label>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -41,10 +180,15 @@ function AddHackathon() {
                 </Label>
                 <Input
                   type="text"
-                  name="subtitle"
+                  name="subTitle"
                   id="subtitle"
                   placeholder="Sub title"
+                  value={webinarStatus.subTitle}
+                  onChange={e => handleChangeEvent(e)}
                 />
+                <Label for="maintitle">
+                  {errors.subTitle ? errors.subTitle : ''}
+                </Label>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -54,20 +198,28 @@ function AddHackathon() {
                 </Label>
                 <div className="camera">
                   <div className="form-control">
-                    <p>Upload Image</p>
+                    <p>
+                      {webinarStatus.image.name
+                        ? webinarStatus.image.name
+                        : 'Upload Image'}
+                    </p>
                     <div className="input--file">
                       <span>
                         <FiCamera />
                       </span>
                       <input
                         type="file"
-                        name="uploadimage"
+                        name="image"
                         id="uploadimage"
                         placeholder="Upload Image"
+                        onChange={e => handleChangeEvent(e)}
                       />
                     </div>
                   </div>
                 </div>
+                <Label for="maintitle">
+                  {errors.image ? errors.image : ''}
+                </Label>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -77,10 +229,15 @@ function AddHackathon() {
                 </Label>
                 <Input
                   type="date"
-                  name="startdate"
+                  name="startDate"
                   id="startdate"
                   placeholder="00/00/0000"
+                  value={webinarStatus.startDate}
+                  onChange={e => handleChangeEvent(e)}
                 />
+                <Label for="maintitle">
+                  {errors.startDate ? errors.startDate : ''}
+                </Label>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -90,10 +247,15 @@ function AddHackathon() {
                 </Label>
                 <Input
                   type="date"
-                  name="enddate"
+                  name="endDate"
                   id="enddate"
                   placeholder="00/00/0000"
+                  value={webinarStatus.endDate}
+                  onChange={e => handleChangeEvent(e)}
                 />
+                <Label for="maintitle">
+                  {errors.endDate ? errors.endDate : ''}
+                </Label>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -103,10 +265,15 @@ function AddHackathon() {
                 </Label>
                 <Input
                   type="time"
-                  name="starttime"
+                  name="startTime"
                   id="starttime"
                   placeholder="00/00/0000"
+                  value={webinarStatus.startTime}
+                  onChange={e => handleChangeEvent(e)}
                 />
+                <Label for="maintitle">
+                  {errors.startTime ? errors.startTime : ''}
+                </Label>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -116,10 +283,15 @@ function AddHackathon() {
                 </Label>
                 <Input
                   type="time"
-                  name="endtime"
+                  name="endTime"
                   id="endtime"
                   placeholder="00/00/0000"
+                  value={webinarStatus.endTime}
+                  onChange={e => handleChangeEvent(e)}
                 />
+                <Label for="maintitle">
+                  {errors.endTime ? errors.endTime : ''}
+                </Label>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -127,12 +299,24 @@ function AddHackathon() {
                 <Label for="addpresenter">
                   <FormattedMessage {...messages.AddPresenter} />
                 </Label>
+                {/* <Input type="select" name="select" id="exampleSelect">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </Input> */}
                 <Input
                   type="text"
-                  name="addpresenter"
+                  name="presenter"
                   id="addpresenter"
                   placeholder="Add Presenter"
+                  value={webinarStatus.presenter}
+                  onChange={e => handleChangeEvent(e)}
                 />
+                <Label for="maintitle">
+                  {errors.presenter ? errors.presenter : ''}
+                </Label>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -145,7 +329,12 @@ function AddHackathon() {
                   name="price"
                   id="price"
                   placeholder="Course Price"
+                  value={webinarStatus.price}
+                  onChange={e => handleChangeEvent(e)}
                 />
+                <Label for="maintitle">
+                  {errors.price ? errors.price : ''}
+                </Label>
               </FormGroup>
             </Col>
             <Col lg={12} md={12} sm={12} xs={12}>
@@ -159,31 +348,32 @@ function AddHackathon() {
                   config={config}
                   tabIndex={0} // tabIndex of textarea
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                  onChange={newContent => setContent(newContent)}
                 />
+                <Label for="maintitle">
+                  {errors.description ? errors.description : ''}
+                </Label>
               </FormGroup>
             </Col>
           </Row>
         </div>
         <div className="form_footer">
-          <div className="top_btns">
-            <Button className="btn_add">
-              <FormattedMessage {...messages.Add} />
-            </Button>
-            <Button className="btn_del">
-              <FormattedMessage {...messages.Delete} />
-            </Button>
-          </div>
           <div className="bottom_btns">
-            <Button className="btn_save">
-              <FormattedMessage {...messages.SaveAs} />
+            <Button className="btn_save" onClick={e => handleSave(e)}>
+              {loader ? 'Loading' : <FormattedMessage {...messages.SaveAs} />}
             </Button>
-            <Button className="btn_submit">
-              <FormattedMessage {...messages.SubmitContinue} />
+            <Button className="btn_submit" onClick={e => handleSave(e)}>
+              {loader ? (
+                'Loading'
+              ) : (
+                <FormattedMessage {...messages.SubmitContinue} />
+              )}
             </Button>
           </div>
         </div>
       </div>
-    </Wrapper>
+      </Wrapper>
+
   );
 }
 
