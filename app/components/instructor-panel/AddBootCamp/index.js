@@ -3,10 +3,10 @@ import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
+import axios from 'axios';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../config/config';
-import axios from 'axios';
 
 function AddBootCamp() {
   const editor = useRef(null);
@@ -18,7 +18,7 @@ function AddBootCamp() {
     readonly: false,
   };
 
-  const [bootcampStatus, setbootcampStatus] = useState({
+  const [bootCampStatus, setbootCampStatus] = useState({
     mainTitle: '',
     subTitle: '',
     image: '',
@@ -26,33 +26,32 @@ function AddBootCamp() {
     endDate: '',
     startTime: '',
     endTime: '',
-    presenter: '',
     price: '',
     description: '',
   });
 
   const handleChangeEvent = event => {
     if (event.target.type === 'checkbox') {
-      setbootcampStatus({
-        ...bootcampStatus,
+      setbootCampStatus({
+        ...bootCampStatus,
         [event.target.name]: event.target.checked,
       });
     } else if (event.target.type === 'file') {
-      setbootcampStatus({
-        ...bootcampStatus,
+      setbootCampStatus({
+        ...bootCampStatus,
         [event.target.name]: event.target.files[0],
       });
     } else {
-      setbootcampStatus({
-        ...bootcampStatus,
+      setbootCampStatus({
+        ...bootCampStatus,
         [event.target.name]: event.target.value,
       });
     }
   };
 
   const handleSave = () => {
-    if (Object.keys(validatetor(bootcampStatus)).length > 0) {
-      setErrors(validatetor(bootcampStatus));
+    if (Object.keys(validator(bootCampStatus)).length > 0) {
+      setErrors(validator(bootCampStatus));
       setTimeout(() => {
         setErrors({});
       }, 4000);
@@ -72,8 +71,7 @@ function AddBootCamp() {
         startTime,
         endTime,
         price,
-        presenter,
-      } = bootcampStatus;
+      } = bootCampStatus;
       const subData = {
         mainTitle,
         subTitle,
@@ -82,14 +80,13 @@ function AddBootCamp() {
         startTime,
         endTime,
         price,
-        presentor: presenter,
         description: content,
       };
 
       const subDataString = encodeURIComponent(JSON.stringify(subData));
       const bodyFormData = new FormData();
       bodyFormData.append('type', 'Bootcamp');
-      bodyFormData.append('eventImage', bootcampStatus.image);
+      bodyFormData.append('eventImage', bootCampStatus.image);
       bodyFormData.append('data', subDataString);
       axios
         .post(`${API}api/events`, bodyFormData, {
@@ -101,7 +98,7 @@ function AddBootCamp() {
         })
         .then(() => {
           setContent('');
-          setbootcampStatus({
+          setbootCampStatus({
             mainTitle: '',
             subTitle: '',
             image: {},
@@ -109,7 +106,6 @@ function AddBootCamp() {
             endDate: '',
             startTime: '',
             endTime: '',
-            presenter: '',
             price: '',
             description: '',
           });
@@ -122,7 +118,7 @@ function AddBootCamp() {
     }
   };
 
-  const validatetor = values => {
+  const validator = values => {
     const error = {};
     if (!values.mainTitle) {
       error.mainTitle = 'Title is required';
@@ -138,8 +134,6 @@ function AddBootCamp() {
       error.startTime = 'Start Time is required';
     } else if (!values.endTime) {
       error.endTime = 'End time is required';
-    } else if (!values.presenter) {
-      error.presenter = 'Presenter is required';
     } else if (!values.price) {
       error.price = 'Price is required ';
     } else if (!content) {
@@ -167,7 +161,7 @@ function AddBootCamp() {
                   name="mainTitle"
                   id="maintitle"
                   placeholder="Course title"
-                  value={bootcampStatus.mainTitle}
+                  value={bootCampStatus.mainTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -185,7 +179,7 @@ function AddBootCamp() {
                   name="subTitle"
                   id="subtitle"
                   placeholder="Sub title"
-                  value={bootcampStatus.subTitle}
+                  value={bootCampStatus.subTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -201,8 +195,8 @@ function AddBootCamp() {
                 <div className="camera">
                   <div className="form-control">
                     <p>
-                      {bootcampStatus.image.name
-                        ? bootcampStatus.image.name
+                      {bootCampStatus.image.name
+                        ? bootCampStatus.image.name
                         : 'Upload Image'}
                     </p>
                     <div className="input--file">
@@ -234,7 +228,7 @@ function AddBootCamp() {
                   name="startDate"
                   id="startdate"
                   placeholder="00/00/0000"
-                  value={bootcampStatus.startDate}
+                  value={bootCampStatus.startDate}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -252,7 +246,7 @@ function AddBootCamp() {
                   name="endDate"
                   id="enddate"
                   placeholder="00/00/0000"
-                  value={bootcampStatus.endDate}
+                  value={bootCampStatus.endDate}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -270,7 +264,7 @@ function AddBootCamp() {
                   name="startTime"
                   id="starttime"
                   placeholder="00/00/0000"
-                  value={bootcampStatus.startTime}
+                  value={bootCampStatus.startTime}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -288,36 +282,11 @@ function AddBootCamp() {
                   name="endTime"
                   id="endtime"
                   placeholder="00/00/0000"
-                  value={bootcampStatus.endTime}
+                  value={bootCampStatus.endTime}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
                   {errors.endTime ? errors.endTime : ''}
-                </Label>
-              </FormGroup>
-            </Col>
-            <Col lg={4} md={6} sm={6} xs={12}>
-              <FormGroup>
-                <Label for="addpresenter">
-                  <FormattedMessage {...messages.AddPresenter} />
-                </Label>
-                {/* <Input type="select" name="select" id="exampleSelect">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Input> */}
-                <Input
-                  type="text"
-                  name="presenter"
-                  id="addpresenter"
-                  placeholder="Add Presenter"
-                  value={bootcampStatus.presenter}
-                  onChange={e => handleChangeEvent(e)}
-                />
-                <Label for="maintitle">
-                  {errors.presenter ? errors.presenter : ''}
                 </Label>
               </FormGroup>
             </Col>
@@ -331,7 +300,7 @@ function AddBootCamp() {
                   name="price"
                   id="price"
                   placeholder="Course Price"
-                  value={bootcampStatus.price}
+                  value={bootCampStatus.price}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">

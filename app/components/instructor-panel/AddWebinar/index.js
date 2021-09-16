@@ -58,7 +58,6 @@ function AddWebinar() {
     } else {
       setLoader(true);
       const token = localStorage.getItem('token');
-      console.log("tokeneeeeeeee",token)
       const authHeaders = token
         ? {
           Authorization: `Bearer ${token}`,
@@ -166,7 +165,7 @@ function AddWebinar() {
                   type="text"
                   name="mainTitle"
                   id="maintitle"
-                  placeholder="Course title"
+                  placeholder="Main title"
                   value={webinarStatus.mainTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
@@ -330,7 +329,7 @@ function AddWebinar() {
                   type="number"
                   name="price"
                   id="price"
-                  placeholder="Course Price"
+                  placeholder="Registration Price"
                   value={webinarStatus.price}
                   onChange={e => handleChangeEvent(e)}
                 />
