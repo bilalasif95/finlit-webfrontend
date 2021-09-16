@@ -148,7 +148,7 @@ function AddHackathon() {
   };
 
   return (
-     <Wrapper>
+    <Wrapper>
       <div className="add_forms">
         <p>
           <FormattedMessage {...messages.AllFields} />
@@ -372,8 +372,7 @@ function AddHackathon() {
           </div>
         </div>
       </div>
-      </Wrapper>
-
+    </Wrapper>
   );
 }
 

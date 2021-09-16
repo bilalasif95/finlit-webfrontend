@@ -5,6 +5,8 @@ import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
 import Wrapper from './Wrapper';
 import messages from './messages';
+import { API } from '../../../config/config';
+import axios from 'axios';
 
 function AddBootCamp() {
   const editor = useRef(null);
@@ -16,7 +18,7 @@ function AddBootCamp() {
     readonly: false,
   };
 
-  const [webinarStatus, setWebinarStatus] = useState({
+  const [bootcampStatus, setbootcampStatus] = useState({
     mainTitle: '',
     subTitle: '',
     image: '',
@@ -31,26 +33,26 @@ function AddBootCamp() {
 
   const handleChangeEvent = event => {
     if (event.target.type === 'checkbox') {
-      setWebinarStatus({
-        ...webinarStatus,
+      setbootcampStatus({
+        ...bootcampStatus,
         [event.target.name]: event.target.checked,
       });
     } else if (event.target.type === 'file') {
-      setWebinarStatus({
-        ...webinarStatus,
+      setbootcampStatus({
+        ...bootcampStatus,
         [event.target.name]: event.target.files[0],
       });
     } else {
-      setWebinarStatus({
-        ...webinarStatus,
+      setbootcampStatus({
+        ...bootcampStatus,
         [event.target.name]: event.target.value,
       });
     }
   };
 
   const handleSave = () => {
-    if (Object.keys(validatetor(webinarStatus)).length > 0) {
-      setErrors(validatetor(webinarStatus));
+    if (Object.keys(validatetor(bootcampStatus)).length > 0) {
+      setErrors(validatetor(bootcampStatus));
       setTimeout(() => {
         setErrors({});
       }, 4000);
@@ -59,7 +61,7 @@ function AddBootCamp() {
       const token = localStorage.getItem('token');
       const authHeaders = token
         ? {
-          Authorization: `Bearer${token}`,
+          Authorization: `Bearer ${token}`,
         }
         : {};
       const {
@@ -71,7 +73,7 @@ function AddBootCamp() {
         endTime,
         price,
         presenter,
-      } = webinarStatus;
+      } = bootcampStatus;
       const subData = {
         mainTitle,
         subTitle,
@@ -86,8 +88,8 @@ function AddBootCamp() {
 
       const subDataString = encodeURIComponent(JSON.stringify(subData));
       const bodyFormData = new FormData();
-      bodyFormData.append('type', 'Webinar');
-      bodyFormData.append('eventImage', webinarStatus.image);
+      bodyFormData.append('type', 'Bootcamp');
+      bodyFormData.append('eventImage', bootcampStatus.image);
       bodyFormData.append('data', subDataString);
       axios
         .post(`${API}api/events`, bodyFormData, {
@@ -99,7 +101,7 @@ function AddBootCamp() {
         })
         .then(() => {
           setContent('');
-          setWebinarStatus({
+          setbootcampStatus({
             mainTitle: '',
             subTitle: '',
             image: {},
@@ -148,7 +150,7 @@ function AddBootCamp() {
   };
 
   return (
-     <Wrapper>
+    <Wrapper>
       <div className="add_forms">
         <p>
           <FormattedMessage {...messages.AllFields} />
@@ -165,7 +167,7 @@ function AddBootCamp() {
                   name="mainTitle"
                   id="maintitle"
                   placeholder="Course title"
-                  value={webinarStatus.mainTitle}
+                  value={bootcampStatus.mainTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -183,7 +185,7 @@ function AddBootCamp() {
                   name="subTitle"
                   id="subtitle"
                   placeholder="Sub title"
-                  value={webinarStatus.subTitle}
+                  value={bootcampStatus.subTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -199,8 +201,8 @@ function AddBootCamp() {
                 <div className="camera">
                   <div className="form-control">
                     <p>
-                      {webinarStatus.image.name
-                        ? webinarStatus.image.name
+                      {bootcampStatus.image.name
+                        ? bootcampStatus.image.name
                         : 'Upload Image'}
                     </p>
                     <div className="input--file">
@@ -232,7 +234,7 @@ function AddBootCamp() {
                   name="startDate"
                   id="startdate"
                   placeholder="00/00/0000"
-                  value={webinarStatus.startDate}
+                  value={bootcampStatus.startDate}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -250,7 +252,7 @@ function AddBootCamp() {
                   name="endDate"
                   id="enddate"
                   placeholder="00/00/0000"
-                  value={webinarStatus.endDate}
+                  value={bootcampStatus.endDate}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -268,7 +270,7 @@ function AddBootCamp() {
                   name="startTime"
                   id="starttime"
                   placeholder="00/00/0000"
-                  value={webinarStatus.startTime}
+                  value={bootcampStatus.startTime}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -286,7 +288,7 @@ function AddBootCamp() {
                   name="endTime"
                   id="endtime"
                   placeholder="00/00/0000"
-                  value={webinarStatus.endTime}
+                  value={bootcampStatus.endTime}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -311,7 +313,7 @@ function AddBootCamp() {
                   name="presenter"
                   id="addpresenter"
                   placeholder="Add Presenter"
-                  value={webinarStatus.presenter}
+                  value={bootcampStatus.presenter}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -329,7 +331,7 @@ function AddBootCamp() {
                   name="price"
                   id="price"
                   placeholder="Course Price"
-                  value={webinarStatus.price}
+                  value={bootcampStatus.price}
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
@@ -372,7 +374,7 @@ function AddBootCamp() {
           </div>
         </div>
       </div>
-      </Wrapper>
+    </Wrapper>
   );
 }
 

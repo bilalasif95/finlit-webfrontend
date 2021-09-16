@@ -58,9 +58,10 @@ function AddWebinar() {
     } else {
       setLoader(true);
       const token = localStorage.getItem('token');
+      console.log("tokeneeeeeeee",token)
       const authHeaders = token
         ? {
-          Authorization: `Bearer${token}`,
+          Authorization: `Bearer ${token}`,
         }
         : {};
       const {
