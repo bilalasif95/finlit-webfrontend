@@ -26,7 +26,6 @@ function AddHackathon() {
     endDate: '',
     startTime: '',
     endTime: '',
-    presenter: '',
     price: '',
     description: '',
   });
@@ -82,7 +81,6 @@ function AddHackathon() {
         startTime,
         endTime,
         price,
-        presentor: presenter,
         description: content,
       };
 
@@ -109,7 +107,6 @@ function AddHackathon() {
             endDate: '',
             startTime: '',
             endTime: '',
-            presenter: '',
             price: '',
             description: '',
           });
@@ -122,7 +119,7 @@ function AddHackathon() {
     }
   };
 
-  const validatetor = values => {
+  const validator = values => {
     const error = {};
     if (!values.mainTitle) {
       error.mainTitle = 'Title is required';
@@ -138,8 +135,6 @@ function AddHackathon() {
       error.startTime = 'Start Time is required';
     } else if (!values.endTime) {
       error.endTime = 'End time is required';
-    } else if (!values.presenter) {
-      error.presenter = 'Presenter is required';
     } else if (!values.price) {
       error.price = 'Price is required ';
     } else if (!content) {

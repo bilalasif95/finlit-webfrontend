@@ -14,51 +14,43 @@ export default defineMessages({
   },
   AllFields: {
     id: `${scope}.AllFields`,
-    defaultMessage: `All fileds marked with are mandatory`,
+    defaultMessage: `All fileds marked with * are mandatory`,
   },
   MainTitle: {
     id: `${scope}.MainTitle`,
-    defaultMessage: `Main Title`,
+    defaultMessage: `Main Title*`,
   },
   SubTitle: {
     id: `${scope}.SubTitle`,
-    defaultMessage: `Sub Title`,
+    defaultMessage: `Sub Title*`,
   },
   UploadImage: {
     id: `${scope}.UploadImage`,
-    defaultMessage: `Upload Image`,
+    defaultMessage: `Upload Image*`,
   },
   StartDate: {
-    id: `${scope}.StartDate`,
+    id: `${scope}.StartDate*`,
     defaultMessage: `Starting Date`,
   },
   EndDate: {
     id: `${scope}.EndDate`,
-    defaultMessage: `Ending Date`,
+    defaultMessage: `Ending Date*`,
   },
   StartTime: {
     id: `${scope}.StartTime`,
-    defaultMessage: `Starting Time`,
+    defaultMessage: `Starting Time*`,
   },
   EndTime: {
     id: `${scope}.EndTime`,
-    defaultMessage: `Ending Time`,
-  },
-  AddPresenter: {
-    id: `${scope}.AddPresenter`,
-    defaultMessage: `Add Presenter`,
-  },
-  PresenterName: {
-    id: `${scope}.PresenterName`,
-    defaultMessage: `Presenters Name`,
+    defaultMessage: `Ending Time*`,
   },
   Price: {
     id: `${scope}.Price`,
-    defaultMessage: `Price`,
+    defaultMessage: `Price*`,
   },
   Description: {
     id: `${scope}.Description`,
-    defaultMessage: `Description`,
+    defaultMessage: `Description*`,
   },
   Add: {
     id: `${scope}.Add`,
