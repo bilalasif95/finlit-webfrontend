@@ -29,8 +29,8 @@ export default function SigninPage() {
     }
     axios
       .post(`${API}api/auth/login`, { email, password })
-      .then(() => {
-        // console.log('login', response);
+      .then(res => {
+        localStorage.setItem('token', res.data.accessToken);
       })
       .catch(err => {
         setError(err.response && err.response.data.message);
