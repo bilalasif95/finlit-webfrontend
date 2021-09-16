@@ -16,6 +16,26 @@ export default defineMessages({
     id: `${scope}.CourseTitle`,
     defaultMessage: `Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.`,
   },
+  CardTitle: {
+    id: `${scope}.CardTitle`,
+    defaultMessage: `00 Days of code the complete phython - Mo Lunch ...`,
+  },
+  CardTitle1: {
+    id: `${scope}.CardTitle`,
+    defaultMessage: `Sustainable Cities & de la se Communities`,
+  },
+  CardTitle2: {
+    id: `${scope}.CardTitle`,
+    defaultMessage: `Responsible Consumption & Production`,
+  },
+  CardTitle3: {
+    id: `${scope}.CardTitle`,
+    defaultMessage: `100 Days of code -- the de la complete phython`,
+  },
+  CardSubTitle: {
+    id: `${scope}.CardSubTitle`,
+    defaultMessage: `Provided by: Joeel & Natalie Rivera`,
+  },
   CourseShortDesc: {
     id: `${scope}.CourseShortDesc`,
     defaultMessage: `Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.`,

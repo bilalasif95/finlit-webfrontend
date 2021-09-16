@@ -28,12 +28,13 @@ const BootstrapInput = withStyles(theme => ({
     },
   },
   input: {
-    borderRadius: 4,
+    borderRadius: 5,
     position: 'relative',
     backgroundColor: theme.palette.background.paper,
     border: '1px solid #ced4da',
-    fontSize: 16,
-    padding: '10px 26px 10px 12px',
+    fontSize: 14,
+    padding: '12px 26px 12px 12px',
+    color: '#000000',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     // Use the system font instead of the default Lato font.
     fontFamily: ['Lato', 'sans-serif'].join(','),
@@ -67,7 +68,7 @@ function CoursesFilters() {
           <div className="course_filters">
             <FormGroup>
               <FormControl fullWidth>
-                <Label>
+                <Label className="filter-label">
                   <FormattedMessage {...messages.Courses} />
                 </Label>
                 <Select
@@ -92,7 +93,7 @@ function CoursesFilters() {
             </FormGroup>
             <FormGroup>
               <FormControl fullWidth>
-                <Label>
+                <Label className="filter-label">
                   <FormattedMessage {...messages.CoursesType} />
                 </Label>
                 <Select
@@ -117,7 +118,7 @@ function CoursesFilters() {
             </FormGroup>
             <FormGroup>
               <FormControl fullWidth>
-                <Label>
+                <Label className="filter-label">
                   <FormattedMessage {...messages.Language} />
                 </Label>
                 <Select
@@ -141,7 +142,7 @@ function CoursesFilters() {
             </FormGroup>
             <FormGroup>
               <FormControl fullWidth>
-                <Label>
+                <Label className="filter-label">
                   <FormattedMessage {...messages.Level} />
                 </Label>
                 <Select
@@ -165,7 +166,7 @@ function CoursesFilters() {
               </FormControl>
             </FormGroup>
             <FormGroup>
-              <Label for="price">
+              <Label className="filter-label" for="price">
                 <FormattedMessage {...messages.Price} />
               </Label>
               <InputGroup>
