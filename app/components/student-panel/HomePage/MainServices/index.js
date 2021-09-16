@@ -32,7 +32,7 @@ function MainServices() {
     },
     {
       id: 2,
-      icon: gift,
+      icon: goaledu,
       alt: 'Goal Based Education',
       title: <FormattedMessage {...messages.GoalBasedEducation} />,
       desc: <FormattedMessage {...messages.GoalBasedEducationDesc} />,
@@ -40,7 +40,7 @@ function MainServices() {
     },
     {
       id: 3,
-      icon: goaledu,
+      icon: gift,
       alt: 'Free Gifts &amp; Rewards',
       title: <FormattedMessage {...messages.FreeGiftsRewards} />,
       desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,

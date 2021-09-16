@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
 import ArticleDescription from '../../../components/student-panel/ArticleDetails/ArticleDescription';
 import ArticleImage from '../../../components/student-panel/ArticleDetails/ArticleImage';
+import ArticleMostViewed from '../../../components/student-panel/ArticleDetails/ArticleMostViewed';
 import ArticleSidebar from '../../../components/student-panel/ArticleDetails/ArticleSidebar';
 
 export default function ArticleDetails() {
@@ -18,14 +19,15 @@ export default function ArticleDetails() {
       <Container fluid="xl">
         <ArticleImage />
         <Row>
-          <Col lg={9} md={8} sm={12}>
+          <Col lg={8} md={8} sm={12}>
             <ArticleDescription />
           </Col>
-          <Col lg={3} md={4} sm={12}>
+          <Col lg={4} md={4} sm={12}>
             <ArticleSidebar />
           </Col>
         </Row>
       </Container>
+      <ArticleMostViewed />
     </div>
   );
 }

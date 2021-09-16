@@ -5,16 +5,43 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import InputBase from '@material-ui/core/InputBase';
+import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import messages from './messages';
 import { API } from '../../config/config';
 
+const BootstrapInput = withStyles(theme => ({
+  root: {
+    'label + &': {
+      marginTop: 0,
+    },
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    backgroundColor: theme.palette.background.paper,
+    border: '1px solid #ced4da',
+    fontSize: 16,
+    padding: '10px 26px 10px 12px',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    // Use the system font instead of the default Lato font.
+    fontFamily: ['Lato', 'sans-serif'].join(','),
+    '&:focus': {
+      borderRadius: 4,
+    },
+  },
+}))(InputBase);
+
 export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [roleId, setRoleId] = useState('');
+  const [roleId, setRoleId] = useState('0');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [error, setError] = useState('');
@@ -108,6 +135,29 @@ export default function SignupPage() {
             </Row>
             <Col lg={12} md={12} sm={12}>
               <FormGroup>
+                <FormControl fullWidth>
+                  <Label>
+                    <FormattedMessage {...messages.SelectType} />
+                  </Label>
+                  <Select
+                    value={roleId}
+                    onChange={e => setRoleId(e.target.value)}
+                    input={<BootstrapInput />}
+                    fullWidth
+                    MenuProps={{
+                      anchorOrigin: {
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                      },
+                      getContentAnchorEl: null,
+                    }}
+                  >
+                    <MenuItem value={0}>Student</MenuItem>
+                    <MenuItem value={1}>Instructor</MenuItem>
+                  </Select>
+                </FormControl>
+              </FormGroup>
+              {/* <FormGroup>
                 <Label for="select">
                   <FormattedMessage {...messages.SelectType} />
                 </Label>
@@ -120,7 +170,7 @@ export default function SignupPage() {
                   <option value="student">Student</option>
                   <option value="instructor">Instructor</option>
                 </Input>
-              </FormGroup>
+              </FormGroup> */}
             </Col>
             <FormGroup>
               <Label for="password">
@@ -134,7 +184,7 @@ export default function SignupPage() {
                 placeholder="******"
               />
             </FormGroup>
-            <FormGroup>
+            <FormGroup className="form_err">
               <Label for="password">
                 <FormattedMessage {...messages.ConfirmPassword} />
               </Label>
@@ -145,10 +195,10 @@ export default function SignupPage() {
                 onChange={e => setPasswordConfirmation(e.target.value)}
                 placeholder="******"
               />
+              <div className="error-box">
+                {error && <p className="error">{error}</p>}
+              </div>
             </FormGroup>
-            <div className="error-box">
-              {error && <p className="error">{error}</p>}
-            </div>
             <Button onClick={signup}>
               <FormattedMessage {...messages.SignUp} />
             </Button>

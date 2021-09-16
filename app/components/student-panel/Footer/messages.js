@@ -10,7 +10,7 @@ export const scope = 'boilerplate.components.Footer';
 export default defineMessages({
   AllRightsReserved: {
     id: `${scope}.AllRightsReserved`,
-    defaultMessage: '&copy; 2021 FinLit Inc. All rights reserved.',
+    defaultMessage: '2021 FinLit Inc. All rights reserved.',
   },
   Category: {
     id: `${scope}.Category`,

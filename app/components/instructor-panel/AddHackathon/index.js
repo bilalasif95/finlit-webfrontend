@@ -3,8 +3,10 @@ import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
+import axios from 'axios';
 import Wrapper from './Wrapper';
 import messages from './messages';
+import { API } from '../../../config/config';
 
 function AddHackathon() {
   const editor = useRef(null);
@@ -16,7 +18,7 @@ function AddHackathon() {
     readonly: false,
   };
 
-  const [webinarStatus, setWebinarStatus] = useState({
+  const [hackathonStatus, sethackathonStatus] = useState({
     mainTitle: '',
     subTitle: '',
     image: '',
@@ -24,33 +26,32 @@ function AddHackathon() {
     endDate: '',
     startTime: '',
     endTime: '',
-    presenter: '',
     price: '',
     description: '',
   });
 
   const handleChangeEvent = event => {
     if (event.target.type === 'checkbox') {
-      setWebinarStatus({
-        ...webinarStatus,
+      sethackathonStatus({
+        ...hackathonStatus,
         [event.target.name]: event.target.checked,
       });
     } else if (event.target.type === 'file') {
-      setWebinarStatus({
-        ...webinarStatus,
+      sethackathonStatus({
+        ...hackathonStatus,
         [event.target.name]: event.target.files[0],
       });
     } else {
-      setWebinarStatus({
-        ...webinarStatus,
+      sethackathonStatus({
+        ...hackathonStatus,
         [event.target.name]: event.target.value,
       });
     }
   };
 
   const handleSave = () => {
-    if (Object.keys(validatetor(webinarStatus)).length > 0) {
-      setErrors(validatetor(webinarStatus));
+    if (Object.keys(validatetor(hackathonStatus)).length > 0) {
+      setErrors(validatetor(hackathonStatus));
       setTimeout(() => {
         setErrors({});
       }, 4000);
@@ -59,7 +60,7 @@ function AddHackathon() {
       const token = localStorage.getItem('token');
       const authHeaders = token
         ? {
-          Authorization: `Bearer${token}`,
+          Authorization: `Bearer ${token}`,
         }
         : {};
       const {
@@ -71,7 +72,7 @@ function AddHackathon() {
         endTime,
         price,
         presenter,
-      } = webinarStatus;
+      } = hackathonStatus;
       const subData = {
         mainTitle,
         subTitle,
@@ -80,14 +81,13 @@ function AddHackathon() {
         startTime,
         endTime,
         price,
-        presentor: presenter,
         description: content,
       };
 
       const subDataString = encodeURIComponent(JSON.stringify(subData));
       const bodyFormData = new FormData();
-      bodyFormData.append('type', 'Webinar');
-      bodyFormData.append('eventImage', webinarStatus.image);
+      bodyFormData.append('type', 'Hackathon');
+      bodyFormData.append('eventImage', hackathonStatus.image);
       bodyFormData.append('data', subDataString);
       axios
         .post(`${API}api/events`, bodyFormData, {
@@ -99,7 +99,7 @@ function AddHackathon() {
         })
         .then(() => {
           setContent('');
-          setWebinarStatus({
+          sethackathonStatus({
             mainTitle: '',
             subTitle: '',
             image: {},
@@ -107,7 +107,6 @@ function AddHackathon() {
             endDate: '',
             startTime: '',
             endTime: '',
-            presenter: '',
             price: '',
             description: '',
           });
@@ -120,7 +119,7 @@ function AddHackathon() {
     }
   };
 
-  const validatetor = values => {
+  const validator = values => {
     const error = {};
     if (!values.mainTitle) {
       error.mainTitle = 'Title is required';
@@ -136,8 +135,6 @@ function AddHackathon() {
       error.startTime = 'Start Time is required';
     } else if (!values.endTime) {
       error.endTime = 'End time is required';
-    } else if (!values.presenter) {
-      error.presenter = 'Presenter is required';
     } else if (!values.price) {
       error.price = 'Price is required ';
     } else if (!content) {
@@ -148,6 +145,7 @@ function AddHackathon() {
   };
 
   return (
+
     <Wrapper>
       <div className="add_forms">
         <p>
@@ -165,12 +163,12 @@ function AddHackathon() {
                   name="mainTitle"
                   id="maintitle"
                   placeholder="Course title"
-                  value={webinarStatus.mainTitle}
+                  value={hackathonStatus.mainTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.mainTitle ? errors.mainTitle : ''}
-                </Label>
+                <div className="error-box">
+                  {errors.mainTitle ? <p className="error">{errors.mainTitle} </p> : ''}
+                </div>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -183,12 +181,12 @@ function AddHackathon() {
                   name="subTitle"
                   id="subtitle"
                   placeholder="Sub title"
-                  value={webinarStatus.subTitle}
+                  value={hackathonStatus.subTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.subTitle ? errors.subTitle : ''}
-                </Label>
+                <div className="error-box">
+                  {errors.subTitle ? <p className="error">{errors.subTitle} </p> : ''}
+                </div>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -199,8 +197,8 @@ function AddHackathon() {
                 <div className="camera">
                   <div className="form-control">
                     <p>
-                      {webinarStatus.image.name
-                        ? webinarStatus.image.name
+                      {hackathonStatus.image.name
+                        ? hackathonStatus.image.name
                         : 'Upload Image'}
                     </p>
                     <div className="input--file">
@@ -209,6 +207,7 @@ function AddHackathon() {
                       </span>
                       <input
                         type="file"
+                        accept="image/png, image/gif, image/jpeg"
                         name="image"
                         id="uploadimage"
                         placeholder="Upload Image"
@@ -217,9 +216,9 @@ function AddHackathon() {
                     </div>
                   </div>
                 </div>
-                <Label for="maintitle">
-                  {errors.image ? errors.image : ''}
-                </Label>
+                <div className="error-box">
+                  {errors.image ? <p className="error">{errors.image} </p> : ''}
+                </div>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -232,12 +231,12 @@ function AddHackathon() {
                   name="startDate"
                   id="startdate"
                   placeholder="00/00/0000"
-                  value={webinarStatus.startDate}
+                  value={hackathonStatus.startDate}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.startDate ? errors.startDate : ''}
-                </Label>
+                <div className="error-box">
+                  {errors.startDate ? <p className="error">{errors.startDate} </p> : ''}
+                </div>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -250,12 +249,12 @@ function AddHackathon() {
                   name="endDate"
                   id="enddate"
                   placeholder="00/00/0000"
-                  value={webinarStatus.endDate}
+                  value={hackathonStatus.endDate}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.endDate ? errors.endDate : ''}
-                </Label>
+                <div className="error-box">
+                  {errors.endDate ? <p className="error">{errors.endDate} </p> : ''}
+                </div>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -268,12 +267,12 @@ function AddHackathon() {
                   name="startTime"
                   id="starttime"
                   placeholder="00/00/0000"
-                  value={webinarStatus.startTime}
+                  value={hackathonStatus.startTime}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.startTime ? errors.startTime : ''}
-                </Label>
+                <div className="error-box">
+                  {errors.startTime ? <p className="error">{errors.startTime} </p> : ''}
+                </div>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -286,12 +285,12 @@ function AddHackathon() {
                   name="endTime"
                   id="endtime"
                   placeholder="00/00/0000"
-                  value={webinarStatus.endTime}
+                  value={hackathonStatus.endTime}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.endTime ? errors.endTime : ''}
-                </Label>
+                <div className="error-box">
+                  {errors.endTime ? <p className="error">{errors.endTime} </p> : ''}
+                </div>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -311,12 +310,12 @@ function AddHackathon() {
                   name="presenter"
                   id="addpresenter"
                   placeholder="Add Presenter"
-                  value={webinarStatus.presenter}
+                  value={hackathonStatus.presenter}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.presenter ? errors.presenter : ''}
-                </Label>
+                <div className="error-box">
+                  {errors.presenter ? <p className="error">{errors.presenter} </p> : ''}
+                </div>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -329,12 +328,12 @@ function AddHackathon() {
                   name="price"
                   id="price"
                   placeholder="Course Price"
-                  value={webinarStatus.price}
+                  value={hackathonStatus.price}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.price ? errors.price : ''}
-                </Label>
+                <div className="error-box">
+                  {errors.price ? <p className="error">{errors.price} </p> : ''}
+                </div>
               </FormGroup>
             </Col>
             <Col lg={12} md={12} sm={12} xs={12}>
@@ -348,11 +347,10 @@ function AddHackathon() {
                   config={config}
                   tabIndex={0} // tabIndex of textarea
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-                  onChange={newContent => setContent(newContent)}
                 />
-                <Label for="maintitle">
-                  {errors.description ? errors.description : ''}
-                </Label>
+                <div className="error-box">
+                  {errors.description ? <p className="error">{errors.description} </p> : ''}
+                </div>
               </FormGroup>
             </Col>
           </Row>

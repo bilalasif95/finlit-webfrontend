@@ -20,9 +20,8 @@ import {
 } from 'reactstrap';
 import { BiTimeFive } from 'react-icons/bi';
 import { RiStarSFill } from 'react-icons/ri';
-import { HiUsers } from 'react-icons/hi';
-import { AiOutlineHeart } from 'react-icons/ai';
-// import { AiFillHeart } from 'react-icons/ai';
+import { HiUsers, HiOutlineHeart } from 'react-icons/hi';
+// import { AiFillHeart } from 'react-icons/hi';
 // import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import messages from './messages';

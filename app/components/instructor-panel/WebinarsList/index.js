@@ -1,7 +1,7 @@
 /*
  * Webinars List Component
  */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Button } from 'reactstrap';
 import { BiTimeFive } from 'react-icons/bi';
@@ -12,180 +12,120 @@ import { GrFormEdit } from 'react-icons/gr';
 // import { Link } from 'react-router-dom';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import reg from '../../../images/reg.png';
+import { API } from '../../../config/config';
+import axios from 'axios';
+import loaderImg from "../../../images/loader.svg";
 
 function WebinarsList() {
-  const WebinarsLists = [
-    {
-      id: 0,
-      img: reg,
-      alt: 'Course',
-      title: <FormattedMessage {...messages.CourseTitle} />,
-      desc: <FormattedMessage {...messages.CourseShortDesc} />,
-      createdby: <FormattedMessage {...messages.CreatedBy} />,
-      creatorname: <FormattedMessage {...messages.CreatorName} />,
-      newprice: <FormattedMessage {...messages.NewPrice} />,
-      oldprice: <FormattedMessage {...messages.OldPrice} />,
-      time: <FormattedMessage {...messages.Hours} />,
-      updatedat: <FormattedMessage {...messages.UpdatedDate} />,
-      level: <FormattedMessage {...messages.Level} />,
-      rating: <FormattedMessage {...messages.Rating} />,
-      viewer: <FormattedMessage {...messages.Viewer} />,
-    },
-    {
-      id: 1,
-      img: reg,
-      alt: 'Course',
-      title: <FormattedMessage {...messages.CourseTitle} />,
-      desc: <FormattedMessage {...messages.CourseShortDesc} />,
-      createdby: <FormattedMessage {...messages.CreatedBy} />,
-      creatorname: <FormattedMessage {...messages.CreatorName} />,
-      newprice: <FormattedMessage {...messages.NewPrice} />,
-      oldprice: <FormattedMessage {...messages.OldPrice} />,
-      time: <FormattedMessage {...messages.Hours} />,
-      updatedat: <FormattedMessage {...messages.UpdatedDate} />,
-      level: <FormattedMessage {...messages.Level} />,
-      rating: <FormattedMessage {...messages.Rating} />,
-      viewer: <FormattedMessage {...messages.Viewer} />,
-    },
-    {
-      id: 2,
-      img: reg,
-      alt: 'Course',
-      title: <FormattedMessage {...messages.CourseTitle} />,
-      desc: <FormattedMessage {...messages.CourseShortDesc} />,
-      createdby: <FormattedMessage {...messages.CreatedBy} />,
-      creatorname: <FormattedMessage {...messages.CreatorName} />,
-      newprice: <FormattedMessage {...messages.NewPrice} />,
-      oldprice: <FormattedMessage {...messages.OldPrice} />,
-      time: <FormattedMessage {...messages.Hours} />,
-      updatedat: <FormattedMessage {...messages.UpdatedDate} />,
-      level: <FormattedMessage {...messages.Level} />,
-      rating: <FormattedMessage {...messages.Rating} />,
-      viewer: <FormattedMessage {...messages.Viewer} />,
-    },
-    {
-      id: 3,
-      img: reg,
-      alt: 'Course',
-      title: <FormattedMessage {...messages.CourseTitle} />,
-      desc: <FormattedMessage {...messages.CourseShortDesc} />,
-      createdby: <FormattedMessage {...messages.CreatedBy} />,
-      creatorname: <FormattedMessage {...messages.CreatorName} />,
-      newprice: <FormattedMessage {...messages.NewPrice} />,
-      oldprice: <FormattedMessage {...messages.OldPrice} />,
-      time: <FormattedMessage {...messages.Hours} />,
-      updatedat: <FormattedMessage {...messages.UpdatedDate} />,
-      level: <FormattedMessage {...messages.Level} />,
-      rating: <FormattedMessage {...messages.Rating} />,
-      viewer: <FormattedMessage {...messages.Viewer} />,
-    },
-    {
-      id: 4,
-      img: reg,
-      alt: 'Course',
-      title: <FormattedMessage {...messages.CourseTitle} />,
-      desc: <FormattedMessage {...messages.CourseShortDesc} />,
-      createdby: <FormattedMessage {...messages.CreatedBy} />,
-      creatorname: <FormattedMessage {...messages.CreatorName} />,
-      newprice: <FormattedMessage {...messages.NewPrice} />,
-      oldprice: <FormattedMessage {...messages.OldPrice} />,
-      time: <FormattedMessage {...messages.Hours} />,
-      updatedat: <FormattedMessage {...messages.UpdatedDate} />,
-      level: <FormattedMessage {...messages.Level} />,
-      rating: <FormattedMessage {...messages.Rating} />,
-      viewer: <FormattedMessage {...messages.Viewer} />,
-    },
-    {
-      id: 5,
-      img: reg,
-      alt: 'Course',
-      title: <FormattedMessage {...messages.CourseTitle} />,
-      desc: <FormattedMessage {...messages.CourseShortDesc} />,
-      createdby: <FormattedMessage {...messages.CreatedBy} />,
-      creatorname: <FormattedMessage {...messages.CreatorName} />,
-      newprice: <FormattedMessage {...messages.NewPrice} />,
-      oldprice: <FormattedMessage {...messages.OldPrice} />,
-      time: <FormattedMessage {...messages.Hours} />,
-      updatedat: <FormattedMessage {...messages.UpdatedDate} />,
-      level: <FormattedMessage {...messages.Level} />,
-      rating: <FormattedMessage {...messages.Rating} />,
-      viewer: <FormattedMessage {...messages.Viewer} />,
-    },
-  ];
+  const [webinarsList, setwebinarsList] = useState([]),
+    [loader, setLoader] = useState(false)
+  useEffect(() => {
+    getWebinarList()
+  }, [])
+
+  const getWebinarList = () => {
+    setLoader(true)
+    const token = localStorage.getItem('token');
+    const authHeaders = token
+      ? {
+        Authorization: `Bearer${token}`,
+      }
+      : {};
+    axios
+      .get(`${API}api/events/getEventsByTypes?type=Webinar`, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          ...authHeaders,
+        },
+      })
+      .then((res) => {
+        setwebinarsList(res && res.data && res.data.data)
+        setLoader(false);
+      })
+      .catch(() => {
+        setLoader(false);
+      });
+  }
+
   return (
     <Wrapper>
-      <div className="courses_list">
-        {WebinarsLists.map(item => (
-          <div className="single_course" key={item.id}>
-            <div className="course_img">
-              <img src={item.img} alt="Course" />
-            </div>
-            <div className="course_info">
-              <div className="course_short_info">
-                <div className="course_desc">
-                  <h5>{item.title}</h5>
-                  <p>{item.desc}</p>
-                  {/* <div className="course_provider">
+      {loader ? <img className="loader" src={loaderImg} /> :
+        <>
+          <div className="courses_list">
+            {webinarsList.map(item => (
+              <div className="single_course" key={item.data.id}>
+                <div className="course_img">
+                  <img src={item.eventImage} alt="Course" />
+                </div>
+                <div className="course_info">
+                  <div className="course_short_info">
+                    <div className="course_desc">
+                      <h5>{item.data.mainTitle}</h5>
+                      <p>{item.data.subTitle}</p>
+                      {/* <div className="course_provider">
                     {item.createdby}
                     &nbsp;
                     <span className="provider">{item.creatorname}</span>
                   </div> */}
-                </div>
-                <div className="course_price">
-                  <h5>{item.newprice}</h5>
-                  <del>{item.oldprice}</del>
-                </div>
-              </div>
-              <div className="course_outcomes">
-                <div className="date_time">
-                  <BiTimeFive />
-                  <div className="hours">{item.time}</div>
-                  <div className="date_level">
-                    <p>
-                      {item.updatedat}
-                      &nbsp;
-                      {item.level}
-                    </p>
+                    </div>
+                    <div className="course_price">
+                      <h5>${item.data.price}</h5>
+                      <del>${item.data.price}</del>
+                    </div>
+                  </div>
+                  <div className="course_outcomes">
+                    <div className="date_time">
+                      <BiTimeFive />
+                      <div className="hours"> {item.data.startTime}</div>
+                      <div className="date_level">
+                        <p>
+                          {item.data.startDate}
+                          &nbsp;
+                          All Level
+                        </p>
+                      </div>
+                    </div>
+                    <div className="rating">
+                      {2}
+                      <div className="stars">
+                        <RiStarSFill />
+                        <RiStarSFill />
+                        <RiStarSFill />
+                        <RiStarSFill />
+                        <RiStarSFill />
+                      </div>
+                    </div>
+                    <div className="viewer">
+                      <HiUsers />
+                      {20}
+                    </div>
                   </div>
                 </div>
-                <div className="rating">
-                  {item.rating}
-                  <div className="stars">
-                    <RiStarSFill />
-                    <RiStarSFill />
-                    <RiStarSFill />
-                    <RiStarSFill />
-                    <RiStarSFill />
-                  </div>
-                </div>
-                <div className="viewer">
-                  <HiUsers />
-                  {item.viewer}
+                <div className="actions_btn">
+                  <Button>
+                    <GrFormEdit />
+                  </Button>
+                  <Button>
+                    <AiOutlineDelete />
+                  </Button>
                 </div>
               </div>
-            </div>
-            <div className="actions_btn">
-              <Button>
-                <GrFormEdit />
+            ))}
+          </div>
+          <div className="form_footer">
+            <div className="bottom_btns">
+              <Button className="btn_save">
+                <FormattedMessage {...messages.Previous} />
               </Button>
-              <Button>
-                <AiOutlineDelete />
+              <Button className="btn_submit">
+                <FormattedMessage {...messages.Next} />
               </Button>
             </div>
           </div>
-        ))}
-      </div>
-      <div className="form_footer">
-        <div className="bottom_btns">
-          <Button className="btn_save">
-            <FormattedMessage {...messages.Previous} />
-          </Button>
-          <Button className="btn_submit">
-            <FormattedMessage {...messages.Next} />
-          </Button>
-        </div>
-      </div>
+
+        </>
+      }
     </Wrapper>
   );
 }
