@@ -24,6 +24,7 @@ import LiveSessionList from 'containers/student-panel/LiveSessionList/Loadable';
 import ArticleDetails from 'containers/student-panel/ArticleDetails/Loadable';
 import CartCheckout from 'containers/student-panel/CartCheckout/Loadable';
 import AddCartHackathon from 'containers/student-panel/AddCartHackathon/Loadable';
+import AddCartWebinar from 'containers/student-panel/AddCartWebinar/Loadable';
 import AddCartBootcamp from 'containers/student-panel/AddCartBootcamp/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
@@ -32,7 +33,14 @@ import Home from 'containers/instructor-panel/HomePage/Loadable';
 import AddWebinarPage from 'containers/instructor-panel/AddWebinarPage/Loadable';
 import AddHackathonPage from 'containers/instructor-panel/AddHackathonPage/Loadable';
 import AddBootCampPage from 'containers/instructor-panel/AddBootCampPage/Loadable';
+import AddCoursesPage from 'containers/instructor-panel/AddCoursesPage/Loadable';
+import AddArticlePage from 'containers/instructor-panel/AddArticlePage/Loadable';
+import CoursesListPage from 'containers/instructor-panel/CoursesListPage/Loadable';
+import WebinarsListPage from 'containers/instructor-panel/WebinarsListPage/Loadable';
+import HackathonListPage from 'containers/instructor-panel/HackathonListPage/Loadable';
+import BootcampListPage from 'containers/instructor-panel/BootcampListPage/Loadable';
 
+import MyProfilePage from 'containers/MyProfilePage/Loadable';
 import SigninPage from 'containers/SigninPage/Loadable';
 import SignupPage from 'containers/SignupPage/Loadable';
 import ForgotPasswordPage from 'containers/ForgotPasswordPage/Loadable';
@@ -57,21 +65,13 @@ export default function App() {
       <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
         <meta name="description" content="FinLit" />
       </Helmet>
-      {/* {window.location.pathname === '/login' ||
-      window.location.pathname === '/signup' ? (
-          ''
-        ) : ( */}
-      <Header />
-      {/* )} */}
+      {window.location.pathname === '/login' ? null : <Header />}
 
       {/* <InstructorHeader /> */}
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/features" component={FeaturePage} />
-        <Route
-          path="/accredited_education_list"
-          component={AccreditedEducationListPage}
-        />
+        <Route path="/course_list" component={AccreditedEducationListPage} />
         <Route path="/live_webinars_list" component={LiveWebinarsList} />
         <Route path="/bootcamp_list" component={BootCampList} />
         <Route path="/hackathon_list" component={HackathonList} />
@@ -79,12 +79,21 @@ export default function App() {
         <Route path="/article_details" component={ArticleDetails} />
         <Route path="/cart_checkout" component={CartCheckout} />
         <Route path="/addcart_hackathon" component={AddCartHackathon} />
+        <Route path="/addcart_webinar" component={AddCartWebinar} />
         <Route path="/addcart_bootcamp" component={AddCartBootcamp} />
+
         {/* Instructor Panel pages routes */}
         <Route path="/dashboard" component={Home} />
         <Route path="/add_webinar" component={AddWebinarPage} />
         <Route path="/add_hackathon" component={AddHackathonPage} />
         <Route path="/add_bootcamp" component={AddBootCampPage} />
+        <Route path="/add_course" component={AddCoursesPage} />
+        <Route path="/add_article" component={AddArticlePage} />
+        <Route path="/courses_list" component={CoursesListPage} />
+        <Route path="/webinars_list" component={WebinarsListPage} />
+        <Route path="/hackathons_list" component={HackathonListPage} />
+        <Route path="/bootcamps_list" component={BootcampListPage} />
+        <Route path="/my_profile" component={MyProfilePage} />
 
         <Route path="/login" component={SigninPage} />
         <Route path="/signup" component={SignupPage} />
@@ -92,12 +101,10 @@ export default function App() {
         <Route path="/create_new_password" component={CreateNewPasswordPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      {/* {window.location.pathname === '/login' ||
-      window.location.pathname === '/signup' ? (
-        ''
-      ) : ( */}
-      <Footer />
-      {/* )} */}
+      {window.location.pathname === '/login' ||
+      window.location.pathname === '/signup' ? null : (
+        <Footer />
+      )}
       <GlobalStyle />
     </AppWrapper>
   );

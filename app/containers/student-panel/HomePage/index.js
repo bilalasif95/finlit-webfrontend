@@ -17,8 +17,8 @@ export function HomePage() {
   return (
     <div className="main_page">
       <Helmet>
-        <title>FinLit HomePage</title>
-        <meta name="description" content="FinLit HomePage" />
+        <title>Home Page</title>
+        <meta name="description" content="FinLit Home Page" />
       </Helmet>
       <MainSearch />
       <MainServices />

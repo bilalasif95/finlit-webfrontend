@@ -57,7 +57,7 @@ const Wrapper = styled.div`
     }
     .tabs_cont {
       margin: 30px 0 0 25px;
-      width: 64.2%;
+      width: 75%;
       .shedule-head {
         color: #484848;
         font-size: 20px;
