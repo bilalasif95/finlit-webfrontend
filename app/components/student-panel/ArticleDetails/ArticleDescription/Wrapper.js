@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  margin: 0 0 2rem;
   .article {
     border: 1px solid #e4e4e4;
     border-radius: 0.25rem;
     padding: 2rem;
     h4 {
       color: #484848;
+      line-height: 29px;
     }
     .article_outcomes {
       align-items: center;
       display: flex;
-      justify-content: space-between;
+      justify-content: sflex-start;
       margin: 1rem 0 0;
       width: 100%;
       .item {
@@ -19,8 +21,7 @@ const Wrapper = styled.div`
         color: #8b8b8b;
         display: flex;
         justify-content: flex-start;
-        padding: 0 1rem 0 0;
-        width: 25%;
+        padding: 0 1.5rem 0 0;
         span {
           font-size: 0.875rem;
         }
@@ -30,8 +31,13 @@ const Wrapper = styled.div`
       }
     }
     .article_desc {
-      padding: 2rem 0;
+      margin: 2rem 0 0;
       text-align: justify;
+      max-height: 610px;
+      overflow-y: auto;
+      ::-webkit-scrollbar {
+        display: none;
+      }
       p {
         color: #484848;
         font-size: 0.875rem;

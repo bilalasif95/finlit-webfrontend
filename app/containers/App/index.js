@@ -65,7 +65,7 @@ export default function App() {
       <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
         <meta name="description" content="FinLit" />
       </Helmet>
-      {window.location.pathname === '/login' ? null : <Header />}
+      {window.location.pathname === '/signup' ? null : <Header />}
 
       {/* <InstructorHeader /> */}
       <Switch>
@@ -101,10 +101,7 @@ export default function App() {
         <Route path="/create_new_password" component={CreateNewPasswordPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      {window.location.pathname === '/login' ||
-      window.location.pathname === '/signup' ? null : (
-        <Footer />
-      )}
+      {window.location.pathname === '/signup' ? null : <Footer />}
       <GlobalStyle />
     </AppWrapper>
   );

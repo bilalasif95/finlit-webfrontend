@@ -25,7 +25,7 @@ function Footer() {
             <div className="copyright_social">
               <div className="copyright">
                 <p>
-                  <FormattedMessage {...messages.AllRightsReserved} />
+                &copy;&nbsp;<FormattedMessage {...messages.AllRightsReserved} />
                 </p>
               </div>
               <ul className="social-links">
