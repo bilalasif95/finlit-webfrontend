@@ -1,7 +1,7 @@
 /*
  * BootCamp List Component
  */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col, Button } from 'reactstrap';
 import { BiTimeFive, BiCalendar } from 'react-icons/bi';
@@ -11,29 +11,46 @@ import { AiOutlineHeart } from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import reg from '../../../../images/reg.png';
+import { API } from '../../../../config/config';
+import axios from 'axios';
+import loaderImg from "../../../../images/loader.svg";
 
 function BootCampList() {
-  const BootCampLists = [
-    {
-      id: 0,
-      img: reg,
-      alt: 'BootCamp',
-      title: <FormattedMessage {...messages.CourseTitle} />,
-      desc: <FormattedMessage {...messages.CourseShortDesc} />,
-      newprice: <FormattedMessage {...messages.NewPrice} />,
-      oldprice: <FormattedMessage {...messages.OldPrice} />,
-      timing: <FormattedMessage {...messages.Timing} />,
-      from: <FormattedMessage {...messages.From} />,
-      to: <FormattedMessage {...messages.To} />,
-      date: <FormattedMessage {...messages.Date} />,
-      attendees: <FormattedMessage {...messages.Attendees} />,
-      viewer: <FormattedMessage {...messages.Viewer} />,
-      joinus: <FormattedMessage {...messages.JoinUs} />,
-    },
-  ];
+
+  const [bootcampList, setBootCampList] = useState([]),
+    [loader, setLoader] = useState(false)
+  useEffect(() => {
+    getBootcampLists()
+  }, [])
+
+  const getBootcampLists = () => {
+    setLoader(true)
+    const token = localStorage.getItem('token');
+    const authHeaders = token
+      ? {
+        Authorization: `Bearer${token}`,
+      }
+      : {};
+    axios
+      .get(`${API}api/events/getEventsByTypes?type=Bootcamp`, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          ...authHeaders,
+        },
+      })
+      .then((res) => {
+        setBootCampList(res && res.data && res.data.data)
+        setLoader(false);
+      })
+      .catch(() => {
+        setLoader(false);
+      });
+  }
+
   return (
     <Wrapper id="list">
+   {loader ? <img className="loader" src={loaderImg} /> :
       <div className="courses">
         <Row>
           <Col lg={12}>
@@ -41,16 +58,16 @@ function BootCampList() {
               <FormattedMessage {...messages.BootCampList} />
             </h4>
             <div className="courses_list">
-              {BootCampLists.map(item => (
-                <div className="single_course" key={item.id}>
+              {bootcampList.map(item => (
+                <div className="single_course" key={item.data.id}>
                   <div className="course_img">
-                    <img src={item.img} alt="Course" />
+                    <img src={item.eventImage} alt="Course" />
                   </div>
                   <div className="course_info">
-                    <h5>{item.title}</h5>
+                    <h5>{item.data.mainTitle}</h5>
                     <div className="course_short_info">
                       <div className="course_desc">
-                        <p>{item.desc}</p>
+                        <p>{item.data.subTitle}</p>
                         {/* <div className="course_provider">
                           {item.providedby}
                           &nbsp;
@@ -58,8 +75,8 @@ function BootCampList() {
                         </div> */}
                       </div>
                       <div className="course_price">
-                        <h5>{item.newprice}</h5>
-                        <del>{item.oldprice}</del>
+                        <h5>${item.data.price}</h5>
+                        <del>${item.data.price}</del>
                       </div>
                     </div>
                     <div className="course_outcomes">
@@ -67,21 +84,22 @@ function BootCampList() {
                         <div className="time">
                           <div className="timing">
                             <BiTimeFive />
-                            <p>{item.timing}</p>
+                            <p>Time</p>
                           </div>
                           <div className="from-to">
-                            {item.from} - {item.to}
+                            {item.data.startTime} - {item.data.endTime}
                           </div>
                         </div>
                         <div className="date">
                           <BiCalendar />
-                          {item.date}
+                          {item.data.startDate}
                         </div>
                         <div className="viewer">
                           <HiUsers />
-                          {item.viewer}
+                          {20}
                           &nbsp;
-                          {item.attendees}
+                          <FormattedMessage {...messages.Attendees} />
+
                         </div>
                       </div>
                       <div className="like_enroll">
@@ -89,7 +107,9 @@ function BootCampList() {
                           <AiOutlineHeart />
                           {/* <AiFillHeart /> */}
                         </Button>
-                        <Button>{item.joinus}</Button>
+                        <Button>
+                          <FormattedMessage {...messages.JoinUs} />
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -99,6 +119,7 @@ function BootCampList() {
           </Col>
         </Row>
       </div>
+}
     </Wrapper>
   );
 }
