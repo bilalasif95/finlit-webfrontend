@@ -3,12 +3,17 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   .course_filters {
     align-items: center;
-    border-radius: 0.35rem;
-    background-color: #f8f9fb;
+    border-radius: 5px;
+    background-color: #fbfbf8;
     display: flex;
     justify-content: space-between;
-    padding: 1.75rem 1.5rem 2rem;
+    padding: 30px;
     width: 100%;
+    .filter-label {
+      color: #484848;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
     .form-group {
       padding: 0 0.5rem;
       width: 20%;
@@ -31,8 +36,9 @@ const Wrapper = styled.div`
     }
   }
   .total_results {
-    font-size: 0.875rem;
-    padding: 1rem 0;
+    font-size: 14px;
+    padding: 13px 0px 14px 0;
+    color: #484848;
   }
   @media (max-width: 991px) {
     .course_filters {

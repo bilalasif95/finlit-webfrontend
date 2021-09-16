@@ -3,10 +3,10 @@ import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
+import axios from 'axios';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../config/config';
-import axios from 'axios';
 
 function AddBootCamp() {
   const editor = useRef(null);
@@ -59,11 +59,9 @@ function AddBootCamp() {
     } else {
       setLoader(true);
       const token = localStorage.getItem('token');
-      const authHeaders = token
-        ? {
-          Authorization: `Bearer ${token}`,
-        }
-        : {};
+      const authHeaders = token ? {
+        Authorization: `Bearer ${token}`,
+      } : {};
       const {
         mainTitle,
         subTitle,
