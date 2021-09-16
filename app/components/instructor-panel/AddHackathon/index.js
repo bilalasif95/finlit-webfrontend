@@ -7,7 +7,6 @@ import axios from 'axios';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../config/config';
-import axios from 'axios';
 
 function AddHackathon() {
   const editor = useRef(null);
