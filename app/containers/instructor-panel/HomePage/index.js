@@ -8,6 +8,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
 import MainSection from '../../../components/instructor-panel/DashboardStatistics/MainSection';
+import Events from '../../../components/instructor-panel/DashboardStatistics/Events';
 import Statistics from '../../../components/instructor-panel/DashboardStatistics/Statistics';
 
 export function HomePage() {
@@ -27,7 +28,9 @@ export function HomePage() {
               <div className="statistics-cont">
                 <Statistics />
               </div>
-              <div className="events-cont" />
+              <div className="events-cont">
+                <Events />
+                </div>
             </div>
           </Col>
         </Row>

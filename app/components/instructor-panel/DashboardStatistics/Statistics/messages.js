@@ -12,4 +12,8 @@ export default defineMessages({
     id: `${scope}.Title`,
     defaultMessage: `Statistics`,
   },
+  CourseTitle: {
+    id: `${scope}.CourseTitle`,
+    defaultMessage: `Courses Progress`,
+  },
 });
