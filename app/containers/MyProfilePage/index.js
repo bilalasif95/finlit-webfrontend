@@ -25,13 +25,13 @@ import Switch from '@material-ui/core/Switch';
 import { BsPencil } from 'react-icons/bs';
 import { FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
+import QRCode from 'qrcode.react';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import Img from '../../components/Img';
 import Profile from '../../images/profile.jpg';
 import GooglePlay from '../../images/GooglePlay.png';
 import AppStore from '../../images/AppStore.png';
-import QR from '../../images/QR.png';
 import { API } from '../../config/config';
 
 export default function MyProfilePage() {
@@ -46,6 +46,8 @@ export default function MyProfilePage() {
   const [modalEnable, setModalEnable] = useState(false);
   const [modalTY, setModalTY] = useState(false);
   const [errors, setErrors] = useState({});
+  const [QrUri, setQrUri] = useState('');
+  const [twoFaCode, setTwoFaCode] = useState('');
 
   const handleChange = () => {
     setModalSV(!modalSV);
@@ -99,6 +101,11 @@ export default function MyProfilePage() {
         [event.target.name]: event.target.value,
       });
     }
+    if (event.target.type === 'text') {
+      if (event.target.name === 'authcode') {
+        setTwoFaCode(event.target.value);
+      }
+    }
   };
 
   const handleChangePasswordSave = () => {
@@ -140,6 +147,62 @@ export default function MyProfilePage() {
           setErrors(err.response && err.response.data.message);
         });
     }
+  };
+  const getQrCodeUri = () => {
+    const token = localStorage.getItem('token');
+    const authHeaders = token
+      ? {
+        Authorization: `Bearer ${token}`,
+      }
+      : {};
+    axios
+      .post(
+        `${API}api/user/getToTpURI`,
+        {},
+        {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        },
+      )
+      .then(response => {
+        setQrUri(response.data.toTpURI);
+        toggleQR();
+      })
+      .catch(err => {
+        toggleGAClose();
+        setErrors(err.response && err.response.data.message);
+      });
+  };
+  const verifyTwoFaCode = () => {
+    const token = localStorage.getItem('token');
+    const authHeaders = token
+      ? {
+        Authorization: `Bearer ${token}`,
+      }
+      : {};
+    axios
+      .post(
+        `${API}api/user/toggleTwoFA`,
+        { code: twoFaCode },
+        {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        },
+      )
+      .then(() => {
+        setTwoFaCode('');
+        toggleTY();
+      })
+      .catch(err => {
+        toggleQRClose();
+        setErrors(err.response && err.response.data.message);
+      });
   };
 
   const passwordValidator = values => {
@@ -414,7 +477,7 @@ export default function MyProfilePage() {
           </Button>
         </ModalFooter>
       </Modal>
-      {/* Download Google Authnticator App Modal */}
+      {/* Download Google Authenticator App Modal */}
       <Modal isOpen={modalGA} toggle={toggleGAClose}>
         <ModalHeader toggle={toggleGAClose}>
           <FormattedMessage {...messages.DownloadGA} />
@@ -439,12 +502,12 @@ export default function MyProfilePage() {
           <Button className="btn_save" onClick={toggleGAClose}>
             <FormattedMessage {...messages.Cancel} />
           </Button>
-          <Button className="btn_submit" onClick={toggleQR}>
+          <Button className="btn_submit" onClick={getQrCodeUri}>
             <FormattedMessage {...messages.ContinueVerify} />
           </Button>
         </ModalFooter>
       </Modal>
-      {/* Scan QR Authnticator App Modal */}
+      {/* Scan QR Authenticator App Modal */}
       <Modal isOpen={modalQR} toggle={toggleQRClose}>
         <ModalHeader toggle={toggleQRClose}>
           <FormattedMessage {...messages.ScanQR} />
@@ -456,7 +519,7 @@ export default function MyProfilePage() {
               security.
             </p>
             <div className="app_store">
-              <Img src={QR} alt="QR" />
+              <QRCode value={QrUri} />
             </div>
           </div>
         </ModalBody>
@@ -485,13 +548,14 @@ export default function MyProfilePage() {
                 <FormattedMessage {...messages.AuthenticatorCode} />
               </Label>
               <Input
-                type="test"
+                type="text"
                 name="authcode"
                 id="authcode"
                 placeholder="Enter code"
+                onChange={handleChangeEvent}
               />
               <FormText color="muted">
-                Enter the 6 digit code received by user@finlit.com
+                Enter the 6 digit code visible on your google authenticator app
               </FormText>
             </FormGroup>
           </div>
@@ -500,7 +564,7 @@ export default function MyProfilePage() {
           <Button className="btn_save" onClick={toggleEnableClose}>
             <FormattedMessage {...messages.Cancel} />
           </Button>
-          <Button className="btn_submit" onClick={toggleTY}>
+          <Button className="btn_submit" onClick={verifyTwoFaCode}>
             <FormattedMessage {...messages.ContinueVerify} />
           </Button>
         </ModalFooter>
