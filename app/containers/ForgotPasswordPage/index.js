@@ -1,13 +1,38 @@
 /*
  * Forgot Password Page
  */
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import messages from './messages';
+import axios from 'axios';
+import { API } from '../../config/config';
 
 export default function ForgotPasswordPage() {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+  const forgotPasswordBtn = () => {
+    setError('');
+    if (email === '') {
+      setError('Please enter email');
+      return;
+    }
+    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
+      setError('Please enter valid email');
+      return;
+    }
+    axios
+      .get(`${API}api/auth/forgotPassword?email=${email}`)
+      .then(res => {
+        console.log(res);
+        setError(res.data.message);
+      })
+      .catch(err => {
+        setError(err.response && err.response.data.message);
+      });
+  };
   return (
     <div className="registration_page">
       <Helmet>
@@ -29,9 +54,11 @@ export default function ForgotPasswordPage() {
                 name="email"
                 id="email"
                 placeholder="Your email"
+                onChange={(e) => { setEmail(e.target.value) }}
               />
             </FormGroup>
-            <Button>
+            <p style={{color: 'red'}}>{error}</p>
+            <Button onClick={() => { forgotPasswordBtn() }}>
               <FormattedMessage {...messages.SendRecoveryCode} />
             </Button>
           </div>
