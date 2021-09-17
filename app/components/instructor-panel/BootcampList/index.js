@@ -14,11 +14,13 @@ import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
 import axios from 'axios';
 import loaderImg from "../../../images/loader.svg";
+import history from 'utils/history';
 
-function BootcampList() {
+function BootcampList(props) {
 
-  const [bootcampList, setBootCampList] = useState([]),
+  const [bootcampList, setBootCampList] = useState({}),
     [loader, setLoader] = useState(false)
+    
   useEffect(() => {
     getBootcampLists()
   }, [])
@@ -48,13 +50,17 @@ function BootcampList() {
       });
   }
 
+  const handleBootcampList = (id) => {
+    history.push("/bootcamp_details/" + id)
+  }
+
   return (
     <Wrapper>
       {loader ? <img className="loader" src={loaderImg} /> :
         <>
           <div className="courses_list">
             {bootcampList.map(item => (
-              <div className="single_course" key={item.data.id}>
+              <div className="single_course" key={item.id} onClick={() => handleBootcampList(item.id)}  >
                 <div className="course_img">
                   <img src={item.eventImage} alt="Course" />
                 </div>

@@ -1,45 +1,48 @@
 /*
  * Cart Checkout Description Component
  */
-import React from 'react';
+import React,{useState,useRef} from 'react';
 import { FormattedMessage } from 'react-intl';
 import { BiCalendar, BiTimeFive } from 'react-icons/bi';
 import { IoMdShare } from 'react-icons/io';
 import { GrLocation } from 'react-icons/gr';
 import { FaRegHeart } from 'react-icons/fa';
 import { RiStarSFill } from 'react-icons/ri';
+import JoditEditor from 'jodit-react';
 import { HiUsers } from 'react-icons/hi';
 // import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import addcart from '../../../../images/addcart.png';
 import finlit from '../../../../images/finlit.png';
 import education from '../../../../images/education.png';
+import moment from 'moment';
+import { trim } from 'lodash';
 
-function HackathonDetail() {
-  // const PresenterList = [
-  //   {
-  //     id: 0,
-  //     img: finlit,
-  //     alt: 'Presenter',
-  //     desc: <FormattedMessage {...messages.PresenterDesc} />,
-  //     presenter: <FormattedMessage {...messages.Presenter} />,
-  //     presentername: <FormattedMessage {...messages.PresenterName} />,
-  //     date: <FormattedMessage {...messages.Date} />,
-  //     courses: <FormattedMessage {...messages.Courses} />,
-  //   },
-  // ];
+function WebinarDetail(props) {
+
+  const editor = useRef(null);
+  const config = {
+    readonly: true,
+  };
+  const [activeTab, setActiveTab] = useState('1');
+
+  const toggle = tab => {
+    if (activeTab !== tab) setActiveTab(tab);
+  };
+ 
+  let detail =props.detail;
+  let dataDetails=detail.data;
+
   return (
     <Wrapper id="list">
       <div className="addcart_detail">
         {/* <FormattedMessage {...messages.Subtotal} /> */}
         <div className="main_img">
-          <img src={addcart} alt="main" />
-        </div>
+        <img src={detail.eventImage} alt="main" />        </div>
         <div className="header">
           <h4>
-            <FormattedMessage {...messages.Title} />
+          {dataDetails &&  dataDetails.mainTitle} 
           </h4>
           <div className="like_share">
             <Button>
@@ -56,7 +59,7 @@ function HackathonDetail() {
             <p>
               <FormattedMessage {...messages.Date} />
             </p>
-            <p className="value">August 24, 2021</p>
+            <p className="value">{moment(detail.updatedAt).format("MMM DD ,YYYY")}</p>
           </div>
           <div className="item">
             <GrLocation />
@@ -70,7 +73,7 @@ function HackathonDetail() {
             <p>
               <FormattedMessage {...messages.Timings} />
             </p>
-            <p className="value">10:00 pm - 12:00 pm</p>
+            <p className="value">{dataDetails && dataDetails.startTime} - {dataDetails && dataDetails.endTime}</p>
           </div>
           <div className="item">
             <HiUsers />
@@ -81,17 +84,17 @@ function HackathonDetail() {
           </div>
         </div>
         <div className="tabs_cont">
-          <h4>About hackathon</h4>
+          {/* <h4>About hackathon</h4> */}
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry`s standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
+          <JoditEditor
+                  ref={editor}
+                  value= {dataDetails &&  dataDetails.description}
+                  config={config}
+                  tabIndex={0} // tabIndex of textarea
+                />
           </p>
         </div>
-        <div className="presenters">
+        {/* <div className="presenters">
           <h4>Registration Requirements:</h4>
           <div className="presenter_list">
             <div className="item">
@@ -123,10 +126,10 @@ function HackathonDetail() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </Wrapper>
   );
 }
 
-export default HackathonDetail;
+export default WebinarDetail;

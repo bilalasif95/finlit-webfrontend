@@ -512,7 +512,7 @@ const GlobalStyle = createGlobalStyle`
 }
 .sub_pages {
   background-color: #fff;
-  padding: 2rem 0 0;
+  padding: 2rem 0 2rem;
   @media (max-width: 991px) {
     padding: 1rem 0;
   }

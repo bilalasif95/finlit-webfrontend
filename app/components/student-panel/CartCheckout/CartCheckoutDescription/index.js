@@ -13,7 +13,7 @@ import messages from './messages';
 import Wrapper from './Wrapper';
 import reg from '../../../../images/reg.png';
 
-function CartCheckoutDescription() {
+function CartCheckoutDescription(props) {
   const CoursesList = [
     {
       id: 0,
@@ -66,6 +66,9 @@ function CartCheckoutDescription() {
       price: <FormattedMessage {...messages.Price} />,
     },
   ];
+
+  console.log("detailsCart",props.details)
+
   return (
     <Wrapper id="list">
       <div className="cart_checkout">
@@ -99,23 +102,23 @@ function CartCheckoutDescription() {
               </tr>
             </thead>
             <tbody>
-              {CoursesList.map(item => (
+              {props.details &&  props.details.items && props.details.items.length> 0 && props.details.items.map(item => (
                 <tr key={item.id}>
                   <td>
                     <div className="detail">
                       <div className="icon">
-                        <img src={item.img} alt="Icon" />
+                        <img src={item.product.eventImage} alt="Icon" />
                       </div>
                       <div className="desc">
-                        <div className="title">{item.title}</div>
-                        <p>{item.desc}</p>
+                        <div className="title">{item.product.data.mainTitle}</div>
+                        <p>{item.product.data.subTitle}</p>
                         <div className="provider">
-                          {item.providedby} {item.providername}
+                          {/* {item.providedby} {item.product.data.creator} */}
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>$150.00</td>
+                  <td>${item.product.data.price}</td>
                   <td>
                     <Button>
                       <AiOutlineDelete />
@@ -129,7 +132,7 @@ function CartCheckoutDescription() {
         <div className="footer">
           <div className="sub_total">
             <p>
-              <FormattedMessage {...messages.Subtotal} /> $4230
+              <FormattedMessage {...messages.Subtotal} /> ${props.details.total}
             </p>
           </div>
         </div>
