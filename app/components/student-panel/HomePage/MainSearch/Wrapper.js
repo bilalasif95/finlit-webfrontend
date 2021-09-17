@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  background-color: #255f2b;
+  background-color: #225f2b;
   padding: 4rem 0;
   .main_content {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 0 1.219rem;
     text-align: center;
     h4 {
       color: #fff;
@@ -33,7 +34,7 @@ const Wrapper = styled.div`
     }
     .search_bar {
       background-color: #fff;
-      padding: 0.65rem;
+      padding: 0.719rem;
       border-radius: 0.5rem;
       position: relative;
       z-index: 1;
@@ -50,7 +51,7 @@ const Wrapper = styled.div`
       }
       button {
         font-size: 0.875rem;
-        background-color: #ffd416;
+        background-color: #d7df23;
         border: none;
         border-radius: 5px;
         padding: 0.5rem 2.5rem;

@@ -38,7 +38,7 @@ export default defineMessages({
   },
   SignUp: {
     id: `${scope}.SignUp`,
-    defaultMessage: 'Sign up',
+    defaultMessage: 'Sign Up',
   },
   AlreadyHaveAccount: {
     id: `${scope}.AlreadyHaveAccount`,
@@ -46,6 +46,6 @@ export default defineMessages({
   },
   Login: {
     id: `${scope}.Login`,
-    defaultMessage: 'Log in',
+    defaultMessage: 'Log In',
   },
 });

@@ -5,7 +5,7 @@
 import styled from 'styled-components';
 
 const Menubar = styled.div`
-  background-color: #255f2b;
+  background-color: #225f2b;
   .registration {
     width: 20%;
     .dropdown {
@@ -101,6 +101,9 @@ const Menubar = styled.div`
     &:hover {
       color: #f4f4f4;
     }
+  }
+  .dropdown-toggle::after {
+    margin-left: 0.7rem;
   }
   .dropdown-item {
     font-size: 0.8rem;

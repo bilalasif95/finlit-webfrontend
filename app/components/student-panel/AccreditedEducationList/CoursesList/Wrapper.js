@@ -4,9 +4,81 @@ const Wrapper = styled.div`
   .courses {
     padding: 1rem 0 0;
     h4 {
-      color: #404041;
+      color: #484848;
       font-weight: 400;
-      margin: 0 0 1.5rem;
+      margin-bottom: 0px;
+    }
+    .title-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 0 30px;
+      .tabs_cont {
+        .shedule-head {
+          color: #484848;
+          font-size: 20px;
+        }
+        .nav-tabs {
+          border-bottom: 1px solid #e4e4e4;
+          .nav-link.active {
+            color: #000;
+            background-color: #fff;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 3px solid #ffd416;
+          }
+          .nav-link {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 3px solid #fff;
+            color: #8b8b8b;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 0;
+            padding: 0px 15px 8px 15px;
+            &:hover {
+              border-top: none;
+              border-left: none;
+              border-right: none;
+              border-bottom: 3px solid #fff;
+            }
+          }
+        }
+        .tab-content > .tab-pane {
+          padding: 1rem 0 0;
+          .weekdays {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &:not(:last-child) {
+              margin-bottom: 15px;
+            }
+            .name {
+              font-size: 14px;
+              color: #b8b8b;
+            }
+            .time {
+              font-size: #000000;
+              color: #000000;
+            }
+          }
+          h4 {
+            color: #484848;
+            font-size: 1.25rem;
+            margin: 0;
+          }
+          p {
+            color: #8b8b8b;
+            font-size: 0.875rem;
+            margin: 0;
+          }
+        }
+      }
+    }
+    .card-cont {
+      display: flex;
     }
     .single_course {
       display: flex;
@@ -28,6 +100,7 @@ const Wrapper = styled.div`
         padding: 0.25rem 0 0.25rem 1rem;
         width: 83%;
         h5 {
+          font-size: 24px;
           color: #000;
           font-weight: 400;
           margin: 0 0 0.75rem;
@@ -42,7 +115,7 @@ const Wrapper = styled.div`
           .course_desc {
             width: 80%;
             p {
-              font-size: 0.875rem;
+              font-size: 16px;
               margin: 0 0 0.75rem;
             }
             .course_provider {
@@ -143,13 +216,129 @@ const Wrapper = styled.div`
               background-color: transparent;
               border: 1px solid #e4e4e4;
               border-radius: 2rem;
-              color: #ec5252;
+              color: #8b8b8b;
+              font-size: 1rem;
               padding: 0.375rem 0.65rem;
             }
             button:last-child {
               background-color: #47a135;
               margin-left: 1.5rem;
               padding: 0.5rem 1.5rem;
+            }
+          }
+        }
+      }
+    }
+    .single_card {
+      .card {
+        border-radius: 5px;
+        border: initial;
+        box-shadow: 0px 3px 6px #00000029;
+        .card-img-top {
+          width: 100%;
+          height: 153px;
+        }
+        .card-body {
+          position: relative;
+          padding: 0px 20px 30px 20px;
+          .card-title {
+            font-size: 16px;
+            color: #000000;
+            font-weight: 500;
+            margin-top: 50px;
+          }
+          .rating-box {
+            display: flex;
+            margin: 15px 0px;
+            .star:nth-child(1),
+            .star:nth-child(2) {
+              border-right: 1px solid #e4e4e4;
+            }
+            .star:first-child {
+              svg {
+                path {
+                  color: #fbbf2e;
+                }
+              }
+            }
+            .star {
+              width: 33.33%;
+              text-align: center;
+              svg {
+                margin-bottom: 5px;
+                height: 20px;
+                width: 20px;
+                path {
+                  color: #b8b8b8;
+                }
+              }
+            }
+          }
+          .like_enroll {
+            position: absolute;
+            top: -25px;
+            right: 20px;
+            button {
+              background-color: #fff;
+              border: 1px solid #e4e4e4;
+              border-radius: 2rem;
+              color: #ec5252;
+              height: 45px;
+              width: 45px;
+              svg {
+                path {
+                  color: #b8b8b8;
+                }
+              }
+              &:focus {
+                background: #e0f6d0;
+                border: 1px solid #E0F6D0;
+                box-shadow: initial;
+                outline: none;
+                svg {
+                  path {
+                    fill: #46a135;
+                  }
+                }
+              }
+            }
+          }
+          .card-subtitle {
+            font-size: 14px;
+            color: #000000;
+            font-weight: 400;
+            margin: 15px 0px;
+          }
+          .CardFooter {
+            display: flex;
+            justify-content: space-between;
+            button {
+              height: 45px;
+              background-color: #46a135;
+              color: #fff;
+              border-radius: 5px;
+              border: initial;
+              font-size: 14px;
+              min-width: 123px;
+              &:focus,
+              &:hover,
+              &:active {
+                box-shadow: inherit;
+                outline: none;
+              }
+            }
+            .price-box {
+              text-align: center;
+              h4 {
+                font-size: 20px;
+                color: #ec5252;
+                font-weight: 700;
+                margin-bottom: 0px;
+              }
+              p {
+                font-size: 14px;
+                color: #8b8b8b;
+              }
             }
           }
         }
