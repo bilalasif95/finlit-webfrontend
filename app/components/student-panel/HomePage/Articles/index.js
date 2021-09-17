@@ -58,7 +58,7 @@ function Articles() {
                 <Col lg={6} md={6} sm={12} xs={12} key={article.id}>
                   <div className="single_item">
                     <div className="left">
-                      <img src={articleicon} alt="Icon" />
+                      <img src={articleicon} alt="IconImg" />
                       <h5>{article.title}</h5>
                       <p>
                         <FormattedMessage {...messages.InteractiveToolsDesc} />
