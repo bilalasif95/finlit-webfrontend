@@ -25,8 +25,9 @@ const BootstrapInput = withStyles(theme => ({
     borderRadius: 4,
     position: 'relative',
     backgroundColor: theme.palette.background.paper,
-    border: '1px solid #ced4da',
-    fontSize: 16,
+    border: '1px solid #e6e6e6',
+    fontSize: 14,
+    color: '#484848',
     padding: '10px 26px 10px 12px',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     // Use the system font instead of the default Lato font.
@@ -153,7 +154,7 @@ export default function SignupPage() {
                     }}
                   >
                     <MenuItem value={0}>Student</MenuItem>
-                    <MenuItem value={1}>Instructor</MenuItem>
+                    <MenuItem value={1}>Educator</MenuItem>
                   </Select>
                 </FormControl>
               </FormGroup>
@@ -199,6 +200,91 @@ export default function SignupPage() {
                 {error && <p className="error">{error}</p>}
               </div>
             </FormGroup>
+            <FormGroup>
+              <FormControl fullWidth>
+                <Label>
+                  <FormattedMessage {...messages.SelectCountry} />
+                </Label>
+                <Select
+                  value={roleId}
+                  onChange={e => setRoleId(e.target.value)}
+                  input={<BootstrapInput />}
+                  fullWidth
+                  MenuProps={{
+                    anchorOrigin: {
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    },
+                    getContentAnchorEl: null,
+                  }}
+                >
+                  <MenuItem value={0}>USA</MenuItem>
+                  <MenuItem value={1}>USA</MenuItem>
+                </Select>
+              </FormControl>
+            </FormGroup>
+            <FormGroup>
+              <Label>
+                <FormattedMessage {...messages.Address} />
+              </Label>
+              <Input
+                type="text"
+                name="address"
+                id="address"
+                placeholder="Address"
+              />
+            </FormGroup>
+            <FormGroup>
+              <FormControl fullWidth>
+                <Label>
+                  <FormattedMessage {...messages.SelectGender} />
+                </Label>
+                <Select
+                  value={roleId}
+                  onChange={e => setRoleId(e.target.value)}
+                  input={<BootstrapInput />}
+                  fullWidth
+                  MenuProps={{
+                    anchorOrigin: {
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    },
+                    getContentAnchorEl: null,
+                  }}
+                >
+                  <MenuItem value={0}>Male</MenuItem>
+                  <MenuItem value={1}>Female</MenuItem>
+                </Select>
+              </FormControl>
+            </FormGroup>
+            <FormGroup>
+              <FormControl fullWidth>
+                <Label>
+                  <FormattedMessage {...messages.SelectProfession} />
+                </Label>
+                <Select
+                  value={roleId}
+                  onChange={e => setRoleId(e.target.value)}
+                  input={<BootstrapInput />}
+                  fullWidth
+                  MenuProps={{
+                    anchorOrigin: {
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    },
+                    getContentAnchorEl: null,
+                  }}
+                >
+                  <MenuItem value={0}>Financial Literacy</MenuItem>
+                  <MenuItem value={1}>Software Developer</MenuItem>
+                  <MenuItem value={2}>Medical and Health Services</MenuItem>
+                  <MenuItem value={3}>Statistician</MenuItem>
+                  <MenuItem value={4}>Speech-Language</MenuItem>
+                  <MenuItem value={5}>Data Scientist</MenuItem>
+                </Select>
+              </FormControl>
+            </FormGroup>
+
             <Button onClick={signup}>
               <FormattedMessage {...messages.SignUp} />
             </Button>

@@ -1,6 +1,53 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+.dashboard-main {
+  width: 100%;
+  .statistics-cont {
+    width: 70%;
+  }
+  .events-cont {
+    width: 30%;
+  }
+}
+  .verification-main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    .email-verification {
+      width: 34%;
+      margin: 0px auto;
+      text-align: center;
+      h4 {
+        font-size: 24px;
+        color: #484848;
+        font-weight: 700;
+      }
+      p {
+        margin: 15px 0px 30px;
+        font-size: 16px;
+        color: #8b8b8b;
+      }
+      .verification-button {
+        width: 80%;
+        background-color: #46a135;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #fbfbfb;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0px auto;
+        text-decoration: none;
+        &:focus, &:active, &:hover {
+          box-shadow: inherit;
+          outline: none;
+        }
+      }
+    }
+  }
   .no_display {
     display: none;
   }
@@ -207,7 +254,9 @@ const GlobalStyle = createGlobalStyle`
   background-color: #fff;
   display: flex;
   justify-content: space-between;
-  height: 100vh;
+  // height: 100vh;
+  // position: fixed;
+  width: 100%;
   .error {
     color: red;
     margin-bottom: 20px;
@@ -236,9 +285,12 @@ const GlobalStyle = createGlobalStyle`
           label {
             color: #484848;
             line-height: 1rem;
+            font-size: 14px;
           }
           .form-control {
             color: #484848;
+            border-radius: 3px;
+            border: 1px solid #e6e6e6;
             &:focus {
               border: 1px solid #80bb2b;
               box-shadow: none;
@@ -256,6 +308,7 @@ const GlobalStyle = createGlobalStyle`
               transition: background-color 2s; /* For modern browsers */
               padding: 0.75rem;
               width: 100%;
+              margin: 14px 0px 0px;
               &:focus {
                   background-color: #2c821c;
                   box-shadow: none;
@@ -309,6 +362,8 @@ const GlobalStyle = createGlobalStyle`
       background-position: center;
       height: 100%;
       width: 50%;
+      position: fixed;
+      right: 0;
   }
   @media (max-width: 991px) {
       height: 100% !important;
@@ -492,9 +547,29 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 @media (min-width: 576px) {
+  .verification-main {
+    width: 100%;
+  }
   .modal-dialog {
     margin: 10% auto 5%;
     max-width: 600px !important;
+  }
+}
+@media (max-width: 575px) {
+  .verification-main .email-verification {
+    width: 100%;
+    button {
+      min-width: 64%;
+    }
+  }
+  .modal-dialog {
+    margin: 10% auto 5%;
+    max-width: 600px !important;
+  }
+}
+@media (max-width: 768px) {
+  .registration_page .img_container {
+    display: none;
   }
 }
 
@@ -512,12 +587,16 @@ const GlobalStyle = createGlobalStyle`
 }
 .sub_pages {
   background-color: #fff;
-  padding: 2rem 0 0;
+  padding: 2rem 0 2rem;
   @media (max-width: 991px) {
     padding: 1rem 0;
   }
 }
-
+@media (min-width: 575px) and (max-width: 992px) { 
+  .verification-main .email-verification {
+    width: 64%;
+  }
+}
 .error-box {
   position: absolute;
   height: 24px;
