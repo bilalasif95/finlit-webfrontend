@@ -58,9 +58,7 @@ function AddBootCamp() {
     } else {
       setLoader(true);
       const token = localStorage.getItem('token');
-      const authHeaders = token ? {
-        Authorization: `Bearer ${token}`,
-      } : {};
+      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
       const {
         mainTitle,
         subTitle,
@@ -163,7 +161,11 @@ function AddBootCamp() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
-                  {errors.mainTitle ? errors.mainTitle : ''}
+                  {errors.mainTitle ? (
+                    <p className="error"> {errors.mainTitle} </p>
+                  ) : (
+                    ''
+                  )}
                 </Label>
               </FormGroup>
             </Col>
@@ -181,7 +183,11 @@ function AddBootCamp() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
-                  {errors.subTitle ? errors.subTitle : ''}
+                  {errors.subTitle ? (
+                    <p className="error"> {errors.subTitle} </p>
+                  ) : (
+                    ''
+                  )}
                 </Label>
               </FormGroup>
             </Col>
@@ -213,7 +219,7 @@ function AddBootCamp() {
                   </div>
                 </div>
                 <Label for="maintitle">
-                  {errors.image ? errors.image : ''}
+                  {errors.image ? <p className="error">{errors.image} </p> : ''}
                 </Label>
               </FormGroup>
             </Col>
@@ -231,7 +237,11 @@ function AddBootCamp() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
-                  {errors.startDate ? errors.startDate : ''}
+                  {errors.startDate ? (
+                    <p className="error"> {errors.startDate} </p>
+                  ) : (
+                    ''
+                  )}
                 </Label>
               </FormGroup>
             </Col>
@@ -249,7 +259,11 @@ function AddBootCamp() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
-                  {errors.endDate ? errors.endDate : ''}
+                  {errors.endDate ? (
+                    <p className="error"> {errors.endDate} </p>
+                  ) : (
+                    ''
+                  )}
                 </Label>
               </FormGroup>
             </Col>
@@ -267,7 +281,11 @@ function AddBootCamp() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
-                  {errors.startTime ? errors.startTime : ''}
+                  {errors.startTime ? (
+                    <p className="error"> {errors.startTime} </p>
+                  ) : (
+                    ''
+                  )}
                 </Label>
               </FormGroup>
             </Col>
@@ -285,7 +303,11 @@ function AddBootCamp() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
-                  {errors.endTime ? errors.endTime : ''}
+                  {errors.endTime ? (
+                    <p className="error"> {errors.endTime} </p>
+                  ) : (
+                    ''
+                  )}
                 </Label>
               </FormGroup>
             </Col>
@@ -303,7 +325,7 @@ function AddBootCamp() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <Label for="maintitle">
-                  {errors.price ? errors.price : ''}
+                  {errors.price ? <p className="error">{errors.price} </p> : ''}
                 </Label>
               </FormGroup>
             </Col>
@@ -320,7 +342,11 @@ function AddBootCamp() {
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                 />
                 <Label for="maintitle">
-                  {errors.description ? errors.description : ''}
+                  {errors.description ? (
+                    <p className="error"> {errors.description} </p>
+                  ) : (
+                    ''
+                  )}
                 </Label>
               </FormGroup>
             </Col>
