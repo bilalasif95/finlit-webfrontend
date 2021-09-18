@@ -9,6 +9,7 @@ import { withRouter } from 'react-router';
 import WebinarDetail from '../../../components/student-panel/AddCartWebinar/WebinarDetail';
 import WebinarSidebar from '../../../components/student-panel/AddCartWebinar/WebinarSidebar';
 import { API } from '../../../config/config';
+import { redirectToLogin } from '../../../utils/redirectToLogin';
 import Loader from '../../../components/Loader';
 
 const AddCartWebinar = props => {
@@ -16,6 +17,10 @@ const AddCartWebinar = props => {
         [loader, setLoader] = useState(false);
   useEffect(() => {
     getWebinarDetails();
+  }, []);
+
+  useEffect(() => {
+    redirectToLogin();
   }, []);
   const getWebinarDetails = () => {
     setLoader(true);

@@ -11,10 +11,11 @@ import axios from 'axios';
 import history from 'utils/history';
 // import { AiFillHeart } from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
+import {axiosHeader} from "../../../../utils/axiosHeader"
+import { redirectToLogin } from "../../../../utils/redirectToLogin"
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
-import { axiosHeader } from '../../../../utils/axiosHeader';
 import Loader from '../../../Loader';
 
 function WebinarsList() {
@@ -24,6 +25,11 @@ function WebinarsList() {
     getWebinarList();
   }, []);
 
+
+  useEffect(() => {
+    redirectToLogin()
+  }, [])
+  
   const getWebinarList = () => {
     setLoader(true);
     axios

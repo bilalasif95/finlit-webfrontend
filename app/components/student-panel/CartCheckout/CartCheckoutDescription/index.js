@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { BiSearchAlt2 } from 'react-icons/bi';
 import { IoMdCart } from 'react-icons/io';
 import { AiOutlineDelete } from 'react-icons/ai';
 // import { AiFillHeart } from 'react-icons/ai';
@@ -14,75 +13,23 @@ import Wrapper from './Wrapper';
 import reg from '../../../../images/reg.png';
 
 function CartCheckoutDescription(props) {
-  const CoursesList = [
-    {
-      id: 0,
-      img: reg,
-      alt: 'Courses',
-      title: <FormattedMessage {...messages.Title} />,
-      desc: <FormattedMessage {...messages.ShortDesc} />,
-      providedby: <FormattedMessage {...messages.ProvidedBy} />,
-      providername: <FormattedMessage {...messages.ProviderName} />,
-      price: <FormattedMessage {...messages.Price} />,
-    },
-    {
-      id: 1,
-      img: reg,
-      alt: 'Courses',
-      title: <FormattedMessage {...messages.Title} />,
-      desc: <FormattedMessage {...messages.ShortDesc} />,
-      providedby: <FormattedMessage {...messages.ProvidedBy} />,
-      providername: <FormattedMessage {...messages.ProviderName} />,
-      price: <FormattedMessage {...messages.Price} />,
-    },
-    {
-      id: 2,
-      img: reg,
-      alt: 'Courses',
-      title: <FormattedMessage {...messages.Title} />,
-      desc: <FormattedMessage {...messages.ShortDesc} />,
-      providedby: <FormattedMessage {...messages.ProvidedBy} />,
-      providername: <FormattedMessage {...messages.ProviderName} />,
-      price: <FormattedMessage {...messages.Price} />,
-    },
-    {
-      id: 3,
-      img: reg,
-      alt: 'Courses',
-      title: <FormattedMessage {...messages.Title} />,
-      desc: <FormattedMessage {...messages.ShortDesc} />,
-      providedby: <FormattedMessage {...messages.ProvidedBy} />,
-      providername: <FormattedMessage {...messages.ProviderName} />,
-      price: <FormattedMessage {...messages.Price} />,
-    },
-    {
-      id: 4,
-      img: reg,
-      alt: 'Courses',
-      title: <FormattedMessage {...messages.Title} />,
-      desc: <FormattedMessage {...messages.ShortDesc} />,
-      providedby: <FormattedMessage {...messages.ProvidedBy} />,
-      providername: <FormattedMessage {...messages.ProviderName} />,
-      price: <FormattedMessage {...messages.Price} />,
-    },
-  ];
-
+ 
   console.log("detailsCart",props.details)
 
   return (
     <Wrapper id="list">
       <div className="cart_checkout">
         <div className="header">
-          <InputGroup>
+          {/* <InputGroup>
             <Input type="text" name="search" id="seach" placeholder="Search" />
             <Button>
               <BiSearchAlt2 />
             </Button>
-          </InputGroup>
+          </InputGroup> */}
           <div className="cart">
             <div className="num_cont">
               <IoMdCart />
-              <span className="no_item">20</span>
+              <span className="no_item">{props.details &&  props.details.items && props.details.items.length}</span>
             </div>
           </div>
         </div>
@@ -120,7 +67,7 @@ function CartCheckoutDescription(props) {
                   </td>
                   <td>${item.product.data.price}</td>
                   <td>
-                    <Button>
+                    <Button onClick={()=>props.RemoveFromCart(item.cartItemId)}>
                       <AiOutlineDelete />
                     </Button>
                   </td>

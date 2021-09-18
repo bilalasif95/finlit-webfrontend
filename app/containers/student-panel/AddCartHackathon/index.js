@@ -9,14 +9,17 @@ import { withRouter } from 'react-router';
 import HackathonDetail from '../../../components/student-panel/AddCartHackathon/HackathonDetail';
 import HackathonSidebar from '../../../components/student-panel/AddCartHackathon/HackathonSidebar';
 import { API } from '../../../config/config';
+import { redirectToLogin } from '../../../utils/redirectToLogin';
 import Loader from '../../../components/Loader';
-
 
 const AddCartHackathon = props => {
   const [hackathonDetails, setHackathonDetails] = useState([]),
-    [loader, setLoader] = useState(false);
+        [loader, setLoader] = useState(false);
   useEffect(() => {
     getHackathonDetails();
+  }, []);
+  useEffect(() => {
+    redirectToLogin();
   }, []);
   const getHackathonDetails = () => {
     setLoader(true)

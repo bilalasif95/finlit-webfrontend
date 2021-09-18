@@ -8,27 +8,39 @@ import CartCheckoutDescription from '../../../components/student-panel/CartCheck
 import CartCheckoutSidebar from '../../../components/student-panel/CartCheckout/CartCheckoutSidebar';
 import { API } from '../../../config/config';
 import axios from 'axios';
-import {axiosHeader} from "../../../utils/axiosHeader"
+import { axiosHeader } from "../../../utils/axiosHeader"
 export default function CartCheckout() {
 
   const [cartDetails, setCartDetails] = useState({}),
     [loader, setLoader] = useState(false)
   useEffect(() => {
-    getCartDetails()
+    getCartDetails(true)
   }, [])
 
 
-  const getCartDetails = () => {
-    setLoader(true)
+  const getCartDetails = (status) => {
+    status ? setLoader(true) : ""
     axios
       .get(`${API}api/cart/getCartItems`, axiosHeader)
       .then((res) => {
         setCartDetails(res && res.data && res.data)
-        setLoader(false);
+        status ? setLoader(false) : ""
+      })
+      .catch(() => {
+        status ? setLoader(false) : ""
+      });
+  }
+  
+  const RemoveFromCart = (id) => {
+    axios
+      .delete(`${API}api/cart/removeFromCart/${id}`, axiosHeader)
+      .then((res) => {
+        getCartDetails(false)
       })
       .catch(() => {
         setLoader(false);
       });
+
   }
 
   return (
@@ -41,7 +53,7 @@ export default function CartCheckout() {
         {loader ? "Loading...." :
           <Row>
             <Col lg={8} md={7} sm={12}>
-              <CartCheckoutDescription details={cartDetails} />
+              <CartCheckoutDescription details={cartDetails} RemoveFromCart={RemoveFromCart} />
             </Col>
             <Col lg={4} md={5} sm={12}>
               <CartCheckoutSidebar details={cartDetails} />

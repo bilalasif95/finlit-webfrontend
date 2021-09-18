@@ -11,10 +11,11 @@ import { HiUsers } from 'react-icons/hi';
 import { AiOutlineHeart } from 'react-icons/ai';
 // import { AiFillHeart } from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
+import { axiosHeader } from "../../../../utils/axiosHeader"
+import { redirectToLogin } from "../../../../utils/redirectToLogin"
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
-import { axiosHeader } from '../../../../utils/axiosHeader';
 import Loader from '../../../Loader';
 
 function BootCampList() {
@@ -23,6 +24,10 @@ function BootCampList() {
   useEffect(() => {
     getBootcampLists();
   }, []);
+
+  useEffect(() => {
+    redirectToLogin()
+  }, [])
 
   const getBootcampLists = () => {
     setLoader(true);

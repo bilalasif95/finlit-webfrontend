@@ -40,9 +40,9 @@ function AddCourse() {
                   id="maintitle"
                   placeholder="Course title"
                 />
-                <FormText color="danger">
+                {/* <FormText color="danger">
                   <p className="error"> Error message</p>
-                </FormText>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -56,9 +56,9 @@ function AddCourse() {
                   id="subtitle"
                   placeholder="Sub title"
                 />
-                <FormText color="danger">
+                {/* <FormText color="danger">
                   <p className="error"> Error message</p>
-                </FormText>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -82,9 +82,9 @@ function AddCourse() {
                     </div>
                   </div>
                 </div>
-                <FormText color="danger">
+                {/* <FormText color="danger">
                   <p className="error"> Error message</p>
-                </FormText>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -98,9 +98,9 @@ function AddCourse() {
                   id="courselanguage"
                   placeholder="Course Language"
                 />
-                <FormText color="danger">
+                {/* <FormText color="danger">
                   <p className="error"> Error message</p>
-                </FormText>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -114,9 +114,9 @@ function AddCourse() {
                   id="price"
                   placeholder="CoursePrice"
                 />
-                <FormText color="danger">
+                {/* <FormText color="danger">
                   <p className="error"> Error message</p>
-                </FormText>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -130,9 +130,9 @@ function AddCourse() {
                   id="category"
                   placeholder="Category"
                 />
-                <FormText color="danger">
+                {/* <FormText color="danger">
                   <p className="error"> Error message</p>
-                </FormText>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={12} md={12} sm={12} xs={12}>
@@ -147,9 +147,9 @@ function AddCourse() {
                   tabIndex={0} // tabIndex of textarea
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                 />
-                <FormText color="danger">
+                {/* <FormText color="danger">
                   <p className="error"> Error message</p>
-                </FormText>
+                </FormText> */}
               </FormGroup>
             </Col>
           </Row>
@@ -175,9 +175,9 @@ function AddCourse() {
                   id="lec_title"
                   placeholder="Lecture title"
                 />
-                <FormText color="danger">
+                {/* <FormText color="danger">
                   <p className="error"> Error message</p>
-                </FormText>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -191,9 +191,9 @@ function AddCourse() {
                   id="sub_title"
                   placeholder="Sub title"
                 />
-                <FormText color="danger">
+                {/* <FormText color="danger">
                   <p className="error"> Error message</p>
-                </FormText>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -217,9 +217,9 @@ function AddCourse() {
                     </div>
                   </div>
                 </div>
-                <FormText color="danger">
+                {/* <FormText color="danger">
                   <p className="error"> Error message</p>
-                </FormText>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={12} md={12} sm={12} xs={12}>

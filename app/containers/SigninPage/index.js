@@ -31,8 +31,10 @@ export default function SigninPage() {
       .post(`${API}api/auth/login`, { email, password })
       .then(res => {
         localStorage.setItem('token', res.data.accessToken);
-        localStorage.setItem('userId', res.data.user && res.data.user.id);
-        history.push('/');
+        localStorage.setItem('userInfo', JSON.stringify(res.data.user && res.data.user));
+        setTimeout(()=>{
+          history.push('/')
+        },1000)
       })
       .catch(err => {
         setError(err.response && err.response.data.message);
