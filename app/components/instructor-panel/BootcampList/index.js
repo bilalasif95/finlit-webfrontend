@@ -43,6 +43,10 @@ function BootcampList() {
       });
   };
 
+  const handleBootcampList = (id) => {
+    history.push("/bootcamp_details/" + id)
+  }
+
   return (
     <Wrapper>
       {loader ? (
@@ -51,7 +55,7 @@ function BootcampList() {
         <>
           <div className="courses_list">
             {bootcampList.map(item => (
-              <div className="single_course" key={item.data.id}>
+              <div className="single_course" key={item.id} onClick={() => handleBootcampList(item.id)}  >
                 <div className="course_img">
                   <img src={item.eventImage} alt="Course" />
                 </div>

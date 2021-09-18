@@ -10,6 +10,7 @@ import axios from 'axios';
 import messages from './messages';
 import { API } from '../../config/config';
 // import { response } from 'express';
+import history from 'utils/history';
 
 export default function SigninPage() {
   const [email, setEmail] = useState('');
@@ -31,7 +32,8 @@ export default function SigninPage() {
       .post(`${API}api/auth/login`, { email, password })
       .then(res => {
         localStorage.setItem('token', res.data.accessToken);
-        window.location.href = '/';
+        localStorage.setItem("userId", res.data.user && res.data.user.id)
+        history.push("/")
       })
       .catch(err => {
         setError(err.response && err.response.data.message);

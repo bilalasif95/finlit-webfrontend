@@ -14,6 +14,8 @@ import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
 import axios from 'axios';
 import loaderImg from "../../../../images/loader.svg";
+import history from 'utils/history';
+import {axiosHeader} from "../../../../utils/axiosHeader"
 
 function HackathonList() {
   const [hackathonList, sethackathonList] = useState([]),
@@ -24,20 +26,8 @@ function HackathonList() {
 
   const getHackathonLists = () => {
     setLoader(true)
-    const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer${token}`,
-      }
-      : {};
     axios
-      .get(`${API}api/events/getEventsByTypes?type=Hackathon`, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          ...authHeaders,
-        },
-      })
+      .get(`${API}api/events/getEventsByTypes?type=Hackathon`,axiosHeader)
       .then((res) => {
         sethackathonList(res && res.data && res.data.data)
         setLoader(false);
@@ -47,6 +37,9 @@ function HackathonList() {
       });
   }
 
+  const handleHackathonDetails=(id)=>{
+    history.push("/hackathon_details/"+id)
+  }
   return (
     <Wrapper id="list">
       {loader ? <img className="loader" src={loaderImg} /> :
@@ -60,7 +53,7 @@ function HackathonList() {
               </h4>
               <div className="courses_list">
                 {hackathonList.map(item => (
-                  <div className="single_course" key={item.data.id}>
+                  <div className="single_course" key={item.id} onClick={()=>handleHackathonDetails(item.id)}>
                     <div className="course_img">
                       <img src={item.eventImage} alt="Course" />
                     </div>
