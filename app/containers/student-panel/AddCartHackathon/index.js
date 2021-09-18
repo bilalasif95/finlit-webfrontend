@@ -9,6 +9,8 @@ import HackathonSidebar from '../../../components/student-panel/AddCartHackathon
 import { API } from '../../../config/config';
 import axios from 'axios';
 import { withRouter } from "react-router";
+import { redirectToLogin } from "../../../utils/redirectToLogin"
+
 
 const AddCartHackathon = (props) => {
   const [hackathonDetails, setHackathonDetails] = useState([]),
@@ -17,6 +19,9 @@ const AddCartHackathon = (props) => {
     getHackathonDetails()
   }, [])
 
+  useEffect(() => {
+    redirectToLogin()
+  }, [])
 
   const getHackathonDetails = () => {
     setLoader(true)

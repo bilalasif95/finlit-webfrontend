@@ -9,6 +9,8 @@ import WebinarSidebar from '../../../components/student-panel/AddCartWebinar/Web
 import { API } from '../../../config/config';
 import axios from 'axios';
 import { withRouter } from "react-router";
+import { redirectToLogin } from "../../../utils/redirectToLogin"
+
 
 const AddCartWebinar = (props) => {
   const [webinarDetails, setWebinarDetails] = useState({}),
@@ -18,7 +20,10 @@ const AddCartWebinar = (props) => {
     getWebinarDetails()
   }, [])
 
-
+  useEffect(() => {
+    redirectToLogin()
+  }, [])
+  
   const getWebinarDetails = () => {
     setLoader(true)
     const token = localStorage.getItem('token');

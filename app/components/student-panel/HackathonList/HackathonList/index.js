@@ -16,12 +16,17 @@ import axios from 'axios';
 import loaderImg from "../../../../images/loader.svg";
 import history from 'utils/history';
 import {axiosHeader} from "../../../../utils/axiosHeader"
+import { redirectToLogin } from "../../../../utils/redirectToLogin"
 
 function HackathonList() {
   const [hackathonList, sethackathonList] = useState([]),
     [loader, setLoader] = useState(false)
   useEffect(() => {
     getHackathonLists()
+  }, [])
+
+  useEffect(() => {
+    redirectToLogin()
   }, [])
 
   const getHackathonLists = () => {
