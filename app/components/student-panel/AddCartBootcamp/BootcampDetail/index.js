@@ -1,7 +1,7 @@
 /*
  * Cart Checkout Description Component
  */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { BiTimeFive, BiCalendar } from 'react-icons/bi';
 import { IoMdShare } from 'react-icons/io';
@@ -11,24 +11,34 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import classnames from 'classnames';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import addcart from '../../../../images/addcart.png';
+import moment from 'moment';
+import JoditEditor from 'jodit-react';
 
-function BootcampDetail() {
+
+function BootcampDetail(props) {
+  const editor = useRef(null);
+  const config = {
+    readonly: true,
+  };
   const [activeTab, setActiveTab] = useState('1');
 
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+
+  let detail = props.detail;
+  let dataDetails = detail.data;
+
   return (
     <Wrapper id="list">
       <div className="addcart_detail">
         {/* <FormattedMessage {...messages.Subtotal} /> */}
         <div className="main_img">
-          <img src={addcart} alt="main" />
+          <img src={detail.eventImage} alt="main" />
         </div>
         <div className="header">
           <h4>
-            <FormattedMessage {...messages.Title} />
+            {dataDetails && dataDetails.mainTitle}
           </h4>
           <div className="like_share">
             <Button>
@@ -45,23 +55,29 @@ function BootcampDetail() {
             <p>
               <FormattedMessage {...messages.Date} />
             </p>
-            <p className="value">August 24, 2021</p>
+
+            <p className="value">{moment(detail.updatedAt).format("MMM DD ,YYYY")}</p>
           </div>
           <div className="item time-item">
             <BiTimeFive />{' '}
             <p>
               <FormattedMessage {...messages.Time} />
             </p>
-            <p className="value">10:00 pm - 12:00 pm</p>
+            <p className="value">{dataDetails && dataDetails.startTime} - {dataDetails && dataDetails.endTime}</p>
           </div>
         </div>
         <div className="requirement">
-          <h4>About the Bootcamp</h4>
+          {/* <h4>About the Bootcamp</h4> */}
           <p>
-            <FormattedMessage {...messages.RequirementText} />
+            <JoditEditor
+              ref={editor}
+              value={dataDetails && dataDetails.description}
+              config={config}
+              tabIndex={0} // tabIndex of textarea
+            />
           </p>
         </div>
-        <div className="tabs_cont">
+        {/* <div className="tabs_cont">
           <h4 className="shedule-head">Shedule</h4>
           <Nav tabs>
             <NavItem>
@@ -283,7 +299,7 @@ function BootcampDetail() {
               </div>
             </TabPane>
           </TabContent>
-        </div>
+        </div> */}
       </div>
     </Wrapper>
   );

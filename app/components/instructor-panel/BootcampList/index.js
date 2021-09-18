@@ -9,28 +9,23 @@ import { HiUsers } from 'react-icons/hi';
 import { AiOutlineCalendar, AiOutlineDelete } from 'react-icons/ai';
 import { GrFormEdit } from 'react-icons/gr';
 // import { Link } from 'react-router-dom';
+import axios from 'axios';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
-import axios from 'axios';
-import loaderImg from "../../../images/loader.svg";
+import loaderImg from '../../../images/loader.svg';
 
 function BootcampList() {
-
-  const [bootcampList, setBootCampList] = useState([]),
-    [loader, setLoader] = useState(false)
+  const [bootcampList, setBootCampList] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
-    getBootcampLists()
-  }, [])
+    getBootcampLists();
+  }, []);
 
   const getBootcampLists = () => {
-    setLoader(true)
+    setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer${token}`,
-      }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer${token}` } : {};
     axios
       .get(`${API}api/events/getEventsByTypes?type=Bootcamp`, {
         headers: {
@@ -39,22 +34,28 @@ function BootcampList() {
           ...authHeaders,
         },
       })
-      .then((res) => {
-        setBootCampList(res && res.data && res.data.data)
+      .then(res => {
+        setBootCampList(res && res.data && res.data.data);
         setLoader(false);
       })
       .catch(() => {
         setLoader(false);
       });
+  };
+
+  const handleBootcampList = (id) => {
+    history.push("/bootcamp_details/" + id)
   }
 
   return (
     <Wrapper>
-      {loader ? <img className="loader" src={loaderImg} /> :
+      {loader ? (
+        <img className="loader" src={loaderImg} alt="Loader Imgage" />
+      ) : (
         <>
           <div className="courses_list">
             {bootcampList.map(item => (
-              <div className="single_course" key={item.data.id}>
+              <div className="single_course" key={item.id} onClick={() => handleBootcampList(item.id)}  >
                 <div className="course_img">
                   <img src={item.eventImage} alt="Course" />
                 </div>
@@ -134,7 +135,7 @@ function BootcampList() {
             </div>
           </div>
         </>
-      }
+      )}
     </Wrapper>
   );
 }

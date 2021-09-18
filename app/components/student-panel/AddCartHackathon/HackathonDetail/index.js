@@ -1,7 +1,7 @@
 /*
  * Cart Checkout Description Component
  */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { BiCalendar } from 'react-icons/bi';
 import { IoMdShare } from 'react-icons/io';
@@ -12,24 +12,33 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import classnames from 'classnames';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import addcart from '../../../../images/addcart.png';
+import moment from 'moment';
+import JoditEditor from 'jodit-react';
 
-function HackathonDetail() {
+function HackathonDetail(props) {
+  const editor = useRef(null);
+  const config = {
+    readonly: true,
+  };
   const [activeTab, setActiveTab] = useState('1');
 
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+  let detail = props.detail;
+  let dataDetails = detail.data;
+
   return (
     <Wrapper id="list">
       <div className="addcart_detail">
         {/* <FormattedMessage {...messages.Subtotal} /> */}
         <div className="main_img">
-          <img src={addcart} alt="main" />
+          <img src={detail.eventImage} alt="main" />
         </div>
         <div className="header">
           <h4>
-            <FormattedMessage {...messages.Title} />
+            {dataDetails && dataDetails.mainTitle}
+
           </h4>
           <div className="like_share">
             <Button>
@@ -44,9 +53,9 @@ function HackathonDetail() {
           <div className="item">
             <BiCalendar />{' '}
             <p>
-              <FormattedMessage {...messages.Date} />
+              {moment(detail.updatedAt).format("MMM DD ,YYYY")}
             </p>
-            <p className="value">August 24, 2021</p>
+            <p className="value"></p>
           </div>
           <div className="item time-item">
             <GrLocation />
@@ -68,7 +77,7 @@ function HackathonDetail() {
                 About
               </NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink
                 className={classnames({ active: activeTab === '2' })}
                 onClick={() => {
@@ -77,8 +86,8 @@ function HackathonDetail() {
               >
                 Flow
               </NavLink>
-            </NavItem>
-            <NavItem>
+            </NavItem> */}
+            {/* <NavItem>
               <NavLink
                 className={classnames({ active: activeTab === '3' })}
                 onClick={() => {
@@ -87,19 +96,21 @@ function HackathonDetail() {
               >
                 FAQs
               </NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
           <TabContent activeTab={activeTab}>
             <TabPane tabId="1">
-              <h4>About hackathon</h4>
+              {/* <h4>About hackathon</h4> */}
               <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry`s standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged.
+
+                <JoditEditor
+                  ref={editor}
+                  value={dataDetails && dataDetails.description}
+                  config={config}
+                  tabIndex={0} // tabIndex of textarea
+                />
               </p>
+
             </TabPane>
             <TabPane tabId="2">
               <h4>About Flow</h4>
@@ -125,7 +136,7 @@ function HackathonDetail() {
             </TabPane>
           </TabContent>
         </div>
-        <div className="requirement">
+        {/* <div className="requirement">
           <h4>Registration Requirements:</h4>
           <ul>
             <li>
@@ -141,7 +152,7 @@ function HackathonDetail() {
               industry.
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </Wrapper>
   );
