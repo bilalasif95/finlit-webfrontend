@@ -82,6 +82,7 @@
     "jodit-react": "^1.1.1",
     "lodash": "4.17.11",
     "minimist": "1.2.0",
+    "moment": "^2.29.1",
     "prop-types": "15.7.2",
     "qrcode.react": "^1.0.1",
     "query-string": "^7.0.1",

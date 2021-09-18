@@ -14,6 +14,8 @@ import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
 import axios from 'axios';
 import loaderImg from "../../../../images/loader.svg";
+import history from 'utils/history';
+import {axiosHeader} from "../../../../utils/axiosHeader"
 
 function BootCampList() {
 
@@ -25,20 +27,8 @@ function BootCampList() {
 
   const getBootcampLists = () => {
     setLoader(true)
-    const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer${token}`,
-      }
-      : {};
     axios
-      .get(`${API}api/events/getEventsByTypes?type=Bootcamp`, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          ...authHeaders,
-        },
-      })
+      .get(`${API}api/events/getEventsByTypes?type=Bootcamp`,axiosHeader)
       .then((res) => {
         setBootCampList(res && res.data && res.data.data)
         setLoader(false);
@@ -48,6 +38,9 @@ function BootCampList() {
       });
   }
 
+  const handleBootcampDetails=(id)=>{
+    history.push("/bootcamp_details/"+id)
+  }
   return (
     <Wrapper id="list">
    {loader ? <img className="loader" src={loaderImg} /> :
@@ -59,7 +52,7 @@ function BootCampList() {
             </h4>
             <div className="courses_list">
               {bootcampList.map(item => (
-                <div className="single_course" key={item.data.id}>
+                <div className="single_course" key={item.id} onClick={()=>handleBootcampDetails(item.id)}>
                   <div className="course_img">
                     <img src={item.eventImage} alt="Course" />
                   </div>

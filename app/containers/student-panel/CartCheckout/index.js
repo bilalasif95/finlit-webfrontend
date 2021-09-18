@@ -1,13 +1,36 @@
 /*
  * Cart Checkout Page
  */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
 import CartCheckoutDescription from '../../../components/student-panel/CartCheckout/CartCheckoutDescription';
 import CartCheckoutSidebar from '../../../components/student-panel/CartCheckout/CartCheckoutSidebar';
-
+import { API } from '../../../config/config';
+import axios from 'axios';
+import {axiosHeader} from "../../../utils/axiosHeader"
 export default function CartCheckout() {
+
+  const [cartDetails, setCartDetails] = useState({}),
+    [loader, setLoader] = useState(false)
+  useEffect(() => {
+    getCartDetails()
+  }, [])
+
+
+  const getCartDetails = () => {
+    setLoader(true)
+    axios
+      .get(`${API}api/cart/getCartItems`, axiosHeader)
+      .then((res) => {
+        setCartDetails(res && res.data && res.data)
+        setLoader(false);
+      })
+      .catch(() => {
+        setLoader(false);
+      });
+  }
+
   return (
     <div className="sub_pages">
       <Helmet>
@@ -15,14 +38,15 @@ export default function CartCheckout() {
         <meta name="description" content="Cart Checkout" />
       </Helmet>
       <Container fluid="xl">
-        <Row>
-          <Col lg={8} md={7} sm={12}>
-            <CartCheckoutDescription />
-          </Col>
-          <Col lg={4} md={5} sm={12}>
-            <CartCheckoutSidebar />
-          </Col>
-        </Row>
+        {loader ? "Loading...." :
+          <Row>
+            <Col lg={8} md={7} sm={12}>
+              <CartCheckoutDescription details={cartDetails} />
+            </Col>
+            <Col lg={4} md={5} sm={12}>
+              <CartCheckoutSidebar details={cartDetails} />
+            </Col>
+          </Row>}
       </Container>
     </div>
   );

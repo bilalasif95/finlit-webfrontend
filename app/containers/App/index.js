@@ -61,7 +61,8 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-export default function App() {
+export default function App(props) {
+
   return (
     <AppWrapper>
       <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
@@ -74,16 +75,16 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/features" component={FeaturePage} />
         <Route path="/course_list" component={AccreditedEducationListPage} />
-        <Route path="/live_webinars_list" component={LiveWebinarsList} />
+        <Route path="/webinar_list" component={LiveWebinarsList} />
         <Route path="/bootcamp_list" component={BootCampList} />
         <Route path="/hackathon_list" component={HackathonList} />
         <Route path="/article_list" component={ArticleList} />
         <Route path="/live_session_list" component={LiveSessionList} />
         <Route path="/article_details" component={ArticleDetails} />
-        <Route path="/cart_checkout" component={CartCheckout} />
-        <Route path="/addcart_hackathon" component={AddCartHackathon} />
-        <Route path="/addcart_webinar" component={AddCartWebinar} />
-        <Route path="/addcart_bootcamp" component={AddCartBootcamp} />
+        <Route path="/cart" component={CartCheckout} />
+        <Route path="/hackathon_details/:id" component={AddCartHackathon} />
+        <Route path="/webinar_details/:id" component={AddCartWebinar} />
+        <Route path="/bootcamp_details/:id" component={AddCartBootcamp} />
 
         {/* Instructor Panel pages routes */}
         <Route path="/dashboard" component={Home} />
