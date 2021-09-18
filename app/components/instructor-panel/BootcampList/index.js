@@ -14,6 +14,7 @@ import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
 import loaderImg from '../../../images/loader.svg';
+import history from 'utils/history';
 
 function BootcampList() {
   const [bootcampList, setBootCampList] = useState([]);

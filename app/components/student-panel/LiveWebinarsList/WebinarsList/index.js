@@ -16,6 +16,7 @@ import axios from 'axios';
 import loaderImg from "../../../../images/loader.svg";
 import history from 'utils/history';
 import {axiosHeader} from "../../../../utils/axiosHeader"
+import { redirectToLogin } from "../../../../utils/redirectToLogin"
 
 function WebinarsList() {
 
@@ -25,6 +26,11 @@ function WebinarsList() {
     getWebinarList()
   }, [])
 
+
+  useEffect(() => {
+    redirectToLogin()
+  }, [])
+  
   const getWebinarList = () => {
     setLoader(true)
     axios

@@ -2,15 +2,22 @@
  * Webinars List Page
  *
  */
-import React from 'react';
+import React,{useEffect} from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import WebinarsList from '../../../components/instructor-panel/WebinarsList';
+import { redirectToLogin } from "../../../utils/redirectToLogin"
 
 export default function WebinarsListPage() {
+
+  useEffect(() => {
+    redirectToLogin()
+  }, [])
+  
+
   return (
     <div className="sub_page">
       <Helmet>

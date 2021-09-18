@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef ,useEffect} from 'react';
 import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
@@ -7,6 +7,7 @@ import axios from 'axios';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../config/config';
+import { redirectToLogin } from "../../../utils/redirectToLogin"
 
 function AddHackathon() {
   const editor = useRef(null);
@@ -18,6 +19,10 @@ function AddHackathon() {
     readonly: false,
   };
 
+  useEffect(() => {
+    redirectToLogin()
+  }, [])
+  
   const [hackathonStatus, sethackathonStatus] = useState({
     mainTitle: '',
     subTitle: '',
