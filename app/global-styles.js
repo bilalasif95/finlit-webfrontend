@@ -3,11 +3,17 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
 .dashboard-main {
   width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
   .statistics-cont {
-    width: 70%;
+    width: 68%;
   }
   .events-cont {
     width: 30%;
+    box-shadow: 0px 1px 5px #00000029;
+    padding: 17px 28px 17px 31px;
+    border-radius: 5px;
   }
 }
   .verification-main {

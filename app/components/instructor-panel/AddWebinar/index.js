@@ -58,11 +58,7 @@ function AddWebinar() {
     } else {
       setLoader(true);
       const token = localStorage.getItem('token');
-      const authHeaders = token
-        ? {
-          Authorization: `Bearer ${token}`,
-        }
-        : {};
+      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
       const {
         mainTitle,
         subTitle,
