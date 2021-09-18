@@ -40,7 +40,7 @@ function CoursesList() {
   const CoursesLists = [
     {
       id: 0,
-      img: reg,
+      img: Cardimg,
       alt: 'Course',
       title: <FormattedMessage {...messages.CourseTitle} />,
       desc: <FormattedMessage {...messages.CourseShortDesc} />,
@@ -57,7 +57,7 @@ function CoursesList() {
     },
     {
       id: 1,
-      img: reg,
+      img: Cardimg2,
       alt: 'Course',
       title: <FormattedMessage {...messages.CourseTitle} />,
       desc: <FormattedMessage {...messages.CourseShortDesc} />,
@@ -74,7 +74,7 @@ function CoursesList() {
     },
     {
       id: 2,
-      img: reg,
+      img: Cardimg3,
       alt: 'Course',
       title: <FormattedMessage {...messages.CourseTitle} />,
       desc: <FormattedMessage {...messages.CourseShortDesc} />,
@@ -91,7 +91,7 @@ function CoursesList() {
     },
     {
       id: 3,
-      img: reg,
+      img: Cardimg,
       alt: 'Course',
       title: <FormattedMessage {...messages.CourseTitle} />,
       desc: <FormattedMessage {...messages.CourseShortDesc} />,
@@ -108,7 +108,7 @@ function CoursesList() {
     },
     {
       id: 4,
-      img: reg,
+      img: Cardimg2,
       alt: 'Course',
       title: <FormattedMessage {...messages.CourseTitle} />,
       desc: <FormattedMessage {...messages.CourseShortDesc} />,
@@ -125,7 +125,7 @@ function CoursesList() {
     },
     {
       id: 5,
-      img: reg,
+      img: Cardimg3,
       alt: 'Course',
       title: <FormattedMessage {...messages.CourseTitle} />,
       desc: <FormattedMessage {...messages.CourseShortDesc} />,
@@ -318,8 +318,8 @@ function CoursesList() {
                   </TabPane>
                   <TabPane tabId="2">
                     <Row>
-                      {Cardlist.map(item => (
-                        <Col lg={3}>
+                      {CoursesLists.map(item => (
+                        <Col lg={3} md={4} sm={6} xs={12}>
                           <div className="single_card">
                             <Card>
                               <CardImg

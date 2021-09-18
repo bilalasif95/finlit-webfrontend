@@ -13,10 +13,7 @@ function Events() {
         <h3>
           <FormattedMessage {...messages.Title} />
         </h3>
-        <Calendar
-          onChange={onChange}
-          value={value}
-        />
+        <Calendar onChange={onChange} value={value} />
       </div>
     </Wrapper>
   );

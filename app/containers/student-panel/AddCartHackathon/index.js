@@ -4,20 +4,23 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
+import axios from 'axios';
+import { withRouter } from 'react-router';
 import HackathonDetail from '../../../components/student-panel/AddCartHackathon/HackathonDetail';
 import HackathonSidebar from '../../../components/student-panel/AddCartHackathon/HackathonSidebar';
 import { API } from '../../../config/config';
-import axios from 'axios';
-import { withRouter } from "react-router";
+import { redirectToLogin } from '../../../utils/redirectToLogin';
+import Loader from '../../../components/Loader';
 
-const AddCartHackathon = (props) => {
+const AddCartHackathon = props => {
   const [hackathonDetails, setHackathonDetails] = useState([]),
-    [loader, setLoader] = useState(false)
+        [loader, setLoader] = useState(false);
   useEffect(() => {
-    getHackathonDetails()
-  }, [])
-
-
+    getHackathonDetails();
+  }, []);
+  useEffect(() => {
+    redirectToLogin();
+  }, []);
   const getHackathonDetails = () => {
     setLoader(true)
     const token = localStorage.getItem('token');
@@ -34,16 +37,14 @@ const AddCartHackathon = (props) => {
           ...authHeaders,
         },
       })
-      .then((res) => {
+      .then(res => {
         setHackathonDetails(res && res.data && res.data.data)
         setLoader(false);
       })
       .catch(() => {
         setLoader(false);
       });
-
-  }
-
+  };
   return (
     <div className="sub_pages">
       <Helmet>
@@ -51,7 +52,9 @@ const AddCartHackathon = (props) => {
         <meta name="description" content="Add Hackathon" />
       </Helmet>
       <Container fluid="xl">
-        {loader ? "Loading...." :
+        {loader ? (
+          <Loader />
+        ) : (
           <Row>
             <Col lg={8} md={7} sm={12}>
               <HackathonDetail detail={hackathonDetails} />
@@ -59,10 +62,11 @@ const AddCartHackathon = (props) => {
             <Col lg={4} md={5} sm={12}>
               <HackathonSidebar detail={hackathonDetails} />
             </Col>
-          </Row>}
+          </Row>
+        )}
       </Container>
     </div>
   );
 }
 
-export default withRouter(AddCartHackathon)
+export default withRouter(AddCartHackathon);

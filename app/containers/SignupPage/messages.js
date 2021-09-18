@@ -52,6 +52,30 @@ export default defineMessages({
     id: `${scope}.Address`,
     defaultMessage: `Address`,
   },
+  FinancialLiteracy: {
+    id: `${scope}.FinancialLiteracy`,
+    defaultMessage: 'Financial Literacy',
+  },
+  SoftwareDeveloper: {
+    id: `${scope}.SoftwareDeveloper`,
+    defaultMessage: 'Software Developer',
+  },
+  MedicalHealthServices: {
+    id: `${scope}.MedicalHealthServices`,
+    defaultMessage: 'Medical and Health Services',
+  },
+  Statistician: {
+    id: `${scope}.Statistician`,
+    defaultMessage: 'Statistician',
+  },
+  SpeechLanguage: {
+    id: `${scope}.SpeechLanguage`,
+    defaultMessage: 'Speech-Language',
+  },
+  DataScientist: {
+    id: `${scope}.DataScientist`,
+    defaultMessage: 'Data Scientist',
+  },
   SignUp: {
     id: `${scope}.SignUp`,
     defaultMessage: 'Sign Up',

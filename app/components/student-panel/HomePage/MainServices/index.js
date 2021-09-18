@@ -20,7 +20,7 @@ function MainServices() {
       alt: 'Accredited Education',
       title: <FormattedMessage {...messages.AccreditedEducation} />,
       desc: <FormattedMessage {...messages.AccreditedEducationDesc} />,
-      redirectLink: 'accredited_education_list',
+      redirectLink: 'course_list',
     },
     {
       id: 1,
@@ -28,7 +28,7 @@ function MainServices() {
       alt: 'Live Webinars',
       title: <FormattedMessage {...messages.LiveWebinars} />,
       desc: <FormattedMessage {...messages.LiveWebinarsDesc} />,
-      redirectLink: 'live_webinars_list',
+      redirectLink: 'webinar_list',
     },
     {
       id: 2,
@@ -36,7 +36,7 @@ function MainServices() {
       alt: 'Goal Based Education',
       title: <FormattedMessage {...messages.GoalBasedEducation} />,
       desc: <FormattedMessage {...messages.GoalBasedEducationDesc} />,
-      redirectLink: '/login',
+      redirectLink: '/',
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ function MainServices() {
       alt: 'Free Gifts &amp; Rewards',
       title: <FormattedMessage {...messages.FreeGiftsRewards} />,
       desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,
-      redirectLink: 'features',
+      redirectLink: '/',
     },
   ];
   return (

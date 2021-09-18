@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  .error{
+    color:red
+  }
   border: 1px solid #e4e4e4;
   border-radius: 0.313rem;
   padding: 2rem;

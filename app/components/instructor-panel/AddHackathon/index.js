@@ -1,12 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef ,useEffect} from 'react';
 import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
+import {
+  Row,
+  Col,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Button,
+} from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../config/config';
+import { redirectToLogin } from "../../../utils/redirectToLogin"
 
 function AddHackathon() {
   const editor = useRef(null);
@@ -18,6 +27,10 @@ function AddHackathon() {
     readonly: false,
   };
 
+  useEffect(() => {
+    redirectToLogin()
+  }, [])
+  
   const [hackathonStatus, sethackathonStatus] = useState({
     mainTitle: '',
     subTitle: '',
@@ -160,13 +173,13 @@ function AddHackathon() {
                   value={hackathonStatus.mainTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <div className="error-box">
+                <FormText color="danger">
                   {errors.mainTitle ? (
                     <p className="error"> {errors.mainTitle} </p>
                   ) : (
                     ''
                   )}
-                </div>
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -182,13 +195,13 @@ function AddHackathon() {
                   value={hackathonStatus.subTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <div className="error-box">
+                <FormText color="danger">
                   {errors.subTitle ? (
                     <p className="error"> {errors.subTitle} </p>
                   ) : (
                     ''
                   )}
-                </div>
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -218,9 +231,9 @@ function AddHackathon() {
                     </div>
                   </div>
                 </div>
-                <div className="error-box">
+                <FormText color="danger">
                   {errors.image ? <p className="error">{errors.image} </p> : ''}
-                </div>
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -236,13 +249,13 @@ function AddHackathon() {
                   value={hackathonStatus.startDate}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <div className="error-box">
+                <FormText color="danger">
                   {errors.startDate ? (
                     <p className="error"> {errors.startDate} </p>
                   ) : (
                     ''
                   )}
-                </div>
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -258,13 +271,13 @@ function AddHackathon() {
                   value={hackathonStatus.endDate}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <div className="error-box">
+                <FormText color="danger">
                   {errors.endDate ? (
                     <p className="error"> {errors.endDate} </p>
                   ) : (
                     ''
                   )}
-                </div>
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -280,13 +293,13 @@ function AddHackathon() {
                   value={hackathonStatus.startTime}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <div className="error-box">
+                <FormText color="danger">
                   {errors.startTime ? (
                     <p className="error"> {errors.startTime} </p>
                   ) : (
                     ''
                   )}
-                </div>
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -302,13 +315,13 @@ function AddHackathon() {
                   value={hackathonStatus.endTime}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <div className="error-box">
+                <FormText color="danger">
                   {errors.endTime ? (
                     <p className="error"> {errors.endTime} </p>
                   ) : (
                     ''
                   )}
-                </div>
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -324,9 +337,9 @@ function AddHackathon() {
                   value={hackathonStatus.price}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <div className="error-box">
+                <FormText color="danger">
                   {errors.price ? <p className="error">{errors.price} </p> : ''}
-                </div>
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={12} md={12} sm={12} xs={12}>
@@ -341,13 +354,13 @@ function AddHackathon() {
                   tabIndex={0} // tabIndex of textarea
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                 />
-                <div className="error-box">
+                <FormText color="danger">
                   {errors.description ? (
                     <p className="error"> {errors.description} </p>
                   ) : (
                     ''
                   )}
-                </div>
+                </FormText>
               </FormGroup>
             </Col>
           </Row>

@@ -1,7 +1,15 @@
 import React, { useState, useRef } from 'react';
 import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
+import {
+  Row,
+  Col,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Button,
+} from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
 import Wrapper from './Wrapper';
@@ -85,10 +93,8 @@ function AddArticle() {
     } else if (!content) {
       error.description = 'Description is required';
     }
-
     return error;
   };
-
   return (
     <Wrapper>
       <div className="add_forms">
@@ -110,13 +116,11 @@ function AddArticle() {
                   placeholder="Main title"
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
+                <FormText color="danger">
                   {errors.mainTitle ? (
-                    <p className="error"> {errors.mainTitle} </p>
-                  ) : (
-                    ''
-                  )}
-                </Label>
+                    <p className="error">{errors.mainTitle}</p>
+                  ) :null}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -145,9 +149,13 @@ function AddArticle() {
                     </div>
                   </div>
                 </div>
-                <Label for="uploadimage">
-                  {errors.image ? <p className="error">{errors.image} </p> : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.image ? (
+                    <p className="error"> {errors.image} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={12} md={12} sm={12} xs={12}>
@@ -162,13 +170,13 @@ function AddArticle() {
                   tabIndex={0} // tabIndex of textarea
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                 />
-                <Label for="description">
+                <FormText color="danger">
                   {errors.description ? (
                     <p className="error"> {errors.description} </p>
                   ) : (
                     ''
                   )}
-                </Label>
+                </FormText>
               </FormGroup>
             </Col>
           </Row>

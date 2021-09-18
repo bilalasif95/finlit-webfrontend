@@ -4,48 +4,44 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FormGroup, Input, Button } from 'reactstrap';
-import { GoDeviceCameraVideo } from 'react-icons/go';
-import { BiTimeFive } from 'react-icons/bi';
+import axios from 'axios';
+import history from 'utils/history';
+// import { GoDeviceCameraVideo } from 'react-icons/go';
+// import { BiTimeFive } from 'react-icons/bi';
+// import { MdDashboard } from 'react-icons/md';
+// import { BsTagFill } from 'react-icons/bs';
+// import { SiAirplayvideo } from 'react-icons/si';
 import { RiStarSFill } from 'react-icons/ri';
 import { HiUsers } from 'react-icons/hi';
-import { MdDashboard } from 'react-icons/md';
-import { BsTagFill } from 'react-icons/bs';
-import { SiAirplayvideo } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../../config/config';
-import axios from 'axios';
-import history from 'utils/history';
-import { axiosHeader } from "../../../../utils/axiosHeader"
+import { axiosHeader } from '../../../../utils/axiosHeader';
 
 function HackathonSidebar(props) {
-
   const [loader, setLoader] = useState(false)
   let detail = props.detail;
   let dataDetails = detail.data;
 
   const handleAddToCart = () => {
-    setLoader(true)
+    setLoader(true);
     let data = {
-      "productType": detail.type,
-      "productId": detail.id,
-      "price": dataDetails && dataDetails.price
-    }
-
+      productType: detail.type,
+      productId: detail.id,
+      price: dataDetails && dataDetails.price,
+    };
     axios
       .post(`${API}api/cart/addTocart`, data, axiosHeader)
-      .then((res) => {
-        history.push("/cart")
+      .then(res => {
+        history.push('/cart')
         setLoader(false);
       })
       .catch(err => {
         setLoader(false);
         setErrors(err.response && err.response.data.message);
       });
-
-  }
-
+  };
   return (
     <Wrapper>
       <div className="top_detail">
@@ -69,8 +65,7 @@ function HackathonSidebar(props) {
           <FormattedMessage {...messages.AttendEvent} />
         </Link>
         <Button onClick={() => handleAddToCart()} disabled={loader}>
-          {loader ? "Loading.." : <FormattedMessage {...messages.AddtoCart} />
-          }
+          {loader ? 'Loading...' : <FormattedMessage {...messages.AddtoCart} />}
         </Button>
       </div>
       <div className="details">

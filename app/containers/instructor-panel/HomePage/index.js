@@ -3,7 +3,6 @@
  *
  * This is the first thing users see of our App, at the '/' route
  */
-
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
@@ -30,7 +29,7 @@ export function HomePage() {
               </div>
               <div className="events-cont">
                 <Events />
-                </div>
+              </div>
             </div>
           </Col>
         </Row>

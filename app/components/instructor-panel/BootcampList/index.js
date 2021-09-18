@@ -10,10 +10,11 @@ import { AiOutlineCalendar, AiOutlineDelete } from 'react-icons/ai';
 import { GrFormEdit } from 'react-icons/gr';
 // import { Link } from 'react-router-dom';
 import axios from 'axios';
+import history from 'utils/history';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
-import loaderImg from '../../../images/loader.svg';
+import Loader from '../../Loader';
 
 function BootcampList() {
   const [bootcampList, setBootCampList] = useState([]);
@@ -43,19 +44,22 @@ function BootcampList() {
       });
   };
 
-  const handleBootcampList = (id) => {
-    history.push("/bootcamp_details/" + id)
-  }
-
+  const handleBootcampList = id => {
+    history.push('/bootcamp_details/' + id);
+  };
   return (
     <Wrapper>
       {loader ? (
-        <img className="loader" src={loaderImg} alt="Loader Imgage" />
+        <Loader />
       ) : (
         <>
           <div className="courses_list">
             {bootcampList.map(item => (
-              <div className="single_course" key={item.id} onClick={() => handleBootcampList(item.id)}  >
+              <div
+                className="single_course"
+                key={item.id}
+                onClick={() => handleBootcampList(item.id)}
+              >
                 <div className="course_img">
                   <img src={item.eventImage} alt="Course" />
                 </div>
@@ -64,11 +68,6 @@ function BootcampList() {
                     <div className="course_desc">
                       <h5>{item.data.mainTitle}</h5>
                       <p>{item.data.subTitle}</p>
-                      {/* <div className="course_provider">
-                    {item.createdby}
-                    &nbsp;
-                    <span className="provider">{item.creatorname}</span>
-                  </div> */}
                     </div>
                     <div className="course_price">
                       <h5>${item.data.price}</h5>
@@ -79,9 +78,13 @@ function BootcampList() {
                     <div className="date_time">
                       <div className="time-box">
                         <BiTimeFive />
-                        <div className="time-text">{item.data.startTime}</div>
+                        <div className="time-text">
+                          <FormattedMessage {...messages.Timings} />
+                        </div>
                         &nbsp;
-                        <div className="hours">{item.data.endTime}</div>
+                        <div className="hours">
+                          {item.data.startTime} - {item.data.endTime}
+                        </div>
                       </div>
 
                       <div className="date_level">
