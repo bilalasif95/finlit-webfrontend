@@ -6,8 +6,10 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import MainSection from '../../../components/instructor-panel/HomePage/MainSection';
-import AddCourse from '../../../components/instructor-panel/HomePage/AddCourse';
+import { Container, Row, Col } from 'reactstrap';
+import MainSection from '../../../components/instructor-panel/DashboardStatistics/MainSection';
+import Events from '../../../components/instructor-panel/DashboardStatistics/Events';
+import Statistics from '../../../components/instructor-panel/DashboardStatistics/Statistics';
 
 export function HomePage() {
   return (
@@ -18,8 +20,21 @@ export function HomePage() {
       </Helmet>
       <div className="w-100">
         <MainSection />
-        <AddCourse />
       </div>
+      <Container>
+        <Row>
+          <Col lg={12}>
+            <div className="dashboard-main">
+              <div className="statistics-cont">
+                <Statistics />
+              </div>
+              <div className="events-cont">
+                <Events />
+                </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

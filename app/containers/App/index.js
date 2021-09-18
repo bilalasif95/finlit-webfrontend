@@ -20,6 +20,7 @@ import AccreditedEducationListPage from 'containers/student-panel/AccreditedEduc
 import LiveWebinarsList from 'containers/student-panel/LiveWebinarsList/Loadable';
 import BootCampList from 'containers/student-panel/BootCampList/Loadable';
 import HackathonList from 'containers/student-panel/HackathonList/Loadable';
+import ArticleList from 'containers/student-panel/ArticleList/Loadable';
 import LiveSessionList from 'containers/student-panel/LiveSessionList/Loadable';
 import ArticleDetails from 'containers/student-panel/ArticleDetails/Loadable';
 import CartCheckout from 'containers/student-panel/CartCheckout/Loadable';
@@ -43,6 +44,7 @@ import BootcampListPage from 'containers/instructor-panel/BootcampListPage/Loada
 import MyProfilePage from 'containers/MyProfilePage/Loadable';
 import SigninPage from 'containers/SigninPage/Loadable';
 import SignupPage from 'containers/SignupPage/Loadable';
+import EmailVerificationPage from 'containers/EmailVerification/Loadable';
 import ForgotPasswordPage from 'containers/ForgotPasswordPage/Loadable';
 import CreateNewPasswordPage from 'containers/CreateNewPasswordPage/Loadable';
 import Header from 'components/student-panel/Header';
@@ -75,6 +77,7 @@ export default function App() {
         <Route path="/live_webinars_list" component={LiveWebinarsList} />
         <Route path="/bootcamp_list" component={BootCampList} />
         <Route path="/hackathon_list" component={HackathonList} />
+        <Route path="/article_list" component={ArticleList} />
         <Route path="/live_session_list" component={LiveSessionList} />
         <Route path="/article_details" component={ArticleDetails} />
         <Route path="/cart_checkout" component={CartCheckout} />
@@ -97,6 +100,7 @@ export default function App() {
 
         <Route path="/login" component={SigninPage} />
         <Route path="/signup" component={SignupPage} />
+        <Route path="/email_verification" component={EmailVerificationPage} />
         <Route path="/forgot_password" component={ForgotPasswordPage} />
         <Route path="/create_new_password" component={CreateNewPasswordPage} />
         <Route path="" component={NotFoundPage} />
