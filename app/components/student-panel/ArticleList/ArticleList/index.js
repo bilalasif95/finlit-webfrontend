@@ -13,7 +13,7 @@ import axios from 'axios';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
-import loaderImg from '../../../../images/loader.svg';
+import Loader from '../../../Loader';
 
 function HackathonList() {
   const [hackathonList, sethackathonList] = useState([]);
@@ -27,7 +27,7 @@ function HackathonList() {
     const token = localStorage.getItem('token');
     const authHeaders = token
       ? {
-        Authorization: `Bearer${token}`,
+          Authorization: `Bearer ${token}`,
       }
       : {};
     axios
@@ -50,7 +50,7 @@ function HackathonList() {
   return (
     <Wrapper id="list">
       {loader ? (
-        <img className="loader" alt="loaderImg" src={loaderImg} />
+        <Loader />
       ) : (
         <div className="courses">
           <Row>

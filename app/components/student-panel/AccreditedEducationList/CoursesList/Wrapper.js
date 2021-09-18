@@ -89,11 +89,14 @@ const Wrapper = styled.div`
       }
       width: 100%;
       .course_img {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
         max-height: 180px;
         overflow: hidden;
         width: 17%;
         img {
-          width: 100%;
+          width: auto;
         }
       }
       .course_info {
@@ -230,6 +233,7 @@ const Wrapper = styled.div`
       }
     }
     .single_card {
+      margin: 0 0 1.5rem;
       .card {
         border-radius: 5px;
         border: initial;
@@ -395,6 +399,9 @@ const Wrapper = styled.div`
     }
   }
   @media (max-width: 575px) {
+    .card-img-top {
+      height: 200px;
+    }
     .courses {
       .single_course {
         flex-wrap: wrap;

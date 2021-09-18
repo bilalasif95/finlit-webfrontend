@@ -4,18 +4,17 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FormGroup, Input, Button } from 'reactstrap';
+import axios from 'axios';
+import history from 'utils/history';
 import { RiStarSFill } from 'react-icons/ri';
 import { HiUsers } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../../config/config';
-import axios from 'axios';
-import history from 'utils/history';
-import { axiosHeader } from "../../../../utils/axiosHeader"
+import { axiosHeader } from '../../../../utils/axiosHeader';
 
 function WebinarSidebar(props) {
-
   const [loader, setLoader] = useState(false)
   let detail = props.detail;
   let dataDetails = detail.data;
@@ -23,23 +22,21 @@ function WebinarSidebar(props) {
   const handleAddToCart = () => {
     setLoader(true)
     let data = {
-      "productType": detail.type,
-      "productId": detail.id,
-      "price": dataDetails && dataDetails.price
-    }
-
+      productType: detail.type,
+      productId: detail.id,
+      price: dataDetails && dataDetails.price
+    };
     axios
       .post(`${API}api/cart/addTocart`, data, axiosHeader)
-      .then((res) => {
-        history.push("/cart")
+      .then(res => {
+        history.push('/cart')
         setLoader(false);
       })
       .catch(err => {
         setLoader(false);
         setErrors(err.response && err.response.data.message);
       });
-
-  }
+  };
 
   return (
     <Wrapper>
@@ -64,8 +61,7 @@ function WebinarSidebar(props) {
           <FormattedMessage {...messages.AttendEvent} />
         </Link>
         <Button onClick={() => handleAddToCart()} disabled={loader}>
-          {loader ? "Loading.." : <FormattedMessage {...messages.AddtoCart} />
-          }
+          {loader ? 'Loading..' : <FormattedMessage {...messages.AddtoCart} />}
         </Button>
       </div>
       <div className="details">

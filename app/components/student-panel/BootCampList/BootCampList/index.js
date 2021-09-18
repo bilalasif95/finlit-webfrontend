@@ -4,6 +4,8 @@
 import React, { useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col, Button } from 'reactstrap';
+import axios from 'axios';
+import history from 'utils/history';
 import { BiTimeFive, BiCalendar } from 'react-icons/bi';
 import { HiUsers } from 'react-icons/hi';
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -12,107 +14,112 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
-import axios from 'axios';
-import loaderImg from "../../../../images/loader.svg";
-import history from 'utils/history';
-import {axiosHeader} from "../../../../utils/axiosHeader"
+import { axiosHeader } from '../../../../utils/axiosHeader';
+import Loader from '../../../Loader';
 
 function BootCampList() {
-
-  const [bootcampList, setBootCampList] = useState([]),
-    [loader, setLoader] = useState(false)
+  const [bootcampList, setBootCampList] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
-    getBootcampLists()
-  }, [])
+    getBootcampLists();
+  }, []);
 
   const getBootcampLists = () => {
-    setLoader(true)
+    setLoader(true);
     axios
-      .get(`${API}api/events/getEventsByTypes?type=Bootcamp`,axiosHeader)
-      .then((res) => {
-        setBootCampList(res && res.data && res.data.data)
+      .get(`${API}api/events/getEventsByTypes?type=Bootcamp`, axiosHeader)
+      .then(res => {
+        setBootCampList(res && res.data && res.data.data);
         setLoader(false);
       })
       .catch(() => {
         setLoader(false);
       });
-  }
-
-  const handleBootcampDetails=(id)=>{
-    history.push("/bootcamp_details/"+id)
-  }
+  };
+  const handleBootcampDetails = id => {
+    history.push('/bootcamp_details/' + id);
+  };
   return (
     <Wrapper id="list">
-   {loader ? <img className="loader" src={loaderImg} /> :
-      <div className="courses">
-        <Row>
-          <Col lg={12}>
-            <h4>
-              <FormattedMessage {...messages.BootCampList} />
-            </h4>
-            <div className="courses_list">
-              {bootcampList.map(item => (
-                <div className="single_course" key={item.id} onClick={()=>handleBootcampDetails(item.id)}>
-                  <div className="course_img">
-                    <img src={item.eventImage} alt="Course" />
-                  </div>
-                  <div className="course_info">
-                    <h5>{item.data.mainTitle}</h5>
-                    <div className="course_short_info">
-                      <div className="course_desc">
-                        <p>{item.data.subTitle}</p>
-                        {/* <div className="course_provider">
+      {loader ? (
+        <Loader />
+      ) : (
+        <div className="courses">
+          <Row>
+            <Col lg={12}>
+              <h4>
+                <FormattedMessage {...messages.BootCampList} />
+              </h4>
+              <div className="courses_list">
+                {bootcampList.map(item => (
+                  <div
+                    className="single_course"
+                    key={item.id}
+                    onClick={() => handleBootcampDetails(item.id)}
+                  >
+                    <div className="course_img">
+                      <img src={item.eventImage} alt="Course" />
+                    </div>
+                    <div className="course_info">
+                      <h5>{item.data.mainTitle}</h5>
+                      <div className="course_short_info">
+                        <div className="course_desc">
+                          <p>{item.data.subTitle}</p>
+                          {/* <div className="course_provider">
                           {item.providedby}
                           &nbsp;
                           <span className="provider">{item.providername}</span>
                         </div> */}
-                      </div>
-                      <div className="course_price">
-                        <h5>${item.data.price}</h5>
-                        <del>${item.data.price}</del>
-                      </div>
-                    </div>
-                    <div className="course_outcomes">
-                      <div className="outcomes">
-                        <div className="time">
-                          <div className="timing">
-                            <BiTimeFive />
-                            <p>Time</p>
-                          </div>
-                          <div className="from-to">
-                            {item.data.startTime} - {item.data.endTime}
-                          </div>
                         </div>
-                        <div className="date">
-                          <BiCalendar />
-                          {item.data.startDate}
+                        <div className="course_price">
+                          <h5>${item.data.price}</h5>
+                          <del>${item.data.price}</del>
                         </div>
-                        <div className="viewer">
-                          <HiUsers />
-                          {20}
-                          &nbsp;
-                          <FormattedMessage {...messages.Attendees} />
+                      </div>
+                      <div className="course_outcomes">
+                        <div className="outcomes">
+                          <div className="time">
+                            <div className="timing">
+                              <BiTimeFive />
+                              <p>
+                                <FormattedMessage {...messages.Timings} />
+                              </p>
+                            </div>
+                            <div className="from-to">
+                              {item.data.startTime} - {item.data.endTime}
+                            </div>
+                          </div>
+                          <div className="date">
+                            <BiCalendar />
+                            {item.data.startDate}
+                          </div>
+                          <div className="viewer">
+                            <HiUsers />
+                            {20}
+                            &nbsp;
+                            <FormattedMessage {...messages.Attendees} />
 
+                          </div>
                         </div>
-                      </div>
-                      <div className="like_enroll">
-                        <Button>
-                          <AiOutlineHeart />
-                          {/* <AiFillHeart /> */}
-                        </Button>
-                        <Button>
-                          <FormattedMessage {...messages.JoinUs} />
-                        </Button>
+                        <div className="like_enroll">
+                          <Button>
+                            <AiOutlineHeart />
+                            {/* <AiFillHeart /> */}
+                          </Button>
+                          <Button>
+                            <FormattedMessage {...messages.JoinUs} />
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </Col>
-        </Row>
-      </div>
-}
+                ))}
+              </div>
+            </Col>
+          </Row>
+        </div>
+      )
+      }
     </Wrapper>
   );
 }

@@ -4,13 +4,15 @@
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col } from 'reactstrap';
+import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
 import articleicon from '../../../../images/articleicon.svg';
-import loaderImg from '../../../../images/loader.svg';
+import article1 from '../../../../images/interactive_tools.jpg';
+import Loader from '../../../Loader';
 
 function Articles() {
   const [articleList, setArticleList] = useState([]);
@@ -37,6 +39,40 @@ function Articles() {
         setLoader(false);
       });
   };
+
+  const settings = {
+    autoplay: true,
+    dots: true,
+    infinite: true,
+    speed: 5000,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 575,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <Wrapper id="services">
       <Container fluid="xl">
@@ -51,11 +87,11 @@ function Articles() {
         </Row>
         <Row>
           {loader ? (
-            <img className="loader" src={loaderImg} alt="Loader" />
+            <Loader />
           ) : (
-            <>
+            <Slider {...settings}>
               {articleList.map(article => (
-                <Col lg={6} md={6} sm={12} xs={12} key={article.id}>
+                <div key={article.id}>
                   <div className="single_item">
                     <div className="left">
                       <img src={articleicon} alt="IconImg" />
@@ -68,12 +104,13 @@ function Articles() {
                       </Link>
                     </div>
                     <div className="right">
-                      <img src={article.articleImage} alt="ArticleImage" />
+                      {/* <img src={article.articleImage} alt="ArticleImage" /> */}
+                      <img src={article1} alt="Article" />
                     </div>
                   </div>
-                </Col>
+                </div>
               ))}
-            </>
+            </Slider>
           )}
         </Row>
       </Container>

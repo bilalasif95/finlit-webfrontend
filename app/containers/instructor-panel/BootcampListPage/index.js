@@ -10,7 +10,6 @@ import messages from './messages';
 import Wrapper from './Wrapper';
 import BootcampList from '../../../components/instructor-panel/BootcampList';
 export default function BootcampListPage() {
-
   return (
     <div className="sub_page">
       <Helmet>

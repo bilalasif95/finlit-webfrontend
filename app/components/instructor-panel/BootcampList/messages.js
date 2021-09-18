@@ -38,7 +38,7 @@ export default defineMessages({
   },
   Timings: {
     id: `${scope}.timings`,
-    defaultMessage: 'Timings',
+    defaultMessage: 'Timings:',
   },
   Date: {
     id: `${scope}.date`,

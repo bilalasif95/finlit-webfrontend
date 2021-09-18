@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-.loader {
-  margin: 0px auto;
-  width: 70px;
-  display: block;
-}
   .courses {
     padding: 1rem 0 0;
     h4 {

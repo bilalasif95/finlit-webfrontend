@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-.loader {
-  margin: 0px auto;
-  width: 70px;
-  display: block;
-}
+  .courses_list {
+    min-height: 500px;
+  }
   .single_course {
     display: flex;
     justify-content: space-between;

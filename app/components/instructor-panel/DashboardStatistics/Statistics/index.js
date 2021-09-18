@@ -3,9 +3,9 @@ import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'reactstrap';
 import Wrapper from './Wrapper';
 import messages from './messages';
-import CourseChart from "../../../../images/course.svg";
-import Dot from "../../../../images/list-dot.svg";
-import Chart from "../../../../images/stat-chart.svg";
+import CourseChart from '../../../../images/course.svg';
+import Dot from '../../../../images/list-dot.svg';
+import Chart from '../../../../images/stat-chart.svg';
 
 function DashboardStatistics() {
   return (
@@ -18,12 +18,21 @@ function DashboardStatistics() {
             </h3>
             <div className="list-box">
               <ul className="statistics-list">
-                <li><img src={Dot} />20% Completed</li>
-                <li><img src={Dot} />50% Progress</li>
-                <li><img src={Dot} />30% Start</li>
+                <li>
+                  <img src={Dot} alt="Progress" />
+                  20% Completed
+                </li>
+                <li>
+                  <img src={Dot} alt="Progress" />
+                  50% Progress
+                </li>
+                <li>
+                  <img src={Dot} alt="Progress" />
+                  30% Start
+                </li>
               </ul>
               <div>
-                <img src={Chart} />
+                <img src={Chart} alt="chart" />
               </div>
             </div>
           </div>

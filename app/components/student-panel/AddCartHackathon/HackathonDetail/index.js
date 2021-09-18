@@ -9,11 +9,11 @@ import { GrLocation } from 'react-icons/gr';
 import { FaRegHeart } from 'react-icons/fa';
 // import { Link } from 'react-router-dom';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import moment from 'moment';
+import JoditEditor from 'jodit-react';
 import classnames from 'classnames';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import moment from 'moment';
-import JoditEditor from 'jodit-react';
 
 function HackathonDetail(props) {
   const editor = useRef(null);
@@ -36,10 +36,7 @@ function HackathonDetail(props) {
           <img src={detail.eventImage} alt="main" />
         </div>
         <div className="header">
-          <h4>
-            {dataDetails && dataDetails.mainTitle}
-
-          </h4>
+          <h4>{dataDetails && dataDetails.mainTitle}</h4>
           <div className="like_share">
             <Button>
               <FaRegHeart />
@@ -52,10 +49,8 @@ function HackathonDetail(props) {
         <div className="date_location">
           <div className="item">
             <BiCalendar />{' '}
-            <p>
-              {moment(detail.updatedAt).format("MMM DD ,YYYY")}
-            </p>
-            <p className="value"></p>
+            <p><FormattedMessage {...messages.Date} /></p>
+            <p className="value">{moment(detail.updatedAt).format("MMM DD ,YYYY")}</p>
           </div>
           <div className="item time-item">
             <GrLocation />
@@ -102,7 +97,6 @@ function HackathonDetail(props) {
             <TabPane tabId="1">
               {/* <h4>About hackathon</h4> */}
               <p>
-
                 <JoditEditor
                   ref={editor}
                   value={dataDetails && dataDetails.description}
@@ -110,7 +104,6 @@ function HackathonDetail(props) {
                   tabIndex={0} // tabIndex of textarea
                 />
               </p>
-
             </TabPane>
             <TabPane tabId="2">
               <h4>About Flow</h4>

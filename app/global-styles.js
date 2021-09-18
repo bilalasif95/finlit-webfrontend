@@ -191,6 +191,9 @@ const GlobalStyle = createGlobalStyle`
       justify-content: space-between;
       p {
         margin: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
     }
     .input--file {
@@ -603,15 +606,14 @@ const GlobalStyle = createGlobalStyle`
     width: 64%;
   }
 }
-.error-box {
+.form-text {
   position: absolute;
   height: 24px;
   .error {
-    color: red;
+    color: red !important;
     font-size: 0.75rem;
   }
 }
-
 `;
 
 export default GlobalStyle;

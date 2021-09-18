@@ -28,9 +28,9 @@ export default defineMessages({
     id: `${scope}.OldPrice`,
     defaultMessage: `$150.00`,
   },
-  Timing: {
-    id: `${scope}.Timing`,
-    defaultMessage: 'Timings',
+  Timings: {
+    id: `${scope}.Timings`,
+    defaultMessage: 'Timings:',
   },
   From: {
     id: `${scope}.From`,

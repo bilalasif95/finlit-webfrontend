@@ -14,7 +14,7 @@ export default defineMessages({
   },
   AllFields: {
     id: `${scope}.AllFields`,
-    defaultMessage: `All fileds marked with are mandatory`,
+    defaultMessage: `All fields marked with * are mandatory`,
   },
   MainTitle: {
     id: `${scope}.MainTitle`,

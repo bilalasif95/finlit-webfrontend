@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  .slick-slide {
+    padding: 0.75rem;
+  }
   .single_item {
     background-color: #fff;
     border-radius: 0.35rem;

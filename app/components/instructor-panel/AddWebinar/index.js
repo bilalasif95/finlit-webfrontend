@@ -1,7 +1,15 @@
 import React, { useState, useRef } from 'react';
 import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
+import {
+  Row,
+  Col,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Button,
+} from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
 import Wrapper from './Wrapper';
@@ -165,9 +173,13 @@ function AddWebinar() {
                   value={webinarStatus.mainTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.mainTitle ? errors.mainTitle : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.mainTitle ? (
+                    <p className="error"> {errors.mainTitle} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -183,9 +195,13 @@ function AddWebinar() {
                   value={webinarStatus.subTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.subTitle ? errors.subTitle : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.subTitle ? (
+                    <p className="error"> {errors.subTitle} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -215,9 +231,13 @@ function AddWebinar() {
                     </div>
                   </div>
                 </div>
-                <Label for="maintitle">
-                  {errors.image ? errors.image : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.image ? (
+                    <p className="error"> {errors.image} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -233,9 +253,13 @@ function AddWebinar() {
                   value={webinarStatus.startDate}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.startDate ? errors.startDate : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.startDate ? (
+                    <p className="error"> {errors.startDate} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -251,9 +275,13 @@ function AddWebinar() {
                   value={webinarStatus.endDate}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.endDate ? errors.endDate : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.endDate ? (
+                    <p className="error"> {errors.endDate} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -269,9 +297,13 @@ function AddWebinar() {
                   value={webinarStatus.startTime}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.startTime ? errors.startTime : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.startTime ? (
+                    <p className="error"> {errors.startTime} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -287,9 +319,13 @@ function AddWebinar() {
                   value={webinarStatus.endTime}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.endTime ? errors.endTime : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.endTime ? (
+                    <p className="error"> {errors.endTime} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -312,9 +348,13 @@ function AddWebinar() {
                   value={webinarStatus.presenter}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.presenter ? errors.presenter : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.presenter ? (
+                    <p className="error"> {errors.presenter} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -330,9 +370,13 @@ function AddWebinar() {
                   value={webinarStatus.price}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.price ? errors.price : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.price ? (
+                    <p className="error"> {errors.price} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={12} md={12} sm={12} xs={12}>
@@ -347,9 +391,13 @@ function AddWebinar() {
                   tabIndex={0} // tabIndex of textarea
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                 />
-                <Label for="maintitle">
-                  {errors.description ? errors.description : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.description ? (
+                    <p className="error"> {errors.description} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
           </Row>
