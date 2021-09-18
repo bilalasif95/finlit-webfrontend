@@ -116,11 +116,7 @@ export default function MyProfilePage() {
       }, 4000);
     } else {
       const token = localStorage.getItem('token');
-      const authHeaders = token
-        ? {
-          Authorization: `Bearer ${token}`,
-        }
-        : {};
+      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
       const { currentPassword, newPassword } = changePassword;
       const postData = {
         currentPassword,
@@ -150,11 +146,7 @@ export default function MyProfilePage() {
   };
   const getQrCodeUri = () => {
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer ${token}`,
-      }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .post(
         `${API}api/user/getToTpURI`,
@@ -178,11 +170,7 @@ export default function MyProfilePage() {
   };
   const verifyTwoFaCode = () => {
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer ${token}`,
-      }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .post(
         `${API}api/user/toggleTwoFA`,
@@ -552,7 +540,7 @@ export default function MyProfilePage() {
                 name="authcode"
                 id="authcode"
                 placeholder="Enter code"
-                onChange={handleChangeEvent}
+                onChange={e => handleChangeEvent(e)}
               />
               <FormText color="muted">
                 Enter the 6 digit code visible on your google authenticator app

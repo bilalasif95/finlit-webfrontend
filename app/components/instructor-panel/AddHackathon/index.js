@@ -50,19 +50,15 @@ function AddHackathon() {
   };
 
   const handleSave = () => {
-    if (Object.keys(validatetor(hackathonStatus)).length > 0) {
-      setErrors(validatetor(hackathonStatus));
+    if (Object.keys(validator(hackathonStatus)).length > 0) {
+      setErrors(validator(hackathonStatus));
       setTimeout(() => {
         setErrors({});
       }, 4000);
     } else {
       setLoader(true);
       const token = localStorage.getItem('token');
-      const authHeaders = token
-        ? {
-          Authorization: `Bearer ${token}`,
-        }
-        : {};
+      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
       const {
         mainTitle,
         subTitle,
@@ -71,7 +67,6 @@ function AddHackathon() {
         startTime,
         endTime,
         price,
-        presenter,
       } = hackathonStatus;
       const subData = {
         mainTitle,
@@ -145,7 +140,6 @@ function AddHackathon() {
   };
 
   return (
-
     <Wrapper>
       <div className="add_forms">
         <p>
@@ -167,7 +161,11 @@ function AddHackathon() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <div className="error-box">
-                  {errors.mainTitle ? <p className="error">{errors.mainTitle} </p> : ''}
+                  {errors.mainTitle ? (
+                    <p className="error"> {errors.mainTitle} </p>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </FormGroup>
             </Col>
@@ -185,7 +183,11 @@ function AddHackathon() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <div className="error-box">
-                  {errors.subTitle ? <p className="error">{errors.subTitle} </p> : ''}
+                  {errors.subTitle ? (
+                    <p className="error"> {errors.subTitle} </p>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </FormGroup>
             </Col>
@@ -235,7 +237,11 @@ function AddHackathon() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <div className="error-box">
-                  {errors.startDate ? <p className="error">{errors.startDate} </p> : ''}
+                  {errors.startDate ? (
+                    <p className="error"> {errors.startDate} </p>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </FormGroup>
             </Col>
@@ -253,7 +259,11 @@ function AddHackathon() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <div className="error-box">
-                  {errors.endDate ? <p className="error">{errors.endDate} </p> : ''}
+                  {errors.endDate ? (
+                    <p className="error"> {errors.endDate} </p>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </FormGroup>
             </Col>
@@ -271,7 +281,11 @@ function AddHackathon() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <div className="error-box">
-                  {errors.startTime ? <p className="error">{errors.startTime} </p> : ''}
+                  {errors.startTime ? (
+                    <p className="error"> {errors.startTime} </p>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </FormGroup>
             </Col>
@@ -289,32 +303,11 @@ function AddHackathon() {
                   onChange={e => handleChangeEvent(e)}
                 />
                 <div className="error-box">
-                  {errors.endTime ? <p className="error">{errors.endTime} </p> : ''}
-                </div>
-              </FormGroup>
-            </Col>
-            <Col lg={4} md={6} sm={6} xs={12}>
-              <FormGroup>
-                <Label for="addpresenter">
-                  <FormattedMessage {...messages.AddPresenter} />
-                </Label>
-                {/* <Input type="select" name="select" id="exampleSelect">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Input> */}
-                <Input
-                  type="text"
-                  name="presenter"
-                  id="addpresenter"
-                  placeholder="Add Presenter"
-                  value={hackathonStatus.presenter}
-                  onChange={e => handleChangeEvent(e)}
-                />
-                <div className="error-box">
-                  {errors.presenter ? <p className="error">{errors.presenter} </p> : ''}
+                  {errors.endTime ? (
+                    <p className="error"> {errors.endTime} </p>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </FormGroup>
             </Col>
@@ -349,7 +342,11 @@ function AddHackathon() {
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                 />
                 <div className="error-box">
-                  {errors.description ? <p className="error">{errors.description} </p> : ''}
+                  {errors.description ? (
+                    <p className="error"> {errors.description} </p>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </FormGroup>
             </Col>
