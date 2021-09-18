@@ -4,10 +4,10 @@ import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { browserHistory, BrowserRouter } from 'react-router-dom';
 
-import MyProfile from '../index';
-import configureStore from '../../../../configureStore';
+import configureStore from '../../../../../configureStore';
+import HackathonFilters from '../index';
 
-describe('<MyProfile />', () => {
+describe('<HackathonFilters />', () => {
   let store;
 
   beforeAll(() => {
@@ -20,7 +20,7 @@ describe('<MyProfile />', () => {
         <Provider store={store}>
           <IntlProvider locale="en">
             <BrowserRouter>
-              <MyProfile />
+              <HackathonFilters />
             </BrowserRouter>
           </IntlProvider>
         </Provider>,

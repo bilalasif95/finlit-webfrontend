@@ -1,0 +1,238 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HackathonFilters /> should render and match the snapshot 1`] = `
+<div
+  className="Wrapper-bc9f49-0 htFqjQ"
+  id="filters"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-lg-12"
+    >
+      <div
+        className="course_filters"
+      >
+        <div
+          className="form-group"
+        >
+          <div
+            className="MuiFormControl-root MuiFormControl-fullWidth"
+          >
+            <label
+              className=""
+            >
+              <span>
+                Courses
+              </span>
+            </label>
+            <div
+              className="MuiInputBase-root WithStyles(ForwardRef(InputBase))-root-1 MuiInputBase-fullWidth MuiInputBase-formControl"
+              onClick={[Function]}
+            >
+              <div
+                aria-haspopup="listbox"
+                className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input WithStyles(ForwardRef(InputBase))-input-2"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                English
+              </div>
+              <input
+                aria-hidden={true}
+                className="MuiSelect-nativeInput"
+                onAnimationStart={[Function]}
+                onChange={[Function]}
+                required={false}
+                tabIndex={-1}
+                value="0"
+              />
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          className="form-group"
+        >
+          <div
+            className="MuiFormControl-root MuiFormControl-fullWidth"
+          >
+            <label
+              className=""
+            >
+              <span>
+                Courses Type
+              </span>
+            </label>
+            <div
+              className="MuiInputBase-root WithStyles(ForwardRef(InputBase))-root-1 MuiInputBase-fullWidth MuiInputBase-formControl"
+              onClick={[Function]}
+            >
+              <div
+                aria-haspopup="listbox"
+                className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input WithStyles(ForwardRef(InputBase))-input-2"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                High
+              </div>
+              <input
+                aria-hidden={true}
+                className="MuiSelect-nativeInput"
+                onAnimationStart={[Function]}
+                onChange={[Function]}
+                required={false}
+                tabIndex={-1}
+                value="0"
+              />
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          className="form-group"
+        >
+          <div
+            className="MuiFormControl-root MuiFormControl-fullWidth"
+          >
+            <label
+              className=""
+            >
+              <span>
+                Language
+              </span>
+            </label>
+            <div
+              className="MuiInputBase-root WithStyles(ForwardRef(InputBase))-root-1 MuiInputBase-fullWidth MuiInputBase-formControl"
+              onClick={[Function]}
+            >
+              <div
+                aria-haspopup="listbox"
+                className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input WithStyles(ForwardRef(InputBase))-input-2"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                English
+              </div>
+              <input
+                aria-hidden={true}
+                className="MuiSelect-nativeInput"
+                onAnimationStart={[Function]}
+                onChange={[Function]}
+                required={false}
+                tabIndex={-1}
+                value="0"
+              />
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          className="form-group"
+        >
+          <div
+            className="MuiFormControl-root MuiFormControl-fullWidth"
+          >
+            <label
+              className=""
+            >
+              <span>
+                Level
+              </span>
+            </label>
+            <div
+              className="MuiInputBase-root WithStyles(ForwardRef(InputBase))-root-1 MuiInputBase-fullWidth MuiInputBase-formControl"
+              onClick={[Function]}
+            >
+              <div
+                aria-haspopup="listbox"
+                className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input WithStyles(ForwardRef(InputBase))-input-2"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                Level 1
+              </div>
+              <input
+                aria-hidden={true}
+                className="MuiSelect-nativeInput"
+                onAnimationStart={[Function]}
+                onChange={[Function]}
+                required={false}
+                tabIndex={-1}
+                value="0"
+              />
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col-lg-12"
+    >
+      <div
+        className="total_results"
+      >
+        Showing 200 total results for Hackathon
+      </div>
+    </div>
+  </div>
+</div>
+`;

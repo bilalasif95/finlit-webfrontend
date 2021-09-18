@@ -31,6 +31,7 @@ export default function SigninPage() {
       .post(`${API}api/auth/login`, { email, password })
       .then(res => {
         localStorage.setItem('token', res.data.accessToken);
+        window.location.href = '/';
       })
       .catch(err => {
         setError(err.response && err.response.data.message);
