@@ -64,6 +64,9 @@ pipeline {
                         case 'v0.x.x':
                             GLOBAL_ENVIRONMENT = 'development'
                             break
+                        case 'development':
+                            GLOBAL_ENVIRONMENT = 'development'
+                            break
                         case 'testing':
                             GLOBAL_ENVIRONMENT = 'testing'
                             break
