@@ -26,6 +26,7 @@ import { RiDashboardFill } from 'react-icons/ri';
 import { FiHeart, FiLogOut } from 'react-icons/fi';
 import { MdNotificationsActive, MdChat } from 'react-icons/md';
 import { IoIosHelpCircle } from 'react-icons/io';
+import history from 'utils/history';
 // IoLanguage
 import Img from './Img';
 import Logo from '../../../images/logo.svg';
@@ -133,7 +134,10 @@ function Header() {
                   </div>
                   <div />
                 </DropdownItem>
-                <DropdownItem>
+                <DropdownItem onClick = { () => {
+                  localStorage.clear();
+                  history.push('/login')
+                } }>
                   <div>
                     <FiLogOut />
                     <FormattedMessage {...messages.LogOut} />

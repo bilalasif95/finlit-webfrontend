@@ -7,6 +7,8 @@ import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import * as qs from 'query-string';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../config/config';
 
 export default function EmailVerificationPage() {
@@ -26,14 +28,14 @@ export default function EmailVerificationPage() {
         ...authHeaders,
       },
     })
-    .then(res => {
-      console.log(res);
-      setError(res.data.message);
+    .then(result => {
+      toast.success('Success, Please Login to Continue');
     })
     .catch(err => {
-      setError(err.response && err.response.data.message);
+      toast.error(err.response && err.response.data.message ? err.response.data.message.toString() : 'Message Not Readable')
     });
   return (
+    <>
     <div className="verification_page">
       <Helmet>
         <title>- Sign Up</title>
@@ -59,5 +61,7 @@ export default function EmailVerificationPage() {
         </Row>
       </Container>
     </div>
+    <ToastContainer />
+    </>
   );
 }

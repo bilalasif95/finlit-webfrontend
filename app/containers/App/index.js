@@ -68,7 +68,6 @@ export default function App(props) {
   console.log("userInfoooo", userInfo, "history", history)
   return (
     <AppWrapper>
-
       <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
         <meta name="description" content="FinLit" />
       </Helmet>
@@ -77,7 +76,7 @@ export default function App(props) {
         window.location.pathname === "/email_verification" ||
         window.location.pathname === "/create_new_password"
 
-        ? null : userInfo && userInfo.roles[0].roleName == "Super Admin" ? <InstructorHeader /> : <Header />}
+        ? null : userInfo && userInfo.roles[0].roleName == "Instructor" ? <InstructorHeader /> : <Header />}
 
       <Switch>
 
