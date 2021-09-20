@@ -6,6 +6,8 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
 import { API } from '../../config/config';
 
@@ -25,15 +27,15 @@ export default function ForgotPasswordPage() {
     }
     axios
       .get(`${API}api/auth/forgotPassword?email=${email}`)
-      .then(res => {
-        // console.log(res);
-        setError(res.data.message);
+      .then(result => {
+        toast.success(result.data && result.data.message ? result.data.message : 'Message Not Readable');
       })
       .catch(err => {
-        setError(err.response && err.response.data.message);
+        toast.error(err.response && err.response.data.message ? err.response.data.message.toString() : 'Message Not Readable')
       });
   };
   return (
+    <>
     <div className="registration_page">
       <Helmet>
         <title>Forgot Password</title>
@@ -74,5 +76,7 @@ export default function ForgotPasswordPage() {
       </div>
       <div className="img_container" />
     </div>
+    <ToastContainer />
+    </>
   );
 }
