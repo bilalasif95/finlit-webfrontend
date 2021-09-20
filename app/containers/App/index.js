@@ -79,12 +79,14 @@ const App = () => {
 
           history.location.pathname === "/email_verification" ||
           history.location.pathname === "/create_new_password"
-        ? null : userInfo && userInfo.roles[0].roleName == "Instructor" ? <InstructorHeader /> : <Header />}
- <InstructorHeader />
-   <Header />
+          ? null : userInfo && userInfo.roles[0].roleName == "Instructor" ? <Header  /> : <Header />}
+       {/* <InstructorHeader /> */}
+   
       </Route>
       <Switch>
 
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/dashboard" component={Home} />
         <Route path="/features" component={FeaturePage} />
         <Route path="/course_list" component={AccreditedEducationListPage} />
         <Route path="/webinar_list" component={LiveWebinarsList} />
@@ -99,7 +101,7 @@ const App = () => {
         <Route path="/bootcamp_details/:id" component={AddCartBootcamp} />
 
         {/* Instructor Panel pages routes */}
-        {userInfo && userInfo.roles[0].roleName == "Super Admin" || userInfo && userInfo.roles[0].roleName == "Instructor" ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={HomePage} />}
+        {/* {userInfo && userInfo.roles[0].roleName == "Super Admin" || userInfo && userInfo.roles[0].roleName == "Instructor" ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={HomePage} />} */}
         <Route exact path="/add_webinar" component={AddWebinarPage} />
         <Route path="/add_hackathon" component={AddHackathonPage} />
         <Route path="/add_bootcamp" component={AddBootCampPage} />
