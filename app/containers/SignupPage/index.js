@@ -58,9 +58,9 @@ export default function SignupPage() {
       setError('Please enter valid email');
       return;
     } else if (
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-        password,
-      )
+      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(
+        password
+    ) || ( !password.length >=8 && !password.length <=12 )
     ) {
       setError('Please enter valid password');
       return;
