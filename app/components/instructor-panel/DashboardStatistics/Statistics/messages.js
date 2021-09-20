@@ -14,6 +14,10 @@ export default defineMessages({
   },
   CourseTitle: {
     id: `${scope}.CourseTitle`,
-    defaultMessage: `Courses Progress`,
+    defaultMessage: `Recent Activites`,
+  },
+  RecentDesc: {
+    id: `${scope}.RecentDesc`,
+    defaultMessage: `30 July, 2021 | 10:37 PM`,
   },
 });

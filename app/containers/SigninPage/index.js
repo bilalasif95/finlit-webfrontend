@@ -24,11 +24,11 @@ export default function SigninPage() {
       setError('Please enter valid email');
       return;
     } else if (
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-        password,
-      )
+      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(
+        password
+    ) || ( !password.length >=8 && !password.length <=12 )
     ) {
-      setError('Please enter valid password');
+      setError('Password must contains one special character or capital letter and length should be in between 8 to 12 characters.');
       return;
     }
     axios
@@ -51,7 +51,7 @@ export default function SigninPage() {
         <title>- Sign In</title>
         <meta name="description" content="FinLit - Sign in Page" />
       </Helmet>
-      <div className="form_container">
+      <div className="form_container Login-form">
         <div className="form_content">
           <h2>
             <FormattedMessage {...messages.WelcomeBack} />
