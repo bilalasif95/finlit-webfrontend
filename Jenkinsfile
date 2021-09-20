@@ -64,6 +64,9 @@ pipeline {
                         case 'v0.x.x':
                             GLOBAL_ENVIRONMENT = 'development'
                             break
+                        case 'development':
+                            GLOBAL_ENVIRONMENT = 'development'
+                            break
                         case 'testing':
                             GLOBAL_ENVIRONMENT = 'testing'
                             break
@@ -160,8 +163,8 @@ def buildImage(ENVIRONMENT) {
 
   echo 'started building image...'
   echo 'Build ENV ' + ENVIRONMENT
-  sh './jenkins/scripts/docker-build.sh'
-  sh './jenkins/scripts/docker-push.sh'
+  sh './jenkins/docker-build.sh'
+  sh './jenkins/docker-push.sh'
 
 }
 
@@ -170,6 +173,6 @@ def deploy(ENVIRONMENT) {
 
     echo 'started deploying'
 
-    sh './jenkins/scripts/remote-deploy.sh'
+    sh './jenkins/remote-deploy.sh'
 
 }

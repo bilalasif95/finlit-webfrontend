@@ -2,6 +2,15 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   .addcart_detail {
+    .jodit-toolbar__box:not(:empty) {
+      display: none;
+    }
+    .jodit-status-bar {
+      display: none;
+    }
+    .jodit-container:not(.jodit_inline) {
+      border: none;
+    }
     .main_img {
       margin: 0 0 1rem;
       width: 100%;

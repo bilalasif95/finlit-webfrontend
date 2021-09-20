@@ -56,16 +56,18 @@ export default function SignupPage() {
     setError('');
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError('Please enter valid email');
+      return;
     } else if (
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
         password,
       )
     ) {
       setError('Please enter valid password');
+      return;
     }
     if (password !== passwordConfirmation) {
       setError('**Password are not matching');
-      // setDisabled(false);
+      return;
     } else {
       axios
         .post(`${API}api/auth/register`, {
@@ -78,9 +80,9 @@ export default function SignupPage() {
           gender,
           country,
           profession,
-          address
+          address,
         })
-        .then(() => {
+        .then(err => {
           setError(err.response && err.response.data.message);
         })
         .catch(err => {
@@ -158,9 +160,7 @@ export default function SignupPage() {
                       } else {
                         setInstructorDiv(false);
                       }
-
-                    }
-                    }
+                    }}
                     input={<BootstrapInput />}
                     fullWidth
                     MenuProps={{
@@ -204,98 +204,109 @@ export default function SignupPage() {
                 {error && <p className="error">{error}</p>}
               </div>
             </FormGroup>
-            {
-              instructorDiv === true ?
-                <>
-                  <FormGroup>
-                    <FormControl fullWidth>
-                      <Label>
-                        <FormattedMessage {...messages.SelectCountry} />
-                      </Label>
-                      <Select
-                        value={country}
-                        onChange={e => setCountry(e.target.value)}
-                        input={<BootstrapInput />}
-                        fullWidth
-                        MenuProps={{
-                          anchorOrigin: {
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                          },
-                          getContentAnchorEl: null,
-                        }}
-                      >
-                        <MenuItem value='USA'>USA</MenuItem>
-                        <MenuItem value='KSA'>KSA</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </FormGroup>
-                  <FormGroup>
+            {instructorDiv === true ? (
+              <>
+                <FormGroup>
+                  <FormControl fullWidth>
                     <Label>
-                      <FormattedMessage {...messages.Address} />
+                      <FormattedMessage {...messages.SelectCountry} />
                     </Label>
-                    <Input
-                      type="text"
-                      name="address"
-                      id="address"
-                      placeholder="Address"
-                      onChange={(e) => { setAddress(e.target.value) }}
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <FormControl fullWidth>
-                      <Label>
-                        <FormattedMessage {...messages.SelectGender} />
-                      </Label>
-                      <Select
-                        value={gender}
-                        onChange={e => setGender(e.target.value)}
-                        input={<BootstrapInput />}
-                        fullWidth
-                        MenuProps={{
-                          anchorOrigin: {
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                          },
-                          getContentAnchorEl: null,
-                        }}
-                      >
-                        <MenuItem value='Male'>Male</MenuItem>
-                        <MenuItem value='Female'>Female</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </FormGroup>
-                  <FormGroup>
-                    <FormControl fullWidth>
-                      <Label>
-                        <FormattedMessage {...messages.SelectProfession} />
-                      </Label>
-                      <Select
-                        value={profession}
-                        onChange={e => setProfession(e.target.value)}
-                        input={<BootstrapInput />}
-                        fullWidth
-                        MenuProps={{
-                          anchorOrigin: {
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                          },
-                          getContentAnchorEl: null,
-                        }}
-                      >
-                        <MenuItem value='Financial Literacy'>Financial Literacy</MenuItem>
-                        <MenuItem value='Software Developer'>Software Developer</MenuItem>
-                        <MenuItem value='Medical and Health Services'>Medical and Health Services</MenuItem>
-                        <MenuItem value='Statistician'>Statistician</MenuItem>
-                        <MenuItem value='Speech-Language'>Speech-Language</MenuItem>
-                        <MenuItem value='Data Scientist'>Data Scientist</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </FormGroup>
-
-                </> : <></>
-            }
-
+                    <Select
+                      value={country}
+                      onChange={e => setCountry(e.target.value)}
+                      input={<BootstrapInput />}
+                      fullWidth
+                      MenuProps={{
+                        anchorOrigin: {
+                          vertical: 'bottom',
+                          horizontal: 'left',
+                        },
+                        getContentAnchorEl: null,
+                      }}
+                    >
+                      <MenuItem value="USA">USA</MenuItem>
+                      <MenuItem value="KSA">KSA</MenuItem>
+                    </Select>
+                  </FormControl>
+                </FormGroup>
+                <FormGroup>
+                  <Label>
+                    <FormattedMessage {...messages.Address} />
+                  </Label>
+                  <Input
+                    type="text"
+                    name="address"
+                    id="address"
+                    placeholder="Address"
+                    onChange={e => {
+                      setAddress(e.target.value);
+                    }}
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControl fullWidth>
+                    <Label>
+                      <FormattedMessage {...messages.SelectGender} />
+                    </Label>
+                    <Select
+                      value={gender}
+                      onChange={e => setGender(e.target.value)}
+                      input={<BootstrapInput />}
+                      fullWidth
+                      MenuProps={{
+                        anchorOrigin: {
+                          vertical: 'bottom',
+                          horizontal: 'left',
+                        },
+                        getContentAnchorEl: null,
+                      }}
+                    >
+                      <MenuItem value="Male">Male</MenuItem>
+                      <MenuItem value="Female">Female</MenuItem>
+                    </Select>
+                  </FormControl>
+                </FormGroup>
+                <FormGroup>
+                  <FormControl fullWidth>
+                    <Label>
+                      <FormattedMessage {...messages.SelectProfession} />
+                    </Label>
+                    <Select
+                      value={profession}
+                      onChange={e => setProfession(e.target.value)}
+                      input={<BootstrapInput />}
+                      fullWidth
+                      MenuProps={{
+                        anchorOrigin: {
+                          vertical: 'bottom',
+                          horizontal: 'left',
+                        },
+                        getContentAnchorEl: null,
+                      }}
+                    >
+                      <MenuItem value="Financial Literacy">
+                        <FormattedMessage {...messages.FinancialLiteracy} />
+                      </MenuItem>
+                      <MenuItem value="Software Developer">
+                        <FormattedMessage {...messages.SoftwareDeveloper} />
+                      </MenuItem>
+                      <MenuItem value="Medical and Health Services">
+                        <FormattedMessage {...messages.MedicalHealthServices} />
+                        </MenuItem>
+                      <MenuItem value="Statistician">
+                        <FormattedMessage {...messages.Statistician} />
+                      </MenuItem>
+                      <MenuItem value="Speech-Language">
+                        <FormattedMessage {...messages.SpeechLanguage} />
+                      </MenuItem>
+                      <MenuItem value="Data Scientist">
+                        <FormattedMessage {...messages.DataScientist} />
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                </FormGroup>
+              </>
+            ) : null}
             <Button onClick={signup}>
               <FormattedMessage {...messages.SignUp} />
             </Button>

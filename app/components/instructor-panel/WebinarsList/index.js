@@ -14,7 +14,7 @@ import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
 import axios from 'axios';
-import loaderImg from "../../../images/loader.svg";
+import Loader from '../../Loader';
 
 function WebinarsList() {
   const [webinarsList, setwebinarsList] = useState([]),
@@ -50,7 +50,7 @@ function WebinarsList() {
 
   return (
     <Wrapper>
-      {loader ? <img className="loader" src={loaderImg} /> :
+      {loader ? <Loader /> :
         <>
           <div className="courses_list">
             {webinarsList.map(item => (

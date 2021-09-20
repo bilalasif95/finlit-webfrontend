@@ -14,11 +14,11 @@ export default defineMessages({
   },
   AllFields: {
     id: `${scope}.AllFields`,
-    defaultMessage: `All fileds marked with are mandatory`,
+    defaultMessage: `All fields marked with * are mandatory`,
   },
   MainTitle: {
     id: `${scope}.MainTitle`,
-    defaultMessage: `Main Title`,
+    defaultMessage: `Main Title*`,
   },
   SubTitle: {
     id: `${scope}.SubTitle`,
@@ -26,43 +26,11 @@ export default defineMessages({
   },
   UploadImage: {
     id: `${scope}.UploadImage`,
-    defaultMessage: `Upload Image`,
-  },
-  CourseLanguage: {
-    id: `${scope}.CourseLanguage`,
-    defaultMessage: `Course Language`,
-  },
-  Price: {
-    id: `${scope}.Price`,
-    defaultMessage: `Price`,
-  },
-  Category: {
-    id: `${scope}.Category`,
-    defaultMessage: `Category`,
+    defaultMessage: `Upload Image*`,
   },
   Description: {
     id: `${scope}.Description`,
-    defaultMessage: `Description`,
-  },
-  Lecture: {
-    id: `${scope}.Lecture`,
-    defaultMessage: `Lecture`,
-  },
-  LectureTitle: {
-    id: `${scope}.LectureTitle`,
-    defaultMessage: `Lecture Title`,
-  },
-  LectureVideo: {
-    id: `${scope}.LectureVideo`,
-    defaultMessage: `Lecture Video`,
-  },
-  Add: {
-    id: `${scope}.Add`,
-    defaultMessage: `Add`,
-  },
-  Delete: {
-    id: `${scope}.Delete`,
-    defaultMessage: `Delete`,
+    defaultMessage: `Description*`,
   },
   SaveAs: {
     id: `${scope}.SaveAs`,

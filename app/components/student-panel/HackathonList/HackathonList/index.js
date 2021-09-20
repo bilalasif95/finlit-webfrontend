@@ -1,57 +1,55 @@
 /*
  * Hackathon List Component
  */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col, Button } from 'reactstrap';
 import { BiCalendar } from 'react-icons/bi';
 import { HiUsers } from 'react-icons/hi';
 import { AiOutlineHeart } from 'react-icons/ai';
+import axios from 'axios';
+import history from 'utils/history';
 // import { AiFillHeart } from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
+import {axiosHeader} from "../../../../utils/axiosHeader"
+import { redirectToLogin } from "../../../../utils/redirectToLogin"
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
-import axios from 'axios';
-import loaderImg from "../../../../images/loader.svg";
+import Loader from '../../../Loader';
 
 function HackathonList() {
   const [hackathonList, sethackathonList] = useState([]),
-    [loader, setLoader] = useState(false)
+    [loader, setLoader] = useState(false);
   useEffect(() => {
-    getHackathonLists()
+    getHackathonLists();
+  }, []);
+
+  useEffect(() => {
+    redirectToLogin()
   }, [])
 
   const getHackathonLists = () => {
-    setLoader(true)
-    const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer${token}`,
-      }
-      : {};
+    setLoader(true);
     axios
-      .get(`${API}api/events/getEventsByTypes?type=Hackathon`, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          ...authHeaders,
-        },
-      })
-      .then((res) => {
-        sethackathonList(res && res.data && res.data.data)
+      .get(`${API}api/events/getEventsByTypes?type=Hackathon`, axiosHeader)
+      .then(res => {
+        sethackathonList(res && res.data && res.data.data);
         setLoader(false);
       })
       .catch(() => {
         setLoader(false);
       });
-  }
+  };
 
+  const handleHackathonDetails = id => {
+    history.push('/hackathon_details/' + id);
+  };
   return (
     <Wrapper id="list">
-      {loader ? <img className="loader" src={loaderImg} /> :
-
-
+      {loader ? (
+        <Loader />
+      ) : (
         <div className="courses">
           <Row>
             <Col lg={12}>
@@ -60,7 +58,11 @@ function HackathonList() {
               </h4>
               <div className="courses_list">
                 {hackathonList.map(item => (
-                  <div className="single_course" key={item.data.id}>
+                  <div
+                    className="single_course"
+                    key={item.id}
+                    onClick={() => handleHackathonDetails(item.id)}
+                  >
                     <div className="course_img">
                       <img src={item.eventImage} alt="Course" />
                     </div>
@@ -86,7 +88,6 @@ function HackathonList() {
                             {20}
                             &nbsp;
                             <FormattedMessage {...messages.Attendees} />
-
                           </div>
                         </div>
                         <div className="like_enroll">
@@ -105,7 +106,9 @@ function HackathonList() {
               </div>
             </Col>
           </Row>
-        </div>}
+        </div>
+      )
+      }
     </Wrapper>
   );
 }

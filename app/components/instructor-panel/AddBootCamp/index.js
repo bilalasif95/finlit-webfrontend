@@ -1,12 +1,22 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef ,useEffect} from 'react';
 import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
+import {
+  Row,
+  Col,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Button,
+} from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../config/config';
+import { redirectToLogin } from "../../../utils/redirectToLogin"
+
 
 function AddBootCamp() {
   const editor = useRef(null);
@@ -18,6 +28,10 @@ function AddBootCamp() {
     readonly: false,
   };
 
+  useEffect(() => {
+    redirectToLogin()
+  }, [])
+  
   const [bootCampStatus, setbootCampStatus] = useState({
     mainTitle: '',
     subTitle: '',
@@ -58,9 +72,7 @@ function AddBootCamp() {
     } else {
       setLoader(true);
       const token = localStorage.getItem('token');
-      const authHeaders = token ? {
-        Authorization: `Bearer ${token}`,
-      } : {};
+      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
       const {
         mainTitle,
         subTitle,
@@ -162,9 +174,20 @@ function AddBootCamp() {
                   value={bootCampStatus.mainTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.mainTitle ? errors.mainTitle : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.mainTitle ? (
+                    <p className="error"> {errors.mainTitle} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
+                {/* <FormText color="danger">
+                  {errors.mainTitle ? (
+                    <p className="error"> {errors.mainTitle} </p>
+                  ) : (
+                    ''
+                  )}
+                </div> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -180,9 +203,13 @@ function AddBootCamp() {
                   value={bootCampStatus.subTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.subTitle ? errors.subTitle : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.subTitle ? (
+                    <p className="error"> {errors.subTitle} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -212,9 +239,13 @@ function AddBootCamp() {
                     </div>
                   </div>
                 </div>
-                <Label for="maintitle">
-                  {errors.image ? errors.image : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.image ? (
+                    <p className="error"> {errors.image} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -230,9 +261,13 @@ function AddBootCamp() {
                   value={bootCampStatus.startDate}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.startDate ? errors.startDate : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.startDate ? (
+                    <p className="error"> {errors.startDate} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -248,9 +283,13 @@ function AddBootCamp() {
                   value={bootCampStatus.endDate}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.endDate ? errors.endDate : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.endDate ? (
+                    <p className="error"> {errors.endDate} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -266,9 +305,13 @@ function AddBootCamp() {
                   value={bootCampStatus.startTime}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.startTime ? errors.startTime : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.startTime ? (
+                    <p className="error"> {errors.startTime} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -284,9 +327,13 @@ function AddBootCamp() {
                   value={bootCampStatus.endTime}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.endTime ? errors.endTime : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.endTime ? (
+                    <p className="error"> {errors.endTime} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -302,9 +349,13 @@ function AddBootCamp() {
                   value={bootCampStatus.price}
                   onChange={e => handleChangeEvent(e)}
                 />
-                <Label for="maintitle">
-                  {errors.price ? errors.price : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.price ? (
+                    <p className="error"> {errors.price} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
             <Col lg={12} md={12} sm={12} xs={12}>
@@ -319,9 +370,13 @@ function AddBootCamp() {
                   tabIndex={0} // tabIndex of textarea
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                 />
-                <Label for="maintitle">
-                  {errors.description ? errors.description : ''}
-                </Label>
+                <FormText color="danger">
+                  {errors.description ? (
+                    <p className="error"> {errors.description} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormGroup>
             </Col>
           </Row>

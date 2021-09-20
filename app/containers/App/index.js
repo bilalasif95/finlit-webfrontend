@@ -9,7 +9,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Router } from 'react-router-dom';
+import history from 'utils/history';
 
 // Student Panel Panel pages routes
 
@@ -48,7 +49,7 @@ import EmailVerificationPage from 'containers/EmailVerification/Loadable';
 import ForgotPasswordPage from 'containers/ForgotPasswordPage/Loadable';
 import CreateNewPasswordPage from 'containers/CreateNewPasswordPage/Loadable';
 import Header from 'components/student-panel/Header';
-// import InstructorHeader from 'components/instructor-panel/Header';
+import InstructorHeader from 'components/instructor-panel/Header';
 import Footer from 'components/student-panel/Footer';
 
 import GlobalStyle from '../../global-styles';
@@ -61,33 +62,41 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-export default function App() {
+export default function App(props) {
+
+  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  console.log("userInfoooo", userInfo, "history", history)
   return (
     <AppWrapper>
+
       <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
         <meta name="description" content="FinLit" />
       </Helmet>
-      {window.location.pathname === '/signup' ? null : <Header />}
+      {window.location.pathname === '/signup' || window.location.pathname === "/login" ||
 
-      {/* <InstructorHeader /> */}
+        window.location.pathname === "/email_verification" ||
+        window.location.pathname === "/create_new_password"
+
+        ? null : userInfo && userInfo.roles[0].roleName == "Super Admin" ? <InstructorHeader /> : <Header />}
+
       <Switch>
-        <Route exact path="/" component={HomePage} />
+
         <Route path="/features" component={FeaturePage} />
         <Route path="/course_list" component={AccreditedEducationListPage} />
-        <Route path="/live_webinars_list" component={LiveWebinarsList} />
+        <Route path="/webinar_list" component={LiveWebinarsList} />
         <Route path="/bootcamp_list" component={BootCampList} />
         <Route path="/hackathon_list" component={HackathonList} />
         <Route path="/article_list" component={ArticleList} />
         <Route path="/live_session_list" component={LiveSessionList} />
         <Route path="/article_details" component={ArticleDetails} />
-        <Route path="/cart_checkout" component={CartCheckout} />
-        <Route path="/addcart_hackathon" component={AddCartHackathon} />
-        <Route path="/addcart_webinar" component={AddCartWebinar} />
-        <Route path="/addcart_bootcamp" component={AddCartBootcamp} />
+        <Route path="/cart" component={CartCheckout} />
+        <Route path="/hackathon_details/:id" component={AddCartHackathon} />
+        <Route path="/webinar_details/:id" component={AddCartWebinar} />
+        <Route path="/bootcamp_details/:id" component={AddCartBootcamp} />
 
         {/* Instructor Panel pages routes */}
-        <Route path="/dashboard" component={Home} />
-        <Route path="/add_webinar" component={AddWebinarPage} />
+        {userInfo && userInfo.roles[0].roleName == "Super Admin" ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={HomePage} />}
+        <Route exact path="/add_webinar" component={AddWebinarPage} />
         <Route path="/add_hackathon" component={AddHackathonPage} />
         <Route path="/add_bootcamp" component={AddBootCampPage} />
         <Route path="/add_course" component={AddCoursesPage} />
@@ -105,8 +114,13 @@ export default function App() {
         <Route path="/create_new_password" component={CreateNewPasswordPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      {window.location.pathname === '/signup' ? null : <Footer />}
+      {window.location.pathname === '/signup' || window.location.pathname === "/login" ||
+        window.location.pathname === "/email_verification" ||
+        window.location.pathname === "/create_new_password"
+
+        ? null : <Footer />}
       <GlobalStyle />
+
     </AppWrapper>
   );
 }

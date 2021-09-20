@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  .courses_list {
-    min-height: 500px;
-  }
   .single_course {
     display: flex;
     justify-content: space-between;

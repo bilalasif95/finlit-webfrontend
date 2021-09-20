@@ -1,28 +1,26 @@
 /*
  * Webinars List Component
  */
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Button } from 'reactstrap';
 import { BiTimeFive } from 'react-icons/bi';
 import { HiUsers } from 'react-icons/hi';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { GrFormEdit } from 'react-icons/gr';
+import axios from 'axios';
 // import { Link } from 'react-router-dom';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
-import axios from 'axios';
-import loaderImg from "../../../images/loader.svg";
+import Loader from '../../Loader';
 
 function HackathonList() {
-
   const [hackathonList, sethackathonList] = useState([]),
-    [loader, setLoader] = useState(false)
+    [loader, setLoader] = useState(false);
   useEffect(() => {
     getHackathonLists()
-  }, [])
-
+  }, []);
   const getHackathonLists = () => {
     setLoader(true)
     const token = localStorage.getItem('token');
@@ -39,18 +37,19 @@ function HackathonList() {
           ...authHeaders,
         },
       })
-      .then((res) => {
+      .then(res => {
         sethackathonList(res && res.data && res.data.data)
         setLoader(false);
       })
       .catch(() => {
         setLoader(false);
       });
-  }
+  };
   return (
     <Wrapper>
-      {loader ? <img className="loader" src={loaderImg} /> :
-
+      {loader ? (
+        <Loader />
+      ) :
         <>
           <div className="courses_list">
             {hackathonList.map(item => (

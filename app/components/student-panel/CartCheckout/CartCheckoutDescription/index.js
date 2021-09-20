@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { BiSearchAlt2 } from 'react-icons/bi';
 import { IoMdCart } from 'react-icons/io';
 import { AiOutlineDelete } from 'react-icons/ai';
 // import { AiFillHeart } from 'react-icons/ai';
@@ -13,73 +12,24 @@ import messages from './messages';
 import Wrapper from './Wrapper';
 import reg from '../../../../images/reg.png';
 
-function CartCheckoutDescription() {
-  const CoursesList = [
-    {
-      id: 0,
-      img: reg,
-      alt: 'Courses',
-      title: <FormattedMessage {...messages.Title} />,
-      desc: <FormattedMessage {...messages.ShortDesc} />,
-      providedby: <FormattedMessage {...messages.ProvidedBy} />,
-      providername: <FormattedMessage {...messages.ProviderName} />,
-      price: <FormattedMessage {...messages.Price} />,
-    },
-    {
-      id: 1,
-      img: reg,
-      alt: 'Courses',
-      title: <FormattedMessage {...messages.Title} />,
-      desc: <FormattedMessage {...messages.ShortDesc} />,
-      providedby: <FormattedMessage {...messages.ProvidedBy} />,
-      providername: <FormattedMessage {...messages.ProviderName} />,
-      price: <FormattedMessage {...messages.Price} />,
-    },
-    {
-      id: 2,
-      img: reg,
-      alt: 'Courses',
-      title: <FormattedMessage {...messages.Title} />,
-      desc: <FormattedMessage {...messages.ShortDesc} />,
-      providedby: <FormattedMessage {...messages.ProvidedBy} />,
-      providername: <FormattedMessage {...messages.ProviderName} />,
-      price: <FormattedMessage {...messages.Price} />,
-    },
-    {
-      id: 3,
-      img: reg,
-      alt: 'Courses',
-      title: <FormattedMessage {...messages.Title} />,
-      desc: <FormattedMessage {...messages.ShortDesc} />,
-      providedby: <FormattedMessage {...messages.ProvidedBy} />,
-      providername: <FormattedMessage {...messages.ProviderName} />,
-      price: <FormattedMessage {...messages.Price} />,
-    },
-    {
-      id: 4,
-      img: reg,
-      alt: 'Courses',
-      title: <FormattedMessage {...messages.Title} />,
-      desc: <FormattedMessage {...messages.ShortDesc} />,
-      providedby: <FormattedMessage {...messages.ProvidedBy} />,
-      providername: <FormattedMessage {...messages.ProviderName} />,
-      price: <FormattedMessage {...messages.Price} />,
-    },
-  ];
+function CartCheckoutDescription(props) {
+ 
+  console.log("detailsCart",props.details)
+
   return (
     <Wrapper id="list">
       <div className="cart_checkout">
         <div className="header">
-          <InputGroup>
+          {/* <InputGroup>
             <Input type="text" name="search" id="seach" placeholder="Search" />
             <Button>
               <BiSearchAlt2 />
             </Button>
-          </InputGroup>
+          </InputGroup> */}
           <div className="cart">
             <div className="num_cont">
               <IoMdCart />
-              <span className="no_item">20</span>
+              <span className="no_item">{props.details &&  props.details.items && props.details.items.length}</span>
             </div>
           </div>
         </div>
@@ -99,25 +49,25 @@ function CartCheckoutDescription() {
               </tr>
             </thead>
             <tbody>
-              {CoursesList.map(item => (
+              {props.details &&  props.details.items && props.details.items.length> 0 && props.details.items.map(item => (
                 <tr key={item.id}>
                   <td>
                     <div className="detail">
                       <div className="icon">
-                        <img src={item.img} alt="Icon" />
+                        <img src={item.product.eventImage} alt="Icon" />
                       </div>
                       <div className="desc">
-                        <div className="title">{item.title}</div>
-                        <p>{item.desc}</p>
+                        <div className="title">{item.product.data.mainTitle}</div>
+                        <p>{item.product.data.subTitle}</p>
                         <div className="provider">
-                          {item.providedby} {item.providername}
+                          {/* {item.providedby} {item.product.data.creator} */}
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>$150.00</td>
+                  <td>${item.product.data.price}</td>
                   <td>
-                    <Button>
+                    <Button onClick={()=>props.RemoveFromCart(item.cartItemId)}>
                       <AiOutlineDelete />
                     </Button>
                   </td>
@@ -129,7 +79,7 @@ function CartCheckoutDescription() {
         <div className="footer">
           <div className="sub_total">
             <p>
-              <FormattedMessage {...messages.Subtotal} /> $4230
+              <FormattedMessage {...messages.Subtotal} /> ${props.details.total}
             </p>
           </div>
         </div>

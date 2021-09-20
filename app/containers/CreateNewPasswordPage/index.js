@@ -5,9 +5,9 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
-import messages from './messages';
-import * as qs from 'query-string';
 import axios from 'axios';
+import * as qs from 'query-string';
+import messages from './messages';
 import { API } from '../../config/config';
 
 export default function CreateNewPasswordPage() {
@@ -22,7 +22,9 @@ export default function CreateNewPasswordPage() {
       return;
     }
     if (!/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password)) {
-      setError('Weak Password . It must contain at least one special character , one number and one capital alphabet');
+      setError(
+        'Weak Password . It must contain at least one special character , one number and one capital alphabet',
+      );
       return;
     }
     if (confirmPassword === '') {
@@ -41,13 +43,16 @@ export default function CreateNewPasswordPage() {
       }
       : {};
     axios
-      .post(`${API}api/auth/forgotConfirmPassword`, { password, confirmPassword }, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          ...authHeaders,
-        },
-      })
+      .post
+      (`${API}api/auth/forgotConfirmPassword`,
+        { password, confirmPassword },
+        {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        })
       .then(res => {
         console.log(res);
         setTimeout(() => {
@@ -58,9 +63,7 @@ export default function CreateNewPasswordPage() {
       .catch(err => {
         setError(err.response && err.response.data.message);
       });
-  }
-
-
+  };
   return (
     <div className="registration_page">
       <Helmet>
@@ -82,7 +85,9 @@ export default function CreateNewPasswordPage() {
                 name="newpassword"
                 id="password"
                 placeholder="New password"
-                onChange={(e) => { setPassword(e.target.value) }}
+                onChange={e => {
+                  setPassword(e.target.value);
+                }}
               />
             </FormGroup>
             <FormGroup>
@@ -94,11 +99,17 @@ export default function CreateNewPasswordPage() {
                 name="confirmpassword"
                 id="password"
                 placeholder="Confirm password"
-                onChange={(e) => { setConfirmPassword(e.target.value) }}
+                onChange={e => {
+                  setConfirmPassword(e.target.value);
+                }}
               />
             </FormGroup>
-            <p style={{color: 'red'}}>{error}</p>
-            <Button onClick={() => { ChangePasswordBtn() }}>
+            <p style={{ color: 'red' }}>{error}</p>
+            <Button
+              onClick={() => {
+                ChangePasswordBtn();
+              }}
+            >
               <FormattedMessage {...messages.ResetPassword} />
             </Button>
           </div>

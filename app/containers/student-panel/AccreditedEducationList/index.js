@@ -1,5 +1,5 @@
 /*
- * Accredited Education List Page
+ * Courses List Page
  */
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -11,8 +11,8 @@ export default function AccreditedEducationListPage() {
   return (
     <div className="sub_pages">
       <Helmet>
-        <title>Accredited Education List</title>
-        <meta name="description" content="Accredited Education List" />
+        <title>Courses List</title>
+        <meta name="description" content="Courses List" />
       </Helmet>
       <Container fluid="xl">
         <CoursesFilters />

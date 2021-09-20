@@ -47,38 +47,6 @@ function MainServices() {
       desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,
       redirectLink: '/',
     },
-    {
-      id: 0,
-      icon: education,
-      alt: 'Accredited Education',
-      title: <FormattedMessage {...messages.AccreditedEducation} />,
-      desc: <FormattedMessage {...messages.AccreditedEducationDesc} />,
-      redirectLink: 'course_list',
-    },
-    {
-      id: 1,
-      icon: livewebinar,
-      alt: 'Live Webinars',
-      title: <FormattedMessage {...messages.LiveWebinars} />,
-      desc: <FormattedMessage {...messages.LiveWebinarsDesc} />,
-      redirectLink: 'webinar_list',
-    },
-    {
-      id: 2,
-      icon: goaledu,
-      alt: 'Goal Based Education',
-      title: <FormattedMessage {...messages.GoalBasedEducation} />,
-      desc: <FormattedMessage {...messages.GoalBasedEducationDesc} />,
-      redirectLink: '/',
-    },
-    {
-      id: 3,
-      icon: gift,
-      alt: 'Free Gifts &amp; Rewards',
-      title: <FormattedMessage {...messages.FreeGiftsRewards} />,
-      desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,
-      redirectLink: '/',
-    },
   ];
   const settings = {
     autoplay: true,

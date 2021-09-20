@@ -1,7 +1,15 @@
 import React, { useState, useRef } from 'react';
 import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
+import {
+  Row,
+  Col,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Button,
+} from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
 import Wrapper from './Wrapper';
 import messages from './messages';
@@ -32,6 +40,9 @@ function AddCourse() {
                   id="maintitle"
                   placeholder="Course title"
                 />
+                {/* <FormText color="danger">
+                  <p className="error"> Error message</p>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -45,6 +56,9 @@ function AddCourse() {
                   id="subtitle"
                   placeholder="Sub title"
                 />
+                {/* <FormText color="danger">
+                  <p className="error"> Error message</p>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -68,6 +82,9 @@ function AddCourse() {
                     </div>
                   </div>
                 </div>
+                {/* <FormText color="danger">
+                  <p className="error"> Error message</p>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -81,6 +98,9 @@ function AddCourse() {
                   id="courselanguage"
                   placeholder="Course Language"
                 />
+                {/* <FormText color="danger">
+                  <p className="error"> Error message</p>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -94,6 +114,9 @@ function AddCourse() {
                   id="price"
                   placeholder="CoursePrice"
                 />
+                {/* <FormText color="danger">
+                  <p className="error"> Error message</p>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -107,6 +130,9 @@ function AddCourse() {
                   id="category"
                   placeholder="Category"
                 />
+                {/* <FormText color="danger">
+                  <p className="error"> Error message</p>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={12} md={12} sm={12} xs={12}>
@@ -121,6 +147,9 @@ function AddCourse() {
                   tabIndex={0} // tabIndex of textarea
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                 />
+                {/* <FormText color="danger">
+                  <p className="error"> Error message</p>
+                </FormText> */}
               </FormGroup>
             </Col>
           </Row>
@@ -146,6 +175,9 @@ function AddCourse() {
                   id="lec_title"
                   placeholder="Lecture title"
                 />
+                {/* <FormText color="danger">
+                  <p className="error"> Error message</p>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -159,6 +191,9 @@ function AddCourse() {
                   id="sub_title"
                   placeholder="Sub title"
                 />
+                {/* <FormText color="danger">
+                  <p className="error"> Error message</p>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -182,6 +217,9 @@ function AddCourse() {
                     </div>
                   </div>
                 </div>
+                {/* <FormText color="danger">
+                  <p className="error"> Error message</p>
+                </FormText> */}
               </FormGroup>
             </Col>
             <Col lg={12} md={12} sm={12} xs={12}>

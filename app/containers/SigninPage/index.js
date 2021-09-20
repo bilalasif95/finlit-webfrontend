@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
+import history from 'utils/history';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import messages from './messages';
@@ -15,23 +16,27 @@ export default function SigninPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
   const login = () => {
     setError('');
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError('Please enter valid email');
+      return;
     } else if (
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
         password,
       )
     ) {
       setError('Please enter valid password');
+      return;
     }
     axios
       .post(`${API}api/auth/login`, { email, password })
       .then(res => {
         localStorage.setItem('token', res.data.accessToken);
-        window.location.href = '/';
+        localStorage.setItem('userInfo', JSON.stringify(res.data.user && res.data.user));
+        setTimeout(()=>{
+          history.push('/')
+        },1000)
       })
       .catch(err => {
         setError(err.response && err.response.data.message);

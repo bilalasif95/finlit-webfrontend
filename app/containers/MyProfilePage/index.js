@@ -2,7 +2,7 @@
  * My Profile Page
  *
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import {
@@ -26,10 +26,11 @@ import { BsPencil } from 'react-icons/bs';
 import { FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
 import QRCode from 'qrcode.react';
+import { FiCamera } from 'react-icons/fi';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import Img from '../../components/Img';
-import Profile from '../../images/profile.jpg';
+// import Profile from '../../images/profile.jpg';
 import GooglePlay from '../../images/GooglePlay.png';
 import AppStore from '../../images/AppStore.png';
 import { API } from '../../config/config';
@@ -48,6 +49,25 @@ export default function MyProfilePage() {
   const [errors, setErrors] = useState({});
   const [QrUri, setQrUri] = useState('');
   const [twoFaCode, setTwoFaCode] = useState('');
+  const [profileUpdate, setProfileUpdate] = useState({
+    firstName: '',
+    lastName: '',
+    profession: '',
+    image: '',
+    gender: '',
+    email: '',
+    country: '',
+    address: '',
+    aboutMe: '',
+  });
+  const [currentProfile, setCurrentProfile] = useState({
+    firstName: '',
+    lastName: '',
+    profession: '',
+    image: '',
+    email: '',
+    description: '',
+  });
 
   const handleChange = () => {
     setModalSV(!modalSV);
@@ -101,9 +121,20 @@ export default function MyProfilePage() {
         [event.target.name]: event.target.value,
       });
     }
-    if (event.target.type === 'text') {
+    if (event.target.type === 'file') {
+      setProfileUpdate({
+        ...profileUpdate,
+        [event.target.name]: event.target.files[0],
+      });
+    }
+    if (event.target.type === 'text' || event.target.type === 'textarea') {
       if (event.target.name === 'authcode') {
         setTwoFaCode(event.target.value);
+      } else {
+        setProfileUpdate({
+          ...profileUpdate,
+          [event.target.name]: event.target.value,
+        });
       }
     }
   };
@@ -116,11 +147,7 @@ export default function MyProfilePage() {
       }, 4000);
     } else {
       const token = localStorage.getItem('token');
-      const authHeaders = token
-        ? {
-          Authorization: `Bearer ${token}`,
-        }
-        : {};
+      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
       const { currentPassword, newPassword } = changePassword;
       const postData = {
         currentPassword,
@@ -150,11 +177,7 @@ export default function MyProfilePage() {
   };
   const getQrCodeUri = () => {
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer ${token}`,
-      }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .post(
         `${API}api/user/getToTpURI`,
@@ -178,11 +201,7 @@ export default function MyProfilePage() {
   };
   const verifyTwoFaCode = () => {
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer ${token}`,
-      }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .post(
         `${API}api/user/toggleTwoFA`,
@@ -223,6 +242,96 @@ export default function MyProfilePage() {
     }
     return error;
   };
+
+  const handleUpdateProfileSave = () => {
+    if (Object.keys(updateProfileValidator(profileUpdate)).length > 0) {
+      setErrors(updateProfileValidator(profileUpdate));
+      setTimeout(() => {
+        setErrors({});
+      }, 4000);
+    } else {
+      const token = localStorage.getItem('token');
+      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+      const bodyFormData = new FormData();
+      bodyFormData.append('firstName', profileUpdate.firstName);
+      bodyFormData.append('lastName', profileUpdate.lastName);
+      bodyFormData.append('profileImage', profileUpdate.image);
+      bodyFormData.append('gender', profileUpdate.gender);
+      bodyFormData.append('description', profileUpdate.aboutMe);
+      bodyFormData.append('profession', profileUpdate.profession);
+      bodyFormData.append('country', profileUpdate.country);
+      bodyFormData.append('address', profileUpdate.address);
+      axios
+        .put(`${API}api/user`, bodyFormData, {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        })
+        .then(() => {
+          setProfileUpdate({
+            firstName: '',
+            lastName: '',
+            profession: '',
+            image: {},
+            gender: '',
+            email: '',
+            country: '',
+            address: '',
+            aboutMe: '',
+          });
+          getCurrentUser();
+        })
+        .catch(err => {
+          setErrors(err.response && err.response.data.message);
+        });
+    }
+  };
+  const getCurrentUser = () => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+    axios
+      .get(`${API}api/user/${userId}`, {
+        headers: {
+          Accept: 'application/json',
+          ...authHeaders,
+        },
+      })
+      .then(res => {
+        setCurrentProfile({
+          ...currentProfile,
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
+          profession: res.data.profession,
+          email: res.data.email,
+          image: res.data.image,
+          description: res.data.description,
+        });
+      })
+      .catch(err => {
+        setErrors(err);
+      });
+  };
+  const updateProfileValidator = values => {
+    const error = {};
+    if (!values.firstName) {
+      error.firstName = 'First Name Is required';
+    } else if (!values.lastName) {
+      error.lastName = 'Last Name Is required';
+    } else if (!values.gender) {
+      error.gender = 'Gender is Required';
+    } else if (!values.image) {
+      error.image = 'Profile Image is Required';
+    } else if (!values.aboutMe) {
+      error.aboutMe = 'About me description is required';
+    }
+    return error;
+  };
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
   return (
     <div className="sub_page">
       <Helmet>
@@ -238,21 +347,19 @@ export default function MyProfilePage() {
                   <FormattedMessage {...messages.MyProfile} />
                 </h4>
                 <div className="pro_img">
-                  <Img src={Profile} alt="Profile" />
+                  <Img src={currentProfile.image} alt="ProfileImage" />
                 </div>
-                <h4>Li Jordan</h4>
-                <p className="user_type">
-                  <FormattedMessage {...messages.UserType} />
-                </p>
+                <h4>
+                  {currentProfile.firstName} {currentProfile.lastName}
+                </h4>
+                <p className="user_type"> {currentProfile.profession}</p>
                 <h4>
                   <FormattedMessage {...messages.MyBiography} />
                 </h4>
-                <p>
-                  <FormattedMessage {...messages.MyBio} />
-                </p>
-                <Button>
+                <p> {currentProfile.description} </p>
+                {/* <Button>
                   <FormattedMessage {...messages.EditProfile} />
-                </Button>
+                </Button> */}
               </div>
             </Col>
             <Col lg={8} md={8} sm={12} xs={12}>
@@ -268,10 +375,19 @@ export default function MyProfilePage() {
                       </Label>
                       <Input
                         type="text"
-                        name="fname"
+                        name="firstName"
                         id="fname"
                         placeholder="Enter first name"
+                        value={profileUpdate.firstName}
+                        onChange={e => handleChangeEvent(e)}
                       />
+                      <Label for="fname">
+                        {errors.firstName ? (
+                          <p className="error">{errors.firstName}</p>
+                        ) : (
+                          ''
+                        )}
+                      </Label>
                     </FormGroup>
                   </Col>
                   <Col lg={6} md={6} sm={6} xs={12}>
@@ -281,22 +397,55 @@ export default function MyProfilePage() {
                       </Label>
                       <Input
                         type="text"
-                        name="lname"
+                        name="lastName"
                         id="lname"
                         placeholder="Enter last name"
+                        value={profileUpdate.lastName}
+                        onChange={e => handleChangeEvent(e)}
                       />
+                      <Label for="lname">
+                        {errors.lastName ? (
+                          <p className="error">{errors.lastName}</p>
+                        ) : (
+                          ''
+                        )}
+                      </Label>
                     </FormGroup>
                   </Col>
                   <Col lg={6} md={6} sm={6} xs={12}>
                     <FormGroup>
-                      <Label for="title">
-                        <FormattedMessage {...messages.Title} />
+                      <Label for="gender">
+                        <FormattedMessage {...messages.Gender} />
                       </Label>
                       <Input
                         type="text"
-                        name="title"
-                        id="title"
-                        placeholder="Enter title"
+                        name="gender"
+                        id="gender"
+                        placeholder="Enter Gender"
+                        value={profileUpdate.gender}
+                        onChange={e => handleChangeEvent(e)}
+                      />
+                      <Label for="gender">
+                        {errors.gender ? (
+                          <p className="error">{errors.gender}</p>
+                        ) : (
+                          ''
+                        )}
+                      </Label>
+                    </FormGroup>
+                  </Col>
+                  <Col lg={6} md={6} sm={6} xs={12}>
+                    <FormGroup>
+                      <Label for="profession">
+                        <FormattedMessage {...messages.Profession} />
+                      </Label>
+                      <Input
+                        type="text"
+                        name="profession"
+                        id="profession"
+                        placeholder="Enter profession"
+                        value={profileUpdate.profession}
+                        onChange={e => handleChangeEvent(e)}
                       />
                     </FormGroup>
                   </Col>
@@ -310,7 +459,74 @@ export default function MyProfilePage() {
                         name="email"
                         id="email"
                         placeholder="Enter email"
+                        value={currentProfile.email}
+                        readOnly="readOnly"
                       />
+                    </FormGroup>
+                  </Col>
+                  <Col lg={6} md={6} sm={6} xs={12}>
+                    <FormGroup>
+                      <Label for="country">
+                        <FormattedMessage {...messages.Country} />
+                      </Label>
+                      <Input
+                        type="country"
+                        name="country"
+                        id="country"
+                        placeholder="Enter Country"
+                        value={profileUpdate.country}
+                        onChange={e => handleChangeEvent(e)}
+                      />
+                    </FormGroup>
+                  </Col>
+                  <Col lg={6} md={6} sm={6} xs={12}>
+                    <FormGroup>
+                      <Label for="address">
+                        <FormattedMessage {...messages.Address} />
+                      </Label>
+                      <Input
+                        type="address"
+                        name="address"
+                        id="address"
+                        placeholder="Enter address"
+                        value={profileUpdate.address}
+                        onChange={e => handleChangeEvent(e)}
+                      />
+                    </FormGroup>
+                  </Col>
+                  <Col lg={6} md={6} sm={6} xs={12}>
+                    <FormGroup>
+                      <Label for="uploadimage">
+                        <FormattedMessage {...messages.ProfileImage} />
+                      </Label>
+                      <div className="camera">
+                        <div className="form-control">
+                          <p>
+                            {profileUpdate.image.name
+                              ? profileUpdate.image.name
+                              : 'Upload Profile Image'}
+                          </p>
+                          <div className="input--file">
+                            <span>
+                              <FiCamera />
+                            </span>
+                            <input
+                              type="file"
+                              name="image"
+                              id="uploadimage"
+                              placeholder="Upload Profile Image"
+                              onChange={e => handleChangeEvent(e)}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <Label for="uploadimage">
+                        {errors.image ? (
+                          <p className="error">{errors.image} </p>
+                        ) : (
+                          ''
+                        )}
+                      </Label>
                     </FormGroup>
                   </Col>
                   <Col lg={6} md={6} sm={6} xs={12}>
@@ -364,10 +580,19 @@ export default function MyProfilePage() {
                       </Label>
                       <Input
                         type="textarea"
-                        name="aboutme"
+                        name="aboutMe"
                         id="aboutme"
-                        placeholder="Enter"
+                        placeholder="Enter description about yourself"
+                        value={profileUpdate.aboutMe}
+                        onChange={e => handleChangeEvent(e)}
                       />
+                      <Label for="aboutMe">
+                        {errors.aboutMe ? (
+                          <p className="error">{errors.aboutMe}</p>
+                        ) : (
+                          ''
+                        )}
+                      </Label>
                     </FormGroup>
                   </Col>
                 </Row>
@@ -376,7 +601,10 @@ export default function MyProfilePage() {
                     <Button className="btn_save">
                       <FormattedMessage {...messages.Cancel} />
                     </Button>
-                    <Button className="btn_submit">
+                    <Button
+                      className="btn_submit"
+                      onClick={handleUpdateProfileSave}
+                    >
                       <FormattedMessage {...messages.Save} />
                     </Button>
                   </div>
@@ -552,7 +780,7 @@ export default function MyProfilePage() {
                 name="authcode"
                 id="authcode"
                 placeholder="Enter code"
-                onChange={handleChangeEvent}
+                onChange={e => handleChangeEvent(e)}
               />
               <FormText color="muted">
                 Enter the 6 digit code visible on your google authenticator app
