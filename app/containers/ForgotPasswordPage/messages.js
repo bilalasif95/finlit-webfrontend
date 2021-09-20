@@ -18,6 +18,6 @@ export default defineMessages({
   },
   SendRecoveryCode: {
     id: `${scope}.SendRecoveryCode`,
-    defaultMessage: `Send Recovery Code`,
+    defaultMessage: `Send Recovery Link`,
   },
 });
