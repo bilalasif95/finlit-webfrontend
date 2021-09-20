@@ -14,6 +14,7 @@ import { API } from '../../config/config';
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const [btnClick, setBtnClick] = useState(false);
 
   const forgotPasswordBtn = () => {
     setError('');
@@ -25,13 +26,20 @@ export default function ForgotPasswordPage() {
       setError('Please enter valid email');
       return;
     }
+    setBtnClick(true);
     axios
       .get(`${API}api/auth/forgotPassword?email=${email}`)
       .then(result => {
         toast.success(result.data && result.data.message ? result.data.message : 'Message Not Readable');
+        setTimeout(() => {
+          setBtnClick(false);
+        }, 5000);
       })
       .catch(err => {
         toast.error(err.response && err.response.data.message ? err.response.data.message.toString() : 'Message Not Readable')
+        setTimeout(() => {
+          setBtnClick(false);
+        }, 5000);
       });
   };
   return (
@@ -68,6 +76,7 @@ export default function ForgotPasswordPage() {
               onClick={() => {
                 forgotPasswordBtn();
               }}
+              disabled={btnClick}
             >
               <FormattedMessage {...messages.SendRecoveryCode} />
             </Button>

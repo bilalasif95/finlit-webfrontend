@@ -68,6 +68,9 @@ export default function SignupPage() {
       setError(
         'Password must contains one special character or capital letter and length should be in between 8 to 12 characters.',
       );
+      setTimeout(() => {
+        setError('');
+      }, 4000);
       return;
     }
     if (password !== passwordConfirmation) {
@@ -88,20 +91,24 @@ export default function SignupPage() {
           address,
         })
         .then(result => {
-          setBtnClick(false);
           toast.success(
             result.data && result.data.message
               ? result.data.message
               : 'Message Not Readable',
           );
+          setTimeout(() => {
+            setBtnClick(false);
+          }, 5000);
         })
         .catch(err => {
-          setBtnClick(false);
           toast.error(
             err.response && err.response.data.message
               ? err.response.data.message.toString()
               : 'Message Not Readable',
           );
+          setTimeout(() => {
+            setBtnClick(false);
+          }, 5000);
         });
     }
   };

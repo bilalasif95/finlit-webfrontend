@@ -20,12 +20,14 @@ const  SigninPage=(props) =>{
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [btnClick, setBtnClick] = useState(false);
   const login = () => {
     setError('');
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError('Please enter valid email');
       return;
     }
+    setBtnClick(true);
     axios
       .post(`${API}api/auth/login`, { email, password })
       .then(res => {
@@ -40,6 +42,9 @@ const  SigninPage=(props) =>{
             ? err.response.data.message.toString()
             : 'Message Not Readable',
         );
+        setTimeout(() => {
+          setBtnClick(false);
+        }, 5000);
       });
   };
   return (
@@ -93,7 +98,7 @@ const  SigninPage=(props) =>{
                   <FormattedMessage {...messages.ForgotPassword} />
                 </Link>
               </div>
-              <Button onClick={login}>
+              <Button onClick={login} disabled={btnClick}>
                 <FormattedMessage {...messages.Login} />
               </Button>
               <div className="reg_footer">
