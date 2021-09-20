@@ -59,12 +59,14 @@ export default function SignupPage() {
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError('Please enter valid email');
       return;
-    } else if (
-      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(
-        password
-    ) || ( !password.length >=8 && !password.length <=12 )
+    }
+    if (
+      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) ||
+      (!password.length >= 8 && !password.length <= 12)
     ) {
-      setError('Password must contains one special character or capital letter and length should be in between 8 to 12 characters.');
+      setError(
+        'Password must contains one special character or capital letter and length should be in between 8 to 12 characters.'
+      );
       return;
     }
     if (password !== passwordConfirmation) {
