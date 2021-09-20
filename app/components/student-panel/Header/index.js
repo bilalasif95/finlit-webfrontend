@@ -218,7 +218,7 @@ const Header = () => {
                       <div className="notify">200</div>
                     </DropdownItem>
                     <DropdownItem>
-                      <Link to="/cart_checkout">
+                      <Link to="/cart">
                         <div>
                           <IoMdCart />
                           <FormattedMessage {...messages.MyCart} />
