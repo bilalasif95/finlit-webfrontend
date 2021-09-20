@@ -64,16 +64,16 @@ export default defineMessages({
     id: `${scope}.FreeGiftsRewards`,
     defaultMessage: 'Free Gifts & Rewards',
   },
-  TotalRevenue: {
-    id: `${scope}.TotalRevenue`,
-    defaultMessage: `Total Revenue`,
+  Bootcamps: {
+    id: `${scope}.Bootcamps`,
+    defaultMessage: `Bootcamps`,
   },
   Courses: {
     id: `${scope}.Courses`,
     defaultMessage: `Courses`,
   },
-  Events: {
-    id: `${scope}.Events`,
-    defaultMessage: `Events`,
+  Hackathons: {
+    id: `${scope}.Hackathons`,
+    defaultMessage: `Hackathons`,
   },
 });
