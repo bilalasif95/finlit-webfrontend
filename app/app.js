@@ -16,6 +16,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
+import { Switch, Route, Router } from 'react-router-dom';
 
 // Import root app
 import App from 'containers/App';
@@ -44,15 +45,18 @@ openSansObserver.load().then(() => {
 // Create redux store with history
 const initialState = {};
 const store = configureStore(initialState, history);
-const MOUNT_NODE = document.getElementById('app');
+const MOUNT_NODE = document.getElementById('app')
+import Store2 from "./containers/reduxSetup/store"
 
 const render = messages => {
   ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={Store2}>
       <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
+      <Router history={history}>
+        {/* <ConnectedRouter history={history}> */}
+          <App/>
+        {/* </ConnectedRouter> */}
+     </Router>
       </LanguageProvider>
     </Provider>,
     MOUNT_NODE,

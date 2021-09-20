@@ -7,12 +7,14 @@ import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import history from 'utils/history';
 import { Link } from 'react-router-dom';
+import { mapStateToProps, mapDispatchToProps } from "../reduxSetup/actions/registeration";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import axios from 'axios';
 import messages from './messages';
 import { API } from '../../config/config';
 // import { response } from 'express';
-
-export default function SigninPage() {
+const  SigninPage=(props) =>{
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -32,9 +34,8 @@ export default function SigninPage() {
       .then(res => {
         localStorage.setItem('token', res.data.accessToken);
         localStorage.setItem('userInfo', JSON.stringify(res.data.user && res.data.user));
-        setTimeout(()=>{
-          history.push('/')
-        },1000)
+        props.Login(res.data.user)
+        history.push('/')
       })
       .catch(err => {
         setError(err.response && err.response.data.message);
@@ -109,3 +110,8 @@ export default function SigninPage() {
     </div>
   );
 }
+
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(SigninPage)
+);

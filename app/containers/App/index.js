@@ -6,12 +6,14 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route, Router } from 'react-router-dom';
 import history from 'utils/history';
-
+import { mapStateToProps, mapDispatchToProps } from "../reduxSetup/actions/registeration";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 // Student Panel Panel pages routes
 
 // import HomePage from 'containers/student-panel/HomePage/Loadable';
@@ -62,23 +64,26 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-export default function App(props) {
+const App = () => {
 
-  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  console.log("userInfoooo", userInfo, "history", history)
+  let userInfo = JSON.parse(localStorage.getItem("userInfo"))
   return (
+
     <AppWrapper>
+      <Route>
 
-      <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
-        <meta name="description" content="FinLit" />
-      </Helmet>
-      {window.location.pathname === '/signup' || window.location.pathname === "/login" ||
+        <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
+          <meta name="description" content="FinLit" />
+        </Helmet>
+        {history.location.pathname === '/signup' || history.location.pathname === "/login" ||
 
-        window.location.pathname === "/email_verification" ||
-        window.location.pathname === "/create_new_password"
+          history.location.pathname === "/email_verification" ||
+          history.location.pathname === "/create_new_password"
 
-        ? null : userInfo && userInfo.roles[0].roleName == "Super Admin" ? <InstructorHeader /> : <Header />}
-
+          ? null :  userInfo && userInfo.roles[0].roleName == "Instructor" ? <InstructorHeader /> : userInfo &&  <Header />}
+ <InstructorHeader />
+   <Header />
+      </Route>
       <Switch>
 
         <Route path="/features" component={FeaturePage} />
@@ -95,7 +100,7 @@ export default function App(props) {
         <Route path="/bootcamp_details/:id" component={AddCartBootcamp} />
 
         {/* Instructor Panel pages routes */}
-        {userInfo && userInfo.roles[0].roleName == "Super Admin" ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={HomePage} />}
+        {userInfo && userInfo.roles[0].roleName == "Super Admin" || userInfo && userInfo.roles[0].roleName == "Instructor" ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={HomePage} />}
         <Route exact path="/add_webinar" component={AddWebinarPage} />
         <Route path="/add_hackathon" component={AddHackathonPage} />
         <Route path="/add_bootcamp" component={AddBootCampPage} />
@@ -114,13 +119,17 @@ export default function App(props) {
         <Route path="/create_new_password" component={CreateNewPasswordPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      {window.location.pathname === '/signup' || window.location.pathname === "/login" ||
-        window.location.pathname === "/email_verification" ||
-        window.location.pathname === "/create_new_password"
+      {history.location.pathname === '/signup' || history.location.pathname === "/login" ||
+        history.location.pathname === "/email_verification" ||
+        history.location.pathname === "/create_new_password"
 
         ? null : <Footer />}
       <GlobalStyle />
+      {/* </Router> */}
 
     </AppWrapper>
+
   );
 }
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
