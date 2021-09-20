@@ -127,8 +127,5 @@ const SigninPage = props => {
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(SigninPage),
+  connect(mapStateToProps, mapDispatchToProps)(SigninPage)
 );
