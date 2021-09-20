@@ -53,6 +53,7 @@ export default function SignupPage() {
   const [address, setAddress] = useState('');
   const [instructorDiv, setInstructorDiv] = useState(false);
   const [error, setError] = useState('');
+  const [btnClick, setBtnClick] = useState(false);
 
   const signup = () => {
     setError('');
@@ -72,6 +73,7 @@ export default function SignupPage() {
     if (password !== passwordConfirmation) {
       setError('**Password are not matching');
     } else {
+      setBtnClick(true);
       axios
         .post(`${API}api/auth/register`, {
           email,
@@ -86,6 +88,7 @@ export default function SignupPage() {
           address,
         })
         .then(result => {
+          setBtnClick(false);
           toast.success(
             result.data && result.data.message
               ? result.data.message
@@ -93,6 +96,7 @@ export default function SignupPage() {
           );
         })
         .catch(err => {
+          setBtnClick(false);
           toast.error(
             err.response && err.response.data.message
               ? err.response.data.message.toString()
@@ -321,7 +325,7 @@ export default function SignupPage() {
               <div className="error-box">
                 {error && <p className="error">{error}</p>}
               </div>
-              <Button onClick={signup}>
+              <Button onClick={signup} disabled={btnClick}>
                 <FormattedMessage {...messages.SignUp} />
               </Button>
               <div className="reg_footer">

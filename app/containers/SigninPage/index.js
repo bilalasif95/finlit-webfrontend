@@ -26,15 +26,6 @@ const  SigninPage=(props) =>{
       setError('Please enter valid email');
       return;
     }
-    if (
-      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) ||
-      (!password.length >= 8 && !password.length <= 12)
-    ) {
-      setError(
-        'Password must contains one special character or capital letter and length should be in between 8 to 12 characters.',
-      );
-      return;
-    }
     axios
       .post(`${API}api/auth/login`, { email, password })
       .then(res => {
