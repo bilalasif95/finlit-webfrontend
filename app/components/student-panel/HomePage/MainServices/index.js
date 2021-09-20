@@ -11,6 +11,8 @@ import education from '../../../../images/education.svg';
 import livewebinar from '../../../../images/livewebinar.svg';
 import goaledu from '../../../../images/goaledu.svg';
 import gift from '../../../../images/gift.svg';
+import Hackathon from '../../../../images/hackathon.svg';
+import One from '../../../../images/one.svg';
 import Wrapper from './Wrapper';
 
 function MainServices() {
@@ -47,15 +49,37 @@ function MainServices() {
       desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,
       redirectLink: '/',
     },
+    {
+      id: 4,
+      icon: Hackathon,
+      alt: 'Free Gifts &amp; Rewards',
+      title: <FormattedMessage {...messages.hackathon} />,
+      desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,
+      redirectLink: 'hackathons_list',
+    },
+    {
+      id: 5,
+      icon: gift,
+      alt: 'Free Gifts &amp; Rewards',
+      title: <FormattedMessage {...messages.Bootcamp} />,
+      desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,
+      redirectLink: 'bootcamps_list',
+    },
+    {
+      id: 6,
+      icon: One,
+      alt: 'Free Gifts &amp; Rewards',
+      title: <FormattedMessage {...messages.OneonOne} />,
+      desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,
+      redirectLink: '/',
+    },
   ];
   const settings = {
-    autoplay: true,
     dots: false,
     infinite: true,
-    speed: 5000,
+    speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    initialSlide: 0,
     responsive: [
       {
         breakpoint: 991,

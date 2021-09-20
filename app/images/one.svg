@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <g id="Group_1649" data-name="Group 1649" transform="translate(23134 5045)">
+    <g id="person_black_24dp" transform="translate(-23114.387 -5033.8)">
+      <path id="Path_518" data-name="Path 518" d="M0,0H9.868V9.868H0Z" fill="none"/>
+      <path id="Path_519" data-name="Path 519" d="M7.289,7.289A1.645,1.645,0,1,0,5.645,5.645,1.644,1.644,0,0,0,7.289,7.289Zm0,.822C6.191,8.112,4,8.663,4,9.756v.822h6.578V9.756C10.578,8.663,8.387,8.112,7.289,8.112Z" transform="translate(-2.355 -2.355)" fill="#ca87d9"/>
+    </g>
+    <g id="person_black_24dp-2" data-name="person_black_24dp" transform="translate(-23127.479 -5034.184)">
+      <path id="Path_518-2" data-name="Path 518" d="M0,0H9.868V9.868H0Z" fill="none"/>
+      <path id="Path_519-2" data-name="Path 519" d="M7.289,7.289A1.645,1.645,0,1,0,5.645,5.645,1.644,1.644,0,0,0,7.289,7.289Zm0,.822C6.191,8.112,4,8.663,4,9.756v.822h6.578V9.756C10.578,8.663,8.387,8.112,7.289,8.112Z" transform="translate(-2.355 -2.355)" fill="#ca87d9"/>
+    </g>
+    <g id="screen_search_desktop_black_24dp" transform="translate(-23134 -5045)">
+      <g id="Group_1686" data-name="Group 1686">
+        <path id="Path_520" data-name="Path 520" d="M0,0H36V36H0Z" fill="none"/>
+      </g>
+      <g id="Group_1688" data-name="Group 1688" transform="translate(0.912 4.5)">
+        <g id="Group_1687" data-name="Group 1687" transform="translate(0)">
+          <path id="Path_521" data-name="Path 521" d="M5,25.5H29a3,3,0,0,0,2.985-3L32,6a3.009,3.009,0,0,0-3-3H5A3.009,3.009,0,0,0,2,6V22.5A3.009,3.009,0,0,0,5,25.5ZM5,6H29V22.5H5Z" transform="translate(0.088 -3)" fill="#ca87d9"/>
+          <rect id="Rectangle_762" data-name="Rectangle 762" width="33" height="3" transform="translate(0.088 24.5)" fill="#ca87d9"/>
+        </g>
+      </g>
+    </g>
+    <path id="Path_522" data-name="Path 522" d="M0,0H1V8H0Z" transform="translate(-23117 -5033)" fill="#ca87d9"/>
+  </g>
+</svg>
