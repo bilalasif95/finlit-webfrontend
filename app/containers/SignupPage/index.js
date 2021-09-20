@@ -44,12 +44,12 @@ export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [roleId, setRoleId] = useState('0');
+  const [roleId, setRoleId] = useState(1);
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [gender, setGender] = useState('');
-  const [country, setCountry] = useState('');
-  const [profession, setProfession] = useState('');
+  const [gender, setGender] = useState('Male');
+  const [country, setCountry] = useState('USA');
+  const [profession, setProfession] = useState('Software Developer');
   const [address, setAddress] = useState('');
   const [instructorDiv, setInstructorDiv] = useState(false);
   const [error, setError] = useState('');
@@ -59,17 +59,18 @@ export default function SignupPage() {
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError('Please enter valid email');
       return;
-    } else if (
-      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(
-        password
-    ) || ( !password.length >=8 && !password.length <=12 )
+    }
+    if (
+      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) ||
+      (!password.length >= 8 && !password.length <= 12)
     ) {
-      setError('Password must contains one special character or capital letter and length should be in between 8 to 12 characters.');
+      setError(
+        'Password must contains one special character or capital letter and length should be in between 8 to 12 characters.',
+      );
       return;
     }
     if (password !== passwordConfirmation) {
       setError('**Password are not matching');
-      return;
     } else {
       axios
         .post(`${API}api/auth/register`, {
@@ -85,135 +86,93 @@ export default function SignupPage() {
           address,
         })
         .then(result => {
-          toast.success(result.data && result.data.message ? result.data.message : 'Message Not Readable');
+          toast.success(
+            result.data && result.data.message
+              ? result.data.message
+              : 'Message Not Readable',
+          );
         })
         .catch(err => {
-          toast.error(err.response && err.response.data.message ? err.response.data.message.toString() : 'Message Not Readable')
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
         });
     }
   };
 
   return (
     <>
-    <div className="registration_page">
-      <Helmet>
-        <title>- Sign Up</title>
-        <meta name="description" content="FinLit - Sign up Page" />
-      </Helmet>
-      <div className="form_container">
-        <div className="form_content">
-          <h2>
-            <FormattedMessage {...messages.CreateAnAccount} />
-          </h2>
-          <div className="form">
-            <FormGroup>
-              <Label for="email">
-                <FormattedMessage {...messages.EmailAddress} />
-              </Label>
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                onChange={e => setEmail(e.target.value)}
-                placeholder="Your email"
-              />
-            </FormGroup>
-            <Row>
-              <Col lg={6} md={6} sm={12}>
-                <FormGroup>
-                  <Label for="name">
-                    <FormattedMessage {...messages.FName} />
-                  </Label>
-                  <Input
-                    type="text"
-                    name="name"
-                    id="name"
-                    onChange={e => setFirstName(e.target.value)}
-                    placeholder="First name"
-                  />
-                </FormGroup>
-              </Col>
-              <Col lg={6} md={6} sm={12}>
-                <FormGroup>
-                  <Label for="name">
-                    <FormattedMessage {...messages.LName} />
-                  </Label>
-                  <Input
-                    type="text"
-                    name="name"
-                    id="name"
-                    onChange={e => setLastName(e.target.value)}
-                    placeholder="Last name"
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
-            <Col lg={12} md={12} sm={12}>
+      <div className="registration_page">
+        <Helmet>
+          <title>- Sign Up</title>
+          <meta name="description" content="FinLit - Sign up Page" />
+        </Helmet>
+        <div className="form_container">
+          <div className="form_content">
+            <h2>
+              <FormattedMessage {...messages.CreateAnAccount} />
+            </h2>
+            <div className="form">
               <FormGroup>
-                <FormControl fullWidth>
-                  <Label>
-                    <FormattedMessage {...messages.SelectType} />
-                  </Label>
-                  <Select
-                    value={roleId}
-                    onChange={e => {
-                      setRoleId(e.target.value);
-                      if (e.target.value === 3) {
-                        setInstructorDiv(true);
-                      } else {
-                        setInstructorDiv(false);
-                      }
-                    }}
-                    input={<BootstrapInput />}
-                    fullWidth
-                    MenuProps={{
-                      anchorOrigin: {
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                      },
-                      getContentAnchorEl: null,
-                    }}
-                  >
-                    <MenuItem value={1}>Student</MenuItem>
-                    <MenuItem value={3}>Educator</MenuItem>
-                  </Select>
-                </FormControl>
+                <Label for="email">
+                  <FormattedMessage {...messages.EmailAddress} /> {'*'}
+                </Label>
+                <Input
+                  type="email"
+                  name="email"
+                  id="email"
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder="Your email"
+                />
               </FormGroup>
-            </Col>
-            <FormGroup>
-              <Label for="password">
-                <FormattedMessage {...messages.CreatePassword} />
-              </Label>
-              <Input
-                type="password"
-                name="createpassword"
-                id="createpassword"
-                onChange={e => setPassword(e.target.value)}
-                placeholder="******"
-              />
-            </FormGroup>
-            <FormGroup className="form_err">
-              <Label for="password">
-                <FormattedMessage {...messages.ConfirmPassword} />
-              </Label>
-              <Input
-                type="password"
-                name="confirmpassword"
-                id="confirmpassword"
-                onChange={e => setPasswordConfirmation(e.target.value)}
-                placeholder="******"
-              />
-            </FormGroup>
-            {instructorDiv === true ? (
-              <>
+              <Row>
+                <Col lg={6} md={6} sm={12}>
+                  <FormGroup>
+                    <Label for="name">
+                      <FormattedMessage {...messages.FName} /> {'*'}
+                    </Label>
+                    <Input
+                      type="text"
+                      name="name"
+                      id="name"
+                      onChange={e => setFirstName(e.target.value)}
+                      placeholder="First name"
+                    />
+                  </FormGroup>
+                </Col>
+                <Col lg={6} md={6} sm={12}>
+                  <FormGroup>
+                    <Label for="name">
+                      <FormattedMessage {...messages.LName} /> {'*'}
+                    </Label>
+                    <Input
+                      type="text"
+                      name="name"
+                      id="name"
+                      onChange={e => setLastName(e.target.value)}
+                      placeholder="Last name"
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Col lg={12} md={12} sm={12}>
                 <FormGroup>
                   <FormControl fullWidth>
                     <Label>
-                      <FormattedMessage {...messages.SelectCountry} />
+                      <FormattedMessage {...messages.SelectType} /> {'*'}
                     </Label>
                     <Select
-                      value={country}
-                      onChange={e => setCountry(e.target.value)}
+                      value={roleId}
+                      onChange={e => {
+                        setRoleId(e.target.value);
+                        if (e.target.value === 3) {
+                          setInstructorDiv(true);
+                        } else {
+                          setInstructorDiv(false);
+                        }
+                      }}
                       input={<BootstrapInput />}
                       fullWidth
                       MenuProps={{
@@ -224,110 +183,162 @@ export default function SignupPage() {
                         getContentAnchorEl: null,
                       }}
                     >
-                      <MenuItem value="USA">USA</MenuItem>
-                      <MenuItem value="KSA">KSA</MenuItem>
+                      <MenuItem value={1}>Student</MenuItem>
+                      <MenuItem value={3}>Educator</MenuItem>
                     </Select>
                   </FormControl>
                 </FormGroup>
-                <FormGroup>
-                  <Label>
-                    <FormattedMessage {...messages.Address} />
-                  </Label>
-                  <Input
-                    type="text"
-                    name="address"
-                    id="address"
-                    placeholder="Address"
-                    onChange={e => {
-                      setAddress(e.target.value);
-                    }}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <FormControl fullWidth>
+              </Col>
+              <FormGroup>
+                <Label for="password">
+                  <FormattedMessage {...messages.CreatePassword} /> {'*'}
+                </Label>
+                <Input
+                  type="password"
+                  name="createpassword"
+                  id="createpassword"
+                  onChange={e => setPassword(e.target.value)}
+                  placeholder="******"
+                />
+              </FormGroup>
+              <FormGroup className="form_err">
+                <Label for="password">
+                  <FormattedMessage {...messages.ConfirmPassword} /> {'*'}
+                </Label>
+                <Input
+                  type="password"
+                  name="confirmpassword"
+                  id="confirmpassword"
+                  onChange={e => setPasswordConfirmation(e.target.value)}
+                  placeholder="******"
+                />
+              </FormGroup>
+              {instructorDiv === true ? (
+                <>
+                  <FormGroup>
+                    <FormControl fullWidth>
+                      <Label>
+                        <FormattedMessage {...messages.SelectCountry} />
+                      </Label>
+                      <Select
+                        value={country}
+                        onChange={e => setCountry(e.target.value)}
+                        input={<BootstrapInput />}
+                        fullWidth
+                        MenuProps={{
+                          anchorOrigin: {
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                          },
+                          getContentAnchorEl: null,
+                        }}
+                      >
+                        <MenuItem value="USA">USA</MenuItem>
+                        <MenuItem value="KSA">KSA</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </FormGroup>
+                  <FormGroup>
                     <Label>
-                      <FormattedMessage {...messages.SelectGender} />
+                      <FormattedMessage {...messages.Address} />
                     </Label>
-                    <Select
-                      value={gender}
-                      onChange={e => setGender(e.target.value)}
-                      input={<BootstrapInput />}
-                      fullWidth
-                      MenuProps={{
-                        anchorOrigin: {
-                          vertical: 'bottom',
-                          horizontal: 'left',
-                        },
-                        getContentAnchorEl: null,
+                    <Input
+                      type="text"
+                      name="address"
+                      id="address"
+                      placeholder="Address"
+                      onChange={e => {
+                        setAddress(e.target.value);
                       }}
-                    >
-                      <MenuItem value="Male">Male</MenuItem>
-                      <MenuItem value="Female">Female</MenuItem>
-                    </Select>
-                  </FormControl>
-                </FormGroup>
-                <FormGroup>
-                  <FormControl fullWidth>
-                    <Label>
-                      <FormattedMessage {...messages.SelectProfession} />
-                    </Label>
-                    <Select
-                      value={profession}
-                      onChange={e => setProfession(e.target.value)}
-                      input={<BootstrapInput />}
-                      fullWidth
-                      MenuProps={{
-                        anchorOrigin: {
-                          vertical: 'bottom',
-                          horizontal: 'left',
-                        },
-                        getContentAnchorEl: null,
-                      }}
-                    >
-                      <MenuItem value="Financial Literacy">
-                        <FormattedMessage {...messages.FinancialLiteracy} />
-                      </MenuItem>
-                      <MenuItem value="Software Developer">
-                        <FormattedMessage {...messages.SoftwareDeveloper} />
-                      </MenuItem>
-                      <MenuItem value="Medical and Health Services">
-                        <FormattedMessage {...messages.MedicalHealthServices} />
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <FormControl fullWidth>
+                      <Label>
+                        <FormattedMessage {...messages.SelectGender} />
+                      </Label>
+                      <Select
+                        value={gender}
+                        onChange={e => setGender(e.target.value)}
+                        input={<BootstrapInput />}
+                        fullWidth
+                        MenuProps={{
+                          anchorOrigin: {
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                          },
+                          getContentAnchorEl: null,
+                        }}
+                      >
+                        <MenuItem value="Male">Male</MenuItem>
+                        <MenuItem value="Female">Female</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </FormGroup>
+                  <FormGroup>
+                    <FormControl fullWidth>
+                      <Label>
+                        <FormattedMessage {...messages.SelectProfession} />
+                      </Label>
+                      <Select
+                        value={profession}
+                        onChange={e => setProfession(e.target.value)}
+                        input={<BootstrapInput />}
+                        fullWidth
+                        MenuProps={{
+                          anchorOrigin: {
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                          },
+                          getContentAnchorEl: null,
+                        }}
+                      >
+                        <MenuItem value="Financial Literacy">
+                          <FormattedMessage {...messages.FinancialLiteracy} />
                         </MenuItem>
-                      <MenuItem value="Statistician">
-                        <FormattedMessage {...messages.Statistician} />
-                      </MenuItem>
-                      <MenuItem value="Speech-Language">
-                        <FormattedMessage {...messages.SpeechLanguage} />
-                      </MenuItem>
-                      <MenuItem value="Data Scientist">
-                        <FormattedMessage {...messages.DataScientist} />
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
-                </FormGroup>
-              </>
-            ) : null}
-            <div className="error-box">
-              {error && <p className="error">{error}</p>}
-            </div>
-            <Button onClick={signup}>
-              <FormattedMessage {...messages.SignUp} />
-            </Button>
-            <div className="reg_footer">
-              <p>
-                <FormattedMessage {...messages.AlreadyHaveAccount} />
-                &nbsp;
-                <Link to="/login">
-                  <FormattedMessage {...messages.Login} />
-                </Link>
-              </p>
+                        <MenuItem value="Software Developer">
+                          <FormattedMessage {...messages.SoftwareDeveloper} />
+                        </MenuItem>
+                        <MenuItem value="Medical and Health Services">
+                          <FormattedMessage
+                            {...messages.MedicalHealthServices}
+                          />
+                        </MenuItem>
+                        <MenuItem value="Statistician">
+                          <FormattedMessage {...messages.Statistician} />
+                        </MenuItem>
+                        <MenuItem value="Speech-Language">
+                          <FormattedMessage {...messages.SpeechLanguage} />
+                        </MenuItem>
+                        <MenuItem value="Data Scientist">
+                          <FormattedMessage {...messages.DataScientist} />
+                        </MenuItem>
+                      </Select>
+                    </FormControl>
+                  </FormGroup>
+                </>
+              ) : null}
+              <div className="error-box">
+                {error && <p className="error">{error}</p>}
+              </div>
+              <Button onClick={signup}>
+                <FormattedMessage {...messages.SignUp} />
+              </Button>
+              <div className="reg_footer">
+                <p>
+                  <FormattedMessage {...messages.AlreadyHaveAccount} />
+                  &nbsp;
+                  <Link to="/login">
+                    <FormattedMessage {...messages.Login} />
+                  </Link>
+                </p>
+              </div>
             </div>
           </div>
         </div>
+        <div className="img_container" />
       </div>
-      <div className="img_container" />
-    </div>
-    <ToastContainer />
+      <ToastContainer />
     </>
   );
 }

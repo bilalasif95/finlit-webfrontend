@@ -18,6 +18,10 @@ export default defineMessages({
   },
   SendRecoveryCode: {
     id: `${scope}.SendRecoveryCode`,
+<<<<<<< HEAD
     defaultMessage: `Send Recovery Email`,
+=======
+    defaultMessage: `Send Recovery Link`,
+>>>>>>> 15743cb66ea5a48caacaa11f1723d1679d8469c5
   },
 });
