@@ -24,6 +24,9 @@ const GlobalStyle = createGlobalStyle`
       width: 34%;
       margin: 0px auto;
       text-align: center;
+      img {
+        margin-bottom:  41px;
+      }
       h4 {
         font-size: 24px;
         color: #484848;

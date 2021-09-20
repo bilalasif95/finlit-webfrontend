@@ -10,6 +10,9 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../config/config';
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
+import Check from '../../images/checkImg.svg';
 
 export default function EmailVerificationPage() {
   const [error, setError] = useState('');
@@ -38,7 +41,7 @@ export default function EmailVerificationPage() {
     <>
     <div className="verification_page">
       <Helmet>
-        <title>- Sign Up</title>
+        <title>- Email Verification</title>
         <meta name="description" content="FinLit - Email Verification" />
       </Helmet>
 
@@ -47,10 +50,12 @@ export default function EmailVerificationPage() {
           <Col lg={12}>
             <div className="verification-main">
               <div className="email-verification">
-                <h4>Your email has been verified</h4>
+                <img src={Check} />
+                <h4>
+                  <FormattedMessage {...messages.EmailTitle} />
+                </h4>
                 <p>
-                  Your email has been verified successfully.
-                  Please login to continue.
+                  <FormattedMessage {...messages.Emaildetail} />
                 </p>
                 <Link className="verification-button" to="/login">
                   Login
