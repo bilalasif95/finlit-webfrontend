@@ -58,7 +58,7 @@ const  SigninPage=(props) =>{
           <title>- Sign In</title>
           <meta name="description" content="FinLit - Sign in Page" />
         </Helmet>
-        <div className="form_container">
+        <div className="form_container Login-form">
           <div className="form_content">
             <h2>
               <FormattedMessage {...messages.WelcomeBack} />
