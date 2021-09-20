@@ -53,6 +53,7 @@ export default function SignupPage() {
   const [address, setAddress] = useState('');
   const [instructorDiv, setInstructorDiv] = useState(false);
   const [error, setError] = useState('');
+  const [btnClick, setBtnClick] = useState(false);
 
   const signup = () => {
     setError('');
@@ -67,11 +68,15 @@ export default function SignupPage() {
       setError(
         'Password must contains one special character or capital letter and length should be in between 8 to 12 characters.',
       );
+      setTimeout(() => {
+        setError('');
+      }, 4000);
       return;
     }
     if (password !== passwordConfirmation) {
       setError('**Password are not matching');
     } else {
+      setBtnClick(true);
       axios
         .post(`${API}api/auth/register`, {
           email,
@@ -91,6 +96,9 @@ export default function SignupPage() {
               ? result.data.message
               : 'Message Not Readable',
           );
+          setTimeout(() => {
+            setBtnClick(false);
+          }, 5000);
         })
         .catch(err => {
           toast.error(
@@ -98,6 +106,9 @@ export default function SignupPage() {
               ? err.response.data.message.toString()
               : 'Message Not Readable',
           );
+          setTimeout(() => {
+            setBtnClick(false);
+          }, 5000);
         });
     }
   };
@@ -321,7 +332,7 @@ export default function SignupPage() {
               <div className="error-box">
                 {error && <p className="error">{error}</p>}
               </div>
-              <Button onClick={signup}>
+              <Button onClick={signup} disabled={btnClick}>
                 <FormattedMessage {...messages.SignUp} />
               </Button>
               <div className="reg_footer">
