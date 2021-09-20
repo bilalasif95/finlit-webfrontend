@@ -44,12 +44,12 @@ export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [roleId, setRoleId] = useState('0');
+  const [roleId, setRoleId] = useState('1');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [gender, setGender] = useState('');
-  const [country, setCountry] = useState('');
-  const [profession, setProfession] = useState('');
+  const [gender, setGender] = useState('Male');
+  const [country, setCountry] = useState('USA');
+  const [profession, setProfession] = useState('Software Developer');
   const [address, setAddress] = useState('');
   const [instructorDiv, setInstructorDiv] = useState(false);
   const [error, setError] = useState('');
