@@ -54,6 +54,16 @@ const Wrapper = styled.div`
            }
         }
       }
+      .react-calendar__year-view__months, .react-calendar__decade-view__years, .react-calendar__century-view__decades {
+        justify-content: center;
+        .react-calendar__year-view__months__month, .react-calendar__decade-view__years__year, .react-calendar__century-view__decades__decade {
+          border: none;
+          background: transparent;
+          color: #8b8b8b;
+          background-color: #ececeb;
+          margin: 5px;
+        }
+      }
    }
  }
 `;

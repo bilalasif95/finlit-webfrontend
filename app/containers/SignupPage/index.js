@@ -56,16 +56,18 @@ export default function SignupPage() {
     setError('');
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError('Please enter valid email');
+      return;
     } else if (
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
         password,
       )
     ) {
       setError('Please enter valid password');
+      return;
     }
     if (password !== passwordConfirmation) {
       setError('**Password are not matching');
-      // setDisabled(false);
+      return;
     } else {
       axios
         .post(`${API}api/auth/register`, {

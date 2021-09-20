@@ -4,6 +4,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col } from 'reactstrap';
+import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 import messages from './messages';
 import education from '../../../../images/education.svg';
@@ -47,10 +48,44 @@ function MainServices() {
       redirectLink: '/',
     },
   ];
+  const settings = {
+    autoplay: true,
+    dots: false,
+    infinite: true,
+    speed: 5000,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 575,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <Wrapper id="services">
       <Container fluid="xl">
-        <Row>
+        {/* <Row>
           {MainServicesList.map(item => (
             <Col lg={3} md={3} sm={6} xs={12} key={item.id}>
               <Link className="single_item" to={item.redirectLink}>
@@ -60,6 +95,21 @@ function MainServices() {
               </Link>
             </Col>
           ))}
+        </Row> */}
+        <Row>
+          <Col lg={12}>
+            <Slider {...settings}>
+              {MainServicesList.map(item => (
+                <div key={item.id}>
+                  <Link className="single_item" to={item.redirectLink}>
+                    <img src={item.icon} alt={item.alt} />
+                    <h5>{item.title}</h5>
+                    <p>{item.desc}</p>
+                  </Link>
+                </div>
+              ))}
+            </Slider>
+          </Col>
         </Row>
       </Container>
     </Wrapper>
