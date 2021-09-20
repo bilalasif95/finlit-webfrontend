@@ -6,42 +6,41 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import history from 'utils/history';
-import { Link } from 'react-router-dom';
-import { mapStateToProps, mapDispatchToProps } from "../reduxSetup/actions/registeration";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import {
+  mapStateToProps,
+  mapDispatchToProps,
+} from '../reduxSetup/actions/registeration';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../config/config';
 // import { response } from 'express';
-const  SigninPage=(props) =>{
+const SigninPage = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [btnClick, setBtnClick] = useState(false);
   const login = () => {
     setError('');
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError('Please enter valid email');
       return;
     }
-    if (
-      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) ||
-      (!password.length >= 8 && !password.length <= 12)
-    ) {
-      setError(
-        'Password must contains one special character or capital letter and length should be in between 8 to 12 characters.',
-      );
-      return;
-    }
+    setBtnClick(true);
     axios
       .post(`${API}api/auth/login`, { email, password })
       .then(res => {
         localStorage.setItem('token', res.data.accessToken);
-        localStorage.setItem('userInfo', JSON.stringify(res.data.user && res.data.user));
-        props.Login(res.data.user)
-        history.push('/')
+        localStorage.setItem(
+          'userInfo',
+          JSON.stringify(res.data.user && res.data.user),
+        );
+        props.Login(res.data.user);
+        history.push('/');
       })
       .catch(err => {
         toast.error(
@@ -49,6 +48,9 @@ const  SigninPage=(props) =>{
             ? err.response.data.message.toString()
             : 'Message Not Readable',
         );
+        setTimeout(() => {
+          setBtnClick(false);
+        }, 5000);
       });
   };
   return (
@@ -102,7 +104,7 @@ const  SigninPage=(props) =>{
                   <FormattedMessage {...messages.ForgotPassword} />
                 </Link>
               </div>
-              <Button onClick={login}>
+              <Button onClick={login} disabled={btnClick}>
                 <FormattedMessage {...messages.Login} />
               </Button>
               <div className="reg_footer">
@@ -122,8 +124,7 @@ const  SigninPage=(props) =>{
       <ToastContainer />
     </>
   );
-}
-
+};
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(SigninPage)
