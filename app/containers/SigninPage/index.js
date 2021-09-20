@@ -9,6 +9,8 @@ import history from 'utils/history';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import messages from './messages';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../config/config';
 // import { response } from 'express';
 
@@ -39,10 +41,11 @@ export default function SigninPage() {
         },1000)
       })
       .catch(err => {
-        setError(err.response && err.response.data.message);
+        toast.error(err.response && err.response.data.message ? err.response.data.message.toString() : 'Message Not Readable')
       });
   };
   return (
+    <>
     <div className="registration_page">
       <Helmet>
         <title>- Sign In</title>
@@ -109,5 +112,7 @@ export default function SigninPage() {
       </div>
       <div className="img_container" />
     </div>
+    <ToastContainer />
+    </>
   );
 }

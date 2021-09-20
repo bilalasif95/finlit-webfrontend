@@ -12,6 +12,8 @@ import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
 import { API } from '../../config/config';
 
@@ -82,16 +84,17 @@ export default function SignupPage() {
           profession,
           address,
         })
-        .then(err => {
-          setError(err.response && err.response.data.message);
+        .then(result => {
+          toast.success(result.data && result.data.message ? result.data.message : 'Message Not Readable');
         })
         .catch(err => {
-          setError(err.response && err.response.data.message);
+          toast.error(err.response && err.response.data.message ? err.response.data.message.toString() : 'Message Not Readable')
         });
     }
   };
 
   return (
+    <>
     <div className="registration_page">
       <Helmet>
         <title>- Sign Up</title>
@@ -200,9 +203,6 @@ export default function SignupPage() {
                 onChange={e => setPasswordConfirmation(e.target.value)}
                 placeholder="******"
               />
-              <div className="error-box">
-                {error && <p className="error">{error}</p>}
-              </div>
             </FormGroup>
             {instructorDiv === true ? (
               <>
@@ -307,6 +307,9 @@ export default function SignupPage() {
                 </FormGroup>
               </>
             ) : null}
+            <div className="error-box">
+              {error && <p className="error">{error}</p>}
+            </div>
             <Button onClick={signup}>
               <FormattedMessage {...messages.SignUp} />
             </Button>
@@ -324,5 +327,7 @@ export default function SignupPage() {
       </div>
       <div className="img_container" />
     </div>
+    <ToastContainer />
+    </>
   );
 }
