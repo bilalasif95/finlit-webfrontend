@@ -6,17 +6,20 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import history from 'utils/history';
-import { Link } from 'react-router-dom';
-import { mapStateToProps, mapDispatchToProps } from "../reduxSetup/actions/registeration";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import {
+  mapStateToProps,
+  mapDispatchToProps,
+} from '../reduxSetup/actions/registeration';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../config/config';
 // import { response } from 'express';
-const  SigninPage=(props) =>{
+const SigninPage = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -32,9 +35,12 @@ const  SigninPage=(props) =>{
       .post(`${API}api/auth/login`, { email, password })
       .then(res => {
         localStorage.setItem('token', res.data.accessToken);
-        localStorage.setItem('userInfo', JSON.stringify(res.data.user && res.data.user));
-        props.Login(res.data.user)
-        history.push('/')
+        localStorage.setItem(
+          'userInfo',
+          JSON.stringify(res.data.user && res.data.user),
+        );
+        props.Login(res.data.user);
+        history.push('/');
       })
       .catch(err => {
         toast.error(
@@ -118,9 +124,11 @@ const  SigninPage=(props) =>{
       <ToastContainer />
     </>
   );
-}
-
+};
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(SigninPage)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(SigninPage),
 );

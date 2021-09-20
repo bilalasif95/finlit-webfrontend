@@ -30,13 +30,21 @@ export default function ForgotPasswordPage() {
     axios
       .get(`${API}api/auth/forgotPassword?email=${email}`)
       .then(result => {
-        toast.success(result.data && result.data.message ? result.data.message : 'Message Not Readable');
+        toast.success(
+          result.data && result.data.message
+            ? result.data.message
+            : 'Message Not Readable',
+        );
         setTimeout(() => {
           setBtnClick(false);
         }, 5000);
       })
       .catch(err => {
-        toast.error(err.response && err.response.data.message ? err.response.data.message.toString() : 'Message Not Readable')
+        toast.error(
+          err.response && err.response.data.message
+            ? err.response.data.message.toString()
+            : 'Message Not Readable',
+        );
         setTimeout(() => {
           setBtnClick(false);
         }, 5000);
@@ -44,48 +52,48 @@ export default function ForgotPasswordPage() {
   };
   return (
     <>
-    <div className="registration_page">
-      <Helmet>
-        <title>Forgot Password</title>
-        <meta name="description" content="FinLit - Forgot Password Page" />
-      </Helmet>
-      <div className="form_container">
-        <div className="form_content">
-          <h2>
-            <FormattedMessage {...messages.ForgotPassword} />
-          </h2>
-          <div className="form">
-            <FormGroup>
-              <Label for="email">
-                <FormattedMessage {...messages.EmailAddress} />
-              </Label>
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Your email"
-                onChange={e => {
-                  setEmail(e.target.value);
+      <div className="registration_page">
+        <Helmet>
+          <title>Forgot Password</title>
+          <meta name="description" content="FinLit - Forgot Password Page" />
+        </Helmet>
+        <div className="form_container">
+          <div className="form_content">
+            <h2>
+              <FormattedMessage {...messages.ForgotPassword} />
+            </h2>
+            <div className="form">
+              <FormGroup>
+                <Label for="email">
+                  <FormattedMessage {...messages.EmailAddress} />
+                </Label>
+                <Input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Your email"
+                  onChange={e => {
+                    setEmail(e.target.value);
+                  }}
+                />
+                <div className="error-box">
+                  {error && <p className="error">{error}</p>}
+                </div>
+              </FormGroup>
+              <Button
+                onClick={() => {
+                  forgotPasswordBtn();
                 }}
-              />
-              <div className="error-box">
-                {error && <p className="error">{error}</p>}
-              </div>
-            </FormGroup>
-            <Button
-              onClick={() => {
-                forgotPasswordBtn();
-              }}
-              disabled={btnClick}
-            >
-              <FormattedMessage {...messages.SendRecoveryCode} />
-            </Button>
+                disabled={btnClick}
+              >
+                <FormattedMessage {...messages.SendRecoveryCode} />
+              </Button>
+            </div>
           </div>
         </div>
+        <div className="img_container" />
       </div>
-      <div className="img_container" />
-    </div>
-    <ToastContainer />
+      <ToastContainer />
     </>
   );
 }
