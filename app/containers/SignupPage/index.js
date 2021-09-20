@@ -64,7 +64,7 @@ export default function SignupPage() {
         password
     ) || ( !password.length >=8 && !password.length <=12 )
     ) {
-      setError('Please enter valid password');
+      setError('Password must contains one special character or capital letter and length should be in between 8 to 12 characters.');
       return;
     }
     if (password !== passwordConfirmation) {
