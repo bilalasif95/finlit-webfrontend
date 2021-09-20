@@ -273,6 +273,9 @@ const GlobalStyle = createGlobalStyle`
     color: red;
     margin-bottom: 20px;
   }
+  .Login-form {
+    height: 100vh;
+  }
   .form_container {
       width: 50%;
       display: flex;

@@ -12,4 +12,8 @@ export default defineMessages({
     id: `${scope}.Title`,
     defaultMessage: 'Calendar',
   },
+  EventsTitle: {
+    id: `${scope}.EventsTitle`,
+    defaultMessage: 'Events',
+  },
 });

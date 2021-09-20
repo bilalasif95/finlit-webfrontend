@@ -44,7 +44,7 @@ const Wrapper = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 42px;
+        margin-top: 30px;
         p {
           color: #484848;
           font-size: 18px;
@@ -57,6 +57,42 @@ const Wrapper = styled.div`
           -webkit-box-orient: vertical;
           word-wrap: break-word;
         }
+      }
+    }
+  }
+  .recent-cont {
+    box-shadow: 0px 1px 5px #00000029;
+    border-radius: 5px;
+    padding: 30px 30px 69px 30px;
+    margin-top: 21px;
+    .activities {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h3 {
+        font-size: 31px;
+        color: #484848;
+        margin-bottom: 30px;
+      }
+      button {
+        color: #225F2B;
+        background: transparent !important;
+        border: none;
+        font-size: 16px;
+      }
+    }
+    .List-box:not(:last-child) {
+      border-bottom: 1px solid #e6e6e6;
+    }
+    .List-box { 
+      padding: 30px 0px;
+      h4 {
+        font-size: 21px;
+        color: #484848 !important;
+      }
+      p {
+        font-size: 18x;
+        color: #8b8b8b;
       }
     }
   }

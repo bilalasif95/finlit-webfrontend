@@ -44,12 +44,12 @@ export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [roleId, setRoleId] = useState('0');
+  const [roleId, setRoleId] = useState(1);
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [gender, setGender] = useState('');
-  const [country, setCountry] = useState('');
-  const [profession, setProfession] = useState('');
+  const [gender, setGender] = useState('Male');
+  const [country, setCountry] = useState('USA');
+  const [profession, setProfession] = useState('Software Developer');
   const [address, setAddress] = useState('');
   const [instructorDiv, setInstructorDiv] = useState(false);
   const [error, setError] = useState('');
@@ -117,7 +117,7 @@ export default function SignupPage() {
             <div className="form">
               <FormGroup>
                 <Label for="email">
-                  <FormattedMessage {...messages.EmailAddress} />
+                  <FormattedMessage {...messages.EmailAddress} /> {'*'}
                 </Label>
                 <Input
                   type="email"
@@ -131,7 +131,7 @@ export default function SignupPage() {
                 <Col lg={6} md={6} sm={12}>
                   <FormGroup>
                     <Label for="name">
-                      <FormattedMessage {...messages.FName} />
+                      <FormattedMessage {...messages.FName} /> {'*'}
                     </Label>
                     <Input
                       type="text"
@@ -145,7 +145,7 @@ export default function SignupPage() {
                 <Col lg={6} md={6} sm={12}>
                   <FormGroup>
                     <Label for="name">
-                      <FormattedMessage {...messages.LName} />
+                      <FormattedMessage {...messages.LName} /> {'*'}
                     </Label>
                     <Input
                       type="text"
@@ -161,7 +161,7 @@ export default function SignupPage() {
                 <FormGroup>
                   <FormControl fullWidth>
                     <Label>
-                      <FormattedMessage {...messages.SelectType} />
+                      <FormattedMessage {...messages.SelectType} /> {'*'}
                     </Label>
                     <Select
                       value={roleId}
@@ -191,7 +191,7 @@ export default function SignupPage() {
               </Col>
               <FormGroup>
                 <Label for="password">
-                  <FormattedMessage {...messages.CreatePassword} />
+                  <FormattedMessage {...messages.CreatePassword} /> {'*'}
                 </Label>
                 <Input
                   type="password"
@@ -203,7 +203,7 @@ export default function SignupPage() {
               </FormGroup>
               <FormGroup className="form_err">
                 <Label for="password">
-                  <FormattedMessage {...messages.ConfirmPassword} />
+                  <FormattedMessage {...messages.ConfirmPassword} /> {'*'}
                 </Label>
                 <Input
                   type="password"
