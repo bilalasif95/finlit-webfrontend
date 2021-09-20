@@ -13,6 +13,7 @@ const Wrapper = styled.div`
     transition: box-shadow 0.5s;
     cursor: pointer;
     text-decoration: none;
+    margin-right: 16px;
     img {
       display: block;
       margin: 0 auto 1.25rem;

@@ -24,6 +24,18 @@ export default defineMessages({
     id: `${scope}.FreeGiftsRewards`,
     defaultMessage: 'Free Gifts & Rewards',
   },
+  Bootcamp: {
+    id: `${scope}.Bootcamp`,
+    defaultMessage: 'Bootcamp',
+  },
+  hackathon: {
+    id: `${scope}.hackathon`,
+    defaultMessage: 'Hackathon',
+  },
+  OneonOne: {
+    id: `${scope}.hackathon`,
+    defaultMessage: 'OneonOne',
+  },
   AccreditedEducationDesc: {
     id: `${scope}.AccreditedEducationDesc`,
     defaultMessage: `Lorem ipsum vitea eros dictum, gravida massa id, pellentesque est.`,

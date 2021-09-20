@@ -79,8 +79,7 @@ const App = () => {
 
           history.location.pathname === "/email_verification" ||
           history.location.pathname === "/create_new_password"
-
-          ? null :  userInfo && userInfo.roles[0].roleName == "Instructor" ? <InstructorHeader /> : userInfo &&  <Header />}
+        ? null : userInfo && userInfo.roles[0].roleName == "Instructor" ? <InstructorHeader /> : <Header />}
  <InstructorHeader />
    <Header />
       </Route>
