@@ -13,10 +13,10 @@ import { Link } from 'react-router-dom';
 import Wrapper from './Wrapper';
 import messages from './messages';
 
-function MainSection() {
+function MainSection(props) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
   const toggle = () => setDropdownOpen(prevState => !prevState);
+  let statistics = props.statistics
 
   return (
     <Wrapper>
@@ -63,11 +63,6 @@ function MainSection() {
                     </DropdownItem>
                     <DropdownItem>
                       <Link className="dropdown_link" to="/">
-                        <FormattedMessage {...messages.AddEvents} />
-                      </Link>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <Link className="dropdown_link" to="/">
                         <FormattedMessage {...messages.AddArticles} />
                       </Link>
                     </DropdownItem>
@@ -96,16 +91,16 @@ function MainSection() {
               <Row>
                 <Col lg={3} md={6} sm={6} xs={12}>
                   <div className="single_item">
-                    <h2>510$</h2>
+                    <h2>{statistics.totalBootcamps}</h2>
                     <span className="vl" />
                     <p>
-                      <FormattedMessage {...messages.TotalRevenue} />
+                      <FormattedMessage {...messages.Bootcamps} />
                     </p>
                   </div>
                 </Col>
                 <Col lg={3} md={6} sm={6} xs={12}>
                   <div className="single_item">
-                    <h2>40+</h2>
+                    <h2>{statistics.totalWebinars}</h2>
                     <span />
                     <p>
                       <FormattedMessage {...messages.Webinars} />
@@ -114,7 +109,7 @@ function MainSection() {
                 </Col>
                 <Col lg={3} md={6} sm={6} xs={12}>
                   <div className="single_item">
-                    <h2>25+</h2>
+                    <h2>{statistics.totalCourses}</h2>
                     <span />
                     <p>
                       <FormattedMessage {...messages.Courses} />
@@ -123,10 +118,10 @@ function MainSection() {
                 </Col>
                 <Col lg={3} md={6} sm={6} xs={12}>
                   <div className="single_item">
-                    <h2>510$</h2>
+                    <h2>{statistics.totalHackathons}</h2>
                     <span />
                     <p>
-                      <FormattedMessage {...messages.Events} />
+                      <FormattedMessage {...messages.Hackathons} />
                     </p>
                   </div>
                 </Col>

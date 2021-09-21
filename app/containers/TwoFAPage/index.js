@@ -19,7 +19,7 @@ import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../config/config';
 // import { response } from 'express';
-const SigninPage = props => {
+const TwoFAPage = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -57,65 +57,30 @@ const SigninPage = props => {
     <>
       <div className="registration_page">
         <Helmet>
-          <title>- Sign In</title>
-          <meta name="description" content="FinLit - Sign in Page" />
+          <title>Two FA Verification</title>
+          <meta name="description" content="Two FA Verification" />
         </Helmet>
         <div className="form_container Login-form">
           <div className="form_content">
             <h2>
-              <FormattedMessage {...messages.WelcomeBack} />
+              <FormattedMessage {...messages.TwoFA} />
             </h2>
             <div className="form">
               <FormGroup>
                 <Label for="email">
-                  <FormattedMessage {...messages.EmailAddress} />
+                  <FormattedMessage {...messages.Code} />
                 </Label>
                 <Input
-                  type="email"
-                  name="email"
-                  id="email"
+                  type="text"
+                  name="code"
+                  id="code"
                   onChange={e => setEmail(e.target.value)}
-                  placeholder="Your email"
+                  placeholder="Enter code"
                 />
               </FormGroup>
-              <FormGroup className="form_err">
-                <Label for="password">
-                  <FormattedMessage {...messages.Password} />
-                </Label>
-                <Input
-                  type="password"
-                  name="password"
-                  id="password"
-                  onChange={e => setPassword(e.target.value)}
-                  placeholder="******"
-                />
-                <div className="error-box">
-                  {error && <p className="error">{error}</p>}
-                </div>
-              </FormGroup>
-              <div className="remember_forgot">
-                <FormGroup check>
-                  <Label check>
-                    <Input type="checkbox" />
-                    <FormattedMessage {...messages.RememberMe} />
-                  </Label>
-                </FormGroup>
-                <Link to="/forgot_password">
-                  <FormattedMessage {...messages.ForgotPassword} />
-                </Link>
-              </div>
               <Button onClick={login} disabled={btnClick}>
-                <FormattedMessage {...messages.Login} />
+                <FormattedMessage {...messages.Verify} />
               </Button>
-              <div className="reg_footer">
-                <p>
-                  <FormattedMessage {...messages.DontHaveAccount} />
-                  &nbsp;
-                  <Link to="/signup">
-                    <FormattedMessage {...messages.CreateAnAccount} />
-                  </Link>
-                </p>
-              </div>
             </div>
           </div>
         </div>
@@ -127,5 +92,5 @@ const SigninPage = props => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(SigninPage)
+  connect(mapStateToProps, mapDispatchToProps)(TwoFAPage)
 );

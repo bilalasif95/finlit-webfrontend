@@ -32,6 +32,7 @@ const Wrapper = styled.div`
        }
       .react-calendar__month-view__days {
         margin-top: 17px;
+        gap: 12px;
         button {
            background: transparent;
            border: none;
@@ -40,7 +41,7 @@ const Wrapper = styled.div`
            padding: 0px;
            width: auto;
            max-width: 10% !important;
-           height: 12%;
+           height: 32px;
            &:focus {
              background: #46a135;
              box-shadow: 0px 3px 6px #00000029;
@@ -54,6 +55,64 @@ const Wrapper = styled.div`
            }
         }
       }
+      .react-calendar__year-view__months, .react-calendar__decade-view__years, .react-calendar__century-view__decades {
+        justify-content: center;
+        .react-calendar__year-view__months__month, .react-calendar__decade-view__years__year, .react-calendar__century-view__decades__decade {
+          border: none;
+          background: transparent;
+          color: #8b8b8b;
+          background-color: #ececeb;
+          margin: 5px;
+        }
+      }
+   }
+ }
+ .main {
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 31px;
+    margin-bottom: 26px;
+ }
+ .Events-cont {
+   h3 {
+    font-size: 21px;
+    color: #484848;
+    margin-bottom: 5px;
+   } 
+   >p {
+    color: #8B8B8B;
+    font-size: 15px;
+    margin-bottom: 31px;
+   }
+   .Events-main {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin-bottom: 28px;
+     .textbox {
+       h5 {
+         font-size: 21px;
+         color: #484848;
+         margin-bottom: 6px;
+       }
+       p {
+        color: #8B8B8B;
+       }
+     }
+     .circle {
+       background: #225f2B;
+       height: 34px;
+       width: 34px;
+       border-radius: 50px;
+       color: #ffffff;
+       font-size: 19px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       box-shadow: 0px 3px 6px;
+     }
+     .Time {
+      color: #8b8b8b;
+     }
    }
  }
 `;

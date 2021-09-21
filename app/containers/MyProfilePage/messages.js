@@ -35,15 +35,31 @@ export default defineMessages({
   },
   Fname: {
     id: `${scope}.Fname`,
-    defaultMessage: 'First Name',
+    defaultMessage: 'First Name*',
   },
   Lname: {
     id: `${scope}.Lname`,
-    defaultMessage: 'Last Name',
+    defaultMessage: 'Last Name*',
   },
-  Title: {
-    id: `${scope}.Title`,
-    defaultMessage: 'Title',
+  Profession: {
+    id: `${scope}.Profession`,
+    defaultMessage: 'Profession',
+  },
+  Gender: {
+    id: `${scope}.Gender`,
+    defaultMessage: 'Gender*',
+  },
+  ProfileImage: {
+    id: `${scope}.ProfileImage`,
+    defaultMessage: 'Profile Image*',
+  },
+  Country: {
+    id: `${scope}.Country`,
+    defaultMessage: 'Country',
+  },
+  Address: {
+    id: `${scope}.Address`,
+    defaultMessage: 'Permanent Address',
   },
   Email: {
     id: `${scope}.Email`,
@@ -59,7 +75,7 @@ export default defineMessages({
   },
   AboutMe: {
     id: `${scope}.AboutMe`,
-    defaultMessage: 'About Me',
+    defaultMessage: 'About Me*',
   },
   Save: {
     id: `${scope}.Save`,

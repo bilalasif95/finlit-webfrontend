@@ -11,6 +11,8 @@ import education from '../../../../images/education.svg';
 import livewebinar from '../../../../images/livewebinar.svg';
 import goaledu from '../../../../images/goaledu.svg';
 import gift from '../../../../images/gift.svg';
+import Hackathon from '../../../../images/hackathon.svg';
+import One from '../../../../images/one.svg';
 import Wrapper from './Wrapper';
 
 function MainServices() {
@@ -48,46 +50,36 @@ function MainServices() {
       redirectLink: '/',
     },
     {
-      id: 0,
-      icon: education,
-      alt: 'Accredited Education',
-      title: <FormattedMessage {...messages.AccreditedEducation} />,
-      desc: <FormattedMessage {...messages.AccreditedEducationDesc} />,
-      redirectLink: 'course_list',
+      id: 4,
+      icon: Hackathon,
+      alt: 'Free Gifts &amp; Rewards',
+      title: <FormattedMessage {...messages.hackathon} />,
+      desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,
+      redirectLink: 'hackathons_list',
     },
     {
-      id: 1,
-      icon: livewebinar,
-      alt: 'Live Webinars',
-      title: <FormattedMessage {...messages.LiveWebinars} />,
-      desc: <FormattedMessage {...messages.LiveWebinarsDesc} />,
-      redirectLink: 'webinar_list',
-    },
-    {
-      id: 2,
-      icon: goaledu,
-      alt: 'Goal Based Education',
-      title: <FormattedMessage {...messages.GoalBasedEducation} />,
-      desc: <FormattedMessage {...messages.GoalBasedEducationDesc} />,
-      redirectLink: '/',
-    },
-    {
-      id: 3,
+      id: 5,
       icon: gift,
       alt: 'Free Gifts &amp; Rewards',
-      title: <FormattedMessage {...messages.FreeGiftsRewards} />,
+      title: <FormattedMessage {...messages.Bootcamp} />,
+      desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,
+      redirectLink: 'bootcamps_list',
+    },
+    {
+      id: 6,
+      icon: One,
+      alt: 'Free Gifts &amp; Rewards',
+      title: <FormattedMessage {...messages.OneonOne} />,
       desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,
       redirectLink: '/',
     },
   ];
   const settings = {
-    autoplay: true,
-    dots: false,
+    dots: true,
     infinite: true,
-    speed: 5000,
+    speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    initialSlide: 0,
     responsive: [
       {
         breakpoint: 991,

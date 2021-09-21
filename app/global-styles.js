@@ -24,6 +24,9 @@ const GlobalStyle = createGlobalStyle`
       width: 34%;
       margin: 0px auto;
       text-align: center;
+      img {
+        margin-bottom:  41px;
+      }
       h4 {
         font-size: 24px;
         color: #484848;
@@ -216,6 +219,9 @@ const GlobalStyle = createGlobalStyle`
   #services {
     background-color: #F8F9FB;
     padding: 4rem 0 0;
+    .slick-dots {
+      bottom: -40px;
+    }
     .header {
       align-items: center;
       display: flex;
@@ -270,7 +276,7 @@ const GlobalStyle = createGlobalStyle`
     color: red;
     margin-bottom: 20px;
   }
-  .vh_100 {
+  .Login-form {
     height: 100vh !important;
   }
   .form_container {
@@ -618,6 +624,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 0.75rem;
   }
 }
+
 `;
 
 export default GlobalStyle;
