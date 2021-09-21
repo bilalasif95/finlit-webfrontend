@@ -10,11 +10,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
 import { API } from '../../config/config';
+import UseEnterKeyListener from "../../config/useEnterKeyListener";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [btnClick, setBtnClick] = useState(false);
+  UseEnterKeyListener({
+    querySelectorToExecuteClick: "#submitButton"
+  });
 
   const forgotPasswordBtn = () => {
     setError('');
@@ -81,10 +85,11 @@ export default function ForgotPasswordPage() {
                 </div>
               </FormGroup>
               <Button
+                id="submitButton"
                 onClick={() => {
                   forgotPasswordBtn();
                 }}
-                disabled={btnClick}
+                disabled={btnClick || !email}
               >
                 <FormattedMessage {...messages.SendRecoveryCode} />
               </Button>

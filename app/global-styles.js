@@ -264,7 +264,6 @@ const GlobalStyle = createGlobalStyle`
 }
 
 // Registration Form Pages Styles
-
 .registration_page {
   background-color: #fff;
   display: flex;
@@ -623,7 +622,14 @@ const GlobalStyle = createGlobalStyle`
     font-size: 0.75rem;
   }
 }
-
+.check-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .form-check-input {
+    margin: 0 10px 0 -21px;
+  }
+}
 `;
 
 export default GlobalStyle;

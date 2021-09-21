@@ -12,6 +12,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import "./app.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
@@ -119,6 +120,7 @@ export default function SignupPage() {
         <Helmet>
           <title>- Sign Up</title>
           <meta name="description" content="FinLit - Sign up Page" />
+          <link rel="stylesheet" href="./signup.scss" />
         </Helmet>
         <div className="form_container">
           <div className="form_content">

@@ -8,6 +8,7 @@ import { Button, FormGroup, Label, Input } from 'reactstrap';
 import history from 'utils/history';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import UseEnterKeyListener from "../../config/useEnterKeyListener";
 
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -24,6 +25,10 @@ const SigninPage = props => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [btnClick, setBtnClick] = useState(false);
+  const [isDisabled, setDisabled] = useState(false);
+  UseEnterKeyListener({
+    querySelectorToExecuteClick: "#submitButton"
+  });
   const login = () => {
     setError('');
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
@@ -95,7 +100,7 @@ const SigninPage = props => {
               </FormGroup>
               <div className="remember_forgot">
                 <FormGroup check>
-                  <Label check>
+                  <Label check className="check-box">
                     <Input type="checkbox" />
                     <FormattedMessage {...messages.RememberMe} />
                   </Label>
@@ -104,7 +109,7 @@ const SigninPage = props => {
                   <FormattedMessage {...messages.ForgotPassword} />
                 </Link>
               </div>
-              <Button onClick={login} disabled={btnClick}>
+              <Button id="submitButton" onClick={login} disabled={btnClick || !email || !password}>
                 <FormattedMessage {...messages.Login} />
               </Button>
               <div className="reg_footer">
