@@ -33,6 +33,8 @@ const Header = () => {
 
   const toggle = () => setIsOpen(!isOpen);
 
+  const userObj = JSON.parse(localStorage.getItem('userInfo') || '');
+
   let token = localStorage.getItem("token")
   const LogOut = () => {
     history.push("/login")
@@ -176,9 +178,9 @@ const Header = () => {
                         <Img src={User} alt="User" />
                       </div>
                       <div className="user_name">
-                        <p>John Smith</p>
-                        <span>example@finlit.com</span>
-                      </div>
+                    <p>{userObj.firstName} {userObj.lastName}</p>
+                    <span>{userObj.email}</span>
+                  </div>
                     </div>
                   </DropdownToggle>
                   <DropdownMenu right>
@@ -189,7 +191,7 @@ const Header = () => {
                       </div>
                       <div />
                     </DropdownItem>
-                    <DropdownItem>
+                    <DropdownItem onClick={ () => { history.push('/my_profile') } }>
                       <div>
                         <HiUser />
                         <FormattedMessage {...messages.AccountSetting} />

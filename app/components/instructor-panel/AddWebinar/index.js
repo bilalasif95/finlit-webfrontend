@@ -14,6 +14,8 @@ import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
 import Wrapper from './Wrapper';
 import messages from './messages';
+import history from 'utils/history';
+import { ToastContainer, toast } from 'react-toastify';
 import { API } from '../../../config/config';
 import { redirectToLogin } from "../../../utils/redirectToLogin"
 
@@ -108,7 +110,7 @@ function AddWebinar() {
             ...authHeaders,
           },
         })
-        .then(() => {
+        .then((response) => {
           setContent('');
           setWebinarStatus({
             mainTitle: '',
@@ -123,10 +125,20 @@ function AddWebinar() {
             description: '',
           });
           setLoader(false);
+          toast.success(
+            response && response.data.message
+              ? response.data.message.toString()
+              : 'Message Not Readable',
+          );
+          history.push('/webinars_list');
         })
         .catch(err => {
           setLoader(false);
-          setErrors(err.response && err.response.data.message);
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
         });
     }
   };

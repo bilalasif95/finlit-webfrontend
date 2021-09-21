@@ -46,12 +46,13 @@ import BootcampListPage from 'containers/instructor-panel/BootcampListPage/Loada
 
 import MyProfilePage from 'containers/MyProfilePage/Loadable';
 import SigninPage from 'containers/SigninPage/Loadable';
+import TwoFAPage from 'containers/TwoFAPage/Loadable';
 import SignupPage from 'containers/SignupPage/Loadable';
 import EmailVerificationPage from 'containers/EmailVerification/Loadable';
 import ForgotPasswordPage from 'containers/ForgotPasswordPage/Loadable';
 import CreateNewPasswordPage from 'containers/CreateNewPasswordPage/Loadable';
 import Header from 'components/student-panel/Header';
-import InstructorHeader from 'components/instructor-panel/Header';
+// import InstructorHeader from 'components/instructor-panel/Header';
 import Footer from 'components/student-panel/Footer';
 
 import GlobalStyle from '../../global-styles';
@@ -78,10 +79,12 @@ const App = () => {
         {history.location.pathname === '/signup' || history.location.pathname === "/login" ||
 
           history.location.pathname === "/email_verification" ||
-          history.location.pathname === "/create_new_password"
+          history.location.pathname === "/create_new_password" ||
+          history.location.pathname === "/forgot_password" ||
+          history.location.pathname === "/two_fa"
           ? null : userInfo && userInfo.roles[0].roleName == "Instructor" ? <Header  /> : <Header />}
        {/* <InstructorHeader /> */}
-   
+
       </Route>
       <Switch>
 
@@ -94,7 +97,7 @@ const App = () => {
         <Route path="/hackathon_list" component={HackathonList} />
         <Route path="/article_list" component={ArticleList} />
         <Route path="/live_session_list" component={LiveSessionList} />
-        <Route path="/article_details" component={ArticleDetails} />
+        <Route path="/article_details/:id" component={ArticleDetails} />
         <Route path="/cart" component={CartCheckout} />
         <Route path="/hackathon_details/:id" component={AddCartHackathon} />
         <Route path="/webinar_details/:id" component={AddCartWebinar} />
@@ -114,6 +117,7 @@ const App = () => {
         <Route path="/my_profile" component={MyProfilePage} />
 
         <Route path="/login" component={SigninPage} />
+        <Route path="/two_fa" component={TwoFAPage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="/email_verification" component={EmailVerificationPage} />
         <Route path="/forgot_password" component={ForgotPasswordPage} />
@@ -122,8 +126,9 @@ const App = () => {
       </Switch>
       {history.location.pathname === '/signup' || history.location.pathname === "/login" ||
         history.location.pathname === "/email_verification" ||
-        history.location.pathname === "/create_new_password"
-
+        history.location.pathname === "/create_new_password" ||
+        history.location.pathname === "/forgot_password" ||
+        history.location.pathname === "/two_fa"
         ? null : <Footer />}
       <GlobalStyle />
       {/* </Router> */}

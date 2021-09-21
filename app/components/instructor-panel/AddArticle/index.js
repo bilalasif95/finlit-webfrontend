@@ -14,6 +14,7 @@ import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
 import Wrapper from './Wrapper';
 import messages from './messages';
+import { ToastContainer, toast } from 'react-toastify';
 import { API } from '../../../config/config';
 
 function AddArticle() {
@@ -68,7 +69,7 @@ function AddArticle() {
             ...authHeaders,
           },
         })
-        .then(() => {
+        .then((response) => {
           setContent('');
           setArticleStatus({
             mainTitle: '',
@@ -76,10 +77,19 @@ function AddArticle() {
             description: '',
           });
           setLoader(false);
+          toast.success(
+            response && response.data.message
+              ? response.data.message.toString()
+              : 'Message Not Readable',
+          );
         })
         .catch(err => {
           setLoader(false);
-          setErrors(err.response && err.response.data.message);
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
         });
     }
   };
@@ -96,6 +106,7 @@ function AddArticle() {
     return error;
   };
   return (
+    <>
     <Wrapper>
       <div className="add_forms">
         <p>
@@ -197,6 +208,8 @@ function AddArticle() {
         </div>
       </div>
     </Wrapper>
+    <ToastContainer />
+    </>
   );
 }
 

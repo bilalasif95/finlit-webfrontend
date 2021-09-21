@@ -29,23 +29,43 @@ const SigninPage = props => {
   UseEnterKeyListener({
     querySelectorToExecuteClick: "#submitButton"
   });
+  const [rememberMe, setRememberMe] = useState(false);
+
+  React.useEffect(() => {
+    setEmail(localStorage.getItem('remember_me_email') || '');
+    setPassword(localStorage.getItem('remember_me_password') || '');
+  }, [])
   const login = () => {
     setError('');
-    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
-      setError('Please enter valid email');
+    debugger;
+    if (!email) {
+      setError('Please enter email');
       return;
+    }
+    if (!password) {
+      setError('Please enter Password');
+      return;
+    }
+    if (rememberMe) {
+      localStorage.setItem('remember_me_email', email);
+      localStorage.setItem('remember_me_password', password);
     }
     setBtnClick(true);
     axios
       .post(`${API}api/auth/login`, { email, password })
       .then(res => {
-        localStorage.setItem('token', res.data.accessToken);
-        localStorage.setItem(
-          'userInfo',
-          JSON.stringify(res.data.user && res.data.user),
-        );
-        props.Login(res.data.user);
-        history.push('/');
+        if (res.data.status === 200) {
+          localStorage.setItem('token', res.data.data.accessToken);
+          localStorage.setItem(
+            'userInfo',
+            JSON.stringify(res.data.data.user && res.data.data.user),
+          );
+          props.Login(res.data.data.user);
+          history.push('/');
+        } else {
+          localStorage.setItem('email', email);
+          history.push('/two_fa');
+        }
       })
       .catch(err => {
         toast.error(

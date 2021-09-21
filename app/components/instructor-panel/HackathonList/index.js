@@ -17,17 +17,17 @@ import Loader from '../../Loader';
 
 function HackathonList() {
   const [hackathonList, sethackathonList] = useState([]),
-    [loader, setLoader] = useState(false);
+        [loader, setLoader] = useState(false);
   useEffect(() => {
-    getHackathonLists()
+    getHackathonLists();
   }, []);
   const getHackathonLists = () => {
-    setLoader(true)
+    setLoader(true);
     const token = localStorage.getItem('token');
     const authHeaders = token
       ? {
-        Authorization: `Bearer${token}`,
-      }
+          Authorization: `Bearer${token}`,
+        }
       : {};
     axios
       .get(`${API}api/events/getEventsByTypes?type=Hackathon`, {
@@ -38,7 +38,7 @@ function HackathonList() {
         },
       })
       .then(res => {
-        sethackathonList(res && res.data && res.data.data)
+        sethackathonList(res && res.data && res.data.data);
         setLoader(false);
       })
       .catch(() => {
@@ -49,7 +49,7 @@ function HackathonList() {
     <Wrapper>
       {loader ? (
         <Loader />
-      ) :
+      ) : (
         <>
           <div className="courses_list">
             {hackathonList.map(item => (
@@ -124,6 +124,7 @@ function HackathonList() {
             </div>
           </div>
         </>
+      )
       }
     </Wrapper>
   );

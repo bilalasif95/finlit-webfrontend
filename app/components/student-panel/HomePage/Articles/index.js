@@ -3,10 +3,10 @@
  */
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 import Slider from 'react-slick';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import history from 'utils/history';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
@@ -38,6 +38,9 @@ function Articles() {
       .catch(() => {
         setLoader(false);
       });
+  };
+  const handleArticleDetails = id => {
+    history.push(`/article_details/${id}`);
   };
 
   const settings = {
@@ -91,7 +94,10 @@ function Articles() {
           ) : (
             <Slider {...settings}>
               {articleList.map(article => (
-                <div key={article.id}>
+                <div
+                key={article.id}
+                onClick={() => handleArticleDetails(article.id)}
+                >
                   <div className="single_item">
                     <div className="left">
                       <img src={articleicon} alt="IconImg" />
@@ -99,12 +105,15 @@ function Articles() {
                       <p>
                         <FormattedMessage {...messages.InteractiveToolsDesc} />
                       </p>
-                      <Link className="read_more" to="/article_details">
+                      <Button
+                        className="read_more"
+                        onClick={() => handleArticleDetails(article.id)}
+                      >
                         <FormattedMessage {...messages.ReadMore} />
-                      </Link>
+                      </Button>
                     </div>
                     <div className="right">
-                      {/* <img src={article.articleImage} alt="ArticleImage" /> */}
+                      {/* <img src={article.image} alt="ArticleImage" /> */}
                       <img src={article1} alt="Article" />
                     </div>
                   </div>

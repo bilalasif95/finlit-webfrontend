@@ -61,7 +61,7 @@ export default function ForgotPasswordPage() {
           <title>Forgot Password</title>
           <meta name="description" content="FinLit - Forgot Password Page" />
         </Helmet>
-        <div className="form_container">
+        <div className="form_container Login-form">
           <div className="form_content">
             <h2>
               <FormattedMessage {...messages.ForgotPassword} />
