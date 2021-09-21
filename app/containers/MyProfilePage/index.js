@@ -285,6 +285,7 @@ export default function MyProfilePage() {
             aboutMe: '',
           });
           getCurrentUser();
+          localStorage.setItem('userInfo', JSON.stringify(profileUpdate));
         })
         .catch(err => {
           setErrors(err.response && err.response.data.message);
