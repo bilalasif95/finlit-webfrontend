@@ -14,6 +14,6 @@ export default defineMessages({
   },
   Emaildetail: {
     id: `${scope}.Emaildetail`,
-    defaultMessage: 'Your jhon@example.com email has been verified successfully. Please login to continue.',
+    defaultMessage: 'Your email has been verified successfully. Please login to continue.',
   },
 });
