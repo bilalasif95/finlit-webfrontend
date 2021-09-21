@@ -47,6 +47,8 @@ export default function MyProfilePage() {
   const [modalEnable, setModalEnable] = useState(false);
   const [modalTY, setModalTY] = useState(false);
   const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState('');
+  const [apiSuccessMessage, setApiSuccessMessage] = useState('');
   const [QrUri, setQrUri] = useState('');
   const [twoFaCode, setTwoFaCode] = useState('');
   const [profileUpdate, setProfileUpdate] = useState({
@@ -170,11 +172,21 @@ export default function MyProfilePage() {
             newPassword: '',
             confirmPassword: '',
           });
-          setModal(!modal);
+          setApiSuccessMessage('Password Successfully Changed');
+          setTimeout(() => {
+            setApiSuccessMessage('');
+            setModal(!modal);
+          }, 4000);
         })
         .catch(err => {
-          setModal(!modal);
-          setErrors(err.response && err.response.data.message);
+          setApiError(
+            err.response.data.message || err.response.data.message[0],
+          );
+          setTimeout(() => {
+            setApiError('');
+          }, 4000);
+          // setModal(!modal);
+          // setErrors(err.response && err.response.data.message);
         });
     }
   };
@@ -695,6 +707,8 @@ export default function MyProfilePage() {
         <ModalBody>
           <div className="modal_form">
             <FormGroup>
+              <Label for="password">{apiError || ''}</Label>
+              <Label for="password">{apiSuccessMessage || ''}</Label>
               <Label for="password">
                 <FormattedMessage {...messages.YourCurrentPassword} />
               </Label>
