@@ -36,13 +36,16 @@ import Menubar from './Menubar';
 
 function Header() {
   // const [isOpen, setIsOpen] = useState(false);
+  const [userObj, setUserObj] = useState({});
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // const toggle = () => setIsOpen(!isOpen);
   const toggleDropdown = () => setDropdownOpen(prevState => !prevState);
-
-  const userObj = JSON.parse(localStorage.getItem('userInfo') || '');
-
+  React.useEffect(() => {
+    if (localStorage.getItem('userInfo')) {
+      setUserObj(JSON.parse(localStorage.getItem('userInfo')));
+    }
+  }, []);
 
   return (
     <Menubar>
