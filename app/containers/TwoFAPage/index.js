@@ -76,6 +76,13 @@ const TwoFAPage = props => {
                   id="code"
                   onChange={e => setCode(e.target.value)}
                   placeholder="Enter code"
+                  onKeyDown = {(e) => {
+                    if (e.code === "Enter" || e.code === "NumpadEnter") {
+                      console.log("Enter key was pressed. Run your function.");
+                      e.preventDefault();
+                      login()
+                    }
+                  }}
                 />
               </FormGroup>
               <div className="error-box">

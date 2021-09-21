@@ -422,9 +422,9 @@ function AddWebinar() {
         </div>
         <div className="form_footer">
           <div className="bottom_btns">
-            <Button className="btn_save" onClick={e => handleSave(e)}>
+            {/* <Button className="btn_save" onClick={e => handleSave(e)}>
               {loader ? 'Loading' : <FormattedMessage {...messages.SaveAs} />}
-            </Button>
+            </Button> */}
             <Button className="btn_submit" onClick={e => handleSave(e)}>
               {loader ? (
                 'Loading'
