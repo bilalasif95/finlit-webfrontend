@@ -5,6 +5,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import messages from './messages';
 import CoursesList from '../../../components/instructor-panel/CoursesList';
@@ -22,9 +23,12 @@ export default function CoursesListPage() {
           <Container fluid>
             <Row>
               <Col lg={12}>
-                <h4>
-                  <FormattedMessage {...messages.CoursesList} />
-                </h4>
+                <div className="Head-Link">
+                  <h4>
+                    <FormattedMessage {...messages.CoursesList} />
+                  </h4>
+                  <Link to="/add_course"><span>+</span> Add</Link>
+                </div>
                 <CoursesList />
               </Col>
             </Row>

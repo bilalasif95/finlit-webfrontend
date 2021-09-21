@@ -11,6 +11,7 @@ import Wrapper from './Wrapper';
 import BootcampList from '../../../components/instructor-panel/BootcampList';
 import { redirectToLogin } from "../../../utils/redirectToLogin"
 
+
 export default function BootcampListPage() {
   useEffect(() => {
     redirectToLogin();

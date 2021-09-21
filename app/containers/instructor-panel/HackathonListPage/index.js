@@ -9,7 +9,8 @@ import { Container, Row, Col } from 'reactstrap';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import HackathonList from '../../../components/instructor-panel/HackathonList';
-import { redirectToLogin } from "../../../utils/redirectToLogin"
+import { redirectToLogin } from "../../../utils/redirectToLogin";
+import { Link } from 'react-router-dom';
 
 export default function HackathonListPage() {
 
@@ -28,9 +29,12 @@ export default function HackathonListPage() {
           <Container fluid>
             <Row>
               <Col lg={12}>
-                <h4>
-                  <FormattedMessage {...messages.HackathonList} />
-                </h4>
+                  <div className="Head-Link">
+                    <h4>
+                      <FormattedMessage {...messages.HackathonList} />
+                    </h4>
+                    <Link to="/add_hackathon"><span>+</span> Add</Link>
+                  </div>
                 <HackathonList />
               </Col>
             </Row>
