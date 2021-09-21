@@ -67,6 +67,9 @@ export default function MyProfilePage() {
     image: '',
     email: '',
     description: '',
+    address: '',
+    country: '',
+    gender: '',
   });
 
   const handleChange = () => {
@@ -289,30 +292,34 @@ export default function MyProfilePage() {
     }
   };
   const getCurrentUser = () => {
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId');
-    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-    axios
-      .get(`${API}api/user/${userId}`, {
-        headers: {
-          Accept: 'application/json',
-          ...authHeaders,
-        },
-      })
-      .then(res => {
-        setCurrentProfile({
-          ...currentProfile,
-          firstName: res.data.firstName,
-          lastName: res.data.lastName,
-          profession: res.data.profession,
-          email: res.data.email,
-          image: res.data.image,
-          description: res.data.description,
-        });
-      })
-      .catch(err => {
-        setErrors(err);
-      });
+    // const token = localStorage.getItem('token');
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    // const { id } = userInfo;
+    // const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+    // axios
+    //   .get(`${API}api/user/${id}`, {
+    //     headers: {
+    //       Accept: 'application/json',
+    //       ...authHeaders,
+    //     },
+    //   })
+    //   .then(res => {
+    setCurrentProfile({
+      ...currentProfile,
+      firstName: userInfo.firstName,
+      lastName: userInfo.lastName,
+      profession: userInfo.profession,
+      email: userInfo.email,
+      image: userInfo.image,
+      description: userInfo.description,
+      country: userInfo.country,
+      gender: userInfo.gender,
+      address: userInfo.address,
+    });
+    //     })
+    //     .catch(err => {
+    //       setErrors(err);
+    //     });
   };
   const updateProfileValidator = values => {
     const error = {};
@@ -378,6 +385,7 @@ export default function MyProfilePage() {
                         name="firstName"
                         id="fname"
                         placeholder="Enter first name"
+                        defaultValue={currentProfile.firstName}
                         value={profileUpdate.firstName}
                         onChange={e => handleChangeEvent(e)}
                       />
@@ -400,6 +408,7 @@ export default function MyProfilePage() {
                         name="lastName"
                         id="lname"
                         placeholder="Enter last name"
+                        defaultValue={currentProfile.lastName}
                         value={profileUpdate.lastName}
                         onChange={e => handleChangeEvent(e)}
                       />
@@ -422,6 +431,7 @@ export default function MyProfilePage() {
                         name="gender"
                         id="gender"
                         placeholder="Enter Gender"
+                        defaultValue={currentProfile.gender}
                         value={profileUpdate.gender}
                         onChange={e => handleChangeEvent(e)}
                       />
@@ -444,6 +454,7 @@ export default function MyProfilePage() {
                         name="profession"
                         id="profession"
                         placeholder="Enter profession"
+                        defaultValue={currentProfile.profession}
                         value={profileUpdate.profession}
                         onChange={e => handleChangeEvent(e)}
                       />
@@ -474,6 +485,7 @@ export default function MyProfilePage() {
                         name="country"
                         id="country"
                         placeholder="Enter Country"
+                        defaultValue={currentProfile.country}
                         value={profileUpdate.country}
                         onChange={e => handleChangeEvent(e)}
                       />
@@ -489,6 +501,7 @@ export default function MyProfilePage() {
                         name="address"
                         id="address"
                         placeholder="Enter address"
+                        defaultValue={currentProfile.address}
                         value={profileUpdate.address}
                         onChange={e => handleChangeEvent(e)}
                       />
@@ -583,6 +596,7 @@ export default function MyProfilePage() {
                         name="aboutMe"
                         id="aboutme"
                         placeholder="Enter description about yourself"
+                        defaultValue={currentProfile.description}
                         value={profileUpdate.aboutMe}
                         onChange={e => handleChangeEvent(e)}
                       />
