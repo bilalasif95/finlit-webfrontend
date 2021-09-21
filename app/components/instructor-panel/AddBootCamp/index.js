@@ -11,9 +11,11 @@ import {
   Button,
 } from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
+import history from 'utils/history';
 import axios from 'axios';
 import Wrapper from './Wrapper';
 import messages from './messages';
+import { ToastContainer, toast } from 'react-toastify';
 import { API } from '../../../config/config';
 import { redirectToLogin } from "../../../utils/redirectToLogin"
 
@@ -31,7 +33,7 @@ function AddBootCamp() {
   useEffect(() => {
     redirectToLogin()
   }, [])
-  
+
   const [bootCampStatus, setbootCampStatus] = useState({
     mainTitle: '',
     subTitle: '',
@@ -106,7 +108,7 @@ function AddBootCamp() {
             ...authHeaders,
           },
         })
-        .then(() => {
+        .then((response) => {
           setContent('');
           setbootCampStatus({
             mainTitle: '',
@@ -120,10 +122,20 @@ function AddBootCamp() {
             description: '',
           });
           setLoader(false);
+          toast.success(
+            response && response.data.message
+              ? response.data.message.toString()
+              : 'Message Not Readable',
+          );
+          history.push('/bootcamps_list');
         })
         .catch(err => {
           setLoader(false);
-          setErrors(err.response && err.response.data.message);
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
         });
     }
   };
@@ -153,6 +165,7 @@ function AddBootCamp() {
   };
 
   return (
+    <>
     <Wrapper>
       <div className="add_forms">
         <p>
@@ -396,6 +409,8 @@ function AddBootCamp() {
         </div>
       </div>
     </Wrapper>
+    <ToastContainer/>
+    </>
   );
 }
 
