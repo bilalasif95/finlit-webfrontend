@@ -9,7 +9,8 @@ import { Container, Row, Col } from 'reactstrap';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import WebinarsList from '../../../components/instructor-panel/WebinarsList';
-import { redirectToLogin } from "../../../utils/redirectToLogin"
+import { redirectToLogin } from "../../../utils/redirectToLogin";
+import { Link } from 'react-router-dom';
 
 export default function WebinarsListPage() {
 
@@ -29,9 +30,12 @@ export default function WebinarsListPage() {
           <Container fluid>
             <Row>
               <Col lg={12}>
-                <h4>
-                  <FormattedMessage {...messages.WebinarsList} />
-                </h4>
+                  <div className="Head-Link">
+                    <h4>
+                      <FormattedMessage {...messages.WebinarsList} />
+                    </h4>
+                    <Link to="/add_webinar"><span>+</span> Add</Link>
+                  </div>
                 <WebinarsList />
               </Col>
             </Row>

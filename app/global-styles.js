@@ -631,6 +631,27 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 10px 0 -21px;
   }
 }
+.Head-Link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 1.5rem;
+  a {
+    background: #46A135;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 0px;
+    width: 96px;
+    text-decoration: none;
+    text-align: center;
+    span {
+      margin-right: 10px;
+      font-size: 16px;
+    }
+  }
+}
 `;
 
 export default GlobalStyle;

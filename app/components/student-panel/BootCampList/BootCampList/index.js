@@ -17,6 +17,7 @@ import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
 import Loader from '../../../Loader';
+import { Link } from 'react-router-dom';
 
 function BootCampList() {
   const [bootcampList, setBootCampList] = useState([]);
@@ -52,9 +53,12 @@ function BootCampList() {
         <div className="courses">
           <Row>
             <Col lg={12}>
-              <h4>
-                <FormattedMessage {...messages.BootCampList} />
-              </h4>
+                <div className="Head-Link">
+                    <h4>
+                      <FormattedMessage {...messages.BootCampList} />
+                    </h4>
+                    <Link to="/add_bootcamp"><span>+</span> Add</Link>
+                  </div>
               <div className="courses_list">
                 {bootcampList.map(item => (
                   <div
