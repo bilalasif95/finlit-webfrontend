@@ -30,10 +30,15 @@ import messages from './messages';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [userObj, setUserObj] = useState({});
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const userObj = JSON.parse(localStorage.getItem('userInfo') || '');
+  React.useEffect(() => {
+    if (localStorage.getItem('userInfo')) {
+      setUserObj(JSON.parse(localStorage.getItem('userInfo')));
+    }
+  }, []);
 
   let token = localStorage.getItem("token")
   const LogOut = () => {
