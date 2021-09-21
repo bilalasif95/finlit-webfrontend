@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-.loader {
-  margin: 0px auto;
-  width: 70px;
-  display: block;
-}
   .single_course {
     display: flex;
     justify-content: space-between;

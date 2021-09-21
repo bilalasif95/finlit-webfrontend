@@ -14,7 +14,7 @@ import Loader from '../../../components/Loader';
 
 const AddCartWebinar = props => {
   const [webinarDetails, setWebinarDetails] = useState({}),
-        [loader, setLoader] = useState(false);
+    [loader, setLoader] = useState(false);
   useEffect(() => {
     getWebinarDetails();
   }, []);
@@ -25,7 +25,8 @@ const AddCartWebinar = props => {
   const getWebinarDetails = () => {
     setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token ? {
+    const authHeaders = token ?
+    {
       Authorization: `Bearer${token}`,
     } : {};
     axios

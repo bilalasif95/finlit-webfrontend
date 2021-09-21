@@ -277,9 +277,10 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 20px;
   }
   .Login-form {
-    height: 100vh;
+    height: 100vh !important;
   }
   .form_container {
+      height: 100%;
       width: 50%;
       display: flex;
       align-items: center;
