@@ -81,7 +81,7 @@ const App = () => {
           history.location.pathname === "/create_new_password"
           ? null : userInfo && userInfo.roles[0].roleName == "Instructor" ? <Header  /> : <Header />}
        {/* <InstructorHeader /> */}
-   
+
       </Route>
       <Switch>
 
@@ -94,7 +94,7 @@ const App = () => {
         <Route path="/hackathon_list" component={HackathonList} />
         <Route path="/article_list" component={ArticleList} />
         <Route path="/live_session_list" component={LiveSessionList} />
-        <Route path="/article_details" component={ArticleDetails} />
+        <Route path="/article_details/:id" component={ArticleDetails} />
         <Route path="/cart" component={CartCheckout} />
         <Route path="/hackathon_details/:id" component={AddCartHackathon} />
         <Route path="/webinar_details/:id" component={AddCartWebinar} />

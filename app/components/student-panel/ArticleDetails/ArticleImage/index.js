@@ -6,14 +6,14 @@ import { Row, Col } from 'reactstrap';
 // import { Link } from 'react-router-dom';
 import Wrapper from './Wrapper';
 import Img from '../../../Img';
-import article from '../../../../images/article.png';
 
-function ArticleImage() {
+function ArticleImage(props) {
+  let imgSrc = props.img;
   return (
     <Row>
       <Col lg={12}>
         <Wrapper>
-          <Img src={article} alt="Article" />
+          <Img src={imgSrc} alt="Article" />
         </Wrapper>
       </Col>
     </Row>
