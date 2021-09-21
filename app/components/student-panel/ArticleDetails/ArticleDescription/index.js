@@ -11,13 +11,13 @@ import { AiOutlineHeart, AiFillLike } from 'react-icons/ai';
 import messages from './messages';
 import Wrapper from './Wrapper';
 
-function ArticleDescription() {
+function ArticleDescription(props) {
+  let article = props.details;
+  const { title, description } = article;
   return (
     <Wrapper id="list">
       <div className="article">
-        <h4>
-          <FormattedMessage {...messages.ArticleTitle} />
-        </h4>
+        <h4>{title}</h4>
         <div className="article_outcomes">
           <div className="item">
             <AiOutlineHeart />
@@ -37,9 +37,7 @@ function ArticleDescription() {
           </div>
         </div>
         <div className="article_desc">
-          <p>
-            <FormattedMessage {...messages.ArticleDesc} />
-          </p>
+          <p>{description}</p>
         </div>
       </div>
     </Wrapper>
