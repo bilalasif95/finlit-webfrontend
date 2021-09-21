@@ -41,6 +41,9 @@ function Header() {
   // const toggle = () => setIsOpen(!isOpen);
   const toggleDropdown = () => setDropdownOpen(prevState => !prevState);
 
+  const userObj = JSON.parse(localStorage.getItem('userInfo') || '');
+
+
   return (
     <Menubar>
       <Navbar>
@@ -81,8 +84,8 @@ function Header() {
                     <Img src={User} alt="User" />
                   </div>
                   <div className="user_name">
-                    <p>John Smith</p>
-                    <span>example@finlit.com</span>
+                    <p>${userObj.firstName} ${userObj.lastName}</p>
+                    <span>${userObj.email}</span>
                   </div>
                 </div>
               </DropdownToggle>

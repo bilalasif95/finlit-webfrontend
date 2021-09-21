@@ -63,7 +63,7 @@ function MainServices() {
       alt: 'Free Gifts &amp; Rewards',
       title: <FormattedMessage {...messages.Bootcamp} />,
       desc: <FormattedMessage {...messages.FreeGiftsRewardsDesc} />,
-      redirectLink: 'bootcamps_list',
+      redirectLink: 'bootcamp_list',
     },
     {
       id: 6,

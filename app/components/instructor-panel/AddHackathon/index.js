@@ -14,6 +14,8 @@ import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
 import Wrapper from './Wrapper';
 import messages from './messages';
+import history from 'utils/history';
+import { ToastContainer, toast } from 'react-toastify';
 import { API } from '../../../config/config';
 import { redirectToLogin } from "../../../utils/redirectToLogin"
 
@@ -30,7 +32,7 @@ function AddHackathon() {
   useEffect(() => {
     redirectToLogin()
   }, [])
-  
+
   const [hackathonStatus, sethackathonStatus] = useState({
     mainTitle: '',
     subTitle: '',
@@ -105,7 +107,7 @@ function AddHackathon() {
             ...authHeaders,
           },
         })
-        .then(() => {
+        .then((response) => {
           setContent('');
           sethackathonStatus({
             mainTitle: '',
@@ -119,10 +121,20 @@ function AddHackathon() {
             description: '',
           });
           setLoader(false);
+          toast.success(
+            response && response.data.message
+              ? response.data.message.toString()
+              : 'Message Not Readable',
+          );
+          history.push('/hackathons_list');
         })
         .catch(err => {
           setLoader(false);
-          setErrors(err.response && err.response.data.message);
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
         });
     }
   };
@@ -153,6 +165,7 @@ function AddHackathon() {
   };
 
   return (
+    <>
     <Wrapper>
       <div className="add_forms">
         <p>
@@ -381,6 +394,8 @@ function AddHackathon() {
         </div>
       </div>
     </Wrapper>
+    <ToastContainer/>
+    </>
   );
 }
 
