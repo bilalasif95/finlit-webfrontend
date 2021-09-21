@@ -80,6 +80,7 @@ const App = () => {
 
           history.location.pathname === "/email_verification" ||
           history.location.pathname === "/create_new_password" ||
+          history.location.pathname === "/forgot_password" ||
           history.location.pathname === "/two_fa"
           ? null : userInfo && userInfo.roles[0].roleName == "Instructor" ? <Header  /> : <Header />}
        {/* <InstructorHeader /> */}
@@ -126,6 +127,7 @@ const App = () => {
       {history.location.pathname === '/signup' || history.location.pathname === "/login" ||
         history.location.pathname === "/email_verification" ||
         history.location.pathname === "/create_new_password" ||
+        history.location.pathname === "/forgot_password" ||
         history.location.pathname === "/two_fa"
         ? null : <Footer />}
       <GlobalStyle />
