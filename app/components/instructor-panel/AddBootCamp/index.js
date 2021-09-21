@@ -149,7 +149,6 @@ function AddBootCamp() {
     } else if (!content) {
       error.description = 'Description is required';
     }
-
     return error;
   };
 

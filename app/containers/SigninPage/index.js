@@ -31,10 +31,13 @@ export default function SigninPage() {
       .post(`${API}api/auth/login`, { email, password })
       .then(res => {
         localStorage.setItem('token', res.data.accessToken);
-        localStorage.setItem('userInfo', JSON.stringify(res.data.user && res.data.user));
-        setTimeout(()=>{
+        localStorage.setItem(
+          'userInfo',
+          JSON.stringify(res.data.user && res.data.user),
+        );
+        setTimeout(() =>  {
           history.push('/')
-        },1000)
+        },  1000);
       })
       .catch(err => {
         setError(err.response && err.response.data.message);
@@ -46,7 +49,7 @@ export default function SigninPage() {
         <title>- Sign In</title>
         <meta name="description" content="FinLit - Sign in Page" />
       </Helmet>
-      <div className="form_container">
+      <div className="form_container vh_100">
         <div className="form_content">
           <h2>
             <FormattedMessage {...messages.WelcomeBack} />

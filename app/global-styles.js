@@ -270,7 +270,11 @@ const GlobalStyle = createGlobalStyle`
     color: red;
     margin-bottom: 20px;
   }
+  .vh_100 {
+    height: 100vh !important;
+  }
   .form_container {
+      height: 100%;
       width: 50%;
       display: flex;
       align-items: center;

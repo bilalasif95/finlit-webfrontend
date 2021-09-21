@@ -42,7 +42,7 @@ export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [roleId, setRoleId] = useState('0');
+  const [roleId, setRoleId] = useState('1');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [gender, setGender] = useState('');
@@ -290,7 +290,7 @@ export default function SignupPage() {
                       </MenuItem>
                       <MenuItem value="Medical and Health Services">
                         <FormattedMessage {...messages.MedicalHealthServices} />
-                        </MenuItem>
+                      </MenuItem>
                       <MenuItem value="Statistician">
                         <FormattedMessage {...messages.Statistician} />
                       </MenuItem>
