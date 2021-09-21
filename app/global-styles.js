@@ -219,6 +219,9 @@ const GlobalStyle = createGlobalStyle`
   #services {
     background-color: #F8F9FB;
     padding: 4rem 0 0;
+    .slick-dots {
+      bottom: -40px;
+    }
     .header {
       align-items: center;
       display: flex;
@@ -620,6 +623,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 0.75rem;
   }
 }
+
 `;
 
 export default GlobalStyle;
