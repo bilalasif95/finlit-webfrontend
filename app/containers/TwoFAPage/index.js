@@ -30,20 +30,17 @@ const TwoFAPage = props => {
       return;
     }
     setBtnClick(true);
+    const email = localStorage.getItem('email');
     axios
-      .post(`${API}api/auth/verify2FA`, { code })
+      .post(`${API}api/auth/verify2FA`, { email, code })
       .then(res => {
-        if (res.data.status === 200) {
-          localStorage.setItem('token', res.data.data.accessToken);
-          localStorage.setItem(
-            'userInfo',
-            JSON.stringify(res.data.data.user && res.data.data.user),
-          );
-          props.Login(res.data.data.user);
-          history.push('/');
-        } else {
-          history.push('/');
-        }
+        localStorage.setItem('token', res.data.data.accessToken);
+        localStorage.setItem(
+          'userInfo',
+          JSON.stringify(res.data.data.user && res.data.data.user),
+        );
+        props.Login(res.data.data.user);
+        history.push('/');
       })
       .catch(err => {
         toast.error(
