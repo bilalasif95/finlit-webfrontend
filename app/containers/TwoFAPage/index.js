@@ -20,27 +20,30 @@ import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../config/config';
 // import { response } from 'express';
 const TwoFAPage = props => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [code, setCode] = useState('');
   const [error, setError] = useState('');
   const [btnClick, setBtnClick] = useState(false);
   const login = () => {
     setError('');
-    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
-      setError('Please enter valid email');
+    if (!code) {
+      setError('Please enter code');
       return;
     }
     setBtnClick(true);
     axios
-      .post(`${API}api/auth/login`, { email, password })
+      .post(`${API}api/auth/verify2FA`, { code })
       .then(res => {
-        localStorage.setItem('token', res.data.accessToken);
-        localStorage.setItem(
-          'userInfo',
-          JSON.stringify(res.data.user && res.data.user),
-        );
-        props.Login(res.data.user);
-        history.push('/');
+        if (res.data.status === 200) {
+          localStorage.setItem('token', res.data.data.accessToken);
+          localStorage.setItem(
+            'userInfo',
+            JSON.stringify(res.data.data.user && res.data.data.user),
+          );
+          props.Login(res.data.data.user);
+          history.push('/');
+        } else {
+          history.push('/');
+        }
       })
       .catch(err => {
         toast.error(
@@ -74,10 +77,13 @@ const TwoFAPage = props => {
                   type="text"
                   name="code"
                   id="code"
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={e => setCode(e.target.value)}
                   placeholder="Enter code"
                 />
               </FormGroup>
+              <div className="error-box">
+                  {error && <p className="error">{error}</p>}
+                </div>
               <Button onClick={login} disabled={btnClick}>
                 <FormattedMessage {...messages.Verify} />
               </Button>

@@ -49,13 +49,18 @@ const SigninPage = props => {
     axios
       .post(`${API}api/auth/login`, { email, password })
       .then(res => {
-        localStorage.setItem('token', res.data.accessToken);
-        localStorage.setItem(
-          'userInfo',
-          JSON.stringify(res.data.user && res.data.user),
-        );
-        props.Login(res.data.user);
-        history.push('/');
+        if (res.data.status === 200) {
+          localStorage.setItem('token', res.data.data.accessToken);
+          localStorage.setItem(
+            'userInfo',
+            JSON.stringify(res.data.data.user && res.data.data.user),
+          );
+          props.Login(res.data.data.user);
+          history.push('/');
+        } else {
+          localStorage.setItem('email', email);
+          history.push('/two_fa');
+        }
       })
       .catch(err => {
         toast.error(
