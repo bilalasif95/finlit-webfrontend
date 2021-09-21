@@ -54,18 +54,18 @@ function CartCheckoutDescription(props) {
                   <td>
                     <div className="detail">
                       <div className="icon">
-                        <img src={item.product.eventImage} alt="Icon" />
+                        <img src={item.product && item.product.eventImage} alt="Icon" />
                       </div>
                       <div className="desc">
-                        <div className="title">{item.product.data.mainTitle}</div>
-                        <p>{item.product.data.subTitle}</p>
+                        <div className="title">{item.product && item.product.data.mainTitle}</div>
+                        <p>{item.product && item.product.data.subTitle}</p>
                         <div className="provider">
                           {/* {item.providedby} {item.product.data.creator} */}
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>${item.product.data.price}</td>
+                  <td>${item.product && item.product.data.price}</td>
                   <td>
                     <Button onClick={()=>props.RemoveFromCart(item.cartItemId)}>
                       <AiOutlineDelete />
