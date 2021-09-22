@@ -48,6 +48,10 @@ export default defineMessages({
     id: `${scope}.Price`,
     defaultMessage: `Price*`,
   },
+  RedirectionUrl: {
+    id: `${scope}.redirectionUrl`,
+    defaultMessage: `Redirection Url*`,
+  },
   Description: {
     id: `${scope}.Description`,
     defaultMessage: `Description*`,

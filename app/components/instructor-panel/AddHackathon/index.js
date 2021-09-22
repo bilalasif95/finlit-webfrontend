@@ -43,6 +43,7 @@ function AddHackathon() {
     endTime: '',
     price: '',
     description: '',
+    redirectionUrl: ''
   });
 
   const handleChangeEvent = event => {
@@ -82,6 +83,7 @@ function AddHackathon() {
         startTime,
         endTime,
         price,
+        redirectionUrl,
       } = hackathonStatus;
       const subData = {
         mainTitle,
@@ -92,6 +94,7 @@ function AddHackathon() {
         endTime,
         price,
         description: content,
+        redirectionUrl
       };
 
       const subDataString = encodeURIComponent(JSON.stringify(subData));
@@ -99,6 +102,7 @@ function AddHackathon() {
       bodyFormData.append('type', 'Hackathon');
       bodyFormData.append('eventImage', hackathonStatus.image);
       bodyFormData.append('data', subDataString);
+      bodyFormData.append('redirectionUrl', hackathonStatus.redirectionUrl);
       axios
         .post(`${API}api/events`, bodyFormData, {
           headers: {
@@ -119,6 +123,7 @@ function AddHackathon() {
             endTime: '',
             price: '',
             description: '',
+            redirectionUrl: ''
           });
           setLoader(false);
           toast.success(
@@ -157,6 +162,8 @@ function AddHackathon() {
       error.endTime = 'End time is required';
     } else if (!values.price) {
       error.price = 'Price is required ';
+    } else if (!values.redirectionUrl) {
+      error.redirectionUrl = 'Redirection URL is required ';
     } else if (!content) {
       error.description = 'Description is required';
     }
@@ -352,6 +359,28 @@ function AddHackathon() {
                 />
                 <FormText color="danger">
                   {errors.price ? <p className="error">{errors.price} </p> : ''}
+                </FormText>
+              </FormGroup>
+            </Col>
+            <Col lg={4} md={6} sm={6} xs={12}>
+              <FormGroup>
+                <Label for="redirectionUrl">
+                  <FormattedMessage {...messages.RedirectionUrl} />
+                </Label>
+                <Input
+                  type="text"
+                  name="redirectionUrl"
+                  id="redirectionUrl"
+                  placeholder="Redirection URL"
+                  value={hackathonStatus.redirectionUrl}
+                  onChange={e => handleChangeEvent(e)}
+                />
+                <FormText color="danger">
+                  {errors.redirectionUrl ? (
+                    <p className="error"> {errors.redirectionUrl} </p>
+                  ) : (
+                    ''
+                  )}
                 </FormText>
               </FormGroup>
             </Col>
