@@ -88,7 +88,7 @@ export default function MyProfilePage() {
     email: '',
     country: '',
     address: '',
-    aboutMe: '',
+    description: '',
   });
   const [currentProfile, setCurrentProfile] = useState({
     firstName: '',
@@ -309,7 +309,7 @@ export default function MyProfilePage() {
       bodyFormData.append('lastName', profileUpdate.lastName);
       bodyFormData.append('profileImage', profileUpdate.image);
       bodyFormData.append('gender', profileUpdate.gender);
-      bodyFormData.append('description', profileUpdate.aboutMe);
+      bodyFormData.append('description', profileUpdate.description);
       bodyFormData.append('profession', profileUpdate.profession);
       bodyFormData.append('country', profileUpdate.country);
       bodyFormData.append('address', profileUpdate.address);
@@ -331,7 +331,7 @@ export default function MyProfilePage() {
             email: '',
             country: '',
             address: '',
-            aboutMe: '',
+            description: '',
           });
           setLoader(false);
           getCurrentUser();
@@ -384,7 +384,7 @@ export default function MyProfilePage() {
           email: res.data.email,
           address: res.data.address,
           country: res.data.gender,
-          aboutMe: res.data.description,
+          description: res.data.description,
           gender: res.data.gender,
         });
       })
@@ -400,8 +400,8 @@ export default function MyProfilePage() {
       error.lastName = 'Last Name Is required';
     } else if (!values.gender) {
       error.gender = 'Gender is Required';
-    } else if (!values.aboutMe) {
-      error.aboutMe = 'About me description is required';
+    } else if (!values.description) {
+      error.description = 'About me description is required';
     }
     return error;
   };
@@ -717,8 +717,8 @@ export default function MyProfilePage() {
                           }}
                         />
                         <Label for="aboutMe">
-                          {errors.aboutMe ? (
-                            <p className="error">{errors.aboutMe}</p>
+                          {errors.description ? (
+                            <p className="error">{errors.description}</p>
                           ) : (
                             ''
                           )}
