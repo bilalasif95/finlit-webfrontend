@@ -248,6 +248,7 @@ export default function SignupPage() {
                       >
                         <MenuItem value="USA">USA</MenuItem>
                         <MenuItem value="KSA">KSA</MenuItem>
+                        <MenuItem value="KR">KR</MenuItem>
                       </Select>
                     </FormControl>
                   </FormGroup>

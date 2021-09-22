@@ -105,6 +105,7 @@ function AddWebinar() {
       bodyFormData.append('type', 'Webinar');
       bodyFormData.append('eventImage', webinarStatus.image);
       bodyFormData.append('data', subDataString);
+      bodyFormData.append('redirectionUrl', webinarStatus.redirectionUrl);
       axios
         .post(`${API}api/events`, bodyFormData, {
           headers: {
