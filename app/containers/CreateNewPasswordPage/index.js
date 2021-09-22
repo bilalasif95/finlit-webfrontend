@@ -73,7 +73,7 @@ export default function CreateNewPasswordPage() {
           <title>- Create New Password</title>
           <meta name="description" content="FinLit - Create New Password Page" />
         </Helmet>
-        <div className="form_container">
+        <div className="form_container Login-form">
           <div className="form_content">
             <h2>
               <FormattedMessage {...messages.CreateNewPassword} />
