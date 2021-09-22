@@ -32,6 +32,7 @@ const Wrapper = styled.div`
       width: auto;
     }
     .read_more {
+      background-color: transparent;
       border: 1px solid #e4e4e4;
       border-radius: 0.25rem;
       color: #ec6310;
@@ -40,6 +41,9 @@ const Wrapper = styled.div`
       margin: 1.25rem 0 0;
       padding: 0.25rem 1rem;
       text-decoration: none;
+      &:focus {
+        box-shadow: none;
+      }
     }
     &:hover {
       -webkit-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.2);
