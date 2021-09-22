@@ -45,7 +45,7 @@ export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [roleId, setRoleId] = useState(1);
+  const [roleId, setRoleId] = useState(3);
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [gender, setGender] = useState('Male');
@@ -180,7 +180,7 @@ export default function SignupPage() {
                       value={roleId}
                       onChange={e => {
                         setRoleId(e.target.value);
-                        if (e.target.value === 3) {
+                        if (e.target.value === 1) {
                           setInstructorDiv(true);
                         } else {
                           setInstructorDiv(false);
@@ -196,8 +196,8 @@ export default function SignupPage() {
                         getContentAnchorEl: null,
                       }}
                     >
-                      <MenuItem value={1}>Student</MenuItem>
-                      <MenuItem value={3}>Educator</MenuItem>
+                      <MenuItem value={3}>Student</MenuItem>
+                      <MenuItem value={1}>Educator</MenuItem>
                     </Select>
                   </FormControl>
                 </FormGroup>
