@@ -85,7 +85,7 @@ function MainSection(props) {
                             </Link>
                           </DropdownItem>
                           <DropdownItem>
-                            <Link className="dropdown_link" to="/">
+                            <Link className="dropdown_link" to="/add_article">
                               <FormattedMessage {...messages.AddArticles} />
                             </Link>
                           </DropdownItem>
