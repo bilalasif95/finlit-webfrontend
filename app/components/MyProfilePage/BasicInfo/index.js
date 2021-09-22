@@ -10,9 +10,7 @@ import {
   Col,
   Button,
   Input,
-  InputGroup,
-  InputGroupAddon,
-  // FormText,
+  FormText,
 } from 'reactstrap';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -47,23 +45,23 @@ function BasicInfo() {
                 name="firstName"
                 id="fname"
                 placeholder="Enter first name"
-              // defaultValue={currentProfile.firstName}
-              // onChange={e => {
-              //   const currentProfileObj = currentProfile;
-              //   const updateProfileObj = profileUpdate;
-              //   currentProfileObj.firstName = e.target.value;
-              //   updateProfileObj.firstName = e.target.value;
-              //   setCurrentProfile(currentProfileObj);
-              //   setProfileUpdate(updateProfileObj);
-              // }}
+                // defaultValue={currentProfile.firstName}
+                // onChange={e => {
+                //   const currentProfileObj = currentProfile;
+                //   const updateProfileObj = profileUpdate;
+                //   currentProfileObj.firstName = e.target.value;
+                //   updateProfileObj.firstName = e.target.value;
+                //   setCurrentProfile(currentProfileObj);
+                //   setProfileUpdate(updateProfileObj);
+                // }}
               />
-              {/* <Label for="fname">
-                {errors.firstName ? (
-                  <p className="error">{errors.firstName}</p>
-                ) : (
+              <FormText className="form-text">
+                {/* {errors.firstName ? ( */}
+                  <p className="error"></p>
+                {/* ) : (
                   ''
-                )}
-              </Label> */}
+                )} */}
+              </FormText>
             </FormGroup>
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
@@ -76,23 +74,23 @@ function BasicInfo() {
                 name="lastName"
                 id="lname"
                 placeholder="Enter last name"
-              // defaultValue={currentProfile.lastName}
-              // onChange={e => {
-              //   const currentProfileObj = currentProfile;
-              //   const updateProfileObj = profileUpdate;
-              //   currentProfileObj.lastName = e.target.value;
-              //   updateProfileObj.lastName = e.target.value;
-              //   setCurrentProfile(currentProfileObj);
-              //   setProfileUpdate(updateProfileObj);
-              // }}
+                // defaultValue={currentProfile.lastName}
+                // onChange={e => {
+                //   const currentProfileObj = currentProfile;
+                //   const updateProfileObj = profileUpdate;
+                //   currentProfileObj.lastName = e.target.value;
+                //   updateProfileObj.lastName = e.target.value;
+                //   setCurrentProfile(currentProfileObj);
+                //   setProfileUpdate(updateProfileObj);
+                // }}
               />
-              {/* <Label for="lname">
+             {/* <FormText className="form-text">
                 {errors.lastName ? (
                   <p className="error">{errors.lastName}</p>
                 ) : (
                   ''
                 )}
-              </Label> */}
+              </FormText> */}
             </FormGroup>
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
@@ -105,16 +103,23 @@ function BasicInfo() {
                 name="profession"
                 id="profession"
                 placeholder="Enter profession"
-              // defaultValue={currentProfile.profession}
-              // onChange={e => {
-              //   const currentProfileObj = currentProfile;
-              //   const updateProfileObj = profileUpdate;
-              //   currentProfileObj.profession = e.target.value;
-              //   updateProfileObj.profession = e.target.value;
-              //   setCurrentProfile(currentProfileObj);
-              //   setProfileUpdate(updateProfileObj);
-              // }}
+                // defaultValue={currentProfile.profession}
+                // onChange={e => {
+                //   const currentProfileObj = currentProfile;
+                //   const updateProfileObj = profileUpdate;
+                //   currentProfileObj.profession = e.target.value;
+                //   updateProfileObj.profession = e.target.value;
+                //   setCurrentProfile(currentProfileObj);
+                //   setProfileUpdate(updateProfileObj);
+                // }}
               />
+                {/* <FormText className="form-text">
+                {errors.lastName ? (
+                  <p className="error">{errors.lastName}</p>
+                ) : (
+                  ''
+                )}
+              </FormText> */}
             </FormGroup>
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
@@ -143,29 +148,29 @@ function BasicInfo() {
                 name="aboutMe"
                 id="aboutme"
                 placeholder="Enter description about yourself"
-              // defaultValue={currentProfile.description}
-              // onChange={e => {
-              //   const currentProfileObj = currentProfile;
-              //   const updateProfileObj = profileUpdate;
-              //   currentProfileObj.description = e.target.value;
-              //   updateProfileObj.aboutMe = e.target.value;
-              //   setCurrentProfile(currentProfileObj);
-              //   setProfileUpdate(updateProfileObj);
-              // }}
+                // defaultValue={currentProfile.description}
+                // onChange={e => {
+                //   const currentProfileObj = currentProfile;
+                //   const updateProfileObj = profileUpdate;
+                //   currentProfileObj.description = e.target.value;
+                //   updateProfileObj.aboutMe = e.target.value;
+                //   setCurrentProfile(currentProfileObj);
+                //   setProfileUpdate(updateProfileObj);
+                // }}
               />
-              {/* <Label for="aboutMe">
+                {/* <FormText className="form-text">
                 {errors.aboutMe ? (
                   <p className="error">{errors.aboutMe}</p>
                 ) : (
                   ''
                 )}
-              </Label> */}
+              </FormText> */}
             </FormGroup>
           </Col>
         </Row>
         <div className="form_footer">
           <div className="bottom_btns">
-            <Button className="btn_save">
+            <Button className="btn_cancel">
               <FormattedMessage {...messages.Cancel} />
             </Button>
             <Button

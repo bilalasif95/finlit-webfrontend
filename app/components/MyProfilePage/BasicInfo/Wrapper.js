@@ -3,9 +3,8 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   .basic_info {
     height: 100%;
-    padding: 0 0 0 3rem;
     .form-group {
-      margin: 0 0 1rem;
+      margin: 0 0 2rem;
     }
     .input-group {
       position: relative;

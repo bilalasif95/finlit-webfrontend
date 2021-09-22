@@ -133,6 +133,10 @@ const GlobalStyle = createGlobalStyle`
         color: #fff;
         margin: 0 1rem 0 0;
         min-width: 150px;
+        padding: 0.75rem;
+        &:focus {
+          box-shadow: none;
+        }
       }
     }
     .bottom_btns {
@@ -144,6 +148,10 @@ const GlobalStyle = createGlobalStyle`
         color: #fff;
         margin: 0 0 0 1rem;
         min-width: 200px;
+        padding: 0.75rem;
+        &:focus {
+          box-shadow: none;
+        }
       }
     }
     .btn_add {
@@ -159,10 +167,15 @@ const GlobalStyle = createGlobalStyle`
       border: 1px solid #adadad;
     }
     .btn_submit {
-      background-color: #47a135;
-      border: 1px solid #47a135;
+      background-color: #46a135;
+      border: 1px solid #46a135;
+    }
+    .btn_cancel {
+      background-color: #8b8b8b;
+      border: 1px solid #8b8b8b;
     }
     @media (max-width: 480px) {
+      width: 100%;
       .top_btns {
         justify-content: space-between;
         margin : 0 0 1rem;
@@ -178,10 +191,9 @@ const GlobalStyle = createGlobalStyle`
         button {
           margin: 0;
           min-width: 100px;
-          width: 40%;
+          width: 47%;
           &:last-child {
             min-width: 100px;
-            width: 56%;
           }
         }
       }
@@ -603,16 +615,20 @@ const GlobalStyle = createGlobalStyle`
     padding: 0.5rem 0;
   }
 }
-.sub_pages {
+.sub_page {
   background-color: #fff;
-  padding: 2rem 0 2rem;
-  @media (max-width: 991px) {
-    padding: 1rem 0;
-  }
+  padding: 0;
 }
 @media (min-width: 575px) and (max-width: 992px) { 
   .verification-main .email-verification {
     width: 64%;
+  }
+}
+.form-control {
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  &:focus {
+    box-shadow: none;
   }
 }
 .form-text {

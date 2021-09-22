@@ -49,14 +49,12 @@ function ChangePassword() {
                 name="currentPassword"
                 id="password"
                 placeholder="**********"
-              // onChange={e => handleChangeEvent(e)}
+                // onChange={e => handleChangeEvent(e)}
               />
-              {/* <Label for="password">
+              {/* <FormText className="form-text">
                 {errors.currentPassword ? errors.currentPassword : ''}
-              </Label> */}
+              </FormText> */}
             </FormGroup>
-
-
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
@@ -68,11 +66,11 @@ function ChangePassword() {
                 name="newPassword"
                 id="password"
                 placeholder="**********"
-              // onChange={e => handleChangeEvent(e)}
+                // onChange={e => handleChangeEvent(e)}
               />
-              {/* <Label for="password">
+              {/* <FormText className="form-text">
                 {errors.newPassword ? errors.newPassword : ''}
-              </Label> */}
+              </FormText> */}
             </FormGroup>
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
@@ -87,23 +85,21 @@ function ChangePassword() {
                 placeholder="**********"
                 onChange={e => handleChangeEvent(e)}
               />
-              {/* <Label for="password">
+              {/* <FormText className="form-text">
                 {errors.confirmPassword ? errors.confirmPassword : ''}
-              </Label>
-              <Label for="password">
                 {errors.passwordMatching ? errors.passwordMatching : ''}
-              </Label> */}
+              </FormText> */}
             </FormGroup>
           </Col>
         </Row>
         <div className="form_footer">
           <div className="bottom_btns">
-            <Button className="btn_save">
+            <Button className="btn_cancel">
               <FormattedMessage {...messages.Cancel} />
             </Button>
             <Button
               className="btn_submit"
-            // onClick={handleUpdateProfileSave}
+              // onClick={handleUpdateProfileSave}
             >
               <FormattedMessage {...messages.Save} />
             </Button>

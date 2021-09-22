@@ -11,6 +11,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 0 5rem 0 0;
     padding: 2.5rem 1rem 10rem;
     h4 {
       text-align: center;
@@ -43,7 +44,7 @@ const Wrapper = styled.div`
         margin: 1.5rem auto 3rem;
         padding: 0;
       }
-      input[type="file"] {
+      input[type='file'] {
         display: none;
       }
     }
@@ -59,7 +60,7 @@ const Wrapper = styled.div`
         color: #8b8b8b;
         cursor: pointer;
         display: flex;
-        font-size: 1rem;
+        font-size: 0.875rem;
         line-height: 17px;
         padding: 0.95rem 1rem;
         svg {
@@ -88,8 +89,25 @@ const Wrapper = styled.div`
     height: 100%;
     position: relative;
   }
-  @media (max-width: 991px) {
+  @media (max-width: 1199px) {
     padding: 2rem 0;
+    .profile_sidebar {
+      margin: 0 2rem 0 0;
+    }
+  }
+  @media (max-width: 991px) {
+    .profile_sidebar {
+      margin: 0;
+    }
+  }
+  @media (max-width: 767px) {
+    .profile_sidebar {
+      margin: 0 0 1.5rem;
+      padding: 2.5rem 1rem;
+    }
+    .tab-content {
+      padding: 0 0 5rem;
+    }
   }
 `;
 
