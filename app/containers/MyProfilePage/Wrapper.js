@@ -1,92 +1,82 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  background-color: #fff;
   margin: 0 auto;
   max-width: 1400px;
-  padding: 1.5rem 3rem;
-  .col-sm-6,
-  .col-md-4,
-  .col-lg-4 {
-    border-right: 1px solid #dcdcdc;
-  }
-  .my_profile {
+  padding: 2rem 3rem;
+  .profile_sidebar {
+    border: 1px solid #d8d8d8;
+    border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 2rem 3rem;
+    padding: 2.5rem 1rem 10rem;
     h4 {
       text-align: center;
     }
     .pro_img {
-      border-radius: 0.25rem;
+      border-bottom: 1px solid #d8d8d8;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      margin: 0 auto 1.5rem;
-      overflow: hidden;
-      width: 160px;
-      img {
-        display: block;
+      text-align: center;
+      width: 100%;
+      .inner {
+        border: 1px solid #46a135;
+        border-radius: 5rem;
+        overflow: hidden;
         margin: 0 auto;
-        width: 100%;
-      }
-    }
-    .user_type {
-      color: #404041;
-      margin: 0 0 1.5rem;
-      text-align: center;
-    }
-    p {
-      color: #9a999a;
-      margin: 0 0 1.5rem;
-      text-align: center;
-    }
-    button {
-      background-color: #acacac;
-      border: 1px solid #acacac;
-      color: #fff;
-      margin: 0 auto;
-      width: 180px;
-    }
-  }
-  .basic_info {
-    padding: 0 0 0 3rem;
-    .col-sm-6,
-    .col-md-4,
-    .col-lg-4 {
-      border-right: none;
-    }
-    .form-group {
-      margin: 0 0 1rem;
-    }
-    .input-group {
-      position: relative;
-      .form-control {
-        border-top-right-radius: 0.25rem !important;
-        border-bottom-right-radius: 0.25rem !important;
-        color: #8d8d8d;
-      }
-      .input-group-append {
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: 5;
-        button {
-          display: flex;
-          background-color: transparent;
-          border: none;
-          color: #8d8d8d;
-          padding: 0.7rem;
-          &:focus {
-            box-shadow: none;
-            outline: none;
-          }
+        padding: 3px;
+        width: 150px;
+        img {
+          border-radius: 5rem;
+          display: block;
+          margin: 0 auto;
+          width: 100%;
         }
       }
+      label {
+        color: #46a135;
+        cursor: pointer;
+        font-size: 1.25rem;
+        margin: 1.5rem auto 3rem;
+        padding: 0;
+      }
+      input[type="file"] {
+        display: none;
+      }
     }
-    textarea {
-      max-height: 10rem;
-      min-height: 10rem;
+    .nav-tabs {
+      border-bottom: none;
+      margin: 0.5rem 0 0;
+      .nav-item {
+        width: 100%;
+      }
+      .nav-link {
+        align-items: center;
+        border: none;
+        color: #8b8b8b;
+        cursor: pointer;
+        display: flex;
+        font-size: 1rem;
+        line-height: 17px;
+        padding: 0.95rem 1rem;
+        svg {
+          color: #8b8b8b;
+          font-size: 1.25rem;
+          margin: 0 0.75rem 0 0;
+        }
+        &:hover {
+          border: none;
+        }
+      }
+      .nav-link.active {
+        border-radius: 5px;
+        color: #404041;
+        background-color: #e7ece5;
+        border-color: #dee2e6 #dee2e6 #fff;
+      }
     }
   }
   h4 {
@@ -94,34 +84,12 @@ const Wrapper = styled.div`
     font-weight: 400;
     margin: 0 0 1.5rem;
   }
-  @media (max-width: 991px) {
-    padding: 1.5rem 0;
-    .my_profile {
-      padding: 0 1rem 3rem;
-    }
-    .basic_info {
-      padding: 0;
-    }
+  .tab-content {
+    height: 100%;
+    position: relative;
   }
-  @media (max-width: 767px) {
-    .col-sm-6,
-    .col-md-4,
-    .col-lg-4 {
-      border-bottom: 1px solid #dcdcdc;
-      border-right: none;
-    }
-    .my_profile {
-      padding: 0 0 1.5rem;
-    }
-    .basic_info {
-      padding: 1.5rem 0 0;
-      .col-sm-6,
-      .col-md-4,
-      .col-lg-4 {
-        border-bottom: none;
-        border-right: none;
-      }
-    }
+  @media (max-width: 991px) {
+    padding: 2rem 0;
   }
 `;
 
