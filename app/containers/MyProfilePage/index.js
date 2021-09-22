@@ -4,6 +4,7 @@
  */
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
+import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
 import {
   Container,
@@ -12,6 +13,8 @@ import {
   Button,
   FormGroup,
   Label,
+  Select,
+  MenuItem,
   Input,
   InputGroup,
   InputGroupAddon,
@@ -32,10 +35,33 @@ import { FiCamera } from 'react-icons/fi';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import Img from '../../components/Img';
-// import Profile from '../../images/profile.jpg';
+import { withStyles } from '@material-ui/core/styles';
 import GooglePlay from '../../images/GooglePlay.png';
 import AppStore from '../../images/AppStore.png';
 import { API } from '../../config/config';
+
+const BootstrapInput = withStyles(theme => ({
+  root: {
+    'label + &': {
+      marginTop: 0,
+    },
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    backgroundColor: theme.palette.background.paper,
+    border: '1px solid #e6e6e6',
+    fontSize: 14,
+    color: '#484848',
+    padding: '10px 26px 10px 12px',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    // Use the system font instead of the default Lato font.
+    fontFamily: ['Lato', 'sans-serif'].join(','),
+    '&:focus': {
+      borderRadius: 4,
+    },
+  },
+}))(InputBase);
 
 export default function MyProfilePage() {
   // const [state, setState] = React.useState({
@@ -358,7 +384,7 @@ export default function MyProfilePage() {
           email: res.data.email,
           address: res.data.address,
           country: res.data.gender,
-          aboutMe: '',
+          aboutMe: res.data.description,
           gender: res.data.gender,
         });
       })
@@ -490,12 +516,7 @@ export default function MyProfilePage() {
                         <Label for="gender">
                           <FormattedMessage {...messages.Gender} />
                         </Label>
-                        <Input
-                          type="text"
-                          name="gender"
-                          id="gender"
-                          placeholder="Enter Gender"
-                          defaultValue={currentProfile.gender}
+                        <select className="form-control" defaultValue={currentProfile.gender}
                           onChange={e => {
                             const currentProfileObj = currentProfile;
                             const updateProfileObj = profileUpdate;
@@ -503,8 +524,10 @@ export default function MyProfilePage() {
                             updateProfileObj.gender = e.target.value;
                             setCurrentProfile(currentProfileObj);
                             setProfileUpdate(updateProfileObj);
-                          }}
-                        />
+                          }}>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                        </select>
                         <Label for="gender">
                           {errors.gender ? (
                             <p className="error">{errors.gender}</p>
@@ -519,12 +542,7 @@ export default function MyProfilePage() {
                         <Label for="profession">
                           <FormattedMessage {...messages.Profession} />
                         </Label>
-                        <Input
-                          type="text"
-                          name="profession"
-                          id="profession"
-                          placeholder="Enter profession"
-                          defaultValue={currentProfile.profession}
+                        <select className="form-control" defaultValue={currentProfile.profession}
                           onChange={e => {
                             const currentProfileObj = currentProfile;
                             const updateProfileObj = profileUpdate;
@@ -532,8 +550,14 @@ export default function MyProfilePage() {
                             updateProfileObj.profession = e.target.value;
                             setCurrentProfile(currentProfileObj);
                             setProfileUpdate(updateProfileObj);
-                          }}
-                        />
+                          }}>
+                          <option value="Software Developer">Software Developer</option>
+                          <option value="Medical and Health Services">Medical and Health Services</option>
+                          <option value="Financial Literacy">Financial Literacy</option>
+                          <option value="Statistician">Statistician</option>
+                          <option value="Speech-Language">Speech-Language</option>
+                          <option value="Data Scientist">Data Scientist</option>
+                        </select>
                       </FormGroup>
                     </Col>
                     <Col lg={6} md={6} sm={6} xs={12}>
@@ -556,12 +580,7 @@ export default function MyProfilePage() {
                         <Label for="country">
                           <FormattedMessage {...messages.Country} />
                         </Label>
-                        <Input
-                          type="country"
-                          name="country"
-                          id="country"
-                          placeholder="Enter Country"
-                          defaultValue={currentProfile.country}
+                        <select className="form-control" defaultValue={currentProfile.country}
                           onChange={e => {
                             const currentProfileObj = currentProfile;
                             const updateProfileObj = profileUpdate;
@@ -569,8 +588,11 @@ export default function MyProfilePage() {
                             updateProfileObj.country = e.target.value;
                             setCurrentProfile(currentProfileObj);
                             setProfileUpdate(updateProfileObj);
-                          }}
-                        />
+                          }}>
+                          <option value="USA">USA</option>
+                          <option value="KSA">KSA</option>
+                          <option value="KR">KR</option>
+                        </select>
                       </FormGroup>
                     </Col>
                     <Col lg={6} md={6} sm={6} xs={12}>
@@ -684,12 +706,12 @@ export default function MyProfilePage() {
                           name="aboutMe"
                           id="aboutme"
                           placeholder="Enter description about yourself"
-                          defaultValue={profileUpdate.aboutMe}
+                          defaultValue={profileUpdate.description}
                           onChange={e => {
                             const currentProfileObj = currentProfile;
                             const updateProfileObj = profileUpdate;
                             currentProfileObj.description = e.target.value;
-                            updateProfileObj.aboutMe = e.target.value;
+                            updateProfileObj.description = e.target.value;
                             setCurrentProfile(currentProfileObj);
                             setProfileUpdate(updateProfileObj);
                           }}
