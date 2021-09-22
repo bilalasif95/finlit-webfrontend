@@ -12,7 +12,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import "./app.css";
+import './app.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
@@ -64,10 +64,10 @@ export default function SignupPage() {
     }
     if (
       !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) ||
-      (!password.length >= 8 && !password.length <= 12)
+      (!password.length >= 8 && !password.length <= 15)
     ) {
       setError(
-        'Password must contains one special character or capital letter and length should be in between 8 to 12 characters.',
+        'Password must contains one special character or capital letter and length should be in between 8 to 15 characters.',
       );
       setTimeout(() => {
         setError('');

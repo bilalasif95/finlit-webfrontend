@@ -102,9 +102,7 @@ function Articles() {
                     <div className="left">
                       <img src={articleicon} alt="IconImg" />
                       <h5>{article.title}</h5>
-                      <p>
-                        <FormattedMessage {...messages.InteractiveToolsDesc} />
-                      </p>
+                      <p> {article.subTitle} </p>
                       <Button
                         className="read_more"
                         onClick={() => handleArticleDetails(article.id)}
