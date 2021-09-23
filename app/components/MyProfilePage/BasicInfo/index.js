@@ -121,7 +121,6 @@ function BasicInfo() {
       bodyFormData.append('firstName', userInfo.firstName);
       bodyFormData.append('lastName', userInfo.lastName);
       bodyFormData.append('gender', userInfo.gender);
-      bodyFormData.append('profileImage', {});
       bodyFormData.append('description', userInfo.description);
       bodyFormData.append('profession', userInfo.profession);
       bodyFormData.append('country', userInfo.country);
