@@ -57,8 +57,8 @@ const TwoFAPage = props => {
     <>
       <div className="registration_page">
         <Helmet>
-          <title>Two FA Verification</title>
-          <meta name="description" content="Two FA Verification" />
+          <title>2FA Verification</title>
+          <meta name="description" content="2FA Verification" />
         </Helmet>
         <div className="form_container Login-form">
           <div className="form_content">
@@ -76,6 +76,13 @@ const TwoFAPage = props => {
                   id="code"
                   onChange={e => setCode(e.target.value)}
                   placeholder="Enter code"
+                  onKeyDown = {(e) => {
+                    if (e.code === "Enter" || e.code === "NumpadEnter") {
+                      console.log("Enter key was pressed. Run your function.");
+                      e.preventDefault();
+                      login()
+                    }
+                  }}
                 />
               </FormGroup>
               <div className="error-box">

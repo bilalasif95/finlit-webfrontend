@@ -8,8 +8,9 @@ function Events() {
   const [value, onChange] = useState(new Date());
 
   return (
-    <Wrapper>
-      <div className="calendar-cont">
+    <>
+    {/* <Wrapper> */}
+      {/* <div className="calendar-cont">
         <h3>
           <FormattedMessage {...messages.Title} />
         </h3>
@@ -55,8 +56,9 @@ function Events() {
         </div>
 
 
-      </div>
-    </Wrapper>
+      </div> */}
+    {/* </Wrapper> */}
+    </>
   );
 }
 

@@ -14,7 +14,7 @@ export default defineMessages({
   },
   EmailAddress: {
     id: `${scope}.EmailAddress`,
-    defaultMessage: 'Email',
+    defaultMessage: 'Email Address',
   },
   SelectType: {
     id: `${scope}.SelectType`,

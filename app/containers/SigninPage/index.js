@@ -112,6 +112,13 @@ const SigninPage = props => {
                   name="password"
                   id="password"
                   onChange={e => setPassword(e.target.value)}
+                  onKeyDown = {(e) => {
+                    if (e.code === "Enter" || e.code === "NumpadEnter") {
+                      console.log("Enter key was pressed. Run your function.");
+                      e.preventDefault();
+                      login()
+                    }
+                  }}
                   placeholder="******"
                 />
                 <div className="error-box">

@@ -10,7 +10,7 @@ export const scope = 'boilerplate.containers.SigninPage';
 export default defineMessages({
   TwoFA: {
     id: `${scope}.TwoFA`,
-    defaultMessage: 'Two FA Verification',
+    defaultMessage: '2FA Verification',
   },
   Code: {
     id: `${scope}.Code`,

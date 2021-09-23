@@ -180,7 +180,7 @@ const Header = () => {
                   <DropdownToggle nav caret>
                     <div className="user_account">
                       <div className="user_icon">
-                        <Img src={User} alt="User" />
+                      <Img src={userObj.image ? userObj.image : User} alt="User" />
                       </div>
                       <div className="user_name">
                     <p>{userObj.firstName} {userObj.lastName}</p>
@@ -224,15 +224,20 @@ const Header = () => {
                       </div>
                       <div className="notify">200</div>
                     </DropdownItem>
-                    <DropdownItem>
-                      <Link to="/cart">
-                        <div>
-                          <IoMdCart />
-                          <FormattedMessage {...messages.MyCart} />
-                        </div>
-                        <div />
-                      </Link>
-                    </DropdownItem>
+                    {
+                      userObj && userObj.roles && userObj.roles[0] && userObj.roles[0].roleName === 'Student'
+                      ?
+                      <DropdownItem>
+                        <Link to="/cart">
+                          <div>
+                            <IoMdCart />
+                            <FormattedMessage {...messages.MyCart} />
+                          </div>
+                          <div />
+                        </Link>
+                      </DropdownItem>
+                      : <></>
+                    }
                     <DropdownItem>
                       <div>
                         <IoIosHelpCircle />
