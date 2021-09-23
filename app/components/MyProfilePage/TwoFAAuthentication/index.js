@@ -1,0 +1,226 @@
+/*
+ * TwoFA Authentication Component
+ */
+import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+import { FormGroup, Label, Button, Input, FormText } from 'reactstrap';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import InputBase from '@material-ui/core/InputBase';
+import { withStyles } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
+import { BsPencil } from 'react-icons/bs';
+import { FaCheckCircle } from 'react-icons/fa';
+import axios from 'axios';
+import QRCode from 'qrcode.react';
+import { FiCamera } from 'react-icons/fi';
+import messages from './messages';
+import Wrapper from './Wrapper';
+import { API } from '../../../config/config';
+import Img from '../../Img';
+import Profile from '../../../images/profile.jpg';
+import GooglePlay from '../../../images/GooglePlay.png';
+import AppStore from '../../../images/AppStore.png';
+
+function TwoFAAuthentication(props) {
+  const [stepOne, setStepOne] = useState(true);
+  const [stepTwo, setStepTwo] = useState(false);
+  const [stepThree, setStepThree] = useState(false);
+  const [stepFour, setStepFour] = useState(false);
+  const [stepFive, setStepFive] = useState(false);
+
+  const handleStepOne = () => {
+    setStepOne(false);
+    setStepTwo(true);
+    setStepThree(false);
+    setStepFour(false);
+    setStepFive(false);
+  };
+  const handleStepTwo = () => {
+    setStepOne(false);
+    setStepTwo(false);
+    setStepThree(true);
+    setStepFour(false);
+    setStepFive(false);
+  };
+  const handleStepThree = () => {
+    setStepOne(false);
+    setStepTwo(false);
+    setStepThree(false);
+    setStepFour(true);
+    setStepFive(false);
+  };
+  const handleStepFour = () => {
+    setStepOne(false);
+    setStepTwo(false);
+    setStepThree(false);
+    setStepFour(false);
+    setStepFive(true);
+  };
+  const handleStepOneClose = () => {
+    setStepOne(true);
+    setStepTwo(false);
+    setStepThree(false);
+    setStepFour(false);
+    setStepFive(false);
+  };
+  const handleStepTwoClose = () => {
+    setStepOne(false);
+    setStepTwo(true);
+    setStepThree(false);
+    setStepFour(false);
+    setStepFive(false);
+  };
+  const handleStepThreeClose = () => {
+    setStepOne(false);
+    setStepTwo(false);
+    setStepThree(true);
+    setStepFour(false);
+    setStepFive(false);
+  };
+  useEffect(() => {
+    setStepOne(true);
+    setStepTwo(false);
+    setStepThree(false);
+    setStepFour(false);
+    setStepFive(false);
+  }, [props]);
+  return (
+    <Wrapper>
+      {stepOne && (
+        <div className="step_one">
+          <div className="security_verify">
+            <h4>
+              <FormattedMessage {...messages.SecurityVerification} />
+            </h4>
+            <p>
+              Enable 2FA Google Authenticator, to increase your account
+              security.
+            </p>
+            <FaCheckCircle />
+            <h4>Enable Google Authenticator</h4>
+            <p>Recommended</p>
+          </div>
+          <div className="form_footer">
+            <div className="bottom_btns">
+              <Button className="btn_cancel">
+                <FormattedMessage {...messages.Cancel} />
+              </Button>
+              <Button className="btn_submit" onClick={handleStepOne}>
+                <FormattedMessage {...messages.ContinueVerify} />
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+      {stepTwo && (
+        <div className="step_two">
+          <div className="security_verify">
+            <h4>
+              <FormattedMessage {...messages.DownloadGA} />
+            </h4>
+            <p>
+              Enable 2FA Google Authenticator, to increase your account
+              security.
+            </p>
+            <div className="app_store">
+              <Img src={GooglePlay} alt="Google Play" />
+              <Img src={AppStore} alt="App Store" />
+            </div>
+            <p>
+              Lorem ipsum, or lipsum as it is sometimes known, is dummy text
+              used in laying out print, graphic or web designs.{' '}
+            </p>
+          </div>
+          <div className="form_footer">
+            <div className="bottom_btns">
+              <Button className="btn_cancel" onClick={handleStepOneClose}>
+                <FormattedMessage {...messages.Cancel} />
+              </Button>
+              <Button className="btn_submit" onClick={handleStepTwo}>
+                <FormattedMessage {...messages.ContinueVerify} />
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+      {stepThree && (
+        <div className="step_three">
+          <div className="security_verify">
+            <h4>
+              <FormattedMessage {...messages.ScanQR} />
+            </h4>
+            <p>
+              Enable 2FA Google Authenticator, to increase your account
+              security.
+            </p>
+            <div className="app_store">
+              <QRCode value={Profile} />
+            </div>
+          </div>
+          <div className="form_footer">
+            <div className="bottom_btns">
+              <Button className="btn_cancel" onClick={handleStepTwoClose}>
+                <FormattedMessage {...messages.Cancel} />
+              </Button>
+              <Button className="btn_submit" onClick={handleStepThree}>
+                <FormattedMessage {...messages.ContinueVerify} />
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+      {stepFour && (
+        <div className="step_four">
+          <div className="enable_auth">
+            <h4>
+              <FormattedMessage {...messages.EnableAuth} />
+            </h4>
+            <p>
+              Enable 2FA Google Authenticator, to increase your account
+              security.
+            </p>
+            <FormGroup>
+              <Label for="authcode">
+                <FormattedMessage {...messages.AuthenticatorCode} />
+              </Label>
+              <Input
+                type="text"
+                name="authcode"
+                id="authcode"
+                placeholder="Enter code"
+                onChange={e => handleChangeEvent(e)}
+              />
+              <FormText color="muted">
+                Enter the 6 digit code visible on your google authenticator app
+              </FormText>
+            </FormGroup>
+          </div>
+          <div className="form_footer">
+            <div className="bottom_btns">
+              <Button className="btn_cancel" onClick={handleStepThreeClose}>
+                <FormattedMessage {...messages.Cancel} />
+              </Button>
+              <Button className="btn_submit" onClick={handleStepFour}>
+                <FormattedMessage {...messages.ContinueVerify} />
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+      {stepFive && (
+        <div className="step_five">
+          <div className="thank_you">
+            <h1>
+              <FormattedMessage {...messages.ThankYou} />
+            </h1>
+            <p>Your Verification is done by Google Authenticator</p>
+          </div>
+        </div>
+      )}
+    </Wrapper>
+  );
+}
+
+export default TwoFAAuthentication;

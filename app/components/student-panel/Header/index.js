@@ -189,8 +189,8 @@ const Header = () => {
                     </div>
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem>
-                      <div onClick={() => history.push("/dashboard")}>
+                    <DropdownItem onClick={() => history.push("/dashboard")}>
+                      <div>
                         <RiDashboardFill />
                         <FormattedMessage {...messages.MyDashboard} />
                       </div>
@@ -245,8 +245,8 @@ const Header = () => {
                       </div>
                       <div />
                     </DropdownItem>
-                    <DropdownItem>
-                      <div onClick={() => LogOut()} >
+                    <DropdownItem onClick={() => LogOut()}>
+                      <div >
                         <FiLogOut />
                         <FormattedMessage {...messages.LogOut} />
                       </div>
