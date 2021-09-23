@@ -115,6 +115,32 @@ const Wrapper = styled.div`
      }
    }
  }
+@media (max-width: 575px) {
+  .react-calendar__year-view__months, .react-calendar__decade-view__years, .react-calendar__century-view__decades {
+    .react-calendar__year-view__months__month, .react-calendar__decade-view__years__year, .react-calendar__century-view__decades__decade {
+      font-size: 12px;
+    }
+  }
+
+  .Events-cont h3 {
+    font-size: 20px;
+}
+.Events-cont .Events-main .textbox h5 {
+  font-size: 18px;
+}
+.Events-cont .Events-main .circle {
+  height: 30px;
+  width: 30px;
+}
+.textbox {
+  p {
+    font-size: 14px;
+  }
+}
+  .calendar-cont .react-calendar__viewContainer .react-calendar__month-view__days {
+    gap: 11px;
+  }
+}
 `;
 
 export default Wrapper;
