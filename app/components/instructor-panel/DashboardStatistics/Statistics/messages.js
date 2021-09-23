@@ -14,7 +14,7 @@ export default defineMessages({
   },
   CourseTitle: {
     id: `${scope}.CourseTitle`,
-    defaultMessage: `Recent Activites`,
+    defaultMessage: `UpComing Events`,
   },
   RecentDesc: {
     id: `${scope}.RecentDesc`,
