@@ -53,12 +53,9 @@ function BootCampList() {
         <div className="courses">
           <Row>
             <Col lg={12}>
-                <div className="Head-Link">
-                    <h4>
-                      <FormattedMessage {...messages.BootCampList} />
-                    </h4>
-                    <Link to="/add_bootcamp"><span>+</span> Add</Link>
-                  </div>
+              <h4>
+                <FormattedMessage {...messages.BootCampList} />
+              </h4>
               <div className="courses_list">
                 {bootcampList.map(item => (
                   <div

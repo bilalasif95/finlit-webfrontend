@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   margin: 0 0 2rem;
   width: 100%;
-  height: 400px;
+  min-height: 400px;
   img {
     display: block;
     margin: 0 auto;

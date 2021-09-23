@@ -6,6 +6,7 @@ import React,{useEffect} from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
+import {Link} from 'react-router-dom';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import BootcampList from '../../../components/instructor-panel/BootcampList';
@@ -27,9 +28,12 @@ export default function BootcampListPage() {
           <Container fluid>
             <Row>
               <Col lg={12}>
-                <h4>
-                  <FormattedMessage {...messages.BootcampList} />
-                </h4>
+                <div className="Head-Link">
+                    <h4>
+                      <FormattedMessage {...messages.BootcampList} />
+                    </h4>
+                      <Link to="/add_bootcamp"><span>+</span> Add</Link>
+                  </div>
                 <BootcampList />
               </Col>
             </Row>
