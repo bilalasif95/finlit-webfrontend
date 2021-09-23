@@ -14,11 +14,7 @@ export default defineMessages({
   },
   MyBiography: {
     id: `${scope}.MyBiography`,
-    defaultMessage: 'My Biography',
-  },
-  BasicInfo: {
-    id: `${scope}.BasicInfo`,
-    defaultMessage: 'Basic Info',
+    defaultMessage: 'My Biography*',
   },
   Fname: {
     id: `${scope}.Fname`,
@@ -34,15 +30,27 @@ export default defineMessages({
   },
   Profession: {
     id: `${scope}.Profession`,
-    defaultMessage: 'Profession*',
+    defaultMessage: 'Profession',
+  },
+  Country: {
+    id: `${scope}.Country`,
+    defaultMessage: 'Country',
+  },
+  Address: {
+    id: `${scope}.Address`,
+    defaultMessage: 'Address',
   },
   Male: {
     id: `${scope}.Male`,
-    defaultMessage: 'Male*',
+    defaultMessage: 'Male',
   },
   Female: {
     id: `${scope}.Female`,
-    defaultMessage: 'Female*',
+    defaultMessage: 'Female',
+  },
+  Other: {
+    id: `${scope}.Other`,
+    defaultMessage: 'Other',
   },
   Title: {
     id: `${scope}.Title`,

@@ -12,6 +12,8 @@ import {
   Input,
   FormText,
 } from 'reactstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -51,6 +53,105 @@ const BootstrapInput = withStyles(theme => ({
 }))(InputBase);
 
 function BasicInfo() {
+  const [userInfo, setUserInfo] = useState({
+    firstName: '',
+    lastName: '',
+    profession: '',
+    email: '',
+    description: '',
+    country: '',
+    gender: '',
+    address: '',
+  });
+  const [errors, setErrors] = useState({});
+  const updateProfileValidator = values => {
+    const error = {};
+    if (!values.firstName) {
+      error.firstName = 'First Name Is required';
+    } else if (!values.lastName) {
+      error.lastName = 'Last Name Is required';
+    } else if (!values.gender) {
+      error.gender = 'Gender is Required';
+    } else if (!values.description) {
+      error.description = 'About me description is required';
+    }
+    return error;
+  };
+  const getCurrentUserInfo = () => {
+    const token = localStorage.getItem('token');
+    const userId = JSON.parse(localStorage.getItem('userInfo'));
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+    axios
+      .get(`${API}api/user/${userId.id}`, {
+        headers: {
+          Accept: 'application/json',
+          ...authHeaders,
+        },
+      })
+      .then(res => {
+        setUserInfo({
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
+          description: res.data.description,
+          country: res.data.country,
+          address: res.data.address,
+          profession: res.data.profession,
+          email: res.data.email,
+          gender: res.data.gender,
+        });
+      })
+      .catch(err => {
+        toast.error(
+          err.response && err.response.data.message
+            ? err.response.data.message.toString()
+            : 'Message Not Readable',
+        );
+      });
+  };
+  const handleUpdateProfileSave = () => {
+    if (Object.keys(updateProfileValidator(userInfo)).length > 0) {
+      setErrors(updateProfileValidator(userInfo));
+      setTimeout(() => {
+        setErrors({});
+      }, 4000);
+    } else {
+      const token = localStorage.getItem('token');
+      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+      const bodyFormData = new FormData();
+      bodyFormData.append('firstName', userInfo.firstName);
+      bodyFormData.append('lastName', userInfo.lastName);
+      bodyFormData.append('gender', userInfo.gender);
+      bodyFormData.append('profileImage', {});
+      bodyFormData.append('description', userInfo.description);
+      bodyFormData.append('profession', userInfo.profession);
+      bodyFormData.append('country', userInfo.country);
+      bodyFormData.append('address', userInfo.address);
+      axios
+        .put(`${API}api/user`, bodyFormData, {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        })
+        .then(res => {
+          toast.success(
+            res && res.data ? res.data.message : 'Message Not Readable',
+          );
+          getCurrentUserInfo();
+        })
+        .catch(err => {
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
+        });
+    }
+  };
+  useEffect(() => {
+    getCurrentUserInfo();
+  }, []);
   return (
     <Wrapper>
       <div className="basic_info">
@@ -68,22 +169,16 @@ function BasicInfo() {
                 name="firstName"
                 id="fname"
                 placeholder="Enter first name"
-              // defaultValue={currentProfile.firstName}
-              // onChange={e => {
-              //   const currentProfileObj = currentProfile;
-              //   const updateProfileObj = profileUpdate;
-              //   currentProfileObj.firstName = e.target.value;
-              //   updateProfileObj.firstName = e.target.value;
-              //   setCurrentProfile(currentProfileObj);
-              //   setProfileUpdate(updateProfileObj);
-              // }}
+                defaultValue={userInfo.firstName}
+                onChange={e => {
+                  setUserInfo({
+                    ...userInfo,
+                    [e.target.name]: e.target.value,
+                  });
+                }}
               />
               <FormText className="form-text">
-                {/* {errors.firstName ? ( */}
-                <p className="error"></p>
-                {/* ) : (
-                  ''
-                )} */}
+                {errors.firstName ? <p className="error">{errors.firstName}</p> : ''}
               </FormText>
             </FormGroup>
           </Col>
@@ -97,23 +192,17 @@ function BasicInfo() {
                 name="lastName"
                 id="lname"
                 placeholder="Enter last name"
-              // defaultValue={currentProfile.lastName}
-              // onChange={e => {
-              //   const currentProfileObj = currentProfile;
-              //   const updateProfileObj = profileUpdate;
-              //   currentProfileObj.lastName = e.target.value;
-              //   updateProfileObj.lastName = e.target.value;
-              //   setCurrentProfile(currentProfileObj);
-              //   setProfileUpdate(updateProfileObj);
-              // }}
+                defaultValue={userInfo.lastName}
+                onChange={e => {
+                  setUserInfo({
+                    ...userInfo,
+                    [e.target.name]: e.target.value,
+                  });
+                }}
               />
-              {/* <FormText className="form-text">
-                {errors.lastName ? (
-                  <p className="error">{errors.lastName}</p>
-                ) : (
-                  ''
-                )}
-              </FormText> */}
+              <FormText className="form-text">
+                {errors.lastName ? <p className="error">{errors.lastName}</p> : ''}
+              </FormText>
             </FormGroup>
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
@@ -123,8 +212,14 @@ function BasicInfo() {
                   <FormattedMessage {...messages.Gender} />
                 </Label>
                 <Select
-                  // value={gender}
-                  // onChange={e => setGender(e.target.value)}
+                  value={userInfo.gender}
+                  onChange={e => {
+                    setUserInfo({
+                      ...userInfo,
+                      [e.target.name]: e.target.value,
+                    });
+                  }}
+                  name="gender"
                   input={<BootstrapInput />}
                   fullWidth
                   MenuProps={{
@@ -135,12 +230,9 @@ function BasicInfo() {
                     getContentAnchorEl: null,
                   }}
                 >
-                  <MenuItem value="Financial Literacy">
-                    <FormattedMessage {...messages.Male} />
-                  </MenuItem>
-                  <MenuItem value="Software Developer">
-                    <FormattedMessage {...messages.Female} />
-                  </MenuItem>
+                  <MenuItem value="Male">Male</MenuItem>
+                  <MenuItem value="Female">Female</MenuItem>
+                  <MenuItem value="Other">Other</MenuItem>
                 </Select>
               </FormControl>
             </FormGroup>
@@ -152,10 +244,16 @@ function BasicInfo() {
                   <FormattedMessage {...messages.Profession} />
                 </Label>
                 <Select
-                  // value={profession}
-                  // onChange={e => setProfession(e.target.value)}
+                  value={userInfo.profession}
+                  onChange={e => {
+                    setUserInfo({
+                      ...userInfo,
+                      [e.target.name]: e.target.value,
+                    });
+                  }}
                   input={<BootstrapInput />}
                   fullWidth
+                  name="profession"
                   MenuProps={{
                     anchorOrigin: {
                       vertical: 'bottom',
@@ -165,10 +263,12 @@ function BasicInfo() {
                   }}
                 >
                   <MenuItem value="Financial Literacy">
-                    Software Developer
+                    Financial Literacy
                   </MenuItem>
+                  <MenuItem value="Accountant">Accountant</MenuItem>
+                  <MenuItem value="Speech-Language">Speech-Language</MenuItem>
                   <MenuItem value="Software Developer">
-                    Accountant
+                    Software Developer
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -176,31 +276,54 @@ function BasicInfo() {
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
-              <Label for="profession">
-                <FormattedMessage {...messages.Title} />
+              <FormControl fullWidth>
+                <Label>
+                  <FormattedMessage {...messages.Country} />
+                </Label>
+                <Select
+                  value={userInfo.country}
+                  onChange={e => {
+                    setUserInfo({
+                      ...userInfo,
+                      [e.target.name]: e.target.value,
+                    });
+                  }}
+                  input={<BootstrapInput />}
+                  fullWidth
+                  name="country"
+                  MenuProps={{
+                    anchorOrigin: {
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    },
+                    getContentAnchorEl: null,
+                  }}
+                >
+                  <MenuItem value="USA">USA</MenuItem>
+                  <MenuItem value="KSA">KSA</MenuItem>
+                  <MenuItem value="KRA">KRA</MenuItem>
+                </Select>
+              </FormControl>
+            </FormGroup>
+          </Col>
+          <Col lg={6} md={6} sm={6} xs={12}>
+            <FormGroup>
+              <Label for="address">
+                <FormattedMessage {...messages.Address} />
               </Label>
               <Input
                 type="text"
-                name="profession"
-                id="profession"
-                placeholder="Enter profession"
-              // defaultValue={currentProfile.profession}
-              // onChange={e => {
-              //   const currentProfileObj = currentProfile;
-              //   const updateProfileObj = profileUpdate;
-              //   currentProfileObj.profession = e.target.value;
-              //   updateProfileObj.profession = e.target.value;
-              //   setCurrentProfile(currentProfileObj);
-              //   setProfileUpdate(updateProfileObj);
-              // }}
+                name="address"
+                id="address"
+                placeholder="Enter Address"
+                defaultValue={userInfo.address}
+                onChange={e => {
+                  setUserInfo({
+                    ...userInfo,
+                    [e.target.name]: e.target.value,
+                  });
+                }}
               />
-              {/* <FormText className="form-text">
-                {errors.lastName ? (
-                  <p className="error">{errors.lastName}</p>
-                ) : (
-                  ''
-                )}
-              </FormText> */}
             </FormGroup>
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
@@ -213,39 +336,32 @@ function BasicInfo() {
                 name="email"
                 id="email"
                 placeholder="Enter email"
-                // value={currentProfile.email}
-                // defaultValue={currentProfile.email}
+                defaultValue={userInfo.email}
                 readOnly
               />
             </FormGroup>
           </Col>
           <Col lg={12} md={12} sm={12} xs={12}>
             <FormGroup>
-              <Label for="aboutme">
+              <Label for="description">
                 <FormattedMessage {...messages.MyBiography} />
               </Label>
               <Input
                 type="textarea"
-                name="aboutMe"
-                id="aboutme"
+                name="description"
+                id="description"
                 placeholder="Enter description about yourself"
-              // defaultValue={currentProfile.description}
-              // onChange={e => {
-              //   const currentProfileObj = currentProfile;
-              //   const updateProfileObj = profileUpdate;
-              //   currentProfileObj.description = e.target.value;
-              //   updateProfileObj.aboutMe = e.target.value;
-              //   setCurrentProfile(currentProfileObj);
-              //   setProfileUpdate(updateProfileObj);
-              // }}
+                value={userInfo.description}
+                onChange={e => {
+                  setUserInfo({
+                    ...userInfo,
+                    [e.target.name]: e.target.value,
+                  });
+                }}
               />
-              {/* <FormText className="form-text">
-                {errors.aboutMe ? (
-                  <p className="error">{errors.aboutMe}</p>
-                ) : (
-                  ''
-                )}
-              </FormText> */}
+              <FormText className="form-text">
+                {errors.description ? <p className="error">{errors.description}</p> : ''}
+              </FormText>
             </FormGroup>
           </Col>
         </Row>
@@ -254,10 +370,7 @@ function BasicInfo() {
             <Button className="btn_cancel">
               <FormattedMessage {...messages.Cancel} />
             </Button>
-            <Button
-              className="btn_submit"
-            // onClick={handleUpdateProfileSave}
-            >
+            <Button className="btn_submit" onClick={handleUpdateProfileSave}>
               <FormattedMessage {...messages.Save} />
             </Button>
           </div>
