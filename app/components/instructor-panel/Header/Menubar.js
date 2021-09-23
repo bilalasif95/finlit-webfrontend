@@ -111,7 +111,6 @@ const Menubar = styled.div`
     justify-content: flex-start;
     .user_icon {
       border: 1px solid #fff;
-      height: 40px;
       width: 40px;
       overflow: hidden;
       border-radius: 2rem;
