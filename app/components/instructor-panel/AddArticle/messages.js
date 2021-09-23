@@ -22,7 +22,7 @@ export default defineMessages({
   },
   SubTitle: {
     id: `${scope}.SubTitle`,
-    defaultMessage: `Sub Title`,
+    defaultMessage: `Sub Title*`,
   },
   UploadImage: {
     id: `${scope}.UploadImage`,
