@@ -194,7 +194,7 @@ function AddWebinar() {
                   type="text"
                   name="mainTitle"
                   id="maintitle"
-                  placeholder="Main title"
+                  placeholder="Enter Your Title"
                   value={webinarStatus.mainTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
@@ -216,7 +216,7 @@ function AddWebinar() {
                   type="text"
                   name="subTitle"
                   id="subtitle"
-                  placeholder="Sub title"
+                  placeholder="Enter Your Sub Title"
                   value={webinarStatus.subTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
@@ -391,7 +391,7 @@ function AddWebinar() {
                   type="number"
                   name="price"
                   id="price"
-                  placeholder="Registration Price"
+                  placeholder="Enter Price"
                   value={webinarStatus.price}
                   onChange={e => handleChangeEvent(e)}
                 />

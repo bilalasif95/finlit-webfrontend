@@ -189,7 +189,7 @@ function AddHackathon() {
                   type="text"
                   name="mainTitle"
                   id="maintitle"
-                  placeholder="Course title"
+                  placeholder="Enter Your Title"
                   value={hackathonStatus.mainTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
@@ -211,7 +211,7 @@ function AddHackathon() {
                   type="text"
                   name="subTitle"
                   id="subtitle"
-                  placeholder="Sub title"
+                  placeholder="Enter Your Sub Title"
                   value={hackathonStatus.subTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
@@ -353,7 +353,7 @@ function AddHackathon() {
                   type="number"
                   name="price"
                   id="price"
-                  placeholder="Course Price"
+                  placeholder="Enter Price"
                   value={hackathonStatus.price}
                   onChange={e => handleChangeEvent(e)}
                 />

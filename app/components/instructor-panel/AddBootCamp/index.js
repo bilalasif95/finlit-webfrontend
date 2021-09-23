@@ -190,7 +190,7 @@ function AddBootCamp() {
                   type="text"
                   name="mainTitle"
                   id="maintitle"
-                  placeholder="Course title"
+                  placeholder="Enter Your Title"
                   value={bootCampStatus.mainTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
@@ -219,7 +219,7 @@ function AddBootCamp() {
                   type="text"
                   name="subTitle"
                   id="subtitle"
-                  placeholder="Sub title"
+                  placeholder="Enter Your Sub Title"
                   value={bootCampStatus.subTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
@@ -365,7 +365,7 @@ function AddBootCamp() {
                   type="number"
                   name="price"
                   id="price"
-                  placeholder="Course Price"
+                  placeholder="Enter Price"
                   value={bootCampStatus.price}
                   onChange={e => handleChangeEvent(e)}
                 />
