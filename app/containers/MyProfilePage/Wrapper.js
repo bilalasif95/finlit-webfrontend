@@ -87,6 +87,7 @@ const Wrapper = styled.div`
   }
   .tab-content {
     height: 100%;
+    padding: 0 0 5rem;
     position: relative;
   }
   @media (max-width: 1199px) {
@@ -104,9 +105,6 @@ const Wrapper = styled.div`
     .profile_sidebar {
       margin: 0 0 1.5rem;
       padding: 2.5rem 1rem;
-    }
-    .tab-content {
-      padding: 0 0 5rem;
     }
   }
 `;

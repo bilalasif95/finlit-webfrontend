@@ -28,6 +28,22 @@ export default defineMessages({
     id: `${scope}.Lname`,
     defaultMessage: 'Last Name*',
   },
+  Gender: {
+    id: `${scope}.Gender`,
+    defaultMessage: 'Gender*',
+  },
+  Profession: {
+    id: `${scope}.Profession`,
+    defaultMessage: 'Profession*',
+  },
+  Male: {
+    id: `${scope}.Male`,
+    defaultMessage: 'Male*',
+  },
+  Female: {
+    id: `${scope}.Female`,
+    defaultMessage: 'Female*',
+  },
   Title: {
     id: `${scope}.Title`,
     defaultMessage: 'Title',

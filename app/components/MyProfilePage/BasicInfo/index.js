@@ -27,6 +27,29 @@ import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
 
+const BootstrapInput = withStyles(theme => ({
+  root: {
+    'label + &': {
+      marginTop: 0,
+    },
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    backgroundColor: theme.palette.background.paper,
+    border: '1px solid #e6e6e6',
+    fontSize: 14,
+    color: '#484848',
+    padding: '0.95rem 1.5rem 0.95rem 1rem',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    // Use the system font instead of the default Lato font.
+    fontFamily: ['Lato', 'sans-serif'].join(','),
+    '&:focus': {
+      borderRadius: 4,
+    },
+  },
+}))(InputBase);
+
 function BasicInfo() {
   return (
     <Wrapper>
@@ -45,19 +68,19 @@ function BasicInfo() {
                 name="firstName"
                 id="fname"
                 placeholder="Enter first name"
-                // defaultValue={currentProfile.firstName}
-                // onChange={e => {
-                //   const currentProfileObj = currentProfile;
-                //   const updateProfileObj = profileUpdate;
-                //   currentProfileObj.firstName = e.target.value;
-                //   updateProfileObj.firstName = e.target.value;
-                //   setCurrentProfile(currentProfileObj);
-                //   setProfileUpdate(updateProfileObj);
-                // }}
+              // defaultValue={currentProfile.firstName}
+              // onChange={e => {
+              //   const currentProfileObj = currentProfile;
+              //   const updateProfileObj = profileUpdate;
+              //   currentProfileObj.firstName = e.target.value;
+              //   updateProfileObj.firstName = e.target.value;
+              //   setCurrentProfile(currentProfileObj);
+              //   setProfileUpdate(updateProfileObj);
+              // }}
               />
               <FormText className="form-text">
                 {/* {errors.firstName ? ( */}
-                  <p className="error"></p>
+                <p className="error"></p>
                 {/* ) : (
                   ''
                 )} */}
@@ -74,23 +97,81 @@ function BasicInfo() {
                 name="lastName"
                 id="lname"
                 placeholder="Enter last name"
-                // defaultValue={currentProfile.lastName}
-                // onChange={e => {
-                //   const currentProfileObj = currentProfile;
-                //   const updateProfileObj = profileUpdate;
-                //   currentProfileObj.lastName = e.target.value;
-                //   updateProfileObj.lastName = e.target.value;
-                //   setCurrentProfile(currentProfileObj);
-                //   setProfileUpdate(updateProfileObj);
-                // }}
+              // defaultValue={currentProfile.lastName}
+              // onChange={e => {
+              //   const currentProfileObj = currentProfile;
+              //   const updateProfileObj = profileUpdate;
+              //   currentProfileObj.lastName = e.target.value;
+              //   updateProfileObj.lastName = e.target.value;
+              //   setCurrentProfile(currentProfileObj);
+              //   setProfileUpdate(updateProfileObj);
+              // }}
               />
-             {/* <FormText className="form-text">
+              {/* <FormText className="form-text">
                 {errors.lastName ? (
                   <p className="error">{errors.lastName}</p>
                 ) : (
                   ''
                 )}
               </FormText> */}
+            </FormGroup>
+          </Col>
+          <Col lg={6} md={6} sm={6} xs={12}>
+            <FormGroup>
+              <FormControl fullWidth>
+                <Label>
+                  <FormattedMessage {...messages.Gender} />
+                </Label>
+                <Select
+                  // value={gender}
+                  // onChange={e => setGender(e.target.value)}
+                  input={<BootstrapInput />}
+                  fullWidth
+                  MenuProps={{
+                    anchorOrigin: {
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    },
+                    getContentAnchorEl: null,
+                  }}
+                >
+                  <MenuItem value="Financial Literacy">
+                    <FormattedMessage {...messages.Male} />
+                  </MenuItem>
+                  <MenuItem value="Software Developer">
+                    <FormattedMessage {...messages.Female} />
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            </FormGroup>
+          </Col>
+          <Col lg={6} md={6} sm={6} xs={12}>
+            <FormGroup>
+              <FormControl fullWidth>
+                <Label>
+                  <FormattedMessage {...messages.Profession} />
+                </Label>
+                <Select
+                  // value={profession}
+                  // onChange={e => setProfession(e.target.value)}
+                  input={<BootstrapInput />}
+                  fullWidth
+                  MenuProps={{
+                    anchorOrigin: {
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    },
+                    getContentAnchorEl: null,
+                  }}
+                >
+                  <MenuItem value="Financial Literacy">
+                    Software Developer
+                  </MenuItem>
+                  <MenuItem value="Software Developer">
+                    Accountant
+                  </MenuItem>
+                </Select>
+              </FormControl>
             </FormGroup>
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
@@ -103,17 +184,17 @@ function BasicInfo() {
                 name="profession"
                 id="profession"
                 placeholder="Enter profession"
-                // defaultValue={currentProfile.profession}
-                // onChange={e => {
-                //   const currentProfileObj = currentProfile;
-                //   const updateProfileObj = profileUpdate;
-                //   currentProfileObj.profession = e.target.value;
-                //   updateProfileObj.profession = e.target.value;
-                //   setCurrentProfile(currentProfileObj);
-                //   setProfileUpdate(updateProfileObj);
-                // }}
+              // defaultValue={currentProfile.profession}
+              // onChange={e => {
+              //   const currentProfileObj = currentProfile;
+              //   const updateProfileObj = profileUpdate;
+              //   currentProfileObj.profession = e.target.value;
+              //   updateProfileObj.profession = e.target.value;
+              //   setCurrentProfile(currentProfileObj);
+              //   setProfileUpdate(updateProfileObj);
+              // }}
               />
-                {/* <FormText className="form-text">
+              {/* <FormText className="form-text">
                 {errors.lastName ? (
                   <p className="error">{errors.lastName}</p>
                 ) : (
@@ -148,17 +229,17 @@ function BasicInfo() {
                 name="aboutMe"
                 id="aboutme"
                 placeholder="Enter description about yourself"
-                // defaultValue={currentProfile.description}
-                // onChange={e => {
-                //   const currentProfileObj = currentProfile;
-                //   const updateProfileObj = profileUpdate;
-                //   currentProfileObj.description = e.target.value;
-                //   updateProfileObj.aboutMe = e.target.value;
-                //   setCurrentProfile(currentProfileObj);
-                //   setProfileUpdate(updateProfileObj);
-                // }}
+              // defaultValue={currentProfile.description}
+              // onChange={e => {
+              //   const currentProfileObj = currentProfile;
+              //   const updateProfileObj = profileUpdate;
+              //   currentProfileObj.description = e.target.value;
+              //   updateProfileObj.aboutMe = e.target.value;
+              //   setCurrentProfile(currentProfileObj);
+              //   setProfileUpdate(updateProfileObj);
+              // }}
               />
-                {/* <FormText className="form-text">
+              {/* <FormText className="form-text">
                 {errors.aboutMe ? (
                   <p className="error">{errors.aboutMe}</p>
                 ) : (
@@ -175,7 +256,7 @@ function BasicInfo() {
             </Button>
             <Button
               className="btn_submit"
-              // onClick={handleUpdateProfileSave}
+            // onClick={handleUpdateProfileSave}
             >
               <FormattedMessage {...messages.Save} />
             </Button>
