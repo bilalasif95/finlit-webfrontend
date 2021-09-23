@@ -13,6 +13,12 @@ const Wrapper = styled.div`
   }
   @media (max-width: 991px) {
     margin: 0 0 1rem;
+    max-height: 400px;
+    height: initial;
+    img {
+      width: 100%;
+      max-width: initial;
+    }
   }
 `;
 
