@@ -45,7 +45,7 @@ function BootcampList() {
   };
 
   const handleBootcampList = id => {
-    history.push('/bootcamp_details/' + id);
+    // history.push('/bootcamp_details/' + id);
   };
   return (
     <Wrapper>

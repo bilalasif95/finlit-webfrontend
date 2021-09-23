@@ -130,7 +130,7 @@ function AddArticle() {
                     name="mainTitle"
                     id="maintitle"
                     value={articleStatus.mainTitle}
-                    placeholder="Main title"
+                    placeholder="Enter your title"
                     onChange={e => handleChangeEvent(e)}
                   />
                   <FormText color="danger">
@@ -150,7 +150,7 @@ function AddArticle() {
                     name="subTitle"
                     id="subtitle"
                     value={articleStatus.subTitle}
-                    placeholder="Sub title"
+                    placeholder="Enter your Sub title"
                     onChange={e => handleChangeEvent(e)}
                   />
                   <FormText color="danger">
