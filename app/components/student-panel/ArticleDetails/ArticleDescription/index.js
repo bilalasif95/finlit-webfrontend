@@ -36,8 +36,8 @@ function ArticleDescription(props) {
             <FormattedMessage {...messages.Comments} />
           </div>
         </div>
-        <div className="article_desc">
-          <p>{description}</p>
+        <div className="article_desc" dangerouslySetInnerHTML={{__html: description}}>
+
         </div>
       </div>
     </Wrapper>
