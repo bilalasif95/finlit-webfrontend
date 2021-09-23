@@ -1,4 +1,4 @@
-import React, { useState, useRef ,useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
 import {
@@ -12,12 +12,12 @@ import {
 } from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
-import Wrapper from './Wrapper';
-import messages from './messages';
 import history from 'utils/history';
 import { ToastContainer, toast } from 'react-toastify';
+import Wrapper from './Wrapper';
+import messages from './messages';
 import { API } from '../../../config/config';
-import { redirectToLogin } from "../../../utils/redirectToLogin"
+import { redirectToLogin } from '../../../utils/redirectToLogin';
 
 function AddWebinar() {
   const editor = useRef(null);
@@ -26,8 +26,8 @@ function AddWebinar() {
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
-    redirectToLogin()
-  }, [])
+    redirectToLogin();
+  }, []);
 
   const config = {
     readonly: false,
@@ -44,7 +44,7 @@ function AddWebinar() {
     presenter: '',
     price: '',
     description: '',
-    redirectionUrl: ''
+    redirectionUrl: '',
   });
 
   const handleChangeEvent = event => {
@@ -97,7 +97,7 @@ function AddWebinar() {
         price,
         presentor: presenter,
         description: content,
-        redirectionUrl
+        redirectionUrl,
       };
 
       const subDataString = encodeURIComponent(JSON.stringify(subData));
@@ -114,7 +114,7 @@ function AddWebinar() {
             ...authHeaders,
           },
         })
-        .then((response) => {
+        .then(response => {
           setContent('');
           setWebinarStatus({
             mainTitle: '',
@@ -127,7 +127,7 @@ function AddWebinar() {
             presenter: '',
             price: '',
             description: '',
-            redirectionUrl: ''
+            redirectionUrl: '',
           });
           setLoader(false);
           toast.success(

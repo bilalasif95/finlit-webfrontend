@@ -15,9 +15,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputBase from '@material-ui/core/InputBase';
+import { withStyles } from '@material-ui/core/styles';
 import Wrapper from './Wrapper';
 import messages from './messages';
-import { withStyles } from '@material-ui/core/styles';
 
 const BootstrapInput = withStyles(theme => ({
   root: {
@@ -117,31 +117,31 @@ function AddCourse() {
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
-            <FormGroup>
-                    <FormControl fullWidth>
-                      <Label>
-                        <FormattedMessage {...messages.CourseLanguage} />
-                      </Label>
-                      <Select
-                      value={language}
-                      onChange={e => setLanguage(e.target.value)}
-                       input={<BootstrapInput />}
-                        fullWidth
-                        MenuProps={{
-                          anchorOrigin: {
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                          },
-                          getContentAnchorEl: null,
-                        }}
-                      >
-                        <MenuItem value={0}>Select Language</MenuItem>
-                        <MenuItem value={1}>USA</MenuItem>
-                        <MenuItem value={2}>KSA</MenuItem>
-                        <MenuItem value={3}>KR</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </FormGroup>
+              <FormGroup>
+                <FormControl fullWidth>
+                  <Label>
+                    <FormattedMessage {...messages.CourseLanguage} />
+                  </Label>
+                  <Select
+                    value={language}
+                    onChange={e => setLanguage(e.target.value)}
+                    input={<BootstrapInput />}
+                    fullWidth
+                    MenuProps={{
+                      anchorOrigin: {
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                      },
+                      getContentAnchorEl: null,
+                    }}
+                  >
+                    <MenuItem value={0}>Select Language</MenuItem>
+                    <MenuItem value={1}>USA</MenuItem>
+                    <MenuItem value={2}>KSA</MenuItem>
+                    <MenuItem value={3}>KR</MenuItem>
+                  </Select>
+                </FormControl>
+              </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
               <FormGroup>
