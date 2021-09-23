@@ -275,6 +275,7 @@ function AddHackathon() {
                   placeholder="00/00/0000"
                   value={hackathonStatus.startDate}
                   onChange={e => handleChangeEvent(e)}
+                  onKeyDown={(e) =>  {e.preventDefault()}}
                 />
                 <FormText color="danger">
                   {errors.startDate ? (
@@ -297,6 +298,7 @@ function AddHackathon() {
                   placeholder="00/00/0000"
                   value={hackathonStatus.endDate}
                   onChange={e => handleChangeEvent(e)}
+                  onKeyDown={(e) =>  {e.preventDefault()}}
                 />
                 <FormText color="danger">
                   {errors.endDate ? (

@@ -1,4 +1,4 @@
-import React, { useState, useRef ,useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
 import {
@@ -274,6 +274,7 @@ function AddWebinar() {
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
               <FormGroup>
+                1
                 <Label for="startdate">
                   <FormattedMessage {...messages.StartDate} />
                 </Label>
@@ -284,6 +285,7 @@ function AddWebinar() {
                   placeholder="00/00/0000"
                   value={webinarStatus.startDate}
                   onChange={e => handleChangeEvent(e)}
+                  onKeyDown={(e) =>  {e.preventDefault()}}
                 />
                 <FormText color="danger">
                   {errors.startDate ? (
@@ -306,6 +308,7 @@ function AddWebinar() {
                   placeholder="00/00/0000"
                   value={webinarStatus.endDate}
                   onChange={e => handleChangeEvent(e)}
+                  onKeyDown={(e) =>  {e.preventDefault()}}
                 />
                 <FormText color="danger">
                   {errors.endDate ? (
