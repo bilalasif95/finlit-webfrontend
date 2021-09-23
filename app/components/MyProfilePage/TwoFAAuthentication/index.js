@@ -4,6 +4,8 @@
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FormGroup, Label, Button, Input, FormText } from 'reactstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -29,6 +31,66 @@ function TwoFAAuthentication(props) {
   const [stepThree, setStepThree] = useState(false);
   const [stepFour, setStepFour] = useState(false);
   const [stepFive, setStepFive] = useState(false);
+
+  const [QrUri, setQrUri] = useState('');
+  const [twoFaCode, setTwoFaCode] = useState('');
+  const getQrCodeUri = () => {
+    const token = localStorage.getItem('token');
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+    axios
+      .post(
+        `${API}api/user/getToTpURI`,
+        {},
+        {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        },
+      )
+      .then(response => {
+        setQrUri(response.data.toTpURI);
+        handleStepTwo();
+      })
+      .catch(err => {
+        toast.error(
+          err.response && err.response.data.message
+            ? err.response.data.message.toString()
+            : 'Message Not Readable',
+        );
+      });
+  };
+  const verifyTwoFaCode = () => {
+    const token = localStorage.getItem('token');
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+    axios
+      .post(
+        `${API}api/user/toggleTwoFA`,
+        { code: twoFaCode },
+        {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        },
+      )
+      .then(res => {
+        setTwoFaCode('');
+        toast.success(
+          res && res.data ? res.data.message : 'Message Not Readable',
+        );
+        handleStepFour();
+      })
+      .catch(err => {
+        toast.error(
+          err.response && err.response.data.message
+            ? err.response.data.message.toString()
+            : 'Message Not Readable',
+        );
+      });
+  };
 
   const handleStepOne = () => {
     setStepOne(false);
@@ -138,7 +200,7 @@ function TwoFAAuthentication(props) {
               <Button className="btn_cancel" onClick={handleStepOneClose}>
                 <FormattedMessage {...messages.Cancel} />
               </Button>
-              <Button className="btn_submit" onClick={handleStepTwo}>
+              <Button className="btn_submit" onClick={getQrCodeUri}>
                 <FormattedMessage {...messages.ContinueVerify} />
               </Button>
             </div>
@@ -156,7 +218,7 @@ function TwoFAAuthentication(props) {
               security.
             </p>
             <div className="app_store">
-              <QRCode value={Profile} />
+              <QRCode value={QrUri} />
             </div>
           </div>
           <div className="form_footer">
@@ -190,7 +252,10 @@ function TwoFAAuthentication(props) {
                 name="authcode"
                 id="authcode"
                 placeholder="Enter code"
-                onChange={e => handleChangeEvent(e)}
+                value={twoFaCode}
+                onChange={e => {
+                  setTwoFaCode(e.target.value);
+                }}
               />
               <FormText color="muted">
                 Enter the 6 digit code visible on your google authenticator app
@@ -202,7 +267,7 @@ function TwoFAAuthentication(props) {
               <Button className="btn_cancel" onClick={handleStepThreeClose}>
                 <FormattedMessage {...messages.Cancel} />
               </Button>
-              <Button className="btn_submit" onClick={handleStepFour}>
+              <Button className="btn_submit" onClick={verifyTwoFaCode}>
                 <FormattedMessage {...messages.ContinueVerify} />
               </Button>
             </div>
