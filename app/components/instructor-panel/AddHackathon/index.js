@@ -253,6 +253,7 @@ function AddHackathon() {
                         id="uploadimage"
                         placeholder="Upload Image"
                         onChange={e => handleChangeEvent(e)}
+                        accept="image/*"
                       />
                     </div>
                   </div>
