@@ -34,6 +34,9 @@ const SigninPage = props => {
   React.useEffect(() => {
     setEmail(localStorage.getItem('remember_me_email') || '');
     setPassword(localStorage.getItem('remember_me_password') || '');
+    if (localStorage.getItem('remember_me_email') && localStorage.getItem('remember_me_password')) {
+      setRememberMe(true);
+    }
   }, [])
   const login = () => {
     setError('');
@@ -99,6 +102,7 @@ const SigninPage = props => {
                   type="email"
                   name="email"
                   id="email"
+                  defaultValue={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="Your email"
                 />
@@ -111,6 +115,7 @@ const SigninPage = props => {
                   type="password"
                   name="password"
                   id="password"
+                  defaultValue={password}
                   onChange={e => setPassword(e.target.value)}
                   onKeyDown = {(e) => {
                     if (e.code === "Enter" || e.code === "NumpadEnter") {
@@ -128,7 +133,9 @@ const SigninPage = props => {
               <div className="remember_forgot">
                 <FormGroup check>
                   <Label check className="check-box">
-                    <Input type="checkbox" />
+                    <Input defaultValue={rememberMe} value={rememberMe} type="checkbox" onChange={(e) => {
+                      setRememberMe(e.target.value);
+                    }} />
                     <FormattedMessage {...messages.RememberMe} />
                   </Label>
                 </FormGroup>

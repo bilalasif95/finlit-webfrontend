@@ -130,7 +130,7 @@ function AddArticle() {
                     name="mainTitle"
                     id="maintitle"
                     value={articleStatus.mainTitle}
-                    placeholder="Main title"
+                    placeholder="Enter your title"
                     onChange={e => handleChangeEvent(e)}
                   />
                   <FormText color="danger">
@@ -150,7 +150,7 @@ function AddArticle() {
                     name="subTitle"
                     id="subtitle"
                     value={articleStatus.subTitle}
-                    placeholder="Sub title"
+                    placeholder="Enter your Sub title"
                     onChange={e => handleChangeEvent(e)}
                   />
                   <FormText color="danger">
@@ -182,6 +182,7 @@ function AddArticle() {
                           id="uploadimage"
                           placeholder="Upload Image"
                           onChange={e => handleChangeEvent(e)}
+                          accept="image/*"
                         />
                       </div>
                     </div>
@@ -219,13 +220,13 @@ function AddArticle() {
             </Row>
             <div className="form_footer">
               <div className="bottom_btns">
-                <Button className="btn_save" onClick={e => handleSave(e)}>
+                {/* <Button className="btn_save" onClick={e => handleSave(e)}>
                   {loader ? (
                     'Loading'
                   ) : (
                     <FormattedMessage {...messages.SaveAs} />
                   )}
-                </Button>
+                </Button> */}
                 <Button className="btn_submit" onClick={e => handleSave(e)}>
                   {loader ? (
                     'Loading'

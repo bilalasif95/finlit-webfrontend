@@ -28,11 +28,11 @@ function WebinarsList() {
     const token = localStorage.getItem('token');
     const authHeaders = token
       ? {
-        Authorization: `Bearer${token}`,
+        Authorization: `Bearer ${token}`,
       }
       : {};
     axios
-      .get(`${API}api/events/getEventsByTypes?type=Webinar`, {
+      .get(`${API}api/events/getEventsByTypesAndUser?type=Webinar`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
