@@ -44,6 +44,7 @@ function AddBootCamp() {
     endTime: '',
     price: '',
     description: '',
+    redirectionUrl: ''
   });
 
   const handleChangeEvent = event => {
@@ -83,6 +84,7 @@ function AddBootCamp() {
         startTime,
         endTime,
         price,
+        redirectionUrl,
       } = bootCampStatus;
       const subData = {
         mainTitle,
@@ -93,12 +95,14 @@ function AddBootCamp() {
         endTime,
         price,
         description: content,
+        redirectionUrl
       };
 
       const subDataString = encodeURIComponent(JSON.stringify(subData));
       const bodyFormData = new FormData();
       bodyFormData.append('type', 'Bootcamp');
       bodyFormData.append('eventImage', bootCampStatus.image);
+      bodyFormData.append('redirectionUrl', bootCampStatus.redirectionUrl);
       bodyFormData.append('data', subDataString);
       axios
         .post(`${API}api/events`, bodyFormData, {
@@ -120,7 +124,9 @@ function AddBootCamp() {
             endTime: '',
             price: '',
             description: '',
+            redirectionUrl: ''
           });
+
           setLoader(false);
           toast.success(
             response && response.data.message
@@ -158,6 +164,8 @@ function AddBootCamp() {
       error.endTime = 'End time is required';
     } else if (!values.price) {
       error.price = 'Price is required ';
+    } else if (!values.redirectionUrl) {
+      error.redirectionUrl = 'Redirection URL is required ';
     } else if (!content) {
       error.description = 'Description is required';
     }
@@ -364,6 +372,28 @@ function AddBootCamp() {
                 <FormText color="danger">
                   {errors.price ? (
                     <p className="error"> {errors.price} </p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
+              </FormGroup>
+            </Col>
+            <Col lg={4} md={6} sm={6} xs={12}>
+              <FormGroup>
+                <Label for="redirectionUrl">
+                  <FormattedMessage {...messages.RedirectionUrl} />
+                </Label>
+                <Input
+                  type="text"
+                  name="redirectionUrl"
+                  id="redirectionUrl"
+                  placeholder="Redirection URL"
+                  value={bootCampStatus.redirectionUrl}
+                  onChange={e => handleChangeEvent(e)}
+                />
+                <FormText color="danger">
+                  {errors.redirectionUrl ? (
+                    <p className="error"> {errors.redirectionUrl} </p>
                   ) : (
                     ''
                   )}

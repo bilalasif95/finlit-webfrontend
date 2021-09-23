@@ -12,6 +12,12 @@ const Wrapper = styled.div`
     transition: box-shadow 0.5s;
     cursor: pointer;
     .event_img {
+      align-items: baseline;
+      display: flex;
+      justify-content: center;
+      min-height: 160px;
+      max-height: 160px;
+      overflow: hidden;
       position: relative;
       img {
         margin: 0 auto;
@@ -46,12 +52,18 @@ const Wrapper = styled.div`
         align-items: center;
         margin: 1rem 0 0;
         .posted_profile {
+          height: 35px;
           width: 35px;
           border-radius: 1.5rem;
           background-color: #000;
           display: flex;
           justify-content: center;
           align-items: center;
+          img {
+            border-radius: 1.5rem;
+            height: 100%;
+            width: 100%;
+          }
         }
         .posted_title {
           width: 82.5%;
@@ -83,10 +95,18 @@ const Wrapper = styled.div`
   @media (max-width: 991px) {
     .single_item {
       margin: 0 0 1.5rem;
+      .event_img {
+        min-height: 200px;
+        max-height: 200px;
+      }
     }
   }
   @media (max-width: 575px) {
     .single_item {
+      .event_img {
+        min-height: 230px;
+        max-height: 230px;
+      }
       .desc {
         padding: 0.75rem !important;
       }

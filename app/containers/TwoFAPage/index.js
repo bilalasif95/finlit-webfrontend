@@ -57,8 +57,8 @@ const TwoFAPage = props => {
     <>
       <div className="registration_page">
         <Helmet>
-          <title>Two FA Verification</title>
-          <meta name="description" content="Two FA Verification" />
+          <title>2FA Verification</title>
+          <meta name="description" content="2FA Verification" />
         </Helmet>
         <div className="form_container Login-form">
           <div className="form_content">

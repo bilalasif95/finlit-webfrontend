@@ -12,7 +12,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import "./app.css";
+import './app.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
@@ -45,7 +45,7 @@ export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [roleId, setRoleId] = useState(1);
+  const [roleId, setRoleId] = useState(3);
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [gender, setGender] = useState('Male');
@@ -64,10 +64,10 @@ export default function SignupPage() {
     }
     if (
       !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) ||
-      (!password.length >= 8 && !password.length <= 12)
+      (!password.length >= 8 && !password.length <= 15)
     ) {
       setError(
-        'Password must contains one special character or capital letter and length should be in between 8 to 12 characters.',
+        'Password must contains one special character or capital letter and length should be in between 8 to 15 characters.',
       );
       setTimeout(() => {
         setError('');
@@ -180,7 +180,7 @@ export default function SignupPage() {
                       value={roleId}
                       onChange={e => {
                         setRoleId(e.target.value);
-                        if (e.target.value === 3) {
+                        if (e.target.value === 1) {
                           setInstructorDiv(true);
                         } else {
                           setInstructorDiv(false);
@@ -196,8 +196,8 @@ export default function SignupPage() {
                         getContentAnchorEl: null,
                       }}
                     >
-                      <MenuItem value={1}>Student</MenuItem>
-                      <MenuItem value={3}>Educator</MenuItem>
+                      <MenuItem value={3}>Student</MenuItem>
+                      <MenuItem value={1}>Educator</MenuItem>
                     </Select>
                   </FormControl>
                 </FormGroup>
@@ -248,6 +248,7 @@ export default function SignupPage() {
                       >
                         <MenuItem value="USA">USA</MenuItem>
                         <MenuItem value="KSA">KSA</MenuItem>
+                        <MenuItem value="KR">KR</MenuItem>
                       </Select>
                     </FormControl>
                   </FormGroup>

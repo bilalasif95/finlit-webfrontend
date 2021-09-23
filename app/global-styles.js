@@ -586,6 +586,22 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 @media (max-width: 575px) {
+  .dashboard-main {
+    width: 100%;
+    margin-top: 30px;
+    display: inherit;
+    flex-wrap: wrap;
+    .statistics-cont, .events-cont {
+      width:100%;
+    }
+    .events-cont {
+      padding: 20px 20px;
+      margin-top: 21px;
+      .calendar-cont h3 {
+        font-size: 20px;
+      }
+    }
+  }
   .verification-main .email-verification {
     width: 100%;
     button {

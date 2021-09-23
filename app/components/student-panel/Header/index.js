@@ -224,15 +224,20 @@ const Header = () => {
                       </div>
                       <div className="notify">200</div>
                     </DropdownItem>
-                    <DropdownItem>
-                      <Link to="/cart">
-                        <div>
-                          <IoMdCart />
-                          <FormattedMessage {...messages.MyCart} />
-                        </div>
-                        <div />
-                      </Link>
-                    </DropdownItem>
+                    {
+                      userObj && userObj.roles && userObj.roles[0] && userObj.roles[0].roleName === 'Student'
+                      ?
+                      <DropdownItem>
+                        <Link to="/cart">
+                          <div>
+                            <IoMdCart />
+                            <FormattedMessage {...messages.MyCart} />
+                          </div>
+                          <div />
+                        </Link>
+                      </DropdownItem>
+                      : <></>
+                    }
                     <DropdownItem>
                       <div>
                         <IoIosHelpCircle />

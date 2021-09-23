@@ -69,16 +69,20 @@ const Wrapper = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 9px;
       h3 {
         font-size: 31px;
         color: #484848;
-        margin-bottom: 30px;
       }
       button {
         color: #225F2B;
         background: transparent !important;
         border: none;
         font-size: 16px;
+        &:focus, &:active, &:hover {
+          box-shadow: inherit;
+          outline: none;
+        }
       }
     }
     .List-box:not(:last-child) {
@@ -95,6 +99,57 @@ const Wrapper = styled.div`
         color: #8b8b8b;
       }
     }
+  }
+  @media (max-width: 575px) {
+    .statistics-chart {
+      padding: 20px 20px;
+      h3 {
+        font-size: 20px;
+        margin-bottom: 25px;
+      }
+      .list-box {
+        display: inherit;
+        .statistics-list li {
+          font-size: 16px;
+          margin-bottom: 15px;
+        }
+      }
+    }
+    .recent-cont {
+      padding: 20px 20px;
+      .activities{
+        h3 {
+          font-size: 20px;
+          margin-bottom: 0;
+        }
+        button {
+          font-size: 14px;
+        }
+      }
+      .List-box {
+        h4 {
+          font-size: 16px;
+        }
+        p {
+          font-size: 14px;
+        }
+      } 
+    }
+    .course-cont {
+      padding: 20px 20px;
+      margin-top: 21px;
+      h3 {
+        font-size: 20px;
+      }
+      .course {
+        .course-box {
+          margin-top: 20px;
+          p {
+            font-size: 16px;
+          }
+        }
+      }
+  }
   }
 `;
 
