@@ -24,7 +24,11 @@ function Events() {
         },
       })
       .then(res => {
-        setEventsList(res && res.data.data.splice(res.data.data.length - 4, res.data.data.length));
+        if(res.data.data.length > 4) {
+          setEventsList(res && res.data.data.splice(res.data.data.length - 4, res.data.data.length));
+        } else {
+          setEventsList(res && res.data.data);
+        }
       })
       .catch(() => {
       });
