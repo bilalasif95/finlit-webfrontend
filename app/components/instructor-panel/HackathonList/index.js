@@ -26,11 +26,11 @@ function HackathonList() {
     const token = localStorage.getItem('token');
     const authHeaders = token
       ? {
-          Authorization: `Bearer${token}`,
+          Authorization: `Bearer ${token}`,
         }
       : {};
     axios
-      .get(`${API}api/events/getEventsByTypes?type=Hackathon`, {
+      .get(`${API}api/events/getEventsByTypesAndUser?type=Hackathon`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',

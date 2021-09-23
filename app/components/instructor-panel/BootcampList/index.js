@@ -26,9 +26,9 @@ function BootcampList() {
   const getBootcampLists = () => {
     setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token ? { Authorization: `Bearer${token}` } : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
-      .get(`${API}api/events/getEventsByTypes?type=Bootcamp`, {
+      .get(`${API}api/events/getEventsByTypesAndUser?type=Bootcamp`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
