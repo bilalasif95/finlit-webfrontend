@@ -1,4 +1,4 @@
-import React, { useState, useRef ,useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import JoditEditor from 'jodit-react';
 import { FormattedMessage } from 'react-intl';
 import {
@@ -12,12 +12,12 @@ import {
 } from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
-import Wrapper from './Wrapper';
-import messages from './messages';
 import history from 'utils/history';
 import { ToastContainer, toast } from 'react-toastify';
+import Wrapper from './Wrapper';
+import messages from './messages';
 import { API } from '../../../config/config';
-import { redirectToLogin } from "../../../utils/redirectToLogin"
+import { redirectToLogin } from '../../../utils/redirectToLogin';
 
 function AddWebinar() {
   const editor = useRef(null);
@@ -26,8 +26,8 @@ function AddWebinar() {
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
-    redirectToLogin()
-  }, [])
+    redirectToLogin();
+  }, []);
 
   const config = {
     readonly: false,
@@ -44,7 +44,7 @@ function AddWebinar() {
     presenter: '',
     price: '',
     description: '',
-    redirectionUrl: ''
+    redirectionUrl: '',
   });
 
   const handleChangeEvent = event => {
@@ -97,7 +97,7 @@ function AddWebinar() {
         price,
         presentor: presenter,
         description: content,
-        redirectionUrl
+        redirectionUrl,
       };
 
       const subDataString = encodeURIComponent(JSON.stringify(subData));
@@ -114,7 +114,7 @@ function AddWebinar() {
             ...authHeaders,
           },
         })
-        .then((response) => {
+        .then(response => {
           setContent('');
           setWebinarStatus({
             mainTitle: '',
@@ -127,7 +127,7 @@ function AddWebinar() {
             presenter: '',
             price: '',
             description: '',
-            redirectionUrl: ''
+            redirectionUrl: '',
           });
           setLoader(false);
           toast.success(
@@ -172,6 +172,12 @@ function AddWebinar() {
       error.redirectionUrl = 'Redirection URL is required ';
     } else if (!content) {
       error.description = 'Description is required';
+    } else if (values.startDate && values.endDate && values.startDate > values.endDate) {
+      error.endDate = 'End Date Should be greater than Start Date';
+    } else if (values.startTime && values.endTime && values.endDate === values.startDate && values.startTime > values.endTime) {
+      error.endTime = 'End Time Should be greater than Start Time';
+    } else if (!/^(ftp|http|https):\/\/[^ "]+$/.test(values.redirectionUrl)) {
+      error.redirectionUrl = 'Redirection URL is invalid ';
     }
 
     return error;
@@ -194,7 +200,7 @@ function AddWebinar() {
                   type="text"
                   name="mainTitle"
                   id="maintitle"
-                  placeholder="Main title"
+                  placeholder="Enter Your Title"
                   value={webinarStatus.mainTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
@@ -216,7 +222,7 @@ function AddWebinar() {
                   type="text"
                   name="subTitle"
                   id="subtitle"
-                  placeholder="Sub title"
+                  placeholder="Enter Your Sub Title"
                   value={webinarStatus.subTitle}
                   onChange={e => handleChangeEvent(e)}
                 />
@@ -252,6 +258,7 @@ function AddWebinar() {
                         id="uploadimage"
                         placeholder="Upload Image"
                         onChange={e => handleChangeEvent(e)}
+                        accept="image/*"
                       />
                     </div>
                   </div>
@@ -267,6 +274,7 @@ function AddWebinar() {
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
               <FormGroup>
+                1
                 <Label for="startdate">
                   <FormattedMessage {...messages.StartDate} />
                 </Label>
@@ -277,6 +285,7 @@ function AddWebinar() {
                   placeholder="00/00/0000"
                   value={webinarStatus.startDate}
                   onChange={e => handleChangeEvent(e)}
+                  onKeyDown={(e) =>  {e.preventDefault()}}
                 />
                 <FormText color="danger">
                   {errors.startDate ? (
@@ -299,6 +308,7 @@ function AddWebinar() {
                   placeholder="00/00/0000"
                   value={webinarStatus.endDate}
                   onChange={e => handleChangeEvent(e)}
+                  onKeyDown={(e) =>  {e.preventDefault()}}
                 />
                 <FormText color="danger">
                   {errors.endDate ? (
@@ -391,7 +401,7 @@ function AddWebinar() {
                   type="number"
                   name="price"
                   id="price"
-                  placeholder="Registration Price"
+                  placeholder="Enter Price"
                   value={webinarStatus.price}
                   onChange={e => handleChangeEvent(e)}
                 />

@@ -58,6 +58,14 @@ export default function SignupPage() {
 
   const signup = () => {
     setError('');
+    if (!/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(firstName)) {
+      setError('First Name is not valid');
+      return;
+    }
+    if (!/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(lastName)) {
+      setError('Last Name is not valid');
+      return;
+    }
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError('Please enter valid email');
       return;

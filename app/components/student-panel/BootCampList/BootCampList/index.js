@@ -11,13 +11,13 @@ import { HiUsers } from 'react-icons/hi';
 import { AiOutlineHeart } from 'react-icons/ai';
 // import { AiFillHeart } from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
-import { axiosHeader } from "../../../../utils/axiosHeader"
-import { redirectToLogin } from "../../../../utils/redirectToLogin"
+import { Link } from 'react-router-dom';
+import { axiosHeader } from '../../../../utils/axiosHeader';
+import { redirectToLogin } from '../../../../utils/redirectToLogin';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
 import Loader from '../../../Loader';
-import { Link } from 'react-router-dom';
 
 function BootCampList() {
   const [bootcampList, setBootCampList] = useState([]);
@@ -27,8 +27,8 @@ function BootCampList() {
   }, []);
 
   useEffect(() => {
-    redirectToLogin()
-  }, [])
+    redirectToLogin();
+  }, []);
 
   const getBootcampLists = () => {
     setLoader(true);
@@ -43,7 +43,7 @@ function BootCampList() {
       });
   };
   const handleBootcampDetails = id => {
-    history.push('/bootcamp_details/' + id);
+    history.push(`/bootcamp_details/${id}`);
   };
   return (
     <Wrapper id="list">
@@ -53,12 +53,9 @@ function BootCampList() {
         <div className="courses">
           <Row>
             <Col lg={12}>
-                <div className="Head-Link">
-                    <h4>
-                      <FormattedMessage {...messages.BootCampList} />
-                    </h4>
-                    <Link to="/add_bootcamp"><span>+</span> Add</Link>
-                  </div>
+              <h4>
+                <FormattedMessage {...messages.BootCampList} />
+              </h4>
               <div className="courses_list">
                 {bootcampList.map(item => (
                   <div
@@ -107,7 +104,6 @@ function BootCampList() {
                             {20}
                             &nbsp;
                             <FormattedMessage {...messages.Attendees} />
-
                           </div>
                         </div>
                         <div className="like_enroll">
@@ -127,8 +123,7 @@ function BootCampList() {
             </Col>
           </Row>
         </div>
-      )
-      }
+      )}
     </Wrapper>
   );
 }

@@ -11,12 +11,41 @@ import {
   Button,
 } from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import InputBase from '@material-ui/core/InputBase';
+import { withStyles } from '@material-ui/core/styles';
 import Wrapper from './Wrapper';
 import messages from './messages';
+
+const BootstrapInput = withStyles(theme => ({
+  root: {
+    'label + &': {
+      marginTop: 0,
+    },
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    backgroundColor: theme.palette.background.paper,
+    border: '1px solid #e6e6e6',
+    fontSize: 14,
+    color: '#484848',
+    padding: '10px 26px 10px 12px',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    // Use the system font instead of the default Lato font.
+    fontFamily: ['Lato', 'sans-serif'].join(','),
+    '&:focus': {
+      borderRadius: 4,
+    },
+  },
+}))(InputBase);
 
 function AddCourse() {
   const editor = useRef(null);
   const [content, setContent] = useState('');
+  const [language, setLanguage] = useState('0');
 
   const config = {
     readonly: false,
@@ -38,7 +67,7 @@ function AddCourse() {
                   type="text"
                   name="maintitle"
                   id="maintitle"
-                  placeholder="Course title"
+                  placeholder="Enter Your Title"
                 />
                 {/* <FormText color="danger">
                   <p className="error"> Error message</p>
@@ -54,7 +83,7 @@ function AddCourse() {
                   type="text"
                   name="subtitle"
                   id="subtitle"
-                  placeholder="Sub title"
+                  placeholder="Enter Your Sub Title"
                 />
                 {/* <FormText color="danger">
                   <p className="error"> Error message</p>
@@ -89,18 +118,29 @@ function AddCourse() {
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
               <FormGroup>
-                <Label for="courselanguage">
-                  <FormattedMessage {...messages.CourseLanguage} />
-                </Label>
-                <Input
-                  type="text"
-                  name="courselanguage"
-                  id="courselanguage"
-                  placeholder="Course Language"
-                />
-                {/* <FormText color="danger">
-                  <p className="error"> Error message</p>
-                </FormText> */}
+                <FormControl fullWidth>
+                  <Label>
+                    <FormattedMessage {...messages.CourseLanguage} />
+                  </Label>
+                  <Select
+                    value={language}
+                    onChange={e => setLanguage(e.target.value)}
+                    input={<BootstrapInput />}
+                    fullWidth
+                    MenuProps={{
+                      anchorOrigin: {
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                      },
+                      getContentAnchorEl: null,
+                    }}
+                  >
+                    <MenuItem value={0}>Select Language</MenuItem>
+                    <MenuItem value={1}>USA</MenuItem>
+                    <MenuItem value={2}>KSA</MenuItem>
+                    <MenuItem value={3}>KR</MenuItem>
+                  </Select>
+                </FormControl>
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
@@ -112,7 +152,7 @@ function AddCourse() {
                   type="text"
                   name="price"
                   id="price"
-                  placeholder="CoursePrice"
+                  placeholder="Enter Price"
                 />
                 {/* <FormText color="danger">
                   <p className="error"> Error message</p>
@@ -128,7 +168,7 @@ function AddCourse() {
                   type="text"
                   name="category"
                   id="category"
-                  placeholder="Category"
+                  placeholder="Select Category"
                 />
                 {/* <FormText color="danger">
                   <p className="error"> Error message</p>
@@ -173,7 +213,7 @@ function AddCourse() {
                   type="text"
                   name="title"
                   id="lec_title"
-                  placeholder="Lecture title"
+                  placeholder="Enter Your title"
                 />
                 {/* <FormText color="danger">
                   <p className="error"> Error message</p>
@@ -189,7 +229,7 @@ function AddCourse() {
                   type="text"
                   name="title"
                   id="sub_title"
-                  placeholder="Sub title"
+                  placeholder="Enter Your Sub title"
                 />
                 {/* <FormText color="danger">
                   <p className="error"> Error message</p>

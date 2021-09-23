@@ -18,27 +18,27 @@ export default defineMessages({
   },
   MainTitle: {
     id: `${scope}.MainTitle`,
-    defaultMessage: `Main Title`,
+    defaultMessage: `Main Title*`,
   },
   SubTitle: {
     id: `${scope}.SubTitle`,
-    defaultMessage: `Sub Title`,
+    defaultMessage: `Sub Title*`,
   },
   UploadImage: {
     id: `${scope}.UploadImage`,
-    defaultMessage: `Upload Image`,
+    defaultMessage: `Upload Image*`,
   },
   CourseLanguage: {
     id: `${scope}.CourseLanguage`,
-    defaultMessage: `Course Language`,
+    defaultMessage: `Course Language*`,
   },
   Price: {
     id: `${scope}.Price`,
-    defaultMessage: `Price`,
+    defaultMessage: `Price*`,
   },
   Category: {
     id: `${scope}.Category`,
-    defaultMessage: `Category`,
+    defaultMessage: `Category*`,
   },
   Description: {
     id: `${scope}.Description`,
@@ -50,7 +50,7 @@ export default defineMessages({
   },
   LectureTitle: {
     id: `${scope}.LectureTitle`,
-    defaultMessage: `Lecture Title`,
+    defaultMessage: `Lecture Title*`,
   },
   LectureVideo: {
     id: `${scope}.LectureVideo`,
