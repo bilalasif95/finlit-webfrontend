@@ -9,15 +9,15 @@ import { BiCalendar, BiTimeFive } from 'react-icons/bi';
 import { IoMdShare } from 'react-icons/io';
 import { GrLocation } from 'react-icons/gr';
 import { FaRegHeart } from 'react-icons/fa';
-// import { RiStarSFill } from 'react-icons/ri';
+import { RiStarSFill } from 'react-icons/ri';
 import JoditEditor from 'jodit-react';
 import { HiUsers } from 'react-icons/hi';
 // import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import messages from './messages';
 import Wrapper from './Wrapper';
-// import finlit from '../../../../images/finlit.png';
-// import education from '../../../../images/education.png';
+import finlit from '../../../../images/finlit.png';
+import education from '../../../../images/education.png';
 
 function WebinarDetail(props) {
   const editor = useRef(null);
@@ -31,6 +31,7 @@ function WebinarDetail(props) {
   // };
 
   let detail = props.detail;
+  console.log(detail);
   let dataDetails = detail.data;
 
   return (
@@ -96,7 +97,7 @@ function WebinarDetail(props) {
             />
           </p>
         </div>
-        {/* <div className="presenters">
+        <div className="presenters">
           <h4>Registration Requirements:</h4>
           <div className="presenter_list">
             <div className="item">
@@ -104,13 +105,13 @@ function WebinarDetail(props) {
                 <img src={finlit} alt="View" />
               </div>
               <div className="details">
-                <p> desc here </p>
+                {/* <p> desc here </p> */}
                 <div className="outcomers">
                   <div className="presenter_name">
                     <p>Presenter |&nbsp;&nbsp;</p>
-                    <p className="name">Joeel & Natalie Rivera</p>
+                    <p className="name">{ props && props.detail && props.detail.data ? props.detail.data.presentor : ''}</p>
                   </div>
-                  <div className="rating">
+                  {/* <div className="rating">
                     <p>4.7</p>
                     <div className="stars">
                       <RiStarSFill />
@@ -123,12 +124,12 @@ function WebinarDetail(props) {
                   <div className="courses">
                     <img src={education} alt="Courses" />
                     <p>68 Courses</p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </Wrapper>
   );
