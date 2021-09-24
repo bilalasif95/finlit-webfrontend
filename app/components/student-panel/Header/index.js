@@ -40,12 +40,11 @@ const Header = () => {
     }
   }, []);
 
-  let token = localStorage.getItem("token")
+  const token = localStorage.getItem('token');
   const LogOut = () => {
-    history.push("/login")
-    localStorage.clear()
-  }
-
+    history.push('/login');
+    localStorage.clear();
+  };
 
   return (
     <Menubar>
@@ -161,8 +160,7 @@ const Header = () => {
               </UncontrolledDropdown>
             </Nav>
             <div className="registration">
-              {!token ?
-
+              {!token ? (
                 <Nav navbar>
                   <NavItem>
                     <Link className="nav-link" to="/login">
@@ -175,50 +173,55 @@ const Header = () => {
                     </Link>
                   </NavItem>
                 </Nav>
-                :
+              ) : (
                 <UncontrolledDropdown nav>
                   <DropdownToggle nav caret>
                     <div className="user_account">
                       <div className="user_icon">
-                      <Img src={userObj.image ? userObj.image : User} alt="User" />
+                        <Img src={userObj.image ? userObj.image : User} alt="User" />
                       </div>
                       <div className="user_name">
-                    <p>{userObj.firstName} {userObj.lastName}</p>
-                    <span>{userObj.email}</span>
-                  </div>
+                        <p>{userObj.firstName} {userObj.lastName}</p>
+                        <span>{userObj.email}</span>
+                      </div>
                     </div>
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem onClick={() => history.push("/dashboard")}>
+                    <DropdownItem onClick={() => history.push('/dashboard')}>
                       <div>
                         <RiDashboardFill />
                         <FormattedMessage {...messages.MyDashboard} />
                       </div>
                       <div />
                     </DropdownItem>
-                    <DropdownItem onClick={ () => { history.push('/my_profile') } }>
+                    <DropdownItem
+                      onClick={() => {
+                        history.push('/my_profile');
+                      }}
+                    >
                       <div>
                         <HiUser />
                         <FormattedMessage {...messages.AccountSetting} />
                       </div>
                       <div />
                     </DropdownItem>
-                    {
-                      userObj && userObj.roles && userObj.roles[0] && userObj.roles[0].roleName === 'Student'
-                      ?
-                      <DropdownItem>
-                        <Link to="/cart">
-                          <div>
-                            <IoMdCart />
-                            <FormattedMessage {...messages.MyCart} />
-                          </div>
-                          <div />
-                        </Link>
-                      </DropdownItem>
-                      : <></>
-                    }
+                    {userObj &&
+                    userObj.roles &&
+                    userObj.roles[0] &&
+                    userObj.roles[0].roleName === 'Student' ? (
+                        <DropdownItem>
+                          <Link to="/cart">
+                            <div>
+                              <IoMdCart />
+                              <FormattedMessage {...messages.MyCart} />
+                            </div>
+                            <div />
+                          </Link>
+                        </DropdownItem>
+                        : <></>
+                    )}
                     <DropdownItem onClick={() => LogOut()}>
-                      <div >
+                      <div>
                         <FiLogOut />
                         <FormattedMessage {...messages.LogOut} />
                       </div>
@@ -226,10 +229,7 @@ const Header = () => {
                     </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
-
-              }
-
-
+              )}
             </div>
           </Collapse>
         </Container>

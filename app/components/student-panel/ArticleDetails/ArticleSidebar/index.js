@@ -15,7 +15,7 @@ import messages from './messages';
 
 function ArticleSidebar(props) {
   const [articles, setArticles] = useState([]);
-  const [loader , setLoader] = useState(false);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
     getArticleDetail();
   }, []);

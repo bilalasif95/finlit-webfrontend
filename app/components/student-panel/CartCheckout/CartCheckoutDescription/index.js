@@ -13,8 +13,7 @@ import Wrapper from './Wrapper';
 import reg from '../../../../images/reg.png';
 
 function CartCheckoutDescription(props) {
-
-  console.log("detailsCart",props.details)
+  console.log('detailsCart', props.details);
 
   return (
     <Wrapper id="list">
@@ -29,7 +28,11 @@ function CartCheckoutDescription(props) {
           <div className="cart">
             <div className="num_cont">
               <IoMdCart />
-              <span className="no_item">{props.details &&  props.details.items && props.details.items.length}</span>
+              <span className="no_item">
+                {props.details &&
+                  props.details.items &&
+                  props.details.items.length}
+              </span>
             </div>
           </div>
         </div>
@@ -49,30 +52,40 @@ function CartCheckoutDescription(props) {
               </tr>
             </thead>
             <tbody>
-              {props.details &&  props.details.items && props.details.items.length> 0 && props.details.items.map(item => (
-                <tr key={item.id}>
-                  <td>
-                    <div className="detail">
-                      <div className="icon">
-                        <img src={item.product && item.product.eventImage} alt="Icon" />
-                      </div>
-                      <div className="desc">
-                        <div className="title">{item.product && item.product.data.mainTitle}</div>
-                        <p>{item.product && item.product.data.subTitle}</p>
-                        <div className="provider">
-                          {/* {item.providedby} {item.product.data.creator} */}
+              {props.details &&
+                props.details.items &&
+                props.details.items.length > 0 &&
+                props.details.items.map(item => (
+                  <tr key={item.id}>
+                    <td>
+                      <div className="detail">
+                        <div className="icon">
+                          <img
+                            src={item.product && item.product.eventImage}
+                            alt="Icon"
+                          />
+                        </div>
+                        <div className="desc">
+                          <div className="title">
+                            {item.product && item.product.data.mainTitle}
+                          </div>
+                          <p>{item.product && item.product.data.subTitle}</p>
+                          <div className="provider">
+                            {/* {item.providedby} {item.product.data.creator} */}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </td>
-                  <td>${item.product && item.product.data.price}</td>
-                  <td>
-                    <Button onClick={()=>props.RemoveFromCart(item.cartItemId)}>
-                      <AiOutlineDelete />
-                    </Button>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                    <td>${item.product && item.product.data.price}</td>
+                    <td>
+                      <Button
+                        onClick={() => props.RemoveFromCart(item.cartItemId)}
+                      >
+                        <AiOutlineDelete />
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
