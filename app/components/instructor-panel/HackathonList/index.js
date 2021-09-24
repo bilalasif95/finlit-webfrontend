@@ -113,7 +113,7 @@ function HackathonList() {
               </div>
             ))}
           </div>
-          <div className="form_footer">
+          {/* <div className="form_footer">
             <div className="bottom_btns">
               <Button className="btn_save">
                 <FormattedMessage {...messages.Previous} />
@@ -122,7 +122,7 @@ function HackathonList() {
                 <FormattedMessage {...messages.Next} />
               </Button>
             </div>
-          </div>
+          </div> */}
         </>
       )
       }
