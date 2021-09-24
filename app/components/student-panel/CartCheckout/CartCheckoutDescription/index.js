@@ -13,7 +13,7 @@ import Wrapper from './Wrapper';
 import reg from '../../../../images/reg.png';
 
 function CartCheckoutDescription(props) {
- 
+
   console.log("detailsCart",props.details)
 
   return (

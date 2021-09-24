@@ -203,27 +203,6 @@ const Header = () => {
                       </div>
                       <div />
                     </DropdownItem>
-                    <DropdownItem>
-                      <div>
-                        <FiHeart />
-                        <FormattedMessage {...messages.MyFavorite} />
-                      </div>
-                      <div />
-                    </DropdownItem>
-                    <DropdownItem>
-                      <div>
-                        <MdNotificationsActive />
-                        <FormattedMessage {...messages.Notifications} />
-                      </div>
-                      <div className="notify">200</div>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <div>
-                        <MdChat />
-                        <FormattedMessage {...messages.Messages} />
-                      </div>
-                      <div className="notify">200</div>
-                    </DropdownItem>
                     {
                       userObj && userObj.roles && userObj.roles[0] && userObj.roles[0].roleName === 'Student'
                       ?
@@ -238,13 +217,6 @@ const Header = () => {
                       </DropdownItem>
                       : <></>
                     }
-                    <DropdownItem>
-                      <div>
-                        <IoIosHelpCircle />
-                        <FormattedMessage {...messages.Help} />
-                      </div>
-                      <div />
-                    </DropdownItem>
                     <DropdownItem onClick={() => LogOut()}>
                       <div >
                         <FiLogOut />

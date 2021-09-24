@@ -6,6 +6,7 @@ import axios from 'axios';
 import { API } from '../../../../config/config';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import Wrapper from './Wrapper';
 import event1 from '../../../../images/event1.png';
 
@@ -33,6 +34,14 @@ function Events() {
       .catch(() => {
       });
   };
+  const getTimeAndDateFormat = (date, time) => {
+    const daysName = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun',]
+    const day = moment(date).day();
+    const momentDtObj = moment(date).format('ll');
+    const momentTim = moment(time, ['HH:mm']).format('hh:mm A');
+    const datetimeformat = `${daysName[day]}, ${momentDtObj}, ${momentTim}`;
+    return datetimeformat;
+  };
 
   return (
     <Wrapper id="services">
@@ -57,7 +66,12 @@ function Events() {
                 </div>
                 <div className="desc">
                   <h5>{item.data.mainTitle}</h5>
-                  <p>{item.data.startDate} {item.data.startTime}</p>
+                  <p>
+                    {getTimeAndDateFormat(
+                      item.data.startDate,
+                      item.data.startTime,
+                    )}
+                  </p>
 
                   {item.register ? (
                     <div className="register">
