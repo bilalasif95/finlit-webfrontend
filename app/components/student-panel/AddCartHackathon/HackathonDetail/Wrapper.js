@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   .addcart_detail {
+    margin-top: 30px;
     .jodit-toolbar__box:not(:empty) {
       display: none;
     }
@@ -13,9 +14,14 @@ const Wrapper = styled.div`
     }
     .main_img {
       margin: 0 0 1rem;
+      height: 250px;
       width: 100%;
+      border-radius: 3px;
       img {
         width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        object-fit: cover;
       }
     }
     .header {

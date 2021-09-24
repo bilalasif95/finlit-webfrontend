@@ -54,6 +54,9 @@ const Menubar = styled.div`
           font-weight: 500;
           color: #8b8b8b;
           border-bottom: 1px solid #f6f6f6;
+          &:active {
+            background: initial;
+          }
           &:last-child {
             border-bottom: none;
           }

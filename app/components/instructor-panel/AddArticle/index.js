@@ -102,11 +102,14 @@ function AddArticle() {
     const error = {};
     if (!values.mainTitle) {
       error.mainTitle = 'Title is required';
-    } else if (!values.subTitle) {
+    }
+    if (!values.subTitle) {
       error.subTitle = 'Sub Title is required';
-    } else if (!values.image) {
+    }
+    if (!values.image) {
       error.image = 'Image is required';
-    } else if (!content) {
+    }
+    if (!content) {
       error.description = 'Description is required';
     }
     return error;

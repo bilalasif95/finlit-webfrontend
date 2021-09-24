@@ -92,7 +92,7 @@ export default function MyProfilePage() {
     const token = localStorage.getItem('token');
     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     const bodyFormData = new FormData();
-    bodyFormData.append('profileImage', newProfileImg);
+    bodyFormData.append('profileImage', e.target.files[0]);
     axios
       .put(`${API}api/user/updateProfilePic`, bodyFormData, {
         headers: {
@@ -114,6 +114,7 @@ export default function MyProfilePage() {
             ? err.response.data.message.toString()
             : 'Message Not Readable',
         );
+        setNewProfileImg({});
       });
   };
   useEffect(() => {

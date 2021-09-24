@@ -8,7 +8,7 @@ import Wrapper from './Wrapper';
 import Img from '../../../Img';
 
 function ArticleImage(props) {
-  let imgSrc = props.img;
+  const imgSrc = props.img;
   return (
     <Row>
       <Col lg={12}>

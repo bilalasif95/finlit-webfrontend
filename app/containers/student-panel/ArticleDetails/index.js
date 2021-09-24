@@ -55,7 +55,7 @@ export default function ArticleDetails(props) {
                 <ArticleDescription details={articleDetails} />
               </Col>
               <Col lg={4} md={4} sm={12}>
-                <ArticleSidebar />
+                <ArticleSidebar notToAdd={props.match.params.id} />
               </Col>
             </Row>
           </Container>
