@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  .error{
-    color:red
+  .error {
+    color: red;
   }
-  border: 1px solid #e4e4e4;
-  border-radius: 0.313rem;
-  padding: 2rem;
-  margin: 0 0 2rem;
-  width: 100%;
+  margin-top: 31px;
   .heading {
     align-items: center;
     display: flex;
@@ -21,7 +17,7 @@ const Wrapper = styled.div`
       position: relative;
     }
     svg {
-      color: #484848;
+      color: #8b8b8b;
       font-size: 1.5rem;
     }
   }

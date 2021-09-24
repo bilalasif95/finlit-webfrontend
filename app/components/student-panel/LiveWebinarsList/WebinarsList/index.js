@@ -11,25 +11,24 @@ import axios from 'axios';
 import history from 'utils/history';
 // import { AiFillHeart } from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
-import {axiosHeader} from "../../../../utils/axiosHeader"
-import { redirectToLogin } from "../../../../utils/redirectToLogin"
+import { axiosHeader } from '../../../../utils/axiosHeader';
+import { redirectToLogin } from '../../../../utils/redirectToLogin';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
 import Loader from '../../../Loader';
 
 function WebinarsList() {
-  const [webinarsList, setwebinarsList] = useState([]),
-    [loader, setLoader] = useState(false);
+  const [webinarsList, setwebinarsList] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
     getWebinarList();
   }, []);
 
-
   useEffect(() => {
-    redirectToLogin()
-  }, [])
-  
+    redirectToLogin();
+  }, []);
+
   const getWebinarList = () => {
     setLoader(true);
     axios
@@ -44,7 +43,7 @@ function WebinarsList() {
   };
 
   const handleWebinarDetails = id => {
-    history.push('/webinar_details/' + id);
+    history.push(`/webinar_details/${id}`);
   };
 
   return (
@@ -73,6 +72,27 @@ function WebinarsList() {
                       <div className="course_short_info">
                         <div className="course_desc">
                           <p>{item.data.subTitle}</p>
+                          <div className="outcomes">
+                            <div className="time">
+                              <div className="timing">
+                                <BiTimeFive />
+                                <p>Timing</p>
+                              </div>
+                              <div className="from-to">
+                                {item.data.startTime} - {item.data.endTime}
+                              </div>
+                            </div>
+                            <div className="date">
+                              <BiCalendar />
+                              {item.data.startDate}
+                            </div>
+                            <div className="viewer">
+                              <HiUsers />
+                              {20}
+                              &nbsp;
+                              <FormattedMessage {...messages.Attendees} />
+                            </div>
+                          </div>
                           {/* <div className="course_provider">
                           {item.providedby}
                           &nbsp;
@@ -85,27 +105,6 @@ function WebinarsList() {
                         </div>
                       </div>
                       <div className="course_outcomes">
-                        <div className="outcomes">
-                          <div className="time">
-                            <div className="timing">
-                              <BiTimeFive />
-                              <p>Timing</p>
-                            </div>
-                            <div className="from-to">
-                              {item.data.startTime} - {item.data.endTime}
-                            </div>
-                          </div>
-                          <div className="date">
-                            <BiCalendar />
-                            {item.data.startDate}
-                          </div>
-                          <div className="viewer">
-                            <HiUsers />
-                            {20}
-                            &nbsp;
-                            <FormattedMessage {...messages.Attendees} />
-                          </div>
-                        </div>
                         <div className="like_enroll">
                           <Button>
                             <AiOutlineHeart />
@@ -123,8 +122,7 @@ function WebinarsList() {
             </Col>
           </Row>
         </div>
-      )
-      }
+      )}
     </Wrapper>
   );
 }

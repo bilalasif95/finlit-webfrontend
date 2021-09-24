@@ -1,6 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+.payment-box {
+  border: 1px solid #e4e4e4;
+  border-radius: 0.313rem;
+  padding: 2rem;
+  margin: 0 0 2rem;
+  width: 100%;
+}
+.details_cart {
+  margin-top: 30px;
+}
 .dashboard-main {
   width: 100%;
   margin-top: 30px;
