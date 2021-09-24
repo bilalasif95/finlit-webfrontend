@@ -64,6 +64,8 @@ function BasicInfo() {
     address: '',
   });
   const [errors, setErrors] = useState({});
+  const [loader, setLoader] = useState(false);
+  const [disableBtn, setDisableBtn] = useState(false);
   const updateProfileValidator = values => {
     const error = {};
     if (!values.firstName) {
@@ -72,8 +74,6 @@ function BasicInfo() {
       error.lastName = 'Last Name Is required';
     } else if (!values.gender) {
       error.gender = 'Gender is Required';
-    } else if (!values.description) {
-      error.description = 'About me description is required';
     }
     return error;
   };
@@ -115,16 +115,19 @@ function BasicInfo() {
         setErrors({});
       }, 4000);
     } else {
+      setLoader(true);
+      setDisableBtn(true);
       const token = localStorage.getItem('token');
       const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-      const bodyFormData = new FormData();
-      bodyFormData.append('firstName', userInfo.firstName);
-      bodyFormData.append('lastName', userInfo.lastName);
-      bodyFormData.append('gender', userInfo.gender);
-      bodyFormData.append('description', userInfo.description);
-      bodyFormData.append('profession', userInfo.profession);
-      bodyFormData.append('country', userInfo.country);
-      bodyFormData.append('address', userInfo.address);
+      const bodyFormData = {
+        firstName: userInfo.firstName,
+        lastName: userInfo.lastName,
+        gender: userInfo.gender,
+        description: userInfo.description,
+        profession: userInfo.profession,
+        country: userInfo.country,
+        address: userInfo.address,
+      };
       axios
         .put(`${API}api/user`, bodyFormData, {
           headers: {
@@ -134,17 +137,35 @@ function BasicInfo() {
           },
         })
         .then(res => {
+          setLoader(false);
           toast.success(
             res && res.data ? res.data.message : 'Message Not Readable',
           );
-          getCurrentUserInfo();
+          setUserInfo({
+            firstName: '',
+            lastName: '',
+            description: '',
+            country: '',
+            address: '',
+            profession: '',
+            email: '',
+            gender: '',
+          });
+          setTimeout(() => {
+            setDisableBtn(false);
+            getCurrentUserInfo();
+          }, 5000);
         })
         .catch(err => {
+          setLoader(false);
           toast.error(
             err.response && err.response.data.message
               ? err.response.data.message.toString()
               : 'Message Not Readable',
           );
+          setTimeout(() => {
+            setDisableBtn(false);
+          }, 5000);
         });
     }
   };
@@ -369,8 +390,12 @@ function BasicInfo() {
             <Button className="btn_cancel">
               <FormattedMessage {...messages.Cancel} />
             </Button>
-            <Button className="btn_submit" onClick={handleUpdateProfileSave}>
-              <FormattedMessage {...messages.Save} />
+            <Button
+              className="btn_submit"
+              onClick={handleUpdateProfileSave}
+              disabled={disableBtn}
+            >
+              {loader ? 'Loading' : <FormattedMessage {...messages.Save} />}
             </Button>
           </div>
         </div>
