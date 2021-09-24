@@ -98,7 +98,7 @@ function WebinarDetail(props) {
           </p>
         </div>
         <div className="presenters">
-          <h4>Registration Requirements:</h4>
+          <h4>Presenters:</h4>
           <div className="presenter_list">
             <div className="item">
               <div className="icon">
