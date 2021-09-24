@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { IoMdCart } from 'react-icons/io';
+import { IoMdCart, IoMdSearch } from 'react-icons/io';
 import { AiOutlineDelete } from 'react-icons/ai';
 // import { AiFillHeart } from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
@@ -26,6 +26,9 @@ function CartCheckoutDescription(props) {
             </Button>
           </InputGroup> */}
           <div className="cart">
+            <div className="num_cont">
+              <IoMdSearch />
+            </div>
             <div className="num_cont">
               <IoMdCart />
               <span className="no_item">

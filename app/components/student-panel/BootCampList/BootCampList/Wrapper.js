@@ -17,20 +17,20 @@ const Wrapper = styled.div`
       }
       width: 100%;
       .course_img {
-        max-height: 180px;
+        height: 168px;
         overflow: hidden;
-        width: 17%;
+        width: 13%;
         img {
           width: 100%;
         }
       }
       .course_info {
-        padding: 0.25rem 0 0.25rem 1rem;
-        width: 83%;
+        padding: 0.25rem 0 0.25rem 1.25rem;
+        width: 87%;
         h5 {
           color: #000;
           font-weight: 400;
-          margin: 0 0 0.75rem;
+          margin: 0 0 15px;
         }
         p {
           color: #8b8b8b;
@@ -41,8 +41,8 @@ const Wrapper = styled.div`
           width: 100%;
           .course_desc {
             width: 80%;
-            p {
-              font-size: 0.875rem;
+            > p {
+              font-size: 13;
               margin: 0 0 0.75rem;
             }
             .course_provider {
@@ -51,6 +51,58 @@ const Wrapper = styled.div`
                 color: #000;
                 font-size: 0.875rem;
                 margin: 0 0 0.75rem;
+              }
+            }
+            .outcomes {
+              align-items: center;
+              display: flex;
+              justify-content: space-between;
+              padding: 0 1rem 0 0;
+              width: 90%;
+              .time {
+                align-items: center;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 1rem 0 0;
+                // width: 40%;
+                span {
+                  font-size: 0.875rem;
+                }
+                svg {
+                  color: #8b8b8b;
+                  margin-right: 0.5rem;
+                }
+                .timing {
+                  align-items: center;
+                  display: flex;
+                  margin: 0 1rem 0 0;
+                }
+              }
+              .date {
+                align-items: center;
+                display: flex;
+                justify-content: flex-start;
+                // width: 25%;
+                span {
+                  font-size: 0.875rem;
+                }
+                svg {
+                  color: #8b8b8b;
+                  margin-right: 0.5rem;
+                }
+              }
+              .viewer {
+                align-items: center;
+                display: flex;
+                justify-content: flex-start;
+                // width: 25%;
+                span {
+                  font-size: 0.875rem;
+                }
+                svg {
+                  color: #8b8b8b;
+                  margin-right: 0.5rem;
+                }
               }
             }
           }
@@ -68,72 +120,20 @@ const Wrapper = styled.div`
             del {
               color: #8b8b8b;
               font-size: 0.875rem;
-              margin: 0 0 0.75rem;
+              margin: 0;
             }
           }
         }
         .course_outcomes {
           align-items: center;
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-end;
           margin: 1rem 0 0;
           width: 100%;
-          .outcomes {
-            align-items: center;
-            display: flex;
-            justify-content: flex-start;
-            padding: 0 1rem 0 0;
-            width: 75%;
-            .time {
-              align-items: center;
-              display: flex;
-              justify-content: flex-start;
-              padding: 0 1rem 0 0;
-              width: 40%;
-              span {
-                font-size: 0.875rem;
-              }
-              svg {
-                color: #8b8b8b;
-                margin-right: 0.5rem;
-              }
-              .timing {
-                align-items: center;
-                display: flex;
-                margin: 0 1rem 0 0;
-              }
-            }
-            .date {
-              align-items: center;
-              display: flex;
-              justify-content: flex-start;
-              width: 25%;
-              span {
-                font-size: 0.875rem;
-              }
-              svg {
-                color: #8b8b8b;
-                margin-right: 0.5rem;
-              }
-            }
-            .viewer {
-              align-items: center;
-              display: flex;
-              justify-content: flex-start;
-              width: 35%;
-              span {
-                font-size: 0.875rem;
-              }
-              svg {
-                color: #8b8b8b;
-                margin-right: 0.5rem;
-              }
-            }
-          }
           .like_enroll {
             align-items: center;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             width: 25%;
             button:first-child {
               background-color: transparent;
@@ -144,8 +144,12 @@ const Wrapper = styled.div`
             }
             button:last-child {
               background-color: #47a135;
-              margin-left: 1.5rem;
-              padding: 0.5rem 1.5rem;
+              margin-left: 39px;
+              padding: 0.75rem 1.5rem;
+              border: none;
+              border-radius: 5px;
+              width: 147px;
+              font-size: 14px;
             }
           }
         }
