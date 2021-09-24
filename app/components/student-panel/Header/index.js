@@ -22,25 +22,41 @@ import { FiHeart, FiLogOut } from 'react-icons/fi';
 import { MdNotificationsActive, MdChat } from 'react-icons/md';
 import { IoMdCart, IoIosHelpCircle } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import Logo from '../../../images/logo.svg';
 import Menubar from './Menubar';
 import Img from './Img';
 import User from '../../../images/user.jpg';
 import messages from './messages';
+import { API } from './../../../config/config';
 
-const Header = () => {
+const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [userObj, setUserObj] = useState({});
 
   const toggle = () => setIsOpen(!isOpen);
 
   React.useEffect(() => {
-    if (localStorage.getItem('userInfo')) {
-      setUserObj(JSON.parse(localStorage.getItem('userInfo')));
-    }
+    getMe();
   }, []);
 
-  const token = localStorage.getItem('token');
+  const getMe = () => {
+    const token = localStorage.getItem('token');
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+    axios
+      .get(`${API}api/auth/me`, {
+        headers: {
+          Accept: 'application/json',
+          ...authHeaders,
+        },
+      })
+        .then(result => {
+          setUserObj(result.data);
+        })
+        .catch((err) => {
+          history.push('/');
+        });
+  }
   const LogOut = () => {
     history.push('/login');
     localStorage.clear();

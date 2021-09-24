@@ -116,9 +116,9 @@ function CartCheckoutSidebar(props) {
             <h4>
               <FormattedMessage {...messages.PaymentDetails} />
             </h4>
-            <Link to="/">
+            {/* <Link to="/">
               <BsArrowLeftShort />
-            </Link>
+            </Link> */}
           </div>
           <p>
             <FormattedMessage {...messages.CompletePurchase} />
