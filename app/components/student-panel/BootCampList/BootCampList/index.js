@@ -72,28 +72,28 @@ function BootCampList() {
                         <div className="course_desc">
                           <p>{item.data.subTitle}</p>
                           <div className="outcomes">
-                          <div className="time">
-                            <div className="timing">
-                              <BiTimeFive />
-                              <p>
-                                <FormattedMessage {...messages.Timings} />
-                              </p>
+                            <div className="time">
+                              <div className="timing">
+                                <BiTimeFive />
+                                <p>
+                                  <FormattedMessage {...messages.Timings} />
+                                </p>
+                              </div>
+                              <div className="from-to">
+                                {item.data.startTime} - {item.data.endTime}
+                              </div>
                             </div>
-                            <div className="from-to">
-                              {item.data.startTime} - {item.data.endTime}
+                            <div className="date">
+                              <BiCalendar />
+                              {item.data.startDate}
+                            </div>
+                            <div className="viewer">
+                              <HiUsers />
+                              {20}
+                              &nbsp;
+                              <FormattedMessage {...messages.Attendees} />
                             </div>
                           </div>
-                          <div className="date">
-                            <BiCalendar />
-                            {item.data.startDate}
-                          </div>
-                          <div className="viewer">
-                            <HiUsers />
-                            {20}
-                            &nbsp;
-                            <FormattedMessage {...messages.Attendees} />
-                          </div>
-                        </div>
                           {/* <div className="course_provider">
                           {item.providedby}
                           &nbsp;

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  .error{
-    color:red
+  .error {
+    color: red;
   }
   margin-top: 31px;
   .heading {

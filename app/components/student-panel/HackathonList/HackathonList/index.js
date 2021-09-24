@@ -11,23 +11,23 @@ import axios from 'axios';
 import history from 'utils/history';
 // import { AiFillHeart } from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
-import {axiosHeader} from "../../../../utils/axiosHeader"
-import { redirectToLogin } from "../../../../utils/redirectToLogin"
+import { axiosHeader } from '../../../../utils/axiosHeader';
+import { redirectToLogin } from '../../../../utils/redirectToLogin';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../../config/config';
 import Loader from '../../../Loader';
 
 function HackathonList() {
-  const [hackathonList, sethackathonList] = useState([]),
-    [loader, setLoader] = useState(false);
+  const [hackathonList, sethackathonList] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
     getHackathonLists();
   }, []);
 
   useEffect(() => {
-    redirectToLogin()
-  }, [])
+    redirectToLogin();
+  }, []);
 
   const getHackathonLists = () => {
     setLoader(true);
@@ -43,7 +43,7 @@ function HackathonList() {
   };
 
   const handleHackathonDetails = id => {
-    history.push('/hackathon_details/' + id);
+    history.push(`/hackathon_details/${id}`);
   };
   return (
     <Wrapper id="list">
@@ -72,17 +72,17 @@ function HackathonList() {
                         <div className="course_desc">
                           <p>{item.data.subTitle}</p>
                           <div className="outcomes">
-                          <div className="date">
-                            <BiCalendar />
-                            {item.data.startDate}
+                            <div className="date">
+                              <BiCalendar />
+                              {item.data.startDate}
+                            </div>
+                            <div className="viewer">
+                              <HiUsers />
+                              {20}
+                              &nbsp;
+                              <FormattedMessage {...messages.Attendees} />
+                            </div>
                           </div>
-                          <div className="viewer">
-                            <HiUsers />
-                            {20}
-                            &nbsp;
-                            <FormattedMessage {...messages.Attendees} />
-                          </div>
-                        </div>
                         </div>
                         <div className="course_price">
                           <h5>${item.data.price}</h5>
@@ -90,7 +90,6 @@ function HackathonList() {
                         </div>
                       </div>
                       <div className="course_outcomes">
-                       
                         <div className="like_enroll">
                           <Button>
                             <AiOutlineHeart />
@@ -108,8 +107,7 @@ function HackathonList() {
             </Col>
           </Row>
         </div>
-      )
-      }
+      )}
     </Wrapper>
   );
 }

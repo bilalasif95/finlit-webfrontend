@@ -172,9 +172,18 @@ function AddWebinar() {
       error.redirectionUrl = 'Redirection URL is required ';
     } else if (!content) {
       error.description = 'Description is required';
-    } else if (values.startDate && values.endDate && values.startDate > values.endDate) {
+    } else if (
+      values.startDate &&
+      values.endDate &&
+      values.startDate > values.endDate
+    ) {
       error.endDate = 'End Date Should be greater than Start Date';
-    } else if (values.startTime && values.endTime && values.endDate === values.startDate && values.startTime > values.endTime) {
+    } else if (
+      values.startTime &&
+      values.endTime &&
+      values.endDate === values.startDate &&
+      values.startTime > values.endTime
+    ) {
       error.endTime = 'End Time Should be greater than Start Time';
     } else if (!/^(ftp|http|https):\/\/[^ "]+$/.test(values.redirectionUrl)) {
       error.redirectionUrl = 'Redirection URL is invalid ';
@@ -284,7 +293,9 @@ function AddWebinar() {
                   placeholder="00/00/0000"
                   value={webinarStatus.startDate}
                   onChange={e => handleChangeEvent(e)}
-                  onKeyDown={(e) =>  {e.preventDefault()}}
+                  onKeyDown={e => {
+                    e.preventDefault();
+                  }}
                 />
                 <FormText color="danger">
                   {errors.startDate ? (
@@ -307,7 +318,9 @@ function AddWebinar() {
                   placeholder="00/00/0000"
                   value={webinarStatus.endDate}
                   onChange={e => handleChangeEvent(e)}
-                  onKeyDown={(e) =>  {e.preventDefault()}}
+                  onKeyDown={e => {
+                    e.preventDefault();
+                  }}
                 />
                 <FormText color="danger">
                   {errors.endDate ? (

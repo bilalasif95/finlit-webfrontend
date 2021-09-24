@@ -41,7 +41,7 @@ const Wrapper = styled.div`
           width: 100%;
           .course_desc {
             width: 80%;
-            >p {
+            > p {
               font-size: 13;
               margin: 0 0 0.75rem;
             }
