@@ -14,7 +14,7 @@ export default defineMessages({
   },
   MyBiography: {
     id: `${scope}.MyBiography`,
-    defaultMessage: 'My Biography*',
+    defaultMessage: 'My Biography',
   },
   Fname: {
     id: `${scope}.Fname`,

@@ -39,10 +39,10 @@ const Header = (props) => {
   React.useEffect(() => {
     getMe();
   }, []);
-
+  const token = localStorage.getItem('token');
   const getMe = () => {
-    const token = localStorage.getItem('token');
-    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+    const token2 = localStorage.getItem('token');
+    const authHeaders = token2 ? { Authorization: `Bearer ${token2}` } : {};
     axios
       .get(`${API}api/auth/me`, {
         headers: {
@@ -234,8 +234,9 @@ const Header = (props) => {
                             <div />
                           </Link>
                         </DropdownItem>
-                        : <></>
-                    )}
+
+                       ): <></>
+                    }
                     <DropdownItem onClick={() => LogOut()}>
                       <div>
                         <FiLogOut />
