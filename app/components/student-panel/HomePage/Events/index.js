@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import history from 'utils/history';
 import { API } from '../../../../config/config';
 import Wrapper from './Wrapper';
 import event1 from '../../../../images/event1.png';
@@ -15,7 +16,15 @@ function Events() {
   useEffect(() => {
     getEventsList();
   }, []);
-
+  const handleEventRedirect = (type, id) => {
+    if (type === 'Hackathon') {
+      history.push(`/hackathon_details/${id}`);
+    } else if (type === 'Bootcamp') {
+      history.push(`/bootcamp_details/${id}`);
+    } else if (type === 'Webinar') {
+      history.push(`/webinar_details/${id}`);
+    }
+  };
   const getEventsList = () => {
     axios
       .get(`${API}api/events`, {
@@ -62,7 +71,7 @@ function Events() {
         <Row>
           {eventsList.map(item => (
             <Col lg={3} md={6} sm={6} xs={12} key={item.id}>
-              <div className="single_item">
+              <div className="single_item" onClick={ () => handleEventRedirect(item.type,item.id)}>
                 <div className="event_img">
                   <img src={item.eventImage} alt={item.alt} />
                   <div className="title">
