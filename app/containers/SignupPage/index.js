@@ -62,12 +62,24 @@ export default function SignupPage() {
       setError('First Name is not valid');
       return;
     }
+    if (firstName.length > 255) {
+      setError('First Name should be of less than 255 characters');
+      return;
+    }
     if (!/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(lastName)) {
       setError('Last Name is not valid');
       return;
     }
+    if (lastName.length > 255) {
+      setError('Last Name should be of less than 255 characters');
+      return;
+    }
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError('Please enter valid email');
+      return;
+    }
+    if (address !== '' && address.length > 255) {
+      setError('Address should be or less than 255 characters');
       return;
     }
     if (
