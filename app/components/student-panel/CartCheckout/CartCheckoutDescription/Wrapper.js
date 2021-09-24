@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   .cart_checkout {
+    margin-top: 31px;
     .header {
       align-tems: center;
       display: flex;
@@ -39,15 +40,24 @@ const Wrapper = styled.div`
         align-items: center;
         display: flex;
         justify-content: center;
-        width: 7%;
+        width: 12%;
+        margin: 6px 0px 30px;
+        div {
+          &:first-child {
+            border-right: 1px solid #e4e4e4;
+          }
+        }
         .num_cont {
           position: relative;
           width: 2.2rem;
+          text-align: center;
+          width: 50px;
         }
         svg {
           color: #8b8b8b;
-          height: 1rem;
-          width: 1rem;
+          height: 20px;
+          width: 20px;
+          cursor: pointer;
         }
         .no_item {
           align-tems: center;
@@ -60,8 +70,8 @@ const Wrapper = styled.div`
           height: 1.25rem;
           padding: 1.1px 0 0;
           position: absolute;
-          top: 0.1rem;
-          right: 0.25rem;
+          top: -4px;
+          right: 5px;
           width: 1.25rem;
         }
       }

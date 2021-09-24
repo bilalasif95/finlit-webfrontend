@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   .top_detail {
     display: flex;
     flex-direction: column;
-    margin: 0 0 1rem;
+    margin: 30px 0 16px;
     .prices {
       align-items: center;
       display: flex;

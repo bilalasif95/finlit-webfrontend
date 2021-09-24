@@ -73,19 +73,7 @@ function WebinarsList() {
                       <div className="course_short_info">
                         <div className="course_desc">
                           <p>{item.data.subTitle}</p>
-                          {/* <div className="course_provider">
-                          {item.providedby}
-                          &nbsp;
-                          <span className="provider">{item.providername}</span>
-                        </div> */}
-                        </div>
-                        <div className="course_price">
-                          <h5>${item.data.price}</h5>
-                          <del>${item.data.price}</del>
-                        </div>
-                      </div>
-                      <div className="course_outcomes">
-                        <div className="outcomes">
+                          <div className="outcomes">
                           <div className="time">
                             <div className="timing">
                               <BiTimeFive />
@@ -106,6 +94,18 @@ function WebinarsList() {
                             <FormattedMessage {...messages.Attendees} />
                           </div>
                         </div>
+                          {/* <div className="course_provider">
+                          {item.providedby}
+                          &nbsp;
+                          <span className="provider">{item.providername}</span>
+                        </div> */}
+                        </div>
+                        <div className="course_price">
+                          <h5>${item.data.price}</h5>
+                          <del>${item.data.price}</del>
+                        </div>
+                      </div>
+                      <div className="course_outcomes">
                         <div className="like_enroll">
                           <Button>
                             <AiOutlineHeart />

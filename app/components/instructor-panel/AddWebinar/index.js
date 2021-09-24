@@ -274,7 +274,6 @@ function AddWebinar() {
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>
               <FormGroup>
-                1
                 <Label for="startdate">
                   <FormattedMessage {...messages.StartDate} />
                 </Label>

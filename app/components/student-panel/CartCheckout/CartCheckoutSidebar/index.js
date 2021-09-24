@@ -112,6 +112,7 @@ function CartCheckoutSidebar(props) {
     <Row>
       <Col lg={12}>
         <Wrapper>
+          <div className="payment-box">
           <div className="heading">
             <h4>
               <FormattedMessage {...messages.PaymentDetails} />
@@ -281,6 +282,7 @@ function CartCheckoutSidebar(props) {
             <p>
               <FormattedMessage {...messages.PaymentsEncrypted} />
             </p>
+          </div>
           </div>
         </Wrapper>
       </Col>

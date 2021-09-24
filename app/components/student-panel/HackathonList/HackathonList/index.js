@@ -71,14 +71,7 @@ function HackathonList() {
                       <div className="course_short_info">
                         <div className="course_desc">
                           <p>{item.data.subTitle}</p>
-                        </div>
-                        <div className="course_price">
-                          <h5>${item.data.price}</h5>
-                          <del>${item.data.price}</del>
-                        </div>
-                      </div>
-                      <div className="course_outcomes">
-                        <div className="outcomes">
+                          <div className="outcomes">
                           <div className="date">
                             <BiCalendar />
                             {item.data.startDate}
@@ -90,6 +83,14 @@ function HackathonList() {
                             <FormattedMessage {...messages.Attendees} />
                           </div>
                         </div>
+                        </div>
+                        <div className="course_price">
+                          <h5>${item.data.price}</h5>
+                          <del>${item.data.price}</del>
+                        </div>
+                      </div>
+                      <div className="course_outcomes">
+                       
                         <div className="like_enroll">
                           <Button>
                             <AiOutlineHeart />
