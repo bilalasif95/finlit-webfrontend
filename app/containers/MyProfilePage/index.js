@@ -114,6 +114,7 @@ export default function MyProfilePage() {
             ? err.response.data.message.toString()
             : 'Message Not Readable',
         );
+        setNewProfileImg({});
       });
   };
   useEffect(() => {
