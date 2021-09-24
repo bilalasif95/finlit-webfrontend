@@ -50,7 +50,7 @@ function Events() {
   };
   const getTimeAndDateFormat = (date, time) => {
     const daysName = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    const day = moment(date).day();
+    const day = moment(date).utc().day();
     const momentDtObj = moment(date).format('ll');
     const momentTim = moment(time, ['HH:mm']).format('hh:mm A');
     const datetimeformat = `${daysName[day]}, ${momentDtObj}, ${momentTim}`;
