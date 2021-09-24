@@ -128,7 +128,7 @@ const Menubar = styled.div`
       flex-direction: column;
       justify-content: flex-start;
       padding: 0 0.5rem;
-      width: 80%;
+      width: 134px;
       p {
         font-size: 0.875rem;
       }
