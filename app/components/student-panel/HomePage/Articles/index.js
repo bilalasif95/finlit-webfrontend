@@ -32,7 +32,7 @@ function Articles() {
         },
       })
       .then(res => {
-        setArticleList(res && res.data);
+        setArticleList(res && res.data.data);
         setLoader(false);
       })
       .catch(() => {
@@ -91,73 +91,78 @@ function Articles() {
         <Row>
           {loader ? (
             <Loader />
-          ) : (
-            articleList.length > 1 ?
-              <Slider {...settings}>
-                {articleList.map(article => (
-
-                  <div
-                    id={article.id}
-                    key={article.id}
-                    onClick={() => handleArticleDetails(article.id)}
-                  >
-                    <div className="single_item">
-                      <div className="left">
-                        <img src={articleicon} alt="IconImg" />
-                        <h5>{article.title}</h5>
-                        <p> {article.subTitle} </p>
-                        <Button
-                          className="read_more"
-                          onClick={() => handleArticleDetails(article.id)}
-                        >
-                          <FormattedMessage {...messages.ReadMore} />
-                        </Button>
-                      </div>
-                      <div className="right">
-                        {/* <img src={article.image} alt="ArticleImage" /> */}
-                        <img src={article1} alt="Article" />
-                      </div>
+          ) : articleList.length > 1 ? (
+            <Slider {...settings}>
+              {articleList.map(article => (
+                <div
+                  id={article.id}
+                  key={article.id}
+                  onClick={() => handleArticleDetails(article.id)}
+                >
+                  <div className="single_item">
+                    <div className="left">
+                      <img src={articleicon} alt="IconImg" />
+                      <h5>{article.title}</h5>
+                      <p> {article.subTitle} </p>
+                      <Button
+                        className="read_more"
+                        onClick={() => handleArticleDetails(article.id)}
+                      >
+                        <FormattedMessage {...messages.ReadMore} />
+                      </Button>
+                    </div>
+                    <div className="right">
+                      <img
+                        src={article.image ? article.image : article1}
+                        alt="ArticleImage"
+                      />
+                      {/* <img src={article1} alt="Article" /> */}
                     </div>
                   </div>
-
-                ))}
-              </Slider>
-              :
-              <>
-                {
-                  articleList[0] ?
-                    <Container fluid="l">
-                      <Row>
-                        <Col lg={12}>
-                          <div
-                            id={articleList[0].id}
-                            key={articleList[0].id}
-                            onClick={() => handleArticleDetails(articleList[0].id)}
-                          >
-                            <div className="single_item">
-                              <div className="left">
-                                <img src={articleicon} alt="IconImg" />
-                                <h5>{articleList[0].title}</h5>
-                                <p> {articleList[0].subTitle} </p>
-                                <Button
-                                  className="read_more"
-                                  onClick={() => handleArticleDetails(articleList[0].id)}
-                                >
-                                  <FormattedMessage {...messages.ReadMore} />
-                                </Button>
-                              </div>
-                              <div className="right">
-                                {/* <img src={article.image} alt="ArticleImage" /> */}
-                                <img src={article1} alt="Article" />
-                              </div>
-                            </div>
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            <>
+              {articleList[0] ? (
+                <Container fluid="l">
+                  <Row>
+                    <Col lg={12}>
+                      <div
+                        id={articleList[0].id}
+                        key={articleList[0].id}
+                        onClick={() => handleArticleDetails(articleList[0].id)}
+                      >
+                        <div className="single_item">
+                          <div className="left">
+                            <img src={articleicon} alt="IconImg" />
+                            <h5>{articleList[0].title}</h5>
+                            <p> {articleList[0].subTitle} </p>
+                            <Button
+                              className="read_more"
+                              onClick={() =>
+                                handleArticleDetails(articleList[0].id)
+                              }
+                            >
+                              <FormattedMessage {...messages.ReadMore} />
+                            </Button>
                           </div>
-                        </Col>
-                      </Row>
-                    </Container>
-                    : <></>
-                }
-              </>
+                          <div className="right">
+                            <img
+                              src={articleList[0].image}
+                              alt="ArticleImage"
+                            />
+                            {/* <img src={article1} alt="Article" /> */}
+                          </div>
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
+                </Container>
+              ) : (
+                <></>
+              )}
+            </>
           )}
         </Row>
       </Container>
