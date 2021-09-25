@@ -78,9 +78,9 @@ const Header = (props) => {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    <Link to="/accredited_education_list">
-                      <FormattedMessage {...messages.AccreditedEducation} />
-                    </Link>
+                    {/* <Link to="/accredited_education_list"> */}
+                    <FormattedMessage {...messages.AccreditedEducation} />
+                    {/* </Link> */}
                   </DropdownItem>
                   <DropdownItem>
                     <FormattedMessage {...messages.Budgeting} />
