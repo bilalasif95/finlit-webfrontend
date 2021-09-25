@@ -126,9 +126,9 @@ function Articles() {
               <>
                 {
                   articleList[0] ?
-                    <Container fluid="l">
+                    <Container fluid="xl">
                       <Row>
-                        <Col lg={12}>
+                        <Col lg={6} md={6} sm={12}>
                           <div
                             id={articleList[0].id}
                             key={articleList[0].id}
@@ -147,12 +147,13 @@ function Articles() {
                                 </Button>
                               </div>
                               <div className="right">
-                                {/* <img src={article.image} alt="ArticleImage" /> */}
+                                {/* <img src={articleList[0].image} alt="ArticleImage" /> */}
                                 <img src={article1} alt="Article" />
                               </div>
                             </div>
                           </div>
                         </Col>
+                        <Col lg={6} md={6} sm={12} />
                       </Row>
                     </Container>
                     : <></>

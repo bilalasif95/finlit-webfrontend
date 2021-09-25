@@ -33,9 +33,21 @@ const Wrapper = styled.div`
           color: #000;
           font-weight: 400;
           margin: 0 0 15px;
+          overflow: hidden;
+          vertical-align: middle;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
         }
         p {
           color: #8b8b8b;
+          overflow: hidden;
+          vertical-align: middle;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
         }
         .course_short_info {
           display: flex;

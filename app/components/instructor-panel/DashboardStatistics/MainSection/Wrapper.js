@@ -48,30 +48,41 @@ const Wrapper = styled.div`
           -moz-transition: background-color 0.3s ease-out;
           -o-transition: background-color 0.3s ease-out;
           transition: background-color 0.3s ease-out;
+          &:focus {
+            box-shadow: none;
+          }
           &:hover {
             background-color: #fff;
             color: #255f2b;
           }
-          .dropdown-menu {
-            padding: 0;
+        }
+        .dropdown-menu {
+          padding: 0;
+          li {
+            border-bottom: 1px solid #dcdcdc;
+            margin: 0;
+            &:last-child {
+              border-bottom: none;
+            }
+            .dropdown_link {
+              color: #404041 !important;
+              font-size: 0.875rem;
+              text-decoration: none;
+              display: block;
+              margin: 0;
+              width: 100%;
+              padding: 0.5rem 1rem;
+              clear: both;
+              font-weight: 400;
+              text-align: inherit;
+              white-space: nowrap;
+              background-color: transparent;
+              border: 0;
+            }
           }
-          .dropdoen-item:focus {
-            background-color: transparent;
-          }
-          .dropdown_link {
-            color: #404041;
-            font-size: 0.875rem;
-            text-decoration: none;
-            display: block;
-            width: 100%;
-            padding: 0.25rem 1rem;
-            clear: both;
-            font-weight: 400;
-            text-align: inherit;
-            white-space: nowrap;
-            background-color: transparent;
-            border: 0;
-          }
+        }
+        .dropdoen-item:focus {
+          background-color: transparent;
         }
       }
     }

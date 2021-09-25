@@ -394,7 +394,7 @@ function AddHackathon() {
                     type="text"
                     name="redirectionUrl"
                     id="redirectionUrl"
-                    placeholder="Redirection URL"
+                    placeholder="e.g https://www.google.com/"
                     value={hackathonStatus.redirectionUrl}
                     onChange={e => handleChangeEvent(e)}
                   />

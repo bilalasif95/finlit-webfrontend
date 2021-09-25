@@ -94,15 +94,24 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #app {
-    background-color: #F8F9FB;
+    background-color: #f8f9fb;
     min-height: 100%;
     min-width: 100%;
+  }
+
+  .page_loader {
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    padding: 10rem 0 0;
+    width: 100%;
   }
 
   p {
     margin: 0;
   }
   label {
+    display: block;
     line-height: 1.5em;
   }
 
@@ -265,11 +274,27 @@ const GlobalStyle = createGlobalStyle`
       font-size: 1rem;
       font-weight: 400;
       margin: 0 0 1.25rem;
+      min-height: 2.5rem;
+      max-height: 2.5rem;
+      overflow: hidden;
+      vertical-align: middle;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
     p {
       color: #8b8b8b;
       font-size: 0.875rem;
       margin: 0;
+      min-height: 2.5rem;
+      max-height: 2.5rem;
+      overflow: hidden;
+      vertical-align: middle;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
     }
   }
   @media (max-width: 1024px) and (min-width: 767px) {

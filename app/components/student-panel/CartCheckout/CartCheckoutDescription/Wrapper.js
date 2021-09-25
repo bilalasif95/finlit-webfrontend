@@ -119,10 +119,12 @@ const Wrapper = styled.div`
       justify-content: flex-start;
       .icon {
         max-height: 60px;
+        min-height: 60px;
         min-width: 65px;
         overflow: hidden;
         width: 15%;
         img {
+          height: 100%;
           width: 100%;
         }
       }
@@ -133,10 +135,22 @@ const Wrapper = styled.div`
           color: #000;
           font-size: 0.875rem;
           margin: 0 0 0.05rem;
+          overflow: hidden;
+          vertical-align: middle;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
         }
         p {
           color: #8b8b8b;
           font-size: 0.75rem;
+          overflow: hidden;
+          vertical-align: middle;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
         }
         .provider {
           color: #000;

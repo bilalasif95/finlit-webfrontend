@@ -66,6 +66,9 @@ const Wrapper = styled.div`
           }
         }
         .posted_title {
+          display: flex !important;
+          justify-content: flex-start;
+          align-items: center;
           width: 82.5%;
           padding: 0 0 0 0.75rem;
           color: #000 !important;

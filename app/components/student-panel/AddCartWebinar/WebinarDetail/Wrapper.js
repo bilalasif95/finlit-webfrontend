@@ -25,7 +25,7 @@ const Wrapper = styled.div`
       }
     }
     .header {
-      align-items: center;
+      align-items: baseline;
       display: flex;
       justify-content: space-between;
       padding: 1rem 0;
@@ -33,6 +33,7 @@ const Wrapper = styled.div`
       h4 {
         color: #484848;
         margin: 0;
+        width: 85%;
       }
       .like_share {
         button {
