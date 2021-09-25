@@ -285,11 +285,15 @@ function BasicInfo() {
                   <MenuItem value="Financial Literacy">
                     Financial Literacy
                   </MenuItem>
-                  <MenuItem value="Accountant">Accountant</MenuItem>
-                  <MenuItem value="Speech-Language">Speech-Language</MenuItem>
                   <MenuItem value="Software Developer">
                     Software Developer
                   </MenuItem>
+                  <MenuItem value="Medical and Health Services">
+                    Medical and Health Services
+                  </MenuItem>
+                  <MenuItem value="Statistician">Statistician</MenuItem>
+                  <MenuItem value="Speech-Language">Speech-Language</MenuItem>
+                  <MenuItem value="Data Scientist">Data Scientist</MenuItem>
                 </Select>
               </FormControl>
             </FormGroup>
@@ -319,9 +323,9 @@ function BasicInfo() {
                     getContentAnchorEl: null,
                   }}
                 >
-                  <MenuItem value="USA">USA</MenuItem>
+                  <MenuItem value="PAK">PAK</MenuItem>
                   <MenuItem value="KSA">KSA</MenuItem>
-                  <MenuItem value="KRA">KRA</MenuItem>
+                  <MenuItem value="ROK">ROK</MenuItem>
                 </Select>
               </FormControl>
             </FormGroup>

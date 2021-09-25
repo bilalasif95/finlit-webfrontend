@@ -266,9 +266,9 @@ export default function SignupPage() {
                           getContentAnchorEl: null,
                         }}
                       >
-                        <MenuItem value="USA">USA</MenuItem>
+                        <MenuItem value="PAK">PAK</MenuItem>
                         <MenuItem value="KSA">KSA</MenuItem>
-                        <MenuItem value="KR">KR</MenuItem>
+                        <MenuItem value="ROK">ROK</MenuItem>
                       </Select>
                     </FormControl>
                   </FormGroup>
