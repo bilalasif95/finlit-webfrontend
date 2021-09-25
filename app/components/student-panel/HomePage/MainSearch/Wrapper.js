@@ -40,6 +40,7 @@ const Wrapper = styled.div`
       z-index: 1;
       .form-control {
         border: none;
+        padding: 0.5rem !important;
         &::placeholder {
           color: #8b8b8b;
         }

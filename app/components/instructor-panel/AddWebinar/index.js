@@ -435,7 +435,7 @@ function AddWebinar() {
                   type="text"
                   name="redirectionUrl"
                   id="redirectionUrl"
-                  placeholder="Redirection URL"
+                  placeholder="e.g https://www.google.com/"
                   value={webinarStatus.redirectionUrl}
                   onChange={e => handleChangeEvent(e)}
                 />
