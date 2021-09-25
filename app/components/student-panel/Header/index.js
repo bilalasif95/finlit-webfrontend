@@ -66,9 +66,16 @@ const Header = (props) => {
     <Menubar>
       <Navbar expand="lg">
         <Container fluid="xl">
-          <Link to="/">
-            <Img src={Logo} alt="FinLit" />
-          </Link>
+          {userObj &&
+          userObj.roles &&
+          userObj.roles[0] &&
+          userObj.roles[0].roleName === 'Instructor' ? (
+              <Img src={Logo} alt="FinLit" />
+          ) : (
+              <Link to="/">
+                <Img src={Logo} alt="FinLit" />
+              </Link>
+            )}
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav navbar>

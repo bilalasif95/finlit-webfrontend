@@ -16,6 +16,7 @@ function Events() {
   useEffect(() => {
     getEventsList();
   }, []);
+
   const handleEventRedirect = (type, id) => {
     if (type === 'Hackathon') {
       history.push(`/hackathon_details/${id}`);

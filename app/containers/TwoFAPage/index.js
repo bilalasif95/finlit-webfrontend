@@ -40,7 +40,18 @@ const TwoFAPage = props => {
           JSON.stringify(res.data.data.user && res.data.data.user),
         );
         props.Login(res.data.data.user);
-        history.push('/');
+        if (
+          res &&
+          res.data &&
+          res.data.data &&
+          res.data.data.user &&
+          res.data.data.user.roles[0] &&
+          res.data.data.user.roles[0].roleName === 'Instructor'
+        ) {
+          history.push('/dashboard');
+        } else {
+          history.push('/');
+        }
       })
       .catch(err => {
         toast.error(

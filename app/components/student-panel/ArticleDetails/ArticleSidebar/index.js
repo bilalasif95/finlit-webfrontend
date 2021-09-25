@@ -30,7 +30,7 @@ function ArticleSidebar(props) {
         },
       })
       .then(res => {
-        setArticles(res && res.data);
+        setArticles(res && res.data.data);
       })
       .catch(err => {
         toast.error(
