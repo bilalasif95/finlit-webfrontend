@@ -32,7 +32,7 @@ function Articles() {
         },
       })
       .then(res => {
-        setArticleList(res && res.data);
+        setArticleList(res && res.data.data);
         setLoader(false);
       })
       .catch(() => {
@@ -114,8 +114,8 @@ function Articles() {
                         </Button>
                       </div>
                       <div className="right">
-                        {/* <img src={article.image} alt="ArticleImage" /> */}
-                        <img src={article1} alt="Article" />
+                        <img src={article.image ? article.image : article1} alt="ArticleImage" />
+                        {/* <img src={article1} alt="Article" /> */}
                       </div>
                     </div>
                   </div>
@@ -147,8 +147,8 @@ function Articles() {
                                 </Button>
                               </div>
                               <div className="right">
-                                {/* <img src={article.image} alt="ArticleImage" /> */}
-                                <img src={article1} alt="Article" />
+                              <img src={articleList[0].image} alt="ArticleImage" />
+                                {/* <img src={article1} alt="Article" /> */}
                               </div>
                             </div>
                           </div>
