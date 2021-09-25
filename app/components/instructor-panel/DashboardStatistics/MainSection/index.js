@@ -65,31 +65,33 @@ function MainSection(props) {
                       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                         <DropdownToggle caret>Add Category</DropdownToggle>
                         <DropdownMenu>
-                          <DropdownItem>
-                            <Link className="dropdown_link" to="/add_course">
-                              <FormattedMessage {...messages.AddCourses} />
-                            </Link>
-                          </DropdownItem>
-                          <DropdownItem>
-                            <Link className="dropdown_link" to="/add_webinar">
-                              <FormattedMessage {...messages.AddWebinar} />
-                            </Link>
-                          </DropdownItem>
-                          <DropdownItem>
-                            <Link className="dropdown_link" to="/add_bootcamp">
-                              <FormattedMessage {...messages.AddBootCamp} />
-                            </Link>
-                          </DropdownItem>
-                          <DropdownItem>
-                            <Link className="dropdown_link" to="/add_hackathon">
-                              <FormattedMessage {...messages.AddHackathon} />
-                            </Link>
-                          </DropdownItem>
-                          <DropdownItem>
-                            <Link className="dropdown_link" to="/add_article">
-                              <FormattedMessage {...messages.AddArticles} />
-                            </Link>
-                          </DropdownItem>
+                          <ul>
+                            <li>
+                              <Link className="dropdown_link" to="/add_course">
+                                <FormattedMessage {...messages.AddCourses} />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link className="dropdown_link" to="/add_webinar">
+                                <FormattedMessage {...messages.AddWebinar} />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link className="dropdown_link" to="/add_bootcamp">
+                                <FormattedMessage {...messages.AddBootCamp} />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link className="dropdown_link" to="/add_hackathon">
+                                <FormattedMessage {...messages.AddHackathon} />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link className="dropdown_link" to="/add_article">
+                                <FormattedMessage {...messages.AddArticles} />
+                              </Link>
+                            </li>
+                          </ul>
                         </DropdownMenu>
                       </Dropdown>
                     </li>

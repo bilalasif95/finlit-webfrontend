@@ -201,7 +201,7 @@ const Header = (props) => {
                   <DropdownToggle nav caret>
                     <div className="user_account">
                       <div className="user_icon">
-                        <Img src={userObj.image ? userObj.image : User} alt="User" />
+                        <Img src={userObj.image ? userObj.image : 'https://i.imgur.com/qUzPHy4.jpg'} alt="User" />
                       </div>
                       <div className="user_name">
                         <p>{userObj.firstName} {userObj.lastName}</p>

@@ -24,6 +24,7 @@ const Wrapper = styled.div`
       width: 40%;
       img {
         margin: 0;
+        height: 100%;
         width: 100%;
       }
     }

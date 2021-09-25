@@ -401,7 +401,7 @@ function AddBootCamp() {
                     type="text"
                     name="redirectionUrl"
                     id="redirectionUrl"
-                    placeholder="Redirection URL"
+                    placeholder="e.g https://www.google.com/"
                     value={bootCampStatus.redirectionUrl}
                     onChange={e => handleChangeEvent(e)}
                   />

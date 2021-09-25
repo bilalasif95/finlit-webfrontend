@@ -140,7 +140,7 @@ const Wrapper = styled.div`
         font-size: 0.875rem;
         font-weight: 550;
         line-height: 17px;
-        padding: 0.82rem;
+        padding: 0.72rem;
         position: absolute;
         right: 0;
         top: 0;
