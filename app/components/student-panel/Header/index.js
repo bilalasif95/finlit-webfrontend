@@ -66,9 +66,16 @@ const Header = (props) => {
     <Menubar>
       <Navbar expand="lg">
         <Container fluid="xl">
-          <Link to="/">
-            <Img src={Logo} alt="FinLit" />
-          </Link>
+          {userObj &&
+          userObj.roles &&
+          userObj.roles[0] &&
+          userObj.roles[0].roleName === 'Instructor' ? (
+              <Img src={Logo} alt="FinLit" />
+          ) : (
+              <Link to="/">
+                <Img src={Logo} alt="FinLit" />
+              </Link>
+            )}
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav navbar>
@@ -78,9 +85,9 @@ const Header = (props) => {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    <Link to="/accredited_education_list">
-                      <FormattedMessage {...messages.AccreditedEducation} />
-                    </Link>
+                    {/* <Link to="/accredited_education_list"> */}
+                    <FormattedMessage {...messages.AccreditedEducation} />
+                    {/* </Link> */}
                   </DropdownItem>
                   <DropdownItem>
                     <FormattedMessage {...messages.Budgeting} />

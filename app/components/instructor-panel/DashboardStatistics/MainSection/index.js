@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import {
   Container,
+  Button,
   Row,
   Col,
   Dropdown,
@@ -97,21 +98,32 @@ function MainSection(props) {
               }
             </ul>
             <div className="main_links">
+              {
+              userObj && userObj.roles && userObj.roles[0] && userObj.roles[0].roleName === 'Instructor' ?
+              <>
               <Link to="/webinars_list">
                 <FormattedMessage {...messages.Webinars} />
               </Link>
-              <Link to="/bootcamp_list">
+              <Link to="/bootcamps_list">
                 <FormattedMessage {...messages.BootCamp} />
               </Link>
-              <Link to="/">
-                <FormattedMessage {...messages.LiveWebinars} />
-              </Link>
-              <Link to="/hackathon_list">
+              <Link to="/hackathons_list">
                 <FormattedMessage {...messages.Hackathon} />
               </Link>
-              <Link to="/">
-                <FormattedMessage {...messages.FreeGiftsRewards} />
-              </Link>
+              </>
+              :
+              <>
+              <Link to="/webinar_list">
+              <FormattedMessage {...messages.Webinars} />
+            </Link>
+            <Link to="/bootcamp_list">
+              <FormattedMessage {...messages.BootCamp} />
+            </Link>
+            <Link to="/hackathon_list">
+              <FormattedMessage {...messages.Hackathon} />
+            </Link>
+            </>
+              }
             </div>
             {
               userObj && userObj.roles && userObj.roles[0] && userObj.roles[0].roleName === 'Instructor'
