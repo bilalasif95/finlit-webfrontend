@@ -84,10 +84,15 @@ function Header() {
               <DropdownToggle nav caret>
                 <div className="user_account">
                   <div className="user_icon">
-                    <Img src={userObj.image ? userObj.image : User} alt="User" />
+                    <Img
+                      src={userObj.image ? userObj.image : User}
+                      alt="User"
+                    />
                   </div>
                   <div className="user_name">
-                    <p>${userObj.firstName} ${userObj.lastName}</p>
+                    <p>
+                      ${userObj.firstName} ${userObj.lastName}
+                    </p>
                     <span>${userObj.email}</span>
                   </div>
                 </div>
@@ -140,10 +145,12 @@ function Header() {
                   </div>
                   <div />
                 </DropdownItem>
-                <DropdownItem onClick = { () => {
-                  localStorage.clear();
-                  history.push('/login')
-                } }>
+                <DropdownItem
+                  onClick={() => {
+                    localStorage.clear();
+                    history.push('/login');
+                  }}
+                >
                   <div>
                     <FiLogOut />
                     <FormattedMessage {...messages.LogOut} />

@@ -58,7 +58,9 @@ export default function SignupPage() {
 
   const signup = () => {
     setError('');
-    if (!/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(firstName)) {
+    if (
+      !/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(firstName)
+    ) {
       setError('First Name is not valid');
       return;
     }
@@ -66,7 +68,9 @@ export default function SignupPage() {
       setError('First Name should be of less than 255 characters');
       return;
     }
-    if (!/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(lastName)) {
+    if (
+      !/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(lastName)
+    ) {
       setError('Last Name is not valid');
       return;
     }

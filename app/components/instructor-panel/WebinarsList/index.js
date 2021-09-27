@@ -2,33 +2,33 @@
  * Webinars List Component
  */
 import React, { useState, useEffect } from 'react';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { Button } from 'reactstrap';
 import { BiTimeFive } from 'react-icons/bi';
 import { RiStarSFill } from 'react-icons/ri';
 import { HiUsers } from 'react-icons/hi';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { GrFormEdit } from 'react-icons/gr';
+import axios from 'axios';
 // import { Link } from 'react-router-dom';
-import messages from './messages';
+// import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
-import axios from 'axios';
 import Loader from '../../Loader';
 
 function WebinarsList() {
   const [webinarsList, setwebinarsList] = useState([]),
-    [loader, setLoader] = useState(false)
+        [loader, setLoader] = useState(false);
   useEffect(() => {
-    getWebinarList()
-  }, [])
+    getWebinarList();
+  }, []);
 
   const getWebinarList = () => {
-    setLoader(true)
+    setLoader(true);
     const token = localStorage.getItem('token');
     const authHeaders = token
       ? {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer${token}`,
       }
       : {};
     axios
@@ -39,18 +39,20 @@ function WebinarsList() {
           ...authHeaders,
         },
       })
-      .then((res) => {
-        setwebinarsList(res && res.data && res.data.data)
+      .then(res => {
+        setwebinarsList(res && res.data && res.data.data);
         setLoader(false);
       })
       .catch(() => {
         setLoader(false);
       });
-  }
+  };
 
   return (
     <Wrapper>
-      {loader ? <Loader /> :
+      {loader ? (
+        <Loader />
+      ) : (
         <>
           <div className="courses_list">
             {webinarsList.map(item => (
@@ -125,7 +127,7 @@ function WebinarsList() {
           </div> */}
 
         </>
-      }
+      )}
     </Wrapper>
   );
 }

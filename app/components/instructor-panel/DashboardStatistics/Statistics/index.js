@@ -7,11 +7,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../../../config/config';
 import Wrapper from './Wrapper';
 import messages from './messages';
-import Course1 from '../../../../images/chart20.svg';
-import Course2 from '../../../../images/chart50.svg';
-import Course3 from '../../../../images/chart80.svg';
-import Dot from '../../../../images/list-dot.svg';
-import Chart from '../../../../images/stat-chart.svg';
+// import Course1 from '../../../../images/chart20.svg';
+// import Course2 from '../../../../images/chart50.svg';
+// import Course3 from '../../../../images/chart80.svg';
+// import Dot from '../../../../images/list-dot.svg';
+// import Chart from '../../../../images/stat-chart.svg';
 
 function DashboardStatistics() {
   const [stuEvents, setStuEvents] = useState([]);
@@ -39,7 +39,7 @@ function DashboardStatistics() {
   };
 
   useEffect(() => {
-    console.log('START')
+    // console.log('START');
     getStudentEvents();
   }, []);
   return (
