@@ -61,9 +61,9 @@ function HackathonSidebar(props) {
           </div>
           <p>(76,876 ratings)</p>
         </div>
-        <Link to="/" className="event_link">
+        {/* <Link to="/" className="event_link">
           <FormattedMessage {...messages.AttendEvent} />
-        </Link>
+        </Link> */}
         <Button onClick={() => handleAddToCart()} disabled={loader}>
           {loader ? 'Loading...' : <FormattedMessage {...messages.AddtoCart} />}
         </Button>
