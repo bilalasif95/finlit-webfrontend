@@ -122,44 +122,45 @@ function Articles() {
                 </div>
               ))}
             </Slider>
-          ) : (
-            <>
-              {articleList[0] ? (
-                <Container fluid="l">
-                  <Row>
-                    <Col lg={6} md={6} sm={12}>
-                      <div
-                        id={articleList[0].id}
-                        key={articleList[0].id}
-                        onClick={() => handleArticleDetails(articleList[0].id)}
-                      >
-                        <div className="single_item">
-                          <div className="left">
-                            <img src={articleicon} alt="IconImg" />
-                            <h5>{articleList[0].title}</h5>
-                            <p> {articleList[0].subTitle} </p>
-                            <Button
-                              className="read_more"
-                              onClick={() => handleArticleDetails(articleList[0].id)}
-                            >
-                              <FormattedMessage {...messages.ReadMore} />
-                            </Button>
+          )
+            : (
+              <>
+                {
+                  articleList[0] ?
+                    <Container fluid="xl">
+                      <Row>
+                        <Col lg={6} md={6} sm={12}>
+                          <div
+                            id={articleList[0].id}
+                            key={articleList[0].id}
+                            onClick={() => handleArticleDetails(articleList[0].id)}
+                          >
+                            <div className="single_item">
+                              <div className="left">
+                                <img src={articleicon} alt="IconImg" />
+                                <h5>{articleList[0].title}</h5>
+                                <p> {articleList[0].subTitle} </p>
+                                <Button
+                                  className="read_more"
+                                  onClick={() => handleArticleDetails(articleList[0].id)}
+                                >
+                                  <FormattedMessage {...messages.ReadMore} />
+                                </Button>
+                              </div>
+                              <div className="right">
+                                {/* <img src={articleList[0].image} alt="ArticleImage" /> */}
+                                <img src={article1} alt="Article" />
+                              </div>
+                            </div>
                           </div>
-                          <div className="right">
-                            {/* <img src={articleList[0].image} alt="ArticleImage" /> */}
-                            <img src={article1} alt="Article" />
-                          </div>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col lg={6} md={6} sm={12} />
-                  </Row>
-                </Container>
-              ) : (
-                <></>
-              )}
-            </>
-          )}
+                        </Col>
+                        <Col lg={6} md={6} sm={12} />
+                      </Row>
+                    </Container>
+                    : <></>
+                }
+              </>
+            )}
         </Row>
       </Container>
     </Wrapper>

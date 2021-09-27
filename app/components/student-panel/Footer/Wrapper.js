@@ -54,6 +54,8 @@ const Wrapper = styled.footer`
     align-items: center;
     width: 100%;
     li {
+      color: #a6a6a7;
+      font-size: 0.8rem;
       padding-left: 1rem;
       a {
         color: #a6a6a7;
