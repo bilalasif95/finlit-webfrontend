@@ -330,7 +330,7 @@ function BasicInfo() {
                 >
                   <MenuItem value="PAK">PAK</MenuItem>
                   <MenuItem value="KSA">KSA</MenuItem>
-                  <MenuItem value="ROK">ROK</MenuItem>
+                  <MenuItem value="KR">KR</MenuItem>
                 </Select>
               </FormControl>
             </FormGroup>
@@ -398,7 +398,7 @@ function BasicInfo() {
         </Row>
         <div className="form_footer">
           <div className="bottom_btns">
-            <Button className="btn_cancel">
+            <Button className="btn_cancel" onClick={getCurrentUserInfo}>
               <FormattedMessage {...messages.Cancel} />
             </Button>
             <Button

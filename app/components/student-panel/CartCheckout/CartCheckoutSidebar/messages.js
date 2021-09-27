@@ -40,9 +40,13 @@ export default defineMessages({
     id: `${scope}.CardNumber`,
     defaultMessage: `Card Number`,
   },
-  MMYYCVC: {
-    id: `${scope}.MMYYCVC`,
-    defaultMessage: `MM / YY CVC`,
+  MMYY: {
+    id: `${scope}.MMYY`,
+    defaultMessage: `MM / YY`,
+  },
+  CVC: {
+    id: `${scope}.CVC`,
+    defaultMessage: `CVC`,
   },
   RememberCard: {
     id: `${scope}.RememberCard`,

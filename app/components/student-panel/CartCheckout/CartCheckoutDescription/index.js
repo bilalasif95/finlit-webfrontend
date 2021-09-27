@@ -27,15 +27,22 @@ function CartCheckoutDescription(props) {
           </InputGroup> */}
           <div className="cart">
             <div className="num_cont">
-              <IoMdSearch />
+              {/* <IoMdSearch /> */}
             </div>
             <div className="num_cont">
               <IoMdCart />
-              <span className="no_item">
-                {props.details &&
-                  props.details.items &&
-                  props.details.items.length}
-              </span>
+
+              {props.details &&
+                props.details.items &&
+                props.details.items.length === 0 ? "" :
+
+                <span className="no_item">
+                  {props.details &&
+                    props.details.items &&
+                    props.details.items.length}
+                </span>
+              }
+
             </div>
           </div>
         </div>
@@ -94,9 +101,10 @@ function CartCheckoutDescription(props) {
         </div>
         <div className="footer">
           <div className="sub_total">
-            <p>
+            {props.details.total > 0 ? <p>
               <FormattedMessage {...messages.Subtotal} /> ${props.details.total}
-            </p>
+            </p> : ""}
+
           </div>
         </div>
       </div>
