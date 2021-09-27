@@ -15,7 +15,9 @@ import mastercard from '../../../../images/mastercard.svg';
 import paypalicon from '../../../../images/paypal.svg';
 import { axiosHeader } from '../../../../utils/axiosHeader';
 import { API } from '../../../../config/config';
-
+import NumberFormat from 'react-number-format';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function CartCheckoutSidebar(props) {
   const [paymentType, setPaymentType] = useState({ card: true, paypal: false });
   const [loader, setLoader] = useState(false);
@@ -23,7 +25,8 @@ function CartCheckoutSidebar(props) {
     email: '',
     cardHolderName: '',
     cardNumber: '',
-    MMYYCVC: '',
+    MMYY: '',
+    CVC: '',
     rememberCard: false,
   });
   const [errors, setErrors] = useState({});
@@ -65,9 +68,14 @@ function CartCheckoutSidebar(props) {
       setLoader(true);
       axios
         .get(`${API}api/cart/checkout`, axiosHeader)
-        .then(() => {
+        .then((result) => {
+          toast.success(
+            'Checkout successful. You will get an email shortly'
+          );
           setLoader(false);
-          history.push('/');
+          setTimeout(() => {
+            history.push('/');
+          }, 5000)
         })
         .catch(err => {
           setLoader(false);
@@ -89,8 +97,39 @@ function CartCheckoutSidebar(props) {
         error.cardHolderName = 'Card name is required';
       } else if (!values.cardNumber) {
         error.cardNumber = 'Card number is required';
-      } else if (!values.MMYYCVC) {
-        error.MMYYCVC = 'MM / YY CVC  is required';
+      }
+      else {
+        let validateCard = values.cardNumber.toString().search("_")
+        if (validateCard >= 0) {
+          error.cardNumber = 'Invalid card number format';
+        }
+        else if (!values.MMYY) {
+          error.MMYY = 'MM / YY  is required';
+        }
+        else {
+
+          let validateMM = values.MMYY.toString().search("M")
+          if (validateMM >= 0) {
+            error.MMYY = 'Invalid format mm/yy';
+          }
+          else {
+            let validateyy = values.MMYY.toString().search("Y")
+            if (validateyy >= 0) {
+              error.MMYY = 'Invalid format mm/yy';
+            }
+            else {
+
+              if (!values.CVC) {
+                error.CVC = 'CVC is required';
+              }
+              else {
+                if (values.CVC.length < 3) {
+                  error.CVC = 'Invalid format CVC';
+                }
+              }
+            }
+          }
+        }
       }
     }
 
@@ -187,14 +226,21 @@ function CartCheckoutSidebar(props) {
               <Label for="cardnumber">
                 <FormattedMessage {...messages.CardNumber} />
               </Label>
-              <Input
-                type="text"
-                name="cardNumber"
-                id="cardnumber"
+              <NumberFormat format="#### #### #### ####" mask="_" name="cardNumber"
                 value={checkoutInfo.cardNumber}
                 onChange={e => handleChangeEvent(e)}
                 placeholder="Enter number"
+                className="form-control"
               />
+              {/* <Input
+                type="text"
+                name="cardNumber"
+                id="cardnumber"
+                pattern="\d*" x-autocompletetype="cc-number"
+                value={checkoutInfo.cardNumber}
+                onChange={e => handleChangeEvent(e)}
+                placeholder="Enter number"
+              /> */}
               <Label for="cardnumber">
                 {errors.cardNumber ? (
                   <p className="error"> {errors.cardNumber} </p>
@@ -203,21 +249,67 @@ function CartCheckoutSidebar(props) {
                 )}
               </Label>
             </FormGroup>
+
+
             <FormGroup>
-              <Label for="cvc">
-                <FormattedMessage {...messages.MMYYCVC} />
+              <Label for="mmyy">
+                <FormattedMessage {...messages.MMYY} />
               </Label>
-              <Input
+              {/* <Input
                 type="text"
                 name="MMYYCVC"
+                pattern="([0-9]{2}[/]?){2}"
                 id="cvc"
                 value={checkoutInfo.MMYYCVC}
                 placeholder="mm - yy - CVC"
                 onChange={e => handleChangeEvent(e)}
+              /> */}
+              <NumberFormat
+                format="##/##"
+                placeholder="MM/YY"
+                mask={['M', 'M', 'Y', 'Y']}
+                id="mmyy"
+                name="MMYY"
+                value={checkoutInfo.MMYY}
+                onChange={e => handleChangeEvent(e)}
+                placeholder="mm - yy "
+                className="form-control"
+              />
+              <Label for="mmyy">
+                {errors.MMYY ? (
+                  <p className="error"> {errors.MMYY} </p>
+                ) : (
+                  ''
+                )}
+              </Label>
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="cvc">
+                <FormattedMessage {...messages.CVC} />
+              </Label>
+              {/* <Input
+                type="text"
+                name="MMYYCVC"
+                pattern="([0-9]{2}[/]?){2}"
+                id="cvc"
+                value={checkoutInfo.MMYYCVC}
+                placeholder="mm - yy - CVC"
+                onChange={e => handleChangeEvent(e)}
+              /> */}
+              <NumberFormat
+                format="###"
+                placeholder="Enter CVC"
+                // mask={['M', 'M', 'Y', 'Y']}
+                name="CVC"
+                value={checkoutInfo.CVC}
+                onChange={e => handleChangeEvent(e)}
+                placeholder="CVC"
+                className="form-control"
               />
               <Label for="cvc">
-                {errors.MMYYCVC ? (
-                  <p className="error"> {errors.MMYYCVC} </p>
+                {errors.CVC ? (
+                  <p className="error"> {errors.CVC} </p>
                 ) : (
                   ''
                 )}
@@ -280,7 +372,9 @@ function CartCheckoutSidebar(props) {
           </div>
         </Wrapper>
       </Col>
+      <ToastContainer />
     </Row>
+
   );
 }
 
