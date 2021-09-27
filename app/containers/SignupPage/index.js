@@ -49,7 +49,7 @@ export default function SignupPage() {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [gender, setGender] = useState('Male');
-  const [country, setCountry] = useState('USA');
+  const [country, setCountry] = useState('PAK');
   const [profession, setProfession] = useState('Software Developer');
   const [address, setAddress] = useState('');
   const [instructorDiv, setInstructorDiv] = useState(false);
