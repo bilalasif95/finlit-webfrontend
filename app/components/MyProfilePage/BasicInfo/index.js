@@ -391,7 +391,7 @@ function BasicInfo() {
         </Row>
         <div className="form_footer">
           <div className="bottom_btns">
-            <Button className="btn_cancel">
+            <Button className="btn_cancel" onClick={getCurrentUserInfo}>
               <FormattedMessage {...messages.Cancel} />
             </Button>
             <Button
