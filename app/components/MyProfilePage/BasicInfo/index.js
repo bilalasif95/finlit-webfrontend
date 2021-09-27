@@ -325,7 +325,7 @@ function BasicInfo() {
                 >
                   <MenuItem value="PAK">PAK</MenuItem>
                   <MenuItem value="KSA">KSA</MenuItem>
-                  <MenuItem value="ROK">ROK</MenuItem>
+                  <MenuItem value="KR">KR</MenuItem>
                 </Select>
               </FormControl>
             </FormGroup>
