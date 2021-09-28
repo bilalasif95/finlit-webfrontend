@@ -53,17 +53,21 @@ function Events() {
   const getTimeAndDateFormat = (date, time) => {
     const daysName = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     let zone = '';
-    if(userInfo.country === 'PAK'){
+    if (userInfo.country === 'PAK') {
       zone = 'PKT';
-    } else if(userInfo.country === 'KSA'){
+    } else if (userInfo.country === 'KSA') {
       zone = 'AST';
-    } else if(userInfo.country === 'KR'){
+    } else if (userInfo.country === 'KR') {
       zone = 'KST';
     }
-    const day = moment(date).utc().day();
+    const day = moment(date)
+      .utc()
+      .day();
     const momentDtObj = moment(date).format('ll');
     const momentTim = moment(time, ['HH:mm']).format('hh:mm A');
-    const datetimeformat = `${daysName[day]}, ${momentDtObj}, ${momentTim} ${zone}`;
+    const datetimeformat = `${
+      daysName[day]
+    }, ${momentDtObj}, ${momentTim} ${zone}`;
     return datetimeformat;
   };
 
@@ -81,7 +85,10 @@ function Events() {
         <Row>
           {eventsList.map(item => (
             <Col lg={3} md={6} sm={6} xs={12} key={item.id}>
-              <div className="single_item" onClick={ () => handleEventRedirect(item.type,item.id)}>
+              <div
+                className="single_item"
+                onClick={() => handleEventRedirect(item.type, item.id)}
+              >
                 <div className="event_img">
                   <img src={item.eventImage} alt={item.alt} />
                   <div className="title">

@@ -1,37 +1,26 @@
 /*
  * Cart Checkout Description Component
  */
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import moment from 'moment';
-import { trim } from 'lodash';
 import { BiCalendar, BiTimeFive } from 'react-icons/bi';
 import { IoMdShare } from 'react-icons/io';
 import { GrLocation } from 'react-icons/gr';
 import { FaRegHeart } from 'react-icons/fa';
-import { RiStarSFill } from 'react-icons/ri';
 import JoditEditor from 'jodit-react';
 import { HiUsers } from 'react-icons/hi';
-// import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import finlit from '../../../../images/finlit.png';
-import education from '../../../../images/education.png';
 
 function WebinarDetail(props) {
   const editor = useRef(null);
   const config = {
     readonly: true,
   };
-  // const [activeTab, setActiveTab] = useState('1');
-
-  // const toggle = tab => {
-  //   if (activeTab !== tab) setActiveTab(tab);
-  // };
-
   let detail = props.detail;
-  console.log(detail);
   let dataDetails = detail.data;
 
   return (

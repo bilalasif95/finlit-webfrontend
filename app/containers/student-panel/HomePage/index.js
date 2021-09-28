@@ -17,7 +17,12 @@ import Events from '../../../components/student-panel/HomePage/Events';
 export function HomePage() {
   const checkUser = () => {
     const userObj = JSON.parse(localStorage.getItem('userInfo'));
-    if(userObj && userObj.roles && userObj.roles[0] && userObj.roles[0].roleName === 'Instructor') {
+    if (
+      userObj &&
+      userObj.roles &&
+      userObj.roles[0] &&
+      userObj.roles[0].roleName === 'Instructor'
+    ) {
       history.push('/dashboard');
     }
   };
