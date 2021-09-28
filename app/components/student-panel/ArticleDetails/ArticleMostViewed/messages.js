@@ -10,7 +10,7 @@ export const scope = 'boilerplate.components.CoursesList';
 export default defineMessages({
   Articles: {
     id: `${scope}.Articles`,
-    defaultMessage: 'People interested in this course also viewed',
+    defaultMessage: 'People interested in this article also viewed',
   },
   ViewAll: {
     id: `${scope}.ViewAll`,

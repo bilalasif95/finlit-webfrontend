@@ -3,19 +3,21 @@
  */
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
+import NumberFormat from 'react-number-format';
+import PropTypes from 'prop-types';
 import { Row, Col, FormGroup, Input, Label, Button } from 'reactstrap';
 import { IoMdLock } from 'react-icons/io';
-import { BsArrowLeftShort } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import history from 'utils/history';
-import Wrapper from './Wrapper';
-import messages from './messages';
 import mastercard from '../../../../images/mastercard.svg';
 import paypalicon from '../../../../images/paypal.svg';
 import { axiosHeader } from '../../../../utils/axiosHeader';
 import { API } from '../../../../config/config';
-
+import Wrapper from './Wrapper';
+import messages from './messages';
 function CartCheckoutSidebar(props) {
   const [paymentType, setPaymentType] = useState({ card: true, paypal: false });
   const [loader, setLoader] = useState(false);
@@ -23,13 +25,14 @@ function CartCheckoutSidebar(props) {
     email: '',
     cardHolderName: '',
     cardNumber: '',
-    MMYYCVC: '',
+    MMYY: '',
+    CVC: '',
     rememberCard: false,
   });
   const [errors, setErrors] = useState({});
 
   const handleChange = type => {
-    if (type == 'card') {
+    if (type === 'card') {
       setPaymentType({ card: true, paypal: false });
     } else {
       setPaymentType({ card: false, paypal: true });
@@ -66,8 +69,11 @@ function CartCheckoutSidebar(props) {
       axios
         .get(`${API}api/cart/checkout`, axiosHeader)
         .then(() => {
+          toast.success(`Checkout successful. You will get an email shortly`);
           setLoader(false);
-          history.push('/');
+          setTimeout(() => {
+            history.push('/');
+          }, 5000);
         })
         .catch(err => {
           setLoader(false);
@@ -89,8 +95,30 @@ function CartCheckoutSidebar(props) {
         error.cardHolderName = 'Card name is required';
       } else if (!values.cardNumber) {
         error.cardNumber = 'Card number is required';
-      } else if (!values.MMYYCVC) {
-        error.MMYYCVC = 'MM / YY CVC  is required';
+      }
+      else {
+        const validateCard = values.cardNumber.toString().search('_');
+        if (validateCard >= 0) {
+          error.cardNumber = 'Invalid card number format';
+        } else if (!values.MMYY) {
+          error.MMYY = 'MM / YY  is required';
+        } else {
+          const validateMM = values.MMYY.toString().search('M');
+          if (validateMM >= 0) {
+            error.MMYY = 'Invalid format mm/yy';
+          } else {
+            const validateyy = values.MMYY.toString().search('Y');
+            if (validateyy >= 0) {
+              error.MMYY = 'Invalid format mm/yy';
+            } else {
+              if (!values.CVC) {
+                error.CVC = 'CVC is required';
+              } else {
+                error.CVC = 'Invalid format CVC';
+              }
+            }
+          }
+        }
       }
     }
 
@@ -187,13 +215,14 @@ function CartCheckoutSidebar(props) {
               <Label for="cardnumber">
                 <FormattedMessage {...messages.CardNumber} />
               </Label>
-              <Input
-                type="text"
+              <NumberFormat
+                format="#### #### #### ####"
+                mask="_"
                 name="cardNumber"
-                id="cardnumber"
                 value={checkoutInfo.cardNumber}
                 onChange={e => handleChangeEvent(e)}
                 placeholder="Enter number"
+                className="form-control"
               />
               <Label for="cardnumber">
                 {errors.cardNumber ? (
@@ -204,23 +233,40 @@ function CartCheckoutSidebar(props) {
               </Label>
             </FormGroup>
             <FormGroup>
-              <Label for="cvc">
-                <FormattedMessage {...messages.MMYYCVC} />
+              <Label for="mmyy">
+                <FormattedMessage {...messages.MMYY} />
               </Label>
-              <Input
-                type="text"
-                name="MMYYCVC"
-                id="cvc"
-                value={checkoutInfo.MMYYCVC}
-                placeholder="mm - yy - CVC"
+              <NumberFormat
+                format="##/##"
+                placeholder="MM/YY"
+                mask={['M', 'M', 'Y', 'Y']}
+                id="mmyy"
+                name="MMYY"
+                value={checkoutInfo.MMYY}
                 onChange={e => handleChangeEvent(e)}
+                placeholder="mm - yy "
+                className="form-control"
+              />
+              <Label for="mmyy">
+                {errors.MMYY ? <p className="error"> {errors.MMYY} </p> : ''}
+              </Label>
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="cvc">
+                <FormattedMessage {...messages.CVC} />
+              </Label>
+              <NumberFormat
+                format="###"
+                placeholder="Enter CVC"
+                name="CVC"
+                value={checkoutInfo.CVC}
+                onChange={e => handleChangeEvent(e)}
+                placeholder="CVC"
+                className="form-control"
               />
               <Label for="cvc">
-                {errors.MMYYCVC ? (
-                  <p className="error"> {errors.MMYYCVC} </p>
-                ) : (
-                  ''
-                )}
+                {errors.CVC ? <p className="error">{errors.CVC}</p> : ''}
               </Label>
             </FormGroup>
             <FormGroup check>
@@ -280,8 +326,15 @@ function CartCheckoutSidebar(props) {
           </div>
         </Wrapper>
       </Col>
+      <ToastContainer />
     </Row>
+
   );
 }
+
+CartCheckoutSidebar.propTypes = {
+  props: PropTypes.any,
+  details: PropTypes.any,
+};
 
 export default CartCheckoutSidebar;

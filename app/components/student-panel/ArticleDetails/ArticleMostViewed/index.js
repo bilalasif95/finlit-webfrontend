@@ -1,21 +1,57 @@
 /*
  * Article Most Viewed Component
  */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import JoditEditor from 'jodit-react';
+import history from 'utils/history';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import article from '../../../../images/article.svg';
-import interactivetools from '../../../../images/interactive_tools.jpg';
-import simulations from '../../../../images/simulations.jpg';
+import articleIcon from '../../../../images/article.svg';
+import { API } from '../../../../config/config';
 
 function ArticleMostViewed() {
+  const [articles, setArticles] = useState([]);
+  const editor = useRef(null);
+  const config = {
+    readonly: true,
+  };
+
+  useEffect(() => {
+    getArticleDetail();
+  }, []);
+
+  const getArticleDetail = () => {
+    axios
+      .get(`${API}api/article`, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(res => {
+        setArticles(res && res.data.data);
+      })
+      .catch(err => {
+        toast.error(
+          err.response
+            ? err.response && err.response.message
+            : 'Message Not Readable',
+        );
+      });
+  };
+
+  const showArticleDetails=(id)=>{ 
+    history.push(`/article_details/${id}`);
+  }
+
   return (
     <Wrapper id="services">
       <Container fluid="xl">
-        {/* <Row>
+        <Row>
           <Col lg={12}>
             <div className="header">
               <h4>
@@ -25,45 +61,34 @@ function ArticleMostViewed() {
           </Col>
         </Row>
         <Row>
-          <Col lg={6} md={6} sm={12} xs={12}>
-            <div className="single_item">
-              <div className="left">
-                <img src={article} alt="Icon" />
-                <h5>
-                  <FormattedMessage {...messages.InteractiveTools} />
-                </h5>
-                <p>
-                  <FormattedMessage {...messages.InteractiveToolsDesc} />
-                </p>
-                <Link className="read_more" to="/article_details">
-                  <FormattedMessage {...messages.ReadMore} />
-                </Link>
+          {articles.length > 0 && articles.slice(0, 2).map((article, index) =>
+            <Col lg={6} md={6} sm={12} xs={12} key={index} onClick={()=>showArticleDetails(article.id)}>
+              <div className="single_item">
+                <div className="left">
+                  <img src={articleIcon} alt="Icon" />
+                  <h5>
+                    {article.title}
+                  </h5>
+                  <p>
+                    <JoditEditor
+                      ref={editor}
+                      value={article.description}
+                      config={config}
+                      tabIndex={0}
+                    />
+                    <FormattedMessage {...messages.InteractiveToolsDesc} />
+                  </p>
+                  <Link className="read_more" to={`/article_details/${article.id}`}>
+                    <FormattedMessage {...messages.ReadMore} />
+                  </Link>
+                </div>
+                <div className="right">
+                  <img src={article.image} alt="Interactive Tools" />
+                </div>
               </div>
-              <div className="right">
-                <img src={interactivetools} alt="Interactive Tools" />
-              </div>
-            </div>
-          </Col>
-          <Col lg={6} md={6} sm={12} xs={12}>
-            <div className="single_item">
-              <div className="left">
-                <img src={article} alt="icon" />
-                <h5>
-                  <FormattedMessage {...messages.LiveWebinars} />
-                </h5>
-                <p>
-                  <FormattedMessage {...messages.LiveWebinarsDesc} />
-                </p>
-                <Link className="read_more" to="/article_details">
-                  <FormattedMessage {...messages.ReadMore} />
-                </Link>
-              </div>
-              <div className="right">
-                <img src={simulations} alt="Simulations" />
-              </div>
-            </div>
-          </Col>
-        </Row> */}
+            </Col>
+          )}
+        </Row>
       </Container>
     </Wrapper>
   );

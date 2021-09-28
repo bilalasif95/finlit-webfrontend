@@ -18,7 +18,7 @@ export default function ArticleDetails(props) {
   const [articleDetails, setArticleDetails] = useState({});
   useEffect(() => {
     getArticleDetail();
-  }, []);
+  }, [props.match.params.id]);
 
   const getArticleDetail = () => {
     setLoader(true);

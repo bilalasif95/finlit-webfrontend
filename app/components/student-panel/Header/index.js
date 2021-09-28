@@ -70,7 +70,9 @@ const Header = (props) => {
           userObj.roles &&
           userObj.roles[0] &&
           userObj.roles[0].roleName === 'Instructor' ? (
-              <Img src={Logo} alt="FinLit" />
+              <Link to="/dashboard">
+                <Img src={Logo} alt="FinLit" />
+              </Link>
           ) : (
               <Link to="/">
                 <Img src={Logo} alt="FinLit" />
