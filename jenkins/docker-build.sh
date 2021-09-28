@@ -6,8 +6,6 @@ GIT_COMMIT=unspecified
 LABEL=$(git log -1 --format=%h)
 
 
-echo "REACT_APP_STOAURL "$REACT_APP_STOAURL
-echo "REACT_APP_AGORAURL "$REACT_APP_AGORAURL
+echo "REACT_APP_API "$REACT_APP_API
 # Build docker of current directory
-docker build --build-arg REACT_APP_STOAURL=$REACT_APP_STOAURL \
---build-arg REACT_APP_AGORAURL=$REACT_APP_AGORAURL -t rnssolutions/finlit:$LABEL .
+docker build --build-arg REACT_APP_API=$REACT_APP_API -t rnssolutions/finlit:$LABEL .
