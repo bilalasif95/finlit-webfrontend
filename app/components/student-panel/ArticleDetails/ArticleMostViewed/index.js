@@ -13,7 +13,7 @@ import Wrapper from './Wrapper';
 import articleIcon from '../../../../images/article.svg';
 import { API } from '../../../../config/config';
 
-function ArticleMostViewed() {
+function ArticleMostViewed(props) {
   const [articles, setArticles] = useState([]);
   const editor = useRef(null);
   const config = {
@@ -44,10 +44,9 @@ function ArticleMostViewed() {
       });
   };
 
-  const showArticleDetails=(id)=>{ 
+  const showArticleDetails = (id) => {
     history.push(`/article_details/${id}`);
   }
-
   return (
     <Wrapper id="services">
       <Container fluid="xl">
@@ -61,8 +60,9 @@ function ArticleMostViewed() {
           </Col>
         </Row>
         <Row>
-          {articles.length > 0 && articles.slice(0, 2).map((article, index) =>
-            <Col lg={6} md={6} sm={12} xs={12} key={index} onClick={()=>showArticleDetails(article.id)}>
+          {articles.length > 0 && articles.slice(0, 3).map((article, index) => 
+            props.id != article.id ? 
+             <Col lg={6} md={6} sm={12} xs={12} key={index} onClick={() => showArticleDetails(article.id)}>
               <div className="single_item">
                 <div className="left">
                   <img src={articleIcon} alt="Icon" />
@@ -87,6 +87,7 @@ function ArticleMostViewed() {
                 </div>
               </div>
             </Col>
+            :""
           )}
         </Row>
       </Container>
