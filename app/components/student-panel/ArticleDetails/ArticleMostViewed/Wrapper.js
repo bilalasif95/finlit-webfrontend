@@ -33,6 +33,7 @@ margin-top: 30px;
       width: 40%;
       img {
         margin: 0;
+        height: 100%;
         width: 100%;
       }
     }

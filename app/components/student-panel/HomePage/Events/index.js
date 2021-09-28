@@ -107,7 +107,7 @@ function Events() {
                         />
                       </div>
                       <p className="posted_title">
-                        {item.creator.firstName}: {item.creator.lastName}
+                        {item.creator.firstName} {item.creator.lastName}
                       </p>
                     </div>
                   )}
