@@ -2,7 +2,7 @@
  * Webinars List Component
  */
 import React, { useEffect, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { Button } from 'reactstrap';
 import { BiTimeFive } from 'react-icons/bi';
 import { HiUsers } from 'react-icons/hi';
@@ -10,7 +10,7 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import { GrFormEdit } from 'react-icons/gr';
 import axios from 'axios';
 // import { Link } from 'react-router-dom';
-import messages from './messages';
+// import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
 import Loader from '../../Loader';
@@ -26,8 +26,8 @@ function HackathonList() {
     const token = localStorage.getItem('token');
     const authHeaders = token
       ? {
-          Authorization: `Bearer ${token}`,
-        }
+        Authorization: `Bearer ${token}`,
+      }
       : {};
     axios
       .get(`${API}api/events/getEventsByTypesAndUser?type=Hackathon`, {
@@ -116,16 +116,15 @@ function HackathonList() {
           {/* <div className="form_footer">
             <div className="bottom_btns">
               <Button className="btn_save">
-                <FormattedMessage {...messages.Previous} />
+                // <FormattedMessage {...messages.Previous} />
               </Button>
               <Button className="btn_submit">
-                <FormattedMessage {...messages.Next} />
+                // <FormattedMessage {...messages.Next} />
               </Button>
             </div>
           </div> */}
         </>
-      )
-      }
+      )}
     </Wrapper>
   );
 }

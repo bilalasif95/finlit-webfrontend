@@ -38,11 +38,11 @@ export default defineMessages({
   },
   StartTime: {
     id: `${scope}.StartTime`,
-    defaultMessage: `Starting Time*`,
+    defaultMessage: `Starting Time* (e.g HH:MM:AM)`,
   },
   EndTime: {
     id: `${scope}.EndTime`,
-    defaultMessage: `Ending Time*`,
+    defaultMessage: `Ending Time* (e.g HH:MM:AM)`,
   },
   AddPresenter: {
     id: `${scope}.AddPresenter`,

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import history from 'utils/history';
 import { API } from '../../../../config/config';
 import Wrapper from './Wrapper';
@@ -51,10 +51,15 @@ function Events() {
   };
   const getTimeAndDateFormat = (date, time) => {
     const daysName = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    const day = moment(date).utc().day();
+    const zone = 'PKT';
+    const day = moment(date)
+      .utc()
+      .day();
     const momentDtObj = moment(date).format('ll');
     const momentTim = moment(time, ['HH:mm']).format('hh:mm A');
-    const datetimeformat = `${daysName[day]}, ${momentDtObj}, ${momentTim}`;
+    const datetimeformat = `${
+      daysName[day]
+    }, ${momentDtObj}, ${momentTim} ${zone}`;
     return datetimeformat;
   };
 
@@ -72,7 +77,10 @@ function Events() {
         <Row>
           {eventsList.map(item => (
             <Col lg={3} md={6} sm={6} xs={12} key={item.id}>
-              <div className="single_item" onClick={ () => handleEventRedirect(item.type,item.id)}>
+              <div
+                className="single_item"
+                onClick={() => handleEventRedirect(item.type, item.id)}
+              >
                 <div className="event_img">
                   <img src={item.eventImage} alt={item.alt} />
                   <div className="title">
