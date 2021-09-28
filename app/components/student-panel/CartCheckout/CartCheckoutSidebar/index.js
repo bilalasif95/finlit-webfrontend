@@ -95,8 +95,7 @@ function CartCheckoutSidebar(props) {
         error.cardHolderName = 'Card name is required';
       } else if (!values.cardNumber) {
         error.cardNumber = 'Card number is required';
-      }
-      else {
+      } else {
         const validateCard = values.cardNumber.toString().search('_');
         if (validateCard >= 0) {
           error.cardNumber = 'Invalid card number format';
@@ -113,9 +112,10 @@ function CartCheckoutSidebar(props) {
             } else {
               if (!values.CVC) {
                 error.CVC = 'CVC is required';
-              } else {
-                error.CVC = 'Invalid format CVC';
               }
+              // else {
+              //   error.CVC = 'Invalid format CVC';
+              // }
             }
           }
         }
