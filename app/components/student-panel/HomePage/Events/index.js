@@ -13,6 +13,7 @@ import event1 from '../../../../images/event1.png';
 
 function Events() {
   const [eventsList, setEventsList] = useState([]);
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   useEffect(() => {
     getEventsList();
   }, []);
@@ -51,7 +52,14 @@ function Events() {
   };
   const getTimeAndDateFormat = (date, time) => {
     const daysName = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    const zone = moment.tz.guess();
+    let zone = '';
+    if(userInfo.country === 'PAK'){
+      zone = 'PKT';
+    } else if(userInfo.country === 'KSA'){
+      zone = 'AST';
+    } else if(userInfo.country === 'KR'){
+      zone = 'KST';
+    }
     const day = moment(date).utc().day();
     const momentDtObj = moment(date).format('ll');
     const momentTim = moment(time, ['HH:mm']).format('hh:mm A');

@@ -30,7 +30,7 @@ export default function CartCheckout() {
         status ? setLoader(false) : ""
       });
   }
-  
+
   const RemoveFromCart = (id) => {
     axios
       .delete(`${API}api/cart/removeFromCart/${id}`, axiosHeader)
