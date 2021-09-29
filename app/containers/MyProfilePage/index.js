@@ -36,7 +36,7 @@ import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthenticat
 
 export default function MyProfilePage() {
   const [activeTab, setActiveTab] = useState('1');
-  const [profileImg, setProfileImg] = useState('');
+  const [userObj, setUserObj] = useState({});
   const [newProfileImg, setNewProfileImg] = useState({});
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -53,7 +53,7 @@ export default function MyProfilePage() {
         },
       })
       .then(res => {
-        setProfileImg(res.data.image);
+        setUserObj(res.data);
       })
       .catch(err => {
         toast.error(
@@ -111,7 +111,7 @@ export default function MyProfilePage() {
                 <div className="profile_sidebar">
                   <div className="pro_img">
                     <div className="inner">
-                      <Img src={profileImg || 'https://i.imgur.com/qUzPHy4.jpg'} alt="Profile" />
+                      <Img src={userObj.image || 'https://i.imgur.com/qUzPHy4.jpg'} alt="Profile" />
                     </div>
                     <Label>
                       {' '}
@@ -157,6 +157,12 @@ export default function MyProfilePage() {
                       >
                         <RiKeyLine />
                         <FormattedMessage {...messages.TwoFAuth} />
+                        &nbsp; &nbsp;&nbsp; &nbsp;
+                        {userObj.twoFA ? (
+                          <p style={{ color: 'Green' }}>Enabled</p>
+                        ) : (
+                          <p style={{ color: 'Red' }}>Disabled</p>
+                        )}
                       </NavLink>
                     </NavItem>
                   </Nav>
@@ -171,7 +177,10 @@ export default function MyProfilePage() {
                     <ChangePassword />
                   </TabPane>
                   <TabPane tabId="3">
-                    <TwoFAAuthentication active={activeTab} />
+                    <TwoFAAuthentication
+                      active={activeTab}
+                      userData={userObj}
+                    />
                   </TabPane>
                 </TabContent>
               </Col>

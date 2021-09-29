@@ -59,7 +59,7 @@ export default function ArticleDetails(props) {
               </Col>
             </Row>
           </Container>
-          <ArticleMostViewed id={props.match.params.id}/>
+          <ArticleMostViewed id={props.match.params.id} />
         </>
       )}
     </div>
