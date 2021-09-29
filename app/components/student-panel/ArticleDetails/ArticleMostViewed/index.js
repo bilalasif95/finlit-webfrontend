@@ -44,9 +44,9 @@ function ArticleMostViewed(props) {
       });
   };
 
-  const showArticleDetails = (id) => {
+  const showArticleDetails = id => {
     history.push(`/article_details/${id}`);
-  }
+  };
   return (
     <Wrapper id="services">
       <Container fluid="xl">
@@ -60,35 +60,37 @@ function ArticleMostViewed(props) {
           </Col>
         </Row>
         <Row>
-          {articles.length > 0 && articles.slice(0, 3).map((article, index) => 
-            props.id != article.id ? 
-             <Col lg={6} md={6} sm={12} xs={12} key={index} onClick={() => showArticleDetails(article.id)}>
-              <div className="single_item">
-                <div className="left">
-                  <img src={articleIcon} alt="Icon" />
-                  <h5>
-                    {article.title}
-                  </h5>
-                  <p>
-                    <JoditEditor
-                      ref={editor}
-                      value={article.description}
-                      config={config}
-                      tabIndex={0}
-                    />
-                    <FormattedMessage {...messages.InteractiveToolsDesc} />
-                  </p>
-                  <Link className="read_more" to={`/article_details/${article.id}`}>
-                    <FormattedMessage {...messages.ReadMore} />
-                  </Link>
-                </div>
-                <div className="right">
-                  <img src={article.image} alt="Interactive Tools" />
-                </div>
-              </div>
-            </Col>
-            :""
-          )}
+          {articles.length > 0 &&
+            articles.slice(0, 3).map((article, index) =>
+              props.id != article.id ? (
+              <Col lg={6} md={6} sm={12} xs={12} key={index} onClick={() => showArticleDetails(article.id)}>
+                <div className="single_item">
+                    <div className="left">
+                      <img src={articleIcon} alt="Icon" />
+                    <h5>
+                      {article.title}
+                    </h5>
+                    <p>
+                        <JoditEditor
+                          ref={editor}
+                        value={article.description}
+                          config={config}
+                          tabIndex={0}
+                      />
+                        <FormattedMessage {...messages.InteractiveToolsDesc} />
+                    </p>
+                    <Link className="read_more" to={`/article_details/${article.id}`}>
+                        <FormattedMessage {...messages.ReadMore} />
+                      </Link>
+                    </div>
+                    <div className="right">
+                      <img src={article.image} alt="Interactive Tools" />
+                  </div>
+                  </div>
+                </Col>
+              :""
+              ),
+            )}
         </Row>
       </Container>
     </Wrapper>

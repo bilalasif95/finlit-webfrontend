@@ -16,8 +16,8 @@ import { API } from '../../../config/config';
 import Loader from '../../Loader';
 
 function HackathonList() {
-  const [hackathonList, sethackathonList] = useState([]),
-        [loader, setLoader] = useState(false);
+  const [hackathonList, sethackathonList] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
     getHackathonLists();
   }, []);

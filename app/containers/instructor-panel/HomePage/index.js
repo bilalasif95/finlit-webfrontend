@@ -22,8 +22,7 @@ export function HomePage() {
       .then(res => {
         setStatisticsCounter(res.data.data);
       })
-      .catch(err => {
-      });
+      .catch(err => {});
   }, []);
   return (
     <div className="main_page">

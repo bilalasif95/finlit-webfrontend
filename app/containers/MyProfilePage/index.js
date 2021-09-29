@@ -33,7 +33,6 @@ import ChangePassword from '../../components/MyProfilePage/ChangePassword';
 import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthentication';
 // import Profile from '../../images/profile.jpg';
 
-
 export default function MyProfilePage() {
   const [activeTab, setActiveTab] = useState('1');
   const [profileImg, setProfileImg] = useState('');
@@ -111,7 +110,10 @@ export default function MyProfilePage() {
                 <div className="profile_sidebar">
                   <div className="pro_img">
                     <div className="inner">
-                      <Img src={profileImg || 'https://i.imgur.com/qUzPHy4.jpg'} alt="Profile" />
+                      <Img
+                        src={profileImg || 'https://i.imgur.com/qUzPHy4.jpg'}
+                        alt="Profile"
+                      />
                     </div>
                     <Label>
                       {' '}

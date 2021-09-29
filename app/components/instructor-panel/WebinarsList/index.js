@@ -17,8 +17,8 @@ import { API } from '../../../config/config';
 import Loader from '../../Loader';
 
 function WebinarsList() {
-  const [webinarsList, setwebinarsList] = useState([]),
-        [loader, setLoader] = useState(false);
+  const [webinarsList, setwebinarsList] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
     getWebinarList();
   }, []);
@@ -83,8 +83,7 @@ function WebinarsList() {
                       <div className="date_level">
                         <p>
                           {item.data.startDate}
-                          &nbsp;
-                          All Level
+                          &nbsp; All Level
                         </p>
                       </div>
                     </div>
@@ -125,7 +124,6 @@ function WebinarsList() {
               </Button>
             </div>
           </div> */}
-
         </>
       )}
     </Wrapper>

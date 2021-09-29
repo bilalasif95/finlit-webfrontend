@@ -58,7 +58,7 @@ const Header = () => {
       .catch(err => {
         history.push('/');
       });
-  }
+  };
   const LogOut = () => {
     history.push('/login');
     localStorage.clear();
@@ -206,7 +206,11 @@ const Header = () => {
                     <div className="user_account">
                       <div className="user_icon">
                         <Img
-                          src={userObj.image ? userObj.image : 'https://i.imgur.com/qUzPHy4.jpg'}
+                          src={
+                            userObj.image
+                              ? userObj.image
+                              : 'https://i.imgur.com/qUzPHy4.jpg'
+                          }
                           alt="User"
                         />
                       </div>
@@ -251,7 +255,7 @@ const Header = () => {
                         </Link>
                       </DropdownItem>
                     ) : (
-                    <></>
+                      <></>
                     )}
                     <DropdownItem onClick={() => LogOut()}>
                       <div>

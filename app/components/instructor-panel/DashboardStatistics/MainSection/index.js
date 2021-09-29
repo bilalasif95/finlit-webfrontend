@@ -18,7 +18,7 @@ function MainSection(props) {
   const [userObj, setUserObj] = useState({});
 
   const toggle = () => setDropdownOpen(prevState => !prevState);
-  let statistics = props.statistics;
+  const { statistics } = props;
 
   React.useEffect(() => {
     const userObj = JSON.parse(localStorage.getItem('userInfo') || '');
