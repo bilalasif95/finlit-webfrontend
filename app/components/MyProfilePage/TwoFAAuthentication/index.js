@@ -32,6 +32,7 @@ function TwoFAAuthentication(props) {
   const [stepThree, setStepThree] = useState(false);
   const [stepFour, setStepFour] = useState(false);
   const [stepFive, setStepFive] = useState(false);
+  const [error, setError] = useState(false);
 
   const [QrUri, setQrUri] = useState('');
   const [twoFaCode, setTwoFaCode] = useState('');
@@ -63,6 +64,22 @@ function TwoFAAuthentication(props) {
       });
   };
   const verifyTwoFaCode = () => {
+    if (!twoFaCode) {
+      setError('Code is Required');
+      setTimeout(() => {
+        setError('');
+      }, 3000);
+      return;
+    }
+    if (twoFaCode.length !== 6) {
+      setError(
+        'Code format is invalid. Code Should be Only 6 digits on your authenticator app.',
+      );
+      setTimeout(() => {
+        setError('');
+      }, 3000);
+      return;
+    }
     const token = localStorage.getItem('token');
     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
@@ -143,11 +160,19 @@ function TwoFAAuthentication(props) {
     setStepFive(false);
   };
   useEffect(() => {
-    setStepOne(true);
-    setStepTwo(false);
-    setStepThree(false);
-    setStepFour(false);
-    setStepFive(false);
+    if (props.userData.twoFA === true) {
+      setStepOne(false);
+      setStepTwo(false);
+      setStepThree(false);
+      setStepFour(true);
+      setStepFive(false);
+    } else {
+      setStepOne(true);
+      setStepTwo(false);
+      setStepThree(false);
+      setStepFour(false);
+      setStepFive(false);
+    }
   }, [props]);
   return (
     <Wrapper>
@@ -237,13 +262,24 @@ function TwoFAAuthentication(props) {
       {stepFour && (
         <div className="step_four">
           <div className="enable_auth">
-            <h4>
-              <FormattedMessage {...messages.EnableAuth} />
-            </h4>
-            <p>
-              Enable 2FA Google Authenticator, to increase your account
-              security.
-            </p>
+            {props.userData.twoFA ? (
+              <>
+                <h4>
+                  <FormattedMessage {...messages.DisableAuth} />
+                </h4>
+                <p>Disable 2FA Authentication.</p>
+              </>
+            ) : (
+              <>
+                <h4>
+                  <FormattedMessage {...messages.EnableAuth} />
+                </h4>
+                <p>
+                  Enable 2FA Google Authenticator, to increase your account
+                  security.
+                </p>
+              </>
+            )}
             <FormGroup>
               <Label for="authcode">
                 <FormattedMessage {...messages.AuthenticatorCode} />
@@ -258,6 +294,9 @@ function TwoFAAuthentication(props) {
                   setTwoFaCode(e.target.value);
                 }}
               />
+              <Label for="authcode">
+                {error ? <p className="error">{error}</p> : ''}
+              </Label>
               <FormText color="muted">
                 Enter the 6 digit code visible on your google authenticator app
               </FormText>
@@ -265,9 +304,20 @@ function TwoFAAuthentication(props) {
           </div>
           <div className="form_footer">
             <div className="bottom_btns">
-              <Button className="btn_cancel" onClick={handleStepThreeClose}>
-                <FormattedMessage {...messages.Cancel} />
-              </Button>
+              {props.userData.twoFA ? (
+                <Button
+                  className="btn_cancel"
+                  onClick={() => {
+                    setTwoFaCode('');
+                  }}
+                >
+                  <FormattedMessage {...messages.Cancel} />
+                </Button>
+              ) : (
+                <Button className="btn_cancel" onClick={handleStepThreeClose}>
+                  <FormattedMessage {...messages.Cancel} />
+                </Button>
+              )}
               <Button className="btn_submit" onClick={verifyTwoFaCode}>
                 <FormattedMessage {...messages.ContinueVerify} />
               </Button>

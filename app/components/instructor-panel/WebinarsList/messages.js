@@ -40,6 +40,10 @@ export default defineMessages({
     id: `${scope}.Hours`,
     defaultMessage: '63 total hours',
   },
+  Timings: {
+    id: `${scope}.timings`,
+    defaultMessage: 'Timings',
+  },
   UpdatedDate: {
     id: `${scope}.UpdatedDate`,
     defaultMessage: 'Updated 5/2021',

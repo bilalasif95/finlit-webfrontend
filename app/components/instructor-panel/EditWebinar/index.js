@@ -13,14 +13,15 @@ import {
 import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
 import history from 'utils/history';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../config/config';
 import { redirectToLogin } from '../../../utils/redirectToLogin';
 
-function AddWebinar() {
+function EditWebinar(props) {
+  const webinarId = props.id;
   const editor = useRef(null);
   const [content, setContent] = useState('');
   const [errors, setErrors] = useState({});
@@ -28,6 +29,7 @@ function AddWebinar() {
 
   useEffect(() => {
     redirectToLogin();
+    getWebinar(webinarId);
   }, []);
 
   const config = {
@@ -47,6 +49,43 @@ function AddWebinar() {
     description: '',
     redirectionUrl: '',
   });
+
+  const getWebinar = id => {
+    setLoader(true);
+    const token = localStorage.getItem('token');
+    const authHeaders = token
+      ? {
+        Authorization: `Bearer ${token}`,
+      }
+      : {};
+    axios
+      .get(`${API}api/events/user/${id}`, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          ...authHeaders,
+        },
+      })
+      .then(res => {
+        setWebinarStatus({
+          mainTitle: res.data.data.data.mainTitle,
+          subTitle: res.data.data.data.subTitle,
+          startDate: res.data.data.data.startDate,
+          endDate: res.data.data.data.endDate,
+          startTime: res.data.data.data.startTime,
+          endTime: res.data.data.data.endTime,
+          price: res.data.data.data.price,
+          presenter: res.data.data.data.presentor,
+          redirectionUrl: res.data.data.redirectionUrl,
+          image: '',
+        });
+        setContent(res.data.data.data.description);
+        setLoader(false);
+      })
+      .catch(() => {
+        setLoader(false);
+      });
+  };
 
   const handleChangeEvent = event => {
     if (event.target.type === 'checkbox') {
@@ -108,7 +147,7 @@ function AddWebinar() {
       bodyFormData.append('data', subDataString);
       bodyFormData.append('redirectionUrl', webinarStatus.redirectionUrl);
       axios
-        .post(`${API}api/events`, bodyFormData, {
+        .put(`${API}api/events/${webinarId}`, bodyFormData, {
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
@@ -266,10 +305,10 @@ function AddWebinar() {
                       <input
                         type="file"
                         name="image"
-                        accept="image/png, image/gif, image/jpeg ,image/*"
                         id="uploadimage"
                         placeholder="Upload Image"
                         onChange={e => handleChangeEvent(e)}
+                        accept="image/*"
                       />
                     </div>
                   </div>
@@ -492,4 +531,4 @@ function AddWebinar() {
   );
 }
 
-export default AddWebinar;
+export default EditWebinar;

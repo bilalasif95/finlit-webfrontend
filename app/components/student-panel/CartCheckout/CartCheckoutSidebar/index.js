@@ -111,17 +111,15 @@ function CartCheckoutSidebar(props) {
               error.MMYY = 'Invalid format mm/yy';
             } else if (!values.CVC) {
               error.CVC = 'CVC is required';
-            } else {
-              error.CVC = 'Invalid format CVC';
+            } else if (isNaN(values.CVC)) {
+              error.CVC = 'Invalid CVC format';
             }
           }
         }
       }
     }
-
     return error;
   };
-
   return (
     <Row>
       <Col lg={12}>
@@ -184,10 +182,10 @@ function CartCheckoutSidebar(props) {
               </FormGroup>
             </FormGroup>
             {/* <div className="paypal">
-            <p>
-              <FormattedMessage {...messages.PayPalInfo} />
-            </p>
-          </div> */}
+              <p>
+                <FormattedMessage {...messages.PayPalInfo} />
+              </p>
+            </div> */}
             <FormGroup>
               <Label for="cardholdername">
                 <FormattedMessage {...messages.CardholderName} />
@@ -325,7 +323,6 @@ function CartCheckoutSidebar(props) {
     </Row>
   );
 }
-
 CartCheckoutSidebar.propTypes = {
   props: PropTypes.any,
   details: PropTypes.any,

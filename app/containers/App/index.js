@@ -35,8 +35,12 @@ import Home from 'containers/instructor-panel/HomePage/Loadable';
 import AddWebinarPage from 'containers/instructor-panel/AddWebinarPage/Loadable';
 import AddHackathonPage from 'containers/instructor-panel/AddHackathonPage/Loadable';
 import AddBootCampPage from 'containers/instructor-panel/AddBootCampPage/Loadable';
+import EditWebinarPage from 'containers/instructor-panel/EditWebinarPage/Loadable';
+import EditHackathonPage from 'containers/instructor-panel/EditHackathonPage/Loadable';
+import EditBootCampPage from 'containers/instructor-panel/EditBootCampPage/Loadable';
 import AddCoursesPage from 'containers/instructor-panel/AddCoursesPage/Loadable';
 import AddArticlePage from 'containers/instructor-panel/AddArticlePage/Loadable';
+import EditArticlePage from 'containers/instructor-panel/EditArticlePage/Loadable';
 import CoursesListPage from 'containers/instructor-panel/CoursesListPage/Loadable';
 import WebinarsListPage from 'containers/instructor-panel/WebinarsListPage/Loadable';
 import HackathonListPage from 'containers/instructor-panel/HackathonListPage/Loadable';
@@ -103,8 +107,12 @@ const App = () => {
         <Route exact path="/add_webinar" component={AddWebinarPage} />
         <Route path="/add_hackathon" component={AddHackathonPage} />
         <Route path="/add_bootcamp" component={AddBootCampPage} />
+        <Route exact path="/edit_webinar/:id" component={EditWebinarPage} />
+        <Route path="/edit_hackathon/:id" component={EditHackathonPage} />
+        <Route path="/edit_bootcamp/:id" component={EditBootCampPage} />
         <Route path="/add_course" component={AddCoursesPage} />
         <Route path="/add_article" component={AddArticlePage} />
+        <Route path="/edit_article/:id" component={EditArticlePage} />
         <Route path="/courses_list" component={CoursesListPage} />
         <Route path="/webinars_list" component={WebinarsListPage} />
         <Route path="/hackathons_list" component={HackathonListPage} />

@@ -2,15 +2,18 @@
  * Webinars List Component
  */
 import React, { useEffect, useState } from 'react';
-// import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { Button } from 'reactstrap';
 import { BiTimeFive } from 'react-icons/bi';
 import { HiUsers } from 'react-icons/hi';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { GrFormEdit } from 'react-icons/gr';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 // import { Link } from 'react-router-dom';
-// import messages from './messages';
+import history from 'utils/history';
+import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
 import Loader from '../../Loader';
@@ -21,6 +24,43 @@ function HackathonList() {
   useEffect(() => {
     getHackathonLists();
   }, []);
+
+  const dltHackathon = id => {
+    setLoader(true);
+    const token = localStorage.getItem('token');
+    const authHeaders = token
+      ? {
+        Authorization: `Bearer ${token}`,
+      }
+      : {};
+    axios
+      .delete(`${API}api/events/${id}`, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          ...authHeaders,
+        },
+      })
+      .then(res => {
+        toast.success(
+          res && res.data.message
+            ? res.data.message.toString()
+            : 'Message Not Readable',
+        );
+        setTimeout(() => {
+          getHackathonLists();
+          setLoader(false);
+        }, 4000);
+      })
+      .catch(err => {
+        toast.error(
+          err.response && err.response.data.message
+            ? err.response.data.message.toString()
+            : 'Message Not Readable',
+        );
+        setLoader(false);
+      });
+  };
   const getHackathonLists = () => {
     setLoader(true);
     const token = localStorage.getItem('token');
@@ -41,8 +81,12 @@ function HackathonList() {
         setLoader(false);
       });
   };
+  const editHackathon = id => {
+    history.push(`/edit_hackathon/${id}`);
+  };
   return (
     <Wrapper>
+      <ToastContainer />
       {loader ? (
         <Loader />
       ) : (
@@ -72,13 +116,17 @@ function HackathonList() {
                   <div className="course_outcomes">
                     <div className="date_time">
                       <BiTimeFive />
-                      <div className="time-text">Timing</div>
-                      &nbsp;
-                      <div className="hours">{item.data.startTime}</div>
+                      <div className="time-text">
+                        <FormattedMessage {...messages.Timings} />
+                      </div>
+                      &nbsp;&nbsp;
+                      <div className="hours">
+                        {item.data.startTime} - {item.data.endTime}
+                      </div>
                       <div className="date_level">
                         <p>
-                          <HiUsers />
-                          {20}
+                          {item.data.startDate}
+                          &nbsp;All Level
                         </p>
                       </div>
                     </div>
@@ -99,10 +147,20 @@ function HackathonList() {
                   </div>
                 </div>
                 <div className="actions_btn">
-                  <Button>
+                  <Button
+                    onClick={() => {
+                      const { id } = item;
+                      editHackathon(id);
+                    }}
+                  >
                     <GrFormEdit />
                   </Button>
-                  <Button>
+                  <Button
+                    onClick={() => {
+                      const { id } = item;
+                      dltHackathon(id);
+                    }}
+                  >
                     <AiOutlineDelete />
                   </Button>
                 </div>
