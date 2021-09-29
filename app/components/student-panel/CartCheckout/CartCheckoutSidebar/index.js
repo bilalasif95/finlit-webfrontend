@@ -109,13 +109,11 @@ function CartCheckoutSidebar(props) {
             const validateyy = values.MMYY.toString().search('Y');
             if (validateyy >= 0) {
               error.MMYY = 'Invalid format mm/yy';
-            } else {
-              if (!values.CVC) {
-                error.CVC = 'CVC is required';
+            } else if (!values.CVC) {
+              error.CVC = 'CVC is required';
+            } else if (isNaN(values.CVC)) {
+                error.CVC = 'Invalid CVC format';
               }
-              // else {
-              //   error.CVC = 'Invalid format CVC';
-              // }
             }
           }
         }
@@ -238,7 +236,6 @@ function CartCheckoutSidebar(props) {
               </Label>
               <NumberFormat
                 format="##/##"
-                placeholder="MM/YY"
                 mask={['M', 'M', 'Y', 'Y']}
                 id="mmyy"
                 name="MMYY"
@@ -262,7 +259,6 @@ function CartCheckoutSidebar(props) {
                 name="CVC"
                 value={checkoutInfo.CVC}
                 onChange={e => handleChangeEvent(e)}
-                placeholder="CVC"
                 className="form-control"
               />
               <Label for="cvc">
@@ -328,7 +324,6 @@ function CartCheckoutSidebar(props) {
       </Col>
       <ToastContainer />
     </Row>
-
   );
 }
 
