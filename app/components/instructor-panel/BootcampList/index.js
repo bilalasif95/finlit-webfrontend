@@ -10,7 +10,6 @@ import { AiOutlineCalendar, AiOutlineDelete } from 'react-icons/ai';
 import { GrFormEdit } from 'react-icons/gr';
 // import { Link } from 'react-router-dom';
 import axios from 'axios';
-import history from 'utils/history';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
@@ -44,9 +43,9 @@ function BootcampList() {
       });
   };
 
-  const handleBootcampList = id => {
-    // history.push('/bootcamp_details/' + id);
-  };
+  // const handleBootcampList = id => {
+  //   // history.push('/bootcamp_details/' + id);
+  // };
   return (
     <Wrapper>
       {loader ? (
@@ -58,7 +57,9 @@ function BootcampList() {
               <div
                 className="single_course"
                 key={item.id}
-                onClick={() => handleBootcampList(item.id)}
+                role="button"
+                tabIndex={0}
+                // onClick={() => handleBootcampList(item.id)}
               >
                 <div className="course_img">
                   <img src={item.eventImage} alt="Course" />

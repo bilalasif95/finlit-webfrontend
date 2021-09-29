@@ -10,14 +10,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
 import { API } from '../../config/config';
-import UseEnterKeyListener from "../../config/useEnterKeyListener";
+import UseEnterKeyListener from '../../config/useEnterKeyListener';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [btnClick, setBtnClick] = useState(false);
   UseEnterKeyListener({
-    querySelectorToExecuteClick: "#submitButton"
+    querySelectorToExecuteClick: '#submitButton'
   });
 
   const forgotPasswordBtn = () => {

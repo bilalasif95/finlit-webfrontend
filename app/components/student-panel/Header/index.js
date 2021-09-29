@@ -55,7 +55,7 @@ const Header = () => {
       .then(result => {
         setUserObj(result.data);
       })
-      .catch(err => {
+      .catch(() => {
         history.push('/');
       });
   };
@@ -69,9 +69,9 @@ const Header = () => {
       <Navbar expand="lg">
         <Container fluid="xl">
           {userObj &&
-          userObj.roles &&
-          userObj.roles[0] &&
-          userObj.roles[0].roleName === 'Instructor' ? (
+            userObj.roles &&
+            userObj.roles[0] &&
+            userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
               <Img src={Logo} alt="FinLit" />
             </Link>
@@ -242,9 +242,9 @@ const Header = () => {
                       <div />
                     </DropdownItem>
                     {userObj &&
-                    userObj.roles &&
-                    userObj.roles[0] &&
-                    userObj.roles[0].roleName === 'Student' ? (
+                      userObj.roles &&
+                      userObj.roles[0] &&
+                      userObj.roles[0].roleName === 'Student' ? (
                       <DropdownItem>
                         <Link to="/cart">
                           <div>

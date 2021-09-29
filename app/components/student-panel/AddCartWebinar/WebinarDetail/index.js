@@ -4,6 +4,7 @@
 import React, { useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import { BiCalendar, BiTimeFive } from 'react-icons/bi';
 import { IoMdShare } from 'react-icons/io';
 import { GrLocation } from 'react-icons/gr';
@@ -20,8 +21,8 @@ function WebinarDetail(props) {
   const config = {
     readonly: true,
   };
-  let detail = props.detail;
-  let dataDetails = detail.data;
+  const{ detail} = props;
+  const dataDetails = detail.data;
 
   return (
     <Wrapper id="list">
@@ -48,7 +49,7 @@ function WebinarDetail(props) {
               <FormattedMessage {...messages.Date} />
             </p>
             <p className="value">
-              {moment(detail.updatedAt).format("MMM DD ,YYYY")}
+              {moment(detail.updatedAt).format('MMM DD ,YYYY')}
             </p>
           </div>
           <div className="item">
@@ -98,7 +99,10 @@ function WebinarDetail(props) {
                 <div className="outcomers">
                   <div className="presenter_name">
                     <p>Presenter |&nbsp;&nbsp;</p>
-                    <p className="name">{ props && props.detail && props.detail.data ? props.detail.data.presentor : ''}</p>
+                    <p className="name">
+                      {props && props.detail && props.detail.data
+                        ? props.detail.data.presentor
+                        : ''}</p>
                   </div>
                   {/* <div className="rating">
                     <p>4.7</p>
@@ -123,5 +127,7 @@ function WebinarDetail(props) {
     </Wrapper>
   );
 }
-
+WebinarDetail.propTypes = {
+  detail: PropTypes.any,
+};
 export default WebinarDetail;

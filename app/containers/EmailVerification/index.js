@@ -1,28 +1,22 @@
 /*
  * Sign Up Page
  */
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import * as qs from 'query-string';
 import axios from 'axios';
+import { FormattedMessage } from 'react-intl';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../config/config';
-import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import Check from '../../images/checkImg.svg';
 
 export default function EmailVerificationPage() {
-  const [error, setError] = useState('');
   const parsed = qs.parse(location.search);
-  console.log(parsed);
-  const authHeaders = parsed
-    ? {
-      Authorization: `Bearer ${parsed.token}`,
-    }
-    : {};
+  const authHeaders = parsed ? { Authorization: `Bearer ${parsed.token}`, } : {};
   axios
     .get(`${API}api/auth/confirmEmail`, {
       headers: {
@@ -31,7 +25,7 @@ export default function EmailVerificationPage() {
         ...authHeaders,
       },
     })
-    .then(result => {
+    .then(() => {
       toast.success('Success, Please Login to Continue');
     })
     .catch(err => {
@@ -39,34 +33,34 @@ export default function EmailVerificationPage() {
     });
   return (
     <>
-    <div className="verification_page">
-      <Helmet>
-        <title>- Email Verification</title>
-        <meta name="description" content="FinLit - Email Verification" />
-      </Helmet>
+      <div className="verification_page">
+        <Helmet>
+          <title>- Email Verification</title>
+          <meta name="description" content="FinLit - Email Verification" />
+        </Helmet>
 
-      <Container>
-        <Row>
-          <Col lg={12}>
-            <div className="verification-main">
-              <div className="email-verification">
-                <img src={Check} />
-                <h4>
-                  <FormattedMessage {...messages.EmailTitle} />
-                </h4>
-                <p>
-                  <FormattedMessage {...messages.Emaildetail} />
-                </p>
-                <Link className="verification-button" to="/login">
-                  Login
-                </Link>
+        <Container>
+          <Row>
+            <Col lg={12}>
+              <div className="verification-main">
+                <div className="email-verification">
+                  <img src={Check} />
+                  <h4>
+                    <FormattedMessage {...messages.EmailTitle} />
+                  </h4>
+                  <p>
+                    <FormattedMessage {...messages.Emaildetail} />
+                  </p>
+                  <Link className="verification-button" to="/login">
+                    Login
+                  </Link>
+                </div>
               </div>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-    <ToastContainer />
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <ToastContainer />
     </>
   );
 }

@@ -314,7 +314,7 @@ const Wrapper = styled.div`
               }
               &:focus {
                 background: #e0f6d0;
-                border: 1px solid #E0F6D0;
+                border: 1px solid #e0f6d0;
                 box-shadow: initial;
                 outline: none;
                 svg {

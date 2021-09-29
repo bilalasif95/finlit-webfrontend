@@ -1,19 +1,19 @@
-const { useEffect } = require("react");
+const { useEffect } = require('react');
 
 const UseEnterKeyListener = ({ querySelectorToExecuteClick }) => {
   useEffect(() => {
     const listener = (event) => {
-      if (event.code === "Enter" || event.code === "NumpadEnter") {
+      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
         handlePressEnter();
       }
     };
-    document.addEventListener("keydown", listener);
+    document.addEventListener('keydown', listener);
     return () => {
-      document.removeEventListener("keydown", listener);
+      document.removeEventListener('keydown', listener);
     };
   }, []);
   const handlePressEnter = () => {
-    const mouseClickEvents = ["mousedown", "click", "mouseup"];
+    const mouseClickEvents = ['mousedown', 'click', 'mouseup'];
     function simulateMouseClick(element) {
       if(element === null){}
       else{

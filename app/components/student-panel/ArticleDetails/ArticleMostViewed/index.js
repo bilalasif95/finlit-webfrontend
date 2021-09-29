@@ -5,7 +5,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import JoditEditor from 'jodit-react';
 import history from 'utils/history';
 import messages from './messages';
@@ -61,40 +64,42 @@ function ArticleMostViewed(props) {
         </Row>
         <Row>
           {articles.length > 0 &&
-            articles.slice(0, 3).map((article, index) =>
-              props.id != article.id ? (
-              <Col lg={6} md={6} sm={12} xs={12} key={index} onClick={() => showArticleDetails(article.id)}>
+            articles.slice(0, 3).map((article) =>
+              props.id !== article.id ? <Col lg={6} md={6} sm={12} xs={12} key={article.id} onClick={() => showArticleDetails(article.id)}>
                 <div className="single_item">
-                    <div className="left">
-                      <img src={articleIcon} alt="Icon" />
+                  <div className="left">
+                    <img src={articleIcon} alt="Icon" />
                     <h5>
                       {article.title}
                     </h5>
                     <p>
-                        <JoditEditor
-                          ref={editor}
+                      <JoditEditor
+                        ref={editor}
                         value={article.description}
-                          config={config}
-                          tabIndex={0}
+                        config={config}
+                        tabIndex={0}
                       />
-                        <FormattedMessage {...messages.InteractiveToolsDesc} />
+                      <FormattedMessage {...messages.InteractiveToolsDesc} />
                     </p>
                     <Link className="read_more" to={`/article_details/${article.id}`}>
-                        <FormattedMessage {...messages.ReadMore} />
-                      </Link>
-                    </div>
-                    <div className="right">
-                      <img src={article.image} alt="Interactive Tools" />
+                      <FormattedMessage {...messages.ReadMore} />
+                    </Link>
                   </div>
+                  <div className="right">
+                    <img src={article.image} alt="Interactive Tools" />
                   </div>
-                </Col>
-              :""
-              ),
+                </div>
+              </Col>
+                : ''
+
             )}
         </Row>
       </Container>
+      <ToastContainer />
     </Wrapper>
   );
 }
-
+ArticleMostViewed.propTypes = {
+  id: PropTypes.any,
+};
 export default ArticleMostViewed;

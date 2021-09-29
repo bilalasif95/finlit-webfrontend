@@ -62,7 +62,10 @@ function WebinarsList() {
                   <div
                     className="single_course"
                     key={item.id}
+                    role="button"
+                    tabIndex={0}
                     onClick={() => handleWebinarDetails(item.id)}
+                    onKeyDown={() => handleWebinarDetails(item.id)}
                   >
                     <div className="course_img">
                       <img src={item.eventImage} alt="Course" />

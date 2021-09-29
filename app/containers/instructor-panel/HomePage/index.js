@@ -22,7 +22,7 @@ export function HomePage() {
       .then(res => {
         setStatisticsCounter(res.data.data);
       })
-      .catch(err => {});
+      .catch(() => {});
   }, []);
   return (
     <div className="main_page">
