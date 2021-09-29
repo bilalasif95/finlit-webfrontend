@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 import HackathonDetail from '../../../components/student-panel/AddCartHackathon/HackathonDetail';
 import HackathonSidebar from '../../../components/student-panel/AddCartHackathon/HackathonSidebar';
 import { API } from '../../../config/config';
@@ -13,8 +14,8 @@ import { redirectToLogin } from '../../../utils/redirectToLogin';
 import Loader from '../../../components/Loader';
 
 const AddCartHackathon = props => {
-  const [hackathonDetails, setHackathonDetails] = useState([]),
-        [loader, setLoader] = useState(false);
+  const [hackathonDetails, setHackathonDetails] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
     getHackathonDetails();
   }, []);
@@ -22,13 +23,9 @@ const AddCartHackathon = props => {
     redirectToLogin();
   }, []);
   const getHackathonDetails = () => {
-    setLoader(true)
+    setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer$ {token}`,
-      }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer$ {token}` } : {};
     axios
       .get(`${API}api/events/getById/${props.match.params.id}`, {
         headers: {
@@ -38,7 +35,7 @@ const AddCartHackathon = props => {
         },
       })
       .then(res => {
-        setHackathonDetails(res && res.data && res.data.data)
+        setHackathonDetails(res && res.data && res.data.data);
         setLoader(false);
       })
       .catch(() => {
@@ -67,6 +64,10 @@ const AddCartHackathon = props => {
       </Container>
     </div>
   );
-}
+};
+
+AddCartHackathon.propTypes = {
+  match: PropTypes.any,
+};
 
 export default withRouter(AddCartHackathon);

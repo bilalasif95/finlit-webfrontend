@@ -6,7 +6,8 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import history from 'utils/history';
-import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import axios from 'axios';
@@ -87,18 +88,17 @@ const TwoFAPage = props => {
                   id="code"
                   onChange={e => setCode(e.target.value)}
                   placeholder="Enter code"
-                  onKeyDown = {(e) => {
-                    if (e.code === "Enter" || e.code === "NumpadEnter") {
-                      console.log("Enter key was pressed. Run your function.");
+                  onKeyDown={e => {
+                    if (e.code === 'Enter' || e.code === 'NumpadEnter') {
                       e.preventDefault();
-                      login()
+                      login();
                     }
                   }}
                 />
               </FormGroup>
               <div className="error-box">
-                  {error && <p className="error">{error}</p>}
-                </div>
+                {error && <p className="error">{error}</p>}
+              </div>
               <Button onClick={login} disabled={btnClick}>
                 <FormattedMessage {...messages.Verify} />
               </Button>
@@ -112,6 +112,14 @@ const TwoFAPage = props => {
   );
 };
 
+TwoFAPage.propTypes = {
+  props: PropTypes.any,
+  Login: PropTypes.any,
+};
+
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(TwoFAPage)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(TwoFAPage),
 );
