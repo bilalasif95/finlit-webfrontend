@@ -1,7 +1,7 @@
 /*
  * Change Password Component
  */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import {
   FormGroup,
@@ -11,23 +11,21 @@ import {
   Button,
   Input,
   FormText,
-  InputGroup,
-  InputGroupAddon,
   // FormText,
 } from 'reactstrap';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import InputBase from '@material-ui/core/InputBase';
-import { withStyles } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
-import { BsPencil } from 'react-icons/bs';
-import { FaCheckCircle } from 'react-icons/fa';
+// import Select from '@material-ui/core/Select';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import FormControl from '@material-ui/core/FormControl';
+// import InputBase from '@material-ui/core/InputBase';
+// import { withStyles } from '@material-ui/core/styles';
+// import Switch from '@material-ui/core/Switch';
+// import { BsPencil } from 'react-icons/bs';
+// import { FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
-import QRCode from 'qrcode.react';
-import { FiCamera } from 'react-icons/fi';
+// import QRCode from 'qrcode.react';
+// import { FiCamera } from 'react-icons/fi';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';

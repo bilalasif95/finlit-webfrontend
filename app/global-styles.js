@@ -666,7 +666,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0.5rem 0;
   }
 }
-.sub_page {
+.sub_pages {
   background-color: #fff;
   padding: 0;
 }

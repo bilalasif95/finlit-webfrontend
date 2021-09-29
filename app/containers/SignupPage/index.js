@@ -53,54 +53,29 @@ export default function SignupPage() {
   const [profession, setProfession] = useState('Software Developer');
   const [address, setAddress] = useState('');
   const [instructorDiv, setInstructorDiv] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState({ type: "", error: "" });
   const [btnClick, setBtnClick] = useState(false);
 
   const signup = () => {
-    setError('');
-    if (
-      !/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(firstName)
-    ) {
-      setError('First Name is not valid');
-      return;
+    setError({ type: '', error: '' });
+    if (!email) {
+      setError({ type: 'email', error: 'Email is required' });
+    } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
+      setError({ type: 'email', error: 'Please enter valid email' });
+    } else if (!/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(firstName)) {
+      setError({ type: 'FirstName', error: 'First Name is not valid' });
+    } else if (firstName.length > 255) {
+      setError({ type: 'FirstName', error: 'First Name should be of less than 255 characters' });
+    } else if (!/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(lastName)) {
+      setError({ type: 'LastName', error: 'Last Name is not valid' });
+    } else if (lastName.length > 255) {
+      setError({ type: 'LastName', error: 'Last Name should be of less than 255 characters' });
+    } else if (!/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) || (!password.length >= 8 && !password.length <= 15)) {
+      setError({ type: 'password', error: 'Password must contains one special character or capital letter and length should be in between 8 to 15 characters.' });
+    } else if (password !== passwordConfirmation) {
+      setError({ type: 'passwordconfirm', error: '**Password does not match' });
     }
-    if (firstName.length > 255) {
-      setError('First Name should be of less than 255 characters');
-      return;
-    }
-    if (
-      !/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(lastName)
-    ) {
-      setError('Last Name is not valid');
-      return;
-    }
-    if (lastName.length > 255) {
-      setError('Last Name should be of less than 255 characters');
-      return;
-    }
-    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
-      setError('Please enter valid email');
-      return;
-    }
-    if (address !== '' && address.length > 255) {
-      setError('Address should be or less than 255 characters');
-      return;
-    }
-    if (
-      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) ||
-      (!password.length >= 8 && !password.length <= 15)
-    ) {
-      setError(
-        'Password must contains one special character or capital letter and length should be in between 8 to 15 characters.',
-      );
-      setTimeout(() => {
-        setError('');
-      }, 4000);
-      return;
-    }
-    if (password !== passwordConfirmation) {
-      setError('**Password are not matching');
-    } else {
+    else {
       setBtnClick(true);
       axios
         .post(`${API}api/auth/register`, {
@@ -136,8 +111,13 @@ export default function SignupPage() {
           }, 5000);
         });
     }
+    // else if (instructorDiv && address !== '' && address.length > 255) {
+    //   setError({ type: 'address', error: 'Address should be or less than 255 characters' });
+    // }
+    setTimeout(() => {
+      setError({ type: '', error: '' })
+    }, 5000)
   };
-
   return (
     <>
       <div className="registration_page">
@@ -163,6 +143,7 @@ export default function SignupPage() {
                   onChange={e => setEmail(e.target.value)}
                   placeholder="Your email"
                 />
+                <p className='error'> {error.type === "email" ? error.error : ''}</p>
               </FormGroup>
               <Row>
                 <Col lg={6} md={6} sm={12}>
@@ -177,6 +158,7 @@ export default function SignupPage() {
                       onChange={e => setFirstName(e.target.value)}
                       placeholder="First name"
                     />
+                    <p className='error'> {error.type === "FirstName" ? error.error : ''}</p>
                   </FormGroup>
                 </Col>
                 <Col lg={6} md={6} sm={12}>
@@ -191,6 +173,7 @@ export default function SignupPage() {
                       onChange={e => setLastName(e.target.value)}
                       placeholder="Last name"
                     />
+                    <p className='error'> {error.type === "LastName" ? error.error : ''}</p>
                   </FormGroup>
                 </Col>
               </Row>
@@ -237,6 +220,7 @@ export default function SignupPage() {
                   onChange={e => setPassword(e.target.value)}
                   placeholder="******"
                 />
+                <p className='error'> {error.type === "password" ? error.error : ''}</p>
               </FormGroup>
               <FormGroup className="form_err">
                 <Label for="password">
@@ -249,6 +233,7 @@ export default function SignupPage() {
                   onChange={e => setPasswordConfirmation(e.target.value)}
                   placeholder="******"
                 />
+                <p className='error'> {error.type === "passwordconfirm" ? error.error : ''}</p>
               </FormGroup>
               {instructorDiv === true ? (
                 <>
@@ -289,6 +274,7 @@ export default function SignupPage() {
                         setAddress(e.target.value);
                       }}
                     />
+                    <p className='error'> {error.type === "address" ? error.error : ''}</p>
                   </FormGroup>
                   <FormGroup>
                     <FormControl fullWidth>
@@ -356,9 +342,9 @@ export default function SignupPage() {
                   </FormGroup>
                 </>
               ) : null}
-              <div className="error-box">
+              {/* <div className="error-box">
                 {error && <p className="error">{error}</p>}
-              </div>
+              </div> */}
               <Button onClick={signup} disabled={btnClick}>
                 <FormattedMessage {...messages.SignUp} />
               </Button>

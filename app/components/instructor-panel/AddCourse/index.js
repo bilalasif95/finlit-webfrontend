@@ -7,7 +7,7 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
+  // FormText,
   Button,
 } from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';

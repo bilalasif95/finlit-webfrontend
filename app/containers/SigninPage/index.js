@@ -12,13 +12,14 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import UseEnterKeyListener from '../../config/useEnterKeyListener';
+import { API } from '../../config/config';
 import {
   mapStateToProps,
   mapDispatchToProps,
 } from '../reduxSetup/actions/registeration';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
-import { API } from '../../config/config';
+
 // import { response } from 'express';
 const SigninPage = props => {
   const [email, setEmail] = useState('');

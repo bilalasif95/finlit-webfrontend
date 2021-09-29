@@ -21,6 +21,7 @@ const Wrapper = styled.div`
         overflow: hidden;
         width: 13%;
         img {
+          height: 100%;
           width: 100%;
         }
       }

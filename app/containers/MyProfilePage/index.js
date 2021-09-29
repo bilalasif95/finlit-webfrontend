@@ -4,16 +4,14 @@
  */
 import React, { useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
-import InputBase from '@material-ui/core/InputBase';
+// import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
-import { withStyles } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
 import {
   Container,
   Row,
   Col,
   Label,
-  Select,
-  MenuItem,
   TabContent,
   TabPane,
   Nav,
@@ -35,28 +33,6 @@ import ChangePassword from '../../components/MyProfilePage/ChangePassword';
 import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthentication';
 // import Profile from '../../images/profile.jpg';
 
-const BootstrapInput = withStyles(theme => ({
-  root: {
-    'label + &': {
-      marginTop: 0,
-    },
-  },
-  input: {
-    borderRadius: 4,
-    position: 'relative',
-    backgroundColor: theme.palette.background.paper,
-    border: '1px solid #e6e6e6',
-    fontSize: 14,
-    color: '#484848',
-    padding: '10px 26px 10px 12px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    // Use the system font instead of the default Lato font.
-    fontFamily: ['Lato', 'sans-serif'].join(','),
-    '&:focus': {
-      borderRadius: 4,
-    },
-  },
-}))(InputBase);
 
 export default function MyProfilePage() {
   const [activeTab, setActiveTab] = useState('1');
@@ -135,13 +111,7 @@ export default function MyProfilePage() {
                 <div className="profile_sidebar">
                   <div className="pro_img">
                     <div className="inner">
-                      <Img
-                        src={
-                          profileImg ||
-                          'https://i.imgur.com/qUzPHy4.jpg'
-                        }
-                        alt="Profile"
-                      />
+                      <Img src={profileImg || 'https://i.imgur.com/qUzPHy4.jpg'} alt="Profile" />
                     </div>
                     <Label>
                       {' '}

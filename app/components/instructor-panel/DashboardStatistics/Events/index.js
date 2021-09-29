@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { FormattedMessage } from 'react-intl';
-import Calendar from 'react-calendar';
-import messages from './messages';
-import Wrapper from './Wrapper';
+// import { FormattedMessage } from 'react-intl';
+// import Calendar from 'react-calendar';
+// import messages from './messages';
+// import Wrapper from './Wrapper';
 
 function Events() {
   const [value, onChange] = useState(new Date());
 
   return (
     <>
-    {/* <Wrapper> */}
+      {/* <Wrapper> */}
       {/* <div className="calendar-cont">
         <h3>
           <FormattedMessage {...messages.Title} />
@@ -57,7 +57,7 @@ function Events() {
 
 
       </div> */}
-    {/* </Wrapper> */}
+      {/* </Wrapper> */}
     </>
   );
 }

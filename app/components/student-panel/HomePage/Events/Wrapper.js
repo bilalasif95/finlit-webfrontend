@@ -37,6 +37,8 @@ const Wrapper = styled.div`
           text-align: center;
           display: block;
           margin: 0 auto;
+          min-height: auto !important;
+          max-height: auto !important;
         }
       }
     }

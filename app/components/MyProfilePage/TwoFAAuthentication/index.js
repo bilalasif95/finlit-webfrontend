@@ -4,24 +4,25 @@
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FormGroup, Label, Button, Input, FormText } from 'reactstrap';
-import { ToastContainer, toast } from 'react-toastify';
+// ToastContainer,
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import InputBase from '@material-ui/core/InputBase';
-import { withStyles } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
-import { BsPencil } from 'react-icons/bs';
+// import Select from '@material-ui/core/Select';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import FormControl from '@material-ui/core/FormControl';
+// import InputBase from '@material-ui/core/InputBase';
+// import { withStyles } from '@material-ui/core/styles';
+// import Switch from '@material-ui/core/Switch';
+// import { BsPencil } from 'react-icons/bs';
 import { FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
 import QRCode from 'qrcode.react';
-import { FiCamera } from 'react-icons/fi';
+// import { FiCamera } from 'react-icons/fi';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
 import Img from '../../Img';
-import Profile from '../../../images/profile.jpg';
+// import Profile from '../../../images/profile.jpg';
 import GooglePlay from '../../../images/GooglePlay.png';
 import AppStore from '../../../images/AppStore.png';
 
