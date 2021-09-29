@@ -33,7 +33,6 @@ import ChangePassword from '../../components/MyProfilePage/ChangePassword';
 import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthentication';
 // import Profile from '../../images/profile.jpg';
 
-
 export default function MyProfilePage() {
   const [activeTab, setActiveTab] = useState('1');
   const [userObj, setUserObj] = useState({});
@@ -64,7 +63,7 @@ export default function MyProfilePage() {
       });
   };
   const updateProfileImg = e => {
-    setNewProfileImg(e.target.files[0]);
+    // setNewProfileImg(e.target.files[0]);
     const token = localStorage.getItem('token');
     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     const bodyFormData = new FormData();
@@ -81,7 +80,7 @@ export default function MyProfilePage() {
         toast.success(
           res && res.data ? res.data.message : 'Message Not Readable',
         );
-        setNewProfileImg({});
+        // setNewProfileImg({});
         getCurrentUser();
       })
       .catch(err => {
@@ -90,7 +89,7 @@ export default function MyProfilePage() {
             ? err.response.data.message.toString()
             : 'Message Not Readable',
         );
-        setNewProfileImg({});
+        // setNewProfileImg({});
       });
   };
   useEffect(() => {

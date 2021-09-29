@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 import WebinarDetail from '../../../components/student-panel/AddCartWebinar/WebinarDetail';
 import WebinarSidebar from '../../../components/student-panel/AddCartWebinar/WebinarSidebar';
 import { API } from '../../../config/config';
@@ -13,8 +14,8 @@ import { redirectToLogin } from '../../../utils/redirectToLogin';
 import Loader from '../../../components/Loader';
 
 const AddCartWebinar = props => {
-  const [webinarDetails, setWebinarDetails] = useState({}),
-    [loader, setLoader] = useState(false);
+  const [webinarDetails, setWebinarDetails] = useState({});
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
     getWebinarDetails();
   }, []);
@@ -25,10 +26,7 @@ const AddCartWebinar = props => {
   const getWebinarDetails = () => {
     setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer$ {token}`,
-      } : {};
+    const authHeaders = token ? { Authorization: `Bearer$ {token}` } : {};
     axios
       .get(`${API}api/events/getById/${props.match.params.id}`, {
         headers: {
@@ -38,13 +36,13 @@ const AddCartWebinar = props => {
         },
       })
       .then(res => {
-        setWebinarDetails(res && res.data && res.data.data)
+        setWebinarDetails(res && res.data && res.data.data);
         setLoader(false);
       })
       .catch(() => {
         setLoader(false);
       });
-  }
+  };
   return (
     <div className="sub_pages">
       <Helmet>
@@ -62,10 +60,15 @@ const AddCartWebinar = props => {
             <Col lg={4} md={5} sm={12}>
               <WebinarSidebar detail={webinarDetails} />
             </Col>
-          </Row>)}
+          </Row>
+        )}
       </Container>
     </div>
   );
-}
+};
 
-export default withRouter(AddCartWebinar)
+AddCartWebinar.propTypes = {
+  match: PropTypes.any,
+};
+
+export default withRouter(AddCartWebinar);

@@ -14,7 +14,7 @@ import { redirectToLogin } from '../../../utils/redirectToLogin';
 
 export default function WebinarsListPage() {
   useEffect(() => {
-    redirectToLogin()
+    redirectToLogin();
   }, []);
   return (
     <div className="sub_page">

@@ -8,6 +8,7 @@ import {
   DropdownToggle,
   DropdownMenu,
 } from 'reactstrap';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Wrapper from './Wrapper';
 import messages from './messages';
@@ -18,12 +19,11 @@ function MainSection(props) {
   const [userObj, setUserObj] = useState({});
 
   const toggle = () => setDropdownOpen(prevState => !prevState);
-  let statistics = props.statistics;
+  const { statistics } = props;
 
   React.useEffect(() => {
-    const userObj = JSON.parse(localStorage.getItem('userInfo') || '');
-    console.log(userObj.firstName);
-    setUserObj(userObj);
+    const userObj2 = JSON.parse(localStorage.getItem('userInfo') || '');
+    setUserObj(userObj2);
     const time = new Date().getHours();
     let greeting;
     if (time < 10) {
@@ -184,5 +184,9 @@ function MainSection(props) {
     </Wrapper>
   );
 }
+
+MainSection.propTypes = {
+  statistics: PropTypes.any,
+};
 
 export default MainSection;

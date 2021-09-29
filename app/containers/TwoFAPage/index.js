@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import history from 'utils/history';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -89,7 +90,6 @@ const TwoFAPage = props => {
                   placeholder="Enter code"
                   onKeyDown={e => {
                     if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-                      // console.log('Enter key was pressed. Run your function.');
                       e.preventDefault();
                       login();
                     }
@@ -110,6 +110,11 @@ const TwoFAPage = props => {
       <ToastContainer />
     </>
   );
+};
+
+TwoFAPage.propTypes = {
+  props: PropTypes.any,
+  Login: PropTypes.any,
 };
 
 export default withRouter(

@@ -12,7 +12,6 @@ import { GrFormEdit } from 'react-icons/gr';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import history from 'utils/history';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
@@ -98,7 +97,9 @@ function BootcampList() {
               <div
                 className="single_course"
                 key={item.id}
-                onClick={() => handleBootcampList(item.id)}
+                role="button"
+                tabIndex={0}
+                // onClick={() => handleBootcampList(item.id)}
               >
                 <div className="course_img">
                   <img src={item.eventImage} alt="Course" />

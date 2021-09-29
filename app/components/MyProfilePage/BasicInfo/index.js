@@ -201,7 +201,9 @@ function BasicInfo() {
               <FormText className="form-text">
                 {errors.firstName ? (
                   <p className="error">{errors.firstName}</p>
-                ) : ''}
+                ) : (
+                  ''
+                )}
               </FormText>
             </FormGroup>
           </Col>
@@ -224,9 +226,11 @@ function BasicInfo() {
                 }}
               />
               <FormText className="form-text">
-                {errors.lastName ?
+                {errors.lastName ? (
                   <p className="error">{errors.lastName}</p>
-                  : ''}
+                ) : (
+                  ''
+                )}
               </FormText>
             </FormGroup>
           </Col>
@@ -389,9 +393,11 @@ function BasicInfo() {
                 }}
               />
               <FormText className="form-text">
-                {errors.description ?
+                {errors.description ? (
                   <p className="error">{errors.description}</p>
-                  : ''}
+                ) : (
+                  ''
+                )}
               </FormText>
             </FormGroup>
           </Col>

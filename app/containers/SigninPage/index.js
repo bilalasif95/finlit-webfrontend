@@ -8,6 +8,7 @@ import { Button, FormGroup, Label, Input } from 'reactstrap';
 import history from 'utils/history';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import UseEnterKeyListener from '../../config/useEnterKeyListener';
@@ -43,7 +44,7 @@ const SigninPage = props => {
   }, []);
   const login = () => {
     setError('');
-    debugger;
+    // debugger;
     if (!email) {
       setError('Please enter email');
       return;
@@ -133,7 +134,6 @@ const SigninPage = props => {
                   onChange={e => setPassword(e.target.value)}
                   onKeyDown={e => {
                     if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-                      console.log('Enter key was pressed. Run your function.');
                       e.preventDefault();
                       login();
                     }
@@ -186,6 +186,10 @@ const SigninPage = props => {
       <ToastContainer />
     </>
   );
+};
+
+SigninPage.propTypes = {
+  Login: PropTypes.any,
 };
 
 export default withRouter(

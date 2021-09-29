@@ -134,8 +134,7 @@ function WebinarsList() {
                       <div className="date_level">
                         <p>
                           {item.data.startDate}
-                          &nbsp;
-                          All Level
+                          &nbsp; All Level
                         </p>
                       </div>
                     </div>

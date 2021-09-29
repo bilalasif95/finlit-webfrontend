@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import { FormattedMessage } from 'react-intl';
 // import Calendar from 'react-calendar';
 // import messages from './messages';
 // import Wrapper from './Wrapper';
 
 function Events() {
-  const [value, onChange] = useState(new Date());
+  // const [value, onChange] = useState(new Date());
 
   return (
     <>

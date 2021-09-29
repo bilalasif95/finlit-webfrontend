@@ -266,11 +266,10 @@ function AddWebinar() {
                       <input
                         type="file"
                         name="image"
-                        accept="image/png, image/gif, image/jpeg"
+                        accept="image/png, image/gif, image/jpeg ,image/*"
                         id="uploadimage"
                         placeholder="Upload Image"
                         onChange={e => handleChangeEvent(e)}
-                        accept="image/*"
                       />
                     </div>
                   </div>

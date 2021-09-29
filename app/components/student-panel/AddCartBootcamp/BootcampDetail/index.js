@@ -1,31 +1,31 @@
 /*
  * Cart Checkout Description Component
  */
-import React, { useState, useRef } from 'react';
+import React, {useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { BiTimeFive, BiCalendar } from 'react-icons/bi';
+import moment from 'moment';
+import PropTypes from 'prop-types';
+import JoditEditor from 'jodit-react';
 import { IoMdShare } from 'react-icons/io';
 import { FaRegHeart } from 'react-icons/fa';
 import { Button } from 'reactstrap';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import moment from 'moment';
-import JoditEditor from 'jodit-react';
-
 
 function BootcampDetail(props) {
   const editor = useRef(null);
   const config = {
     readonly: true,
   };
-  const [activeTab, setActiveTab] = useState('1');
+  // const [activeTab, setActiveTab] = useState('1');
 
-  const toggle = tab => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
+  // const toggle = tab => {
+  //   if (activeTab !== tab) setActiveTab(tab);
+  // };
 
-  let detail = props.detail;
-  let dataDetails = detail.data;
+  const {detail} = props;
+  const dataDetails = detail.data;
 
   return (
     <Wrapper id="list">
@@ -303,4 +303,7 @@ function BootcampDetail(props) {
   );
 }
 
+BootcampDetail.propTypes = {
+  detail: PropTypes.any,
+};
 export default BootcampDetail;

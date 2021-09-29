@@ -55,10 +55,10 @@ const Header = () => {
       .then(result => {
         setUserObj(result.data);
       })
-      .catch(err => {
+      .catch(() => {
         history.push('/');
       });
-  }
+  };
   const LogOut = () => {
     history.push('/login');
     localStorage.clear();
@@ -69,9 +69,9 @@ const Header = () => {
       <Navbar expand="lg">
         <Container fluid="xl">
           {userObj &&
-          userObj.roles &&
-          userObj.roles[0] &&
-          userObj.roles[0].roleName === 'Instructor' ? (
+            userObj.roles &&
+            userObj.roles[0] &&
+            userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
               <Img src={Logo} alt="FinLit" />
             </Link>
@@ -206,7 +206,11 @@ const Header = () => {
                     <div className="user_account">
                       <div className="user_icon">
                         <Img
-                          src={userObj.image ? userObj.image : 'https://i.imgur.com/qUzPHy4.jpg'}
+                          src={
+                            userObj.image
+                              ? userObj.image
+                              : 'https://i.imgur.com/qUzPHy4.jpg'
+                          }
                           alt="User"
                         />
                       </div>
@@ -238,9 +242,9 @@ const Header = () => {
                       <div />
                     </DropdownItem>
                     {userObj &&
-                    userObj.roles &&
-                    userObj.roles[0] &&
-                    userObj.roles[0].roleName === 'Student' ? (
+                      userObj.roles &&
+                      userObj.roles[0] &&
+                      userObj.roles[0].roleName === 'Student' ? (
                       <DropdownItem>
                         <Link to="/cart">
                           <div>
@@ -251,7 +255,7 @@ const Header = () => {
                         </Link>
                       </DropdownItem>
                     ) : (
-                    <></>
+                      <></>
                     )}
                     <DropdownItem onClick={() => LogOut()}>
                       <div>

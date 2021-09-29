@@ -9,9 +9,11 @@ import CartCheckoutDescription from '../../../components/student-panel/CartCheck
 import CartCheckoutSidebar from '../../../components/student-panel/CartCheckout/CartCheckoutSidebar';
 import { API } from '../../../config/config';
 import { axiosHeader } from '../../../utils/axiosHeader';
+
 export default function CartCheckout() {
   const [cartDetails, setCartDetails] = useState({});
   const [loader, setLoader] = useState(false);
+
   useEffect(() => {
     getCartDetails(true);
   }, []);
@@ -32,7 +34,7 @@ export default function CartCheckout() {
   const RemoveFromCart = id => {
     axios
       .delete(`${API}api/cart/removeFromCart/${id}`, axiosHeader)
-      .then(res => {
+      .then(() => {
         getCartDetails(false);
       })
       .catch(() => {
