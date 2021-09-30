@@ -12,6 +12,13 @@ import styled from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import history from 'utils/history';
 import { connect } from 'react-redux';
+import {
+  mapStateToProps,
+  mapDispatchToProps,
+} from '../reduxSetup/actions/registeration';
+
+import GlobalStyle from '../../global-styles';
+import LoadingIndicator from '../../components/LoadingIndicator';
 // Student Panel Panel pages routes
 
 // import HomePage from 'containers/student-panel/HomePage/Loadable';
@@ -112,13 +119,6 @@ const CreateNewPasswordPage = lazy(() =>
 );
 const Header = lazy(() => import('components/student-panel/Header'));
 const Footer = lazy(() => import('components/student-panel/Footer'));
-import {
-  mapStateToProps,
-  mapDispatchToProps,
-} from '../reduxSetup/actions/registeration';
-
-import GlobalStyle from '../../global-styles';
-import LoadingIndicator from '../../components/LoadingIndicator';
 
 const AppWrapper = styled.div`
   margin: 0 auto;
@@ -132,21 +132,28 @@ const App = () => {
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   return (
     <AppWrapper>
-      <Suspense fallback={
-        <div className="page_loader">
-          <LoadingIndicator />
-        </div>}
+      <Suspense
+        fallback={
+          <div className="page_loader">
+            <LoadingIndicator />
+          </div>
+        }
       >
         <Route>
           <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
             <meta name="description" content="FinLit" />
           </Helmet>
-          {history.location.pathname === '/signup' || history.location.pathname === '/login' ||
-            history.location.pathname === '/email_verification' ||
-            history.location.pathname === '/create_new_password' ||
-            history.location.pathname === '/forgot_password' ||
-            history.location.pathname === '/two_fa'
-            ? null : userInfo && userInfo.roles[0].roleName == 'Instructor' ? <Header /> : <Header />}
+          {history.location.pathname === '/signup' ||
+          history.location.pathname === '/login' ||
+          history.location.pathname === '/email_verification' ||
+          history.location.pathname === '/create_new_password' ||
+          history.location.pathname === '/forgot_password' ||
+          history.location.pathname === '/two_fa' ? null : userInfo &&
+            userInfo.roles[0].roleName == 'Instructor' ? (
+            <Header />
+          ) : (
+            <Header />
+          )}
           {/* <InstructorHeader /> */}
         </Route>
         <Switch>
@@ -185,19 +192,23 @@ const App = () => {
           <Route path="/signup" component={SignupPage} />
           <Route path="/email_verification" component={EmailVerificationPage} />
           <Route path="/forgot_password" component={ForgotPasswordPage} />
-          <Route path="/create_new_password" component={CreateNewPasswordPage} />
+          <Route
+            path="/create_new_password"
+            component={CreateNewPasswordPage}
+          />
           <Route path="" component={NotFoundPage} />
         </Switch>
-        {history.location.pathname === '/signup' || history.location.pathname === '/login' ||
-          history.location.pathname === '/email_verification' ||
-          history.location.pathname === '/create_new_password' ||
-          history.location.pathname === '/forgot_password' ||
-          history.location.pathname === '/two_fa'
-          ? null : <Footer />}
+        {history.location.pathname === '/signup' ||
+        history.location.pathname === '/login' ||
+        history.location.pathname === '/email_verification' ||
+        history.location.pathname === '/create_new_password' ||
+        history.location.pathname === '/forgot_password' ||
+        history.location.pathname === '/two_fa' ? null : (
+          <Footer />
+        )}
         <GlobalStyle />
         {/* </Router> */}
       </Suspense>
-
     </AppWrapper>
   );
 };
