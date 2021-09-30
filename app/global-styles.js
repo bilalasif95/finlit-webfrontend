@@ -950,6 +950,11 @@ const GlobalStyle = createGlobalStyle`
     opacity:.75;
     color:#000;
   }
+  @media (max-width: 991px) {
+    .slick-dots {
+      position: static;
+    }
+  }
 `;
 
 export default GlobalStyle;
