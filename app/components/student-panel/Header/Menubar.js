@@ -73,8 +73,9 @@ const Menubar = styled.div`
   }
   .navbar {
     padding: 1rem 0;
-    .navbar-brand {
+    .logo {
       padding: 0;
+      width: 90px;
     }
     @media (min-width: 992px) {
       .container-xl {

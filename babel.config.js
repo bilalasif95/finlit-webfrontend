@@ -8,11 +8,6 @@ module.exports = {
     ],
     '@babel/preset-react',
   ],
-  [
-    {
-      "plugins": ["react-optimized-image/plugin"]
-    },
-  ],
   plugins: [
     'styled-components',
     '@babel/plugin-proposal-class-properties',

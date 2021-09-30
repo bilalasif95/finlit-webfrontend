@@ -73,11 +73,11 @@ const Header = () => {
           userObj.roles[0] &&
           userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
-              <Img src={Logo} alt="FinLit" height="100%" width="100%" />
+              <img src={Logo} alt="FinLit" className="logo" height="100%" width="100%" />
             </Link>
           ) : (
             <Link to="/">
-              <Img src={Logo} alt="FinLit" height="100%" width="100%" />
+              <img src={Logo} alt="FinLit" className="logo" height="100%" width="100%" />
             </Link>
           )}
           <NavbarToggler onClick={toggle} />
@@ -205,13 +205,15 @@ const Header = () => {
                   <DropdownToggle nav caret>
                     <div className="user_account">
                       <div className="user_icon">
-                        <Img
+                        <img
                           src={
                             userObj.image
                               ? userObj.image
                               : 'https://i.imgur.com/qUzPHy4.jpg'
                           }
                           alt="User"
+                          height="100%"
+                          width="100%"
                         />
                       </div>
                       <div className="user_name">
