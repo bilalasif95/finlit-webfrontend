@@ -27,7 +27,7 @@ function HackathonList() {
     const token = localStorage.getItem('token');
     const authHeaders = token
       ? {
-        Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         }
       : {};
     axios

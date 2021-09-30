@@ -12,7 +12,6 @@ import styled from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import history from 'utils/history';
 import { connect } from 'react-redux';
-
 import {
   mapStateToProps,
   mapDispatchToProps,
@@ -150,7 +149,7 @@ const App = () => {
           history.location.pathname === '/create_new_password' ||
           history.location.pathname === '/forgot_password' ||
           history.location.pathname === '/two_fa' ? null : userInfo &&
-            userInfo.roles[0].roleName === 'Instructor' ? (
+          userInfo.roles[0].roleName === 'Instructor' ? (
             <Header />
           ) : (
             <Header />
