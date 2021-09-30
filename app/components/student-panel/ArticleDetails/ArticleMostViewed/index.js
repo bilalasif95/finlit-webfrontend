@@ -95,7 +95,7 @@ function ArticleMostViewed(props) {
                       </Link>
                     </div>
                     <div className="right">
-                      <img src={article.image} alt="Interactive Tools" height="100%" width="100%" />
+                      <img src={article.image} alt="article" height="100%" width="100%" />
                     </div>
                   </div>
                 </Col>

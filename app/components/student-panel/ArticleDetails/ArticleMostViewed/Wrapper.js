@@ -25,6 +25,11 @@ const Wrapper = styled.div`
     .left {
       padding: 2rem 1rem 2rem 0;
       width: 60%;
+      img {
+        margin: 0 0 1.25rem;
+        width: 2.5rem;
+        height: 2.5rem;
+      }
     }
     .right {
       align-items: center;
@@ -35,10 +40,6 @@ const Wrapper = styled.div`
         height: 100%;
         width: 100%;
       }
-    }
-    img {
-      margin: 0 0 1.25rem;
-      width: auto;
     }
     .read_more {
       border: 1px solid #e4e4e4;

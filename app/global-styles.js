@@ -669,7 +669,7 @@ const GlobalStyle = createGlobalStyle`
 }
 .sub_pages {
   background-color: #fff;
-  padding: 2rem 0;
+  padding: 2rem 0 0;
 }
 @media (min-width: 575px) and (max-width: 992px) { 
   .verification-main .email-verification {
