@@ -9,6 +9,7 @@ import CartCheckoutDescription from '../../../components/student-panel/CartCheck
 import CartCheckoutSidebar from '../../../components/student-panel/CartCheckout/CartCheckoutSidebar';
 import { API } from '../../../config/config';
 import { axiosHeader } from '../../../utils/axiosHeader';
+import LoadingIndicator from '../../../components/LoadingIndicator';
 
 export default function CartCheckout() {
   const [cartDetails, setCartDetails] = useState({});
@@ -50,7 +51,9 @@ export default function CartCheckout() {
       </Helmet>
       <Container fluid="xl">
         {loader ? (
-          'Loading....'
+          <div className="page_loader">
+            <LoadingIndicator />
+          </div>
         ) : (
           <Row>
             <Col lg={8} md={7} sm={12}>

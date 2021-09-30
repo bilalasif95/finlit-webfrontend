@@ -91,7 +91,7 @@ export default function MyProfilePage() {
                   <FormattedMessage {...messages.MyProfile} />
                 </h4>
                 <div className="pro_img">
-                  <Img src={Profile} alt="Profile" />
+                  <Img src={Profile} alt="Profile" height="100%" width="100%" />
                 </div>
                 <h4>Li Jordan</h4>
                 <p className="user_type">
@@ -327,8 +327,8 @@ export default function MyProfilePage() {
               security.
             </p>
             <div className="app_store">
-              <Img src={GooglePlay} alt="Google Play" />
-              <Img src={AppStore} alt="App Store" />
+              <Img src={GooglePlay} alt="Google Play" height="100%" width="100%" />
+              <Img src={AppStore} alt="App Store" height="100%" width="100%" />
             </div>
             <p>
               Lorem ipsum, or lipsum as it is sometimes known, is dummy text
@@ -357,7 +357,7 @@ export default function MyProfilePage() {
               security.
             </p>
             <div className="app_store">
-              <Img src={QR} alt="QR" />
+              <Img src={QR} alt="QR" height="100%" width="100%" />
             </div>
           </div>
         </ModalBody>

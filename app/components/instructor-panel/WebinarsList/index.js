@@ -95,7 +95,7 @@ function WebinarsList() {
             {webinarsList.map(item => (
               <div className="single_course" key={item.data.id}>
                 <div className="course_img">
-                  <img src={item.eventImage} alt="Course" />
+                  <img src={item.eventImage} alt="Event" height="100%" width="100%" />
                 </div>
                 <div className="course_info">
                   <div className="course_short_info">

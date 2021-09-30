@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col, Button } from 'reactstrap';
 import Slider from 'react-slick';
+// import Img from 'react-optimized-image';
 import axios from 'axios';
 import history from 'utils/history';
 import messages from './messages';
@@ -104,7 +105,12 @@ function Articles() {
                 >
                   <div className="single_item">
                     <div className="left">
-                      <img src={articleicon} alt="IconImg" />
+                      <img
+                        src={articleicon}
+                        alt="IconImg"
+                        height="100%"
+                        width="100%"
+                      />
                       <h5>{article.title}</h5>
                       <p> {article.subTitle} </p>
                       <Button
@@ -118,6 +124,8 @@ function Articles() {
                       <img
                         src={article.image ? article.image : article1}
                         alt="ArticleImage"
+                        height="100%"
+                        width="100%"
                       />
                       {/* <img src={article1} alt="Article" /> */}
                     </div>
@@ -143,7 +151,12 @@ function Articles() {
                       >
                         <div className="single_item">
                           <div className="left">
-                            <img src={articleicon} alt="IconImg" />
+                            <img
+                              src={articleicon}
+                              alt="IconImg"
+                              height="100%"
+                              width="100%"
+                            />
                             <h5>{articleList[0].title}</h5>
                             <p> {articleList[0].subTitle} </p>
                             <Button
@@ -157,7 +170,7 @@ function Articles() {
                           </div>
                           <div className="right">
                             {/* <img src={articleList[0].image} alt="ArticleImage" /> */}
-                            <img src={article1} alt="Article" />
+                            <img src={article1} alt="Article" height="100%" width="100%" />
                           </div>
                         </div>
                       </div>

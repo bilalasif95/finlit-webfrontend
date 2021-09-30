@@ -53,7 +53,7 @@ function Header() {
         <Container fluid>
           <div className="logo_brand">
             <Link to="/">
-              <Img src={Logo} alt="Logo" />
+              <Img src={Logo} alt="Logo" height="100%" width="100%" />
             </Link>
             <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
               <DropdownToggle caret>Explore</DropdownToggle>

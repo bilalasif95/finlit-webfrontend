@@ -29,7 +29,7 @@ function WebinarDetail(props) {
       <div className="addcart_detail">
         {/* <FormattedMessage {...messages.Subtotal} /> */}
         <div className="main_img">
-          <img src={detail.eventImage} alt="main" />
+          <img src={detail.eventImage} alt="main" height="100%" width="100%" />
         </div>
         <div className="header">
           <h4>{dataDetails && dataDetails.mainTitle}</h4>
@@ -93,7 +93,7 @@ function WebinarDetail(props) {
           <div className="presenter_list">
             <div className="item">
               <div className="icon">
-                <img src={finlit} alt="View" />
+                <img src={finlit} alt="View" height="100%" width="100%" />
               </div>
               <div className="details">
                 {/* <p> desc here </p> */}

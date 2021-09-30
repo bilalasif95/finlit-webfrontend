@@ -47,7 +47,7 @@ function LiveSessionList() {
                     <GoPrimitiveDot /> Live
                   </div>
                   <div className="course_img">
-                    <img src={item.img} alt="Course" />
+                    <img src={item.img} alt="Course" height="100%" width="100%" />
                   </div>
                   <div className="course_info">
                     <h5>{item.title}</h5>

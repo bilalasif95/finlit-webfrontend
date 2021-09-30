@@ -140,7 +140,6 @@ export default function SignupPage() {
         <Helmet>
           <title>- Sign Up</title>
           <meta name="description" content="FinLit - Sign up Page" />
-          <link rel="stylesheet" href="./signup.scss" />
         </Helmet>
         <div className="form_container">
           <div className="form_content">

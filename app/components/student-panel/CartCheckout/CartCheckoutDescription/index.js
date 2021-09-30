@@ -29,7 +29,7 @@ function CartCheckoutDescription(props) {
               {props.details &&
               props.details.items &&
               props.details.items.length === 0 ? (
-                ''
+                null
               ) : (
                 <span className="no_item">
                   {props.details &&

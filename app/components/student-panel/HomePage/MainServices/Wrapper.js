@@ -20,6 +20,7 @@ const Wrapper = styled.div`
     img {
       display: block;
       margin: 0 auto 1.25rem;
+      max-width: 2.5rem;
     }
     &:hover {
       -webkit-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.2);

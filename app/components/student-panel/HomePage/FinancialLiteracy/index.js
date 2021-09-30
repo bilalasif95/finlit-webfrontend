@@ -63,7 +63,7 @@ function FinancialLiteracy() {
           {FinancialLiteracyList.map(item => (
             <Col lg={3} md={3} sm={6} xs={12} key={item.id}>
               <div className="single_item">
-                <img src={item.icon} alt={item.alt} />
+                <img src={item.icon} alt={item.alt} height="100%" width="100%" />
                 <h5>{item.title}</h5>
                 <p>{item.desc}</p>
                 <Link className="read_more" to="/">

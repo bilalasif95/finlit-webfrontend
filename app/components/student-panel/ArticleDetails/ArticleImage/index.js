@@ -14,7 +14,7 @@ function ArticleImage(props) {
     <Row>
       <Col lg={12}>
         <Wrapper>
-          <Img src={imgSrc} alt="Article" />
+          <Img src={imgSrc} alt="Article" height="100%" width="100%" />
         </Wrapper>
       </Col>
     </Row>

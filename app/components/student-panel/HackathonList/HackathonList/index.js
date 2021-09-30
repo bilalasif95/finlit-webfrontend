@@ -67,7 +67,7 @@ function HackathonList() {
                     onClick={() => handleHackathonDetails(item.id)}
                   >
                     <div className="course_img">
-                      <img src={item.eventImage} alt="Course" />
+                      <img src={item.eventImage} alt="event" height="100%" width="100%" />
                     </div>
                     <div className="course_info">
                       <h5>{item.data.mainTitle}</h5>

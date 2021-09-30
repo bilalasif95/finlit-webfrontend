@@ -30,6 +30,8 @@ const Wrapper = styled.div`
         top: 0;
         position: absolute;
         right: -3.9rem;
+        max-width: 154px;
+        height: 77px;
       }
     }
     .search_bar {

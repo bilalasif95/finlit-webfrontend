@@ -73,11 +73,11 @@ const Header = () => {
           userObj.roles[0] &&
           userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
-              <Img src={Logo} alt="FinLit" />
+              <Img src={Logo} alt="FinLit" height="100%" width="100%" />
             </Link>
           ) : (
             <Link to="/">
-              <Img src={Logo} alt="FinLit" />
+              <Img src={Logo} alt="FinLit" height="100%" width="100%" />
             </Link>
           )}
           <NavbarToggler onClick={toggle} />

@@ -29,7 +29,7 @@ function MainSearch() {
               </h4>
               <div className="obj_cont">
                 <div className="circle">circle</div>
-                <img src={dots} alt="dots" className="dots" />
+                <img src={dots} alt="dots" className="dots" height="100%" width="100%" />
                 <div className="search_bar">
                   <InputGroup>
                     <Input placeholder="Search for help on specific topics" />

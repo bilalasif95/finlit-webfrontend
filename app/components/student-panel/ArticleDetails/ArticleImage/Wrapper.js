@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  margin: 1rem 0 2rem;
+  margin: 0 0 2rem;
   width: 100%;
   height: 400px;
   img {

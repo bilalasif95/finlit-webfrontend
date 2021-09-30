@@ -34,7 +34,7 @@ function HackathonDetail(props) {
       <div className="addcart_detail">
         {/* <FormattedMessage {...messages.Subtotal} /> */}
         <div className="main_img">
-          <img src={detail.eventImage} alt="main" />
+          <img src={detail.eventImage} alt="main" height="100%" width="100%" />
         </div>
         <div className="header">
           <h4>{dataDetails && dataDetails.mainTitle}</h4>

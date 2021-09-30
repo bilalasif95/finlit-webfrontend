@@ -101,9 +101,10 @@ const GlobalStyle = createGlobalStyle`
 
   .page_loader {
     display: flex;
-    height: 80vh;
+    height: 100vh;
     justify-content: center;
-    padding: 10rem 0 0;
+    padding: 15% 0 0;
+    min-height: 100%;
     width: 100%;
   }
 
@@ -668,7 +669,7 @@ const GlobalStyle = createGlobalStyle`
 }
 .sub_pages {
   background-color: #fff;
-  padding: 0;
+  padding: 2rem 0;
 }
 @media (min-width: 575px) and (max-width: 992px) { 
   .verification-main .email-verification {

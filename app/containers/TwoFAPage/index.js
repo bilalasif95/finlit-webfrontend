@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import { Button, FormGroup, Label, Input } from 'reactstrap';
+import { Button, FormGroup, Label, Input, FormText } from 'reactstrap';
 import history from 'utils/history';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -95,10 +95,10 @@ const TwoFAPage = props => {
                     }
                   }}
                 />
+                <FormText>
+                  {error && <p className="error">{error}</p>}
+                </FormText>
               </FormGroup>
-              <div className="error-box">
-                {error && <p className="error">{error}</p>}
-              </div>
               <Button onClick={login} disabled={btnClick}>
                 <FormattedMessage {...messages.Verify} />
               </Button>
