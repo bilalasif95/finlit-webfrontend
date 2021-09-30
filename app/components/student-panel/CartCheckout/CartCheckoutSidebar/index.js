@@ -111,9 +111,10 @@ function CartCheckoutSidebar(props) {
               error.MMYY = 'Invalid format mm/yy';
             } else if (!values.CVC) {
               error.CVC = 'CVC is required';
-            } else if (isNaN(values.CVC)) {
-              error.CVC = 'Invalid CVC format';
             }
+            // else if (isNaN(values.CVC)) {
+            //   error.CVC = 'Invalid CVC format';
+            // }
           }
         }
       }
