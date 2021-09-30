@@ -28,11 +28,7 @@ function HackathonList() {
   const dltHackathon = id => {
     setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-          Authorization: `Bearer ${token}`,
-        }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .delete(`${API}api/events/${id}`, {
         headers: {

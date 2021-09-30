@@ -12,6 +12,7 @@ import {
 } from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import history from 'utils/history';
 import { ToastContainer, toast } from 'react-toastify';
 import Wrapper from './Wrapper';
@@ -51,11 +52,7 @@ function EditHackathon(props) {
   const getHackathon = id => {
     setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer ${token}`,
-      }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .get(`${API}api/events/user/${id}`, {
         headers: {
@@ -489,4 +486,7 @@ function EditHackathon(props) {
   );
 }
 
+EditHackathon.propTypes = {
+  id: PropTypes.any,
+};
 export default EditHackathon;

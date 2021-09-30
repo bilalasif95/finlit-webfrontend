@@ -13,6 +13,7 @@ import {
 import { FiCamera } from 'react-icons/fi';
 import history from 'utils/history';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { ToastContainer, toast } from 'react-toastify';
 import Wrapper from './Wrapper';
 import messages from './messages';
@@ -51,11 +52,7 @@ function EditBootCamp(props) {
   const getBootCamp = id => {
     setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer ${token}`,
-      }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .get(`${API}api/events/user/${id}`, {
         headers: {
@@ -495,5 +492,8 @@ function EditBootCamp(props) {
     </>
   );
 }
+EditBootCamp.propTypes = {
+  id: PropTypes.any,
+};
 
 export default EditBootCamp;

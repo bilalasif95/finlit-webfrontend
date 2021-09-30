@@ -36,7 +36,6 @@ import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthenticat
 export default function MyProfilePage() {
   const [activeTab, setActiveTab] = useState('1');
   const [userObj, setUserObj] = useState({});
-  // const [newProfileImg, setNewProfileImg] = useState({});
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };

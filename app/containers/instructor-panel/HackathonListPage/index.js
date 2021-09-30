@@ -32,7 +32,8 @@ export default function HackathonListPage() {
                     <FormattedMessage {...messages.HackathonList} />
                   </h4>
                   <Link to="/add_hackathon">
-                    <span>+</span> Add
+                    <span>+</span>
+                    Add
                   </Link>
                 </div>
                 <HackathonList />

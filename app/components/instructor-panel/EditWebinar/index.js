@@ -12,8 +12,9 @@ import {
 } from 'reactstrap';
 import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import history from 'utils/history';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Wrapper from './Wrapper';
 import messages from './messages';
@@ -53,11 +54,7 @@ function EditWebinar(props) {
   const getWebinar = id => {
     setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer ${token}`,
-      }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .get(`${API}api/events/user/${id}`, {
         headers: {
@@ -106,7 +103,7 @@ function EditWebinar(props) {
     }
   };
 
-  const handleSave = () => {
+  const handleUpdate = () => {
     if (Object.keys(validatetor(webinarStatus)).length > 0) {
       setErrors(validatetor(webinarStatus));
       setTimeout(() => {
@@ -236,6 +233,7 @@ function EditWebinar(props) {
 
   return (
     <Wrapper>
+      <ToastContainer />
       <div className="add_forms">
         <p>
           <FormattedMessage {...messages.AllFields} />
@@ -517,7 +515,7 @@ function EditWebinar(props) {
             {/* <Button className="btn_save" onClick={e => handleSave(e)}>
               {loader ? 'Loading' : <FormattedMessage {...messages.SaveAs} />}
             </Button> */}
-            <Button className="btn_submit" onClick={e => handleSave(e)}>
+            <Button className="btn_submit" onClick={e => handleUpdate(e)}>
               {loader ? (
                 'Loading'
               ) : (
@@ -530,5 +528,7 @@ function EditWebinar(props) {
     </Wrapper>
   );
 }
-
+EditWebinar.propTypes = {
+  id: PropTypes.any,
+};
 export default EditWebinar;

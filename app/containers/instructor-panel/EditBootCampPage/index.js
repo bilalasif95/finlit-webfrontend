@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
+import PropTypes from 'prop-types';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import EditBootCamp from '../../../components/instructor-panel/EditBootcamp';
@@ -26,7 +27,7 @@ export default function EditBootCampPage(props) {
                 <h4>
                   <FormattedMessage {...messages.EditBootCamp} />
                 </h4>
-                <EditBootCamp id={props.match.params.id}/>
+                <EditBootCamp id={props.match.params.id} />
               </Col>
             </Row>
           </Container>
@@ -35,3 +36,6 @@ export default function EditBootCampPage(props) {
     </div>
   );
 }
+EditBootCampPage.propTypes = {
+  match: PropTypes.any,
+};

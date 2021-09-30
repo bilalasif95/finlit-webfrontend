@@ -6,7 +6,6 @@ import { FormattedMessage } from 'react-intl';
 import { Button } from 'reactstrap';
 import { BiTimeFive } from 'react-icons/bi';
 import { HiUsers } from 'react-icons/hi';
-// AiOutlineCalendar
 import { AiOutlineDelete } from 'react-icons/ai';
 import { GrFormEdit } from 'react-icons/gr';
 // import { Link } from 'react-router-dom';
@@ -29,11 +28,7 @@ function BootcampList() {
   const dltBootCamp = id => {
     setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-          Authorization: `Bearer ${token}`,
-        }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .delete(`${API}api/events/${id}`, {
         headers: {
@@ -101,7 +96,6 @@ function BootcampList() {
                 key={item.id}
                 role="button"
                 tabIndex={0}
-                // onClick={() => handleBootcampList(item.id)}
               >
                 <div className="course_img">
                   <img src={item.eventImage} alt="Course" />
@@ -143,20 +137,6 @@ function BootcampList() {
                         </p>
                       </div>
                     </div>
-                    {/* <div className="rating">
-                  {item.rating}
-                  <div className="stars">
-                    <RiStarSFill />
-                    <RiStarSFill />
-                    <RiStarSFill />
-                    <RiStarSFill />
-                    <RiStarSFill />
-                  </div>
-                </div> */}
-                    {/* <div className="viewer">
-                  <HiUsers />
-                  {item.viewer}
-                </div> */}
                   </div>
                 </div>
                 <div className="actions_btn">
@@ -180,16 +160,6 @@ function BootcampList() {
               </div>
             ))}
           </div>
-          {/* <div className="form_footer">
-            <div className="bottom_btns">
-              <Button className="btn_save">
-                <FormattedMessage {...messages.Previous} />
-              </Button>
-              <Button className="btn_submit">
-                <FormattedMessage {...messages.Next} />
-              </Button>
-            </div>
-          </div> */}
         </>
       )}
     </Wrapper>
