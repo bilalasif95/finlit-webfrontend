@@ -23,6 +23,8 @@ module.exports = {
     },
   },
   rules: {
+    'no-nested-ternary': 'off',
+    'no-unused-expressions': 'off',
     'prettier/prettier': ['error', prettierOptions],
     'arrow-body-style': [2, 'as-needed'],
     'class-methods-use-this': 0,

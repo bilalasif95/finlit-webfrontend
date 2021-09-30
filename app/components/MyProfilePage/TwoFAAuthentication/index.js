@@ -17,6 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
 import QRCode from 'qrcode.react';
+import PropTypes from 'prop-types';
 // import { FiCamera } from 'react-icons/fi';
 import messages from './messages';
 import Wrapper from './Wrapper';
@@ -338,5 +339,9 @@ function TwoFAAuthentication(props) {
     </Wrapper>
   );
 }
+
+TwoFAAuthentication.propTypes = {
+  userData: PropTypes.any,
+};
 
 export default TwoFAAuthentication;
