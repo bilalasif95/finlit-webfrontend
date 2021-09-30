@@ -5,12 +5,17 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { API } from '../../../config/config';
 import ArticleDescription from '../../../components/student-panel/ArticleDetails/ArticleDescription';
 import ArticleImage from '../../../components/student-panel/ArticleDetails/ArticleImage';
 import ArticleMostViewed from '../../../components/student-panel/ArticleDetails/ArticleMostViewed';
 import ArticleSidebar from '../../../components/student-panel/ArticleDetails/ArticleSidebar';
 import Loader from '../../../components/Loader';
+
+ArticleDetails.propTypes = {
+  match: PropTypes.any,
+};
 
 export default function ArticleDetails(props) {
   const [loader, setLoader] = useState(false);
@@ -59,7 +64,7 @@ export default function ArticleDetails(props) {
               </Col>
             </Row>
           </Container>
-          <ArticleMostViewed />
+          <ArticleMostViewed id={props.match.params.id} />
         </>
       )}
     </div>

@@ -4,16 +4,14 @@
  */
 import React, { useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
-import InputBase from '@material-ui/core/InputBase';
+// import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
-import { withStyles } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
 import {
   Container,
   Row,
   Col,
   Label,
-  Select,
-  MenuItem,
   TabContent,
   TabPane,
   Nav,
@@ -35,32 +33,9 @@ import ChangePassword from '../../components/MyProfilePage/ChangePassword';
 import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthentication';
 // import Profile from '../../images/profile.jpg';
 
-const BootstrapInput = withStyles(theme => ({
-  root: {
-    'label + &': {
-      marginTop: 0,
-    },
-  },
-  input: {
-    borderRadius: 4,
-    position: 'relative',
-    backgroundColor: theme.palette.background.paper,
-    border: '1px solid #e6e6e6',
-    fontSize: 14,
-    color: '#484848',
-    padding: '10px 26px 10px 12px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    // Use the system font instead of the default Lato font.
-    fontFamily: ['Lato', 'sans-serif'].join(','),
-    '&:focus': {
-      borderRadius: 4,
-    },
-  },
-}))(InputBase);
-
 export default function MyProfilePage() {
   const [activeTab, setActiveTab] = useState('1');
-  const [profileImg, setProfileImg] = useState('');
+  const [userObj, setUserObj] = useState({});
   const [newProfileImg, setNewProfileImg] = useState({});
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -77,7 +52,7 @@ export default function MyProfilePage() {
         },
       })
       .then(res => {
-        setProfileImg(res.data.image);
+        setUserObj(res.data);
       })
       .catch(err => {
         toast.error(
@@ -88,7 +63,7 @@ export default function MyProfilePage() {
       });
   };
   const updateProfileImg = e => {
-    setNewProfileImg(e.target.files[0]);
+    // setNewProfileImg(e.target.files[0]);
     const token = localStorage.getItem('token');
     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     const bodyFormData = new FormData();
@@ -105,7 +80,7 @@ export default function MyProfilePage() {
         toast.success(
           res && res.data ? res.data.message : 'Message Not Readable',
         );
-        setNewProfileImg({});
+        // setNewProfileImg({});
         getCurrentUser();
       })
       .catch(err => {
@@ -114,7 +89,7 @@ export default function MyProfilePage() {
             ? err.response.data.message.toString()
             : 'Message Not Readable',
         );
-        setNewProfileImg({});
+        // setNewProfileImg({});
       });
   };
   useEffect(() => {
@@ -135,13 +110,7 @@ export default function MyProfilePage() {
                 <div className="profile_sidebar">
                   <div className="pro_img">
                     <div className="inner">
-                      <Img
-                        src={
-                          profileImg ||
-                          'https://i.imgur.com/qUzPHy4.jpg'
-                        }
-                        alt="Profile"
-                      />
+                      <Img src={userObj.image || 'https://i.imgur.com/qUzPHy4.jpg'} alt="Profile" />
                     </div>
                     <Label>
                       {' '}
@@ -187,6 +156,12 @@ export default function MyProfilePage() {
                       >
                         <RiKeyLine />
                         <FormattedMessage {...messages.TwoFAuth} />
+                        &nbsp; &nbsp;&nbsp; &nbsp;
+                        {userObj.twoFA ? (
+                          <p style={{ color: 'Green' }}>Enabled</p>
+                        ) : (
+                          <p style={{ color: 'Red' }}>Disabled</p>
+                        )}
                       </NavLink>
                     </NavItem>
                   </Nav>
@@ -201,7 +176,10 @@ export default function MyProfilePage() {
                     <ChangePassword />
                   </TabPane>
                   <TabPane tabId="3">
-                    <TwoFAAuthentication active={activeTab} />
+                    <TwoFAAuthentication
+                      active={activeTab}
+                      userData={userObj}
+                    />
                   </TabPane>
                 </TabContent>
               </Col>

@@ -6,31 +6,24 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
+import axios from 'axios';
 import MainSection from '../../../components/instructor-panel/DashboardStatistics/MainSection';
 import Events from '../../../components/instructor-panel/DashboardStatistics/Events';
 import Statistics from '../../../components/instructor-panel/DashboardStatistics/Statistics';
 import { API } from '../../../config/config';
 import { axiosHeader } from '../../../utils/axiosHeader';
-import axios from 'axios';
 
 export function HomePage() {
-
-  const [statisticsCounter, setStatisticsCounter] = useState({})
+  const [statisticsCounter, setStatisticsCounter] = useState({});
 
   useEffect(() => {
     axios
       .get(`${API}api/user/instructor/stats`, axiosHeader)
       .then(res => {
-        setStatisticsCounter(res.data.data)
+        setStatisticsCounter(res.data.data);
       })
-      .catch(err => {
-
-
-      });
-  }, [])
-
-
-
+      .catch(() => {});
+  }, []);
   return (
     <div className="main_page">
       <Helmet>

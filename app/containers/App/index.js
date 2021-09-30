@@ -6,14 +6,12 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { Switch, Route, Router } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import history from 'utils/history';
-import { mapStateToProps, mapDispatchToProps } from "../reduxSetup/actions/registeration";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
 // Student Panel Panel pages routes
 
 // import HomePage from 'containers/student-panel/HomePage/Loadable';
@@ -37,8 +35,12 @@ import Home from 'containers/instructor-panel/HomePage/Loadable';
 import AddWebinarPage from 'containers/instructor-panel/AddWebinarPage/Loadable';
 import AddHackathonPage from 'containers/instructor-panel/AddHackathonPage/Loadable';
 import AddBootCampPage from 'containers/instructor-panel/AddBootCampPage/Loadable';
+import EditWebinarPage from 'containers/instructor-panel/EditWebinarPage/Loadable';
+import EditHackathonPage from 'containers/instructor-panel/EditHackathonPage/Loadable';
+import EditBootCampPage from 'containers/instructor-panel/EditBootCampPage/Loadable';
 import AddCoursesPage from 'containers/instructor-panel/AddCoursesPage/Loadable';
 import AddArticlePage from 'containers/instructor-panel/AddArticlePage/Loadable';
+import EditArticlePage from 'containers/instructor-panel/EditArticlePage/Loadable';
 import CoursesListPage from 'containers/instructor-panel/CoursesListPage/Loadable';
 import WebinarsListPage from 'containers/instructor-panel/WebinarsListPage/Loadable';
 import HackathonListPage from 'containers/instructor-panel/HackathonListPage/Loadable';
@@ -54,6 +56,10 @@ import CreateNewPasswordPage from 'containers/CreateNewPasswordPage/Loadable';
 import Header from 'components/student-panel/Header';
 // import InstructorHeader from 'components/instructor-panel/Header';
 import Footer from 'components/student-panel/Footer';
+import {
+  mapStateToProps,
+  mapDispatchToProps,
+} from '../reduxSetup/actions/registeration';
 
 import GlobalStyle from '../../global-styles';
 
@@ -66,28 +72,22 @@ const AppWrapper = styled.div`
 `;
 
 const App = () => {
-
-  let userInfo = JSON.parse(localStorage.getItem("userInfo"))
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   return (
-
     <AppWrapper>
       <Route>
-
         <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
           <meta name="description" content="FinLit" />
         </Helmet>
-        {history.location.pathname === '/signup' || history.location.pathname === "/login" ||
-
-          history.location.pathname === "/email_verification" ||
-          history.location.pathname === "/create_new_password" ||
-          history.location.pathname === "/forgot_password" ||
-          history.location.pathname === "/two_fa"
-          ? null : userInfo && userInfo.roles[0].roleName == "Instructor" ? <Header  /> : <Header />}
-       {/* <InstructorHeader /> */}
-
+        {history.location.pathname === '/signup' || history.location.pathname === '/login' ||
+          history.location.pathname === '/email_verification' ||
+          history.location.pathname === '/create_new_password' ||
+          history.location.pathname === '/forgot_password' ||
+          history.location.pathname === '/two_fa'
+          ? null : userInfo && userInfo.roles[0].roleName == 'Instructor' ? <Header /> : <Header />}
+        {/* <InstructorHeader /> */}
       </Route>
       <Switch>
-
         <Route exact path="/" component={HomePage} />
         <Route exact path="/dashboard" component={Home} />
         <Route path="/features" component={FeaturePage} />
@@ -102,20 +102,22 @@ const App = () => {
         <Route path="/hackathon_details/:id" component={AddCartHackathon} />
         <Route path="/webinar_details/:id" component={AddCartWebinar} />
         <Route path="/bootcamp_details/:id" component={AddCartBootcamp} />
-
         {/* Instructor Panel pages routes */}
         {/* {userInfo && userInfo.roles[0].roleName == "Super Admin" || userInfo && userInfo.roles[0].roleName == "Instructor" ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={HomePage} />} */}
         <Route exact path="/add_webinar" component={AddWebinarPage} />
         <Route path="/add_hackathon" component={AddHackathonPage} />
         <Route path="/add_bootcamp" component={AddBootCampPage} />
+        <Route exact path="/edit_webinar/:id" component={EditWebinarPage} />
+        <Route path="/edit_hackathon/:id" component={EditHackathonPage} />
+        <Route path="/edit_bootcamp/:id" component={EditBootCampPage} />
         <Route path="/add_course" component={AddCoursesPage} />
         <Route path="/add_article" component={AddArticlePage} />
+        <Route path="/edit_article/:id" component={EditArticlePage} />
         <Route path="/courses_list" component={CoursesListPage} />
         <Route path="/webinars_list" component={WebinarsListPage} />
         <Route path="/hackathons_list" component={HackathonListPage} />
         <Route path="/bootcamps_list" component={BootcampListPage} />
         <Route path="/my_profile" component={MyProfilePage} />
-
         <Route path="/login" component={SigninPage} />
         <Route path="/two_fa" component={TwoFAPage} />
         <Route path="/signup" component={SignupPage} />
@@ -124,18 +126,18 @@ const App = () => {
         <Route path="/create_new_password" component={CreateNewPasswordPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      {history.location.pathname === '/signup' || history.location.pathname === "/login" ||
-        history.location.pathname === "/email_verification" ||
-        history.location.pathname === "/create_new_password" ||
-        history.location.pathname === "/forgot_password" ||
-        history.location.pathname === "/two_fa"
+      {history.location.pathname === '/signup' || history.location.pathname === '/login' ||
+        history.location.pathname === '/email_verification' ||
+        history.location.pathname === '/create_new_password' ||
+        history.location.pathname === '/forgot_password' ||
+        history.location.pathname === '/two_fa'
         ? null : <Footer />}
       <GlobalStyle />
       {/* </Router> */}
-
     </AppWrapper>
-
   );
 }
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App))

@@ -18,19 +18,21 @@ import {
 import history from 'utils/history';
 import { HiUser } from 'react-icons/hi';
 import { RiDashboardFill } from 'react-icons/ri';
-import { FiHeart, FiLogOut } from 'react-icons/fi';
-import { MdNotificationsActive, MdChat } from 'react-icons/md';
-import { IoMdCart, IoIosHelpCircle } from 'react-icons/io';
+// FiHeart
+import { FiLogOut } from 'react-icons/fi';
+// import { MdNotificationsActive, MdChat } from 'react-icons/md';
+// IoIosHelpCircle
+import { IoMdCart } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Logo from '../../../images/logo.svg';
 import Menubar from './Menubar';
 import Img from './Img';
-import User from '../../../images/user.jpg';
+// import User from '../../../images/user.jpg';
 import messages from './messages';
-import { API } from './../../../config/config';
+import { API } from '../../../config/config';
 
-const Header = (props) => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userObj, setUserObj] = useState({});
 
@@ -50,13 +52,13 @@ const Header = (props) => {
           ...authHeaders,
         },
       })
-        .then(result => {
-          setUserObj(result.data);
-        })
-        .catch((err) => {
-          history.push('/');
-        });
-  }
+      .then(result => {
+        setUserObj(result.data);
+      })
+      .catch(() => {
+        history.push('/');
+      });
+  };
   const LogOut = () => {
     history.push('/login');
     localStorage.clear();
@@ -67,17 +69,17 @@ const Header = (props) => {
       <Navbar expand="lg">
         <Container fluid="xl">
           {userObj &&
-          userObj.roles &&
-          userObj.roles[0] &&
-          userObj.roles[0].roleName === 'Instructor' ? (
-              <Link to="/dashboard">
-                <Img src={Logo} alt="FinLit" />
-              </Link>
+            userObj.roles &&
+            userObj.roles[0] &&
+            userObj.roles[0].roleName === 'Instructor' ? (
+            <Link to="/dashboard">
+              <Img src={Logo} alt="FinLit" />
+            </Link>
           ) : (
-              <Link to="/">
-                <Img src={Logo} alt="FinLit" />
-              </Link>
-            )}
+            <Link to="/">
+              <Img src={Logo} alt="FinLit" />
+            </Link>
+          )}
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav navbar>
@@ -203,10 +205,19 @@ const Header = (props) => {
                   <DropdownToggle nav caret>
                     <div className="user_account">
                       <div className="user_icon">
-                        <Img src={userObj.image ? userObj.image : 'https://i.imgur.com/qUzPHy4.jpg'} alt="User" />
+                        <Img
+                          src={
+                            userObj.image
+                              ? userObj.image
+                              : 'https://i.imgur.com/qUzPHy4.jpg'
+                          }
+                          alt="User"
+                        />
                       </div>
                       <div className="user_name">
-                        <p>{userObj.firstName} {userObj.lastName}</p>
+                        <p>
+                          {userObj.firstName} {userObj.lastName}
+                        </p>
                         <span>{userObj.email}</span>
                       </div>
                     </div>
@@ -231,21 +242,21 @@ const Header = (props) => {
                       <div />
                     </DropdownItem>
                     {userObj &&
-                    userObj.roles &&
-                    userObj.roles[0] &&
-                    userObj.roles[0].roleName === 'Student' ? (
-                        <DropdownItem>
-                          <Link to="/cart">
-                            <div>
-                              <IoMdCart />
-                              <FormattedMessage {...messages.MyCart} />
-                            </div>
-                            <div />
-                          </Link>
-                        </DropdownItem>
-
-                       ): <></>
-                    }
+                      userObj.roles &&
+                      userObj.roles[0] &&
+                      userObj.roles[0].roleName === 'Student' ? (
+                      <DropdownItem>
+                        <Link to="/cart">
+                          <div>
+                            <IoMdCart />
+                            <FormattedMessage {...messages.MyCart} />
+                          </div>
+                          <div />
+                        </Link>
+                      </DropdownItem>
+                    ) : (
+                      <></>
+                    )}
                     <DropdownItem onClick={() => LogOut()}>
                       <div>
                         <FiLogOut />

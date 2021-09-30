@@ -12,19 +12,20 @@ import {
   Input,
   FormText,
 } from 'reactstrap';
-import { ToastContainer, toast } from 'react-toastify';
+// ToastContainer,
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
-import { BsPencil } from 'react-icons/bs';
-import { FaCheckCircle } from 'react-icons/fa';
+// import Switch from '@material-ui/core/Switch';
+// import { BsPencil } from 'react-icons/bs';
+// import { FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
-import QRCode from 'qrcode.react';
-import { FiCamera } from 'react-icons/fi';
+// import QRCode from 'qrcode.react';
+// import { FiCamera } from 'react-icons/fi';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
@@ -198,7 +199,11 @@ function BasicInfo() {
                 }}
               />
               <FormText className="form-text">
-                {errors.firstName ? <p className="error">{errors.firstName}</p> : ''}
+                {errors.firstName ? (
+                  <p className="error">{errors.firstName}</p>
+                ) : (
+                  ''
+                )}
               </FormText>
             </FormGroup>
           </Col>
@@ -221,7 +226,11 @@ function BasicInfo() {
                 }}
               />
               <FormText className="form-text">
-                {errors.lastName ? <p className="error">{errors.lastName}</p> : ''}
+                {errors.lastName ? (
+                  <p className="error">{errors.lastName}</p>
+                ) : (
+                  ''
+                )}
               </FormText>
             </FormGroup>
           </Col>
@@ -384,7 +393,11 @@ function BasicInfo() {
                 }}
               />
               <FormText className="form-text">
-                {errors.description ? <p className="error">{errors.description}</p> : ''}
+                {errors.description ? (
+                  <p className="error">{errors.description}</p>
+                ) : (
+                  ''
+                )}
               </FormText>
             </FormGroup>
           </Col>

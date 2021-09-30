@@ -9,8 +9,10 @@ import { HiUsers } from 'react-icons/hi';
 import { AiOutlineCalendar, AiOutlineDelete } from 'react-icons/ai';
 import { GrFormEdit } from 'react-icons/gr';
 // import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 import history from 'utils/history';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
@@ -22,6 +24,43 @@ function BootcampList() {
   useEffect(() => {
     getBootcampLists();
   }, []);
+
+  const dltBootCamp = id => {
+    setLoader(true);
+    const token = localStorage.getItem('token');
+    const authHeaders = token
+      ? {
+          Authorization: `Bearer ${token}`,
+      }
+      : {};
+    axios
+      .delete(`${API}api/events/${id}`, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          ...authHeaders,
+        },
+      })
+      .then(res => {
+        toast.success(
+          res && res.data.message
+            ? res.data.message.toString()
+            : 'Message Not Readable',
+        );
+        setTimeout(() => {
+          getBootcampLists();
+          setLoader(false);
+        }, 4000);
+      })
+      .catch(err => {
+        toast.error(
+          err.response && err.response.data.message
+            ? err.response.data.message.toString()
+            : 'Message Not Readable',
+        );
+        setLoader(false);
+      });
+  };
 
   const getBootcampLists = () => {
     setLoader(true);
@@ -44,11 +83,12 @@ function BootcampList() {
       });
   };
 
-  const handleBootcampList = id => {
-    // history.push('/bootcamp_details/' + id);
+  const editBootCamp = id => {
+    history.push(`/edit_bootcamp/${id}`);
   };
   return (
     <Wrapper>
+      <ToastContainer />
       {loader ? (
         <Loader />
       ) : (
@@ -58,7 +98,9 @@ function BootcampList() {
               <div
                 className="single_course"
                 key={item.id}
-                onClick={() => handleBootcampList(item.id)}
+                role="button"
+                tabIndex={0}
+                // onClick={() => handleBootcampList(item.id)}
               >
                 <div className="course_img">
                   <img src={item.eventImage} alt="Course" />
@@ -81,7 +123,7 @@ function BootcampList() {
                         <div className="time-text">
                           <FormattedMessage {...messages.Timings} />
                         </div>
-                        &nbsp;
+                        &nbsp;&nbsp;
                         <div className="hours">
                           {item.data.startTime} - {item.data.endTime}
                         </div>
@@ -89,8 +131,8 @@ function BootcampList() {
 
                       <div className="date_level">
                         <p>
-                          <AiOutlineCalendar />
-                          {item.createdAt}
+                          {item.data.startDate}
+                          &nbsp;All Level
                         </p>
                       </div>
                       <div className="date_level">
@@ -117,10 +159,20 @@ function BootcampList() {
                   </div>
                 </div>
                 <div className="actions_btn">
-                  <Button>
+                  <Button
+                    onClick={() => {
+                      const { id } = item;
+                      editBootCamp(id);
+                    }}
+                  >
                     <GrFormEdit />
                   </Button>
-                  <Button>
+                  <Button
+                    onClick={() => {
+                      const { id } = item;
+                      dltBootCamp(id);
+                    }}
+                  >
                     <AiOutlineDelete />
                   </Button>
                 </div>

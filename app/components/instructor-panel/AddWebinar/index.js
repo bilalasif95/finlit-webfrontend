@@ -14,6 +14,7 @@ import { FiCamera } from 'react-icons/fi';
 import axios from 'axios';
 import history from 'utils/history';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../config/config';
@@ -135,7 +136,9 @@ function AddWebinar() {
               ? response.data.message.toString()
               : 'Message Not Readable',
           );
-          history.push('/webinars_list');
+          setTimeout(() => {
+            history.push('/webinars_list');
+          }, 4000);
         })
         .catch(err => {
           setLoader(false);
@@ -263,11 +266,10 @@ function AddWebinar() {
                       <input
                         type="file"
                         name="image"
-                        accept="image/png, image/gif, image/jpeg"
+                        accept="image/png, image/gif, image/jpeg ,image/*"
                         id="uploadimage"
                         placeholder="Upload Image"
                         onChange={e => handleChangeEvent(e)}
-                        accept="image/*"
                       />
                     </div>
                   </div>

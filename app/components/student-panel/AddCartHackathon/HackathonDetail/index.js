@@ -3,6 +3,7 @@
  */
 import React, { useState, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
 import { BiCalendar } from 'react-icons/bi';
 import { IoMdShare } from 'react-icons/io';
 import { GrLocation } from 'react-icons/gr';
@@ -25,8 +26,8 @@ function HackathonDetail(props) {
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
-  let detail = props.detail;
-  let dataDetails = detail.data;
+  const { detail } = props;
+  const dataDetails = detail.data;
 
   return (
     <Wrapper id="list">
@@ -151,4 +152,7 @@ function HackathonDetail(props) {
   );
 }
 
+HackathonDetail.propTypes = {
+  detail: PropTypes.any,
+};
 export default HackathonDetail;

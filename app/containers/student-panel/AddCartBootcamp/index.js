@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 import BootcampDetail from '../../../components/student-panel/AddCartBootcamp/BootcampDetail/index';
 import BootcampSidebar from '../../../components/student-panel/AddCartBootcamp/BootcampSidebar/index';
 import { API } from '../../../config/config';
@@ -13,8 +14,8 @@ import { redirectToLogin } from '../../../utils/redirectToLogin';
 import Loader from '../../../components/Loader';
 
 const AddCartHackathon = props => {
-  const [bootCampDetails, setBootCampDetails] = useState([]),
-    [loader, setLoader] = useState(false);
+  const [bootCampDetails, setBootCampDetails] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
     getBootcampDetails();
   }, []);
@@ -25,10 +26,7 @@ const AddCartHackathon = props => {
   const getBootcampDetails = () => {
     setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token?
-      {
-        Authorization: `Bearer$ {token}`,
-      } : {};
+    const authHeaders = token ? { Authorization: `Bearer$ {token}` } : {};
     axios
       .get(`${API}api/events/getById/${props.match.params.id}`, {
         headers: {
@@ -63,11 +61,14 @@ const AddCartHackathon = props => {
               <BootcampSidebar detail={bootCampDetails} />
             </Col>
           </Row>
-        )
-        }
+        )}
       </Container>
     </div>
   );
-}
+};
+
+AddCartHackathon.propTypes = {
+  match: PropTypes.any,
+};
 
 export default withRouter(AddCartHackathon);

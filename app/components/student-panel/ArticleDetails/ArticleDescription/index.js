@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
 import { MdChat } from 'react-icons/md';
 import { HiUser } from 'react-icons/hi';
 import { AiOutlineHeart, AiFillLike } from 'react-icons/ai';
@@ -12,7 +13,7 @@ import messages from './messages';
 import Wrapper from './Wrapper';
 
 function ArticleDescription(props) {
-  let article = props.details;
+  const article = props.details;
   const { title, description } = article;
   return (
     <Wrapper id="list">
@@ -44,4 +45,7 @@ function ArticleDescription(props) {
   );
 }
 
+ArticleDescription.propTypes = {
+  details: PropTypes.any,
+};
 export default ArticleDescription;

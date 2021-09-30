@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'reactstrap';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,13 +14,11 @@ import messages from './messages';
 
 function ArticleSidebar(props) {
   const [articles, setArticles] = useState([]);
-  const [loader, setLoader] = useState(false);
   useEffect(() => {
     getArticleDetail();
   }, []);
 
   const getArticleDetail = () => {
-    setLoader(true);
     axios
       .get(`${API}api/article`, {
         headers: {
@@ -64,5 +63,7 @@ function ArticleSidebar(props) {
     </Row>
   );
 }
-
+ArticleSidebar.propTypes = {
+  notToAdd: PropTypes.any,
+};
 export default ArticleSidebar;

@@ -11,7 +11,6 @@ import { HiUsers } from 'react-icons/hi';
 import { AiOutlineHeart } from 'react-icons/ai';
 // import { AiFillHeart } from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { axiosHeader } from '../../../../utils/axiosHeader';
 import { redirectToLogin } from '../../../../utils/redirectToLogin';
 import messages from './messages';
@@ -59,9 +58,12 @@ function BootCampList() {
               <div className="courses_list">
                 {bootcampList.map(item => (
                   <div
+                    role="button"
+                    tabIndex={0}
                     className="single_course"
                     key={item.id}
                     onClick={() => handleBootcampDetails(item.id)}
+                    onKeyDown={()=> handleBootcampDetails(item.id)}
                   >
                     <div className="course_img">
                       <img src={item.eventImage} alt="Course" />

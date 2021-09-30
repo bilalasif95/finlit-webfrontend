@@ -3,18 +3,15 @@
  */
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { IoMdCart, IoMdSearch } from 'react-icons/io';
+import { IoMdCart } from 'react-icons/io';
+import PropTypes from 'prop-types';
 import { AiOutlineDelete } from 'react-icons/ai';
 // import { AiFillHeart } from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
-import { InputGroup, Input, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import reg from '../../../../images/reg.png';
-
 function CartCheckoutDescription(props) {
-  console.log('detailsCart', props.details);
-
   return (
     <Wrapper id="list">
       <div className="cart_checkout">
@@ -26,23 +23,20 @@ function CartCheckoutDescription(props) {
             </Button>
           </InputGroup> */}
           <div className="cart">
-            <div className="num_cont">
-              {/* <IoMdSearch /> */}
-            </div>
+            <div className="num_cont"> {/* <IoMdSearch /> */}</div>
             <div className="num_cont">
               <IoMdCart />
-
               {props.details &&
                 props.details.items &&
-                props.details.items.length === 0 ? "" :
-
+                props.details.items.length === 0 ? (
+                ''
+              ) : (
                 <span className="no_item">
                   {props.details &&
                     props.details.items &&
                     props.details.items.length}
                 </span>
-              }
-
+              )}
             </div>
           </div>
         </div>
@@ -101,15 +95,22 @@ function CartCheckoutDescription(props) {
         </div>
         <div className="footer">
           <div className="sub_total">
-            {props.details.total > 0 ? <p>
-              <FormattedMessage {...messages.Subtotal} /> ${props.details.total}
-            </p> : ""}
-
+            {props.details.total > 0 ? (
+              <p>
+                <FormattedMessage {...messages.Subtotal} /> $
+                {props.details.total}
+              </p>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>
     </Wrapper>
   );
 }
-
+CartCheckoutDescription.propTypes = {
+  details: PropTypes.any,
+  RemoveFromCart: PropTypes.any,
+};
 export default CartCheckoutDescription;

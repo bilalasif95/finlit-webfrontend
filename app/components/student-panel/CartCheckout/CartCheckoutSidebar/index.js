@@ -95,8 +95,7 @@ function CartCheckoutSidebar(props) {
         error.cardHolderName = 'Card name is required';
       } else if (!values.cardNumber) {
         error.cardNumber = 'Card number is required';
-      }
-      else {
+      } else {
         const validateCard = values.cardNumber.toString().search('_');
         if (validateCard >= 0) {
           error.cardNumber = 'Invalid card number format';
@@ -110,21 +109,17 @@ function CartCheckoutSidebar(props) {
             const validateyy = values.MMYY.toString().search('Y');
             if (validateyy >= 0) {
               error.MMYY = 'Invalid format mm/yy';
-            } else {
-              if (!values.CVC) {
-                error.CVC = 'CVC is required';
-              } else {
-                error.CVC = 'Invalid format CVC';
-              }
+            } else if (!values.CVC) {
+              error.CVC = 'CVC is required';
+            } else if (isNaN(values.CVC)) {
+              error.CVC = 'Invalid CVC format';
             }
           }
         }
       }
     }
-
     return error;
   };
-
   return (
     <Row>
       <Col lg={12}>
@@ -187,10 +182,10 @@ function CartCheckoutSidebar(props) {
               </FormGroup>
             </FormGroup>
             {/* <div className="paypal">
-            <p>
-              <FormattedMessage {...messages.PayPalInfo} />
-            </p>
-          </div> */}
+              <p>
+                <FormattedMessage {...messages.PayPalInfo} />
+              </p>
+            </div> */}
             <FormGroup>
               <Label for="cardholdername">
                 <FormattedMessage {...messages.CardholderName} />
@@ -238,7 +233,6 @@ function CartCheckoutSidebar(props) {
               </Label>
               <NumberFormat
                 format="##/##"
-                placeholder="MM/YY"
                 mask={['M', 'M', 'Y', 'Y']}
                 id="mmyy"
                 name="MMYY"
@@ -262,7 +256,6 @@ function CartCheckoutSidebar(props) {
                 name="CVC"
                 value={checkoutInfo.CVC}
                 onChange={e => handleChangeEvent(e)}
-                placeholder="CVC"
                 className="form-control"
               />
               <Label for="cvc">
@@ -328,10 +321,8 @@ function CartCheckoutSidebar(props) {
       </Col>
       <ToastContainer />
     </Row>
-
   );
 }
-
 CartCheckoutSidebar.propTypes = {
   props: PropTypes.any,
   details: PropTypes.any,

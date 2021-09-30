@@ -8,39 +8,43 @@ import { Button, FormGroup, Label, Input } from 'reactstrap';
 import history from 'utils/history';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import UseEnterKeyListener from "../../config/useEnterKeyListener";
-
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import UseEnterKeyListener from '../../config/useEnterKeyListener';
+import { API } from '../../config/config';
 import {
   mapStateToProps,
   mapDispatchToProps,
 } from '../reduxSetup/actions/registeration';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
-import { API } from '../../config/config';
+
 // import { response } from 'express';
 const SigninPage = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [btnClick, setBtnClick] = useState(false);
-  const [isDisabled, setDisabled] = useState(false);
+  // const [isDisabled, setDisabled] = useState(false);
   UseEnterKeyListener({
-    querySelectorToExecuteClick: "#submitButton"
+    querySelectorToExecuteClick: '#submitButton',
   });
   const [rememberMe, setRememberMe] = useState(false);
 
   React.useEffect(() => {
     setEmail(localStorage.getItem('remember_me_email') || '');
     setPassword(localStorage.getItem('remember_me_password') || '');
-    if (localStorage.getItem('remember_me_email') && localStorage.getItem('remember_me_password')) {
+    if (
+      localStorage.getItem('remember_me_email') &&
+      localStorage.getItem('remember_me_password')
+    ) {
       setRememberMe(true);
     }
-  }, [])
+  }, []);
   const login = () => {
     setError('');
-    debugger;
+    // debugger;
     if (!email) {
       setError('Please enter email');
       return;
@@ -128,11 +132,10 @@ const SigninPage = props => {
                   id="password"
                   defaultValue={password}
                   onChange={e => setPassword(e.target.value)}
-                  onKeyDown = {(e) => {
-                    if (e.code === "Enter" || e.code === "NumpadEnter") {
-                      console.log("Enter key was pressed. Run your function.");
+                  onKeyDown={e => {
+                    if (e.code === 'Enter' || e.code === 'NumpadEnter') {
                       e.preventDefault();
-                      login()
+                      login();
                     }
                   }}
                   placeholder="******"
@@ -144,9 +147,14 @@ const SigninPage = props => {
               <div className="remember_forgot">
                 <FormGroup check>
                   <Label check className="check-box">
-                    <Input defaultValue={rememberMe} value={rememberMe} type="checkbox" onChange={(e) => {
-                      setRememberMe(e.target.value);
-                    }} />
+                    <Input
+                      defaultValue={rememberMe}
+                      value={rememberMe}
+                      type="checkbox"
+                      onChange={e => {
+                        setRememberMe(e.target.value);
+                      }}
+                    />
                     <FormattedMessage {...messages.RememberMe} />
                   </Label>
                 </FormGroup>
@@ -154,7 +162,11 @@ const SigninPage = props => {
                   <FormattedMessage {...messages.ForgotPassword} />
                 </Link>
               </div>
-              <Button id="submitButton" onClick={login} disabled={btnClick || !email || !password}>
+              <Button
+                id="submitButton"
+                onClick={login}
+                disabled={btnClick || !email || !password}
+              >
                 <FormattedMessage {...messages.Login} />
               </Button>
               <div className="reg_footer">
@@ -176,6 +188,13 @@ const SigninPage = props => {
   );
 };
 
+SigninPage.propTypes = {
+  Login: PropTypes.any,
+};
+
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(SigninPage)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(SigninPage),
 );

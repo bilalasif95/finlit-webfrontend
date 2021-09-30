@@ -4,7 +4,7 @@ import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { browserHistory, BrowserRouter } from 'react-router-dom';
 
-import configureStore from '../../../../../configureStore';
+import configureStore from '../../../../configureStore';
 import BasicInfo from '../index';
 
 describe('<BasicInfo />', () => {

@@ -75,11 +75,13 @@ const Wrapper = styled.div`
         color: #484848;
       }
       button {
-        color: #225F2B;
+        color: #225f2b;
         background: transparent !important;
         border: none;
         font-size: 16px;
-        &:focus, &:active, &:hover {
+        &:focus,
+        &:active,
+        &:hover {
           box-shadow: inherit;
           outline: none;
         }
@@ -88,14 +90,14 @@ const Wrapper = styled.div`
     .List-box:not(:last-child) {
       border-bottom: 1px solid #e6e6e6;
     }
-    .List-box { 
-      padding: 30px 0px;
+    .List-box {
+      padding: 30px 0;
       h4 {
         font-size: 21px;
         color: #484848 !important;
       }
       p {
-        font-size: 18x;
+        font-size: 18px;
         color: #8b8b8b;
       }
     }
@@ -117,7 +119,7 @@ const Wrapper = styled.div`
     }
     .recent-cont {
       padding: 20px 20px;
-      .activities{
+      .activities {
         h3 {
           font-size: 20px;
           margin-bottom: 0;
@@ -133,7 +135,7 @@ const Wrapper = styled.div`
         p {
           font-size: 14px;
         }
-      } 
+      }
     }
     .course-cont {
       padding: 20px 20px;
@@ -149,7 +151,7 @@ const Wrapper = styled.div`
           }
         }
       }
-  }
+    }
   }
 `;
 

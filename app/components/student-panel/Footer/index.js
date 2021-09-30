@@ -11,9 +11,7 @@ import {
   FaYoutube,
   FaSkype,
 } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import messages from './messages';
-import A from '../../A/index';
 import Wrapper from './Wrapper';
 
 function Footer() {
