@@ -32,8 +32,8 @@ function WebinarsList() {
     const token = localStorage.getItem('token');
     const authHeaders = token
       ? {
-        Authorization: `Bearer ${token}`,
-      }
+          Authorization: `Bearer ${token}`,
+        }
       : {};
     axios
       .delete(`${API}api/events/${id}`, {
@@ -69,8 +69,8 @@ function WebinarsList() {
     const token = localStorage.getItem('token');
     const authHeaders = token
       ? {
-        Authorization: `Bearer ${token}`,
-      }
+          Authorization: `Bearer ${token}`,
+        }
       : {};
     axios
       .get(`${API}api/events/getEventsByTypesAndUser?type=Webinar`, {

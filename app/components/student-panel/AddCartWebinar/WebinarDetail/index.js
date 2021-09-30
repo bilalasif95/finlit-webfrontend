@@ -21,7 +21,7 @@ function WebinarDetail(props) {
   const config = {
     readonly: true,
   };
-  const{ detail} = props;
+  const { detail } = props;
   const dataDetails = detail.data;
 
   return (
@@ -65,7 +65,8 @@ function WebinarDetail(props) {
               <FormattedMessage {...messages.Timings} />
             </p>
             <p className="value">
-              {dataDetails && dataDetails.startTime} - {dataDetails && dataDetails.endTime}
+              {dataDetails && dataDetails.startTime} -
+              {dataDetails && dataDetails.endTime}
             </p>
           </div>
           <div className="item">
@@ -102,7 +103,8 @@ function WebinarDetail(props) {
                     <p className="name">
                       {props && props.detail && props.detail.data
                         ? props.detail.data.presentor
-                        : ''}</p>
+                        : ''}
+                    </p>
                   </div>
                   {/* <div className="rating">
                     <p>4.7</p>

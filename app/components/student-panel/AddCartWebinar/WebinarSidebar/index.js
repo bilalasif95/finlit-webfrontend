@@ -17,7 +17,7 @@ import { API } from '../../../../config/config';
 import { axiosHeader } from '../../../../utils/axiosHeader';
 
 function WebinarSidebar(props) {
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
   const { detail } = props;
   const dataDetails = detail.data;
 
@@ -26,7 +26,7 @@ function WebinarSidebar(props) {
     const data = {
       productType: detail.type,
       productId: detail.id,
-      price: dataDetails && dataDetails.price
+      price: dataDetails && dataDetails.price,
     };
     axios
       .post(`${API}api/cart/addTocart`, data, axiosHeader)

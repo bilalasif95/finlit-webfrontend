@@ -17,7 +17,7 @@ export default function ForgotPasswordPage() {
   const [error, setError] = useState('');
   const [btnClick, setBtnClick] = useState(false);
   UseEnterKeyListener({
-    querySelectorToExecuteClick: '#submitButton'
+    querySelectorToExecuteClick: '#submitButton',
   });
 
   const forgotPasswordBtn = () => {

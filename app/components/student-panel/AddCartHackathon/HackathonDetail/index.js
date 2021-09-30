@@ -50,8 +50,12 @@ function HackathonDetail(props) {
         <div className="date_location">
           <div className="item">
             <BiCalendar />{' '}
-            <p><FormattedMessage {...messages.Date} /></p>
-            <p className="value">{moment(detail.updatedAt).format("MMM DD ,YYYY")}</p>
+            <p>
+              <FormattedMessage {...messages.Date} />
+            </p>
+            <p className="value">
+              {moment(detail.updatedAt).format('MMM DD ,YYYY')}
+            </p>
           </div>
           <div className="item time-item">
             <GrLocation />

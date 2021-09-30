@@ -46,17 +46,18 @@ function ArticleSidebar(props) {
             <span className="btm_line" />
           </h4>
           <ul>
-            {articles.length > 0 && articles.slice(0, 6).map(article =>
-              article.id.toString() === props.notToAdd ? (
-                <></>
-              ) : (
-                <li>
-                  <a href={`/article_details/${article.id}`} >
-                    {article.title}
-                  </a>
-                </li>
-              ),
-            )}
+            {articles.length > 0 &&
+              articles.slice(0, 6).map(article =>
+                article.id.toString() === props.notToAdd ? (
+                  <></>
+                ) : (
+                  <li>
+                    <a href={`/article_details/${article.id}`}>
+                      {article.title}
+                    </a>
+                  </li>
+                ),
+              )}
           </ul>
         </Wrapper>
       </Col>

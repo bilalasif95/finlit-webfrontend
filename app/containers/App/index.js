@@ -79,12 +79,17 @@ const App = () => {
         <Helmet titleTemplate="FinLit %s" defaultTitle="FinLit">
           <meta name="description" content="FinLit" />
         </Helmet>
-        {history.location.pathname === '/signup' || history.location.pathname === '/login' ||
-          history.location.pathname === '/email_verification' ||
-          history.location.pathname === '/create_new_password' ||
-          history.location.pathname === '/forgot_password' ||
-          history.location.pathname === '/two_fa'
-          ? null : userInfo && userInfo.roles[0].roleName == 'Instructor' ? <Header /> : <Header />}
+        {history.location.pathname === '/signup' ||
+        history.location.pathname === '/login' ||
+        history.location.pathname === '/email_verification' ||
+        history.location.pathname === '/create_new_password' ||
+        history.location.pathname === '/forgot_password' ||
+        history.location.pathname === '/two_fa' ? null : userInfo &&
+          userInfo.roles[0].roleName === 'Instructor' ? (
+              <Header />
+            ) : (
+              <Header />
+            )}
         {/* <InstructorHeader /> */}
       </Route>
       <Switch>
@@ -126,18 +131,22 @@ const App = () => {
         <Route path="/create_new_password" component={CreateNewPasswordPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      {history.location.pathname === '/signup' || history.location.pathname === '/login' ||
-        history.location.pathname === '/email_verification' ||
-        history.location.pathname === '/create_new_password' ||
-        history.location.pathname === '/forgot_password' ||
-        history.location.pathname === '/two_fa'
-        ? null : <Footer />}
+      {history.location.pathname === '/signup' ||
+      history.location.pathname === '/login' ||
+      history.location.pathname === '/email_verification' ||
+      history.location.pathname === '/create_new_password' ||
+      history.location.pathname === '/forgot_password' ||
+      history.location.pathname === '/two_fa' ? null : (
+          <Footer />
+        )}
       <GlobalStyle />
       {/* </Router> */}
     </AppWrapper>
   );
-}
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App))
+};
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(App),
+);

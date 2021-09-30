@@ -27,8 +27,8 @@ function CartCheckoutDescription(props) {
             <div className="num_cont">
               <IoMdCart />
               {props.details &&
-                props.details.items &&
-                props.details.items.length === 0 ? (
+              props.details.items &&
+              props.details.items.length === 0 ? (
                 ''
               ) : (
                 <span className="no_item">

@@ -6,7 +6,8 @@ import { FormattedMessage } from 'react-intl';
 import { Button } from 'reactstrap';
 import { BiTimeFive } from 'react-icons/bi';
 import { HiUsers } from 'react-icons/hi';
-import { AiOutlineCalendar, AiOutlineDelete } from 'react-icons/ai';
+// AiOutlineCalendar
+import { AiOutlineDelete } from 'react-icons/ai';
 import { GrFormEdit } from 'react-icons/gr';
 // import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -31,7 +32,7 @@ function BootcampList() {
     const authHeaders = token
       ? {
           Authorization: `Bearer ${token}`,
-      }
+        }
       : {};
     axios
       .delete(`${API}api/events/${id}`, {

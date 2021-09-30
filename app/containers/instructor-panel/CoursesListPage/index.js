@@ -27,7 +27,9 @@ export default function CoursesListPage() {
                   <h4>
                     <FormattedMessage {...messages.CoursesList} />
                   </h4>
-                  <Link to="/add_course"><span>+</span> Add</Link>
+                  <Link to="/add_course">
+                    <span>+</span> Add
+                  </Link>
                 </div>
                 <CoursesList />
               </Col>

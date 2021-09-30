@@ -148,7 +148,7 @@ function Articles() {
                             <p> {articleList[0].subTitle} </p>
                             <Button
                               className="read_more"
-                              onClick={() => 
+                              onClick={() =>
                                 handleArticleDetails(articleList[0].id)
                               }
                             >

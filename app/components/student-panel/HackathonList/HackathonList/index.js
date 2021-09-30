@@ -63,7 +63,7 @@ function HackathonList() {
                     key={item.id}
                     tabIndex={0}
                     role="button"
-                    onKeyDown={()=> handleHackathonDetails(item.id)}
+                    onKeyDown={() => handleHackathonDetails(item.id)}
                     onClick={() => handleHackathonDetails(item.id)}
                   >
                     <div className="course_img">

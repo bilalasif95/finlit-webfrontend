@@ -63,7 +63,7 @@ function BootCampList() {
                     className="single_course"
                     key={item.id}
                     onClick={() => handleBootcampDetails(item.id)}
-                    onKeyDown={()=> handleBootcampDetails(item.id)}
+                    onKeyDown={() => handleBootcampDetails(item.id)}
                   >
                     <div className="course_img">
                       <img src={item.eventImage} alt="Course" />

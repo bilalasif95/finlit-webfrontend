@@ -36,7 +36,7 @@ import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthenticat
 export default function MyProfilePage() {
   const [activeTab, setActiveTab] = useState('1');
   const [userObj, setUserObj] = useState({});
-  const [newProfileImg, setNewProfileImg] = useState({});
+  // const [newProfileImg, setNewProfileImg] = useState({});
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
@@ -110,7 +110,10 @@ export default function MyProfilePage() {
                 <div className="profile_sidebar">
                   <div className="pro_img">
                     <div className="inner">
-                      <Img src={userObj.image || 'https://i.imgur.com/qUzPHy4.jpg'} alt="Profile" />
+                      <Img
+                        src={userObj.image || 'https://i.imgur.com/qUzPHy4.jpg'}
+                        alt="Profile"
+                      />
                     </div>
                     <Label>
                       {' '}

@@ -36,16 +36,16 @@ function Events() {
         if (res.data.data.length > 4) {
           setEventsList(
             res &&
-            res.data.data.splice(
-              res.data.data.length - 4,
-              res.data.data.length,
-            ),
+              res.data.data.splice(
+                res.data.data.length - 4,
+                res.data.data.length,
+              ),
           );
         } else {
           setEventsList(res && res.data.data);
         }
       })
-      .catch(() => { });
+      .catch(() => {});
   };
   const getTimeAndDateFormat = (date, time) => {
     const daysName = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -55,8 +55,9 @@ function Events() {
       .day();
     const momentDtObj = moment(date).format('ll');
     const momentTim = moment(time, ['HH:mm']).format('hh:mm A');
-    const datetimeformat = `${daysName[day]
-      }, ${momentDtObj}, ${momentTim} ${zone}`;
+    const datetimeformat = `${
+      daysName[day]
+    }, ${momentDtObj}, ${momentTim} ${zone}`;
     return datetimeformat;
   };
 

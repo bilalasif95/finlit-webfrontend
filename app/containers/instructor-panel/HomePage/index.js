@@ -27,8 +27,8 @@ export function HomePage() {
   return (
     <div className="main_page">
       <Helmet>
-        <title>FinLit Admin - Home</title>
-        <meta name="description" content="FinLit Admin - Home" />
+        <title>Dashboard</title>
+        <meta name="description" content="Dashboard" />
       </Helmet>
       <div className="w-100">
         <MainSection statistics={statisticsCounter} />

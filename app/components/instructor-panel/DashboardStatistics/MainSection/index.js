@@ -175,7 +175,7 @@ function MainSection(props) {
                   </Row>
                 </div>
               </>
-              ) : (
+            ) : (
               <></>
             )}
           </div>

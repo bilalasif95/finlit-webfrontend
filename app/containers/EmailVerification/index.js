@@ -15,8 +15,8 @@ import messages from './messages';
 import Check from '../../images/checkImg.svg';
 
 export default function EmailVerificationPage() {
-  const parsed = qs.parse(location.search);
-  const authHeaders = parsed ? { Authorization: `Bearer ${parsed.token}`, } : {};
+  const parsed = qs.parse(window.location.search);
+  const authHeaders = parsed ? { Authorization: `Bearer ${parsed.token}` } : {};
   axios
     .get(`${API}api/auth/confirmEmail`, {
       headers: {
@@ -29,7 +29,11 @@ export default function EmailVerificationPage() {
       toast.success('Success, Please Login to Continue');
     })
     .catch(err => {
-      toast.error(err.response && err.response.data.message ? err.response.data.message.toString() : 'Message Not Readable')
+      toast.error(
+        err.response && err.response.data.message
+          ? err.response.data.message.toString()
+          : 'Message Not Readable',
+      );
     });
   return (
     <>
@@ -44,7 +48,7 @@ export default function EmailVerificationPage() {
             <Col lg={12}>
               <div className="verification-main">
                 <div className="email-verification">
-                  <img src={Check} />
+                  <img src={Check} alt="Email Verify" />
                   <h4>
                     <FormattedMessage {...messages.EmailTitle} />
                   </h4>
