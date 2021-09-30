@@ -1,7 +1,7 @@
 /*
- * Cart Checkout Description Component
+ * BooCamp Details Component
  */
-import React, {useRef } from 'react';
+import React, { useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { BiTimeFive, BiCalendar } from 'react-icons/bi';
 import moment from 'moment';
@@ -24,7 +24,7 @@ function BootcampDetail(props) {
   //   if (activeTab !== tab) setActiveTab(tab);
   // };
 
-  const {detail} = props;
+  const { detail } = props;
   const dataDetails = detail.data;
 
   return (
@@ -35,9 +35,7 @@ function BootcampDetail(props) {
           <img src={detail.eventImage} alt="main" />
         </div>
         <div className="header">
-          <h4>
-            {dataDetails && dataDetails.mainTitle}
-          </h4>
+          <h4>{dataDetails && dataDetails.mainTitle}</h4>
           <div className="like_share">
             <Button>
               <FaRegHeart />
@@ -53,15 +51,19 @@ function BootcampDetail(props) {
             <p>
               <FormattedMessage {...messages.Date} />
             </p>
-
-            <p className="value">{moment(detail.updatedAt).format("MMM DD ,YYYY")}</p>
+            <p className="value">
+              {moment(detail.updatedAt).format('MMM DD ,YYYY')}
+            </p>
           </div>
           <div className="item time-item">
             <BiTimeFive />{' '}
             <p>
               <FormattedMessage {...messages.Time} />
             </p>
-            <p className="value">{dataDetails && dataDetails.startTime} - {dataDetails && dataDetails.endTime}</p>
+            <p className="value">
+              {dataDetails && dataDetails.startTime} -
+              {dataDetails && dataDetails.endTime}
+            </p>
           </div>
         </div>
         <div className="requirement">

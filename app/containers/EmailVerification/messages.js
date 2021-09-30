@@ -1,11 +1,11 @@
 /*
- * Signin Page Messages
+ * EmailVerification Page Messages
  *
- * This contains all the text for the Signin Page component.
+ * This contains all the text for the EmailVerification Page component.
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.containers.SigninPage';
+export const scope = 'boilerplate.containers.EmailVerificationPage';
 
 export default defineMessages({
   EmailTitle: {
@@ -14,6 +14,7 @@ export default defineMessages({
   },
   Emaildetail: {
     id: `${scope}.Emaildetail`,
-    defaultMessage: 'Your email has been verified successfully. Please login to continue.',
+    defaultMessage: `Your email has been verified successfully.
+    Please login to continue.`,
   },
 });

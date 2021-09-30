@@ -25,7 +25,7 @@ export default function CreateNewPasswordPage() {
     }
     if (!/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password)) {
       setError(
-        'Password must contains one special character or capital letter and length should be in between 8 to 12 characters.'
+        'Password must contains one special character or capital letter and length should be in between 8 to 12 characters.',
       );
       return;
     }
@@ -37,16 +37,16 @@ export default function CreateNewPasswordPage() {
       setError('Password & Confirm Password are not same');
       return;
     }
-    const parsed = qs.parse(location.search);
-    console.log(parsed);
+    const parsed = qs.parse(window.location.search);
+    // console.log(parsed);
     const authHeaders = parsed
       ? {
-        Authorization: `Bearer ${parsed.token}`,
-      }
+          Authorization: `Bearer ${parsed.token}`,
+        }
       : {};
     axios
-      .post
-      (`${API}api/user/forgotConfirmPassword`,
+      .post(
+        `${API}api/user/forgotConfirmPassword`,
         { password, confirmPassword },
         {
           headers: {
@@ -54,16 +54,25 @@ export default function CreateNewPasswordPage() {
             'Content-Type': 'application/json',
             ...authHeaders,
           },
-        })
+        },
+      )
       .then(res => {
-        console.log(res);
+        // console.log(res);
         setTimeout(() => {
           window.location.href = '/login';
-        }, 3000)
-        toast.success(res.data && res.data.message ? res.data.message : 'Message Not Readable');
+        }, 3000);
+        toast.success(
+          res.data && res.data.message
+            ? res.data.message
+            : 'Message Not Readable',
+        );
       })
       .catch(err => {
-        toast.error(err.response && err.response.data.message ? err.response.data.message.toString() : 'Message Not Readable')
+        toast.error(
+          err.response && err.response.data.message
+            ? err.response.data.message.toString()
+            : 'Message Not Readable',
+        );
       });
   };
   return (
@@ -71,7 +80,10 @@ export default function CreateNewPasswordPage() {
       <div className="registration_page">
         <Helmet>
           <title>- Create New Password</title>
-          <meta name="description" content="FinLit - Create New Password Page" />
+          <meta
+            name="description"
+            content="FinLit - Create New Password Page"
+          />
         </Helmet>
         <div className="form_container Login-form">
           <div className="form_content">

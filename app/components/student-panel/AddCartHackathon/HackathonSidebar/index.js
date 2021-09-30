@@ -48,8 +48,7 @@ function HackathonSidebar(props) {
             : 'Message Not Readable',
         );
       });
-
-  }
+  };
 
   return (
     <Wrapper>

@@ -16,12 +16,11 @@ export default function HackathonListPage() {
   useEffect(() => {
     redirectToLogin();
   }, []);
-
   return (
     <div className="sub_page">
       <Helmet>
-        <title>Hackathon List Page</title>
-        <meta name="description" content="Hackathon List Page" />
+        <title>Hackathon List</title>
+        <meta name="description" content="Hackathon List" />
       </Helmet>
       <Wrapper id="list">
         <div className="custom_container">

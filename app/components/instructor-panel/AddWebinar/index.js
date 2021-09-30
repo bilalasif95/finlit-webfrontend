@@ -488,6 +488,7 @@ function AddWebinar() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </Wrapper>
   );
 }

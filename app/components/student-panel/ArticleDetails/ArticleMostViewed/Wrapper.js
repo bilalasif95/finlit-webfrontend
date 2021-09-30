@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-margin-top: 30px;
-.jodit-toolbar__box:not(:empty) {
-  display: none;
-}
-.jodit-status-bar {
-  display: none;
-}
-.jodit-container:not(.jodit_inline) {
-  border: none;
-}
-
+  margin-top: 30px;
+  .jodit-toolbar__box:not(:empty) {
+    display: none;
+  }
+  .jodit-status-bar {
+    display: none;
+  }
+  .jodit-container:not(.jodit_inline) {
+    border: none;
+  }
   background-color: #f8f9fb;
   .single_item {
     background-color: #fff;
@@ -33,6 +32,7 @@ margin-top: 30px;
       width: 40%;
       img {
         margin: 0;
+        height: 100%;
         width: 100%;
       }
     }
