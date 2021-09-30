@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col } from 'reactstrap';
+import PropTypes from 'prop-types';
 import messages from './messages';
 import EditWebinar from '../../../components/instructor-panel/EditWebinar';
 import Wrapper from './Wrapper';
@@ -26,7 +27,7 @@ export default function EditWebinarPage(props) {
                 <h4>
                   <FormattedMessage {...messages.EditWebinar} />
                 </h4>
-                <EditWebinar id={props.match.params.id}/>
+                <EditWebinar id={props.match.params.id} />
               </Col>
             </Row>
           </Container>
@@ -35,3 +36,6 @@ export default function EditWebinarPage(props) {
     </div>
   );
 }
+EditWebinarPage.propTypes = {
+  match: PropTypes.any,
+};
