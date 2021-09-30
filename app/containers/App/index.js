@@ -12,10 +12,6 @@ import styled from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import history from 'utils/history';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
-=======
-
->>>>>>> 9a7ec4731c713aa7c8f0f044365f1844d703c703
 import {
   mapStateToProps,
   mapDispatchToProps,
