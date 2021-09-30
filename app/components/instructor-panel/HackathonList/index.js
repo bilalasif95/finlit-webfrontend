@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Button } from 'reactstrap';
 import { BiTimeFive } from 'react-icons/bi';
-import { HiUsers } from 'react-icons/hi';
+// import { HiUsers } from 'react-icons/hi';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { GrFormEdit } from 'react-icons/gr';
 import { ToastContainer, toast } from 'react-toastify';
@@ -28,11 +28,7 @@ function HackathonList() {
   const dltHackathon = id => {
     setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token
-      ? {
-        Authorization: `Bearer ${token}`,
-      }
-      : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .delete(`${API}api/events/${id}`, {
         headers: {
@@ -64,7 +60,7 @@ function HackathonList() {
   const getHackathonLists = () => {
     setLoader(true);
     const token = localStorage.getItem('token');
-    const authHeaders = token ? { Authorization: `Bearer ${token}`, } : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .get(`${API}api/events/getEventsByTypesAndUser?type=Hackathon`, {
         headers: {

@@ -37,14 +37,14 @@ const Header = () => {
   const [userObj, setUserObj] = useState({});
 
   const toggle = () => setIsOpen(!isOpen);
-
-  React.useEffect(() => {
-    getMe();
-  }, []);
   const token = localStorage.getItem('token');
+  React.useEffect(() => {
+    if (token) {
+      getMe();
+    }
+  }, []);
   const getMe = () => {
-    const token2 = localStorage.getItem('token');
-    const authHeaders = token2 ? { Authorization: `Bearer ${token2}` } : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .get(`${API}api/auth/me`, {
         headers: {
@@ -69,9 +69,9 @@ const Header = () => {
       <Navbar expand="lg">
         <Container fluid="xl">
           {userObj &&
-            userObj.roles &&
-            userObj.roles[0] &&
-            userObj.roles[0].roleName === 'Instructor' ? (
+          userObj.roles &&
+          userObj.roles[0] &&
+          userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
               <Img src={Logo} alt="FinLit" />
             </Link>
@@ -242,9 +242,9 @@ const Header = () => {
                       <div />
                     </DropdownItem>
                     {userObj &&
-                      userObj.roles &&
-                      userObj.roles[0] &&
-                      userObj.roles[0].roleName === 'Student' ? (
+                    userObj.roles &&
+                    userObj.roles[0] &&
+                    userObj.roles[0].roleName === 'Student' ? (
                       <DropdownItem>
                         <Link to="/cart">
                           <div>

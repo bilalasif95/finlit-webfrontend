@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col } from 'reactstrap';
+import PropTypes from 'prop-types';
 import EditHackathon from '../../../components/instructor-panel/EditHackathon';
 import messages from './messages';
 import Wrapper from './Wrapper';
@@ -26,7 +27,7 @@ export default function EditHackathonPage(props) {
                 <h4>
                   <FormattedMessage {...messages.EditHackathon} />
                 </h4>
-                <EditHackathon id={props.match.params.id}/>
+                <EditHackathon id={props.match.params.id} />
               </Col>
             </Row>
           </Container>
@@ -35,3 +36,6 @@ export default function EditHackathonPage(props) {
     </div>
   );
 }
+EditHackathonPage.propTypes = {
+  match: PropTypes.any,
+};
