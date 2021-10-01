@@ -95,9 +95,7 @@ const TwoFAPage = props => {
                     }
                   }}
                 />
-                <FormText>
-                  {error && <p className="error">{error}</p>}
-                </FormText>
+                <FormText>{error && <p className="error">{error}</p>}</FormText>
               </FormGroup>
               <Button onClick={login} disabled={btnClick}>
                 <FormattedMessage {...messages.Verify} />

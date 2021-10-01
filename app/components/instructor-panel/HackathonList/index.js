@@ -91,7 +91,12 @@ function HackathonList() {
             {hackathonList.map(item => (
               <div className="single_course" key={item.data.id}>
                 <div className="course_img">
-                  <img src={item.eventImage} alt="Course" height="100%" width="100%" />
+                  <img
+                    src={item.eventImage}
+                    alt="event"
+                    height="100%"
+                    width="100%"
+                  />
                 </div>
                 <div className="course_info">
                   <div className="course_short_info">

@@ -327,7 +327,12 @@ export default function MyProfilePage() {
               security.
             </p>
             <div className="app_store">
-              <Img src={GooglePlay} alt="Google Play" height="100%" width="100%" />
+              <Img
+                src={GooglePlay}
+                alt="Google Play"
+                height="100%"
+                width="100%"
+              />
               <Img src={AppStore} alt="App Store" height="100%" width="100%" />
             </div>
             <p>

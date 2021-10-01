@@ -68,7 +68,12 @@ function WebinarsList() {
                     onKeyDown={() => handleWebinarDetails(item.id)}
                   >
                     <div className="course_img">
-                      <img src={item.eventImage} alt="Course" height="100%" width="100%" />
+                      <img
+                        src={item.eventImage}
+                        alt="Course"
+                        height="100%"
+                        width="100%"
+                      />
                     </div>
                     <div className="course_info">
                       <h5>{item.data.mainTitle}</h5>

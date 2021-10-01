@@ -48,7 +48,12 @@ export default function EmailVerificationPage() {
             <Col lg={12}>
               <div className="verification-main">
                 <div className="email-verification">
-                  <img src={Check} alt="Email Verify" height="100%" width="100%" />
+                  <img
+                    src={Check}
+                    alt="Email Verify"
+                    height="100%"
+                    width="100%"
+                  />
                   <h4>
                     <FormattedMessage {...messages.EmailTitle} />
                   </h4>

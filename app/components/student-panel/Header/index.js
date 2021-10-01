@@ -27,7 +27,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Logo from '../../../images/logo.svg';
 import Menubar from './Menubar';
-import Img from './Img';
+// import Img from './Img';
 // import User from '../../../images/user.jpg';
 import messages from './messages';
 import { API } from '../../../config/config';
@@ -73,11 +73,23 @@ const Header = () => {
           userObj.roles[0] &&
           userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
-              <img src={Logo} alt="FinLit" className="logo" height="100%" width="100%" />
+              <img
+                src={Logo}
+                alt="FinLit"
+                className="logo"
+                height="100%"
+                width="100%"
+              />
             </Link>
           ) : (
             <Link to="/">
-              <img src={Logo} alt="FinLit" className="logo" height="100%" width="100%" />
+              <img
+                src={Logo}
+                alt="FinLit"
+                className="logo"
+                height="100%"
+                width="100%"
+              />
             </Link>
           )}
           <NavbarToggler onClick={toggle} />

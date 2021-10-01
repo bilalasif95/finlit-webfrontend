@@ -181,7 +181,12 @@ function CoursesList() {
                     {CoursesLists.map(item => (
                       <div className="single_course" key={item.id}>
                         <div className="course_img">
-                          <img src={item.img} alt="Course"  height="100%" width="100%" />
+                          <img
+                            src={item.img}
+                            alt="Course"
+                            height="100%"
+                            width="100%"
+                          />
                         </div>
                         <div className="course_info">
                           <h5>{item.title}</h5>
@@ -253,7 +258,6 @@ function CoursesList() {
                                 src={item.img}
                                 alt="Card_image"
                                 height="100%"
-                                width="100%"
                               />
                               <CardBody>
                                 <div className="like_enroll">

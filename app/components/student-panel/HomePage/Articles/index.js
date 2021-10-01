@@ -171,7 +171,12 @@ function Articles() {
                           </div>
                           <div className="right">
                             {/* <img src={articleList[0].image} alt="ArticleImage" /> */}
-                            <img src={article1} alt="Article" height="100%" width="100%" />
+                            <img
+                              src={article1}
+                              alt="Article"
+                              height="100%"
+                              width="100%"
+                            />
                           </div>
                         </div>
                       </div>

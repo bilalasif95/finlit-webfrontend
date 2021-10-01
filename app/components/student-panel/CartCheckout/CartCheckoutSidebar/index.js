@@ -163,7 +163,12 @@ function CartCheckoutSidebar(props) {
                   <FormattedMessage {...messages.CreditCard} />
                 </Label>
                 <div className="icon">
-                  <img src={mastercard} alt="Master card" height="100%" width="100%" />
+                  <img
+                    src={mastercard}
+                    alt="Master card"
+                    height="100%"
+                    width="100%"
+                  />
                 </div>
               </FormGroup>
               <FormGroup check disabled>
@@ -178,7 +183,12 @@ function CartCheckoutSidebar(props) {
                   <FormattedMessage {...messages.PayPal} />
                 </Label>
                 <div className="icon">
-                  <img src={paypalicon} alt="Paypal" height="100%" width="100%" />
+                  <img
+                    src={paypalicon}
+                    alt="Paypal"
+                    height="100%"
+                    width="100%"
+                  />
                 </div>
               </FormGroup>
             </FormGroup>

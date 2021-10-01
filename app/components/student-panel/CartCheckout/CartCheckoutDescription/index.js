@@ -28,9 +28,7 @@ function CartCheckoutDescription(props) {
               <IoMdCart />
               {props.details &&
               props.details.items &&
-              props.details.items.length === 0 ? (
-                null
-              ) : (
+              props.details.items.length === 0 ? null : (
                 <span className="no_item">
                   {props.details &&
                     props.details.items &&

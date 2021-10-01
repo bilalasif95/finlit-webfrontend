@@ -76,7 +76,12 @@ function ArticleMostViewed(props) {
                 >
                   <div className="single_item">
                     <div className="left">
-                      <img src={articleIcon} alt="Icon" height="100%" width="100%" />
+                      <img
+                        src={articleIcon}
+                        alt="Icon"
+                        height="100%"
+                        width="100%"
+                      />
                       <h5>{article.title}</h5>
                       <p>
                         <JoditEditor
@@ -95,7 +100,12 @@ function ArticleMostViewed(props) {
                       </Link>
                     </div>
                     <div className="right">
-                      <img src={article.image} alt="article" height="100%" width="100%" />
+                      <img
+                        src={article.image}
+                        alt="article"
+                        height="100%"
+                        width="100%"
+                      />
                     </div>
                   </div>
                 </Col>

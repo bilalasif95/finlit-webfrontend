@@ -98,7 +98,12 @@ function BootcampList() {
                 tabIndex={0}
               >
                 <div className="course_img">
-                  <img src={item.eventImage} alt="event" height="100%" width="100%" />
+                  <img
+                    src={item.eventImage}
+                    alt="event"
+                    height="100%"
+                    width="100%"
+                  />
                 </div>
                 <div className="course_info">
                   <div className="course_short_info">
