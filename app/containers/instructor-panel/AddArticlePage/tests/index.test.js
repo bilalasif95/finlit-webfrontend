@@ -5,15 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import AddArticlePage from '../index';
 
 describe('<AddArticlePage />', () => {
-  // before(() => {
-  // });
-  beforeAll(() => {
-    window.getSelection = () => {
-      const removeAllRanges = () => {};
-      return removeAllRanges;
-    };
-  });
-
   it('should render its heading', () => {
     const {
       container: { firstChild },
