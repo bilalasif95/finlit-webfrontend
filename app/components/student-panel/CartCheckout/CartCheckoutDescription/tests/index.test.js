@@ -20,7 +20,7 @@ describe('<CartCheckoutDescription />', () => {
         <Provider store={store}>
           <IntlProvider locale="en">
             <BrowserRouter>
-              <CartCheckoutDescription />
+              <CartCheckoutDescription details={{ total: 30 }} />
             </BrowserRouter>
           </IntlProvider>
         </Provider>,

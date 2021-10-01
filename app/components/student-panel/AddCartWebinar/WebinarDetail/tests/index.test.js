@@ -20,7 +20,7 @@ describe('<HackathonDetail />', () => {
         <Provider store={store}>
           <IntlProvider locale="en">
             <BrowserRouter>
-              <HackathonDetail />
+              <HackathonDetail detail={{ data: {} }} />
             </BrowserRouter>
           </IntlProvider>
         </Provider>,

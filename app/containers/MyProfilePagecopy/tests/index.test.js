@@ -5,10 +5,14 @@ import { IntlProvider } from 'react-intl';
 import CoursesListPage from '../index';
 
 describe('<CoursesListPage />', () => {
+  let userInfo;
+  beforeAll(() => {
+    userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  });
   it('should render its heading', () => {
     const { container } = render(
       <IntlProvider locale="en">
-        <CoursesListPage />
+        <CoursesListPage userInfo={userInfo} />
       </IntlProvider>,
     );
     expect(container.firstChild).toMatchSnapshot();

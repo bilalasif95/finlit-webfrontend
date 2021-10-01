@@ -20,7 +20,10 @@ describe('<ArticleDescription />', () => {
         <Provider store={store}>
           <IntlProvider locale="en">
             <BrowserRouter>
-              <ArticleDescription />
+              <ArticleDescription
+                details={{ title: 'abc', description: 'xyz' }}
+                match={{ params: { id: 12 } }}
+              />
             </BrowserRouter>
           </IntlProvider>
         </Provider>,

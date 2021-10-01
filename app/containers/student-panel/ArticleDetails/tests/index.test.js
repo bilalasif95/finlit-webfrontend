@@ -11,7 +11,7 @@ describe('<ArticleDetails />', () => {
     } = render(
       <IntlProvider locale="en">
         <BrowserRouter>
-          <ArticleDetails />
+          <ArticleDetails match={{ params: { id: 12 } }} />
         </BrowserRouter>
       </IntlProvider>,
     );

@@ -20,7 +20,7 @@ describe('<BootcampSidebar />', () => {
         <Provider store={store}>
           <IntlProvider locale="en">
             <BrowserRouter>
-              <BootcampSidebar />
+              <BootcampSidebar detail={{ data: {} }} />
             </BrowserRouter>
           </IntlProvider>
         </Provider>,

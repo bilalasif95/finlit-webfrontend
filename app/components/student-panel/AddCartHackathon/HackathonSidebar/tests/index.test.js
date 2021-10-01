@@ -2,16 +2,18 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import { browserHistory, BrowserRouter } from 'react-router-dom';
-
+// import { browserHistory, BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import history from 'utils/history';
 import HackathonSidebar from '../index';
-import configureStore from '../../../../../configureStore';
-
+// import configureStore from '../../../../../configureStore';
+import Store2 from '../../../../../containers/reduxSetup/store';
 describe('<HackathonSidebar />', () => {
   let store;
 
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    store = Store2;
   });
 
   it('should render and match the snapshot', () => {
@@ -19,9 +21,11 @@ describe('<HackathonSidebar />', () => {
       .create(
         <Provider store={store}>
           <IntlProvider locale="en">
-            <BrowserRouter>
-              <HackathonSidebar />
-            </BrowserRouter>
+            {/* <BrowserRouter> */}
+            <Router history={history}>
+              <HackathonSidebar detail={{ data: {} }} />
+              {/* </BrowserRouter> */}
+            </Router>
           </IntlProvider>
         </Provider>,
       )
