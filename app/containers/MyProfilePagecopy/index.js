@@ -308,7 +308,7 @@ export default function MyProfilePage() {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
-      .get(`${API}api/user/${userInfo.id}`, {
+      .get(`${API}api/user/${userInfo && userInfo.id}`, {
         headers: {
           Accept: 'application/json',
           ...authHeaders,

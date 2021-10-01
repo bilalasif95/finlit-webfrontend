@@ -83,7 +83,7 @@ function BasicInfo() {
     const userId = JSON.parse(localStorage.getItem('userInfo'));
     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
-      .get(`${API}api/user/${userId.id}`, {
+      .get(`${API}api/user/${userId && userId.id}`, {
         headers: {
           Accept: 'application/json',
           ...authHeaders,

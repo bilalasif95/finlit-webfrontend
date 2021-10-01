@@ -95,3 +95,4 @@ npm-debug.log
 /app/components/student-panel/HomePage/Articles/tests/__snapshots__
 /app/components/student-panel/AddCartWebinar/WebinarDetail/tests/__snapshots__
 /app/components/student-panel/AddCartWebinar/WebinarSidebar/tests/__snapshots__
+/app/containers/instructor-panel/HomePage/tests/__snapshots__

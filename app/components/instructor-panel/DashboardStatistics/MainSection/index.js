@@ -22,7 +22,7 @@ function MainSection(props) {
   const { statistics } = props;
 
   React.useEffect(() => {
-    const userObj2 = JSON.parse(localStorage.getItem('userInfo') || '');
+    const userObj2 = JSON.parse(localStorage.getItem('userInfo')) || '';
     setUserObj(userObj2);
     const time = new Date().getHours();
     let greeting;

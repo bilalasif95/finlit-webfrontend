@@ -5,12 +5,12 @@ import { BrowserRouter } from 'react-router-dom';
 import AddHackathonPage from '../index';
 
 describe('<AddHackathonPage />', () => {
-  // beforeAll(() => {
-  //   window.getSelection = () => {
-  //     const removeAllRanges = () => {};
-  //     return removeAllRanges;
-  //   };
-  // });
+  beforeAll(() => {
+    window.getSelection = () => {
+      const removeAllRanges = () => {};
+      return removeAllRanges;
+    };
+  });
   it('should render its heading', () => {
     const {
       container: { firstChild },
