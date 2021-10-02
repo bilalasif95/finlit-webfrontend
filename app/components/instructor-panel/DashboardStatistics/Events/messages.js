@@ -5,15 +5,15 @@
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.components.MainSection';
+// export const scope = 'boilerplate.components.MainSection';
 
 export default defineMessages({
-  Title: {
-    id: `${scope}.Title`,
-    defaultMessage: 'Calendar',
-  },
-  EventsTitle: {
-    id: `${scope}.EventsTitle`,
-    defaultMessage: 'Events',
-  },
+  // Title: {
+  //   id: `${scope}.Title`,
+  //   defaultMessage: 'Calendar',
+  // },
+  // EventsTitle: {
+  //   id: `${scope}.EventsTitle`,
+  //   defaultMessage: 'Events',
+  // },
 });
