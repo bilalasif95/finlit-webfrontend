@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
-import CartCheckout from '../index';
+import Loadable from '../Loadable';
 
 describe('<CartCheckout />', () => {
   it('should render its heading', () => {
@@ -11,7 +11,7 @@ describe('<CartCheckout />', () => {
     } = render(
       <IntlProvider locale="en">
         <BrowserRouter>
-          <CartCheckout />
+          <Loadable />
         </BrowserRouter>
       </IntlProvider>,
     );

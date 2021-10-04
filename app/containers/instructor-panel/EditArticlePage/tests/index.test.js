@@ -4,7 +4,7 @@ import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import Loadable from '../Loadable';
 
-describe('<AddHackathonPage />', () => {
+describe('<EditArticlePage />', () => {
   it('should render its heading', () => {
     const {
       container: { firstChild },

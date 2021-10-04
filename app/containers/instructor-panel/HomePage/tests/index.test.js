@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import history from 'utils/history';
 import Store2 from 'containers/reduxSetup/store';
-import { HomePage } from '../index';
+import Loadable from '../Loadable';
 describe('<HomePage />', () => {
   let store;
   beforeAll(() => {
@@ -20,7 +20,7 @@ describe('<HomePage />', () => {
       <Provider store={store}>
         <IntlProvider locale="en">
           <Router history={history}>
-            <HomePage />
+            <Loadable />
           </Router>
         </IntlProvider>
       </Provider>,

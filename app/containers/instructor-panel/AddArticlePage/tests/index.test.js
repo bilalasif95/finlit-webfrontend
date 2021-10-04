@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
-import AddArticlePage from '../index';
+import Loadable from '../Loadable';
 
 describe('<AddArticlePage />', () => {
   it('should render its heading', () => {
@@ -11,7 +11,7 @@ describe('<AddArticlePage />', () => {
     } = render(
       <IntlProvider locale="en">
         <BrowserRouter>
-          <AddArticlePage />
+          <Loadable />
         </BrowserRouter>
       </IntlProvider>,
     );

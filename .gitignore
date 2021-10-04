@@ -101,3 +101,11 @@ npm-debug.log
 /app/containers/instructor-panel/AddCoursesPage/tests/__snapshots__
 /app/containers/instructor-panel/AddHackathonPage/tests/__snapshots__
 /app/containers/instructor-panel/AddWebinarPage/tests/__snapshots__
+/app/containers/instructor-panel/EditWebinarPage/tests/__snapshots__
+/app/containers/instructor-panel/EditHackathonPage/tests/__snapshots__
+/app/containers/instructor-panel/EditBootCampPage/tests/__snapshots__
+/app/containers/instructor-panel/EditArticlePage/tests/__snapshots__
+/app/components/instructor-panel/EditWebinar/tests/__snapshots__
+/app/components/instructor-panel/EditHackathon/tests/__snapshots__
+/app/components/instructor-panel/EditBootcamp/tests/__snapshots__
+/app/components/instructor-panel/EditArticle/tests/__snapshots__
