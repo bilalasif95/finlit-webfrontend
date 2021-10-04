@@ -74,7 +74,7 @@ function WebinarSidebar(props) {
         <h4>
           <FormattedMessage {...messages.WebinarDetails} />
         </h4>
-        <ul clasName="list">
+        <ul className="list">
           <li>
             <HiUsers />
             <p>1200 Attendees</p>

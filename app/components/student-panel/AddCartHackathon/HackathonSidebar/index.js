@@ -80,7 +80,7 @@ function HackathonSidebar(props) {
         <h4>
           <FormattedMessage {...messages.HackathonDetails} />
         </h4>
-        <ul clasName="list">
+        <ul className="list">
           <li>
             <HiUsers />
             <p>1200 Attendees</p>

@@ -288,7 +288,7 @@ function CartCheckoutSidebar(props) {
               <h4>
                 <FormattedMessage {...messages.Summary} />
               </h4>
-              <ul clasName="list">
+              <ul className="list">
                 <li>
                   <p>
                     <FormattedMessage {...messages.OriginalPrice} />
