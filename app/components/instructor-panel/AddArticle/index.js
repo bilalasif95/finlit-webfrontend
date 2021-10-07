@@ -16,7 +16,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Wrapper from './Wrapper';
 import messages from './messages';
-import { API } from '../../../config/config';
+import { API, JoditEditorConfig } from '../../../config/config';
 
 function AddArticle() {
   const editor = useRef(null);
@@ -24,9 +24,6 @@ function AddArticle() {
   const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
 
-  const config = {
-    readonly: false,
-  };
   const [articleStatus, setArticleStatus] = useState({
     mainTitle: '',
     subTitle: '',
@@ -207,7 +204,7 @@ function AddArticle() {
                   <JoditEditor
                     ref={editor}
                     value={content}
-                    config={config}
+                    config={JoditEditorConfig}
                     tabIndex={0} // tabIndex of textarea
                     onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                   />

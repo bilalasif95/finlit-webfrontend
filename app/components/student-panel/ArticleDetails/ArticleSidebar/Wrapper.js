@@ -48,8 +48,10 @@ const Wrapper = styled.div`
   }
   ul {
     margin: 1rem 0 0;
+    padding: 0;
     li {
       border-bottom: 1px solid #e4e4e4;
+      list-style: none;
       padding: 1rem 0;
       a {
         color: #000;

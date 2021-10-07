@@ -16,7 +16,9 @@ const Wrapper = styled.footer`
     align-items: center;
     display: flex;
     justify-content: flex-start;
+    padding: 0;
     li {
+      list-style: none;
       padding-right: 0.5rem;
       &:first-child {
         svg {
@@ -57,6 +59,7 @@ const Wrapper = styled.footer`
       color: #a6a6a7;
       font-size: 0.8rem;
       padding-left: 1rem;
+      list-style: none;
       a {
         color: #a6a6a7;
         font-size: 0.8rem;

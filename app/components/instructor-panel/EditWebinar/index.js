@@ -18,7 +18,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Wrapper from './Wrapper';
 import messages from './messages';
-import { API } from '../../../config/config';
+import { API, JoditEditorConfig } from '../../../config/config';
 import { redirectToLogin } from '../../../utils/redirectToLogin';
 
 function EditWebinar(props) {
@@ -32,10 +32,6 @@ function EditWebinar(props) {
     redirectToLogin();
     getWebinar(webinarId);
   }, []);
-
-  const config = {
-    readonly: false,
-  };
 
   const [webinarStatus, setWebinarStatus] = useState({
     mainTitle: '',
@@ -495,7 +491,7 @@ function EditWebinar(props) {
                 <JoditEditor
                   ref={editor}
                   value={content}
-                  config={config}
+                  config={JoditEditorConfig}
                   tabIndex={0} // tabIndex of textarea
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                 />

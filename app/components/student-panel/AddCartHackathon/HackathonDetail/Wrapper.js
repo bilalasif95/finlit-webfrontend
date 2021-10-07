@@ -127,6 +127,7 @@ const Wrapper = styled.div`
       }
       ul {
         margin: 0 0 0 1.2rem;
+        padding: 0;
         li {
           color: #8b8b8b;
           font-size: 0.875rem;

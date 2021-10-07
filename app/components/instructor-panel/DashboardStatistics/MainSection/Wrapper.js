@@ -18,6 +18,7 @@ const Wrapper = styled.div`
       margin: 1.5rem 0 0;
       li {
         display: flex;
+        list-style: none;
         margin: 0 1rem 0 0;
         .link {
           border: 1px solid #fff;
@@ -58,26 +59,30 @@ const Wrapper = styled.div`
         }
         .dropdown-menu {
           padding: 0;
-          li {
-            border-bottom: 1px solid #dcdcdc;
-            margin: 0;
-            &:last-child {
-              border-bottom: none;
-            }
-            .dropdown_link {
-              color: #404041 !important;
-              font-size: 0.875rem;
-              text-decoration: none;
-              display: block;
+          ul {
+            padding: 0;
+            li {
+              border-bottom: 1px solid #dcdcdc;
               margin: 0;
-              width: 100%;
-              padding: 0.5rem 1rem;
-              clear: both;
-              font-weight: 400;
-              text-align: inherit;
-              white-space: nowrap;
-              background-color: transparent;
-              border: 0;
+              list-style: none;
+              &:last-child {
+                border-bottom: none;
+              }
+              .dropdown_link {
+                color: #404041 !important;
+                font-size: 0.875rem;
+                text-decoration: none;
+                display: block;
+                margin: 0;
+                width: 100%;
+                padding: 0.5rem 1rem;
+                clear: both;
+                font-weight: 400;
+                text-align: inherit;
+                white-space: nowrap;
+                background-color: transparent;
+                border: 0;
+              }
             }
           }
         }
