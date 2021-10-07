@@ -18,6 +18,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import Wrapper from './Wrapper';
 import messages from './messages';
+import { JoditEditorConfig } from '../../../config/config';
 
 const BootstrapInput = withStyles(theme => ({
   root: {
@@ -47,9 +48,6 @@ function AddCourse() {
   const [content, setContent] = useState('');
   const [language, setLanguage] = useState('0');
 
-  const config = {
-    readonly: false,
-  };
   return (
     <Wrapper>
       <div className="add_forms">
@@ -183,7 +181,7 @@ function AddCourse() {
                 <JoditEditor
                   ref={editor}
                   value={content}
-                  config={config}
+                  config={JoditEditorConfig}
                   tabIndex={0} // tabIndex of textarea
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                 />
@@ -270,7 +268,7 @@ function AddCourse() {
                 <JoditEditor
                   ref={editor}
                   value={content}
-                  config={config}
+                  config={JoditEditorConfig}
                   tabIndex={0} // tabIndex of textarea
                   onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                 />

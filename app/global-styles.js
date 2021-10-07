@@ -115,14 +115,6 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     line-height: 1.5em;
   }
-
-  ul {
-    margin: 0;
-    padding: 0;
-    li {
-      list-style: none;
-    }
-  }
   a {
     -webkit-transition: color 0.5s ease-out;
     -moz-transition: color 0.5s ease-out;
@@ -954,6 +946,11 @@ const GlobalStyle = createGlobalStyle`
     .slick-dots {
       position: static;
     }
+  }
+
+  .jodit-color-picker__color-item {
+    height: 1.5rem;
+    width: 1.5rem;
   }
 `;
 

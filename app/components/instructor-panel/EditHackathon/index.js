@@ -17,7 +17,7 @@ import history from 'utils/history';
 import { ToastContainer, toast } from 'react-toastify';
 import Wrapper from './Wrapper';
 import messages from './messages';
-import { API } from '../../../config/config';
+import { API, JoditEditorConfig } from '../../../config/config';
 import { redirectToLogin } from '../../../utils/redirectToLogin';
 
 function EditHackathon(props) {
@@ -26,10 +26,6 @@ function EditHackathon(props) {
   const [content, setContent] = useState('');
   const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
-
-  const config = {
-    readonly: false,
-  };
 
   useEffect(() => {
     redirectToLogin();
@@ -450,7 +446,7 @@ function EditHackathon(props) {
                   <JoditEditor
                     ref={editor}
                     value={content}
-                    config={config}
+                    config={JoditEditorConfig}
                     tabIndex={0} // tabIndex of textarea
                     onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                   />

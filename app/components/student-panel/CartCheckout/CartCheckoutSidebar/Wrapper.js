@@ -94,10 +94,12 @@ const Wrapper = styled.div`
   }
   ul {
     margin: 1rem 0 0;
+    padding: 0;
     li {
       align-items: center;
       display: flex;
       justify-content: space-between;
+      list-style: none;
       padding: 0 0 1rem;
       p {
         color: #484848;

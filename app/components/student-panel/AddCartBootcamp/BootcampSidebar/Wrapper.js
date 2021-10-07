@@ -94,6 +94,7 @@ const Wrapper = styled.div`
     }
     ul {
       margin: 1rem 0 0;
+      padding: 0;
       li {
         align-items: center;
         display: flex;
@@ -101,6 +102,7 @@ const Wrapper = styled.div`
         font-size: 0.875rem;
         line-height: 17px;
         justify-content: space-between;
+        list-style: none;
         padding: 0 0 1rem;
         svg {
           margin: 0 0.5rem 0 0;

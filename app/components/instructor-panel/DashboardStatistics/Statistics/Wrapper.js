@@ -21,6 +21,7 @@ const Wrapper = styled.div`
         color: #484848 !important;
         display: flex;
         align-items: center;
+        list-style: none;
         position: relative;
         padding-left: 25px;
         margin-bottom: 24px;

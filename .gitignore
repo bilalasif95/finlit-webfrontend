@@ -109,3 +109,9 @@ npm-debug.log
 /app/components/instructor-panel/EditHackathon/tests/__snapshots__
 /app/components/instructor-panel/EditBootcamp/tests/__snapshots__
 /app/components/instructor-panel/EditArticle/tests/__snapshots__
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+cypress/reports/mocha
+mochawesome-report/

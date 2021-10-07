@@ -94,12 +94,14 @@ const Wrapper = styled.div`
     }
     ul {
       margin: 1rem 0 0;
+      padding: 0;
       li {
         align-items: center;
         display: flex;
         color: #484848;
         font-size: 0.875rem;
         line-height: 17px;
+        list-style: none;
         justify-content: space-between;
         padding: 0 0 1rem;
         svg {
