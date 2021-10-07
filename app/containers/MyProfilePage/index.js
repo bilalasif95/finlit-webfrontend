@@ -156,9 +156,10 @@ export default function MyProfilePage() {
                           toggle('3');
                         }}
                       >
-                        <RiKeyLine />
-                        <FormattedMessage {...messages.TwoFAuth} />
-                        &nbsp; &nbsp;&nbsp; &nbsp;
+                        <>
+                          <RiKeyLine />
+                          <FormattedMessage {...messages.TwoFAuth} />
+                        </>
                         {userObj.twoFA ? (
                           <p style={{ color: 'Green' }}>Enabled</p>
                         ) : (

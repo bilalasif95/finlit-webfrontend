@@ -53,6 +53,11 @@ const Wrapper = styled.div`
       margin: 0.5rem 0 0;
       .nav-item {
         width: 100%;
+        &:last-child {
+          .nav-link {
+            justify-content: space-between;
+          }
+        }
       }
       .nav-link {
         align-items: center;
