@@ -77,13 +77,13 @@ export default function MyProfilePage() {
   const toggleTYClose = () => setModalTY(!modalTY);
 
   return (
-    <div className="sub_page">
+    <div className="sub_pages">
       <Helmet>
         <title>My Profile</title>
         <meta name="description" content="My Profile Page" />
       </Helmet>
       <Wrapper id="list">
-        <Container fluid>
+        <Container fluid="xl">
           <Row>
             <Col lg={4} md={4} sm={12} xs={12}>
               <div className="my_profile">

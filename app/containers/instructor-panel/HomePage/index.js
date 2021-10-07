@@ -33,7 +33,7 @@ export function HomePage() {
       <div className="w-100">
         <MainSection statistics={statisticsCounter} />
       </div>
-      <Container>
+      <Container fluid="xl">
         <Row>
           <Col lg={12}>
             <div className="dashboard-main">

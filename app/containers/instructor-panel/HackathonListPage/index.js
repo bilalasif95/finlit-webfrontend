@@ -17,14 +17,14 @@ export default function HackathonListPage() {
     redirectToLogin();
   }, []);
   return (
-    <div className="sub_page">
+    <div className="sub_pages">
       <Helmet>
         <title>Hackathon List</title>
         <meta name="description" content="Hackathon List" />
       </Helmet>
       <Wrapper id="list">
         <div className="custom_container">
-          <Container fluid>
+          <Container fluid="xl">
             <Row>
               <Col lg={12}>
                 <div className="Head-Link">

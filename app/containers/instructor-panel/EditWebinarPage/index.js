@@ -14,14 +14,14 @@ import Wrapper from './Wrapper';
 export default function EditWebinarPage(props) {
   useEffect(() => {}, [props.match.params.id]);
   return (
-    <div className="sub_page">
+    <div className="sub_pages">
       <Helmet>
         <title>Add Webinar</title>
         <meta name="description" content="Add Webinar Page" />
       </Helmet>
       <Wrapper id="list">
         <div className="custom_container">
-          <Container fluid>
+          <Container fluid="xl">
             <Row>
               <Col lg={12}>
                 <h4>

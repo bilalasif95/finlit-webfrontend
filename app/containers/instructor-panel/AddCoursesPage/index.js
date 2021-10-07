@@ -12,14 +12,14 @@ import AddCourse from '../../../components/instructor-panel/AddCourse';
 
 export default function AddCoursesPagee() {
   return (
-    <div className="sub_page">
+    <div className="sub_pages">
       <Helmet>
         <title>Add Courses Pagee</title>
         <meta name="description" content="Add Courses Pagee" />
       </Helmet>
       <Wrapper id="list">
         <div className="custom_container">
-          <Container fluid>
+          <Container fluid="xl">
             <Row>
               <Col lg={12}>
                 <h4>
