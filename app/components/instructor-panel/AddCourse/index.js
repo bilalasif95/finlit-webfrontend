@@ -22,7 +22,7 @@ import {
 import { IoMdAttach, IoIosClose } from 'react-icons/io';
 import { MdPhotoLibrary } from 'react-icons/md';
 import { FaVideo } from 'react-icons/fa';
-import Dropzone from "react-dropzone";
+import Dropzone from 'react-dropzone';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
@@ -32,7 +32,7 @@ import Wrapper from './Wrapper';
 import messages from './messages';
 import { JoditEditorConfig } from '../../../config/config';
 import 'react-accessible-accordion/dist/fancy-example.css';
-import TagsComponent from "../../Tag/TagsComponent";
+import TagsComponent from '../../Tag/TagsComponent';
 
 const BootstrapInput = withStyles(theme => ({
   root: {
@@ -62,10 +62,10 @@ function AddCourse() {
   const [content, setContent] = useState('');
   const [language, setLanguage] = useState('0');
   const [category, setCategory] = useState('0');
-  const [courseImage, setCourseImage] = useState("");
-  const [courseVideo, setCourseVideo] = useState("");
-  const data = { courseImage: "" }
-  const dataVideo = { courseVideo: "" }
+  const [courseImage, setCourseImage] = useState('');
+  const [courseVideo, setCourseVideo] = useState('');
+  const data = { courseImage: '' };
+  const dataVideo = { courseVideo: '' };
 
   return (
     <Wrapper>
@@ -286,16 +286,30 @@ function AddCourse() {
                       </Col> */}
                       <Col lg={6} md={6} sm={6} xs={12}>
                         <div className="graphics">
-                          {courseImage === "" ? (
+                          {courseImage === '' ? (
                             <div className="view_graphic">
                               <MdPhotoLibrary />
                             </div>
                           ) : (
                             <div className="view_graphic">
-                              <button onClick={() => { setCourseImage(""); data.courseImage = null }} className="del_btn">
+                              <button
+                                onClick={() => {
+                                  setCourseImage('');
+                                  data.courseImage = null;
+                                }}
+                                className="del_btn"
+                              >
                                 <IoIosClose />
                               </button>
-                              <img src={data.courseImage ? typeof data.courseImage === "string" ? data.courseImage : courseImage : courseImage} />
+                              <img
+                                src={
+                                  data.courseImage
+                                    ? typeof data.courseImage === 'string'
+                                      ? data.courseImage
+                                      : courseImage
+                                    : courseImage
+                                }
+                              />
                             </div>
                           )}
                           <FormGroup>
@@ -334,16 +348,30 @@ function AddCourse() {
                       </Col>
                       <Col lg={6} md={6} sm={6} xs={12}>
                         <div className="graphics">
-                          {courseVideo === "" ? (
+                          {courseVideo === '' ? (
                             <div className="view_graphic">
                               <FaVideo />
                             </div>
                           ) : (
                             <div className="view_graphic">
-                              <button onClick={() => { setCourseVideo(""); data.courseVideo = null }} className="del_btn">
+                              <button
+                                onClick={() => {
+                                  setCourseVideo('');
+                                  data.courseVideo = null;
+                                }}
+                                className="del_btn"
+                              >
                                 <IoIosClose />
                               </button>
-                              <video src={dataVideo.courseVideo ? typeof dataVideo.courseVideo === "string" ? dataVideo.courseVideo : courseVideo : courseVideo} />
+                              <video
+                                src={
+                                  dataVideo.courseVideo
+                                    ? typeof dataVideo.courseVideo === 'string'
+                                      ? dataVideo.courseVideo
+                                      : courseVideo
+                                    : courseVideo
+                                }
+                              />
                             </div>
                           )}
                           <FormGroup>
@@ -493,7 +521,7 @@ function AddCourse() {
           </div>
         </div>
       </div>
-    </Wrapper >
+    </Wrapper>
   );
 }
 

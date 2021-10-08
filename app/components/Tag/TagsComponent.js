@@ -1,91 +1,91 @@
 // import CloseIcon from "@material-ui/icons/Close";
-import * as React from "react";
-import { createStyles, withStyles } from "@material-ui/core/styles";
+import * as React from 'react';
+import { createStyles, withStyles } from '@material-ui/core/styles';
 import { IoIosClose } from 'react-icons/io';
 
 const styles = () =>
   createStyles({
     fieldContainer: {
-      "& span": {
-        lineHeight: "2.5",
+      '& span': {
+        lineHeight: '2.5',
       },
       // "&-moz-box-shadow": "0px 3px 14px 1px rgba(74,74,74,0.2)",
       // "&-webkit-box-shadow": "0px 3px 14px 1px rgba(74,74,74,0.2)",
-      background: "white",
-      border: "1px solid #d8d8d8",
-      borderColor: "#d8d8d8",
-      borderRadius: "4px",
+      background: 'white',
+      border: '1px solid #d8d8d8',
+      borderColor: '#d8d8d8',
+      borderRadius: '4px',
       // boxShadow: "0px 3px 14px 1px rgba(74,74,74,0.2)",
-      display: "flex",
-      flexWrap: "wrap",
+      display: 'flex',
+      flexWrap: 'wrap',
       // maxWidth: "600px",
       // minHeight: "48px",
-      position: "relative"
+      position: 'relative',
       // width: "600px",
     },
     icon: {
-      alignItems: "center",
-      cursor: "pointer",
-      display: "flex",
-      fontSize: "16px",
-      lineHeight: "24px",
-      marginLeft: "0.5rem",
+      alignItems: 'center',
+      cursor: 'pointer',
+      display: 'flex',
+      fontSize: '16px',
+      lineHeight: '24px',
+      marginLeft: '0.5rem',
     },
     inputWrapper: {
-      "& form": {
-        display: "flex",
-        flex: "1"
+      '& form': {
+        display: 'flex',
+        flex: '1',
       },
-      "& input": {
-        "&::-webkit-input-placeholder": {
-          color: "#3d3d3d99"
+      '& input': {
+        '&::-webkit-input-placeholder': {
+          color: '#3d3d3d99',
         },
-        "&:foucs": {
-          border: "1px solid #000",
+        '&:foucs': {
+          border: '1px solid #000',
         },
-        border: "transparent",
-        borderRadius: "4px",
-        color: "#000",
-        flex: "1",
-        fontSize: "0.875rem",
-        lineHeight: "1.5",
-        margin: "0",
-        outline: "none",
-        padding: "0.75rem 1rem"
+        border: 'transparent',
+        borderRadius: '4px',
+        color: '#000',
+        flex: '1',
+        fontSize: '0.875rem',
+        lineHeight: '1.5',
+        margin: '0',
+        outline: 'none',
+        padding: '0.75rem 1rem',
       },
-      display: "flex",
-      flex: "1",
+      display: 'flex',
+      flex: '1',
       // minHeight: "48px",
-      minWidth: "60px",
-      overflow: "hidden"
+      minWidth: '60px',
+      overflow: 'hidden',
     },
     limitText: {
-      position: "absolute",
-      right: "13px"
+      position: 'absolute',
+      right: '13px',
     },
     tile: {
-      backgroundColor: "#f5f5f5",
-      borderRadius: "3px",
-      color: "#000",
-      display: "flex",
-      fontSize: "0.875rem",
-      justifyContent: "space-between",
-      lineHeight: "1.5",
-      margin: "0.25rem 0 0.25rem 0.25rem",
-      padding: "0 0 0 0.25rem",
+      backgroundColor: '#f5f5f5',
+      borderRadius: '3px',
+      color: '#000',
+      display: 'flex',
+      fontSize: '0.875rem',
+      justifyContent: 'space-between',
+      lineHeight: '1.5',
+      margin: '0.25rem 0 0.25rem 0.25rem',
+      padding: '0 0 0 0.25rem',
     },
     iconClose: {
-      backgroundColor: "transparent",
-      border: "none",
+      backgroundColor: 'transparent',
+      border: 'none',
       padding: 0,
-    }
+    },
   });
 
 class Tile extends React.Component {
   render() {
-    const tile = this.props.tile;
-    const id = this.props.id;
-    const classes = this.props.classes;
+    const { tile } = this.props;
+    const { id } = this.props;
+    const { classes } = this.props;
     return (
       <span className={classes.tile}>
         <span>{tile.name}</span>
@@ -108,42 +108,40 @@ class Tile extends React.Component {
 //   currentValue: string;
 // }
 
-const TagsComponent = withStyles(styles, { name: "TagsComponent" })(
+const TagsComponent = withStyles(styles, { name: 'TagsComponent' })(
   class TagsComponent extends React.Component {
-
     constructor(props) {
       super(props);
       this.addTile = this.addTile.bind(this);
       this.removeTile = this.removeTile.bind(this);
       this.editLastTile = this.editLastTile.bind(this);
       this.state = {
-        currentValue: "",
+        currentValue: '',
         tileIds: [],
-        tiles: {}
+        tiles: {},
       };
     }
 
-
     componentDidUpdate(prevProps) {
-
       if (prevProps.tags !== this.props.tags) {
+        return (
+          this.props.tags &&
+          this.props.tags.map(tag => {
+            const { tiles, tileIds } = this.state;
 
-        return this.props.tags && this.props.tags.map(tag => {
+            const newTileId = tileIds.length - 1 + 1;
+            tileIds.push(newTileId);
+            tiles[newTileId] = { name: tag.name };
 
-          const { tiles, tileIds } = this.state;
-
-          const newTileId = tileIds.length - 1 + 1;
-          tileIds.push(newTileId);
-          tiles[newTileId] = { name: tag.name };
-
-          // reset the input value
-          const currentValue = "";
-          this.setState({
-            currentValue,
-            tileIds,
-            tiles
-          });
-        })
+            // reset the input value
+            const currentValue = '';
+            this.setState({
+              currentValue,
+              tileIds,
+              tiles,
+            });
+          })
+        );
       }
     }
 
@@ -158,13 +156,13 @@ const TagsComponent = withStyles(styles, { name: "TagsComponent" })(
         tiles[newTileId] = { name: tile };
 
         // reset the input value
-        const currentValue = "";
+        const currentValue = '';
 
         // this is the same as saying tiles : tiles
         this.setState({
           currentValue,
           tileIds,
-          tiles
+          tiles,
         });
       }
     }
@@ -187,11 +185,12 @@ const TagsComponent = withStyles(styles, { name: "TagsComponent" })(
       delete tiles[lastTileValue];
       this.setState({
         currentValue,
-        tiles
+        tiles,
       });
     }
+
     render() {
-      const classes = this.props.classes;
+      const { classes } = this.props;
       this.props.data.tags = Object.values(this.state.tiles);
       return (
         <>
@@ -220,16 +219,18 @@ const TagsComponent = withStyles(styles, { name: "TagsComponent" })(
         </>
       );
     }
-  }
+  },
 );
 
 class Input extends React.Component {
   name;
+
   tagForm;
+
   tagEvent(e) {
     const tag = this.name.value;
-    const tagGroup = tag.split(" ");
-    const tiles = this.props.tiles;
+    const tagGroup = tag.split(' ');
+    const { tiles } = this.props;
     const hasTiles = Object.keys(tiles).length > 0;
 
     if (e.keyCode === 32 || e.keyCode === 13) {
@@ -238,7 +239,7 @@ class Input extends React.Component {
       this.tagForm.reset();
     }
 
-    if (e.keyCode === 8 && hasTiles && tag === "") {
+    if (e.keyCode === 8 && hasTiles && tag === '') {
       e.preventDefault();
       this.props.editLastTile();
       // this trigger the default value eachtime we hit delete
@@ -254,7 +255,7 @@ class Input extends React.Component {
   }
 
   render() {
-    const classes = this.props.classes;
+    const { classes } = this.props;
     return (
       <>
         {/* <p className={classes.limitText}>Maximum of 4</p> */}
