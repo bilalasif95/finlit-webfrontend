@@ -1,12 +1,11 @@
 // / <reference types="cypress" />
 
-describe('add bootcamp', () => {
+describe('add hackathon', () => {
   let educatorUser;
   before(function() {
     cy.fixture('educator').then(function(educator) {
       cy.deleteUser(educator.email);
       cy.addUser(educator);
-      cy.wait(5000);
       cy.verifyEmail(educator.email);
       educatorUser = educator;
     });
@@ -18,9 +17,9 @@ describe('add bootcamp', () => {
   });
 
   it('with valid input values', () => {
-    const bootcamp = {
-      type: 'Bootcamp',
-      eventImage: 'images/bootcamp.jpg',
+    const hackathon = {
+      type: 'Hackathon',
+      eventImage: 'images/hackathon.png',
       data: {
         mainTitle: 'Block Chain Security',
         subTitle: 'Blockchain',
@@ -34,10 +33,11 @@ describe('add bootcamp', () => {
         redirectionUrl: 'https://google.com/',
       },
     };
-    cy.addBootcamp(bootcamp);
+    cy.addHackathon(hackathon);
   });
 
   after(() => {
+    cy.wait(2000);
     cy.deleteUser(educatorUser.email);
   });
 });

@@ -21,7 +21,13 @@ Cypress.Commands.add('deleteUser', email => {
     query: `DELETE from users_roles WHERE \"usersId"\ = (SELECT  id FROM users WHERE email='${email}');`,
   });
   cy.task('dbQuery', {
-    query: `delete from users  where email='${email}';`,
+    query: `DELETE from articles WHERE \"authorId"\ = (SELECT id FROM users WHERE email='${email}');`,
+  });
+  cy.task('dbQuery', {
+    query: `DELETE from events WHERE \"creatorId"\ = (SELECT id FROM users WHERE email='${email}');`,
+  });
+  cy.task('dbQuery', {
+    query: `DELETE from users  WHERE email='${email}';`,
   });
 });
 
@@ -105,6 +111,32 @@ Cypress.Commands.add('addBootcamp', bootcamp => {
   cy.get('#price').type(bootcamp.data.price);
   cy.get('#redirectionUrl').type(bootcamp.data.redirectionUrl);
   cy.get('.jodit-wysiwyg').type(bootcamp.data.description);
+  cy.get('.btn_submit').click({ force: true });
+});
+
+Cypress.Commands.add('addHackathon', hackathon => {
+  cy.get(':nth-child(3) > .dropdown > .dropdown-toggle').click({ force: true });
+  cy.get(':nth-child(4) > .dropdown_link').click({ force: true });
+  cy.get('#maintitle').type(hackathon.data.mainTitle);
+  cy.get('#subtitle').type(hackathon.data.subTitle);
+  cy.get('#uploadimage').attachFile(hackathon.eventImage);
+  cy.get("input[name='startDate']").type(hackathon.data.startDate);
+  cy.get("input[name='endDate']").type(hackathon.data.endDate);
+  cy.get('#starttime').type(hackathon.data.startTime);
+  cy.get('#endtime').type(hackathon.data.endTime);
+  cy.get('#price').type(hackathon.data.price);
+  cy.get('#redirectionUrl').type(hackathon.data.redirectionUrl);
+  cy.get('.jodit-wysiwyg').type(hackathon.data.description);
+  cy.get('.btn_submit').click({ force: true });
+});
+
+Cypress.Commands.add('addEvent', event => {
+  cy.get(':nth-child(3) > .dropdown > .dropdown-toggle').click({ force: true });
+  cy.get(':nth-child(5) > .dropdown_link').click({ force: true });
+  cy.get('#maintitle').type(event.title);
+  cy.get('#subtitle').type(event.description);
+  cy.get('#uploadimage').attachFile(event.articleImage);
+  cy.get('.jodit-wysiwyg').type(event.subTitle);
   cy.get('.btn_submit').click({ force: true });
 });
 
