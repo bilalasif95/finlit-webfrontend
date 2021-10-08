@@ -1,6 +1,6 @@
 // / <reference types="cypress" />
 
-describe('add webinar', () => {
+describe('add bootcamp', () => {
   let educatorUser;
   before(function() {
     cy.fixture('educator').then(function(educator) {
@@ -17,9 +17,9 @@ describe('add webinar', () => {
   });
 
   it('with valid input values', () => {
-    const webinar = {
-      type: 'Webinar',
-      eventImage: 'images/webinar.jpg',
+    const bootcamp = {
+      type: 'Bootcamp',
+      eventImage: 'images/bootcamp.jpg',
       data: {
         mainTitle: 'Block Chain Security',
         subTitle: 'Blockchain',
@@ -31,13 +31,13 @@ describe('add webinar', () => {
           'The crypto currency is currently in use and have some serious security concerns due to its usage.',
         price: '100',
         redirectionUrl: 'https://google.com/',
-        presentor: 'David Parker',
       },
     };
-    cy.addWebinar(webinar);
+    cy.addBootcamp(bootcamp);
   });
 
   after(() => {
+    cy.wait(2000);
     cy.deleteUser(educatorUser.email);
   });
 });
