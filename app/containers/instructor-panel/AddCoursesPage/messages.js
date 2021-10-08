@@ -8,8 +8,8 @@ import { defineMessages } from 'react-intl';
 export const scope = 'boilerplate.containers.AddCoursesPage';
 
 export default defineMessages({
-  AddCourse: {
-    id: `${scope}.AddCourse`,
-    defaultMessage: 'Add Course',
+  CourseDetails: {
+    id: `${scope}.CourseDetails`,
+    defaultMessage: 'Course Details',
   },
 });

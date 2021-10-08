@@ -8,9 +8,9 @@ import { defineMessages } from 'react-intl';
 export const scope = 'boilerplate.components.AddCourse';
 
 export default defineMessages({
-  AddCourse: {
-    id: `${scope}.AddCourse`,
-    defaultMessage: `Add Course`,
+  AboutCourse: {
+    id: `${scope}.AboutCourse`,
+    defaultMessage: `About Course`,
   },
   AllFields: {
     id: `${scope}.AllFields`,
@@ -24,9 +24,13 @@ export default defineMessages({
     id: `${scope}.SubTitle`,
     defaultMessage: `Sub Title*`,
   },
-  UploadImage: {
-    id: `${scope}.UploadImage`,
-    defaultMessage: `Upload Image*`,
+  CourseImage: {
+    id: `${scope}.CourseImage`,
+    defaultMessage: `Course Image*`,
+  },
+  DemoVideo: {
+    id: `${scope}.DemoVideo`,
+    defaultMessage: `Demo Video*`,
   },
   CourseLanguage: {
     id: `${scope}.CourseLanguage`,
@@ -34,19 +38,23 @@ export default defineMessages({
   },
   Price: {
     id: `${scope}.Price`,
-    defaultMessage: `Price* ($)`,
+    defaultMessage: `Price*`,
   },
-  Category: {
-    id: `${scope}.Category`,
-    defaultMessage: `Category*`,
+  AddTag: {
+    id: `${scope}.AddTag`,
+    defaultMessage: `Add Tags* (Max. 4)`,
+  },
+  CourseCategory: {
+    id: `${scope}.CourseCategory`,
+    defaultMessage: `Course Category*`,
   },
   Description: {
     id: `${scope}.Description`,
     defaultMessage: `Description`,
   },
-  Lecture: {
-    id: `${scope}.Lecture`,
-    defaultMessage: `Lecture`,
+  AboutLecture: {
+    id: `${scope}.AboutLecture`,
+    defaultMessage: `About Lecture`,
   },
   LectureTitle: {
     id: `${scope}.LectureTitle`,
@@ -71,5 +79,9 @@ export default defineMessages({
   SubmitContinue: {
     id: `${scope}.SubmitContinue`,
     defaultMessage: `Submit & Continue`,
+  },
+  Publish: {
+    id: `${scope}.Publish`,
+    defaultMessage: `Publish`,
   },
 });

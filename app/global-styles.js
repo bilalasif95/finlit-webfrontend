@@ -214,6 +214,7 @@ const GlobalStyle = createGlobalStyle`
   .camera {
     .form-control {
       color: #8b8b8b;
+      cursor: pointer;
       display: flex;
       justify-content: space-between;
       p {
@@ -237,6 +238,10 @@ const GlobalStyle = createGlobalStyle`
       left: 0;
       opacity: 0;
       width: 40px;
+    }
+    svg {
+      height: 1.5rem;
+      width: 1.5rem;
     }
   }
 
@@ -302,7 +307,9 @@ const GlobalStyle = createGlobalStyle`
     padding: 2rem 0 0 !important;
   }
 }
-
+.form-group {
+  position: relative;
+}
 // Registration Form Pages Styles
 .registration_page {
   background-color: #fff;
@@ -336,6 +343,7 @@ const GlobalStyle = createGlobalStyle`
           }
           .form-group {
               margin: 0 0 1rem;
+              position: relative;
           }
           .form_err {
             margin: 0 0 1.5rem;
@@ -348,7 +356,7 @@ const GlobalStyle = createGlobalStyle`
           .form-control {
             color: #484848;
             border-radius: 3px;
-            border: 1px solid #e6e6e6;
+            border: 1px solid #d8d8d8;
             &:focus {
               border: 1px solid #80bb2b;
               box-shadow: none;
@@ -650,7 +658,7 @@ const GlobalStyle = createGlobalStyle`
 .custom_container {
   margin: 0 auto;
   max-width: 1440px;
-  padding: 0.5rem 3rem;
+  padding: 0 3rem;
 }
 @media (max-width: 991px) {
   .custom_container {
@@ -669,6 +677,7 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 .form-control {
+  border: 1px solid #d8d8d8;
   font-size: 0.875rem;
   padding: 0.75rem 1rem;
   &:focus {
@@ -676,11 +685,15 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 .form-text {
+  display: flex;
+  justify-content: space-between;
   position: absolute;
   height: 24px;
+  width: 100%;
   .error {
     color: red !important;
     font-size: 0.75rem;
+    margin: 0;
   }
 }
 .check-box {
@@ -951,6 +964,50 @@ const GlobalStyle = createGlobalStyle`
   .jodit-color-picker__color-item {
     height: 1.5rem;
     width: 1.5rem;
+  }
+  .accordion {
+    border: none !important;
+    border-radius: 0;
+    .accordion__item {
+      border: 1px solid #d8d8d8;
+      border-radius: 0.35rem;
+      margin: 0 0 1rem;
+      padding: 0 1.5rem;
+    }
+    .accordion__button {
+      align-item: center;
+      background-color: transparent;
+      border: none;
+      color: #484848;
+      display: flex;
+      font-size: 1.5rem;
+      justify-content: space-between;
+      flex-flow: row-reverse;
+      padding: 1.5rem 0;
+      position: relative;
+      width: 100%:
+    }
+    .accordion__button:before {
+      content: "▼";
+      // background: url(https://i.imgur.com/5DEKTmh.png) no-repeat;
+      // background-size: cover;
+      border: none;
+      height: auto;
+      margin-right: 0;
+      transform: rotate(0deg);
+      width: auto;
+    }
+    .accordion__button[aria-expanded='true']::before,
+    .accordion__button[aria-selected='true']::before {
+      transform: rotate(180deg);
+    }
+    .accordion__button:hover {
+      background-color: transparent;
+    }
+    .accordion__panel {
+      border-top: 1px solid #ebebeb;
+      padding: 2rem 0;
+    }
   }
 `;
 
