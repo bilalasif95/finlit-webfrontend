@@ -50,7 +50,7 @@ function Header() {
   return (
     <Menubar>
       <Navbar>
-        <Container fluid>
+        <Container fluid="xl">
           <div className="logo_brand">
             <Link to="/">
               <Img src={Logo} alt="Logo" height="100%" width="100%" />

@@ -13,14 +13,14 @@ import Wrapper from './Wrapper';
 
 export default function CoursesListPage() {
   return (
-    <div className="sub_page">
+    <div className="sub_pages">
       <Helmet>
         <title>Courses List Page</title>
         <meta name="description" content="Courses List Page" />
       </Helmet>
       <Wrapper id="list">
         <div className="custom_container">
-          <Container fluid>
+          <Container fluid="xl">
             <Row>
               <Col lg={12}>
                 <div className="Head-Link">

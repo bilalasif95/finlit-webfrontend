@@ -43,7 +43,7 @@ export default function EmailVerificationPage() {
           <meta name="description" content="FinLit - Email Verification" />
         </Helmet>
 
-        <Container>
+        <Container fluid="xl">
           <Row>
             <Col lg={12}>
               <div className="verification-main">

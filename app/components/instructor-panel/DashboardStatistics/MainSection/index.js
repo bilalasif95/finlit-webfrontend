@@ -39,7 +39,7 @@ function MainSection(props) {
   return (
     <Wrapper>
       <div className="custom_container">
-        <Container fluid>
+        <Container fluid="xl">
           <div className="main_section">
             <h4>
               Hi {userObj.firstName} {userObj.lastName}, {greetingMessage}

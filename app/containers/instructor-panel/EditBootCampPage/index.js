@@ -14,14 +14,14 @@ import EditBootCamp from '../../../components/instructor-panel/EditBootcamp';
 export default function EditBootCampPage(props) {
   useEffect(() => {}, [props.match.params.id]);
   return (
-    <div className="sub_page">
+    <div className="sub_pages">
       <Helmet>
         <title>Edit BootCamp Page</title>
         <meta name="description" content="Edit BootCamp Page" />
       </Helmet>
       <Wrapper id="list">
         <div className="custom_container">
-          <Container fluid>
+          <Container fluid="xl">
             <Row>
               <Col lg={12}>
                 <h4>

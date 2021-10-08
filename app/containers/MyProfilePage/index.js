@@ -97,13 +97,13 @@ export default function MyProfilePage() {
   return (
     <>
       <ToastContainer />
-      <div className="sub_page">
+      <div className="sub_pages">
         <Helmet>
           <title>My Profile</title>
           <meta name="description" content="My Profile Page" />
         </Helmet>
         <Wrapper id="list">
-          <Container fluid>
+          <Container fluid="xl">
             <Row>
               <Col lg={4} md={4} sm={12} xs={12}>
                 <div className="profile_sidebar">
@@ -156,9 +156,10 @@ export default function MyProfilePage() {
                           toggle('3');
                         }}
                       >
-                        <RiKeyLine />
-                        <FormattedMessage {...messages.TwoFAuth} />
-                        &nbsp; &nbsp;&nbsp; &nbsp;
+                        <>
+                          <RiKeyLine />
+                          <FormattedMessage {...messages.TwoFAuth} />
+                        </>
                         {userObj.twoFA ? (
                           <p style={{ color: 'Green' }}>Enabled</p>
                         ) : (

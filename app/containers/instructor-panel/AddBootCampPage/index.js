@@ -12,14 +12,14 @@ import AddBootCamp from '../../../components/instructor-panel/AddBootCamp';
 
 export default function AddBootCampPage() {
   return (
-    <div className="sub_page">
+    <div className="sub_pages">
       <Helmet>
         <title>Add BootCamp Page</title>
         <meta name="description" content="Add BootCamp Page" />
       </Helmet>
       <Wrapper id="list">
         <div className="custom_container">
-          <Container fluid>
+          <Container fluid="xl">
             <Row>
               <Col lg={12}>
                 <h4>

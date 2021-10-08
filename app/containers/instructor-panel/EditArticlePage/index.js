@@ -12,14 +12,14 @@ import Wrapper from './Wrapper';
 
 export default function EditArticlePage() {
   return (
-    <div className="sub_page">
+    <div className="sub_pages">
       <Helmet>
         <title>Edit Article</title>
         <meta name="description" content="Edit Article Page" />
       </Helmet>
       <Wrapper id="list">
         <div className="custom_container">
-          <Container fluid>
+          <Container fluid="xl">
             <Row>
               <Col lg={12}>
                 <h4>
