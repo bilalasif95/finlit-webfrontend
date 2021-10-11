@@ -1,6 +1,41 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+.deleteModal {
+  text-align: center !important;
+}
+.customModal {
+  .modal-content {
+    padding: 60px 0px;
+    .modal-body {
+      h2 {
+        color: #225f2b;
+        font-size: 48px;
+        font-weight: 700;
+      }
+      p {
+        font-size: 18px;
+        margin: 15px 0px;
+      }
+    }
+  }
+  .cancelBtn {
+    background-color: #adadad;
+    border: none;
+    &:focus {
+      box-shadow: inherit;
+      outline: none;
+    }
+  }
+  .checkBtn {
+    background-color: #46a135 !important;
+    border: none;
+    &:focus {
+      box-shadow: inherit;
+      outline: none;
+    }
+  }
+}
 .payment-box {
   border: 1px solid #e4e4e4;
   border-radius: 0.313rem;

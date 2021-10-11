@@ -24,6 +24,14 @@ export default defineMessages({
     id: `${scope}.SubTitle`,
     defaultMessage: `Sub Title*`,
   },
+  SubTitleLecture: {
+    id: `${scope}.SubTitleLecture`,
+    defaultMessage: `Lecture Title*`,
+  },
+  // EnterTitle: {
+  //   id: `${scope}.EnterTitle`,
+  //   defaultMessage: `Enter Your Title*`,
+  // },
   CourseImage: {
     id: `${scope}.CourseImage`,
     defaultMessage: `Course Image*`,
@@ -42,7 +50,7 @@ export default defineMessages({
   },
   AddTag: {
     id: `${scope}.AddTag`,
-    defaultMessage: `Add Tags* (Max. 4)`,
+    defaultMessage: `Add Tags*`,
   },
   CourseCategory: {
     id: `${scope}.CourseCategory`,
@@ -50,11 +58,15 @@ export default defineMessages({
   },
   Description: {
     id: `${scope}.Description`,
-    defaultMessage: `Description`,
+    defaultMessage: `Description*`,
   },
   AboutLecture: {
     id: `${scope}.AboutLecture`,
-    defaultMessage: `About Lecture`,
+    defaultMessage: `About Lectures`,
+  },
+  selectLevel: {
+    id: `${scope}.AboutLecture`,
+    defaultMessage: `Set Level`,
   },
   LectureTitle: {
     id: `${scope}.LectureTitle`,
@@ -63,6 +75,18 @@ export default defineMessages({
   LectureVideo: {
     id: `${scope}.LectureVideo`,
     defaultMessage: `Lecture Video`,
+  },
+  Lecture: {
+    id: `${scope}.Lecture`,
+    defaultMessage: `About Lectures`,
+  },
+  Quiz: {
+    id: `${scope}.Quiz`,
+    defaultMessage: `Add Quiz`,
+  },
+  Type: {
+    id: `${scope}.Type`,
+    defaultMessage: `Type Question`,
   },
   Add: {
     id: `${scope}.Add`,
