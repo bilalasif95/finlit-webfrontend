@@ -204,6 +204,7 @@ const Wrapper = styled.div`
       position: absolute;
       left: 0.125rem;
       top: 0.125rem;
+      z-index: 1;
       svg {
         color: #000;
         font-size: 2rem;

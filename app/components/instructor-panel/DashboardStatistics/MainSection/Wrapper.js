@@ -9,13 +9,15 @@ const Wrapper = styled.div`
     h4 {
       font-size: 2rem;
       color: #fff;
-      margin: 1rem 0 0;
+      display: block;
+      padding: 1rem 0 0;
     }
     .top_links {
       align-items: center;
       display: flex;
       justify-content: flex-start;
       margin: 1.5rem 0 0;
+      padding: 0;
       li {
         display: flex;
         list-style: none;

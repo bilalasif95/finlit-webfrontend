@@ -68,8 +68,10 @@ function AddCourse() {
   const [category, setCategory] = useState('0');
   const [courseImage, setCourseImage] = useState('');
   const [courseVideo, setCourseVideo] = useState('');
+  const [lectureVideo, setLectureVideo] = useState('');
   const data = { courseImage: '' };
   const dataVideo = { courseVideo: '' };
+  const lecVideo = { lectureVideo: '' };
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
@@ -508,7 +510,7 @@ function AddCourse() {
                       </Col>
                       <Col lg={6} md={6} sm={12} xs={12}>
                         <div className="graphics">
-                          {courseVideo === '' ? (
+                          {lectureVideo === '' ? (
                             <div className="view_graphic">
                               <FaVideo />
                             </div>
@@ -516,8 +518,8 @@ function AddCourse() {
                             <div className="view_graphic">
                               <Button
                                 onClick={() => {
-                                  setCourseVideo('');
-                                  data.courseVideo = null;
+                                  setLectureVideo('');
+                                  data.lectureVideo = null;
                                 }}
                                 className="del_btn"
                               >
@@ -526,22 +528,22 @@ function AddCourse() {
                               <video>
                                 <source
                                   src={
-                                    dataVideo.courseVideo
-                                      ? typeof dataVideo.courseVideo ===
+                                    lecVideo.lectureVideo
+                                      ? typeof lecVideo.lectureVideo ===
                                         'string'
-                                        ? dataVideo.courseVideo
-                                        : courseVideo
-                                      : courseVideo
+                                        ? lecVideo.lectureVideo
+                                        : lectureVideo
+                                      : lectureVideo
                                   }
                                 />
                                 <track
                                   src={
-                                    dataVideo.courseVideo
-                                      ? typeof dataVideo.courseVideo ===
+                                    lecVideo.lectureVideo
+                                      ? typeof lecVideo.lectureVideo ===
                                         'string'
-                                        ? dataVideo.courseVideo
-                                        : courseVideo
-                                      : courseVideo
+                                        ? lecVideo.lectureVideo
+                                        : lectureVideo
+                                      : lectureVideo
                                   }
                                   kind="captions"
                                   srcLang="en"
@@ -559,12 +561,12 @@ function AddCourse() {
                               multiple={false}
                               onDrop={acceptedFiles => {
                                 if (acceptedFiles && acceptedFiles[0]) {
-                                  const courseVdo = acceptedFiles[0];
-                                  data.courseVideo = courseVdo;
-                                  // setcourseVideoFile(acceptedFiles[0]);
+                                  const lectureVdo = acceptedFiles[0];
+                                  data.lectureVideo = lectureVdo;
+                                  // setlectureVideoFile(acceptedFiles[0]);
                                   const reader = new FileReader();
                                   reader.onload = e => {
-                                    setCourseVideo(e.target.result);
+                                    setLectureVideo(e.target.result);
                                   };
                                   reader.readAsDataURL(acceptedFiles[0]);
                                 }
