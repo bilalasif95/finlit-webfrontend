@@ -148,7 +148,7 @@ const TagsComponent = withStyles(styles, { name: 'TagsComponent' })(
     addTile(tile) {
       // pull tiles array out of the state
       // see destructoring
-      if (tile.length && Object.keys(this.state.tiles).length <= 3) {
+      if (tile.length && Object.keys(this.state.tiles).length <= 10) {
         const { tiles, tileIds } = this.state;
 
         const newTileId = tileIds.length - 1 + 1;

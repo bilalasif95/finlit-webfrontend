@@ -1000,9 +1000,14 @@ const GlobalStyle = createGlobalStyle`
     height: 1.5rem;
     width: 1.5rem;
   }
+  .jodit-wysiwyg {
+    max-height: 10rem !important;
+    min-height: 10rem !important;
+  }
   .accordion {
     border: none !important;
     border-radius: 0;
+    margin: 0 0 2rem;
     .accordion__item {
       border: 1px solid #d8d8d8;
       border-radius: 0.35rem;
@@ -1010,7 +1015,7 @@ const GlobalStyle = createGlobalStyle`
       padding: 0 1.5rem;
     }
     .accordion__button {
-      align-item: center;
+      align-items: center;
       background-color: transparent;
       border: none;
       color: #484848;
@@ -1023,14 +1028,14 @@ const GlobalStyle = createGlobalStyle`
       width: 100%:
     }
     .accordion__button:before {
-      content: "▼";
-      // background: url(https://i.imgur.com/5DEKTmh.png) no-repeat;
-      // background-size: cover;
+      content: "";
+      background: url(https://i.imgur.com/dYtKaY6.png) no-repeat;
+      background-size: cover;
       border: none;
-      height: auto;
+      height: 1.125rem;
       margin-right: 0;
       transform: rotate(0deg);
-      width: auto;
+      width: 1.125rem;
     }
     .accordion__button[aria-expanded='true']::before,
     .accordion__button[aria-selected='true']::before {
@@ -1042,6 +1047,16 @@ const GlobalStyle = createGlobalStyle`
     .accordion__panel {
       border-top: 1px solid #ebebeb;
       padding: 2rem 0;
+    }
+    @media (max-width: 575px) {
+      margin: 0 0 1rem;
+      .accordion__item {
+        padding: 0 0.5rem;
+      }
+      .accordion__button {
+        font-size: 1.125rem;
+        padding: 0.75rem 0;
+      }
     }
   }
 `;

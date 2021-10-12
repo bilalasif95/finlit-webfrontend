@@ -32,50 +32,79 @@ const Wrapper = styled.div`
   .addLecture {
     display: flex;
     justify-content: space-between;
-    margin: 30px 0px;
+    margin: 1.5rem 0;
     button {
       background: transparent;
       border: none;
       color: #74b867;
-      font-size: 18px;
+      font-size: 1.125rem;
+      padding: 0;
+      &:focus {
+        box-shadow: none;
+      }
       &:first-child {
         span {
           border: 2px solid #46a135;
           border-radius: 100%;
-          height: 20px;
-          width: 20px;
+          height: 1.25rem;
+          width: 1.25rem;
           line-height: 16px;
           display: inline-block;
           color: #46a135;
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 600;
-          margin-right: 15px;
+          margin-right: 1rem;
         }
       }
     }
   }
   .lectureList {
+    align-items: center;
     display: flex;
     justify-content: space-between;
     background-color: #eaeaea;
-    padding: 15px 15px;
+    padding: 0.75rem 1rem;
     border-radius: 5px;
+    p {
+      color: #000;
+      font-size: 0.875rem;
+      margin: 0;
+    }
     .list-icons {
+      display: flex;
+      justify-content: flex-end;
       button {
         border: none;
         background: transparent;
+        color: #000;
+        padding: 0;
+        &:focus {
+          box-shadow: none;
+        }
         &:first-child {
-          margin-right: 20px;
+          margin-right: 1.5rem;
         }
         svg {
-          width: 28px;
-          height: 28px;
+          width: 1.75rem;
+          height: 1.75rem;
           cursor: pointer;
+        }
+        @media (max-width: 575px) {
+          &:first-child {
+            margin-right: 0.75rem;
+          }
+          svg {
+            width: 1rem;
+            height: 1rem;
+          }
         }
       }
     }
     &:not(:last-child) {
       margin-bottom: 20px;
+    }
+    @media (max-width: 575px) {
+      padding: 0.5rem;
     }
   }
   .selectAnswer {
@@ -178,6 +207,26 @@ const Wrapper = styled.div`
       svg {
         color: #000;
         font-size: 2rem;
+      }
+    }
+  }
+  @media (max-width: 767px) {
+    .graphics {
+      margin: 1.5rem 0 0;
+      .form-group {
+        width: 75%;
+      }
+    }
+  }
+  @media (max-width: 414px) {
+    .graphics {
+      flex-wrap: wrap;
+      .view_graphic {
+        margin: 0 0 1rem;
+        width: 100%;
+      }
+      .form-group {
+        width: 100%;
       }
     }
   }
