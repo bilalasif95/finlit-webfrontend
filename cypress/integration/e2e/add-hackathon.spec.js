@@ -1,16 +1,12 @@
-/* eslint-disable no-undef */
-/* eslint-disable func-names */
-/* eslint-disable spaced-comment */
-
+/* eslint-disable */
 /// <reference types="cypress" />
 
-describe('add webinar', () => {
+describe('add hackathon', () => {
   let educatorUser;
   before(function() {
     cy.fixture('educator').then(function(educator) {
       cy.deleteUser(educator.email);
       cy.addUser(educator);
-      cy.verifyEmail(educator.email);
       educatorUser = educator;
     });
   });
@@ -21,9 +17,9 @@ describe('add webinar', () => {
   });
 
   it('with valid input values', () => {
-    const webinar = {
-      type: 'Webinar',
-      eventImage: 'images/webinar.jpg',
+    const hackathon = {
+      type: 'Hackathon',
+      eventImage: 'images/hackathon.png',
       data: {
         mainTitle: 'Block Chain Security',
         subTitle: 'Blockchain',
@@ -35,10 +31,9 @@ describe('add webinar', () => {
           'The crypto currency is currently in use and have some serious security concerns due to its usage.',
         price: '100',
         redirectionUrl: 'https://google.com/',
-        presentor: 'David Parker',
       },
     };
-    cy.addWebinar(webinar);
+    cy.addHackathon(hackathon);
   });
 
   after(() => {

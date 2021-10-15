@@ -1,7 +1,4 @@
-/* eslint-disable no-undef */
-/* eslint-disable func-names */
-/* eslint-disable spaced-comment */
-
+/* eslint-disable */
 /// <reference types="cypress" />
 
 describe('add bootcamp', () => {
@@ -10,7 +7,6 @@ describe('add bootcamp', () => {
     cy.fixture('educator').then(function(educator) {
       cy.deleteUser(educator.email);
       cy.addUser(educator);
-      cy.verifyEmail(educator.email);
       educatorUser = educator;
     });
   });

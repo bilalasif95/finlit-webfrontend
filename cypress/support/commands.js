@@ -1,12 +1,6 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable no-undef */
-/* eslint-disable func-names */
-/* eslint-disable spaced-comment */
-
-import 'cypress-mailosaur';
+/* eslint-disable */
+/// <reference types="cypress" />
 import 'cypress-file-upload';
-
-const serverId = 'c0sxzwsh';
 
 // -- api --
 Cypress.Commands.add('addUser', body => {
@@ -17,6 +11,9 @@ Cypress.Commands.add('addUser', body => {
       'content-type': 'application/json',
     },
     body,
+  });
+  cy.task('dbQuery', {
+    query: `UPDATE users SET \"emailConfirmed\"=true where email='${body.email}'`,
   });
 });
 
@@ -36,13 +33,19 @@ Cypress.Commands.add('deleteUser', email => {
   });
 });
 
-Cypress.Commands.add('verifyEmail', email => {
-  cy.task('dbQuery', {
-    query: `UPDATE users SET \"emailConfirmed\"=true where email='${email}'`,
-  });
-});
-
 // -- ui --
+Cypress.Commands.add(
+  'registerStudent',
+  (emailAddress, firstName, lastName, password, confirmPassword) => {
+    cy.get('#email').type(emailAddress);
+    cy.get(':nth-child(1) > .form-group > #name').type(firstName);
+    cy.get(':nth-child(2) > .form-group > #name').type(lastName);
+    cy.get('#createpassword').type(password);
+    cy.get('#confirmpassword').type(confirmPassword);
+    cy.get('.btn').click({ force: true });
+  },
+);
+
 Cypress.Commands.add(
   'registerInstructor',
   (emailAddress, firstName, lastName, password, confirmPassword, address) => {
@@ -55,34 +58,23 @@ Cypress.Commands.add(
     cy.get('#confirmpassword').type(confirmPassword);
     cy.get('#address').type(address);
     cy.get('.btn').click({ force: true });
-    cy.mailosaurGetMessage(serverId, {
-      sentTo: emailAddress,
-    }).then(email => {
-      cy.visit(email.html.links[0].href);
-    });
-  },
-);
-
-Cypress.Commands.add(
-  'registerStudent',
-  (emailAddress, firstName, lastName, password, confirmPassword) => {
-    cy.get('#email').type(emailAddress);
-    cy.get(':nth-child(1) > .form-group > #name').type(firstName);
-    cy.get(':nth-child(2) > .form-group > #name').type(lastName);
-    cy.get('#createpassword').type(password);
-    cy.get('#confirmpassword').type(confirmPassword);
-    cy.get('.btn').click({ force: true });
-    cy.mailosaurGetMessage(serverId, {
-      sentTo: emailAddress,
-    }).then(email => {
-      cy.visit(email.html.links[0].href);
-    });
   },
 );
 
 Cypress.Commands.add('login', (email, password) => {
   cy.get('#email').type(email);
   cy.get('#password').type(password);
+  cy.get('.btn').click({ force: true });
+});
+
+Cypress.Commands.add('forgotPassword', (email) => {
+  cy.get('#email').type(email);
+  cy.get('#submitButton > span').click({ force: true });
+});
+
+Cypress.Commands.add('resetPassword', (newPassword, confirmPassword) => {
+  cy.get(':nth-child(1) > #password').type(newPassword);
+  cy.get(':nth-child(2) > #password').type(confirmPassword);
   cy.get('.btn').click({ force: true });
 });
 

@@ -1,8 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-/* eslint-disable func-names */
-/* eslint-disable spaced-comment */
-
+/* eslint-disable */
 // Import commands.js using ES2015 syntax:
 import './commands';
 import addContext from 'mochawesome/addContext';

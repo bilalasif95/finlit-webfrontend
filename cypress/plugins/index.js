@@ -1,8 +1,4 @@
-/* eslint-disable global-require */
-/* eslint-disable no-undef */
-/* eslint-disable func-names */
-/* eslint-disable spaced-comment */
-
+/* eslint-disable */
 /// <reference types="cypress" />
 
 /**
