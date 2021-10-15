@@ -1,3 +1,8 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-undef */
+/* eslint-disable func-names */
+/* eslint-disable spaced-comment */
+
 import 'cypress-mailosaur';
 import 'cypress-file-upload';
 

@@ -1,4 +1,9 @@
-// / <reference types="cypress" />
+/* eslint-disable global-require */
+/* eslint-disable no-undef */
+/* eslint-disable func-names */
+/* eslint-disable spaced-comment */
+
+/// <reference types="cypress" />
 
 /**
  * @type {Cypress.PluginConfig}

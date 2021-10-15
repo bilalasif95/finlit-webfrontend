@@ -1,4 +1,8 @@
-// / <reference types="cypress" />
+/* eslint-disable no-undef */
+/* eslint-disable func-names */
+/* eslint-disable spaced-comment */
+
+/// <reference types="cypress" />
 
 describe('student login', () => {
   let studentUser;

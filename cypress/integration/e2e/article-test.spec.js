@@ -1,6 +1,10 @@
-// / <reference types="cypress" />
+/* eslint-disable no-undef */
+/* eslint-disable func-names */
+/* eslint-disable spaced-comment */
 
-describe('add event', () => {
+/// <reference types="cypress" />
+
+describe('add article', () => {
   let educatorUser;
   before(function() {
     cy.fixture('educator').then(function(educator) {
@@ -28,6 +32,7 @@ describe('add event', () => {
   });
 
   after(() => {
+    cy.wait(2000);
     cy.deleteUser(educatorUser.email);
   });
 });

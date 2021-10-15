@@ -1,4 +1,8 @@
-// / <reference types="cypress" />
+/* eslint-disable no-undef */
+/* eslint-disable func-names */
+/* eslint-disable spaced-comment */
+
+/// <reference types="cypress" />
 
 const serverDomain = 'c0sxzwsh.mailosaur.net';
 const emailAddress = `testUser@${serverDomain}`;
