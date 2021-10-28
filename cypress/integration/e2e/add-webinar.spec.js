@@ -1,12 +1,12 @@
-// / <reference types="cypress" />
+/* eslint-disable */
+/// <reference types="cypress" />
 
-describe('add bootcamp', () => {
+describe('add webinar', () => {
   let educatorUser;
   before(function() {
     cy.fixture('educator').then(function(educator) {
       cy.deleteUser(educator.email);
       cy.addUser(educator);
-      cy.verifyEmail(educator.email);
       educatorUser = educator;
     });
   });
@@ -17,9 +17,9 @@ describe('add bootcamp', () => {
   });
 
   it('with valid input values', () => {
-    const bootcamp = {
-      type: 'Bootcamp',
-      eventImage: 'images/bootcamp.jpg',
+    const webinar = {
+      type: 'Webinar',
+      eventImage: 'images/webinar.jpg',
       data: {
         mainTitle: 'Block Chain Security',
         subTitle: 'Blockchain',
@@ -31,9 +31,10 @@ describe('add bootcamp', () => {
           'The crypto currency is currently in use and have some serious security concerns due to its usage.',
         price: '100',
         redirectionUrl: 'https://google.com/',
+        presentor: 'David Parker',
       },
     };
-    cy.addBootcamp(bootcamp);
+    cy.addWebinar(webinar);
   });
 
   after(() => {

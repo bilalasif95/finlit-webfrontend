@@ -1,6 +1,7 @@
 {
   "baseUrl": "http://61.85.154.156:3021/",
   "screenshotOnRunFailure": true,
+  "defaultCommandTimeout": 10000,
   "screenshotsFolder": "cypress/reports/mocha/assets",
   "reporter": "mochawesome",
   "video": false,

@@ -1,4 +1,5 @@
-// / <reference types="cypress" />
+/* eslint-disable */
+/// <reference types="cypress" />
 
 describe('add hackathon', () => {
   let educatorUser;
@@ -6,7 +7,6 @@ describe('add hackathon', () => {
     cy.fixture('educator').then(function(educator) {
       cy.deleteUser(educator.email);
       cy.addUser(educator);
-      cy.verifyEmail(educator.email);
       educatorUser = educator;
     });
   });

@@ -1,5 +1,8 @@
-// / <reference types="cypress" />
+/* eslint-disable */
+/// <reference types="cypress" />
+import 'cypress-mailosaur';
 
+const serverId = 'c0sxzwsh';
 const serverDomain = 'c0sxzwsh.mailosaur.net';
 const emailAddress = `testUser@${serverDomain}`;
 
@@ -17,7 +20,15 @@ describe('student signup', () => {
       'Test@12345',
       'Test@12345',
     );
-    cy.get('h4 > span').should('have.text', 'Your email has been verified');
+    cy.get('.Toastify__toast-body').then(() => {
+      cy.wait(5000);
+      cy.mailosaurGetMessage(serverId, {
+        sentTo: emailAddress,
+      }).then(email => {
+        cy.visit(email.html.links[0].href);
+      });
+      cy.get('h4 > span').should('have.text', 'Your email has been verified');
+    });
   });
 
   afterEach(() => {
@@ -40,7 +51,15 @@ describe('educator signup', () => {
       'Test@12345',
       'Test address',
     );
-    cy.get('h4 > span').should('have.text', 'Your email has been verified');
+    cy.get('.Toastify__toast-body').then(() => {
+      cy.wait(5000);
+      cy.mailosaurGetMessage(serverId, {
+        sentTo: emailAddress,
+      }).then(email => {
+        cy.visit(email.html.links[0].href);
+      });
+      cy.get('h4 > span').should('have.text', 'Your email has been verified');
+    });
   });
 
   afterEach(() => {

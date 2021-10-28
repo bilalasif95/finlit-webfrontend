@@ -1,12 +1,12 @@
-// / <reference types="cypress" />
+/* eslint-disable */
+/// <reference types="cypress" />
 
-describe('add event', () => {
+describe('add article', () => {
   let educatorUser;
   before(function() {
     cy.fixture('educator').then(function(educator) {
       cy.deleteUser(educator.email);
       cy.addUser(educator);
-      cy.verifyEmail(educator.email);
       educatorUser = educator;
     });
   });
@@ -28,6 +28,7 @@ describe('add event', () => {
   });
 
   after(() => {
+    cy.wait(2000);
     cy.deleteUser(educatorUser.email);
   });
 });
