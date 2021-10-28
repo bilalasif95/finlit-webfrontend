@@ -39,12 +39,48 @@ const GlobalStyle = createGlobalStyle`
 .payment-box {
   border: 1px solid #e4e4e4;
   border-radius: 0.313rem;
-  padding: 2rem;
   margin: 0 0 2rem;
   width: 100%;
+  .innerBox {
+    padding: 2rem;
+    .paypalBox {
+      border: 1px solid #276F86;
+      border-radius: 5px;
+      background-color: #F8FFFF;
+      padding: 20px 20px;
+      margin-bottom: 30px; 
+      p {
+        margin-bottom: 0px;
+        position: relative;
+        padding-left: 30px;
+        color: #276F86;
+        font-weight: 700;
+        font-size: 14px;
+        img {
+          position: absolute;
+          left: 0;
+          top: 3px;
+        }
+      }
+    }
+  }
+  .cardSelect {
+    padding: 2rem;
+    border-bottom: 1px solid #D8D8D8;
+    width: 100%;
+    display: block;
+    margin-bottom: 0px;
+  }
+  .summary {
+    h4 {
+      color: #484848;
+      margin-bottom: 20px;
+    }
+  }
 }
 .details_cart {
   margin-top: 30px;
+  font-size: 20px;
 }
 .dashboard-main {
   width: 100%;

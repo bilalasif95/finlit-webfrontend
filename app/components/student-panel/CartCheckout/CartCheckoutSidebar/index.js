@@ -14,6 +14,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import history from 'utils/history';
 import mastercard from '../../../../images/mastercard.svg';
 import paypalicon from '../../../../images/paypal.svg';
+import Back from '../../../../images/back.png';
+import Info from '../../../../images/info.png';
 import { axiosHeader } from '../../../../utils/axiosHeader';
 import { API } from '../../../../config/config';
 import Wrapper from './Wrapper';
@@ -126,32 +128,19 @@ function CartCheckoutSidebar(props) {
       <Col lg={12}>
         <Wrapper>
           <div className="payment-box">
-            <div className="heading">
-              <h4>
-                <FormattedMessage {...messages.PaymentDetails} />
-              </h4>
+            <div className="innerBox pb-0">
+              <div className="heading">
+                <h4>
+                  <img src={Back} alt="Back" />
+                  <FormattedMessage {...messages.PaymentDetails} />
+                </h4>
+              </div>
+              <p>
+                <FormattedMessage {...messages.CompletePurchase} />
+              </p>
             </div>
-            <p>
-              <FormattedMessage {...messages.CompletePurchase} />
-            </p>
-            <FormGroup>
-              <Label for="email">
-                <FormattedMessage {...messages.EmailAddress} />
-              </Label>
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                value={checkoutInfo.email}
-                onChange={e => handleChangeEvent(e)}
-                placeholder="Enter email"
-                required
-              />
-              <Label for="email">
-                {errors.email ? <p className="error"> {errors.email} </p> : ''}
-              </Label>
-            </FormGroup>
-            <FormGroup tag="fieldset">
+
+            <FormGroup tag="fieldset" className="cardSelect">
               <FormGroup check>
                 <Label check>
                   <Input
@@ -171,14 +160,15 @@ function CartCheckoutSidebar(props) {
                   />
                 </div>
               </FormGroup>
-              <FormGroup check disabled>
+            </FormGroup>
+            <FormGroup tag="fieldset" className="cardSelect">
+              <FormGroup check>
                 <Label check>
                   <Input
                     type="radio"
                     name="paymentType"
                     onChange={() => handleChange('Paypal')}
                     checked={paymentType.paypal}
-                    disabled
                   />
                   <FormattedMessage {...messages.PayPal} />
                 </Label>
@@ -192,140 +182,59 @@ function CartCheckoutSidebar(props) {
                 </div>
               </FormGroup>
             </FormGroup>
+
             {/* <div className="paypal">
               <p>
                 <FormattedMessage {...messages.PayPalInfo} />
               </p>
             </div> */}
-            <FormGroup>
-              <Label for="cardholdername">
-                <FormattedMessage {...messages.CardholderName} />
-              </Label>
-              <Input
-                type="text"
-                name="cardHolderName"
-                id="cardholdername"
-                value={checkoutInfo.cardHolderName}
-                onChange={e => handleChangeEvent(e)}
-                placeholder="Enter name"
-              />
-              <Label for="cardholdername">
-                {errors.cardHolderName ? (
-                  <p className="error"> {errors.cardHolderName} </p>
-                ) : (
-                  ''
-                )}
-              </Label>
-            </FormGroup>
-            <FormGroup>
-              <Label for="cardnumber">
-                <FormattedMessage {...messages.CardNumber} />
-              </Label>
-              <NumberFormat
-                format="#### #### #### ####"
-                mask="_"
-                name="cardNumber"
-                value={checkoutInfo.cardNumber}
-                onChange={e => handleChangeEvent(e)}
-                placeholder="Enter number"
-                className="form-control"
-              />
-              <Label for="cardnumber">
-                {errors.cardNumber ? (
-                  <p className="error"> {errors.cardNumber} </p>
-                ) : (
-                  ''
-                )}
-              </Label>
-            </FormGroup>
-            <FormGroup>
-              <Label for="mmyy">
-                <FormattedMessage {...messages.MMYY} />
-              </Label>
-              <NumberFormat
-                format="##/##"
-                mask={['M', 'M', 'Y', 'Y']}
-                id="mmyy"
-                name="MMYY"
-                value={checkoutInfo.MMYY}
-                onChange={e => handleChangeEvent(e)}
-                placeholder="mm - yy "
-                className="form-control"
-              />
-              <Label for="mmyy">
-                {errors.MMYY ? <p className="error"> {errors.MMYY} </p> : ''}
-              </Label>
-            </FormGroup>
-
-            <FormGroup>
-              <Label for="cvc">
-                <FormattedMessage {...messages.CVC} />
-              </Label>
-              <NumberFormat
-                format="###"
-                placeholder="Enter CVC"
-                name="CVC"
-                value={checkoutInfo.CVC}
-                onChange={e => handleChangeEvent(e)}
-                className="form-control"
-              />
-              <Label for="cvc">
-                {errors.CVC ? <p className="error">{errors.CVC}</p> : ''}
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check className="check_label">
-                <Input
-                  type="checkbox"
-                  name="rememberCard"
-                  checked={checkoutInfo.rememberCard}
-                  onChange={e => handleChangeEvent(e)}
-                />
-                <FormattedMessage {...messages.RememberCard} />
-              </Label>
-            </FormGroup>
-            <div className="summary">
-              <h4>
-                <FormattedMessage {...messages.Summary} />
-              </h4>
-              <ul className="list">
-                <li>
-                  <p>
-                    <FormattedMessage {...messages.OriginalPrice} />
-                  </p>
-                  <p>${props.details.total}</p>
-                </li>
-                <li>
-                  <p>
-                    <FormattedMessage {...messages.CouponDiscounts} />
-                  </p>
-                  <p>-$000</p>
-                </li>
-                <li>
-                  <p>
-                    <FormattedMessage {...messages.Total} />
-                  </p>
-                  <h4>${props.details.total}</h4>
-                </li>
-              </ul>
-            </div>
-            <div className="term_service">
-              <p>
-                <FormattedMessage {...messages.YouAgree} />
-                &nbsp;
-                <Link to="/">
-                  <FormattedMessage {...messages.TermsService} />
-                </Link>
-              </p>
-            </div>
-            <Button onClick={() => handleCheckout()}>
-              {loader ? `loading...` : `Pay$${props.details.total}`}
-            </Button>
-            <div className="secure_payment">
-              <IoMdLock />
-              <p>
-                <FormattedMessage {...messages.PaymentsEncrypted} />
-              </p>
+            <div className="innerBox">
+              <div className="paypalBox">
+                <p><img src={Info} alt="Info" /> In order to complete your transaction,we will transfer you over PayPal'ssecure servers.</p>
+              </div>
+              <div className="summary">
+                <h4>
+                  <FormattedMessage {...messages.Summary} />
+                </h4>
+                <ul className="list">
+                  <li>
+                    <p>
+                      <FormattedMessage {...messages.OriginalPrice} />
+                    </p>
+                    <p>${props.details.total}</p>
+                  </li>
+                  <li>
+                    <p>
+                      <FormattedMessage {...messages.CouponDiscounts} />
+                    </p>
+                    <p>-$000</p>
+                  </li>
+                  <li>
+                    <p>
+                      <FormattedMessage {...messages.Total} />
+                    </p>
+                    <h4>${props.details.total}</h4>
+                  </li>
+                </ul>
+              </div>
+              <div className="term_service">
+                <p>
+                  <FormattedMessage {...messages.YouAgree} />
+                  &nbsp;
+                  <Link to="/">
+                    <FormattedMessage {...messages.TermsService} />
+                  </Link>
+                </p>
+              </div>
+              <Button onClick={() => handleCheckout()}>
+                {loader ? `loading...` : `Pay$${props.details.total}`}
+              </Button>
+              <div className="secure_payment">
+                <IoMdLock />
+                <p>
+                  <FormattedMessage {...messages.PaymentsEncrypted} />
+                </p>
+              </div>
             </div>
           </div>
         </Wrapper>

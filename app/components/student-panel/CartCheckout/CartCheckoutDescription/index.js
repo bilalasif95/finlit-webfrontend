@@ -3,28 +3,38 @@
  */
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { IoMdCart } from 'react-icons/io';
+import {
+  AiFillStar,
+  AiOutlineClockCircle,
+  AiOutlineDelete,
+} from 'react-icons/ai';
+import { BiUser } from 'react-icons/bi';
 import PropTypes from 'prop-types';
-import { AiOutlineDelete } from 'react-icons/ai';
-// import { AiFillHeart } from 'react-icons/ai';
-// import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import messages from './messages';
 import Wrapper from './Wrapper';
+import CartImg from '../../../../images/cartImg.png';
+import CartImg1 from '../../../../images/cartImg1.png';
+import Bag from '../../../../images/bag.png';
+import Bin from '../../../../images/bin.png';
+import Card from '../../../../images/cardImg1.png';
+import Card2 from '../../../../images/cardImg2.png';
+import CardIcon from '../../../../images/cardIcon.png';
+import Cart from '../../../../images/cart.png';
 function CartCheckoutDescription(props) {
   return (
     <Wrapper id="list">
       <div className="cart_checkout">
-        <div className="header">
-          {/* <InputGroup>
+        {/* <div className="header"> */}
+        {/* <InputGroup>
             <Input type="text" name="search" id="seach" placeholder="Search" />
             <Button>
               <BiSearchAlt2 />
             </Button>
           </InputGroup> */}
-          <div className="cart">
-            <div className="num_cont"> {/* <IoMdSearch /> */}</div>
-            <div className="num_cont">
+        {/* <div className="cart"> */}
+        {/* <div className="num_cont"> <IoMdSearch /></div> */}
+        {/* <div className="num_cont">
               <IoMdCart />
               {props.details &&
               props.details.items &&
@@ -37,7 +47,7 @@ function CartCheckoutDescription(props) {
               )}
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="table-responsive">
           <table>
             <thead>
@@ -90,6 +100,147 @@ function CartCheckoutDescription(props) {
                 ))}
             </tbody>
           </table>
+        </div>
+        <div className="cartDetailsCont">
+          <div className="courseDetail">
+            <div className="checkoutDetails">
+              <div className="courseDetailImg">
+                <img className="img-fluid" src={CartImg} alt="Cart" />
+              </div>
+              <div className="courseDetailText">
+                <h2>Programming with Python...</h2>
+                <p>By Kirill Eremenko</p>
+                <h3>$44.99</h3>
+              </div>
+              <img className="deleteImg" src={Bin} alt="Bin" />
+            </div>
+            <ul className="list-unstyled courseDetailList">
+              <li>
+                <AiFillStar />
+                4.5 Instructor Rating
+              </li>
+              <li>
+                <BiUser />
+                1917 Students
+              </li>
+              <li>
+                <AiOutlineClockCircle />
+                4.5 Instructor Rating
+              </li>
+              <li>
+                <img src={Bag} alt="Bag" />
+                All Lavels
+              </li>
+            </ul>
+          </div>
+
+          <div className="courseDetail">
+            <div className="checkoutDetails">
+              <div className="courseDetailImg">
+                <img className="img-fluid" src={CartImg1} alt="Cart1" />
+              </div>
+              <div className="courseDetailText">
+                <h2>Programming with Python...</h2>
+                <p>By Kirill Eremenko</p>
+                <h3>$44.99</h3>
+              </div>
+              <img className="deleteImg" src={Bin} alt="Bin" />
+            </div>
+            <ul className="list-unstyled courseDetailList">
+              <li>
+                <AiFillStar />
+                4.5 Instructor Rating
+              </li>
+              <li>
+                <BiUser />
+                1917 Students
+              </li>
+              <li>
+                <AiOutlineClockCircle />
+                4.5 Instructor Rating
+              </li>
+              <li>
+                <img src={Bag} alt="Bag" />
+                All Lavels
+              </li>
+            </ul>
+          </div>
+          <div className="customBorder" />
+          <div className="moreCourses">
+            <h2>More courses for you</h2>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="card">
+                  <img className="card-img-top" src={Card2} alt="CardCap" />
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      The Complete Android N Developer Course
+                    </h5>
+                    <ul className="list-unstyled cardList">
+                      <li>
+                        <img src={CardIcon} alt="CardIcon" />
+                        Advance
+                      </li>
+                      <li>
+                        <img src={CardIcon} alt="CardIcon" />
+                        14
+                      </li>
+                      <li>
+                        <img src={CardIcon} alt="CardIcon" />
+                        5.0
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="card-footer">
+                    <div className="price">
+                      <h4>$19.00</h4>
+                    </div>
+                    <div className="addCart">
+                      <button type="button" className="btn btn-default">
+                        <img src={Cart} alt="Cart" />
+                        Add to cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="card">
+                  <img className="card-img-top" src={Card} alt="CardCap" />
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      The Complete Android N Developer Course
+                    </h5>
+                    <ul className="list-unstyled cardList">
+                      <li>
+                        <img src={CardIcon} alt="CardIcon" />
+                        Advance
+                      </li>
+                      <li>
+                        <img src={CardIcon} alt="CardIcon" />
+                        14
+                      </li>
+                      <li>
+                        <img src={CardIcon} alt="CardIcon" />
+                        5.0
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="card-footer">
+                    <div className="price">
+                      <h4>$19.00</h4>
+                    </div>
+                    <div className="addCart">
+                      <button type="button" className="btn btn-default">
+                        <img src={Cart} alt="Cart" />
+                        Add to cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="footer">
           <div className="sub_total">

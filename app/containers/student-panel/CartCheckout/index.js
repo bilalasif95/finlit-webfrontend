@@ -16,7 +16,7 @@ export default function CartCheckout() {
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
-    getCartDetails(true);
+    // getCartDetails(true);
   }, []);
 
   const getCartDetails = status => {

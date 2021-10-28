@@ -158,6 +158,147 @@ const Wrapper = styled.div`
         }
       }
     }
+    .cartDetailsCont {
+      margin-top: 64px;
+      .customBorder {
+        border-bottom: 1px solid #D8D8D8;
+        width: 100%;
+        margin: 50px 0px 50px;
+        display: block;
+      }
+      .moreCourses {
+        .card {
+          border-radius: 10px;
+          .card-body {
+            padding: 20px 20px 0px 20px;
+            .card-title {
+              font-size: 20px;
+              color: #404041;
+              margin-bottom: 20px;
+            }
+            .cardList {
+              display: flex;
+              margin-bottom: 35px;
+              li {
+                color: #404041;
+                font-size: 16px;
+                font-weight: 700;
+                &:not(:last-child) {
+                  margin-right: 25px;
+                }
+                img {
+                  height: 30px;
+                  width: 30px;
+                  margin-right: 10px;
+                }
+              }
+            }
+          }
+          .card-footer {
+            background-color: #fff;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            .price {
+              h4 {
+                font-size: 20px;
+                color: #404041;
+                font-weight: 700;
+              }
+            }
+            .addCart {
+              display: flex;
+              align-items: center;
+              button {
+                font-size: 14px;
+                color: #3e952e;
+                font-weight: 700;
+                img {
+                  margin-right: 6px;
+                }
+              }
+            }
+          }
+        }
+        h2 {
+          font-size: 24px;
+          color: #404041;
+          margin-bottom: 30px;
+        }
+      }
+      .courseDetail {
+        padding: 20px 20px;
+          border: 1px solid #D8D8D8;
+          border-radius: 10px;
+          margin-bottom: 20px;
+        .checkoutDetails {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          margin-bottom: 22px;
+          position: relative;
+          .deleteImg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 20px;
+            width: 16px;
+            cursor: pointer;
+          }
+          .courseDetailImg {
+            height: 92px;
+            width: 16%;
+            img {
+              height: 100%;
+              object-fit: cover;
+              border-radius: 5px;
+            }
+          }
+          .courseDetailText {
+            width: 82%;
+            h2, h3 {
+              font-size: 20px;
+              color: #404041;
+              margin-bottom: 0px;
+              line-height: 40px;
+            }
+            p {
+              font-size: 14px;
+              color: #8B8B8B;
+            }
+          }
+        }
+        .courseDetailList {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 90%;
+          margin-bottom: 0px;
+          li {
+            color: #404041;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            svg {
+              margin-right: 10px;
+              color: #8b8b8b;
+              width: 20px;
+              height: 20px;
+            }
+            img {
+              margin-right: 10px;
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+      }
+    }
     .footer {
       align-tems: center;
       display: flex;
