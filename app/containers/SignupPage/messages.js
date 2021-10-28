@@ -10,7 +10,7 @@ export const scope = 'boilerplate.containers.SigninPage';
 export default defineMessages({
   CreateAnAccount: {
     id: `${scope}.CreateAnAccount`,
-    defaultMessage: 'Create an account',
+    defaultMessage: 'Create Your FinLit Account',
   },
   EmailAddress: {
     id: `${scope}.EmailAddress`,

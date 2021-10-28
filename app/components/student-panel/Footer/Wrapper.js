@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const Wrapper = styled.footer`
   border-top: 1px solid #ececed;
-  padding: 1rem 0 4rem;
+  padding: 2.5rem 0;
   background-color: #f8f9fb;
-  margin: 4rem 0 0;
+  margin: 0;
   .copyright {
     p {
       color: #a6a6a7;
@@ -16,6 +16,7 @@ const Wrapper = styled.footer`
     align-items: center;
     display: flex;
     justify-content: flex-start;
+    margin: 0;
     padding: 0;
     li {
       list-style: none;
@@ -56,12 +57,12 @@ const Wrapper = styled.footer`
     align-items: center;
     width: 100%;
     li {
-      color: #a6a6a7;
+      color: #484848;
       font-size: 0.8rem;
       padding-left: 1rem;
       list-style: none;
       a {
-        color: #a6a6a7;
+        color: #484848;
         font-size: 0.8rem;
         margin: 0;
         text-decoration: none;

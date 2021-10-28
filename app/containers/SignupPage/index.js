@@ -4,12 +4,23 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
+import {
+  Button,
+  FormGroup,
+  Label,
+  Input,
+  Row,
+  Col,
+  InputGroup,
+  InputGroupAddon,
+} from 'reactstrap';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
+import { BsEyeFill } from 'react-icons/bs';
+// BsEyeSlashFill
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './app.css';
@@ -17,6 +28,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
 import { API } from '../../config/config';
+import Logo from '../../images/logoGreen.svg';
 
 const BootstrapInput = withStyles(theme => ({
   root: {
@@ -43,16 +55,16 @@ const BootstrapInput = withStyles(theme => ({
 
 export default function SignupPage() {
   const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [roleId, setRoleId] = useState(3);
+  // const [firstName, setFirstName] = useState('');
+  // const [lastName, setLastName] = useState('');
+  const [roleId, setRoleId] = useState(1);
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [gender, setGender] = useState('Male');
-  const [country, setCountry] = useState('PAK');
+  // const [gender, setGender] = useState('Male');
+  // const [country, setCountry] = useState('PAK');
   const [profession, setProfession] = useState('Software Developer');
-  const [address, setAddress] = useState('');
-  const [instructorDiv, setInstructorDiv] = useState(false);
+  // const [address, setAddress] = useState('');
+  const [instructorDiv, setInstructorDiv] = useState(true);
   const [error, setError] = useState({ type: '', error: '' });
   const [btnClick, setBtnClick] = useState(false);
 
@@ -143,28 +155,20 @@ export default function SignupPage() {
         </Helmet>
         <div className="form_container">
           <div className="form_content">
+            <Link to="/dashboard">
+              <img
+                src={Logo}
+                alt="FinLit"
+                className="logo"
+                height="100%"
+                width="100%"
+              />
+            </Link>
             <h2>
               <FormattedMessage {...messages.CreateAnAccount} />
             </h2>
             <div className="form">
-              <FormGroup>
-                <Label for="email">
-                  <FormattedMessage {...messages.EmailAddress} /> {'*'}
-                </Label>
-                <Input
-                  type="email"
-                  name="email"
-                  id="email"
-                  onChange={e => setEmail(e.target.value)}
-                  placeholder="Your email"
-                />
-                <p className="error">
-                  {' '}
-                  {error.type === 'email' ? error.error : ''}
-                </p>
-              </FormGroup>
-              <Row>
-                <Col lg={6} md={6} sm={12}>
+              {/* <Col lg={6} md={6} sm={12}>
                   <FormGroup>
                     <Label for="name">
                       <FormattedMessage {...messages.FName} /> {'*'}
@@ -199,73 +203,240 @@ export default function SignupPage() {
                       {error.type === 'LastName' ? error.error : ''}
                     </p>
                   </FormGroup>
+                </Col> */}
+              {instructorDiv ? (
+                <Row>
+                  <Col lg={6} md={6} sm={12}>
+                    <FormGroup>
+                      <FormControl fullWidth>
+                        <Label>
+                          <FormattedMessage {...messages.SelectType} /> {'*'}
+                        </Label>
+                        <Select
+                          value={roleId}
+                          onChange={e => {
+                            setRoleId(e.target.value);
+                            if (e.target.value === 1) {
+                              setInstructorDiv(true);
+                            } else {
+                              setInstructorDiv(false);
+                            }
+                          }}
+                          input={<BootstrapInput />}
+                          fullWidth
+                          MenuProps={{
+                            anchorOrigin: {
+                              vertical: 'bottom',
+                              horizontal: 'left',
+                            },
+                            getContentAnchorEl: null,
+                          }}
+                        >
+                          <MenuItem value={1}>Educator</MenuItem>
+                          <MenuItem value={2}>Student</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </FormGroup>
+                  </Col>
+                  <Col lg={6} md={6} sm={12}>
+                    <FormGroup>
+                      <FormControl fullWidth>
+                        <Label>
+                          <FormattedMessage {...messages.SelectProfession} />
+                        </Label>
+                        <Select
+                          value={profession}
+                          onChange={e => setProfession(e.target.value)}
+                          input={<BootstrapInput />}
+                          fullWidth
+                          MenuProps={{
+                            anchorOrigin: {
+                              vertical: 'bottom',
+                              horizontal: 'left',
+                            },
+                            getContentAnchorEl: null,
+                          }}
+                        >
+                          <MenuItem value="Financial Literacy">
+                            <FormattedMessage {...messages.FinancialLiteracy} />
+                          </MenuItem>
+                          <MenuItem value="Software Developer">
+                            <FormattedMessage {...messages.SoftwareDeveloper} />
+                          </MenuItem>
+                          <MenuItem value="Medical and Health Services">
+                            <FormattedMessage
+                              {...messages.MedicalHealthServices}
+                            />
+                          </MenuItem>
+                          <MenuItem value="Statistician">
+                            <FormattedMessage {...messages.Statistician} />
+                          </MenuItem>
+                          <MenuItem value="Speech-Language">
+                            <FormattedMessage {...messages.SpeechLanguage} />
+                          </MenuItem>
+                          <MenuItem value="Data Scientist">
+                            <FormattedMessage {...messages.DataScientist} />
+                          </MenuItem>
+                        </Select>
+                      </FormControl>
+                    </FormGroup>
+                  </Col>
+                </Row>
+              ) : (
+                <Row>
+                  <Col lg={12} md={12} sm={12}>
+                    <FormGroup>
+                      <FormControl fullWidth>
+                        <Label>
+                          <FormattedMessage {...messages.SelectType} /> {'*'}
+                        </Label>
+                        <Select
+                          value={roleId}
+                          onChange={e => {
+                            setRoleId(e.target.value);
+                            if (e.target.value === 2) {
+                              setInstructorDiv(false);
+                            } else {
+                              setInstructorDiv(true);
+                            }
+                          }}
+                          input={<BootstrapInput />}
+                          fullWidth
+                          MenuProps={{
+                            anchorOrigin: {
+                              vertical: 'bottom',
+                              horizontal: 'left',
+                            },
+                            getContentAnchorEl: null,
+                          }}
+                        >
+                          <MenuItem value={1}>Educator</MenuItem>
+                          <MenuItem value={2}>Student</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </FormGroup>
+                  </Col>
+                </Row>
+              )}
+              <Row>
+                {/* <Col lg={12} md={12} sm={12}>
+                  <FormGroup>
+                    <FormControl fullWidth>
+                      <Label>
+                        <FormattedMessage {...messages.SelectType} /> {'*'}
+                      </Label>
+                      <Select
+                        value={roleId}
+                        onChange={e => {
+                          setRoleId(e.target.value);
+                          if (e.target.value === 2) {
+                            setInstructorDiv(false);
+                          } else {
+                            setInstructorDiv(true);
+                          }
+                        }}
+                        input={<BootstrapInput />}
+                        fullWidth
+                        MenuProps={{
+                          anchorOrigin: {
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                          },
+                          getContentAnchorEl: null,
+                        }}
+                      >
+                        <MenuItem value={1}>Educator</MenuItem>
+                        <MenuItem value={2}>Student</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </FormGroup>
+                </Col> */}
+                <Col lg={12} md={12} sm={12}>
+                  <FormGroup>
+                    <Label for="email">
+                      <FormattedMessage {...messages.EmailAddress} /> {'*'}
+                    </Label>
+                    <Input
+                      type="email"
+                      name="email"
+                      id="email"
+                      onChange={e => setEmail(e.target.value)}
+                      placeholder="Your email"
+                    />
+                    <p className="error">
+                      {' '}
+                      {error.type === 'email' ? error.error : ''}
+                    </p>
+                  </FormGroup>
+                </Col>
+                <Col lg={6} md={6} sm={12}>
+                  <FormGroup>
+                    <Label for="password">
+                      <FormattedMessage {...messages.CreatePassword} /> {'*'}
+                    </Label>
+                    <InputGroup>
+                      <Input
+                        type="password"
+                        name="createpassword"
+                        id="createpassword"
+                        onChange={e => setPassword(e.target.value)}
+                        placeholder="******"
+                      />
+                      <InputGroupAddon addonType="append">
+                        <Button className="btn_eye">
+                          <BsEyeFill />
+                        </Button>
+                        {/* <BsEyeSlashFill /> */}
+                      </InputGroupAddon>
+                    </InputGroup>
+                    {/* <Input
+                      type="password"
+                      name="createpassword"
+                      id="createpassword"
+                      onChange={e => setPassword(e.target.value)}
+                      placeholder="******"
+                    /> */}
+                    <p className="error">
+                      {' '}
+                      {error.type === 'password' ? error.error : ''}
+                    </p>
+                  </FormGroup>
+                </Col>
+                <Col lg={6} md={6} sm={12}>
+                  <FormGroup className="form_err">
+                    <Label for="password">
+                      <FormattedMessage {...messages.ConfirmPassword} /> {'*'}
+                    </Label>
+                    <InputGroup>
+                      <Input
+                        type="password"
+                        name="confirmpassword"
+                        id="confirmpassword"
+                        onChange={e => setPasswordConfirmation(e.target.value)}
+                        placeholder="******"
+                      />
+                      <InputGroupAddon addonType="append">
+                        <Button className="btn_eye">
+                          <BsEyeFill />
+                        </Button>
+                        {/* <BsEyeSlashFill /> */}
+                      </InputGroupAddon>
+                    </InputGroup>
+                    {/* <Input
+                      type="password"
+                      name="confirmpassword"
+                      id="confirmpassword"
+                      onChange={e => setPasswordConfirmation(e.target.value)}
+                      placeholder="******"
+                    /> */}
+                    <p className="error">
+                      {' '}
+                      {error.type === 'passwordconfirm' ? error.error : ''}
+                    </p>
+                  </FormGroup>
                 </Col>
               </Row>
-              <Col lg={12} md={12} sm={12}>
-                <FormGroup>
-                  <FormControl fullWidth>
-                    <Label>
-                      <FormattedMessage {...messages.SelectType} /> {'*'}
-                    </Label>
-                    <Select
-                      value={roleId}
-                      onChange={e => {
-                        setRoleId(e.target.value);
-                        if (e.target.value === 1) {
-                          setInstructorDiv(true);
-                        } else {
-                          setInstructorDiv(false);
-                        }
-                      }}
-                      input={<BootstrapInput />}
-                      fullWidth
-                      MenuProps={{
-                        anchorOrigin: {
-                          vertical: 'bottom',
-                          horizontal: 'left',
-                        },
-                        getContentAnchorEl: null,
-                      }}
-                    >
-                      <MenuItem value={3}>Student</MenuItem>
-                      <MenuItem value={1}>Educator</MenuItem>
-                    </Select>
-                  </FormControl>
-                </FormGroup>
-              </Col>
-              <FormGroup>
-                <Label for="password">
-                  <FormattedMessage {...messages.CreatePassword} /> {'*'}
-                </Label>
-                <Input
-                  type="password"
-                  name="createpassword"
-                  id="createpassword"
-                  onChange={e => setPassword(e.target.value)}
-                  placeholder="******"
-                />
-                <p className="error">
-                  {' '}
-                  {error.type === 'password' ? error.error : ''}
-                </p>
-              </FormGroup>
-              <FormGroup className="form_err">
-                <Label for="password">
-                  <FormattedMessage {...messages.ConfirmPassword} /> {'*'}
-                </Label>
-                <Input
-                  type="password"
-                  name="confirmpassword"
-                  id="confirmpassword"
-                  onChange={e => setPasswordConfirmation(e.target.value)}
-                  placeholder="******"
-                />
-                <p className="error">
-                  {' '}
-                  {error.type === 'passwordconfirm' ? error.error : ''}
-                </p>
-              </FormGroup>
-              {instructorDiv === true ? (
+              {/* {instructorDiv === true ? (
                 <>
                   <FormGroup>
                     <FormControl fullWidth>
@@ -332,49 +503,9 @@ export default function SignupPage() {
                       </Select>
                     </FormControl>
                   </FormGroup>
-                  <FormGroup>
-                    <FormControl fullWidth>
-                      <Label>
-                        <FormattedMessage {...messages.SelectProfession} />
-                      </Label>
-                      <Select
-                        value={profession}
-                        onChange={e => setProfession(e.target.value)}
-                        input={<BootstrapInput />}
-                        fullWidth
-                        MenuProps={{
-                          anchorOrigin: {
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                          },
-                          getContentAnchorEl: null,
-                        }}
-                      >
-                        <MenuItem value="Financial Literacy">
-                          <FormattedMessage {...messages.FinancialLiteracy} />
-                        </MenuItem>
-                        <MenuItem value="Software Developer">
-                          <FormattedMessage {...messages.SoftwareDeveloper} />
-                        </MenuItem>
-                        <MenuItem value="Medical and Health Services">
-                          <FormattedMessage
-                            {...messages.MedicalHealthServices}
-                          />
-                        </MenuItem>
-                        <MenuItem value="Statistician">
-                          <FormattedMessage {...messages.Statistician} />
-                        </MenuItem>
-                        <MenuItem value="Speech-Language">
-                          <FormattedMessage {...messages.SpeechLanguage} />
-                        </MenuItem>
-                        <MenuItem value="Data Scientist">
-                          <FormattedMessage {...messages.DataScientist} />
-                        </MenuItem>
-                      </Select>
-                    </FormControl>
-                  </FormGroup>
+
                 </>
-              ) : null}
+              ) : null} */}
               {/* <div className="error-box">
                 {error && <p className="error">{error}</p>}
               </div> */}
@@ -384,7 +515,7 @@ export default function SignupPage() {
               <div className="reg_footer">
                 <p>
                   <FormattedMessage {...messages.AlreadyHaveAccount} />
-                  &nbsp;
+                  &nbsp; &nbsp;
                   <Link to="/login">
                     <FormattedMessage {...messages.Login} />
                   </Link>
@@ -393,7 +524,11 @@ export default function SignupPage() {
             </div>
           </div>
         </div>
-        <div className="img_container" />
+        {instructorDiv ? (
+          <div className="img_container instructor" />
+        ) : (
+          <div className="img_container student" />
+        )}
       </div>
       <ToastContainer />
     </>

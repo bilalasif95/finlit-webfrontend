@@ -57,6 +57,7 @@ import {
   mapStateToProps,
   mapDispatchToProps,
 } from '../reduxSetup/actions/registeration';
+// import 'rsuite/dist/styles/rsuite-default.css';
 import GlobalStyle from '../../global-styles';
 
 const AppWrapper = styled.div`
@@ -77,9 +78,9 @@ const App = () => {
         </Helmet>
         {history.location.pathname === '/signup' ||
         history.location.pathname === '/login' ||
-        history.location.pathname === '/email_verification' ||
+        // history.location.pathname === '/email_verification' ||
         history.location.pathname === '/create_new_password' ||
-        history.location.pathname === '/forgot_password' ||
+        // history.location.pathname === '/forgot_password' ||
         history.location.pathname === '/two_fa' ? null : userInfo &&
           userInfo.roles[0].roleName === 'Instructor' ? (
           <Header />
@@ -129,9 +130,9 @@ const App = () => {
       </Switch>
       {history.location.pathname === '/signup' ||
       history.location.pathname === '/login' ||
-      history.location.pathname === '/email_verification' ||
+      // history.location.pathname === '/email_verification' ||
       history.location.pathname === '/create_new_password' ||
-      history.location.pathname === '/forgot_password' ||
+      // history.location.pathname === '/forgot_password' ||
       history.location.pathname === '/two_fa' ? null : (
         <Footer />
       )}

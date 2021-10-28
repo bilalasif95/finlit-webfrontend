@@ -4,15 +4,16 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import * as qs from 'query-string';
 import axios from 'axios';
 import { FormattedMessage } from 'react-intl';
 import { ToastContainer, toast } from 'react-toastify';
+import { MdMail } from 'react-icons/md';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../config/config';
 import messages from './messages';
-import Check from '../../images/checkImg.svg';
+// import Check from '../../images/checkImg.svg';
 
 export default function EmailVerificationPage() {
   const parsed = qs.parse(window.location.search);
@@ -48,21 +49,22 @@ export default function EmailVerificationPage() {
             <Col lg={12}>
               <div className="verification-main">
                 <div className="email-verification">
-                  <img
-                    src={Check}
-                    alt="Email Verify"
-                    height="100%"
-                    width="100%"
-                  />
-                  <h4>
+                  <div className="verify_icon">
+                    <MdMail />
+                  </div>
+                  <h2>
                     <FormattedMessage {...messages.EmailTitle} />
-                  </h4>
+                  </h2>
                   <p>
                     <FormattedMessage {...messages.Emaildetail} />
                   </p>
-                  <Link className="verification-button" to="/login">
-                    Login
-                  </Link>
+                  <a
+                    className="verification-button"
+                    target="_blank"
+                    to="/login"
+                  >
+                    Go to Email
+                  </a>
                 </div>
               </div>
             </Col>

@@ -679,7 +679,7 @@ function AddCourse() {
                         <div className="graphicsLecture" />
                         <div className="addLecture">
                           <Button>
-                            <span>+</span>Add New Lecture
+                            <span>+</span>Add New Question
                           </Button>
                         </div>
                       </Col>

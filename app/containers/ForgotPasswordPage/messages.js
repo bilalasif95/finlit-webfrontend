@@ -12,12 +12,25 @@ export default defineMessages({
     id: `${scope}.ForgotPassword`,
     defaultMessage: 'Forgot Password',
   },
+  ForgotPasswordLine: {
+    id: `${scope}.ForgotPasswordLine`,
+    defaultMessage: `Don't worry! Just fill in your email and we'll send you a link to reset your password`,
+  },
   EmailAddress: {
     id: `${scope}.EmailAddress`,
     defaultMessage: 'Email Address',
   },
-  SendRecoveryCode: {
-    id: `${scope}.SendRecoveryCode`,
-    defaultMessage: `Send Recovery Link`,
+  EmailError: {
+    id: `${scope}.EmailError`,
+    defaultMessage: `
+    Unable to reset password due to unkonown error. Please try again`,
+  },
+  ResetPassword: {
+    id: `${scope}.ResetPassword`,
+    defaultMessage: `Reset Password`,
+  },
+  BackLogin: {
+    id: `${scope}.BackLogin`,
+    defaultMessage: `Back to Login`,
   },
 });

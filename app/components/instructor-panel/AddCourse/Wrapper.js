@@ -22,13 +22,6 @@ const Wrapper = styled.div`
       }
     }
   }
-  .graphicsLecture {
-    display: flex;
-    align-items: center;
-    .form-group {
-      width: 34%;
-    }
-  }
   .addLecture {
     display: flex;
     justify-content: space-between;

@@ -15,6 +15,7 @@ import axios from 'axios';
 import history from 'utils/history';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { DateRangePicker } from 'rsuite';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API, JoditEditorConfig } from '../../../config/config';
@@ -277,6 +278,25 @@ function AddWebinar() {
                     ''
                   )}
                 </FormText>
+              </FormGroup>
+            </Col>
+            <Col lg={4} md={6} sm={6} xs={12}>
+              <FormGroup>
+                <Label for="startdate">
+                  <FormattedMessage {...messages.StartDate} />
+                </Label>
+                <DateRangePicker
+                  appearance="default"
+                  placeholder="From &nbsp; &nbsp; - &nbsp; &nbsp;  To"
+                />
+              </FormGroup>
+            </Col>
+            <Col lg={4} md={6} sm={6} xs={12}>
+              <FormGroup>
+                <Label for="startdate">
+                  <FormattedMessage {...messages.StartDate} />
+                </Label>
+                <DateRangePicker format="HH:mm:ss" />
               </FormGroup>
             </Col>
             <Col lg={4} md={6} sm={6} xs={12}>

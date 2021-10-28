@@ -4,12 +4,22 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import { Button, FormGroup, Label, Input } from 'reactstrap';
+import {
+  Button,
+  FormGroup,
+  Label,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+} from 'reactstrap';
 import history from 'utils/history';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { BsEyeFill } from 'react-icons/bs';
+// BsEyeSlashFill
+// import { IoIosCheckmarkCircle } from 'react-icons/io';
 import { ToastContainer, toast } from 'react-toastify';
 import UseEnterKeyListener from '../../config/useEnterKeyListener';
 import { API } from '../../config/config';
@@ -19,6 +29,7 @@ import {
 } from '../reduxSetup/actions/registeration';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
+import Logo from '../../images/logoGreen.svg';
 
 // import { response } from 'express';
 const SigninPage = props => {
@@ -105,6 +116,15 @@ const SigninPage = props => {
         </Helmet>
         <div className="form_container Login-form">
           <div className="form_content">
+            <Link to="/dashboard">
+              <img
+                src={Logo}
+                alt="FinLit"
+                className="logo"
+                height="100%"
+                width="100%"
+              />
+            </Link>
             <h2>
               <FormattedMessage {...messages.WelcomeBack} />
             </h2>
@@ -126,7 +146,29 @@ const SigninPage = props => {
                 <Label for="password">
                   <FormattedMessage {...messages.Password} />
                 </Label>
-                <Input
+                <InputGroup>
+                  <Input
+                    type="password"
+                    name="password"
+                    id="password"
+                    defaultValue={password}
+                    onChange={e => setPassword(e.target.value)}
+                    onKeyDown={e => {
+                      if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+                        e.preventDefault();
+                        login();
+                      }
+                    }}
+                    placeholder="******"
+                  />
+                  <InputGroupAddon addonType="append">
+                    <Button className="btn_eye">
+                      <BsEyeFill />
+                    </Button>
+                    {/* <BsEyeSlashFill /> */}
+                  </InputGroupAddon>
+                </InputGroup>
+                {/* <Input
                   type="password"
                   name="password"
                   id="password"
@@ -139,13 +181,13 @@ const SigninPage = props => {
                     }
                   }}
                   placeholder="******"
-                />
+                /> */}
                 <div className="error-box">
                   {error && <p className="error">{error}</p>}
                 </div>
               </FormGroup>
               <div className="remember_forgot">
-                <FormGroup check>
+                {/* <FormGroup check>
                   <Label check className="check-box">
                     <Input
                       defaultValue={rememberMe}
@@ -157,7 +199,8 @@ const SigninPage = props => {
                     />
                     <FormattedMessage {...messages.RememberMe} />
                   </Label>
-                </FormGroup>
+                </FormGroup> */}
+                <div />
                 <Link to="/forgot_password">
                   <FormattedMessage {...messages.ForgotPassword} />
                 </Link>
@@ -172,16 +215,22 @@ const SigninPage = props => {
               <div className="reg_footer">
                 <p>
                   <FormattedMessage {...messages.DontHaveAccount} />
-                  &nbsp;
+                  &nbsp; &nbsp;
                   <Link to="/signup">
                     <FormattedMessage {...messages.CreateAnAccount} />
                   </Link>
                 </p>
+                {/* <div className="well_done">
+                  <p>
+                    <FormattedMessage {...messages.WellDone} />
+                  </p>
+                  <IoIosCheckmarkCircle />
+                </div> */}
               </div>
             </div>
           </div>
         </div>
-        <div className="img_container" />
+        <div className="img_container welcome" />
       </div>
       <ToastContainer />
     </>

@@ -8,9 +8,11 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
     text-align: left;
     transition: box-shadow 0.5s;
     cursor: pointer;
+    margin: 0 0 2.5rem;
     .event_img {
       align-items: baseline;
       display: flex;

@@ -10,11 +10,11 @@ export const scope = 'boilerplate.containers.EmailVerificationPage';
 export default defineMessages({
   EmailTitle: {
     id: `${scope}.EmailTitle`,
-    defaultMessage: 'Your email has been verified',
+    defaultMessage: 'Welcome to FinLit',
   },
   Emaildetail: {
     id: `${scope}.Emaildetail`,
-    defaultMessage: `Your email has been verified successfully.
-    Please login to continue.`,
+    defaultMessage: `Confirmation email has been sent.
+    Please verify your account`,
   },
 });

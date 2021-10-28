@@ -4,9 +4,10 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import { Button, FormGroup, Label, Input } from 'reactstrap';
+import { Button, FormGroup, Label, Input, Container } from 'reactstrap';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
 import { API } from '../../config/config';
@@ -56,47 +57,59 @@ export default function ForgotPasswordPage() {
   };
   return (
     <>
-      <div className="registration_page">
+      <div className="registration_page forgot_page">
         <Helmet>
           <title>Forgot Password</title>
           <meta name="description" content="FinLit - Forgot Password Page" />
         </Helmet>
-        <div className="form_container Login-form">
-          <div className="form_content">
-            <h2>
-              <FormattedMessage {...messages.ForgotPassword} />
-            </h2>
-            <div className="form">
-              <FormGroup>
-                <Label for="email">
-                  <FormattedMessage {...messages.EmailAddress} />
-                </Label>
-                <Input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Your email"
-                  onChange={e => {
-                    setEmail(e.target.value);
+        <Container>
+          <div className="form_container">
+            <div className="form_content">
+              <h2>
+                <FormattedMessage {...messages.ForgotPassword} />
+              </h2>
+              <p>
+                <FormattedMessage {...messages.ForgotPasswordLine} />
+              </p>
+              <div className="form">
+                <FormGroup>
+                  <Label for="email">
+                    <FormattedMessage {...messages.EmailAddress} />
+                  </Label>
+                  <Input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Your email"
+                    onChange={e => {
+                      setEmail(e.target.value);
+                    }}
+                  />
+                  <div className="error-box">
+                    {error && <p className="error">{error}</p>}
+                    {/* <p className="error">
+                      <FormattedMessage {...messages.EmailError} />
+                    </p> */}
+                  </div>
+                </FormGroup>
+                <Button
+                  id="submitButton"
+                  onClick={() => {
+                    forgotPasswordBtn();
                   }}
-                />
-                <div className="error-box">
-                  {error && <p className="error">{error}</p>}
+                  disabled={btnClick || !email}
+                >
+                  <FormattedMessage {...messages.ResetPassword} />
+                </Button>
+                <div className="back_link">
+                  <Link to="/login">
+                    <FormattedMessage {...messages.BackLogin} />
+                  </Link>
                 </div>
-              </FormGroup>
-              <Button
-                id="submitButton"
-                onClick={() => {
-                  forgotPasswordBtn();
-                }}
-                disabled={btnClick || !email}
-              >
-                <FormattedMessage {...messages.SendRecoveryCode} />
-              </Button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="img_container" />
+        </Container>
       </div>
       <ToastContainer />
     </>

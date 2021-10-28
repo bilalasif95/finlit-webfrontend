@@ -61,26 +61,37 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 5px;
   }
 }
+.verification_page {
+  background-color: #e4e4e4;
   .verification-main {
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
+    padding: 5rem 0;
     .email-verification {
-      width: 34%;
+      background-color: #fff;
+      border-radius: 0.5rem;
+      padding: 3rem 5rem !important;
+      max-width: 600px !important;
+      width: 100%;
       margin: 0px auto;
       text-align: center;
       img {
         margin-bottom:  41px;
       }
-      h4 {
-        font-size: 24px;
+      h2 {
         color: #484848;
-        font-weight: 700;
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: 44px;
+        margin: 0 0 1.5rem !important;
+        text-align: center;
       }
       p {
-        margin: 15px 0px 30px;
+        margin: 1rem auto 2rem;
         font-size: 16px;
         color: #8b8b8b;
+        max-width: 15rem;
       }
       .verification-button {
         width: 80%;
@@ -101,7 +112,16 @@ const GlobalStyle = createGlobalStyle`
         }
       }
     }
+    @media (max-width: 480px) {
+      .email-verification {
+        padding: 2rem 1rem !important;
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+    }
   }
+}
   .no_display {
     display: none;
   }
@@ -309,6 +329,7 @@ const GlobalStyle = createGlobalStyle`
       margin: 0 0 1.25rem;
       min-height: 2.5rem;
       max-height: 2.5rem;
+      line-height: 20px;
       overflow: hidden;
       vertical-align: middle;
       text-overflow: ellipsis;
@@ -346,16 +367,98 @@ const GlobalStyle = createGlobalStyle`
   position: relative;
 }
 // Registration Form Pages Styles
+.verify_icon {
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 5rem;
+  display: flex;
+  height: 5rem;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  max-width: 5rem;
+  width: 100%;
+  svg {
+    color: #46a135;
+    font-size: 2.5rem;
+  }
+}
+.forgot_page {
+  background-color: #e4e4e4 !important;
+  .form_container {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+    .form_content {
+      background-color: #fff;
+      border-radius: 0.5rem;
+      padding: 3rem 6rem !important;
+      max-width: 600px !important;
+      h2 {
+        color: #484848;
+        font-weight: 500;
+        line-height: 44px;
+        margin: 0 0 1.5rem !important;
+        text-align: center;
+      }
+      p {
+        color: #8b8b8b;
+        font-size: 0.875rem;
+        margin: 0 0 2rem;
+        text-align: center;
+      }
+      .back_link {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin: 1.5rem 0 0;
+        width: 100%;
+        a {
+          color: #56a248;
+          font-size: 0.875rem;
+          font-weight: 550;
+          text-decoration: none;
+          text-align: center;
+          &:hover {
+              color: #2c821c;
+          }
+        }
+      }
+      .error {
+        color: red !important;
+        font-size: 0.75rem;
+        margin-bottom: 0 !important;
+        text-align: left;
+      }
+      button {
+        margin: 0 !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .form_container {
+        padding: 5rem 0 !important;
+      }
+    }
+    @media (max-width: 480px) {
+      .form_content {
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
 .registration_page {
   background-color: #fff;
   display: flex;
   justify-content: space-between;
-  // height: 100vh;
+  height: 100vh;
   // position: fixed;
   width: 100%;
   .error {
-    color: red;
-    margin-bottom: 20px;
+    color: red !important;
+    font-size: 0.75rem;
+    margin-bottom: 20px !important;
+    text-align: left;
   }
   .Login-form {
     height: 100vh !important;
@@ -365,20 +468,51 @@ const GlobalStyle = createGlobalStyle`
       width: 50%;
       display: flex;
       align-items: center;
-      padding: 2rem;
+      // padding: 2rem;
       .form_content {
           padding: 1rem;
           margin: 0 auto;
           max-width: 475px;
           width: 100%;
+          img {
+            margin: 0 0 2rem;
+            width: 5rem;
+          }
           h2 {
               color: #484848;
+              font-weight: 500;
               line-height: 44px;
-              margin: 0 0 1.25rem;
+              margin: 0 0 2.25rem;
           }
           .form-group {
               margin: 0 0 1rem;
               position: relative;
+          }
+          .input-group {
+            position: relative;
+            input {
+              border-bottom-right-radius: 0.25rem !important;
+              border-top-right-radius: 0.25rem !important;
+            }
+            .input-group-append {
+              position: absolute;
+              top: 0;
+              right: 0;
+              display: flex;
+              align-items: center;
+              height: 100%;
+              width: 3rem;
+              z-index: 3;
+            }
+            .btn_eye {
+              background-color: transparent;
+              margin: 0;
+              padding: 0;
+              svg {
+                fill: #484848;
+                font-size: 1.135rem;
+              }
+            }
           }
           .form_err {
             margin: 0 0 1.5rem;
@@ -425,8 +559,8 @@ const GlobalStyle = createGlobalStyle`
               margin: 0 0 1.5rem;
               width: 100%;
               a {
-                  color: #57aa48;
-                  font-size: 0.825rem;
+                  color: #56a248;
+                  font-size: 0.875rem;
                   text-decoration: none;
                   &:hover {
                       color: #2c821c;
@@ -441,6 +575,7 @@ const GlobalStyle = createGlobalStyle`
           }
           .reg_footer {
               display: flex;
+              flex-wrap: wrap;
               font-size: 0.825rem;
               justify-content: center;
               margin: 1.5rem 0 0;
@@ -448,17 +583,34 @@ const GlobalStyle = createGlobalStyle`
                   color: #9d9d9d;
               }
               a {
-                  color: #5dad4e;
+                  color: #56a248;
                   text-decoration: none;
                   &:hover {
                       color: #2c821c;
                   }
               }
+              .well_done {
+                align-items: center;
+                background-color: #fcfff5;
+                border: 1px solid #a4dea9;
+                border-radius: 0.25rem;
+                display: flex;
+                justify-content: space-between;
+                margin: 1.5rem 0 0;
+                padding: 0.75rem 2rem;
+                width: 100%;
+                p {
+                  color: #377d3d;
+                }
+                svg {
+                  fill: #46a135;
+                  font-size: 1.5rem;
+                }
+              }
           }
       }
   }
   .img_container {
-      background-image: url(https://cdn.discordapp.com/attachments/548125906472796170/882576760540114994/reg.png);
       background-size: cover;
       background-position: center;
       height: 100%;
@@ -466,25 +618,42 @@ const GlobalStyle = createGlobalStyle`
       position: fixed;
       right: 0;
   }
+  .instructor {
+    background-image: url(https://i.imgur.com/eovcCDw.png);
+  }
+  .student {
+    background-image: url(https://cdn.discordapp.com/attachments/548125906472796170/882576760540114994/reg.png);
+  }
+  .welcome {
+    background-image: url(https://i.imgur.com/eXABEGz.png);
+  }
   @media (max-width: 991px) {
       height: 100% !important;
-      flex-wrap: wrap-reverse;
       .form_container {
-          padding: 0 !important;
-          width: 100% !important;
+          height: 100vh; 
+          width: 65% !important;
           .form_content {
-              padding: 2rem 1rem !important;
+              padding: 2.5rem 1rem !important;
+              h2 {
+                font-size: 1.5rem;
+              }
           }
       }
       .img_container {
-          height: 600px;
-          width: 100% !important;
+        background-position: top left -5rem;
+        width: 35% !important;
       }
   }
   @media (max-width: 767px) {
-      .img_container {
-          height: 400px;
-      }
+    .form_container {
+        height: 100%; 
+        margin: 0 auto;
+        padding: 2.5rem 0;
+        width: 100% !important; 
+    }
+    .img_container {
+      display: none;
+    }
   }
 }
 // Modal UI Custom Styles
@@ -682,11 +851,6 @@ const GlobalStyle = createGlobalStyle`
   .modal-dialog {
     margin: 10% auto 5%;
     max-width: 600px !important;
-  }
-}
-@media (max-width: 768px) {
-  .registration_page .img_container {
-    display: none;
   }
 }
 
@@ -1057,6 +1221,25 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1.125rem;
         padding: 0.75rem 0;
       }
+    }
+  }
+  .rs-picker {
+    width: 100%;
+    input {
+      display: none;
+    }
+    .rs-picker-toggle {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+    }
+    .rs-picker-toggle-caret,
+    .rs-picker-toggle-clean {
+      position: static;
+    }
+    .rs-picker-toggle-value {
+      color: #212529 !important;
     }
   }
 `;
