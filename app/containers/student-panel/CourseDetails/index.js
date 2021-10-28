@@ -7,13 +7,13 @@ import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
-import HackathonDetail from '../../../components/student-panel/AddCartHackathon/HackathonDetail';
-import HackathonSidebar from '../../../components/student-panel/AddCartHackathon/HackathonSidebar';
+import CourseDetail from '../../../components/student-panel/CourseDetails/CourseDetail';
+// import CourseSidebar from '../../../components/student-panel/CourseDetails/CourseSidebar';
 import { API } from '../../../config/config';
 import { redirectToLogin } from '../../../utils/redirectToLogin';
 import Loader from '../../../components/Loader';
 
-const AddCartHackathon = props => {
+const CourseDetails = props => {
   const [hackathonDetails, setHackathonDetails] = useState([]);
   const [loader, setLoader] = useState(false);
   useEffect(() => {
@@ -45,8 +45,8 @@ const AddCartHackathon = props => {
   return (
     <div className="sub_pages">
       <Helmet>
-        <title>Add Hackathon</title>
-        <meta name="description" content="Add Hackathon" />
+        <title>Course Detail</title>
+        <meta name="description" content="Course Detail" />
       </Helmet>
       <Container fluid="xl">
         {loader ? (
@@ -54,10 +54,10 @@ const AddCartHackathon = props => {
         ) : (
           <Row>
             <Col lg={8} md={7} sm={12}>
-              <HackathonDetail detail={hackathonDetails} />
+              <CourseDetail />
             </Col>
             <Col lg={4} md={5} sm={12}>
-              <HackathonSidebar detail={hackathonDetails} />
+              {/* <CourseSidebar /> */}
             </Col>
           </Row>
         )}
@@ -66,8 +66,8 @@ const AddCartHackathon = props => {
   );
 };
 
-AddCartHackathon.propTypes = {
+CourseDetails.propTypes = {
   match: PropTypes.any,
 };
 
-export default withRouter(AddCartHackathon);
+export default withRouter(CourseDetails);
