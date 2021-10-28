@@ -10,7 +10,7 @@ export const scope = 'boilerplate.components.CartCheckoutSidebar';
 export default defineMessages({
   PaymentDetails: {
     id: `${scope}.PaymentDetails`,
-    defaultMessage: `Payment Details`,
+    defaultMessage: `Checkout Process`,
   },
   CompletePurchase: {
     id: `${scope}.CompletePurchase`,
@@ -58,11 +58,11 @@ export default defineMessages({
   },
   OriginalPrice: {
     id: `${scope}.OriginalPrice`,
-    defaultMessage: `Original Price:`,
+    defaultMessage: `Programming with Python:`,
   },
   CouponDiscounts: {
     id: `${scope}.CouponDiscounts`,
-    defaultMessage: `Coupon Discounts:`,
+    defaultMessage: `Virtual Speaking Masterclass :`,
   },
   Total: {
     id: `${scope}.Total`,

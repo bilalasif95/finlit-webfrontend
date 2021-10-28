@@ -10,8 +10,11 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 0 0 1rem;
+    img {
+      margin-right: 14px;
+    }
     h4 {
-      color: #484848;
+      color: #404041;
       font-size: 1.25rem;
       margin: 0;
       position: relative;
