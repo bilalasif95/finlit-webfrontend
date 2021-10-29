@@ -27,6 +27,7 @@ import CartCheckout from 'containers/student-panel/CartCheckout/Loadable';
 import AddCartHackathon from 'containers/student-panel/AddCartHackathon/Loadable';
 import AddCartWebinar from 'containers/student-panel/AddCartWebinar/Loadable';
 import AddCartBootcamp from 'containers/student-panel/AddCartBootcamp/Loadable';
+import CourseDetails from 'containers/student-panel/CourseDetails/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 // Instructor Panel pages routes
 import Home from 'containers/instructor-panel/HomePage/Loadable';
@@ -77,12 +78,12 @@ const App = () => {
           <meta name="description" content="FinLit" />
         </Helmet>
         {history.location.pathname === '/signup' ||
-        history.location.pathname === '/login' ||
-        // history.location.pathname === '/email_verification' ||
-        history.location.pathname === '/create_new_password' ||
-        // history.location.pathname === '/forgot_password' ||
-        history.location.pathname === '/two_fa' ? null : userInfo &&
-          userInfo.roles[0].roleName === 'Instructor' ? (
+          history.location.pathname === '/login' ||
+          // history.location.pathname === '/email_verification' ||
+          history.location.pathname === '/create_new_password' ||
+          // history.location.pathname === '/forgot_password' ||
+          history.location.pathname === '/two_fa' ? null : userInfo &&
+            userInfo.roles[0].roleName === 'Instructor' ? (
           <Header />
         ) : (
           <Header />
@@ -101,9 +102,10 @@ const App = () => {
         <Route path="/live_session_list" component={LiveSessionList} />
         <Route path="/article_details/:id" component={ArticleDetails} />
         <Route path="/cart" component={CartCheckout} />
-        <Route path="/hackathon_details/:id" component={AddCartHackathon} />
+        <Route path="/hackathon_details" component={AddCartHackathon} />
         <Route path="/webinar_details/:id" component={AddCartWebinar} />
         <Route path="/bootcamp_details/:id" component={AddCartBootcamp} />
+        <Route path="/course_details" component={CourseDetails} />
         {/* Instructor Panel pages routes */}
         {/* {userInfo && userInfo.roles[0].roleName == "Super Admin" || userInfo && userInfo.roles[0].roleName == "Instructor" ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={HomePage} />} */}
         <Route exact path="/add_webinar" component={AddWebinarPage} />
@@ -129,11 +131,11 @@ const App = () => {
         <Route path="" component={NotFoundPage} />
       </Switch>
       {history.location.pathname === '/signup' ||
-      history.location.pathname === '/login' ||
-      // history.location.pathname === '/email_verification' ||
-      history.location.pathname === '/create_new_password' ||
-      // history.location.pathname === '/forgot_password' ||
-      history.location.pathname === '/two_fa' ? null : (
+        history.location.pathname === '/login' ||
+        // history.location.pathname === '/email_verification' ||
+        history.location.pathname === '/create_new_password' ||
+        // history.location.pathname === '/forgot_password' ||
+        history.location.pathname === '/two_fa' ? null : (
         <Footer />
       )}
       <GlobalStyle />

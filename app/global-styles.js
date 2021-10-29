@@ -928,7 +928,7 @@ const GlobalStyle = createGlobalStyle`
 }
 .sub_pages {
   background-color: #fff;
-  padding: 2rem 0 0;
+  padding: 2rem 0;
 }
 @media (min-width: 575px) and (max-width: 992px) { 
   .verification-main .email-verification {
@@ -1228,6 +1228,7 @@ const GlobalStyle = createGlobalStyle`
     max-height: 10rem !important;
     min-height: 10rem !important;
   }
+  .add_form {
   .accordion {
     border: none !important;
     border-radius: 0;
@@ -1283,6 +1284,7 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+}
   .rs-picker {
     width: 100%;
     input {
@@ -1300,6 +1302,68 @@ const GlobalStyle = createGlobalStyle`
     }
     .rs-picker-toggle-value {
       color: #212529 !important;
+    }
+  }
+  .course_content {
+    .accordion {
+      border: 1px solid #e5e5e5;
+      border-radius: 0;
+      margin: 2rem 0 0;
+      .accordion__item {
+        border-bottom: 1px solid #e5e5e5;
+        border-top: none;
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+      .accordion__button {
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        color: #404041;
+        display: flex;
+        font-size: 1rem;
+        font-weight: 520;
+        justify-content: space-between;
+        flex-flow: row-reverse;
+        padding: 1rem 1.25rem;
+        position: relative;
+        width: 100%:
+      }
+      .accordion__button[aria-expanded='true'] {
+        background-color: #f9f9f9;
+        border-left: 4px solid #3e952e;
+        color: #3e952e;
+      }
+      .accordion__button:before {
+        // content: "";
+        // background: url(https://i.imgur.com/dYtKaY6.png) no-repeat;
+        // background-size: cover;
+        // border: none;
+        // height: 1.125rem;
+        // margin-right: 0;
+        color: #3e952e;
+        transform: rotate(45deg);
+        // width: 1.125rem;
+      }
+      .accordion__button[aria-expanded='true']::before,
+      .accordion__button[aria-selected='true']::before {
+        transform: rotate(225deg);
+      }
+      .accordion__panel {
+        border-top: 1px solid #ebebeb;
+        padding: 2rem;
+      }
+      @media (max-width: 575px) {
+        margin: 0 0 1rem;
+        .accordion__item {
+          padding: 0 0.5rem;
+        }
+        .accordion__button {
+          font-size: 1.125rem;
+          padding: 0.75rem 0;
+        }
+      }
     }
   }
 `;
