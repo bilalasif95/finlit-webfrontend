@@ -108,11 +108,11 @@ function CartCheckoutDescription(props) {
                 <img className="img-fluid" src={CartImg} alt="Cart" />
               </div>
               <div className="courseDetailText">
-                <h2>Programming with Python...</h2>
+                <h2>Programming with Python</h2>
                 <p>By Kirill Eremenko</p>
                 <h3>$44.99</h3>
+                <img className="deleteImg" src={Bin} alt="Bin" />
               </div>
-              <img className="deleteImg" src={Bin} alt="Bin" />
             </div>
             <ul className="list-unstyled courseDetailList">
               <li>
@@ -140,11 +140,11 @@ function CartCheckoutDescription(props) {
                 <img className="img-fluid" src={CartImg1} alt="Cart1" />
               </div>
               <div className="courseDetailText">
-                <h2>Programming with Python...</h2>
+                <h2>Programming with Python</h2>
                 <p>By Kirill Eremenko</p>
                 <h3>$44.99</h3>
+                <img className="deleteImg" src={Bin} alt="Bin" />
               </div>
-              <img className="deleteImg" src={Bin} alt="Bin" />
             </div>
             <ul className="list-unstyled courseDetailList">
               <li>

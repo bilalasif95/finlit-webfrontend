@@ -74,7 +74,31 @@ const GlobalStyle = createGlobalStyle`
   .summary {
     h4 {
       color: #484848;
-      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    .list {
+      margin-top: 0;
+      li {
+        padding: 20px 0px;
+        p {
+          span {
+            overflow: hidden;
+            line-height: 20px;
+            height: 40px;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            width: 190px;
+            font-size: 14px;
+            color: #484848;
+            font-weight: 700;
+          }
+        }
+        &:first-child, &:nth-child(2) {
+          border-bottom: 1px solid #d8d8d8;
+        }
+      }
     }
   }
 }

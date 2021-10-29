@@ -58,7 +58,7 @@ export default defineMessages({
   },
   OriginalPrice: {
     id: `${scope}.OriginalPrice`,
-    defaultMessage: `Programming with Python:`,
+    defaultMessage: `Programming with Python : HandsOn Introduction`,
   },
   CouponDiscounts: {
     id: `${scope}.CouponDiscounts`,
