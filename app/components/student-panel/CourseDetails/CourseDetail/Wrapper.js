@@ -18,6 +18,9 @@ const Wrapper = styled.div`
       height: 30rem;
       width: 100%;
       border-radius: 0.5rem;
+      .video-react {
+        padding: 0 !important;
+      }
       img {
         width: 100%;
         // height: 100%;
@@ -308,6 +311,169 @@ const Wrapper = styled.div`
               fill: #8b8b8b !important;
               font-size: 1.75rem;
               margin: 0 0.5rem 0 0;
+            }
+          }
+        }
+        .reviews_header {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          justify-content: space-between;
+          h4 {
+            line-height: normal;
+            margin: 0;
+            width: 80%;
+          }
+          button {
+            background-color: transparent;
+            border: none;
+            color: #3e952e;
+            font-size: 0.875rem;
+            &:hover,
+            &:focus {
+              box-shadow: none;
+            }
+          }
+          p {
+            margin: 0.5rem 0 1.5rem !important;
+            width: 100%;
+          }
+        }
+        .rating_status {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          .rating_star {
+            align-items: center;
+            background-color: #f9f9f9;
+            border-radius: 0.313rem; 
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 2.5% 0 0;
+            padding: 2rem;
+            width: 27.5%;
+            h4 {
+              font-size: 2.25rem;
+              line-height: 44px;
+              margin: 0;
+            }
+            .star {
+              margin: 0.5rem 0 0.25rem;
+              svg {
+                fill: #ffa506;
+                font-size: 1.25rem;
+              }
+            }
+          }
+          .status {
+            background-color: #f9f9f9;
+            border-radius: 0.313rem; 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding: 1.13rem 1.5rem;
+            width: 70%;
+            .item {
+              align-items: center;
+              display: flex;
+              justify-content: space-between;
+              margin: 0 0 0.25rem;
+              width: 100%;
+              &:last-child {
+                margin: 0;
+              }
+              p {
+                margin: 0;
+                text-align: left;
+                width: 20%;
+                &:last-child {
+                  padding: 0 0 0 0.5rem;
+                  width: 12%;
+                }
+              }
+              .progress {
+                height: 0.5rem;
+                width: 68%;
+                .progress-bar {
+                  background-color: #3e952e;
+                }
+              }
+            }
+          }
+        }
+        .user_reviews {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          margin: 3rem 0 0;
+          .single_review {
+            border-bottom: 1px solid #d8d8d8; 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 1rem 0;
+            width: 100%;
+            .user_info {
+              display: flex;
+              justify-content: flex-start;
+              margin: 0 0 1rem;
+              width: 100%;
+              .user_img {
+                border-radius: 5rem;
+                display: flex;
+                height: 4rem;
+                justify-content: flex-start;
+                overflow: hidden;
+                width: 4rem;
+              }
+              .user_desc {
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0 1rem;
+                width: 90%;
+                .name_date {
+                  align-items: center;
+                  display: inherit;
+                  width: 100%;
+                  h6 {
+                    color: #404041;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                  }
+                  p {
+                    color: #8b8b8b;
+                    font-size: 0.875rem;
+                    margin: 0 0 0 1rem;
+                  }
+                }
+                .star {
+                  margin: 0;
+                  svg {
+                    fill: #ffa506;
+                    font-size: 1.25rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .more_reviews {
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          margin: 1.5rem 0 0;
+          width: 100%;
+          button {
+            background-color: transparent;
+            border: none;
+            color: #3e952e;
+            font-size: 0.875rem;
+            font-weight: 600;
+            &:hover,
+            &:focus {
+              box-shadow: none;
             }
           }
         }

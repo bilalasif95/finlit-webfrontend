@@ -13,7 +13,7 @@ import { TiLockClosed } from 'react-icons/ti';
 import { GrCirclePlay } from 'react-icons/gr';
 // import { MdOutlineRateReview } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem, TabContent, TabPane, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, TabContent, TabPane, Nav, NavItem, NavLink, Button, Progress } from 'reactstrap';
 import {
   Accordion,
   AccordionItem,
@@ -23,10 +23,12 @@ import {
 } from 'react-accessible-accordion';
 import moment from 'moment';
 import JoditEditor from 'jodit-react';
+import { Player } from 'video-react';
 import classnames from 'classnames';
 import 'react-accessible-accordion/dist/fancy-example.css';
 import messages from './messages';
 import Wrapper from './Wrapper';
+import coursedummy from './../../../../images/coursedummy.png';
 
 function CourseDetail(props) {
   const editor = useRef(null);
@@ -121,7 +123,8 @@ function CourseDetail(props) {
         </div>
         <div className="main_img">
           {/* <img src={detail.eventImage} alt="main" height="100%" width="100%" /> */}
-          <img src="https://cdn.discordapp.com/attachments/548125906472796170/903164685405270056/unknown.png" alt="main" height="100%" width="100%" />
+          <img src={coursedummy} alt="main" height="100%" width="100%" />
+        git  */}
         </div>
         <div className="tabs_cont">
           <Nav tabs>
@@ -502,15 +505,121 @@ function CourseDetail(props) {
               </div>
             </TabPane>
             <TabPane tabId="4">
-              <h4>FAQs</h4>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry`s standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged.
-              </p>
+              <div className="content_in">
+                <div className="reviews_header">
+                  <h4>Reviews</h4>
+                  <Button>Add Review</Button>
+                  <p>Our students says about this course</p>
+                </div>
+                <div className="rating_status">
+                  <div className="rating_star">
+                    <h4>5</h4>
+                    <div className="star">
+                      <RiStarSFill />
+                      <RiStarSFill />
+                      <RiStarSFill />
+                      <RiStarSFill />
+                      <RiStarSFill />
+                    </div>
+                    <p>12 Reviews</p>
+                  </div>
+                  <div className="status">
+                    <div className="item">
+                      <p>Excellent</p>
+                      <Progress value={100} />
+                      <p>100%</p>
+                    </div>
+                    <div className="item">
+                      <p>Very Good</p>
+                      <Progress value={20} />
+                      <p>20%</p>
+                    </div>
+                    <div className="item">
+                      <p>Average</p>
+                      <Progress value={10} />
+                      <p>10%</p>
+                    </div>
+                    <div className="item">
+                      <p>Poor</p>
+                      <Progress value={5} />
+                      <p>5%</p>
+                    </div>
+                    <div className="item">
+                      <p>Terrible</p>
+                      <Progress value={0} />
+                      <p>0%</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="user_reviews">
+                  <div className="single_review">
+                    <div className="user_info">
+                      <div className="user_img">
+                        <img src="https://i.imgur.com/qUzPHy4.jpg" alt="User" />
+                      </div>
+                      <div className="user_desc">
+                        <div className="name_date">
+                          <h6>Kelly Young</h6>
+                          <p>Sep 2, 2021</p>
+                        </div>
+                        <div className="star">
+                          <RiStarSFill />
+                          <RiStarSFill />
+                          <RiStarSFill />
+                          <RiStarSFill />
+                          <RiStarSFill />
+                        </div>
+                      </div>
+                    </div>
+                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                  </div>
+                  <div className="single_review">
+                    <div className="user_info">
+                      <div className="user_img">
+                        <img src="https://i.imgur.com/qUzPHy4.jpg" alt="User" />
+                      </div>
+                      <div className="user_desc">
+                        <div className="name_date">
+                          <h6>Kelly Young</h6>
+                          <p>Sep 2, 2021</p>
+                        </div>
+                        <div className="star">
+                          <RiStarSFill />
+                          <RiStarSFill />
+                          <RiStarSFill />
+                          <RiStarSFill />
+                          <RiStarSFill />
+                        </div>
+                      </div>
+                    </div>
+                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                  </div>
+                  <div className="single_review">
+                    <div className="user_info">
+                      <div className="user_img">
+                        <img src="https://i.imgur.com/qUzPHy4.jpg" alt="User" />
+                      </div>
+                      <div className="user_desc">
+                        <div className="name_date">
+                          <h6>Kelly Young</h6>
+                          <p>Sep 2, 2021</p>
+                        </div>
+                        <div className="star">
+                          <RiStarSFill />
+                          <RiStarSFill />
+                          <RiStarSFill />
+                          <RiStarSFill />
+                          <RiStarSFill />
+                        </div>
+                      </div>
+                    </div>
+                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                  </div>
+                </div>
+                <div className="more_reviews">
+                  <Button>More reviews</Button>
+                </div>
+              </div>
             </TabPane>
           </TabContent>
         </div>
