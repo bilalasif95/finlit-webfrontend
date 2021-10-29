@@ -8,7 +8,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import CourseDetail from '../../../components/student-panel/CourseDetails/CourseDetail';
-// import CourseSidebar from '../../../components/student-panel/CourseDetails/CourseSidebar';
+import CourseSidebar from '../../../components/student-panel/CourseDetails/CourseSidebar';
 import { API } from '../../../config/config';
 import { redirectToLogin } from '../../../utils/redirectToLogin';
 import Loader from '../../../components/Loader';
@@ -57,7 +57,7 @@ const CourseDetails = props => {
               <CourseDetail />
             </Col>
             <Col lg={4} md={5} sm={12}>
-              {/* <CourseSidebar /> */}
+              <CourseSidebar />
             </Col>
           </Row>
         )}

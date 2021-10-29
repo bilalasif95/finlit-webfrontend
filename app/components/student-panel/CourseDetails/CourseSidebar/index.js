@@ -9,13 +9,14 @@ import PropTypes from 'prop-types';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import history from 'utils/history';
-// import { GoDeviceCameraVideo } from 'react-icons/go';
-// import { BiTimeFive } from 'react-icons/bi';
-// import { MdDashboard } from 'react-icons/md';
-// import { BsTagFill } from 'react-icons/bs';
-// import { SiAirplayvideo } from 'react-icons/si';
+import { Link } from 'react-router-dom';
+import { GoDeviceCameraVideo } from 'react-icons/go';
+import { BiTimeFive } from 'react-icons/bi';
+import { MdDashboard } from 'react-icons/md';
+import { BsTagFill } from 'react-icons/bs';
+import { SiAirplayvideo } from 'react-icons/si';
 import { RiStarSFill } from 'react-icons/ri';
-import { HiUsers } from 'react-icons/hi';
+import { HiUsers, HiOutlineArrowNarrowRight } from 'react-icons/hi';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../../config/config';
@@ -23,8 +24,8 @@ import { axiosHeader } from '../../../../utils/axiosHeader';
 
 function CourseSidebar(props) {
   const [loader, setLoader] = useState(false);
-  const { detail } = props;
-  const dataDetails = detail.data;
+  // const { detail } = props;
+  // const dataDetails = detail.data;
 
   const handleAddToCart = () => {
     setLoader(true);
@@ -54,8 +55,10 @@ function CourseSidebar(props) {
     <Wrapper>
       <div className="top_detail">
         <div className="prices">
-          <h4>${dataDetails && dataDetails.price}</h4>
-          <del>${dataDetails && dataDetails.price}</del>
+          {/* <h4>${dataDetails && dataDetails.price}</h4>
+          <del>${dataDetails && dataDetails.price}</del> */}
+          <h4>$44.99</h4>
+          <del>$100</del>
           {/* <span>|&nbsp;&nbsp;87% off</span> */}
         </div>
         <div className="rating">
@@ -69,12 +72,19 @@ function CourseSidebar(props) {
           </div>
           <p>(76,876 ratings)</p>
         </div>
-        {/* <Link to="/" className="event_link">
+        <Link to="/" className="event_link">
           <FormattedMessage {...messages.AttendEvent} />
-        </Link> */}
-        <Button onClick={() => handleAddToCart()} disabled={loader}>
+        </Link>
+        {/* <Button onClick={() => handleAddToCart()} disabled={loader}>
           {loader ? 'Loading..' : <FormattedMessage {...messages.AddtoCart} />}
+        </Button> */}
+          <Button className="noselect">
+          <FormattedMessage {...messages.AddtoCart} className="text"/>
+          <HiOutlineArrowNarrowRight className="icon" />
         </Button>
+        <div className="test">
+        <button className="noselect"><span className='text'>Delete</span><span className="icon"><HiOutlineArrowNarrowRight /></span></button>
+          </div>
       </div>
       <div className="details">
         <h4>
@@ -85,7 +95,7 @@ function CourseSidebar(props) {
             <HiUsers />
             <p>1200 Attendees</p>
           </li>
-          {/* <li>
+          <li>
             <BiTimeFive />
             <p>2 hours</p>
           </li>
@@ -104,7 +114,7 @@ function CourseSidebar(props) {
           <li>
             <SiAirplayvideo />
             <p>English, French</p>
-          </li> */}
+          </li>
         </ul>
         <FormGroup>
           <Input
@@ -122,7 +132,7 @@ function CourseSidebar(props) {
     </Wrapper>
   );
 }
-CourseSidebar.propTypes = {
-  detail: PropTypes.any,
-};
+// CourseSidebar.propTypes = {
+//   detail: PropTypes.any,
+// };
 export default CourseSidebar;
