@@ -124,7 +124,14 @@ function CourseDetail(props) {
         <div className="main_img">
           {/* <img src={detail.eventImage} alt="main" height="100%" width="100%" /> */}
           <img src={coursedummy} alt="main" height="100%" width="100%" />
-        git  */}
+          {/* <Player
+            playsInline
+            fluid={true}
+            height="100%"
+            width="100%"
+            poster={coursedummy}
+            src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+          /> */}
         </div>
         <div className="tabs_cont">
           <Nav tabs>
