@@ -161,7 +161,7 @@ const Wrapper = styled.div`
     .cartDetailsCont {
       margin-top: 64px;
       .customBorder {
-        border-bottom: 1px solid #D8D8D8;
+        border-bottom: 1px solid #d8d8d8;
         width: 100%;
         margin: 50px 0px 50px;
         display: block;
@@ -231,16 +231,15 @@ const Wrapper = styled.div`
       }
       .courseDetail {
         padding: 20px 20px;
-          border: 1px solid #D8D8D8;
-          border-radius: 10px;
-          margin-bottom: 20px;
+        border: 1px solid #d8d8d8;
+        border-radius: 10px;
+        margin-bottom: 20px;
         .checkoutDetails {
           display: flex;
           align-items: center;
           justify-content: space-between;
           width: 100%;
           margin-bottom: 22px;
-          position: relative;
           .deleteImg {
             position: absolute;
             right: 0;
@@ -260,7 +259,15 @@ const Wrapper = styled.div`
           }
           .courseDetailText {
             width: 82%;
-            h2, h3 {
+            position: relative;
+            h2 {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              width: 230px;
+            }
+            h2,
+            h3 {
               font-size: 20px;
               color: #404041;
               margin-bottom: 0px;
@@ -268,7 +275,7 @@ const Wrapper = styled.div`
             }
             p {
               font-size: 14px;
-              color: #8B8B8B;
+              color: #8b8b8b;
             }
           }
         }
@@ -349,6 +356,86 @@ const Wrapper = styled.div`
       }
     }
   }
+  @media (max-width: 768px) {
+    .cart_checkout{
+      .cartDetailsCont {
+        margin-top: 30px;
+      }
+      .cartDetailsCont {
+        .courseDetail {
+          padding: 16px 16px;
+          .checkoutDetails {
+            .courseDetailImg {
+              height: 70px;
+              width: 30%;
+            }
+            .courseDetailText {
+              width: 70%;
+              h3, h2 {
+                font-size: 16px;
+                line-height: 30px;
+              }
+            }
+          }
+          .courseDetailList {
+            width: 100%;
+            flex-wrap: wrap;
+            li {
+              width: 50%;
+              margin-bottom: 15px;
+            }
+          }
+        }
+        .customBorder {
+          margin: 30px 0px 20px;
+        }
+        .moreCourses {
+          h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            line-height: 30px;
+          }
+          .card {
+            .card-body { 
+              padding: 10px 10px 0px 10px;
+              .card-title {
+                font-size: 16px;
+                margin-bottom: 15px;
+              }
+              .cardList {
+                flex-wrap: wrap;
+                margin-bottom: 0px;
+                li {
+                  font-size: 14px;
+                  width: 50%;
+                  margin-bottom: 15px;
+                  &:first-child {
+                    width: 100%;
+                  }
+                  &:not(last-child) {
+                    margin-right: 0px !important;
+                  }
+                }
+              }
+            }
+            .card-footer {
+              padding: 10px 10px;
+              .price {
+                h4 {
+                  font-size: 16px;
+                }
+              }
+              .addCart {
+                button {
+                  padding: 0px;
+                }
+              }
+            }
+          }
+        } 
+      }
+    } 
+  }
   @media (max-width: 575px) {
     .cart_checkout {
       table {
@@ -366,12 +453,65 @@ const Wrapper = styled.div`
         }
       }
     }
-  }
+      .cart_checkout {
+        margin-top: 0;
+        .footer {
+          padding: 0 !important;
+        }
+        .cartDetailsCont {
+          .moreCourses {
+            .card {
+              &:first-child {
+                margin-bottom: 16px;
+              }
+              .card-body {
+                .cardList {
+                  flex-wrap: nowrap;
+                  li {
+                    &:not(:last-child) {
+                      margin-right: 25px !important;
+                    }
+                    width: auto !important;
+                    &:first-child {
+                      width: auto;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   @media (max-width: 424px) {
     .cart_checkout {
       .header {
         .cart {
           width: 15%;
+        }
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    .cart_checkout {
+      .cartDetailsCont {
+        .checkoutDetails {
+          display: initial !important;
+          .courseDetailImg {
+            width: 100% !important;
+            height: auto !important;
+            margin-bottom: 15px;
+            img {
+              width: 100%;
+            }
+          }
+          .courseDetailText {
+            width: 100% !important;
+            margin-bottom: 15px;
+            img {
+              top: 10px !important;
+            }
+          }
         }
       }
     }

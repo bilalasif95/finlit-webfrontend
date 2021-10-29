@@ -190,7 +190,10 @@ function CartCheckoutSidebar(props) {
             </div> */}
             <div className="innerBox">
               <div className="paypalBox">
-                <p><img src={Info} alt="Info" /> In order to complete your transaction,we will transfer you over PayPal'ssecure servers.</p>
+                <p>
+                  <img src={Info} alt="Info" /> In order to complete your
+                  transaction,we will transfer you over PayPal'ssecure servers.
+                </p>
               </div>
               <div className="summary">
                 <h4>
@@ -217,6 +220,9 @@ function CartCheckoutSidebar(props) {
                   </li>
                 </ul>
               </div>
+              <Button onClick={() => handleCheckout()}>
+                {loader ? `loading...` : `Pay $${props.details.total}`}
+              </Button>
               <div className="term_service">
                 <p>
                   <FormattedMessage {...messages.YouAgree} />
@@ -226,9 +232,6 @@ function CartCheckoutSidebar(props) {
                   </Link>
                 </p>
               </div>
-              <Button onClick={() => handleCheckout()}>
-                {loader ? `loading...` : `Pay$${props.details.total}`}
-              </Button>
               <div className="secure_payment">
                 <IoMdLock />
                 <p>

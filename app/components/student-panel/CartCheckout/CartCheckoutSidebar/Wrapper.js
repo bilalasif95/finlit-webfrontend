@@ -130,6 +130,7 @@ const Wrapper = styled.div`
       color: #8b8b8b;
       font-size: 0.625rem;
       line-height: 12px;
+      margin-bottom: 40px;
     }
     a {
       color: #46a135;
@@ -146,8 +147,8 @@ const Wrapper = styled.div`
     font-size: 0.875rem;
     font-weight: 550;
     line-height: 17px;
-    margin: 1rem 0 0;
-    padding: 0.85rem;
+    margin: 0 0 1.25rem;
+    padding: 1rem 0.85rem;
     width: 100%;
     &:hover {
       background-color: #46a135;
@@ -162,7 +163,6 @@ const Wrapper = styled.div`
   .secure_payment {
     align-items: center;
     display: flex;
-    justify-content: center;
     margin: 1rem 0 0;
     width: 100%;
     svg {
@@ -183,8 +183,57 @@ const Wrapper = styled.div`
     padding: 1.25rem;
   }
   @media (max-width: 600px) {
-    padding: 1rem;
+    padding: 0;
   }
+  @media (max-width: 768px) {
+    .payment-box {
+      .heading {
+        h4 {
+          font-size: 16px;
+          img {
+            margin-right: 6px;
+        }
+        }
+      }
+      .innerBox {
+       .paypalBox {
+          padding: 10px 10px;
+          margin-bottom: 20px;
+      }
+      }
+      .innerBox, .cardSelect {
+        padding: 1rem;
+      }
+      .summary {
+        h4 {
+          font-size 16px;
+        }
+        .list {
+          li {
+            padding: 15px 0px;
+            p {
+              span {
+                width: 162px;
+                font-size: 12px;
+              }
+            } 
+          } 
+        } 
+      } 
+      .secure_payment {
+        p {
+          font-size: 12px;
+        }
+      }
+      .term_service {
+        p {
+          font-size: 12px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+  
 `;
 
 export default Wrapper;
