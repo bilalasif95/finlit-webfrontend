@@ -13,7 +13,7 @@ import { TiLockClosed } from 'react-icons/ti';
 import { GrCirclePlay } from 'react-icons/gr';
 // import { MdOutlineRateReview } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem, TabContent, TabPane, Nav, NavItem, NavLink, Button, Progress } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, TabContent, TabPane, Nav, NavItem, NavLink, Button, Progress, Modal, ModalHeader, ModalBody, ModalFooter, } from 'reactstrap';
 import {
   Accordion,
   AccordionItem,
@@ -35,9 +35,15 @@ function CourseDetail(props) {
   const config = {
     readonly: true,
   };
+  const {
+    className
+  } = props;
+
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
   const [activeTab, setActiveTab] = useState('1');
 
-  const toggle = tab => {
+  const toggleTab = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
   // const { detail } = props;
@@ -124,7 +130,6 @@ function CourseDetail(props) {
         <div className="main_img">
           {/* <img src={detail.eventImage} alt="main" height="100%" width="100%" /> */}
           <img src={coursedummy} alt="main" height="100%" width="100%" />
-        git  */}
         </div>
         <div className="tabs_cont">
           <Nav tabs>
@@ -132,7 +137,7 @@ function CourseDetail(props) {
               <NavLink
                 className={classnames({ active: activeTab === '1' })}
                 onClick={() => {
-                  toggle('1');
+                  toggleTab('1');
                 }}
               >
                 About
@@ -142,7 +147,7 @@ function CourseDetail(props) {
               <NavLink
                 className={classnames({ active: activeTab === '2' })}
                 onClick={() => {
-                  toggle('2');
+                  toggleTab('2');
                 }}
               >
                 Course Content
@@ -152,7 +157,7 @@ function CourseDetail(props) {
               <NavLink
                 className={classnames({ active: activeTab === '3' })}
                 onClick={() => {
-                  toggle('3');
+                  toggleTab('3');
                 }}
               >
                 Instructor
@@ -162,7 +167,7 @@ function CourseDetail(props) {
               <NavLink
                 className={classnames({ active: activeTab === '4' })}
                 onClick={() => {
-                  toggle('4');
+                  toggleTab('4');
                 }}
               >
                 Reviews
@@ -508,8 +513,9 @@ function CourseDetail(props) {
               <div className="content_in">
                 <div className="reviews_header">
                   <h4>Reviews</h4>
-                  <Button>Add Review</Button>
+                  <Button onClick={toggle}>Add Review</Button>
                   <p>Our students says about this course</p>
+
                 </div>
                 <div className="rating_status">
                   <div className="rating_star">
@@ -640,6 +646,26 @@ function CourseDetail(props) {
             </li>
           </ul>
         </div> */}
+      </div>
+      {/* Modal */}
+      <div className="ratingModal">
+        <Modal isOpen={modal} toggle={toggle} className="ratingModal">
+          <ModalHeader toggle={toggle}>Do you like this course ?</ModalHeader>
+          <ModalBody>
+            <p>Please rate your experience</p>
+            <div className="rating">
+              <span><RiStarSFill /></span>
+              <span><RiStarSFill /></span>
+              <span><RiStarSFill /></span>
+              <span><RiStarSFill /></span>
+              <span><RiStarSFill /></span>
+            </div>
+            <textarea placeholder="Write a review" rows="5" className="form-control"></textarea>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={toggle}>Submit</Button>
+          </ModalFooter>
+        </Modal>
       </div>
     </Wrapper >
   );

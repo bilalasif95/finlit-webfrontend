@@ -1366,6 +1366,70 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+  .modal.fade {
+    opacity: 1;
+  }
+  .ratingModal {
+    .modal-content {
+      padding: 50px 50px;
+      border-radius: 10px;
+      background-color: #fff;
+      .modal-header {
+        padding: 0;
+        .close {
+          border: none;
+          background-color: #d8d8d8;
+          color: #49494a;
+          font-size: 18px;
+        }
+      }
+      .modal-title {
+        text-align: left;
+      }
+      .modal-body {
+        padding: 0;
+        p {
+          margin: 30px 0;
+          color: #8b8b8b;
+          font-size: 16px;
+        }
+        textarea {
+          margin: 20px 0px 50px;
+        }
+        .rating {
+          span:not(last-child)  {
+            margin-right: 10px;
+          }
+          span:last-child {
+            svg {
+              fill: #8b8b8b;
+              font-size: 2rem;
+            }
+          }
+          svg {
+            fill: #ffa506;
+            font-size: 2rem;
+          }
+        }
+      }
+      .modal-footer {
+        justify-content: flex-start;
+        padding: 0;
+        button {
+          margin: 0px;
+          background-color: #3e952e;
+          border: none;
+          font-size: 16px;
+          padding: 13px 10px; 
+          width: 204px;
+          &:focus {
+            box-shadow: initial;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
 `;
 
 export default GlobalStyle;
