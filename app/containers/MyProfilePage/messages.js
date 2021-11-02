@@ -10,7 +10,7 @@ export const scope = 'boilerplate.containers.MyProfilesPage';
 export default defineMessages({
   ChangeProfile: {
     id: `${scope}.ChangeProfile`,
-    defaultMessage: 'Change Profile',
+    defaultMessage: 'Upload Photo',
   },
   EditProfile: {
     id: `${scope}.EditProfile`,

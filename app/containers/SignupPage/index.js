@@ -74,25 +74,27 @@ export default function SignupPage() {
       setError({ type: 'email', error: 'Email is required' });
     } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError({ type: 'email', error: 'Please enter valid email' });
-    } else if (
-      !/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(firstName)
-    ) {
-      setError({ type: 'FirstName', error: 'First Name is not valid' });
-    } else if (firstName.length > 255) {
-      setError({
-        type: 'FirstName',
-        error: 'First Name should be of less than 255 characters',
-      });
-    } else if (
-      !/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(lastName)
-    ) {
-      setError({ type: 'LastName', error: 'Last Name is not valid' });
-    } else if (lastName.length > 255) {
-      setError({
-        type: 'LastName',
-        error: 'Last Name should be of less than 255 characters',
-      });
-    } else if (
+    } 
+    // else if (
+    //   !/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(firstName)
+    // ) {
+    //   setError({ type: 'FirstName', error: 'First Name is not valid' });
+    // } else if (firstName.length > 255) {
+    //   setError({
+    //     type: 'FirstName',
+    //     error: 'First Name should be of less than 255 characters',
+    //   });
+    // } else if (
+    //   !/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(lastName)
+    // ) {
+    //   setError({ type: 'LastName', error: 'Last Name is not valid' });
+    // } else if (lastName.length > 255) {
+    //   setError({
+    //     type: 'LastName',
+    //     error: 'Last Name should be of less than 255 characters',
+    //   });
+    // } 
+    else if (
       !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) ||
       (!password.length >= 8 && !password.length <= 15)
     ) {
@@ -108,15 +110,18 @@ export default function SignupPage() {
       axios
         .post(`${API}api/auth/register`, {
           email,
-          firstName,
-          lastName,
+          // firstName,
+          firstName:"firstName",
+          lastName: "lastname",
+          // lastName,
           roleId,
           password,
           passwordConfirmation,
-          gender,
-          country,
+          gender:"male",
+          // gender,
+          country: "country",
           profession,
-          address,
+          // address,
         })
         .then(result => {
           toast.success(

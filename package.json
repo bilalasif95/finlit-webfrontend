@@ -112,6 +112,7 @@
     "reselect": "4.0.0",
     "rsuite": "^5.0.1",
     "sanitize.css": "8.0.0",
+    "sass-loader": "^12.3.0",
     "styled-components": "^4.2.0",
     "video-react": "^0.14.1"
   },

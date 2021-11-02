@@ -16,8 +16,10 @@ import {
   Container,
 } from 'reactstrap';
 import history from 'utils/history';
+import './profile.css';
 import { HiUser } from 'react-icons/hi';
 import { RiDashboardFill } from 'react-icons/ri';
+import { FaLongArrowAltRight } from 'react-icons/fa';
 // FiHeart
 import { FiLogOut } from 'react-icons/fi';
 // import { MdNotificationsActive, MdChat } from 'react-icons/md';
@@ -28,13 +30,13 @@ import axios from 'axios';
 import Logo from '../../../images/logo.svg';
 import Menubar from './Menubar';
 // import Img from './Img';
-// import User from '../../../images/user.jpg';
 import messages from './messages';
 import { API } from '../../../config/config';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userObj, setUserObj] = useState({});
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
   const token = localStorage.getItem('token');
@@ -69,9 +71,9 @@ const Header = () => {
       <Navbar expand="lg">
         <Container fluid="xl">
           {userObj &&
-          userObj.roles &&
-          userObj.roles[0] &&
-          userObj.roles[0].roleName === 'Instructor' ? (
+            userObj.roles &&
+            userObj.roles[0] &&
+            userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
               <img
                 src={Logo}
@@ -93,6 +95,33 @@ const Header = () => {
             </Link>
           )}
           <NavbarToggler onClick={toggle} />
+          <nav>
+            <div className={toggleMenu ? "toggle-wrap active" : "toggle-wrap"} onClick={() => setToggleMenu(!toggleMenu)}>
+              <span className="toggle-bar"></span>
+            </div>
+          </nav>
+
+          <aside className={toggleMenu ? "active" : ""}>
+            <div className="asideCont">
+              <div className="profileNav">
+                <div className={toggleMenu ? "toggle-wrap active" : "toggle-wrap"} onClick={() => setToggleMenu(!toggleMenu)}>
+                  <span className="toggle-bar"></span>
+                </div>
+                <ul className="list-unstyled sideBarList">
+                  <li><FaLongArrowAltRight /><Link>Goal Based Education</Link></li>
+                  <li><FaLongArrowAltRight /><Link>One-on-One Private Sessions</Link></li>
+                  <li><FaLongArrowAltRight /><Link>Interactive Learning Tools</Link></li>
+                  <li><FaLongArrowAltRight /><Link>Bootcamp</Link></li>
+                  <li><FaLongArrowAltRight /><Link>Hackathons</Link></li>
+                  <li><FaLongArrowAltRight /><Link>Live Webinars</Link></li>
+                  <li><FaLongArrowAltRight /><Link>Case Studies & Stories</Link></li>
+                  <li><FaLongArrowAltRight /><Link>Short Videos</Link></li>
+                  <li><FaLongArrowAltRight /><Link>Chat Bot</Link></li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+
           <Collapse isOpen={isOpen} navbar>
             <Nav navbar>
               <UncontrolledDropdown nav inNavbar>
@@ -256,9 +285,9 @@ const Header = () => {
                       <div />
                     </DropdownItem>
                     {userObj &&
-                    userObj.roles &&
-                    userObj.roles[0] &&
-                    userObj.roles[0].roleName === 'Student' ? (
+                      userObj.roles &&
+                      userObj.roles[0] &&
+                      userObj.roles[0].roleName === 'Student' ? (
                       <DropdownItem>
                         <Link to="/cart">
                           <div>

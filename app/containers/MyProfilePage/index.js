@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 // import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
+import '../../components/student-panel/Header/profile.css';
 // import { withStyles } from '@material-ui/core/styles';
 import {
   Container,
@@ -27,6 +28,7 @@ import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
 import Wrapper from './Wrapper';
 import Img from '../../components/Img';
+import Logo from "../../images/logoS.png"
 import { API } from '../../config/config';
 import BasicInfo from '../../components/MyProfilePage/BasicInfo';
 import ChangePassword from '../../components/MyProfilePage/ChangePassword';
@@ -96,12 +98,51 @@ export default function MyProfilePage() {
   }, []);
   return (
     <>
-      <ToastContainer />
-      <div className="sub_pages">
+      {/* <ToastContainer /> */}
+      <div className="sub_pages profilePages">
         <Helmet>
           <title>My Profile</title>
           <meta name="description" content="My Profile Page" />
         </Helmet>
+        <div className="profileMain">
+          <div className="profileAside">
+            <img className="img-fluid" src={Logo} alt="Logo" />
+          </div>
+          {/* Profile Content */}
+          <div className="profileContent">
+            <div className="mainCont">
+              <h2>My Personal</h2>
+              {/* <div className="profileHeader">
+                <h3>Create New Course</h3>
+                <button className="btn btn-default createBtn"><span>+</span> Create Course</button>
+              </div> */}
+              <div className="uploadImg">
+                  <div className="inner">
+                    <Img
+                      src={userObj.image || 'https://i.imgur.com/qUzPHy4.jpg'}
+                      alt="Profile"
+                    />
+
+                </div>
+                <div className="uploadBtns">
+                  <Label>
+                    {' '}
+                    <FormattedMessage {...messages.ChangeProfile} />
+                    <input
+                      type="file"
+                      name="image"
+                      id="uploadimage"
+                      placeholder="Upload Profile Image"
+                      onChange={e => updateProfileImg(e)}
+                    />
+                  </Label>
+                  <button className="btn btn-default">Delete Photo</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
         <Wrapper id="list">
           <Container fluid="xl">
             <Row>
