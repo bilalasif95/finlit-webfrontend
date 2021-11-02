@@ -78,13 +78,13 @@ function CourseSidebar(props) {
         {/* <Button onClick={() => handleAddToCart()} disabled={loader}>
           {loader ? 'Loading..' : <FormattedMessage {...messages.AddtoCart} />}
         </Button> */}
-          <Button className="noselect">
-          <FormattedMessage {...messages.AddtoCart} className="text"/>
+        <Button className="noselect">
+          <FormattedMessage {...messages.AddtoCart} className="text" />
           <HiOutlineArrowNarrowRight className="icon" />
         </Button>
         <div className="test">
-        <button className="noselect"><span className='text'>Delete</span><span className="icon"><HiOutlineArrowNarrowRight /></span></button>
-          </div>
+          <button className="noselect"><span className='text'>Delete</span><span className="icon"><HiOutlineArrowNarrowRight /></span></button>
+        </div>
       </div>
       <div className="details">
         <h4>

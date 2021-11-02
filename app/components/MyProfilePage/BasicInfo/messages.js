@@ -14,19 +14,23 @@ export default defineMessages({
   },
   MyBiography: {
     id: `${scope}.MyBiography`,
-    defaultMessage: 'My Biography',
+    defaultMessage: 'Short Bio',
   },
   Fname: {
     id: `${scope}.Fname`,
-    defaultMessage: 'First Name*',
+    defaultMessage: 'First Name',
   },
   Lname: {
     id: `${scope}.Lname`,
-    defaultMessage: 'Last Name*',
+    defaultMessage: 'Last Name',
+  },
+  Type: {
+    id: `${scope}.Lname`,
+    defaultMessage: 'Type',
   },
   Gender: {
     id: `${scope}.Gender`,
-    defaultMessage: 'Gender*',
+    defaultMessage: 'Gender',
   },
   Profession: {
     id: `${scope}.Profession`,
@@ -34,7 +38,7 @@ export default defineMessages({
   },
   Country: {
     id: `${scope}.Country`,
-    defaultMessage: 'Country',
+    defaultMessage: 'Select Country',
   },
   Address: {
     id: `${scope}.Address`,
@@ -58,7 +62,7 @@ export default defineMessages({
   },
   Email: {
     id: `${scope}.Email`,
-    defaultMessage: 'Email',
+    defaultMessage: 'Email Address',
   },
   Cancel: {
     id: `${scope}.Cancel`,
@@ -66,6 +70,6 @@ export default defineMessages({
   },
   Save: {
     id: `${scope}.Save`,
-    defaultMessage: 'Save',
+    defaultMessage: 'Save Changes',
   },
 });

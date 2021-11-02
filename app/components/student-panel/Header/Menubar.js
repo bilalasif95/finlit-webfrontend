@@ -5,9 +5,45 @@
 import styled from 'styled-components';
 
 const Menubar = styled.div`
-  background-color: #225f2b;
+  background-color: #fff;
+  box-shadow: 0px 5px 21px 0px rgba(0,0,0,0.14);
+  z-index: 1;
+  .input-group {
+    .form-control {
+      background-color: #f9f9f9;
+      border: 1px solid #f9f9f9;
+      border-radius: 2.5rem !important;
+      color: #404041;
+      font-size: 0.875rem;
+      padding: 0.65rem 1rem 0.65rem 3rem;
+      &::placeholder {
+        color: #8b8b8b;
+      }
+    }
+    .input-group-append {
+      position: absolute;
+      left: 0;
+      top: 1px;
+      z-index: 5;
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      color: #8b8b8b;
+      padding: 0.5rem 1rem;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+  .nav_right {
+    width: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+}
   .registration {
-    width: 20%;
+    width: 40%;
     .dropdown {
       display: flex;
       justify-content: flex-end;
@@ -19,7 +55,10 @@ const Menubar = styled.div`
         display: flex;
         justify-content: flex-end;
         padding: 0;
-        width: 200px;
+        width: 100%;
+      }
+      .dropdown-toggle::after {
+        color: black;
       }
       .dropdown-menu {
         padding: 0 !important;
@@ -75,7 +114,11 @@ const Menubar = styled.div`
     padding: 1rem 0;
     .logo {
       padding: 0;
-      width: 90px;
+      width: 3.5rem;
+    }
+    svg {
+      color: #8b8b8b;
+      font-size: 1.25rem;
     }
     @media (min-width: 992px) {
       .container-xl {
@@ -86,12 +129,13 @@ const Menubar = styled.div`
   .nav-item {
     margin: 0 0.2rem;
     position: relative;
+    list-style: none;
   }
   .navbar-nav {
     align-items: center;
   }
   .navbar-collapse {
-    justify-content: flex-end;
+    justify-content: space-between;
     margin: 0.7rem 0;
   }
   .nav-link {
@@ -151,9 +195,11 @@ const Menubar = styled.div`
       padding: 0 0.5rem;
       width: 134px;
       p {
+        color: #8b8b8b;
         font-size: 0.875rem;
       }
       span {
+        color: #404041;
         font-size: 0.75rem;
         max-width: 150px;
         text-overflow: ellipsis;

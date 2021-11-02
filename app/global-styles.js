@@ -2373,7 +2373,7 @@ const GlobalStyle = createGlobalStyle`
     button .icon {
       position: absolute;
       border-left: 1px solid #c41b1b;
-      transform: translateX(110px);
+      transform: translateX(0);
       height: 40px;
       width: 40px;
       display: flex;
@@ -2395,7 +2395,7 @@ const GlobalStyle = createGlobalStyle`
     }
     
     button:hover .icon {
-      width: 150px;
+      width: 100%;
       border-left: none;
       transform: translateX(0);
     }

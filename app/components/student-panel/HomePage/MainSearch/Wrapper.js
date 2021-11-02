@@ -39,7 +39,7 @@ const Wrapper = styled.div`
       padding: 0.719rem;
       border-radius: 0.5rem;
       position: relative;
-      z-index: 1;
+      z-index: 0;
       .form-control {
         border: none;
         padding: 0.5rem !important;

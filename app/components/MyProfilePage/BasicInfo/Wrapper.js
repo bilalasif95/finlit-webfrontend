@@ -36,9 +36,9 @@ const Wrapper = styled.div`
       min-height: 10rem;
     }
     .form_footer {
-      position: absolute;
-      bottom: 0;
-      right: 0;
+      // position: absolute;
+      // bottom: 0;
+      // right: 0;
     }
   }
 `;

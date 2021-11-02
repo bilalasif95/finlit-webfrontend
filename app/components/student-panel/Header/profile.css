@@ -3,7 +3,6 @@
   padding: 0;
 }
 nav {
-  padding: 10px;
   position: relative;
   z-index: 1;
 }
@@ -70,6 +69,9 @@ aside > a {
   position: relative;
   cursor: pointer;
   float: left;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
 
   /*disable selection*/
   -webkit-touch-callout: none;
@@ -92,7 +94,7 @@ aside > a {
 }
 .toggle-bar {
   width: 25px;
-  margin: 10px 0;
+  margin: 1rem;
   position: relative;
   border-top: 3px solid #8b8b8b;
   display: block;
@@ -169,11 +171,11 @@ aside > a {
 
   } */
 .profileAside {
-  width: 15%;
+  width: 10%;
   background-color: #fff;
   box-shadow: 2px 3px 4px #cececeb8;
   height: 100vh;
-  padding: 50px 10px 30px 10px;
+  padding: 50px 0px 30px 0px;
 }
 .profilePages {
   padding: 0px;
@@ -183,7 +185,7 @@ aside > a {
   display: flex;
 }
 .profileContent {
-  width: 85%;
+  width: 90%;
   padding: 50px 50px;
   box-shadow: 2px 3px 4px #cececeb8;
 }
@@ -217,11 +219,12 @@ aside > a {
   display: flex;
   text-align: center;
   width: 100%;
+  margin-bottom: 50px;
 }
 .uploadImg input[type="file"] {
   display: none;
 }
-.uploadImg label {
+.uploadImg .upload {
   color: #fff;
   cursor: pointer;
   background-color: #46a135;
@@ -229,6 +232,12 @@ aside > a {
   font-size: 14px;
   border-radius: 5px;
   min-width: 200px;
+  margin-bottom: 0px;
+  margin-right: 20px;
+}
+.uploadImg .edit {
+  color: #fff;
+  cursor: pointer;
   margin-bottom: 0px;
   margin-right: 20px;
 }
@@ -246,11 +255,45 @@ aside > a {
 }
 .uploadImg .inner {
   margin-right: 50px;
+  position: relative;
+  height: 120px;
+  width: 120px;
+}
+.uploadImg .inner .edit {
+  position: absolute;
+  bottom: 5px;
+  right: -4px;
+  margin: 0;
 }
 .uploadImg .inner img {
   border-radius: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 .uploadBtns {
   display: flex;
   align-items: center;
+}
+.sideNav {
+  padding: 50px 0px 30px 0px;
+}
+.sideNavLink {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  color: #404041;
+  font-weight: 600;
+  padding: 10px 0px;
+  border-left: 3px solid transparent;
+  transition: 0.4s linear;
+}
+.sideNavLink svg {
+  height: 24px;
+  width: 24px;
+}
+.sideNavLink:hover{
+  background-color: #46a1353b;
+  border-left: 3px solid #46a135;
+  color: #46a135;
+  text-decoration: none;
 }

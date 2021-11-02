@@ -176,9 +176,9 @@ function BasicInfo() {
   return (
     <Wrapper>
       <div className="basic_info">
-        <h4>
+        {/* <h4>
           <FormattedMessage {...messages.BasicInfo} />
-        </h4>
+        </h4> */}
         <Row>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
@@ -236,34 +236,53 @@ function BasicInfo() {
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
-              <FormControl fullWidth>
-                <Label>
-                  <FormattedMessage {...messages.Gender} />
-                </Label>
-                <Select
-                  value={userInfo.gender}
-                  onChange={e => {
-                    setUserInfo({
-                      ...userInfo,
-                      [e.target.name]: e.target.value,
-                    });
-                  }}
-                  name="gender"
-                  input={<BootstrapInput />}
-                  fullWidth
-                  MenuProps={{
-                    anchorOrigin: {
-                      vertical: 'bottom',
-                      horizontal: 'left',
-                    },
-                    getContentAnchorEl: null,
-                  }}
-                >
-                  <MenuItem value="Male">Male</MenuItem>
-                  <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Other">Other</MenuItem>
-                </Select>
-              </FormControl>
+              <Label for="fname">
+                <FormattedMessage {...messages.Type} />
+              </Label>
+              <Input
+                type="text"
+                name="firstName"
+                id="fname"
+                onChange={e => {
+                  setUserInfo({
+                    ...userInfo,
+                    [e.target.name]: e.target.value,
+                  });
+                }}
+              />
+              <FormText className="form-text">
+                {errors.firstName ? (
+                  <p className="error">{errors.firstName}</p>
+                ) : (
+                  ''
+                )}
+              </FormText>
+            </FormGroup>
+          </Col>
+          <Col lg={6} md={6} sm={6} xs={12}>
+            <FormGroup>
+              <Label for="lname">
+                <FormattedMessage {...messages.Email} />
+              </Label>
+              <Input
+                type="text"
+                name="lastName"
+                id="lname"
+                defaultValue={userInfo.lastName}
+                onChange={e => {
+                  setUserInfo({
+                    ...userInfo,
+                    [e.target.name]: e.target.value,
+                  });
+                }}
+              />
+              <FormText className="form-text">
+                {errors.lastName ? (
+                  <p className="error">{errors.lastName}</p>
+                ) : (
+                  ''
+                )}
+              </FormText>
             </FormGroup>
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
@@ -303,6 +322,38 @@ function BasicInfo() {
                   <MenuItem value="Statistician">Statistician</MenuItem>
                   <MenuItem value="Speech-Language">Speech-Language</MenuItem>
                   <MenuItem value="Data Scientist">Data Scientist</MenuItem>
+                </Select>
+              </FormControl>
+            </FormGroup>
+          </Col>
+          <Col lg={6} md={6} sm={6} xs={12}>
+            <FormGroup>
+              <FormControl fullWidth>
+                <Label>
+                  <FormattedMessage {...messages.Gender} />
+                </Label>
+                <Select
+                  value={userInfo.gender}
+                  onChange={e => {
+                    setUserInfo({
+                      ...userInfo,
+                      [e.target.name]: e.target.value,
+                    });
+                  }}
+                  name="gender"
+                  input={<BootstrapInput />}
+                  fullWidth
+                  MenuProps={{
+                    anchorOrigin: {
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    },
+                    getContentAnchorEl: null,
+                  }}
+                >
+                  <MenuItem value="Male">Male</MenuItem>
+                  <MenuItem value="Female">Female</MenuItem>
+                  <MenuItem value="Other">Other</MenuItem>
                 </Select>
               </FormControl>
             </FormGroup>
@@ -359,21 +410,6 @@ function BasicInfo() {
               />
             </FormGroup>
           </Col>
-          <Col lg={6} md={6} sm={6} xs={12}>
-            <FormGroup>
-              <Label for="email">
-                <FormattedMessage {...messages.Email} />
-              </Label>
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Enter email"
-                defaultValue={userInfo.email}
-                readOnly
-              />
-            </FormGroup>
-          </Col>
           <Col lg={12} md={12} sm={12} xs={12}>
             <FormGroup>
               <Label for="description">
@@ -383,7 +419,7 @@ function BasicInfo() {
                 type="textarea"
                 name="description"
                 id="description"
-                placeholder="Enter description about yourself"
+                placeholder="Enter Bio"
                 value={userInfo.description}
                 onChange={e => {
                   setUserInfo({
@@ -405,15 +441,16 @@ function BasicInfo() {
         <div className="form_footer">
           <div className="bottom_btns">
             <Button className="btn_cancel" onClick={getCurrentUserInfo}>
-              <FormattedMessage {...messages.Cancel} />
+              <FormattedMessage {...messages.Save
+              } />
             </Button>
-            <Button
+            {/* <Button
               className="btn_submit"
               onClick={handleUpdateProfileSave}
               disabled={disableBtn}
             >
               {loader ? 'Loading' : <FormattedMessage {...messages.Save} />}
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>

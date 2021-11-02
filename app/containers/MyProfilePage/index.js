@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 // import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import '../../components/student-panel/Header/profile.css';
 // import { withStyles } from '@material-ui/core/styles';
 import {
@@ -19,7 +20,7 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
-import { BiUserCircle, BiLock } from 'react-icons/bi';
+import { BiUserCircle, } from 'react-icons/bi';
 import { RiKeyLine } from 'react-icons/ri';
 import classnames from 'classnames';
 import { ToastContainer, toast } from 'react-toastify';
@@ -29,6 +30,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Wrapper from './Wrapper';
 import Img from '../../components/Img';
 import Logo from "../../images/logoS.png"
+import Cam from "../../images/cam.png"
 import { API } from '../../config/config';
 import BasicInfo from '../../components/MyProfilePage/BasicInfo';
 import ChangePassword from '../../components/MyProfilePage/ChangePassword';
@@ -106,7 +108,13 @@ export default function MyProfilePage() {
         </Helmet>
         <div className="profileMain">
           <div className="profileAside">
-            <img className="img-fluid" src={Logo} alt="Logo" />
+            <img className="img-fluid mx-auto d-block" src={Logo} alt="Logo" />
+            <div className="sideNav">
+              <Link className="sideNavLink">
+                <p><BiUserCircle /></p>
+                Profile
+              </Link>
+            </div>
           </div>
           {/* Profile Content */}
           <div className="profileContent">
@@ -117,15 +125,25 @@ export default function MyProfilePage() {
                 <button className="btn btn-default createBtn"><span>+</span> Create Course</button>
               </div> */}
               <div className="uploadImg">
-                  <div className="inner">
-                    <Img
-                      src={userObj.image || 'https://i.imgur.com/qUzPHy4.jpg'}
-                      alt="Profile"
+                <div className="inner">
+                  <Img
+                    src={userObj.image || 'https://i.imgur.com/qUzPHy4.jpg'}
+                    alt="Profile"
+                  />
+                  <Label className="edit">
+                    <img src={Cam} alt="Cam" />
+                    {' '}
+                    <input
+                      type="file"
+                      name="image"
+                      id="uploadimage"
+                      placeholder="Upload Profile Image"
+                      onChange={e => updateProfileImg(e)}
                     />
-
+                  </Label>
                 </div>
                 <div className="uploadBtns">
-                  <Label>
+                  <Label className="upload">
                     {' '}
                     <FormattedMessage {...messages.ChangeProfile} />
                     <input
@@ -139,11 +157,13 @@ export default function MyProfilePage() {
                   <button className="btn btn-default">Delete Photo</button>
                 </div>
               </div>
-
+              <BasicInfo />
             </div>
           </div>
         </div>
-        <Wrapper id="list">
+
+        {/* end */}
+        {/* <Wrapper id="list">
           <Container fluid="xl">
             <Row>
               <Col lg={4} md={4} sm={12} xs={12}>
@@ -229,7 +249,7 @@ export default function MyProfilePage() {
               </Col>
             </Row>
           </Container>
-        </Wrapper>
+        </Wrapper> */}
       </div>
     </>
   );

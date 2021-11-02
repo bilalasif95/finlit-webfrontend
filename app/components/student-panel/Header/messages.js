@@ -44,21 +44,21 @@ export default defineMessages({
     id: `${scope}.Signup`,
     defaultMessage: 'Sign up',
   },
-  MyDashboard: {
-    id: `${scope}.MyDashboard`,
-    defaultMessage: 'My Dashboard',
+  MyCourses: {
+    id: `${scope}.MyCourses`,
+    defaultMessage: 'My Courses',
   },
-  AccountSetting: {
-    id: `${scope}.AccountSetting`,
-    defaultMessage: 'Account Setting',
+  Settings: {
+    id: `${scope}.Settings`,
+    defaultMessage: 'Settings',
   },
-  MyFavorite: {
-    id: `${scope}.MyFavorite`,
-    defaultMessage: 'My Favorite',
+  Profile: {
+    id: `${scope}.Profile`,
+    defaultMessage: 'Profile',
   },
-  Notifications: {
-    id: `${scope}.Notifications`,
-    defaultMessage: 'Notifications',
+  Wishlist: {
+    id: `${scope}.Wishlist`,
+    defaultMessage: 'Wishlist',
   },
   Messages: {
     id: `${scope}.Messages`,

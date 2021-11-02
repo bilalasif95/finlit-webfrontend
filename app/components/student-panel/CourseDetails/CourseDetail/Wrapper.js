@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   .addcart_detail {
+    nav {
+      z-index: 0 !important;
+    }
     margin-top: 30px;
     .jodit-toolbar__box:not(:empty) {
       display: none;
