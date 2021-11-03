@@ -78,6 +78,7 @@ const App = () => {
           <meta name="description" content="FinLit" />
         </Helmet>
         {history.location.pathname === '/signup' ||
+          history.location.pathname === '/my_profile' ||
           history.location.pathname === '/login' ||
           // history.location.pathname === '/email_verification' ||
           history.location.pathname === '/create_new_password' ||
@@ -132,6 +133,7 @@ const App = () => {
       </Switch>
       {history.location.pathname === '/signup' ||
         history.location.pathname === '/login' ||
+        history.location.pathname === '/my_profile' ||
         // history.location.pathname === '/email_verification' ||
         history.location.pathname === '/create_new_password' ||
         // history.location.pathname === '/forgot_password' ||
