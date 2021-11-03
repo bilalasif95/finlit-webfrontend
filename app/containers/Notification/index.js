@@ -80,6 +80,18 @@ export default function Notification() {
       time: "17 days ago",
       icon: Red,
     },
+    {
+      img: Logo,
+      message: "Programming with Python: HandsOn Introduction for Beginners FinLit",
+      time: "17 days ago",
+      icon: Red,
+    },
+    {
+      img: Logo,
+      message: "Programming with Python: HandsOn Introduction for Beginners FinLit",
+      time: "17 days ago",
+      icon: Red,
+    },
   ]
 
   return (
@@ -94,7 +106,7 @@ export default function Notification() {
           <Sidebar />
           {/* Profile Content */}
           <div className="profileContent">
-            <div className="mainCont">
+            <div className="mainCont notificationPanel">
               <div className="profileHeader">
                 <h3>Notification (3)</h3>
                 <button type="button" className="btn btn-default readAllBtn" >Mark all as read</button>
