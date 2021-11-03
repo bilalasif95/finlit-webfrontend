@@ -46,7 +46,7 @@ import ChangePassword from '../../components/MyProfilePage/ChangePassword';
 import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthentication';
 // import Profile from '../../images/profile.jpg';
 
-export default function MyProfilePage() {
+export default function Notification() {
   const [activeTab, setActiveTab] = useState('1');
   const [userObj, setUserObj] = useState({});
   const [collapse, setCollapse] = useState(false);
@@ -121,48 +121,17 @@ export default function MyProfilePage() {
           {/* Profile Content */}
           <div className="profileContent">
             <div className="mainCont">
-              <h2>My Personal</h2>
-              {/* <div className="profileHeader">
-                <h3>Create New Course</h3>
-                <button className="btn btn-default createBtn"><span>+</span> Create Course</button>
-              </div> */}
-              <div className="uploadImg">
-                <div className="inner">
-                  <Img
-                    src={userObj.image || 'https://i.imgur.com/qUzPHy4.jpg'}
-                    alt="Profile"
-                  />
-                  <Label className="edit">
-                    <img src={Cam} alt="Cam" />
-                    {' '}
-                    <input
-                      type="file"
-                      name="image"
-                      id="uploadimage"
-                      placeholder="Upload Profile Image"
-                      onChange={e => updateProfileImg(e)}
-                    />
-                  </Label>
-                </div>
-                <div className="uploadBtns">
-                  <Label className="upload">
-                    {' '}
-                    <FormattedMessage {...messages.ChangeProfile} />
-                    <input
-                      type="file"
-                      name="image"
-                      id="uploadimage"
-                      placeholder="Upload Profile Image"
-                      onChange={e => updateProfileImg(e)}
-                    />
-                  </Label>
-                  <button className="btn btn-default">Delete Photo</button>
-                </div>
+              <div className="profileHeader">
+                <h3>Notification (3)</h3>
+                <button type="button" className="btn btn-default readAllBtn" >Mark all as read</button>
               </div>
-              <BasicInfo />
+              <div className="uploadImg">
+                
+              </div>
             </div>
           </div>
         </div>
+
         {/* end */}
       </div>
     </>

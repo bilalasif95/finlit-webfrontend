@@ -58,6 +58,73 @@ const Wrapper = styled.div`
         }
       }
     }
+    .quiz {
+      width: 100%;
+      .inner_box {
+        border: 1px solid #d8d8d8;
+        border-radius: 0.313rem;
+        .title {
+          background-color: #fbfbf8;
+          border-bottom: 1px solid #d8d8d8;
+          padding: 1rem 1.5rem;
+        }
+        .quiz_box {
+          padding: 1.5rem;
+          ul {
+            margin: 1rem 0 0;
+            padding: 0;
+            li {
+              list-style: none;
+              margin: 0 0 0.5rem;
+              .form-check {
+                padding-left: 0;
+                margin-bottom: 0;
+              }
+              label {
+                align-items: center;
+                border: 1px solid #d8d8d8;
+                display: flex;
+                color: #404041;
+                font-size: 0.875rem;
+                font-weight: 500;
+                margin: 0;
+                padding: 0.25rem;
+              }
+              &:first-child {
+                .form-check-input {
+                  content: '1';
+                }
+              }
+              &:nth-child(2) {
+                .form-check-input {
+                  background: url(https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) no-repeat;
+                  background-size: cover;
+                }
+              }
+              &:last-child {
+                background: url(https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) no-repeat;
+                background-size: cover;
+              }
+            }
+          }
+          .form-check-input[type=radio] {
+            border-radius: 0px !important;
+          }
+          .form-check-input {
+            background-color: #d8d8d8;
+            border: 1px solid #d8d8d8;
+            height: 1.5rem;
+            margin-top: 0;
+            margin-left: 0;
+            margin-right: 1rem;
+            width: 1.5rem;
+            &:focus {
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
     .intro {
       display: none;
       border: 1px solid #d8d8d8;

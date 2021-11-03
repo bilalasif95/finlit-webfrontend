@@ -152,27 +152,45 @@ function CourseSidebar(props) {
               <p>50/100</p>
             </div>
             <div className="progress_bar">
-            <Progress value={50} />
+              <Progress value={50} />
             </div>
           </div>
           <div className="quiz">
             <div className="inner_box">
               <div className="title">
-                <h4>Quiz 1</h4>
-                </div>
-                <div classname="quiz_box">
-                  <h6>The acronym PC stands for?</h6>
-                  <ul>
-                    <li>
-                      <Label>
-                        <Input type="radio" />
-                        
+                <h6>Quiz 1</h6>
+              </div>
+              <div className="quiz_box">
+                <h6>The acronym PC stands for?</h6>
+                <ul>
+                  <li>
+                    <FormGroup check>
+                      <Label check>
+                        <Input type="radio" name="radio1" />{' '}
+                        Private Computer
                       </Label>
-                    </li>
-                  </ul>
-                  </div>
+                    </FormGroup>
+                  </li>
+                  <li>
+                    <FormGroup check>
+                      <Label check>
+                        <Input type="radio" name="radio1" />{' '}
+                        Personal Computer
+                      </Label>
+                    </FormGroup>
+                  </li>
+                  <li>
+                    <FormGroup check>
+                      <Label check>
+                        <Input type="radio" name="radio1" />{' '}
+                        Personal Compact
+                      </Label>
+                    </FormGroup>
+                  </li>
+                </ul>
               </div>
             </div>
+          </div>
         </div>
       </div>
       <ToastContainer />
