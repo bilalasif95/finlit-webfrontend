@@ -348,7 +348,7 @@ aside > a {
   border: 1px solid #d8d8d8;
   padding: 7px 10px;
   display: table;
-  margin: 0px 24px;
+  margin: 0 1.25rem;
   color: #404041;
   border-radius: 5px;
   position: absolute;
