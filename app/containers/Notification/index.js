@@ -3,10 +3,8 @@
  *
  */
 import React, { useState, useEffect } from 'react';
-import { FormattedMessage } from 'react-intl';
 // import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
 import '../../components/student-panel/Header/profile.css';
 // import { withStyles } from '@material-ui/core/styles';
 import {
@@ -24,90 +22,66 @@ import {
   Card,
   CardBody,
 } from 'reactstrap';
-import { BiUserCircle, } from 'react-icons/bi';
-import { BsChatSquare } from 'react-icons/bs';
-import { FaChevronDown } from 'react-icons/fa';
-import { RiUserSettingsLine } from 'react-icons/ri';
-import Bell from '../../images/bell.svg';
-import { RiKeyLine } from 'react-icons/ri';
-import classnames from 'classnames';
-import { ToastContainer, toast } from 'react-toastify';
-import axios from 'axios';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
-import Wrapper from './Wrapper';
-import Img from '../../components/Img';
 import Logo from "../../images/logoS.png"
-import Cam from "../../images/cam.png"
-import { API } from '../../config/config';
-import BasicInfo from '../../components/MyProfilePage/BasicInfo';
+import Green from "../../images/green-e.png"
+import Boy from "../../images/boy.png"
+import Girl from "../../images/girl.png"
+import Red from "../../images/red-e.png"
 import Sidebar from '../../components/student-panel/Sidebar/index';
-import ChangePassword from '../../components/MyProfilePage/ChangePassword';
-import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthentication';
 // import Profile from '../../images/profile.jpg';
 
 export default function Notification() {
   const [activeTab, setActiveTab] = useState('1');
-  const [userObj, setUserObj] = useState({});
-  const [collapse, setCollapse] = useState(false);
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
-  const getCurrentUser = () => {
-    const token = localStorage.getItem('token');
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-    axios
-      .get(`${API}api/user/${userInfo && userInfo.id}`, {
-        headers: {
-          Accept: 'application/json',
-          ...authHeaders,
-        },
-      })
-      .then(res => {
-        setUserObj(res.data);
-      })
-      .catch(err => {
-        toast.error(
-          err.response && err.response.data.message
-            ? err.response.data.message.toString()
-            : 'Message Not Readable',
-        );
-      });
-  };
-  const updateProfileImg = e => {
-    // setNewProfileImg(e.target.files[0]);
-    const token = localStorage.getItem('token');
-    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-    const bodyFormData = new FormData();
-    bodyFormData.append('profileImage', e.target.files[0]);
-    axios
-      .put(`${API}api/user/updateProfilePic`, bodyFormData, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          ...authHeaders,
-        },
-      })
-      .then(res => {
-        toast.success(
-          res && res.data ? res.data.message : 'Message Not Readable',
-        );
-        // setNewProfileImg({});
-        getCurrentUser();
-      })
-      .catch(err => {
-        toast.error(
-          err.response && err.response.data.message
-            ? err.response.data.message.toString()
-            : 'Message Not Readable',
-        );
-        // setNewProfileImg({});
-      });
-  };
-  useEffect(() => {
-    getCurrentUser();
-  }, []);
+  const Notifications = [
+    {
+      img: Logo,
+      message: "Programming with Python: HandsOn Introduction for Beginners FinLit",
+      time: "17 days ago",
+      icon: Green,
+    },
+    {
+      img: Boy,
+      message: "Programming with Python: HandsOn Introduction for Beginners FinLit",
+      time: "17 days ago",
+      icon: Red,
+    },
+    {
+      img: Girl,
+      message: "Programming with Python: HandsOn Introduction for Beginners FinLit",
+      time: "17 days ago",
+      icon: Red,
+    },
+    {
+      img: Logo,
+      message: "Programming with Python: HandsOn Introduction for Beginners FinLit",
+      time: "17 days ago",
+      icon: Red,
+    },
+    {
+      img: Logo,
+      message: "Programming with Python: HandsOn Introduction for Beginners FinLit",
+      time: "17 days ago",
+      icon: Red,
+    },
+    {
+      img: Logo,
+      message: "Programming with Python: HandsOn Introduction for Beginners FinLit",
+      time: "17 days ago",
+      icon: Red,
+    },
+    {
+      img: Logo,
+      message: "Programming with Python: HandsOn Introduction for Beginners FinLit",
+      time: "17 days ago",
+      icon: Red,
+    },
+  ]
+
   return (
     <>
       {/* <ToastContainer /> */}
@@ -125,9 +99,18 @@ export default function Notification() {
                 <h3>Notification (3)</h3>
                 <button type="button" className="btn btn-default readAllBtn" >Mark all as read</button>
               </div>
-              <div className="uploadImg">
-                
-              </div>
+              {Notifications.map((data) => (
+                <div className="NotificationCont">
+                  <div className="NotificationImg">
+                    <div className="notiImg"><img src={data.img} /></div>
+                    <p>{data.message}</p>
+                  </div>
+                  <div className="NotificationImg">
+                    <p className="notitime">{data.time} </p>
+                    <img src={data.icon} />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
