@@ -74,6 +74,6 @@ export default defineMessages({
   },
   LogOut: {
     id: `${scope}.LogOut`,
-    defaultMessage: 'Log Out',
+    defaultMessage: 'Logout',
   },
 });

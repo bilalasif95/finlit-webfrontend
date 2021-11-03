@@ -12,11 +12,12 @@ import history from 'utils/history';
 import { Link } from 'react-router-dom';
 import { GoDeviceCameraVideo } from 'react-icons/go';
 import { BiTimeFive } from 'react-icons/bi';
-import { MdDashboard } from 'react-icons/md';
+import { FaAward } from 'react-icons/fa';
 import { BsTagFill } from 'react-icons/bs';
 import { SiAirplayvideo } from 'react-icons/si';
 import { RiStarSFill } from 'react-icons/ri';
-import { HiUsers, HiOutlineArrowNarrowRight } from 'react-icons/hi';
+import { GrCart, GrCirclePlay, GrCertificate } from 'react-icons/gr';
+import { HiUser, HiOutlineArrowNarrowRight } from 'react-icons/hi';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API } from '../../../../config/config';
@@ -58,10 +59,12 @@ function CourseSidebar(props) {
           {/* <h4>${dataDetails && dataDetails.price}</h4>
           <del>${dataDetails && dataDetails.price}</del> */}
           <h4>$44.99</h4>
-          <del>$100</del>
-          {/* <span>|&nbsp;&nbsp;87% off</span> */}
+          <div className="old_price">
+            <del>$100</del>
+            <span>50% off</span>
+          </div>
         </div>
-        <div className="rating">
+        {/* <div className="rating">
           <p>4.7</p>
           <div className="stars">
             <RiStarSFill />
@@ -71,32 +74,33 @@ function CourseSidebar(props) {
             <RiStarSFill />
           </div>
           <p>(76,876 ratings)</p>
-        </div>
-        <Link to="/" className="event_link">
-          <FormattedMessage {...messages.AttendEvent} />
-        </Link>
+        </div> */}
         {/* <Button onClick={() => handleAddToCart()} disabled={loader}>
           {loader ? 'Loading..' : <FormattedMessage {...messages.AddtoCart} />}
         </Button> */}
-        <Button className="noselect">
-          <FormattedMessage {...messages.AddtoCart} className="text" />
-          <HiOutlineArrowNarrowRight className="icon" />
+        <Button className="add_cart">
+          <span className="icon"><GrCart /></span>
+          <span className="text">
+            <FormattedMessage {...messages.AddtoCart} />
+          </span>
         </Button>
-        <div className="test">
-          <button className="noselect"><span className='text'>Delete</span><span className="icon"><HiOutlineArrowNarrowRight /></span></button>
-        </div>
+        {/* <div className="test">
+          <button className="noselect"><span className="text">Delete</span></button>
+        </div> */}
+        <Button className="enroll_now">
+          <span className="icon"><HiOutlineArrowNarrowRight /></span>
+          <span className="text">
+            <FormattedMessage {...messages.EnrollNow} />
+          </span>
+        </Button>
       </div>
       <div className="details">
         <h4>
-          <FormattedMessage {...messages.HackathonDetails} />
+          <FormattedMessage {...messages.Details} />
         </h4>
         <ul className="list">
           <li>
-            <HiUsers />
-            <p>1200 Attendees</p>
-          </li>
-          <li>
-            <BiTimeFive />
+            <GrCirclePlay />
             <p>2 hours</p>
           </li>
           <li>
@@ -104,19 +108,20 @@ function CourseSidebar(props) {
             <p>8 Lectures</p>
           </li>
           <li>
-            <MdDashboard />
-            <p>Development</p>
+            <HiUser />
+            <p>1200 Enroll</p>
           </li>
           <li>
-            <BsTagFill />
-            <p>Android, JavaScript</p>
+            <BiTimeFive />
+            <p>Full lifetime access</p>
           </li>
           <li>
-            <SiAirplayvideo />
-            <p>English, French</p>
+            {/* <GrCertificate /> */}
+            <FaAward />
+            <p>Certificate of completion</p>
           </li>
         </ul>
-        <FormGroup>
+        {/* <FormGroup>
           <Input
             type="text"
             name="coupon"
@@ -126,7 +131,7 @@ function CourseSidebar(props) {
           <Button>
             <FormattedMessage {...messages.Apply} />
           </Button>
-        </FormGroup>
+        </FormGroup> */}
       </div>
       <ToastContainer />
     </Wrapper>

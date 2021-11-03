@@ -8,17 +8,17 @@ import { defineMessages } from 'react-intl';
 export const scope = 'boilerplate.components.CartCheckoutSidebar';
 
 export default defineMessages({
-  AttendEvent: {
-    id: `${scope}.AttendEvent`,
-    defaultMessage: `Attend Event`,
+  EnrollNow: {
+    id: `${scope}.EnrollNow`,
+    defaultMessage: `Enroll Now`,
   },
   AddtoCart: {
     id: `${scope}.AddtoCart`,
     defaultMessage: `Add to Cart`,
   },
-  HackathonDetails: {
-    id: `${scope}.HackathonDetails`,
-    defaultMessage: `Hackathon Details`,
+  Details: {
+    id: `${scope}.Details`,
+    defaultMessage: `This course includes`,
   },
   Apply: {
     id: `${scope}.Apply`,

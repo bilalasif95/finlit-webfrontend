@@ -37,7 +37,7 @@ aside {
   box-sizing: border-box;
   padding-top: 70px;
   transition: all 0.4s ease;
-  z-index: 1;
+  z-index: 2;
   /* border-top-right-radius: 100%;
     border-bottom-right-radius: 100%; */
   /* box-shadow: 2px 3px 4px #000; */
@@ -65,7 +65,9 @@ aside > a {
   border-bottom: 1px solid #414141;
 }
 .toggle-wrap {
-  padding: 10px;
+  color: #8b8b8b;
+  margin: 0 2rem;
+  padding: 0;
   position: relative;
   cursor: pointer;
   float: left;
@@ -94,7 +96,7 @@ aside > a {
 }
 .toggle-bar {
   width: 25px;
-  margin: 1rem;
+  margin: 0.5rem 1rem 0.5rem 0;
   position: relative;
   border-top: 3px solid #8b8b8b;
   display: block;

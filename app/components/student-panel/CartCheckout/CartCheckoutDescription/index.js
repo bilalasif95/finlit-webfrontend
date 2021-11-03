@@ -21,6 +21,7 @@ import Card from '../../../../images/cardImg1.png';
 import Card2 from '../../../../images/cardImg2.png';
 import CardIcon from '../../../../images/cardIcon.png';
 import Cart from '../../../../images/cart.png';
+import MoreCourses from '../../MoreCourses';
 function CartCheckoutDescription(props) {
   return (
     <Wrapper id="list">
@@ -166,6 +167,7 @@ function CartCheckoutDescription(props) {
             </ul>
           </div>
           <div className="customBorder" />
+          <MoreCourses />
           <div className="moreCourses">
             <h2>More courses for you</h2>
             <div className="row">

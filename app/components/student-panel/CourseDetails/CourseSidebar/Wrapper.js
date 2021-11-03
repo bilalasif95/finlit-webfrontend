@@ -1,30 +1,45 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  border: 1px solid #d8d8d8;
+  border-radius: 0.625rem;
+  margin: 30px 0 16px;
   width: 100%;
   .top_detail {
+    border-bottom: 1px solid #d8d8d8;
     display: flex;
     flex-direction: column;
-    margin: 30px 0 16px;
+    padding: 1.5rem;
     .prices {
-      align-items: center;
+      align-items: flex-start;
       display: flex;
+      flex-direction: column;
       justify-content: flex-start;
+      margin: 0 0 0.5rem;
       width: 100%;
+      .old_price {
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;
+      }
       h4 {
-        color: #ec5252;
-        font-size: 1.25rem;
-        font-weight: 550;
-        margin: 0;
+        color: #404041;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0 0 0.5rem;
       }
       del {
         color: #8b8b8b;
         font-size: 0.875rem;
-        margin: 0 0.5rem;
+        margin: 0 1rem 0 0;
       }
       span {
-        color: #8b8b8b;
-        font-size: 0.875rem;
+        background-color: #ffd416;
+        border-radius: 0.188rem;
+        color: #404041;
+        font-size: 0.625rem;
+        font-weight: 550;
+        padding: 0.25rem 0.5rem;
       }
     }
     .rating {
@@ -51,43 +66,86 @@ const Wrapper = styled.div`
         }
       }
     }
-    .event_link {
+    .enroll_now {
+      background-color: transparent;
       border: 1px solid #707070;
-      border-radius: 0.313rem;
       color: #8b8b8b;
-      font-size: 0.875rem;
-      padding: 0.85rem;
-      text-align: center;
-      text-decoration: none;
+      svg {
+        path {
+          stroke: #8b8b8b;
+        }
+      }
     }
-    button {
+    .add_cart {
       background-color: #46a135;
       border: 1px solid #46a135;
+      color: #fff;
+      svg {
+        path {
+          stroke: #fff;
+        }
+      }
+    }
+    button {
       border-radius: 0.313rem;
       color: #fff;
       font-size: 0.875rem;
       font-weight: 550;
       line-height: 17px;
+      font-size: 0.875rem;
+      padding: 0.85rem;
+      text-align: center;
+      text-decoration: none;
       margin: 1rem 0 0;
       padding: 0.85rem;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
       width: 100%;
-      &:hover {
-        background-color: #46a135;
-        border: 1px solid #46a135;
-      }
+      &:hover,
       &:focus {
-        background-color: #46a135;
-        border: 1px solid #46a135;
         box-shadow: none;
       }
     }
+    button, span {
+      transition: 200ms;
+    }
+    
+    .text {
+      width: 100%;
+    }
+    
+    .icon {
+      position: absolute;
+      transform: translateX(0);
+      height: 1.25rem;
+      width: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+     svg {
+      font-size: 1.25rem;
+    }
+    button:hover .text {
+      color: transparent;
+    }
+    
+    button:hover .icon {
+      width: 90%;
+      transform: translateX(0);
+    }
   }
   .details {
-    background-color: #fbfbfb;
-    margin: 1rem 0 0;
-    padding: 2rem;
+    padding: 1.5rem;
     h4 {
-      color: #484848;
+      color: #404041;
       font-size: 1.25rem;
       line-height: 24px;
       margin: 0 0 1rem;
@@ -102,11 +160,11 @@ const Wrapper = styled.div`
         font-size: 0.875rem;
         line-height: 17px;
         list-style: none;
-        justify-content: space-between;
+        justify-content: flex-start;
         padding: 0 0 1rem;
         svg {
-          margin: 0 0.5rem 0 0;
-        }
+          font-size: 1.25rem;
+          margin: 0 1rem 0 0;
         p {
           margin: 0;
           width: 100%;

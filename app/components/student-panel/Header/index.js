@@ -23,7 +23,7 @@ import history from 'utils/history';
 import './profile.css';
 import { HiSearch, HiUser } from 'react-icons/hi';
 import { BiHeart } from 'react-icons/bi';
-// import { RiDashboardFill } from 'react-icons/ri';
+import { RiUserSettingsLine } from 'react-icons/ri';
 import { FaRegListAlt, FaLongArrowAltRight } from 'react-icons/fa';
 //  FaRegUserCircle, , FaUserCog
 import { FiLogOut } from 'react-icons/fi';
@@ -31,7 +31,8 @@ import { FiLogOut } from 'react-icons/fi';
 // import { MdLogout } from 'react-icons/md';
 // import { MdNotificationsActive, MdChat } from 'react-icons/md';
 // IoIosHelpCircle
-import { IoMdCart, IoMdNotificationsOutline } from 'react-icons/io';
+import { GrCart } from 'react-icons/gr';
+import { IoMdNotificationsOutline } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Logo from '../../../images/logo.svg';
@@ -251,12 +252,14 @@ const Header = () => {
 
             </Nav>
             <div className="nav_right">
-
-              <UncontrolledDropdown nav>
+              <UncontrolledDropdown nav className="alert_dropdown">
                 <DropdownToggle nav caret>
-                  <IoMdCart />
+                  <GrCart />
+                  <div className="count">
+                    10
+                  </div>
                 </DropdownToggle>
-                <DropdownMenu right>
+                <DropdownMenu>
                   <DropdownItem>
                     1
                   </DropdownItem>
@@ -268,11 +271,14 @@ const Header = () => {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-              <UncontrolledDropdown nav>
+              <UncontrolledDropdown nav className="alert_dropdown">
                 <DropdownToggle nav caret>
                   <IoMdNotificationsOutline />
+                  <div className="count">
+                    10
+                  </div>
                 </DropdownToggle>
-                <DropdownMenu right>
+                <DropdownMenu>
                   <DropdownItem>
                     1
                   </DropdownItem>
@@ -352,6 +358,13 @@ const Header = () => {
                         </div>
                         <div />
                       </DropdownItem>
+                      {/* <DropdownItem>
+                        <div>
+                          <IoLanguage />
+                          <FormattedMessage {...messages.MyCourses} />
+                        </div>
+                        <div />
+                      </DropdownItem> */}
                       <DropdownItem
                       // onClick={() => {
                       //   history.push('/course');
@@ -359,6 +372,7 @@ const Header = () => {
                       >
                         <div>
                           {/* <FaUserCog /> */}
+                          <RiUserSettingsLine />
                           <FormattedMessage {...messages.Settings} />
                         </div>
                         <div />
