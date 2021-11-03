@@ -19,8 +19,16 @@ import {
   Nav,
   NavItem,
   NavLink,
+  Button,
+  Collapse,
+  Card,
+  CardBody,
 } from 'reactstrap';
 import { BiUserCircle, } from 'react-icons/bi';
+import { BsChatSquare } from 'react-icons/bs';
+import { FaChevronDown } from 'react-icons/fa';
+import { RiUserSettingsLine } from 'react-icons/ri';
+import Bell from '../../images/bell.svg';
 import { RiKeyLine } from 'react-icons/ri';
 import classnames from 'classnames';
 import { ToastContainer, toast } from 'react-toastify';
@@ -40,6 +48,7 @@ import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthenticat
 export default function MyProfilePage() {
   const [activeTab, setActiveTab] = useState('1');
   const [userObj, setUserObj] = useState({});
+  const [collapse, setCollapse] = useState(false);
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
@@ -114,7 +123,45 @@ export default function MyProfilePage() {
                 <p><BiUserCircle /></p>
                 Profile
               </Link>
+              <div className="customDropdown">
+                <Button
+                  className="sideNavLink btn btn-default"
+                  type="button"
+                  color="primary"
+                  onClick={() => setCollapse(!collapse)}
+                  style={{
+                    marginBottom: '1rem'
+                  }}
+                >
+                  <p><BsChatSquare /></p>
+                  My Collection &nbsp;<span><FaChevronDown /></span>
+                </Button>
+                {collapse &&
+                  <Collapse className={collapse ? "show" : ""}>
+                    <Card>
+                      <CardBody>
+                        <ul className="list-unstyled sideList">
+                          <li><Link>Course</Link></li>
+                          <li><Link>Bootcamp</Link></li>
+                          <li><Link>Hackathon</Link></li>
+                          <li><Link>One to one session</Link></li>
+                          <li><Link>Live webinar</Link></li>
+                          <li><Link>Article</Link></li>
+                        </ul>
+                      </CardBody>
+                    </Card>
+                  </Collapse>}
+              </div>
+              <Link className="sideNavLink">
+                <p><RiUserSettingsLine /></p>
+                Setting
+              </Link>
+              <Link className="sideNavLink">
+                <p><img src={Bell} alt="bell" /></p>
+                Setting
+              </Link>
             </div>
+            <Link to="/" className="backBtn">Back to Home</Link>
           </div>
           {/* Profile Content */}
           <div className="profileContent">

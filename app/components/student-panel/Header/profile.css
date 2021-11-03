@@ -171,11 +171,14 @@ aside > a {
 
   } */
 .profileAside {
-  width: 10%;
+  width: 11%;
   background-color: #fff;
   box-shadow: 2px 3px 4px #cececeb8;
   height: 100vh;
+  position: fixed;
   padding: 50px 0px 30px 0px;
+  z-index: 1;
+  top: 0;
 }
 .profilePages {
   padding: 0px;
@@ -185,9 +188,10 @@ aside > a {
   display: flex;
 }
 .profileContent {
-  width: 90%;
+  width: 89%;
   padding: 50px 50px;
   box-shadow: 2px 3px 4px #cececeb8;
+  margin-left: 156px;
 }
 .mainCont {
   padding: 50px 40px;
@@ -280,20 +284,75 @@ aside > a {
 .sideNavLink {
   display: block;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   color: #404041;
   font-weight: 600;
-  padding: 10px 0px;
-  border-left: 3px solid transparent;
+  padding: 12px 0px;
+  border-width: 0px 0px 0px 4px;
+  border-style: solid;
+  border-color: transparent;
   transition: 0.4s linear;
 }
 .sideNavLink svg {
   height: 24px;
   width: 24px;
 }
+.sideNavLink img {
+  height: 24px;
+  width: 24px;
+}
 .sideNavLink:hover{
   background-color: #46a1353b;
-  border-left: 3px solid #46a135;
+  border-left: 4px solid #46a135;
   color: #46a135;
+  text-decoration: none;
+}
+.customDropdown button {
+  width: 100%;
+  border-radius: 0px;
+  background-color: transparent !important;
+  margin-bottom: 0px !important;
+}
+.customDropdown button span svg {
+  width: 12px;
+}
+.customDropdown button:focus, .customDropdown button:hover, .customDropdown button:active{
+  outline: none;
+  box-shadow: none !important;
+  border-left: 4px solid #46a135;
+  color: #46a135;
+  background-color: #46a1353b !important;
+}
+.sideNavLink:focus {
+  color: #404041;
+  text-decoration: none;
+}
+.collapse .card {
+  border: none;
+}
+.collapse .card .card-body {
+  padding: 20px 12px 0px 28px;
+}
+.sideList li a {
+  color: #909090;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.sideList li a:hover {
+  color: #46a135;
+}
+.backBtn {
+  border: 1px solid #d8d8d8;
+  padding: 7px 10px;
+  display: table;
+  margin: 0px 24px;
+  color: #404041;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 20px;
+}
+.backBtn:hover {
+  color: #404041;
   text-decoration: none;
 }
