@@ -399,3 +399,10 @@ aside > a {
 .notitime {
   margin-right: 100px;
 }
+.notificationPanel {
+  height: 87vh;
+  overflow-y: scroll;
+}
+.notificationPanel::-webkit-scrollbar {
+  display: none;
+}

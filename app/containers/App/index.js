@@ -139,7 +139,7 @@ const App = () => {
         history.location.pathname === '/my_profile' ||
         // history.location.pathname === '/email_verification' ||
         history.location.pathname === '/create_new_password' ||
-        history.location.pathname === '/notification' ||
+        // history.location.pathname === '/notification' ||
         // history.location.pathname === '/forgot_password' ||
         history.location.pathname === '/two_fa' ? null : (
         <Footer />
