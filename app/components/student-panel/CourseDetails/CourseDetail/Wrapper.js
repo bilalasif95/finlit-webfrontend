@@ -31,16 +31,6 @@ const Wrapper = styled.div`
         // object-fit: cover;
       }
     }
-    .breadcrumb_bar {
-      a {
-        color:#5ca54e;
-        text-decoration: none;
-      }
-      .active {
-        color: #404041;
-        font-weight: 550;
-      }
-    }
     .header {
       align-items: baseline;
       display: flex;
