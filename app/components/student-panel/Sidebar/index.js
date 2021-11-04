@@ -3,7 +3,7 @@
  */
 import React, { useState, useEffect } from 'react';
 import Logo from "../../../images/logoS.png";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { BiUserCircle, } from 'react-icons/bi';
 import { BsChatSquare } from 'react-icons/bs';
 import { FaChevronDown } from 'react-icons/fa';
@@ -17,17 +17,22 @@ import {
 } from 'reactstrap';
 
 
-function Sidebar() {
+function Sidebar(props) {
+  console.log(props)
   const [collapse, setCollapse] = useState(false);
+  const [active, setActive] = useState(props.location.pathname);
+
   return (
     <div className="profileAside">
       <img className="img-fluid mx-auto d-block" src={Logo} alt="Logo" />
       <div className="sideNav">
-        <Link to="/my_profile" className="sideNavLink">
-          <p><BiUserCircle /></p>
-          Profile
-        </Link>
-        <div className="customDropdown">
+        <div className={active === "/my_profile" ? "active sideNavLink" : "sideNavLink"}>
+          <Link to="/my_profile">
+            <p><BiUserCircle /></p>
+            Profile
+          </Link>
+        </div>
+        <div className={active === "customDropdown" ? "active customDropdown" : "customDropdown"} onClick={() => setActive("customDropdown")}>
           <Button
             className="sideNavLink btn btn-default"
             type="button"
@@ -56,14 +61,19 @@ function Sidebar() {
               </Card>
             </Collapse>}
         </div>
-        <Link className="sideNavLink">
+        <div className={active === "/setting" ? "active sideNavLink" : "sideNavLink"}>
+        <Link to="/setting">
           <p><RiUserSettingsLine /></p>
           Setting
         </Link>
-        <Link to="/notification" className="sideNavLink">
-          <p><img src={Bell} alt="bell" /></p>
-          Notification
-        </Link>
+        </div>
+        
+        <div className={active === "/notification" ? "active sideNavLink" : "sideNavLink"}>
+          <Link to="/notification">
+            <p><img src={Bell} alt="bell" /></p>
+            Notification
+          </Link>
+        </div>
       </div>
       <div className="homeBtn">
         <Link to="/" className="backBtn">Back to Home</Link>
@@ -72,4 +82,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default withRouter(Sidebar);
