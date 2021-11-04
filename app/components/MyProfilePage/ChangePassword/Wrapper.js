@@ -8,8 +8,8 @@ const Wrapper = styled.div`
     }
     .form_footer {
       position: absolute;
-      bottom: 0;
-      right: 0;
+      bottom: 50px;
+      right: 40px;
     }
   }
 `;

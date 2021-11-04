@@ -14,15 +14,15 @@ export default defineMessages({
   },
   YourCurrentPassword: {
     id: `${scope}.YourCurrentPassword`,
-    defaultMessage: 'Enter current password*',
+    defaultMessage: 'Current password',
   },
   NewPassword: {
     id: `${scope}.NewPassword`,
-    defaultMessage: 'Enter new password*',
+    defaultMessage: 'New password',
   },
   ConfirmPassword: {
     id: `${scope}.ConfirmPassword`,
-    defaultMessage: 'Confirm new password*',
+    defaultMessage: 'Confirm password',
   },
   Cancel: {
     id: `${scope}.Cancel`,
@@ -30,6 +30,6 @@ export default defineMessages({
   },
   Save: {
     id: `${scope}.Save`,
-    defaultMessage: 'Save',
+    defaultMessage: 'Update Password',
   },
 });

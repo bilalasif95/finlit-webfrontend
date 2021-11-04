@@ -46,6 +46,7 @@ import HackathonListPage from 'containers/instructor-panel/HackathonListPage/Loa
 import BootcampListPage from 'containers/instructor-panel/BootcampListPage/Loadable';
 import MyProfilePage from 'containers/MyProfilePage/Loadable';
 import Notification from 'containers/Notification/Loadable';
+import Setting from 'containers/ProfileSetting/Loadable';
 import SigninPage from 'containers/SigninPage/Loadable';
 import TwoFAPage from 'containers/TwoFAPage/Loadable';
 import SignupPage from 'containers/SignupPage/Loadable';
@@ -84,6 +85,7 @@ const App = () => {
           // history.location.pathname === '/email_verification' ||
           history.location.pathname === '/create_new_password' ||
           history.location.pathname === '/notification' ||
+          history.location.pathname === '/setting' ||
           // history.location.pathname === '/forgot_password' ||
           history.location.pathname === '/two_fa' ? null : userInfo &&
             userInfo.roles[0].roleName === 'Instructor' ? (
@@ -126,6 +128,7 @@ const App = () => {
         <Route path="/bootcamps_list" component={BootcampListPage} />
         <Route path="/my_profile" component={MyProfilePage} />
         <Route path="/notification" component={Notification} />
+        <Route path="/setting" component={Setting} />
         <Route path="/login" component={SigninPage} />
         <Route path="/two_fa" component={TwoFAPage} />
         <Route path="/signup" component={SignupPage} />
