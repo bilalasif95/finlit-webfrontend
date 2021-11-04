@@ -160,6 +160,10 @@ function CartCheckoutSidebar(props) {
                   />
                 </div>
               </FormGroup>
+              {paymentType.card ? (
+                <h2>card</h2>
+              ) : ''}
+              
             </FormGroup>
             <FormGroup tag="fieldset" className="cardSelect">
               <FormGroup check>
