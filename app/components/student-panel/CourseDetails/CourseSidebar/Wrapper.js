@@ -88,7 +88,7 @@ const Wrapper = styled.div`
                 font-size: 0.875rem;
                 font-weight: 500;
                 margin: 0;
-                padding: 0.25rem;
+                padding: 0.4rem;
               }
               &:first-child {
                 .form-check-input {
@@ -102,8 +102,10 @@ const Wrapper = styled.div`
                 }
               }
               &:last-child {
-                background: url(https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) no-repeat;
-                background-size: cover;
+                .form-check-input {
+                  background: url(https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) no-repeat;
+                  background-size: cover;
+                }
               }
             }
           }

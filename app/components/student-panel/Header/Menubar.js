@@ -54,6 +54,7 @@ const Menubar = styled.div`
       .count {
         background-color: #ec5252;
         border-radius: 0.5rem;
+        color: #fff;
         font-size: 0.65rem;
         padding: 2px;
         line-height: normal;
@@ -67,7 +68,7 @@ const Menubar = styled.div`
     }
   }
   .registration {
-    width: 45%;
+    max-width: 45%;
     .dropdown {
       display: flex;
       justify-content: flex-end;
@@ -124,7 +125,7 @@ const Menubar = styled.div`
       justify-content: flex-end;
       .nav-item:last-child {
         .nav-link {
-          border: 1px solid #fff;
+          border: 1px solid #255f2b;
           border-radius: 3px;
           padding: 0.5rem 0.75rem;
         }
@@ -161,15 +162,16 @@ const Menubar = styled.div`
     margin: 0;
   }
   .nav-link {
-    color: #fff;
+    color: #255f2b;
     font-size: 0.875rem;
     font-weight: 500;
     word-break: keep-all;
     line-height: 14px;
     padding: 0.5rem 0;
+    text-decoration: none;
     &:focus,
     &:hover {
-      color: #f4f4f4;
+      color: #255f2b;
     }
   }
   .dropdown-toggle::after {
