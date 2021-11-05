@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Menubar = styled.div`
   background-color: #fff;
-  box-shadow: 0px 5px 21px 0px rgba(0,0,0,0.14);
+  box-shadow: 0px 5px 21px 0px rgba(0, 0, 0, 0.14);
   z-index: 1;
   .input-group {
     .form-control {

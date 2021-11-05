@@ -4,31 +4,33 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FormGroup, Input, Progress, Button, Label } from 'reactstrap';
-import axios from 'axios';
-import PropTypes from 'prop-types';
-import { ToastContainer, toast } from 'react-toastify';
+// import axios from 'axios';
+// import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
+// toast
 import 'react-toastify/dist/ReactToastify.css';
-import history from 'utils/history';
-import { Link } from 'react-router-dom';
+// import history from 'utils/history';
+// import { Link } from 'react-router-dom';
 import { GoDeviceCameraVideo } from 'react-icons/go';
 import { BiTimeFive } from 'react-icons/bi';
 import { FaAward } from 'react-icons/fa';
-import { BsTagFill } from 'react-icons/bs';
-import { SiAirplayvideo } from 'react-icons/si';
+// import { BsTagFill } from 'react-icons/bs';
+// import { SiAirplayvideo } from 'react-icons/si';
 import { FiCheck } from 'react-icons/fi';
-import { GrCart, GrCirclePlay, GrCertificate } from 'react-icons/gr';
+import { GrCart, GrCirclePlay } from 'react-icons/gr';
+// GrCertificate
 import { HiUser, HiOutlineArrowNarrowRight } from 'react-icons/hi';
 import Wrapper from './Wrapper';
 import messages from './messages';
-import { API } from '../../../../config/config';
-import { axiosHeader } from '../../../../utils/axiosHeader';
+// import { API } from '../../../../config/config';
+// import { axiosHeader } from '../../../../utils/axiosHeader';
 
 function CourseSidebar(props) {
-  const [loader, setLoader] = useState(false);
+  // const [loader, setLoader] = useState(false);
   const [checkedValue, setCheckedValue] = useState(false);
   const [questionOne, setQuestionOne] = useState(true);
   const [questionTwo, setQuestionTwo] = useState(false);
-  const [questionThree, setQuestionThree] = useState(false);
+  // const [questionThree, setQuestionThree] = useState(false);
   // const { detail } = props;
   // const dataDetails = detail.data;
 
@@ -36,41 +38,41 @@ function CourseSidebar(props) {
     setQuestionOne(false);
     setQuestionTwo(true);
     setQuestionThree(false);
-  }
-  const handleQuestionTwo = () => {
-    setQuestionOne(false);
-    setQuestionTwo(false);
-    setQuestionThree(true);
-  }
-  const handleQuestionThree = () => {
-    setQuestionOne(true);
-    setQuestionTwo(false);
-    setQuestionThree(false);
-  }
-
-  const handleAddToCart = () => {
-    setLoader(true);
-    const data = {
-      productType: detail.type,
-      productId: detail.id,
-      price: dataDetails && dataDetails.price,
-    };
-
-    axios
-      .post(`${API}api/cart/addTocart`, data, axiosHeader)
-      .then(() => {
-        history.push('/cart');
-        setLoader(false);
-      })
-      .catch(err => {
-        setLoader(false);
-        toast.error(
-          err.response
-            ? err.response && err.response.message
-            : 'Message Not Readable',
-        );
-      });
   };
+  // const handleQuestionTwo = () => {
+  //   setQuestionOne(false);
+  //   setQuestionTwo(false);
+  //   setQuestionThree(true);
+  // }
+  // const handleQuestionThree = () => {
+  //   setQuestionOne(true);
+  //   setQuestionTwo(false);
+  //   setQuestionThree(false);
+  // }
+
+  // const handleAddToCart = () => {
+  //   setLoader(true);
+  //   const data = {
+  //     productType: detail.type,
+  //     productId: detail.id,
+  //     price: dataDetails && dataDetails.price,
+  //   };
+
+  //   axios
+  //     .post(`${API}api/cart/addTocart`, data, axiosHeader)
+  //     .then(() => {
+  //       history.push('/cart');
+  //       setLoader(false);
+  //     })
+  //     .catch(err => {
+  //       setLoader(false);
+  //       toast.error(
+  //         err.response
+  //           ? err.response && err.response.message
+  //           : 'Message Not Readable',
+  //       );
+  //     });
+  // };
 
   return (
     <Wrapper>
@@ -101,7 +103,9 @@ function CourseSidebar(props) {
           {loader ? 'Loading..' : <FormattedMessage {...messages.AddtoCart} />}
         </Button> */}
             <Button className="add_cart">
-              <span className="icon"><GrCart /></span>
+              <span className="icon">
+                <GrCart />
+              </span>
               <span className="text">
                 <FormattedMessage {...messages.AddtoCart} />
               </span>
@@ -110,7 +114,9 @@ function CourseSidebar(props) {
           <button className="noselect"><span className="text">Delete</span></button>
         </div> */}
             <Button className="enroll_now">
-              <span className="icon"><HiOutlineArrowNarrowRight /></span>
+              <span className="icon">
+                <HiOutlineArrowNarrowRight />
+              </span>
               <span className="text">
                 <FormattedMessage {...messages.EnrollNow} />
               </span>
@@ -163,7 +169,12 @@ function CourseSidebar(props) {
               <p>Expend time 8.3hr</p>
             </div>
             <div className="chart">
-              <img src="https://cdn.discordapp.com/attachments/548125906472796170/905387362706681866/unknown.png" alt="chart" height="100%" width="100%" />
+              <img
+                src="https://cdn.discordapp.com/attachments/548125906472796170/905387362706681866/unknown.png"
+                alt="chart"
+                height="100%"
+                width="100%"
+              />
             </div>
           </div>
           <div className="progress_session">
@@ -186,8 +197,18 @@ function CourseSidebar(props) {
                   <ul>
                     <li>
                       <FormGroup check>
-                        <Label check className={checkedValue === "radio1" ? "radio_bg" : ""}>
-                          <Input type="radio" name="radio1" value="radio1" onChange={(e) => setCheckedValue(e.target.value)} />{' '}
+                        <Label
+                          check
+                          className={
+                            checkedValue === 'radio1' ? 'radio_bg' : ''
+                          }
+                        >
+                          <Input
+                            type="radio"
+                            name="radio1"
+                            value="radio1"
+                            onChange={(e) => setCheckedValue(e.target.value)}
+                          />{' '}
                           <div className="check_mark">
                             <span>1</span>
                             <FiCheck />
@@ -200,8 +221,17 @@ function CourseSidebar(props) {
                     </li>
                     <li>
                       <FormGroup check>
-                        <Label check className={checkedValue === "radio2" ? "radio_bg" : ""}>
-                          <Input type="radio" name="radio2" value="radio2" onChange={(e) => setCheckedValue(e.target.value)} />{' '}
+                        <Label
+                          check
+                          className={checkedValue === 'radio2' ? 'radio_bg' : ''
+                          }
+                        >
+                          <Input
+                            type="radio"
+                            name="radio2"
+                            value="radio2"
+                            onChange={(e) => setCheckedValue(e.target.value)}
+                          />{' '}
                           <div className="check_mark">
                             <span>2</span>
                             <FiCheck />
@@ -214,8 +244,17 @@ function CourseSidebar(props) {
                     </li>
                     <li>
                       <FormGroup check>
-                        <Label check className={checkedValue === "radio3" ? "radio_bg" : ""}>
-                          <Input type="radio" name="radio3" value="radio3" onChange={(e) => setCheckedValue(e.target.value)} />{' '}
+                        <Label
+                          check
+                          className={checkedValue === 'radio3' ? 'radio_bg' : ''
+                          }
+                        >
+                          <Input
+                            type="radio"
+                            name="radio3"
+                            value="radio3"
+                            onChange={(e) => setCheckedValue(e.target.value)}
+                          />{' '}
                           <div className="check_mark">
                             <span>3</span>
                             <FiCheck />
@@ -233,10 +272,20 @@ function CourseSidebar(props) {
                 <div className="quiz_box">
                   <h6>The acronym PC stands for2?</h6>
                   <ul>
-                    <li>
+                  <li>
                       <FormGroup check>
-                        <Label check className={checkedValue === "radio1" ? "radio_bg" : ""}>
-                          <Input type="radio" name="radio1" value="radio1" onChange={(e) => setCheckedValue(e.target.value)} />{' '}
+                        <Label
+                          check
+                          className={
+                            checkedValue === 'radio1' ? 'radio_bg' : ''
+                          }
+                        >
+                          <Input
+                            type="radio"
+                            name="radio1"
+                            value="radio1"
+                            onChange={(e) => setCheckedValue(e.target.value)}
+                          />{' '}
                           <div className="check_mark">
                             <span>1</span>
                             <FiCheck />
@@ -249,8 +298,17 @@ function CourseSidebar(props) {
                     </li>
                     <li>
                       <FormGroup check>
-                        <Label check className={checkedValue === "radio2" ? "radio_bg" : ""}>
-                          <Input type="radio" name="radio2" value="radio2" onChange={(e) => setCheckedValue(e.target.value)} />{' '}
+                        <Label
+                          check
+                          className={checkedValue === 'radio2' ? 'radio_bg' : ''
+                          }
+                        >
+                          <Input
+                            type="radio"
+                            name="radio2"
+                            value="radio2"
+                            onChange={(e) => setCheckedValue(e.target.value)}
+                          />{' '}
                           <div className="check_mark">
                             <span>2</span>
                             <FiCheck />
@@ -263,8 +321,17 @@ function CourseSidebar(props) {
                     </li>
                     <li>
                       <FormGroup check>
-                        <Label check className={checkedValue === "radio3" ? "radio_bg" : ""}>
-                          <Input type="radio" name="radio3" value="radio3" onChange={(e) => setCheckedValue(e.target.value)} />{' '}
+                        <Label
+                          check
+                          className={checkedValue === 'radio3' ? 'radio_bg' : ''
+                          }
+                        >
+                          <Input
+                            type="radio"
+                            name="radio3"
+                            value="radio3"
+                            onChange={(e) => setCheckedValue(e.target.value)}
+                          />{' '}
                           <div className="check_mark">
                             <span>3</span>
                             <FiCheck />
