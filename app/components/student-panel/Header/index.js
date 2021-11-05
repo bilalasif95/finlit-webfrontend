@@ -79,9 +79,9 @@ const Header = () => {
       <Navbar expand="lg">
         <Container fluid="xl">
           {userObj &&
-            userObj.roles &&
-            userObj.roles[0] &&
-            userObj.roles[0].roleName === 'Instructor' ? (
+          userObj.roles &&
+          userObj.roles[0] &&
+          userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
               <img
                 src={Logo}
@@ -293,39 +293,23 @@ const Header = () => {
               <UncontrolledDropdown nav className="alert_dropdown">
                 <DropdownToggle nav caret>
                   <GrCart />
-                  <div className="count">
-                    10
-                  </div>
+                  <div className="count">10</div>
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>
-                    1
-                  </DropdownItem>
-                  <DropdownItem>
-                    2
-                  </DropdownItem>
-                  <DropdownItem>
-                    2
-                  </DropdownItem>
+                  <DropdownItem>1</DropdownItem>
+                  <DropdownItem>2</DropdownItem>
+                  <DropdownItem>2</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <UncontrolledDropdown nav className="alert_dropdown">
                 <DropdownToggle nav caret>
                   <IoMdNotificationsOutline />
-                  <div className="count">
-                    10
-                  </div>
+                  <div className="count">10</div>
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>
-                    1
-                  </DropdownItem>
-                  <DropdownItem>
-                    2
-                  </DropdownItem>
-                  <DropdownItem>
-                    2
-                  </DropdownItem>
+                  <DropdownItem>1</DropdownItem>
+                  <DropdownItem>2</DropdownItem>
+                  <DropdownItem>2</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <div className="registration">

@@ -24,11 +24,11 @@ import {
 } from 'reactstrap';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
-import Logo from "../../images/logoS.png"
-import Green from "../../images/green-e.png"
-import Boy from "../../images/boy.png"
-import English from "../../images/english.png"
-import Arabic from "../../images/arabic.png"
+import Logo from '../../images/logoS.png';
+import Green from '../../images/green-e.png';
+import Boy from '../../images/boy.png';
+import English from '../../images/english.png';
+import Arabic from '../../images/arabic.png';
 import Sidebar from '../../components/student-panel/Sidebar/index';
 import classnames from 'classnames';
 import { RiKeyLine } from 'react-icons/ri';
@@ -42,7 +42,7 @@ import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthenticat
 export default function ProfileSetting() {
   const [activeTab, setActiveTab] = useState('1');
   const [userObj, setUserObj] = useState({});
-  const [language, setLanguage] = useState("english");
+  const [language, setLanguage] = useState('english');
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
@@ -95,22 +95,39 @@ export default function ProfileSetting() {
                   </TabPane>
                   <TabPane tabId="2">
                     <div className="EndpointBtns">
-                      <label className="Langcontainer" onClick={() => setLanguage("english")}>
+                      <label
+                        className="Langcontainer"
+                        onClick={() => setLanguage('english')}
+                      >
                         <div className="box-in">
                           <img alt="" src={Arabic} />
                           <p>English</p>
                           {/* <input type="radio" id="html" name="fav_language" value="HTML" checked="checked"/> */}
-                          <span className={language == "english" ? "checkmark checkmarkCircleActive" : "checkmark"}></span>
+                          <span
+                            className={
+                              language == 'english'
+                                ? 'checkmark checkmarkCircleActive'
+                                : 'checkmark'
+                            }
+                          />
                         </div>
-
                       </label>
 
-                      <label className="Langcontainer" onClick={() => setLanguage("arabic")}>
+                      <label
+                        className="Langcontainer"
+                        onClick={() => setLanguage('arabic')}
+                      >
                         <div className="box-in">
                           <img alt="" src={English} />
                           <p>Arabic</p>
                           {/* <input type="radio" id="css" name="fav_language" value="CSS"/> */}
-                          <span className={language == "arabic" ? "checkmark checkmarkCircleActive" : "checkmark"}></span>
+                          <span
+                            className={
+                              language == 'arabic'
+                                ? 'checkmark checkmarkCircleActive'
+                                : 'checkmark'
+                            }
+                          />
                         </div>
                       </label>
                     </div>

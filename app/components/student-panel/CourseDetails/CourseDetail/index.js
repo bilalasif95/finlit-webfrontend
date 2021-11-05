@@ -13,7 +13,21 @@ import { TiLockClosed } from 'react-icons/ti';
 import { GrCirclePlay } from 'react-icons/gr';
 // import { MdOutlineRateReview } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem, TabContent, TabPane, Nav, NavItem, NavLink, Button, Progress, Modal, ModalHeader, ModalBody, ModalFooter, } from 'reactstrap';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
+  Button,
+  Progress,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from 'reactstrap';
 import {
   Accordion,
   AccordionItem,
@@ -28,7 +42,7 @@ import classnames from 'classnames';
 import 'react-accessible-accordion/dist/fancy-example.css';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import coursedummy from './../../../../images/coursedummy.png';
+import coursedummy from '../../../../images/coursedummy.png';
 import MoreCourses from '../../MoreCourses';
 import './videoplayer.css';
 
@@ -37,9 +51,7 @@ function CourseDetail(props) {
   const config = {
     readonly: true,
   };
-  const {
-    className
-  } = props;
+  const { className } = props;
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -57,14 +69,10 @@ function CourseDetail(props) {
         <div className="breadcrumb_bar">
           <Breadcrumb>
             <BreadcrumbItem>
-              <Link to="/">
-                Home
-              </Link>
+              <Link to="/">Home</Link>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <Link to="/">
-                Courses
-              </Link>
+              <Link to="/">Courses</Link>
             </BreadcrumbItem>
             <BreadcrumbItem active>
               Programming with Python: HandsOn Introduction for Beginners
@@ -134,7 +142,7 @@ function CourseDetail(props) {
           {/* <img src={coursedummy} alt="main" height="100%" width="100%" /> */}
           <Player
             // playsInline
-            fluid={true}
+            fluid
             height="100%"
             width="100%"
             poster={coursedummy}
@@ -197,10 +205,28 @@ function CourseDetail(props) {
                 />
               </p> */}
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem Ipsum
+                  passages, and more recently with desktop publishing software
+                  like Aldus PageMaker including versions of Lorem Ipsum.
                 </p>
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem Ipsum
+                  passages, and more recently with desktop publishing software
+                  like Aldus PageMaker including versions of Lorem Ipsum.
                 </p>
               </div>
               <div className="content_in">
@@ -208,18 +234,18 @@ function CourseDetail(props) {
                 <ul>
                   <li>
                     <BiCheck />
-                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry.
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
                   </li>
                   <li>
                     <BiCheck />
-                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry.
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
                   </li>
                   <li>
                     <BiCheck />
-                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry.
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
                   </li>
                 </ul>
               </div>
@@ -228,18 +254,18 @@ function CourseDetail(props) {
                 <ul>
                   <li>
                     <BiCheck />
-                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry.
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
                   </li>
                   <li>
                     <BiCheck />
-                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry.
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
                   </li>
                   <li>
                     <BiCheck />
-                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry.
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
                   </li>
                 </ul>
               </div>
@@ -268,9 +294,7 @@ function CourseDetail(props) {
                 <Accordion>
                   <AccordionItem uuid="a">
                     <AccordionItemHeading className="headingBtn">
-                      <AccordionItemButton>
-                        Getting started
-                      </AccordionItemButton>
+                      <AccordionItemButton>Getting started</AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <div className="section_in">
@@ -306,9 +330,7 @@ function CourseDetail(props) {
                   </AccordionItem>
                   <AccordionItem uuid="b">
                     <AccordionItemHeading>
-                      <AccordionItemButton>
-                        Lesson 2
-                      </AccordionItemButton>
+                      <AccordionItemButton>Lesson 2</AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <div className="section_in">
@@ -344,9 +366,7 @@ function CourseDetail(props) {
                   </AccordionItem>
                   <AccordionItem uuid="c">
                     <AccordionItemHeading>
-                      <AccordionItemButton>
-                        Lesson 3
-                      </AccordionItemButton>
+                      <AccordionItemButton>Lesson 3</AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <div className="section_in">
@@ -382,9 +402,7 @@ function CourseDetail(props) {
                   </AccordionItem>
                   <AccordionItem uuid="d">
                     <AccordionItemHeading>
-                      <AccordionItemButton>
-                        Lesson 4
-                      </AccordionItemButton>
+                      <AccordionItemButton>Lesson 4</AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <div className="section_in">
@@ -420,9 +438,7 @@ function CourseDetail(props) {
                   </AccordionItem>
                   <AccordionItem uuid="e">
                     <AccordionItemHeading>
-                      <AccordionItemButton>
-                        Lesson 5
-                      </AccordionItemButton>
+                      <AccordionItemButton>Lesson 5</AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <div className="section_in">
@@ -464,7 +480,12 @@ function CourseDetail(props) {
               <div className="content_in">
                 <div className="instructor_detail">
                   <div className="instructor_img">
-                    <img src="https://i.imgur.com/qUzPHy4.jpg" alt="Instructor" height="100%" width="100%" />
+                    <img
+                      src="https://i.imgur.com/qUzPHy4.jpg"
+                      alt="Instructor"
+                      height="100%"
+                      width="100%"
+                    />
                   </div>
                   <div className="instructor_desc">
                     <h4>Dr. Frank Oliver</h4>
@@ -472,30 +493,34 @@ function CourseDetail(props) {
                   </div>
                 </div>
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry. Lorem Ipsum has been the industry`s standard dummy
-                  text ever since the 1500s, when an unknown printer took a galley
-                  of type and scrambled it to make a type specimen book. It has
-                  survived not only five centuries, but also the leap into
-                  electronic typesetting, remaining essentially unchanged. Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry. Lorem Ipsum has been the industry`s standard dummy
-                  text ever since the 1500s, when an unknown printer took a galley
-                  of type and scrambled it to make a type specimen book. It has
-                  survived not only five centuries, but also the leap into
-                  electronic typesetting, remaining essentially unchanged.
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry`s
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. Lorem Ipsum is simply dummy text of the
+                  printing and typesetting industry. Lorem Ipsum has been the
+                  industry`s standard dummy text ever since the 1500s, when an
+                  unknown printer took a galley of type and scrambled it to make
+                  a type specimen book. It has survived not only five centuries,
+                  but also the leap into electronic typesetting, remaining
+                  essentially unchanged.
                 </p>
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry. Lorem Ipsum has been the industry`s standard dummy
-                  text ever since the 1500s, when an unknown printer took a galley
-                  of type and scrambled it to make a type specimen book. It has
-                  survived not only five centuries, but also the leap into
-                  electronic typesetting, remaining essentially unchanged. Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry. Lorem Ipsum has been the industry`s standard dummy
-                  text ever since the 1500s, when an unknown printer took a galley
-                  of type and scrambled it to make a type specimen book. It has
-                  survived not only five centuries, but also the leap into
-                  electronic typesetting, remaining essentially unchanged.
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry`s
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. Lorem Ipsum is simply dummy text of the
+                  printing and typesetting industry. Lorem Ipsum has been the
+                  industry`s standard dummy text ever since the 1500s, when an
+                  unknown printer took a galley of type and scrambled it to make
+                  a type specimen book. It has survived not only five centuries,
+                  but also the leap into electronic typesetting, remaining
+                  essentially unchanged.
                 </p>
                 <ul className="features">
                   <li>
@@ -525,7 +550,6 @@ function CourseDetail(props) {
                   <h4>Reviews</h4>
                   <Button onClick={toggle}>Add Review</Button>
                   <p>Our students says about this course</p>
-
                 </div>
                 <div className="rating_status">
                   <div className="rating_star">
@@ -587,7 +611,11 @@ function CourseDetail(props) {
                         </div>
                       </div>
                     </div>
-                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p>
+                      {' '}
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry.
+                    </p>
                   </div>
                   <div className="single_review">
                     <div className="user_info">
@@ -608,7 +636,11 @@ function CourseDetail(props) {
                         </div>
                       </div>
                     </div>
-                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p>
+                      {' '}
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry.
+                    </p>
                   </div>
                   <div className="single_review">
                     <div className="user_info">
@@ -629,7 +661,11 @@ function CourseDetail(props) {
                         </div>
                       </div>
                     </div>
-                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p>
+                      {' '}
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry.
+                    </p>
                   </div>
                 </div>
                 <div className="more_reviews">
@@ -665,20 +701,36 @@ function CourseDetail(props) {
           <ModalBody>
             <p>Please rate your experience</p>
             <div className="rating">
-              <span><RiStarSFill /></span>
-              <span><RiStarSFill /></span>
-              <span><RiStarSFill /></span>
-              <span><RiStarSFill /></span>
-              <span><RiStarSFill /></span>
+              <span>
+                <RiStarSFill />
+              </span>
+              <span>
+                <RiStarSFill />
+              </span>
+              <span>
+                <RiStarSFill />
+              </span>
+              <span>
+                <RiStarSFill />
+              </span>
+              <span>
+                <RiStarSFill />
+              </span>
             </div>
-            <textarea placeholder="Write a review" rows="5" className="form-control"></textarea>
+            <textarea
+              placeholder="Write a review"
+              rows="5"
+              className="form-control"
+            />
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={toggle}>Submit</Button>
+            <Button color="primary" onClick={toggle}>
+              Submit
+            </Button>
           </ModalFooter>
         </Modal>
       </div>
-    </Wrapper >
+    </Wrapper>
   );
 }
 

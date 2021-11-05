@@ -81,7 +81,9 @@ function CourseSidebar() {
           {loader ? 'Loading..' : <FormattedMessage {...messages.AddtoCart} />}
         </Button> */}
             <Button className="add_cart">
-              <span className="icon"><GrCart /></span>
+              <span className="icon">
+                <GrCart />
+              </span>
               <span className="text">
                 <FormattedMessage {...messages.AddtoCart} />
               </span>
@@ -90,7 +92,9 @@ function CourseSidebar() {
           <button className="noselect"><span className="text">Delete</span></button>
         </div> */}
             <Button className="enroll_now">
-              <span className="icon"><HiOutlineArrowNarrowRight /></span>
+              <span className="icon">
+                <HiOutlineArrowNarrowRight />
+              </span>
               <span className="text">
                 <FormattedMessage {...messages.EnrollNow} />
               </span>
@@ -143,7 +147,12 @@ function CourseSidebar() {
               <p>Expend time 8.3hr</p>
             </div>
             <div className="chart">
-              <img src="https://cdn.discordapp.com/attachments/548125906472796170/905387362706681866/unknown.png" alt="chart" height="100%" width="100%" />
+              <img
+                src="https://cdn.discordapp.com/attachments/548125906472796170/905387362706681866/unknown.png"
+                alt="chart"
+                height="100%"
+                width="100%"
+              />
             </div>
           </div>
           <div className="progress_session">
@@ -166,24 +175,21 @@ function CourseSidebar() {
                   <li>
                     <FormGroup check>
                       <Label check>
-                        <Input type="radio" name="radio1" />{' '}
-                        Private Computer
+                        <Input type="radio" name="radio1" /> Private Computer
                       </Label>
                     </FormGroup>
                   </li>
                   <li>
                     <FormGroup check>
                       <Label check>
-                        <Input type="radio" name="radio1" />{' '}
-                        Personal Computer
+                        <Input type="radio" name="radio1" /> Personal Computer
                       </Label>
                     </FormGroup>
                   </li>
                   <li>
                     <FormGroup check>
                       <Label check>
-                        <Input type="radio" name="radio1" />{' '}
-                        Personal Compact
+                        <Input type="radio" name="radio1" /> Personal Compact
                       </Label>
                     </FormGroup>
                   </li>

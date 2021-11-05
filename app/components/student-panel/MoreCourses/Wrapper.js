@@ -57,11 +57,11 @@ const Wrapper = styled.footer`
       }
     }
   }
-h2 {
-  font-size: 24px;
-  color: #404041;
-  margin-bottom: 30px;
-}
+  h2 {
+    font-size: 24px;
+    color: #404041;
+    margin-bottom: 30px;
+  }
 `;
 
 export default Wrapper;

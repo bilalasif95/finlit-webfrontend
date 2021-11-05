@@ -160,8 +160,8 @@ function ChangePassword() {
               </FormText>
             </FormGroup>
           </Col>
-          </Row>
-          <Row>
+        </Row>
+        <Row>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
               <Label for="password">
