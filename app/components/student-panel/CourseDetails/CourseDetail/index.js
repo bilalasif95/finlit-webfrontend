@@ -29,6 +29,8 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import coursedummy from './../../../../images/coursedummy.png';
+import MoreCourses from '../../MoreCourses';
+import './videoplayer.css';
 
 function CourseDetail(props) {
   const editor = useRef(null);
@@ -129,7 +131,6 @@ function CourseDetail(props) {
         </div>
         <div className="main_img">
           {/* <img src={detail.eventImage} alt="main" height="100%" width="100%" /> */}
-          <img src={coursedummy} alt="main" height="100%" width="100%" />
           {/* <img src={coursedummy} alt="main" height="100%" width="100%" /> */}
           <Player
             // playsInline
@@ -655,6 +656,7 @@ function CourseDetail(props) {
             </li>
           </ul>
         </div> */}
+        <MoreCourses />
       </div>
       {/* Modal */}
       <div className="ratingModal">

@@ -19,12 +19,15 @@ const Menubar = styled.div`
       &::placeholder {
         color: #8b8b8b;
       }
+      &:focus {
+        z-index: 0;
+      }
     }
     .input-group-append {
       position: absolute;
       left: 0;
       top: 1px;
-      z-index: 5;
+      z-index: 1;
     }
     button {
       background-color: transparent;
@@ -42,8 +45,30 @@ const Menubar = styled.div`
     display: flex;
     justify-content: flex-end;
   }
+  .alert_dropdown {
+    display: flex;
+    justify-content: center;
+    margin: 0 1.5rem 0 0 !important;
+    .nav-link {
+      position: relative;
+      .count {
+        background-color: #ec5252;
+        border-radius: 0.5rem;
+        color: #fff;
+        font-size: 0.65rem;
+        padding: 2px;
+        line-height: normal;
+        position: absolute;
+        right: -0.6rem;
+        top: 0.25rem;
+      }
+    }
+    .dropdown-toggle::after {
+      display: none;
+    }
+  }
   .registration {
-    width: 40%;
+    max-width: 45%;
     .dropdown {
       display: flex;
       justify-content: flex-end;
@@ -69,8 +94,9 @@ const Menubar = styled.div`
           justify-content: space-between;
           padding: 0.5rem 1rem;
           font-size: 0.875rem;
-          color: #8b8b8b;
-          border-bottom: 1px solid #f6f6f6;
+          font-weight: 550;
+          color: #404041;
+          // border-bottom: 1px solid #f6f6f6;
           &:active {
             background: initial;
           }
@@ -78,7 +104,9 @@ const Menubar = styled.div`
             border-bottom: none;
           }
           svg {
-            margin-right: 0.5rem;
+            color: #404041;
+            font-size: 1.25rem;
+            margin-right: 1rem;
           }
           .notify {
             background-color: #ec5252;
@@ -97,7 +125,7 @@ const Menubar = styled.div`
       justify-content: flex-end;
       .nav-item:last-child {
         .nav-link {
-          border: 1px solid #fff;
+          border: 1px solid #255f2b;
           border-radius: 3px;
           padding: 0.5rem 0.75rem;
         }
@@ -120,11 +148,6 @@ const Menubar = styled.div`
       color: #8b8b8b;
       font-size: 1.25rem;
     }
-    @media (min-width: 992px) {
-      .container-xl {
-        align-items: flex-start !important;
-      }
-    }
   }
   .nav-item {
     margin: 0 0.2rem;
@@ -136,18 +159,19 @@ const Menubar = styled.div`
   }
   .navbar-collapse {
     justify-content: space-between;
-    margin: 0.7rem 0;
+    margin: 0;
   }
   .nav-link {
-    color: #fff;
+    color: #255f2b;
     font-size: 0.875rem;
     font-weight: 500;
     word-break: keep-all;
     line-height: 14px;
     padding: 0.5rem 0;
+    text-decoration: none;
     &:focus,
     &:hover {
-      color: #f4f4f4;
+      color: #255f2b;
     }
   }
   .dropdown-toggle::after {

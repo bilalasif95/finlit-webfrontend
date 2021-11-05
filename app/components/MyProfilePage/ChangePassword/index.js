@@ -132,9 +132,6 @@ function ChangePassword() {
   return (
     <Wrapper>
       <div className="basic_info">
-        <h4>
-          <FormattedMessage {...messages.ChangePassword} />
-        </h4>
         <Row>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
@@ -163,6 +160,8 @@ function ChangePassword() {
               </FormText>
             </FormGroup>
           </Col>
+          </Row>
+          <Row>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
               <Label for="password">
@@ -230,9 +229,6 @@ function ChangePassword() {
         </Row>
         <div className="form_footer">
           <div className="bottom_btns">
-            <Button className="btn_cancel" onClick={cancelOperation}>
-              <FormattedMessage {...messages.Cancel} />
-            </Button>
             <Button
               className="btn_submit"
               disabled={disableBtn}

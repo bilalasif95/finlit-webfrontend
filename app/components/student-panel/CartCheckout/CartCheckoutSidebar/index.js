@@ -191,7 +191,8 @@ function CartCheckoutSidebar(props) {
             <div className="innerBox">
               <div className="paypalBox">
                 <p>
-                  <img src={Info} alt="Info" /> In order to complete your transaction,we will transfer you over PayPal's secure servers.
+                  <img src={Info} alt="Info" /> In order to complete your
+                  transaction,we will transfer you over PayPal's secure servers.
                 </p>
               </div>
               <div className="summary">
