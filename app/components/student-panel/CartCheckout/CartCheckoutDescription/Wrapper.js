@@ -357,7 +357,7 @@ const Wrapper = styled.div`
     }
   }
   @media (max-width: 768px) {
-    .cart_checkout{
+    .cart_checkout {
       .cartDetailsCont {
         margin-top: 30px;
       }
@@ -371,7 +371,8 @@ const Wrapper = styled.div`
             }
             .courseDetailText {
               width: 70%;
-              h3, h2 {
+              h3,
+              h2 {
                 font-size: 16px;
                 line-height: 30px;
               }
@@ -396,7 +397,7 @@ const Wrapper = styled.div`
             line-height: 30px;
           }
           .card {
-            .card-body { 
+            .card-body {
               padding: 10px 10px 0px 10px;
               .card-title {
                 font-size: 16px;
@@ -432,9 +433,9 @@ const Wrapper = styled.div`
               }
             }
           }
-        } 
+        }
       }
-    } 
+    }
   }
   @media (max-width: 575px) {
     .cart_checkout {
@@ -453,28 +454,27 @@ const Wrapper = styled.div`
         }
       }
     }
-      .cart_checkout {
-        margin-top: 0;
-        .footer {
-          padding: 0 !important;
-        }
-        .cartDetailsCont {
-          .moreCourses {
-            .card {
-              &:first-child {
-                margin-bottom: 16px;
-              }
-              .card-body {
-                .cardList {
-                  flex-wrap: nowrap;
-                  li {
-                    &:not(:last-child) {
-                      margin-right: 25px !important;
-                    }
-                    width: auto !important;
-                    &:first-child {
-                      width: auto;
-                    }
+    .cart_checkout {
+      margin-top: 0;
+      .footer {
+        padding: 0 !important;
+      }
+      .cartDetailsCont {
+        .moreCourses {
+          .card {
+            &:first-child {
+              margin-bottom: 16px;
+            }
+            .card-body {
+              .cardList {
+                flex-wrap: nowrap;
+                li {
+                  &:not(:last-child) {
+                    margin-right: 25px !important;
+                  }
+                  width: auto !important;
+                  &:first-child {
+                    width: auto;
                   }
                 }
               }
@@ -483,6 +483,7 @@ const Wrapper = styled.div`
         }
       }
     }
+  }
   @media (max-width: 424px) {
     .cart_checkout {
       .header {

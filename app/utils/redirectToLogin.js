@@ -1,5 +1,5 @@
-import history from 'utils/history';
-const token = localStorage.getItem('token');
+// import history from 'utils/history';
+// const token = localStorage.getItem('token');
 
 const redirectToLogin = () => {
   // if (!token) {

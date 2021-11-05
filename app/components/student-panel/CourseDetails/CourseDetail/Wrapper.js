@@ -33,7 +33,7 @@ const Wrapper = styled.div`
     }
     .breadcrumb_bar {
       a {
-        color:#5ca54e;
+        color: #5ca54e;
         text-decoration: none;
       }
       .active {
@@ -267,7 +267,7 @@ const Wrapper = styled.div`
               .right {
                 svg {
                   color: #ec5252;
-                  font-size: 1.5rem; 
+                  font-size: 1.5rem;
                 }
               }
             }
@@ -349,7 +349,7 @@ const Wrapper = styled.div`
           .rating_star {
             align-items: center;
             background-color: #f9f9f9;
-            border-radius: 0.313rem; 
+            border-radius: 0.313rem;
             display: flex;
             flex-wrap: wrap;
             flex-direction: column;
@@ -372,7 +372,7 @@ const Wrapper = styled.div`
           }
           .status {
             background-color: #f9f9f9;
-            border-radius: 0.313rem; 
+            border-radius: 0.313rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
@@ -412,7 +412,7 @@ const Wrapper = styled.div`
           flex-direction: column;
           margin: 3rem 0 0;
           .single_review {
-            border-bottom: 1px solid #d8d8d8; 
+            border-bottom: 1px solid #d8d8d8;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;

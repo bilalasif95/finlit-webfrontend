@@ -65,19 +65,19 @@ function BasicInfo() {
     address: '',
   });
   const [errors, setErrors] = useState({});
-  const [loader, setLoader] = useState(false);
-  const [disableBtn, setDisableBtn] = useState(false);
-  const updateProfileValidator = values => {
-    const error = {};
-    if (!values.firstName) {
-      error.firstName = 'First Name Is required';
-    } else if (!values.lastName) {
-      error.lastName = 'Last Name Is required';
-    } else if (!values.gender) {
-      error.gender = 'Gender is Required';
-    }
-    return error;
-  };
+  // const [loader, setLoader] = useState(false);
+  // const [disableBtn, setDisableBtn] = useState(false);
+  // const updateProfileValidator = values => {
+  //   const error = {};
+  //   if (!values.firstName) {
+  //     error.firstName = 'First Name Is required';
+  //   } else if (!values.lastName) {
+  //     error.lastName = 'Last Name Is required';
+  //   } else if (!values.gender) {
+  //     error.gender = 'Gender is Required';
+  //   }
+  //   return error;
+  // };
   const getCurrentUserInfo = () => {
     const token = localStorage.getItem('token');
     const userId = JSON.parse(localStorage.getItem('userInfo'));
@@ -109,68 +109,69 @@ function BasicInfo() {
         );
       });
   };
-  const handleUpdateProfileSave = () => {
-    if (Object.keys(updateProfileValidator(userInfo)).length > 0) {
-      setErrors(updateProfileValidator(userInfo));
-      setTimeout(() => {
-        setErrors({});
-      }, 4000);
-    } else {
-      setLoader(true);
-      setDisableBtn(true);
-      const token = localStorage.getItem('token');
-      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-      const bodyFormData = {
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
-        gender: userInfo.gender,
-        description: userInfo.description,
-        profession: userInfo.profession,
-        country: userInfo.country,
-        address: userInfo.address,
-      };
-      axios
-        .put(`${API}api/user`, bodyFormData, {
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            ...authHeaders,
-          },
-        })
-        .then(res => {
-          setLoader(false);
-          toast.success(
-            res && res.data ? res.data.message : 'Message Not Readable',
-          );
-          setUserInfo({
-            firstName: '',
-            lastName: '',
-            description: '',
-            country: '',
-            address: '',
-            profession: '',
-            email: '',
-            gender: '',
-          });
-          setTimeout(() => {
-            setDisableBtn(false);
-            getCurrentUserInfo();
-          }, 5000);
-        })
-        .catch(err => {
-          setLoader(false);
-          toast.error(
-            err.response && err.response.data.message
-              ? err.response.data.message.toString()
-              : 'Message Not Readable',
-          );
-          setTimeout(() => {
-            setDisableBtn(false);
-          }, 5000);
-        });
-    }
-  };
+  // const handleUpdateProfileSave = () => {
+  //   if (Object.keys(updateProfileValidator(userInfo)).length > 0) {
+  //     setErrors(updateProfileValidator(userInfo));
+  //     setTimeout(() => {
+  //       setErrors({});
+  //     }, 4000);
+  //   } else {
+  //     setLoader(true);
+  //     setDisableBtn(true);
+  //     const token = localStorage.getItem('token');
+  //     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+  //     const bodyFormData = {
+  //       firstName: userInfo.firstName,
+  //       lastName: userInfo.lastName,
+  //       gender: userInfo.gender,
+  //       description: userInfo.description,
+  //       profession: userInfo.profession,
+  //       country: userInfo.country,
+  //       address: userInfo.address,
+  //     };
+  //     axios
+  //       .put(`${API}api/user`, bodyFormData, {
+  //         headers: {
+  //           Accept: 'application/json',
+  //           'Content-Type': 'application/json',
+  //           ...authHeaders,
+  //         },
+  //       })
+  //       .then(res => {
+  //         setLoader(false);
+  //         toast.success(
+  //           res && res.data ? res.data.message : 'Message Not Readable',
+  //         );
+  //         setUserInfo({
+  //           firstName: '',
+  //           lastName: '',
+  //           description: '',
+  //           country: '',
+  //           address: '',
+  //           profession: '',
+  //           email: '',
+  //           gender: '',
+  //         });
+  //         setTimeout(() => {
+  //           setDisableBtn(false);
+  //           getCurrentUserInfo();
+  //         }, 5000);
+  //       })
+  //       .catch(err => {
+  //         setLoader(false);
+  //         toast.error(
+  //           err.response && err.response.data.message
+  //             ? err.response.data.message.toString()
+  //             : 'Message Not Readable',
+  //         );
+  //         setTimeout(() => {
+  //           setDisableBtn(false);
+  //         }, 5000);
+  //       });
+  //   }
+  // };
   useEffect(() => {
+    setErrors({});
     getCurrentUserInfo();
   }, []);
   return (
@@ -441,8 +442,7 @@ function BasicInfo() {
         <div className="form_footer">
           <div className="bottom_btns">
             <Button className="btn_cancel" onClick={getCurrentUserInfo}>
-              <FormattedMessage {...messages.Save
-              } />
+              <FormattedMessage {...messages.Save} />
             </Button>
             {/* <Button
               className="btn_submit"

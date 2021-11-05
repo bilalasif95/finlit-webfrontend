@@ -1,14 +1,15 @@
 /*
  * Cart Checkout Sidebar Component
  */
-import React, { useState } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FormGroup, Input, Button } from 'reactstrap';
-import axios from 'axios';
-import PropTypes from 'prop-types';
-import { ToastContainer, toast } from 'react-toastify';
+// import axios from 'axios';
+// import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import history from 'utils/history';
+// import history from 'utils/history';
 import { Link } from 'react-router-dom';
 import { GoDeviceCameraVideo } from 'react-icons/go';
 import { BiTimeFive } from 'react-icons/bi';
@@ -19,37 +20,37 @@ import { RiStarSFill } from 'react-icons/ri';
 import { HiUsers, HiOutlineArrowNarrowRight } from 'react-icons/hi';
 import Wrapper from './Wrapper';
 import messages from './messages';
-import { API } from '../../../../config/config';
-import { axiosHeader } from '../../../../utils/axiosHeader';
+// import { API } from '../../../../config/config';
+// import { axiosHeader } from '../../../../utils/axiosHeader';
 
-function CourseSidebar(props) {
-  const [loader, setLoader] = useState(false);
+function CourseSidebar() {
+  // const [loader, setLoader] = useState(false);
   // const { detail } = props;
   // const dataDetails = detail.data;
 
-  const handleAddToCart = () => {
-    setLoader(true);
-    const data = {
-      productType: detail.type,
-      productId: detail.id,
-      price: dataDetails && dataDetails.price,
-    };
+  // const handleAddToCart = () => {
+  //   setLoader(true);
+  //   const data = {
+  //     productType: detail.type,
+  //     productId: detail.id,
+  //     price: dataDetails && dataDetails.price,
+  //   };
 
-    axios
-      .post(`${API}api/cart/addTocart`, data, axiosHeader)
-      .then(() => {
-        history.push('/cart');
-        setLoader(false);
-      })
-      .catch(err => {
-        setLoader(false);
-        toast.error(
-          err.response
-            ? err.response && err.response.message
-            : 'Message Not Readable',
-        );
-      });
-  };
+  //   axios
+  //     .post(`${API}api/cart/addTocart`, data, axiosHeader)
+  //     .then(() => {
+  //       history.push('/cart');
+  //       setLoader(false);
+  //     })
+  //     .catch(err => {
+  //       setLoader(false);
+  //       toast.error(
+  //         err.response
+  //           ? err.response && err.response.message
+  //           : 'Message Not Readable',
+  //       );
+  //     });
+  // };
 
   return (
     <Wrapper>
@@ -83,7 +84,12 @@ function CourseSidebar(props) {
           <HiOutlineArrowNarrowRight className="icon" />
         </Button>
         <div className="test">
-          <button className="noselect"><span className='text'>Delete</span><span className="icon"><HiOutlineArrowNarrowRight /></span></button>
+          <button type="button" className="noselect">
+            <span className="text">Delete</span>
+            <span className="icon">
+              <HiOutlineArrowNarrowRight />
+            </span>
+          </button>
         </div>
       </div>
       <div className="details">

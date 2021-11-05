@@ -2,6 +2,8 @@
 import * as React from 'react';
 import { createStyles, withStyles } from '@material-ui/core/styles';
 import { IoIosClose } from 'react-icons/io';
+import PropTypes from 'prop-types';
+import Input from './Input';
 
 const styles = () =>
   createStyles({
@@ -81,27 +83,38 @@ const styles = () =>
     },
   });
 
-class Tile extends React.Component {
-  render() {
-    const { tile } = this.props;
-    const { id } = this.props;
-    const { classes } = this.props;
-    return (
-      <span className={classes.tile}>
-        <span>{tile.name}</span>
-        <div className={classes.icon}>
-          <button
-            onClick={() => this.props.removeTile(id)}
-            className={classes.iconClose}
-          >
-            <IoIosClose />
-          </button>
-        </div>
-        {/* <i className={classes.tile} onClick={() => this.props.removeTile(id)}></i> */}
-      </span>
-    );
-  }
-}
+const Tile = props => (
+  // {
+  // render() {
+  // const { tile } = this.props;
+  // const { id } = this.props;
+  // const { classes } = this.props;
+  // return (
+  <span className={props.classes.tile}>
+    <span>{props.tile.name}</span>
+    <div className={props.classes.icon}>
+      <button
+        type="button"
+        onClick={() => props.removeTile(props.id)}
+        className={props.classes.iconClose}
+      >
+        <IoIosClose />
+      </button>
+    </div>
+    {/* <i className={classes.tile} onClick={() => this.props.removeTile(id)}></i> */}
+  </span>
+);
+// );
+// }
+// };
+
+Tile.propTypes = {
+  tile: PropTypes.any,
+  id: PropTypes.any,
+  classes: PropTypes.any,
+  removeTile: PropTypes.func,
+};
+
 // interface TagsState {
 //   tiles: any;
 //   tileIds: any;
@@ -110,6 +123,12 @@ class Tile extends React.Component {
 
 const TagsComponent = withStyles(styles, { name: 'TagsComponent' })(
   class TagsComponent extends React.Component {
+    static propTypes = {
+      tags: PropTypes.any,
+      classes: PropTypes.any,
+      data: PropTypes.any,
+    };
+
     constructor(props) {
       super(props);
       this.addTile = this.addTile.bind(this);
@@ -135,7 +154,7 @@ const TagsComponent = withStyles(styles, { name: 'TagsComponent' })(
 
             // reset the input value
             const currentValue = '';
-            this.setState({
+            return this.setState({
               currentValue,
               tileIds,
               tiles,
@@ -143,6 +162,7 @@ const TagsComponent = withStyles(styles, { name: 'TagsComponent' })(
           })
         );
       }
+      return 0;
     }
 
     addTile(tile) {
@@ -221,63 +241,6 @@ const TagsComponent = withStyles(styles, { name: 'TagsComponent' })(
     }
   },
 );
-
-class Input extends React.Component {
-  name;
-
-  tagForm;
-
-  tagEvent(e) {
-    const tag = this.name.value;
-    const tagGroup = tag.split(' ');
-    const { tiles } = this.props;
-    const hasTiles = Object.keys(tiles).length > 0;
-
-    if (e.keyCode === 32 || e.keyCode === 13) {
-      e.preventDefault();
-      tagGroup.map(tag => this.props.addTile(tag));
-      this.tagForm.reset();
-    }
-
-    if (e.keyCode === 8 && hasTiles && tag === '') {
-      e.preventDefault();
-      this.props.editLastTile();
-      // this trigger the default value eachtime we hit delete
-      this.tagForm.reset();
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.value !== this.props.value) {
-      this.name.selectionStart = this.name.value.length;
-      this.name.selectionEnd = this.name.value.length;
-    }
-  }
-
-  render() {
-    const { classes } = this.props;
-    return (
-      <>
-        {/* <p className={classes.limitText}>Maximum of 4</p> */}
-
-        <div className={classes.inputWrapper}>
-          <form ref={input => (this.tagForm = input)}>
-            <input
-              ref={input => (this.name = input)}
-              type="text"
-              name="new-item"
-              placeholder="Enter Tag"
-              autoComplete="off"
-              // value={data.tags}
-              defaultValue={this.props.value}
-              onKeyDown={e => this.tagEvent(e)}
-            />
-          </form>
-        </div>
-      </>
-    );
-  }
-}
 
 // AccountConfirm.displayName = "AccountConfirm";
 export default TagsComponent;

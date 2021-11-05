@@ -74,7 +74,7 @@ export default function SignupPage() {
       setError({ type: 'email', error: 'Email is required' });
     } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError({ type: 'email', error: 'Please enter valid email' });
-    } 
+    }
     // else if (
     //   !/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(firstName)
     // ) {
@@ -93,7 +93,7 @@ export default function SignupPage() {
     //     type: 'LastName',
     //     error: 'Last Name should be of less than 255 characters',
     //   });
-    // } 
+    // }
     else if (
       !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) ||
       (!password.length >= 8 && !password.length <= 15)
@@ -111,15 +111,15 @@ export default function SignupPage() {
         .post(`${API}api/auth/register`, {
           email,
           // firstName,
-          firstName:"firstName",
-          lastName: "lastname",
+          firstName: 'firstName',
+          lastName: 'lastname',
           // lastName,
           roleId,
           password,
           passwordConfirmation,
-          gender:"male",
+          gender: 'male',
           // gender,
-          country: "country",
+          country: 'country',
           profession,
           // address,
         })

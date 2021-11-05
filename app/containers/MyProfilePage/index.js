@@ -10,39 +10,40 @@ import { Link } from 'react-router-dom';
 import '../../components/student-panel/Header/profile.css';
 // import { withStyles } from '@material-ui/core/styles';
 import {
-  Container,
-  Row,
-  Col,
+  // Container,
+  // Row,
+  // Col,
   Label,
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
+  // TabContent,
+  // TabPane,
+  // Nav,
+  // NavItem,
+  // NavLink,
 } from 'reactstrap';
-import { BiUserCircle, } from 'react-icons/bi';
-import { RiKeyLine } from 'react-icons/ri';
-import classnames from 'classnames';
-import { ToastContainer, toast } from 'react-toastify';
+import { BiUserCircle } from 'react-icons/bi';
+// import { RiKeyLine } from 'react-icons/ri';
+// import classnames from 'classnames';
+// import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
-import Wrapper from './Wrapper';
+// import Wrapper from './Wrapper';
 import Img from '../../components/Img';
-import Logo from "../../images/logoS.png"
-import Cam from "../../images/cam.png"
+import Logo from '../../images/logoS.png';
+import Cam from '../../images/cam.png';
 import { API } from '../../config/config';
 import BasicInfo from '../../components/MyProfilePage/BasicInfo';
-import ChangePassword from '../../components/MyProfilePage/ChangePassword';
-import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthentication';
+// import ChangePassword from '../../components/MyProfilePage/ChangePassword';
+// import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthentication';
 // import Profile from '../../images/profile.jpg';
 
 export default function MyProfilePage() {
-  const [activeTab, setActiveTab] = useState('1');
+  // const [activeTab, setActiveTab] = useState('1');
   const [userObj, setUserObj] = useState({});
-  const toggle = tab => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
+  // const toggle = tab => {
+  //   if (activeTab !== tab) setActiveTab(tab);
+  // };
   const getCurrentUser = () => {
     const token = localStorage.getItem('token');
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
@@ -111,7 +112,9 @@ export default function MyProfilePage() {
             <img className="img-fluid mx-auto d-block" src={Logo} alt="Logo" />
             <div className="sideNav">
               <Link className="sideNavLink">
-                <p><BiUserCircle /></p>
+                <p>
+                  <BiUserCircle />
+                </p>
                 Profile
               </Link>
             </div>
@@ -132,7 +135,6 @@ export default function MyProfilePage() {
                   />
                   <Label className="edit">
                     <img src={Cam} alt="Cam" />
-                    {' '}
                     <input
                       type="file"
                       name="image"
@@ -154,7 +156,9 @@ export default function MyProfilePage() {
                       onChange={e => updateProfileImg(e)}
                     />
                   </Label>
-                  <button className="btn btn-default">Delete Photo</button>
+                  <button type="button" className="btn btn-default">
+                    Delete Photo
+                  </button>
                 </div>
               </div>
               <BasicInfo />

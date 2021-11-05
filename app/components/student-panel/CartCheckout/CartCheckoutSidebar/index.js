@@ -3,7 +3,7 @@
  */
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import NumberFormat from 'react-number-format';
+// import NumberFormat from 'react-number-format';
 import PropTypes from 'prop-types';
 import { Row, Col, FormGroup, Input, Label, Button } from 'reactstrap';
 import { IoMdLock } from 'react-icons/io';
@@ -41,24 +41,24 @@ function CartCheckoutSidebar(props) {
     }
   };
 
-  const handleChangeEvent = event => {
-    if (event.target.type === 'checkbox') {
-      setCheckoutInfo({
-        ...checkoutInfo,
-        [event.target.name]: event.target.checked,
-      });
-    } else if (event.target.type === 'file') {
-      setCheckoutInfo({
-        ...checkoutInfo,
-        [event.target.name]: event.target.files[0],
-      });
-    } else {
-      setCheckoutInfo({
-        ...checkoutInfo,
-        [event.target.name]: event.target.value,
-      });
-    }
-  };
+  // const handleChangeEvent = event => {
+  //   if (event.target.type === 'checkbox') {
+  //     setCheckoutInfo({
+  //       ...checkoutInfo,
+  //       [event.target.name]: event.target.checked,
+  //     });
+  //   } else if (event.target.type === 'file') {
+  //     setCheckoutInfo({
+  //       ...checkoutInfo,
+  //       [event.target.name]: event.target.files[0],
+  //     });
+  //   } else {
+  //     setCheckoutInfo({
+  //       ...checkoutInfo,
+  //       [event.target.name]: event.target.value,
+  //     });
+  //   }
+  // };
 
   const handleCheckout = () => {
     if (Object.keys(validator(checkoutInfo)).length > 0) {
@@ -191,8 +191,7 @@ function CartCheckoutSidebar(props) {
             <div className="innerBox">
               <div className="paypalBox">
                 <p>
-                  <img src={Info} alt="Info" /> In order to complete your
-                  transaction,we will transfer you over PayPal'ssecure servers.
+                  <img src={Info} alt="Info" /> In order to complete your transaction,we will transfer you over PayPal's secure servers.
                 </p>
               </div>
               <div className="summary">

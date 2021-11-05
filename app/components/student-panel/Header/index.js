@@ -78,9 +78,9 @@ const Header = () => {
       <Navbar expand="lg">
         <Container fluid="xl">
           {userObj &&
-            userObj.roles &&
-            userObj.roles[0] &&
-            userObj.roles[0].roleName === 'Instructor' ? (
+          userObj.roles &&
+          userObj.roles[0] &&
+          userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
               <img
                 src={Logo}
@@ -103,28 +103,67 @@ const Header = () => {
           )}
           <NavbarToggler onClick={toggle} />
           <nav>
-            <div className={toggleMenu ? "toggle-wrap active" : "toggle-wrap"} onClick={() => setToggleMenu(!toggleMenu)}>
-              <span className="toggle-bar"></span>
+            <div
+              role="button"
+              tabIndex={0}
+              className={toggleMenu ? 'toggle-wrap active' : 'toggle-wrap'}
+              onClick={() => setToggleMenu(!toggleMenu)}
+              onKeyDown={() => setToggleMenu(!toggleMenu)}
+            >
+              <span className="toggle-bar" />
               Categories
             </div>
           </nav>
 
-          <aside className={toggleMenu ? "active" : ""}>
+          <aside className={toggleMenu ? 'active' : ''}>
             <div className="asideCont">
               <div className="profileNav">
-                <div className={toggleMenu ? "toggle-wrap active" : "toggle-wrap"} onClick={() => setToggleMenu(!toggleMenu)}>
-                  <span className="toggle-bar"></span>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  className={toggleMenu ? 'toggle-wrap active' : 'toggle-wrap'}
+                  onClick={() => setToggleMenu(!toggleMenu)}
+                  onKeyDown={() => setToggleMenu(!toggleMenu)}
+                >
+                  <span className="toggle-bar" />
                 </div>
                 <ul className="list-unstyled sideBarList">
-                  <li><FaLongArrowAltRight /><Link>Goal Based Education</Link></li>
-                  <li><FaLongArrowAltRight /><Link>One-on-One Private Sessions</Link></li>
-                  <li><FaLongArrowAltRight /><Link>Interactive Learning Tools</Link></li>
-                  <li><FaLongArrowAltRight /><Link>Bootcamp</Link></li>
-                  <li><FaLongArrowAltRight /><Link>Hackathons</Link></li>
-                  <li><FaLongArrowAltRight /><Link>Live Webinars</Link></li>
-                  <li><FaLongArrowAltRight /><Link>Case Studies & Stories</Link></li>
-                  <li><FaLongArrowAltRight /><Link>Short Videos</Link></li>
-                  <li><FaLongArrowAltRight /><Link>Chat Bot</Link></li>
+                  <li>
+                    <FaLongArrowAltRight />
+                    <Link>Goal Based Education</Link>
+                  </li>
+                  <li>
+                    <FaLongArrowAltRight />
+                    <Link>One-on-One Private Sessions</Link>
+                  </li>
+                  <li>
+                    <FaLongArrowAltRight />
+                    <Link>Interactive Learning Tools</Link>
+                  </li>
+                  <li>
+                    <FaLongArrowAltRight />
+                    <Link>Bootcamp</Link>
+                  </li>
+                  <li>
+                    <FaLongArrowAltRight />
+                    <Link>Hackathons</Link>
+                  </li>
+                  <li>
+                    <FaLongArrowAltRight />
+                    <Link>Live Webinars</Link>
+                  </li>
+                  <li>
+                    <FaLongArrowAltRight />
+                    <Link>Case Studies & Stories</Link>
+                  </li>
+                  <li>
+                    <FaLongArrowAltRight />
+                    <Link>Short Videos</Link>
+                  </li>
+                  <li>
+                    <FaLongArrowAltRight />
+                    <Link>Chat Bot</Link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -246,26 +285,18 @@ const Header = () => {
                     <FormattedMessage {...messages.LoansDebt} />
                   </DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>*/}
-
-
+              </UncontrolledDropdown>
+            */}
             </Nav>
             <div className="nav_right">
-
               <UncontrolledDropdown nav>
                 <DropdownToggle nav caret>
                   <IoMdCart />
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    1
-                  </DropdownItem>
-                  <DropdownItem>
-                    2
-                  </DropdownItem>
-                  <DropdownItem>
-                    2
-                  </DropdownItem>
+                  <DropdownItem>1</DropdownItem>
+                  <DropdownItem>2</DropdownItem>
+                  <DropdownItem>3</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <UncontrolledDropdown nav>
@@ -273,15 +304,9 @@ const Header = () => {
                   <IoMdNotificationsOutline />
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    1
-                  </DropdownItem>
-                  <DropdownItem>
-                    2
-                  </DropdownItem>
-                  <DropdownItem>
-                    2
-                  </DropdownItem>
+                  <DropdownItem>1</DropdownItem>
+                  <DropdownItem>2</DropdownItem>
+                  <DropdownItem>3</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <div className="registration">
