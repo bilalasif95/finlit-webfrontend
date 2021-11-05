@@ -6,21 +6,22 @@ import { FormattedMessage } from 'react-intl';
 import {
   AiFillStar,
   AiOutlineClockCircle,
-  AiOutlineDelete,
+  // AiOutlineDelete,
 } from 'react-icons/ai';
 import { BiUser } from 'react-icons/bi';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import CartImg from '../../../../images/cartImg.png';
 import CartImg1 from '../../../../images/cartImg1.png';
 import Bag from '../../../../images/bag.png';
 import Bin from '../../../../images/bin.png';
-import Card from '../../../../images/cardImg1.png';
-import Card2 from '../../../../images/cardImg2.png';
-import CardIcon from '../../../../images/cardIcon.png';
-import Cart from '../../../../images/cart.png';
+// import Card from '../../../../images/cardImg1.png';
+// import Card2 from '../../../../images/cardImg2.png';
+// import CardIcon from '../../../../images/cardIcon.png';
+// import Cart from '../../../../images/cart.png';
 import MoreCourses from '../../MoreCourses';
 function CartCheckoutDescription(props) {
   return (
@@ -49,7 +50,7 @@ function CartCheckoutDescription(props) {
             </div>
           </div>
         </div> */}
-        <div className="table-responsive">
+        {/* <div className="table-responsive">
           <table>
             <thead>
               <tr>
@@ -84,7 +85,7 @@ function CartCheckoutDescription(props) {
                           </div>
                           <p>{item.product && item.product.data.subTitle}</p>
                           <div className="provider">
-                            {/* {item.providedby} {item.product.data.creator} */}
+                            {item.providedby} {item.product.data.creator}
                           </div>
                         </div>
                       </div>
@@ -101,6 +102,18 @@ function CartCheckoutDescription(props) {
                 ))}
             </tbody>
           </table>
+        </div> */}
+        <div className="breadcrumb_bar">
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <Link to="/">
+                Home
+              </Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem active>
+              My Cart
+            </BreadcrumbItem>
+          </Breadcrumb>
         </div>
         <div className="cartDetailsCont">
           <div className="courseDetail">
@@ -168,7 +181,7 @@ function CartCheckoutDescription(props) {
           </div>
           <div className="customBorder" />
           <MoreCourses />
-          <div className="moreCourses">
+          {/* <div className="moreCourses">
             <h2>More courses for you</h2>
             <div className="row">
               <div className="col-md-6">
@@ -242,7 +255,7 @@ function CartCheckoutDescription(props) {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="footer">
           <div className="sub_total">

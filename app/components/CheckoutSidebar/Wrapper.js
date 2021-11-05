@@ -9,7 +9,7 @@ const Wrapper = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin: 0 0 1rem;
+    margin: 0 0 0.5rem;
     img {
       margin-right: 14px;
     }
@@ -64,7 +64,7 @@ const Wrapper = styled.div`
     border-radius: 5px;
     background-color: #F8FFFF;
     padding: 1rem;
-    margin: 1.5rem 0 0; 
+    margin: 0 0 1.5rem; 
     p {
       margin-bottom: 0px;
       position: relative;

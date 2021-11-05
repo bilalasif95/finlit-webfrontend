@@ -59,6 +59,7 @@ const Wrapper = styled.div`
       }
     }
     .quiz {
+      overflow: hidden;
       width: 100%;
       .inner_box {
         border: 1px solid #d8d8d8;
@@ -77,38 +78,59 @@ const Wrapper = styled.div`
               list-style: none;
               margin: 0 0 0.5rem;
               .form-check {
-                padding-left: 0;
+                border: 1px solid #d8d8d8;
                 margin-bottom: 0;
+                padding-left: 0;
+                position: relative;
+                .check_mark {
+                  align-items: center;
+                  display: flex;
+                  height: 1.5rem;
+                  justify-content: center;
+                  position: absolute;
+                  width: 1.5rem;
+                  span {
+                    text-align: center;
+                    width: 100%;
+                  }
+                  svg {
+                    display: none;
+                  }
+                }
               }
               label {
                 align-items: center;
-                border: 1px solid #d8d8d8;
+                cursor: pointer;
                 display: flex;
                 color: #404041;
                 font-size: 0.875rem;
                 font-weight: 500;
                 margin: 0;
-                padding: 0.4rem;
+                padding: 0.5rem;
               }
-              &:first-child {
-                .form-check-input {
-                  content: '1';
-                }
-              }
-              &:nth-child(2) {
-                .form-check-input {
-                  background: url(https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) no-repeat;
-                  background-size: cover;
-                }
-              }
-              &:last-child {
-                .form-check-input {
-                  background: url(https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) no-repeat;
-                  background-size: cover;
+              .radio_bg {
+                background-color: #47a135;
+                color: #fff;
+                font-weight: 550;
+                .check_mark {
+                  span {
+                    display: none;
+                  }
+                  svg {
+                    color: #fff;
+                    display: block;
+                    font-size: 1.5rem;
+                  }
                 }
               }
             }
           }
+          .form-check-input:checked[type=radio] {
+            background-image: none;
+            background-color: transparent;
+            border: none;
+          }
+
           .form-check-input[type=radio] {
             border-radius: 0px !important;
           }
@@ -123,6 +145,28 @@ const Wrapper = styled.div`
             &:focus {
               box-shadow: none;
             }
+          }
+        }
+      }
+      .quiz_step {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0 0;
+        width: 100%;
+        p {
+          color: #404041;
+          font-size: 0.875rem;
+          margin: 0;
+        }
+        .btn_next {
+          background-color: transparent;
+          border: none;
+          color: #3e952e;
+          font-size: 0.875rem;
+          padding: 0;
+          &:focus {
+            box-shadow: none;
           }
         }
       }

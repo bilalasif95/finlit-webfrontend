@@ -159,7 +159,7 @@ const Wrapper = styled.div`
       }
     }
     .cartDetailsCont {
-      margin-top: 64px;
+      margin: 3rem 0 0;
       .customBorder {
         border-bottom: 1px solid #d8d8d8;
         width: 100%;
@@ -232,7 +232,7 @@ const Wrapper = styled.div`
       .courseDetail {
         padding: 20px 20px;
         border: 1px solid #d8d8d8;
-        border-radius: 10px;
+        border-radius: 0.313rem;
         margin-bottom: 20px;
         .checkoutDetails {
           display: flex;

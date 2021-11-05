@@ -1,6 +1,19 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+.breadcrumb_bar {
+  a {
+    color:#5ca54e;
+    text-decoration: none;
+  }
+  .active {
+    color: #404041;
+    font-weight: 550;
+  }
+  .breadcrumb-item+.breadcrumb-item::before {
+    content: var(--bs-breadcrumb-divider, ">");
+  }
+}
 .deleteModal {
   text-align: center !important;
 }
@@ -42,30 +55,10 @@ const GlobalStyle = createGlobalStyle`
   margin: 0 0 2rem;
   width: 100%;
   .innerBox {
-    padding: 2rem;
-    .paypalBox {
-      border: 1px solid #276F86;
-      border-radius: 5px;
-      background-color: #F8FFFF;
-      padding: 20px 20px;
-      margin-bottom: 30px; 
-      p {
-        margin-bottom: 0px;
-        position: relative;
-        padding-left: 30px;
-        color: #276F86;
-        font-weight: 700;
-        font-size: 14px;
-        img {
-          position: absolute;
-          left: 0;
-          top: 3px;
-        }
-      }
-    }
+    padding: 1.5rem 2rem;
   }
   .cardSelect {
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     border-bottom: 1px solid #D8D8D8;
     width: 100%;
     display: block;
@@ -1428,7 +1421,6 @@ const GlobalStyle = createGlobalStyle`
           }
         }
       }
-
 `;
 
 export default GlobalStyle;

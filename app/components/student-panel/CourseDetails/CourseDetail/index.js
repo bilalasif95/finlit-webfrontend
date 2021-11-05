@@ -3,10 +3,11 @@
  */
 import React, { useState, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { BiCheck } from 'react-icons/bi';
 import { IoMdShare } from 'react-icons/io';
-import { BsDot, BsPerson, BsChatLeftText, BsCardList } from 'react-icons/bs';
+import { BsDot, BsPerson } from 'react-icons/bs';
+// , BsChatLeftText, BsCardList
 import { FaRegHeart } from 'react-icons/fa';
 import { RiStarSFill } from 'react-icons/ri';
 import { TiLockClosed } from 'react-icons/ti';
@@ -35,8 +36,8 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
-import moment from 'moment';
-import JoditEditor from 'jodit-react';
+// import moment from 'moment';
+// import JoditEditor from 'jodit-react';
 import { Player } from 'video-react';
 import classnames from 'classnames';
 import 'react-accessible-accordion/dist/fancy-example.css';
@@ -47,11 +48,13 @@ import MoreCourses from '../../MoreCourses';
 import './videoplayer.css';
 
 function CourseDetail(props) {
-  const editor = useRef(null);
-  const config = {
-    readonly: true,
-  };
-  const { className } = props;
+  // const editor = useRef(null);
+  // const config = {
+  //   readonly: true,
+  // };
+  const {
+    className
+  } = props;
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
