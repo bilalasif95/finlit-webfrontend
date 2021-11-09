@@ -1100,6 +1100,7 @@ const GlobalStyle = createGlobalStyle`
   border:none;
   outline:0;
   background:0 0;
+  display: none;
 }
 .slick-next:focus,
 .slick-next:hover,
@@ -1127,6 +1128,7 @@ const GlobalStyle = createGlobalStyle`
   color:#fff;
 }
 .slick-prev{
+  display: none !important;
   left:-25px;
 }
 [dir=rtl] .slick-prev{
@@ -1142,6 +1144,7 @@ const GlobalStyle = createGlobalStyle`
 }
 .slick-next{
   right:-25px;
+  display: none !important;
 }
 [dir=rtl] .slick-next{
   right:auto;

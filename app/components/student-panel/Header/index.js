@@ -24,15 +24,13 @@ import './profile.css';
 import { HiSearch, HiUser } from 'react-icons/hi';
 import { BiHeart } from 'react-icons/bi';
 import { RiUserSettingsLine } from 'react-icons/ri';
-import { FaRegListAlt, FaLongArrowAltRight } from 'react-icons/fa';
+import { FaRegListAlt } from 'react-icons/fa';
 //  FaRegUserCircle, , FaUserCog
 import { FiLogOut } from 'react-icons/fi';
 // import { BsCart3 } from 'react-icons/bs';
 // import { MdLogout } from 'react-icons/md';
 // import { MdNotificationsActive, MdChat } from 'react-icons/md';
 // IoIosHelpCircle
-import { GrCart } from 'react-icons/gr';
-import { IoMdNotificationsOutline } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Logo from '../../../images/logo.svg';
@@ -40,11 +38,12 @@ import Menubar from './Menubar';
 // import Img from './Img';
 import messages from './messages';
 import { API } from '../../../config/config';
+import MyCartNotificationsDropdowns from '../../MyCartNotificationsDropdowns';
+import MenuSidebar from '../../MenuSidebar';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userObj, setUserObj] = useState({});
-  const [toggleMenu, setToggleMenu] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
   const token = localStorage.getItem('token');
@@ -78,10 +77,13 @@ const Header = () => {
     <Menubar>
       <Navbar expand="lg">
         <Container fluid="xl">
+          <div className="d_res">
+            <MenuSidebar />
+          </div>
           {userObj &&
-          userObj.roles &&
-          userObj.roles[0] &&
-          userObj.roles[0].roleName === 'Instructor' ? (
+            userObj.roles &&
+            userObj.roles[0] &&
+            userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
               <img
                 src={Logo}
@@ -102,74 +104,13 @@ const Header = () => {
               />
             </Link>
           )}
+          <div className="d_res">
+            <MyCartNotificationsDropdowns />
+          </div>
           <NavbarToggler onClick={toggle} />
-          <nav>
-            <div
-              role="button"
-              tabIndex={0}
-              className={toggleMenu ? 'toggle-wrap active' : 'toggle-wrap'}
-              onClick={() => setToggleMenu(!toggleMenu)}
-              onKeyDown={() => setToggleMenu(!toggleMenu)}
-            >
-              <span className="toggle-bar" />
-              Categories
-            </div>
-          </nav>
-
-          <aside className={toggleMenu ? 'active' : ''}>
-            <div className="asideCont">
-              <div className="profileNav">
-                <div
-                  role="button"
-                  tabIndex={0}
-                  className={toggleMenu ? 'toggle-wrap active' : 'toggle-wrap'}
-                  onClick={() => setToggleMenu(!toggleMenu)}
-                  onKeyDown={() => setToggleMenu(!toggleMenu)}
-                >
-                  <span className="toggle-bar" />
-                </div>
-                <ul className="list-unstyled sideBarList">
-                  <li>
-                    <FaLongArrowAltRight />
-                    <Link>Goal Based Education</Link>
-                  </li>
-                  <li>
-                    <FaLongArrowAltRight />
-                    <Link>One-on-One Private Sessions</Link>
-                  </li>
-                  <li>
-                    <FaLongArrowAltRight />
-                    <Link>Interactive Learning Tools</Link>
-                  </li>
-                  <li>
-                    <FaLongArrowAltRight />
-                    <Link>Bootcamp</Link>
-                  </li>
-                  <li>
-                    <FaLongArrowAltRight />
-                    <Link>Hackathons</Link>
-                  </li>
-                  <li>
-                    <FaLongArrowAltRight />
-                    <Link>Live Webinars</Link>
-                  </li>
-                  <li>
-                    <FaLongArrowAltRight />
-                    <Link>Case Studies & Stories</Link>
-                  </li>
-                  <li>
-                    <FaLongArrowAltRight />
-                    <Link>Short Videos</Link>
-                  </li>
-                  <li>
-                    <FaLongArrowAltRight />
-                    <Link>Chat Bot</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </aside>
-
+          <div className="d_desk">
+            <MenuSidebar />
+          </div>
           <Collapse isOpen={isOpen} navbar>
             <Nav navbar>
               <InputGroup>
@@ -185,133 +126,11 @@ const Header = () => {
                   id="searches"
                 />
               </InputGroup>
-              {/* <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  <FormattedMessage {...messages.AccreditedEducation} />
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    <Link to="/accredited_education_list">
-                    <FormattedMessage {...messages.AccreditedEducation} />
-                    </Link>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.Budgeting} />
-                  </DropdownItem>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.GoalBasedEducation} />
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <FormattedMessage {...messages.LoansDebt} />
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown> 
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  <FormattedMessage {...messages.ShortVideos} />
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.AccreditedEducation} />
-                  </DropdownItem>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.Budgeting} />
-                  </DropdownItem>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.GoalBasedEducation} />
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <FormattedMessage {...messages.LoansDebt} />
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  <FormattedMessage {...messages.LiveWebinars} />
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.AccreditedEducation} />
-                  </DropdownItem>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.Budgeting} />
-                  </DropdownItem>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.GoalBasedEducation} />
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <FormattedMessage {...messages.LoansDebt} />
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  <FormattedMessage {...messages.GoalBasedEducation} />
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.AccreditedEducation} />
-                  </DropdownItem>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.Budgeting} />
-                  </DropdownItem>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.GoalBasedEducation} />
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <FormattedMessage {...messages.LoansDebt} />
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  <FormattedMessage {...messages.FreeGiftsRewards} />
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.AccreditedEducation} />
-                  </DropdownItem>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.Budgeting} />
-                  </DropdownItem>
-                  <DropdownItem>
-                    <FormattedMessage {...messages.GoalBasedEducation} />
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <FormattedMessage {...messages.LoansDebt} />
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            */}
             </Nav>
             <div className="nav_right">
-              <UncontrolledDropdown nav className="alert_dropdown">
-                <DropdownToggle nav caret>
-                  <GrCart />
-                  <div className="count">10</div>
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem>1</DropdownItem>
-                  <DropdownItem>2</DropdownItem>
-                  <DropdownItem>2</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <UncontrolledDropdown nav className="alert_dropdown">
-                <DropdownToggle nav caret>
-                  <IoMdNotificationsOutline />
-                  <div className="count">10</div>
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem>1</DropdownItem>
-                  <DropdownItem>2</DropdownItem>
-                  <DropdownItem>2</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              <div className="d_desk">
+                <MyCartNotificationsDropdowns />
+              </div>
               <div className="registration">
                 {!token ? (
                   <Nav navbar>

@@ -8,6 +8,9 @@ const Menubar = styled.div`
   background-color: #fff;
   box-shadow: 0px 5px 21px 0px rgba(0, 0, 0, 0.14);
   z-index: 1;
+  .d_res {
+    display: none !important;
+  }
   .input-group {
     .form-control {
       background-color: #f9f9f9;
@@ -65,6 +68,24 @@ const Menubar = styled.div`
     }
     .dropdown-toggle::after {
       display: none;
+    }
+  }
+  .dropdown-menu {
+    box-shadow: 0px 0px 25px 5px #00000029;
+    border: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    padding: 0;
+    top: 1.55rem !important;
+  }
+  .mycart {
+    .dropdown-menu {
+      left: 200px  !important;
+    }
+  }
+  .notify {
+    .dropdown-menu {
+      left: 155px  !important;
     }
   }
   .registration {
@@ -234,16 +255,39 @@ const Menubar = styled.div`
   }
   @media (max-width: 1100px) and (min-width: 992px) {
     .navbar-collapse {
-      width: 90%;
+      width: 60%;
     }
     .registration {
-      width: 15%;
       .dropdown {
         padding: 0 0.5rem 0 1rem;
       }
       .user_name {
         display: none;
       }
+    }
+  }
+  @media (max-width: 991px) {
+    .d_res {
+      display: block !important;
+    }
+    .navbar-toggler,
+    .d_desk {
+      display: none !important;
+    }
+    .mycart {
+      .dropdown-menu {
+        left: 0  !important;
+      }
+    }
+    .notify {
+      .dropdown-menu {
+        left: 0 !important;
+      }
+    }
+  }
+  @media (max-width: 480px) {
+    .cat_text {
+      display: none !important;
     }
   }
 `;

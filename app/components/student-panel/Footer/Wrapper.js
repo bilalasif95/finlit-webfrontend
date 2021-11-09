@@ -55,6 +55,7 @@ const Wrapper = styled.footer`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding: 0;
     width: 100%;
     li {
       color: #484848;
@@ -94,7 +95,6 @@ const Wrapper = styled.footer`
     }
   }
   @media (max-width: 991px) {
-    margin: 2rem 0 0 !important;
     padding: 1rem 0 2rem;
   }
 `;
