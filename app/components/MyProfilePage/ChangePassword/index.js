@@ -71,13 +71,13 @@ function ChangePassword() {
     }
     return error;
   };
-  const cancelOperation = () => {
-    setChangePassword({
-      currentPassword: '',
-      newPassword: '',
-      confirmPassword: '',
-    });
-  };
+  // const cancelOperation = () => {
+  //   setChangePassword({
+  //     currentPassword: '',
+  //     newPassword: '',
+  //     confirmPassword: '',
+  //   });
+  // };
   const handleChangePasswordSave = () => {
     if (Object.keys(passwordValidator(changePassword)).length > 0) {
       setErrors(passwordValidator(changePassword));

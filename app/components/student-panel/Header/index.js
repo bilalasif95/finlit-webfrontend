@@ -131,39 +131,39 @@ const Header = () => {
                 <ul className="list-unstyled sideBarList">
                   <li>
                     <FaLongArrowAltRight />
-                    <Link>Goal Based Education</Link>
+                    <Link to="/#">Goal Based Education</Link>
                   </li>
                   <li>
                     <FaLongArrowAltRight />
-                    <Link>One-on-One Private Sessions</Link>
+                    <Link to="/#">One-on-One Private Sessions</Link>
                   </li>
                   <li>
                     <FaLongArrowAltRight />
-                    <Link>Interactive Learning Tools</Link>
+                    <Link to="/#">Interactive Learning Tools</Link>
                   </li>
                   <li>
                     <FaLongArrowAltRight />
-                    <Link>Bootcamp</Link>
+                    <Link to="/#">Bootcamp</Link>
                   </li>
                   <li>
                     <FaLongArrowAltRight />
-                    <Link>Hackathons</Link>
+                    <Link to="/#">Hackathons</Link>
                   </li>
                   <li>
                     <FaLongArrowAltRight />
-                    <Link>Live Webinars</Link>
+                    <Link to="/#">Live Webinars</Link>
                   </li>
                   <li>
                     <FaLongArrowAltRight />
-                    <Link>Case Studies & Stories</Link>
+                    <Link to="/#">Case Studies & Stories</Link>
                   </li>
                   <li>
                     <FaLongArrowAltRight />
-                    <Link>Short Videos</Link>
+                    <Link to="/#">Short Videos</Link>
                   </li>
                   <li>
                     <FaLongArrowAltRight />
-                    <Link>Chat Bot</Link>
+                    <Link to="/#">Chat Bot</Link>
                   </li>
                 </ul>
               </div>

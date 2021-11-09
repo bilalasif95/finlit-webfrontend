@@ -8,22 +8,22 @@ import NumberFormat from 'react-number-format';
 import { Row, Col, FormGroup, Input, Label, Button } from 'reactstrap';
 import { IoMdLock } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+// import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import history from 'utils/history';
+// import history from 'utils/history';
 import mastercard from '../../images/mastercard.svg';
 import paypalicon from '../../images/paypal.svg';
 import Back from '../../images/back.png';
 import Info from '../../images/info.png';
-import { axiosHeader } from '../../utils/axiosHeader';
-import { API } from '../../config/config';
+// import { axiosHeader } from '../../utils/axiosHeader';
+// import { API } from '../../config/config';
 import Wrapper from './Wrapper';
 import messages from './messages';
 
 function CheckoutSidebar() {
   const [paymentType, setPaymentType] = useState({ card: true, paypal: false });
-  const [loader, setLoader] = useState(false);
+  // const [loader, setLoader] = useState(false);
   // const [checkoutInfo, setCheckoutInfo] = useState({
   //   email: '',
   //   cardHolderName: '',
@@ -32,7 +32,7 @@ function CheckoutSidebar() {
   //   CVC: '',
   //   rememberCard: false,
   // });
-  const [errors, setErrors] = useState({});
+  const [errors] = useState({});
 
   const handleChange = type => {
     if (type === 'card') {
@@ -85,45 +85,45 @@ function CheckoutSidebar() {
   //   }
   // };
 
-  const validator = values => {
-    const error = {};
-    if (!values.email) {
-      error.email = 'Email is required';
-    } else {
-      const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      const validEmail = regex.test(String(values.email).toLowerCase());
-      if (!validEmail) {
-        error.email = 'Invalid email';
-      } else if (!values.cardHolderName) {
-        error.cardHolderName = 'Card name is required';
-      } else if (!values.cardNumber) {
-        error.cardNumber = 'Card number is required';
-      } else {
-        const validateCard = values.cardNumber.toString().search('_');
-        if (validateCard >= 0) {
-          error.cardNumber = 'Invalid card number format';
-        } else if (!values.MMYY) {
-          error.MMYY = 'MM / YY  is required';
-        } else {
-          const validateMM = values.MMYY.toString().search('M');
-          if (validateMM >= 0) {
-            error.MMYY = 'Invalid format mm/yy';
-          } else {
-            const validateyy = values.MMYY.toString().search('Y');
-            if (validateyy >= 0) {
-              error.MMYY = 'Invalid format mm/yy';
-            } else if (!values.CVC) {
-              error.CVC = 'CVC is required';
-            }
-            // else if (isNaN(values.CVC)) {
-            //   error.CVC = 'Invalid CVC format';
-            // }
-          }
-        }
-      }
-    }
-    return error;
-  };
+  // const validator = values => {
+  //   const error = {};
+  //   if (!values.email) {
+  //     error.email = 'Email is required';
+  //   } else {
+  //     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  //     const validEmail = regex.test(String(values.email).toLowerCase());
+  //     if (!validEmail) {
+  //       error.email = 'Invalid email';
+  //     } else if (!values.cardHolderName) {
+  //       error.cardHolderName = 'Card name is required';
+  //     } else if (!values.cardNumber) {
+  //       error.cardNumber = 'Card number is required';
+  //     } else {
+  //       const validateCard = values.cardNumber.toString().search('_');
+  //       if (validateCard >= 0) {
+  //         error.cardNumber = 'Invalid card number format';
+  //       } else if (!values.MMYY) {
+  //         error.MMYY = 'MM / YY  is required';
+  //       } else {
+  //         const validateMM = values.MMYY.toString().search('M');
+  //         if (validateMM >= 0) {
+  //           error.MMYY = 'Invalid format mm/yy';
+  //         } else {
+  //           const validateyy = values.MMYY.toString().search('Y');
+  //           if (validateyy >= 0) {
+  //             error.MMYY = 'Invalid format mm/yy';
+  //           } else if (!values.CVC) {
+  //             error.CVC = 'CVC is required';
+  //           }
+  // else if (isNaN(values.CVC)) {
+  //   error.CVC = 'Invalid CVC format';
+  // }
+  //         }
+  //       }
+  //     }
+  //   }
+  //   return error;
+  // };
   return (
     <Row>
       <Col lg={12}>
@@ -172,7 +172,7 @@ function CheckoutSidebar() {
                       name="cardHolderName"
                       id="cardholdername"
                       // value={checkoutInfo.cardHolderName}
-                      onChange={e => handleChangeEvent(e)}
+                      // onChange={e => handleChangeEvent(e)}
                       placeholder="Enter name"
                     />
                     <Label for="cardholdername">
@@ -192,7 +192,7 @@ function CheckoutSidebar() {
                       mask="_"
                       name="cardNumber"
                       // value={checkoutInfo.cardNumber}
-                      onChange={e => handleChangeEvent(e)}
+                      // onChange={e => handleChangeEvent(e)}
                       placeholder="Enter number"
                       className="form-control"
                     />
@@ -214,12 +214,16 @@ function CheckoutSidebar() {
                       id="mmyy"
                       name="MMYY"
                       // value={checkoutInfo.MMYY}
-                      onChange={e => handleChangeEvent(e)}
+                      // onChange={e => handleChangeEvent(e)}
                       placeholder="mm - yy "
                       className="form-control"
                     />
                     <Label for="mmyy">
-                      {errors.MMYY ? <p className="error"> {errors.MMYY} </p> : ''}
+                      {errors.MMYY ? (
+                        <p className="error"> {errors.MMYY} </p>
+                      ) : (
+                        ''
+                      )}
                     </Label>
                   </FormGroup>
                   <FormGroup>
@@ -231,7 +235,7 @@ function CheckoutSidebar() {
                       placeholder="Enter CVC"
                       name="CVC"
                       // value={checkoutInfo.CVC}
-                      onChange={e => handleChangeEvent(e)}
+                      // onChange={e => handleChangeEvent(e)}
                       className="form-control"
                     />
                     <Label for="cvc">
@@ -239,7 +243,9 @@ function CheckoutSidebar() {
                     </Label>
                   </FormGroup>
                 </div>
-              ) : ''}
+              ) : (
+                ''
+              )}
             </div>
             <div className="cardSelect">
               <FormGroup check>
@@ -269,13 +275,16 @@ function CheckoutSidebar() {
               </p>
             </div> */}
             <div className="innerBox">
-            {paymentType.paypal ? (
+              {paymentType.paypal ? (
                 <div className="paypal">
                   <p>
-                    <img src={Info} alt="Info" /> <FormattedMessage {...messages.PayPalInfo} />
+                    <img src={Info} alt="Info" />
+                    <FormattedMessage {...messages.PayPalInfo} />
                   </p>
                 </div>
-              ) : ''}
+              ) : (
+                ''
+              )}
               <div className="summary">
                 <h4>
                   <FormattedMessage {...messages.Summary} />
@@ -303,7 +312,8 @@ function CheckoutSidebar() {
                   </li>
                 </ul>
               </div>
-              <Button onClick={() => handleCheckout()}>
+              <Button>
+                {/* <Button onClick={() => handleCheckout()}> */}
                 {/* {loader ? `loading...` : `Pay $${props.details.total}`} */}
                 Pay $1000
               </Button>

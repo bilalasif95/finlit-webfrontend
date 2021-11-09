@@ -2,27 +2,27 @@
  * My Profile Page
  *
  */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
 import '../../components/student-panel/Header/profile.css';
 // import { withStyles } from '@material-ui/core/styles';
-import {
-  Container,
-  Row,
-  Col,
-  Label,
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
-  Button,
-  Collapse,
-  Card,
-  CardBody,
-} from 'reactstrap';
-import messages from './messages';
+// import {
+//   Container,
+//   Row,
+//   Col,
+//   Label,
+//   TabContent,
+//   TabPane,
+//   Nav,
+//   NavItem,
+//   NavLink,
+//   Button,
+//   Collapse,
+//   Card,
+//   CardBody,
+// } from 'reactstrap';
+// import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
 import Logo from '../../images/logoS.png';
 import Green from '../../images/green-e.png';
@@ -33,10 +33,10 @@ import Sidebar from '../../components/student-panel/Sidebar/index';
 // import Profile from '../../images/profile.jpg';
 
 export default function Notification() {
-  const [activeTab, setActiveTab] = useState('1');
-  const toggle = tab => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
+  // const [activeTab, setActiveTab] = useState('1');
+  // const toggle = tab => {
+  //   if (activeTab !== tab) setActiveTab(tab);
+  // };
   const Notifications = [
     {
       img: Logo,
@@ -126,13 +126,13 @@ export default function Notification() {
                 <div className="NotificationCont">
                   <div className="NotificationImg">
                     <div className="notiImg">
-                      <img src={data.img} />
+                      <img src={data.img} alt="notification" />
                     </div>
                     <p>{data.message}</p>
                   </div>
                   <div className="NotificationImg">
                     <p className="notitime">{data.time} </p>
-                    <img src={data.icon} />
+                    <img src={data.icon} alt="notification-icon" />
                   </div>
                 </div>
               ))}
