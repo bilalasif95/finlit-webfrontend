@@ -14,7 +14,8 @@ import Wrapper from './Wrapper';
 
 function ArticleDescription(props) {
   const article = props.details;
-  const { title, description } = article;
+  const { title } = article;
+  // , description
   return (
     <Wrapper id="list">
       <div className="article">
@@ -39,7 +40,7 @@ function ArticleDescription(props) {
         </div>
         <div
           className="article_desc"
-          dangerouslySetInnerHTML={{ __html: description }}
+          // dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>
     </Wrapper>

@@ -16,9 +16,9 @@ export default defineMessages({
     id: `${scope}.CertificateCompletion`,
     defaultMessage: `Certificate of Completion`,
   },
-  ChangePassword: {
-    id: `${scope}.ChangePassword`,
-    defaultMessage: 'Change Password',
+  CourseName: {
+    id: `${scope}.CourseName`,
+    defaultMessage: `Complete Programming with Python : HandsOn Introduction for Beginners`,
   },
   Desc: {
     id: `${scope}.Desc`,

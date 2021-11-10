@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CourseCertificate /> should render its heading 1`] = `
+<div
+  class="sub_pages"
+>
+  <div
+    class="Wrapper-tcjrjc-0 UyYOk"
+  >
+    <div
+      class="container-xl"
+    >
+      <div
+        class="course_certificate"
+      >
+        <div
+          class="header"
+        >
+          <h4>
+            <span>
+              FinLit Professional Academy
+            </span>
+          </h4>
+          <h2>
+            <span>
+              Certificate of Completion
+            </span>
+          </h2>
+        </div>
+        <div
+          class="certificate_details"
+        >
+          <div
+            class="name_date"
+          >
+            <h1>
+              Chad Sanders
+            </h1>
+            <div
+              class="comp_date"
+            >
+              <p>
+                Has successfully completed.
+              </p>
+              <p>
+                Date of Achievement: 14-Feb-2021
+              </p>
+            </div>
+            <div
+              class="course_title"
+            >
+              <p>
+                Course
+              </p>
+              <p>
+                <span>
+                  Complete Programming with Python : HandsOn Introduction for Beginners
+                </span>
+              </p>
+            </div>
+            <div
+              class="certified_by"
+            >
+              <p
+                class="name"
+              >
+                RandyHayes
+              </p>
+              <p>
+                Randy Hayes
+              </p>
+              <p>
+                General Manager
+              </p>
+              <p>
+                FinLit Learning Experiences Group
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="footer"
+        >
+          <a
+            href="/"
+          >
+            www.finlit.com
+          </a>
+          <div
+            class="logo"
+          >
+            <img
+              alt="FinLit"
+              height="100%"
+              src="IMAGE_MOCK"
+              width="100%"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

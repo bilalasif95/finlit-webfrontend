@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 // import { withStyles } from '@material-ui/core/styles';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container } from 'reactstrap';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import Logo from '../../images/logowhite.svg';
@@ -39,7 +39,9 @@ export default function CourseCertificate() {
                 </div>
                 <div className="course_title">
                   <p>Course</p>
-                  <p>Complete Programming with Python : HandsOn Introduction for Beginners</p>
+                  <p>
+                    <FormattedMessage {...messages.CourseName} />
+                  </p>
                 </div>
                 <div className="certified_by">
                   <p className="name">RandyHayes</p>

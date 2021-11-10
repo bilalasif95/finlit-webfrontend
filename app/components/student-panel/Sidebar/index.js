@@ -18,7 +18,9 @@ function Sidebar(props) {
 
   return (
     <div className="profileAside">
-      <img className="img-fluid mx-auto d-block" src={Logo} alt="Logo" />
+      <Link to="/#">
+        <img className="img-fluid mx-auto d-block" src={Logo} alt="Logo" />
+      </Link>
       <div className="sideNav">
         <div
           className={
@@ -66,7 +68,7 @@ function Sidebar(props) {
                 <CardBody>
                   <ul className="list-unstyled sideList">
                     <li>
-                      <Link to="/#">Course</Link>
+                      <Link to="/my_courses">Course</Link>
                     </li>
                     <li>
                       <Link to="/#">Bootcamp</Link>

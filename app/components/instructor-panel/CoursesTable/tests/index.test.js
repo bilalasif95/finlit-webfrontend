@@ -4,10 +4,10 @@ import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { browserHistory, BrowserRouter } from 'react-router-dom';
 
-import CourseDetail from '../index';
-import configureStore from '../../../../../configureStore';
+import configureStore from '../../../../configureStore';
+import CoursesTable from '../index';
 
-describe('<CourseDetail />', () => {
+describe('<CoursesTable />', () => {
   let store;
 
   beforeAll(() => {
@@ -20,8 +20,7 @@ describe('<CourseDetail />', () => {
         <Provider store={store}>
           <IntlProvider locale="en">
             <BrowserRouter>
-              {/* <CourseDetail detail={{ data: {} }} /> */}
-              <CourseDetail />
+              <CoursesTable />
             </BrowserRouter>
           </IntlProvider>
         </Provider>,
