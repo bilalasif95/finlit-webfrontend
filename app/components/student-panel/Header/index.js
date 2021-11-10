@@ -81,9 +81,9 @@ const Header = () => {
             <MenuSidebar />
           </div>
           {userObj &&
-            userObj.roles &&
-            userObj.roles[0] &&
-            userObj.roles[0].roleName === 'Instructor' ? (
+          userObj.roles &&
+          userObj.roles[0] &&
+          userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
               <img
                 src={Logo}

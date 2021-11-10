@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CourseDetails /> should render its heading 1`] = `
+<div
+  class="page_loader"
+>
+  <div
+    class="Wrapper-sc-12uw37d-0 bTWIVF"
+  >
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 hrogWC"
+    />
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 bLAwqR"
+    />
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 eOsQOU"
+    />
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 cghnji"
+    />
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 cBbkyO"
+    />
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 fBFjKZ"
+    />
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 knNkJE"
+    />
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 flrRgC"
+    />
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 kQZyQr"
+    />
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 dSvvVE"
+    />
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 ksMCHg"
+    />
+    <div
+      class="Circle__CirclePrimitive-ww56dy-0 fvuXzz"
+    />
+  </div>
+</div>
+`;

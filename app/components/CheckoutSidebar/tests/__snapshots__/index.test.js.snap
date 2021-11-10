@@ -1,0 +1,332 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CheckoutSidebar /> should render and match the snapshot 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-lg-12"
+  >
+    <div
+      className="Wrapper-qzip7p-0 iCkohr"
+    >
+      <div
+        className="payment-box"
+      >
+        <div
+          className="innerBox pb-0"
+        >
+          <div
+            className="heading"
+          >
+            <h4>
+              <img
+                alt="Back"
+                src="IMAGE_MOCK"
+              />
+              <span>
+                Checkout Process
+              </span>
+            </h4>
+          </div>
+          <p>
+            <span>
+              Complete your purchase by providing your payment details.
+            </span>
+          </p>
+        </div>
+        <div
+          className="cardSelect"
+        >
+          <div
+            className="form-check"
+          >
+            <label
+              className="form-check-label"
+            >
+              <input
+                checked={true}
+                className="form-check-input"
+                name="paymentType"
+                onChange={[Function]}
+                type="radio"
+              />
+              <span>
+                Credit Card / Visa Card
+              </span>
+            </label>
+            <div
+              className="icon"
+            >
+              <img
+                alt="Master card"
+                height="100%"
+                src="IMAGE_MOCK"
+                width="100%"
+              />
+            </div>
+          </div>
+          <div
+            className="card_payment"
+          >
+            <div
+              className="form-group"
+            >
+              <label
+                className=""
+                htmlFor="cardholdername"
+              >
+                <span>
+                  Cardholder name
+                </span>
+              </label>
+              <input
+                className="form-control"
+                id="cardholdername"
+                name="cardHolderName"
+                placeholder="Enter name"
+                type="text"
+              />
+              <label
+                className=""
+                htmlFor="cardholdername"
+              >
+                
+              </label>
+            </div>
+            <div
+              className="form-group"
+            >
+              <label
+                className=""
+                htmlFor="cardnumber"
+              >
+                <span>
+                  Card Number
+                </span>
+              </label>
+              <input
+                className="form-control"
+                inputMode="numeric"
+                name="cardNumber"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseUp={[Function]}
+                placeholder="Enter number"
+                type="text"
+                value=""
+              />
+              <label
+                className=""
+                htmlFor="cardnumber"
+              >
+                
+              </label>
+            </div>
+            <div
+              className="form-group"
+            >
+              <label
+                className=""
+                htmlFor="mmyy"
+              >
+                <span>
+                  MM / YY
+                </span>
+              </label>
+              <input
+                className="form-control"
+                id="mmyy"
+                inputMode="numeric"
+                name="MMYY"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseUp={[Function]}
+                placeholder="mm - yy "
+                type="text"
+                value=""
+              />
+              <label
+                className=""
+                htmlFor="mmyy"
+              >
+                
+              </label>
+            </div>
+            <div
+              className="form-group"
+            >
+              <label
+                className=""
+                htmlFor="cvc"
+              >
+                <span>
+                  CVC
+                </span>
+              </label>
+              <input
+                className="form-control"
+                inputMode="numeric"
+                name="CVC"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseUp={[Function]}
+                placeholder="Enter CVC"
+                type="text"
+                value=""
+              />
+              <label
+                className=""
+                htmlFor="cvc"
+              >
+                
+              </label>
+            </div>
+          </div>
+        </div>
+        <div
+          className="cardSelect"
+        >
+          <div
+            className="form-check"
+          >
+            <label
+              className="form-check-label"
+            >
+              <input
+                checked={false}
+                className="form-check-input"
+                name="paymentType"
+                onChange={[Function]}
+                type="radio"
+              />
+              <span>
+                PayPal
+              </span>
+            </label>
+            <div
+              className="icon"
+            >
+              <img
+                alt="Paypal"
+                height="100%"
+                src="IMAGE_MOCK"
+                width="100%"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="innerBox"
+        >
+          
+          <div
+            className="summary"
+          >
+            <h4>
+              <span>
+                Summary
+              </span>
+            </h4>
+            <ul
+              className="list"
+            >
+              <li>
+                <p>
+                  <span>
+                    Programming with Python : HandsOn Introduction
+                  </span>
+                </p>
+                <p>
+                  $1000
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>
+                    Virtual Speaking Masterclass :
+                  </span>
+                </p>
+                <p>
+                  -$500
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>
+                    Total:
+                  </span>
+                </p>
+                <h4>
+                  $1000
+                </h4>
+              </li>
+            </ul>
+          </div>
+          <button
+            aria-label={null}
+            className="btn btn-secondary"
+            onClick={[Function]}
+          >
+            Pay $1000
+          </button>
+          <div
+            className="term_service"
+          >
+            <p>
+              <span>
+                By completing your purchase you agree to these
+              </span>
+               
+              <a
+                href="/"
+                onClick={[Function]}
+              >
+                <span>
+                  Terms of Service.
+                </span>
+              </a>
+            </p>
+          </div>
+          <div
+            className="secure_payment"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M376 186h-20v-40c0-55-45-100-100-100S156 91 156 146v40h-20c-22.002 0-40 17.998-40 40v200c0 22.002 17.998 40 40 40h240c22.002 0 40-17.998 40-40V226c0-22.002-17.998-40-40-40zM256 368c-22.002 0-40-17.998-40-40s17.998-40 40-40 40 17.998 40 40-17.998 40-40 40zm62.002-182H193.998v-40c0-34.004 28.003-62.002 62.002-62.002 34.004 0 62.002 27.998 62.002 62.002v40z"
+              />
+            </svg>
+            <p>
+              <span>
+                Payments are secure and encrypted
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="Toastify"
+  />
+</div>
+`;

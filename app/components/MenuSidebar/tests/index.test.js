@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { browserHistory, BrowserRouter } from 'react-router-dom';
 
 import MyCart from '../index';
-import configureStore from '../../../../configureStore';
+import configureStore from '../../../configureStore';
 
 describe('<MyCart />', () => {
   let store;

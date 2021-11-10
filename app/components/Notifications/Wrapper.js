@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     h4 {
       color: #404041;
       font-size: 1.25rem;
-      line-height: 24px
+      line-height: 24px;
     }
   }
   .notify_list {
@@ -74,9 +74,8 @@ const Wrapper = styled.div`
             width: 100%;
           }
         }
-        .right{
+        .right {
           display: flex;
-          justify-content: flex-end;
           width: 2rem;
         }
       }

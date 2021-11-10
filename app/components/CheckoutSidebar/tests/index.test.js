@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { browserHistory, BrowserRouter } from 'react-router-dom';
 
 import CheckoutSidebar from '../index';
-import configureStore from '../../../../configureStore';
+import configureStore from '../../../configureStore';
 
 describe('<CheckoutSidebar />', () => {
   let store;

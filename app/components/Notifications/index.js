@@ -6,12 +6,12 @@ import { FormattedMessage } from 'react-intl';
 // import LocaleToggle from 'containers/LocaleToggle';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import {
-  FaFacebookSquare,
-  FaLinkedin,
-  FaYoutube,
-  FaSkype,
-} from 'react-icons/fa';
+// import {
+//   FaFacebookSquare,
+//   FaLinkedin,
+//   FaYoutube,
+//   FaSkype,
+// } from 'react-icons/fa';
 import { BiEnvelope } from 'react-icons/bi';
 import Img from '../Img';
 import messages from './messages';
@@ -84,7 +84,7 @@ function Notifications() {
       </ul>
       <div className="mark_read_all">
         <Button>Mark all as read</Button>
-        <Link to="#">See All</Link>
+        <Link to="/">See All</Link>
       </div>
     </Wrapper>
   );

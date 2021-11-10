@@ -1,20 +1,20 @@
 /*
- * My Profile Page Messages
+ * Course Certificate Messages
  *
- * This contains all the text for the My Profile Page.
+ * This contains all the text for the Course Certificate.
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.containers.MyProfilesPage';
+export const scope = 'boilerplate.containers.CourseCertificatePage';
 
 export default defineMessages({
-  ChangeProfile: {
-    id: `${scope}.ChangeProfile`,
-    defaultMessage: 'Upload Photo',
+  FinLitAcademy: {
+    id: `${scope}.FinLitAcademy`,
+    defaultMessage: 'FinLit Professional Academy',
   },
-  Tagline: {
-    id: `${scope}.Tagline`,
-    defaultMessage: `Complete Programming with Python : HandsOn Introduction for Beginners`,
+  CertificateCompletion: {
+    id: `${scope}.CertificateCompletion`,
+    defaultMessage: `Certificate of Completion`,
   },
   ChangePassword: {
     id: `${scope}.ChangePassword`,

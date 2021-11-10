@@ -2,19 +2,12 @@
  * Notifications Component
  */
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 // import LocaleToggle from 'containers/LocaleToggle';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import {
-  FaFacebookSquare,
-  FaLinkedin,
-  FaYoutube,
-  FaSkype,
-} from 'react-icons/fa';
-import { BiEnvelope } from 'react-icons/bi';
 import Img from '../Img';
-import messages from './messages';
+// import messages from './messages';
 import Wrapper from './Wrapper';
 import pro1 from '../../images/cartImg.png';
 
@@ -40,7 +33,10 @@ function MyCart() {
           </div>
           <div className="item_desc">
             <div className="left">
-              <p>2021 Python for Machine Learning & Data Science Masterclass  for Machine Learning & Data Science Masterclass</p>
+              <p>
+                2021 Python for Machine Learning & Data Science Masterclass for
+                Machine Learning & Data Science Masterclass
+              </p>
               <span className="name">Nick Gibson</span>
               <p>$84:99</p>
             </div>
@@ -52,7 +48,9 @@ function MyCart() {
           </div>
           <div className="item_desc">
             <div className="left">
-              <p>100 Days of Code - The Complete Python Pro Bootcamp for 2021</p>
+              <p>
+                100 Days of Code - The Complete Python Pro Bootcamp for 2021
+              </p>
               <span className="name">Nick Gibson</span>
               <p>$84:99</p>
             </div>

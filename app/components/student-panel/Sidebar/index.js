@@ -1,18 +1,18 @@
 /*
  * Footer Component
  */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { BiUserCircle } from 'react-icons/bi';
 import { BsChatSquare } from 'react-icons/bs';
 import { FaChevronDown } from 'react-icons/fa';
 import { RiUserSettingsLine } from 'react-icons/ri';
 import { Button, Collapse, Card, CardBody } from 'reactstrap';
+import PropTypes from 'prop-types';
 import Bell from '../../../images/bell.svg';
 import Logo from '../../../images/logoS.png';
 
 function Sidebar(props) {
-  console.log(props);
   const [collapse, setCollapse] = useState(false);
   const [active, setActive] = useState(props.location.pathname);
 
@@ -38,6 +38,9 @@ function Sidebar(props) {
               ? 'active customDropdown'
               : 'customDropdown'
           }
+          role="button"
+          tabIndex={0}
+          onKeyDown={() => setActive('customDropdown')}
           onClick={() => setActive('customDropdown')}
         >
           <Button
@@ -63,22 +66,22 @@ function Sidebar(props) {
                 <CardBody>
                   <ul className="list-unstyled sideList">
                     <li>
-                      <Link>Course</Link>
+                      <Link to="/#">Course</Link>
                     </li>
                     <li>
-                      <Link>Bootcamp</Link>
+                      <Link to="/#">Bootcamp</Link>
                     </li>
                     <li>
-                      <Link>Hackathon</Link>
+                      <Link to="/#">Hackathon</Link>
                     </li>
                     <li>
-                      <Link>One to one session</Link>
+                      <Link to="/#">One to one session</Link>
                     </li>
                     <li>
-                      <Link>Live webinar</Link>
+                      <Link to="/#">Live webinar</Link>
                     </li>
                     <li>
-                      <Link>Article</Link>
+                      <Link to="/#">Article</Link>
                     </li>
                   </ul>
                 </CardBody>
@@ -120,5 +123,9 @@ function Sidebar(props) {
     </div>
   );
 }
+
+Sidebar.propTypes = {
+  location: PropTypes.any,
+};
 
 export default withRouter(Sidebar);

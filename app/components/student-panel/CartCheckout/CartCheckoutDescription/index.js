@@ -106,13 +106,9 @@ function CartCheckoutDescription(props) {
         <div className="breadcrumb_bar">
           <Breadcrumb>
             <BreadcrumbItem>
-              <Link to="/">
-                Home
-              </Link>
+              <Link to="/">Home</Link>
             </BreadcrumbItem>
-            <BreadcrumbItem active>
-              My Cart
-            </BreadcrumbItem>
+            <BreadcrumbItem active>My Cart</BreadcrumbItem>
           </Breadcrumb>
         </div>
         <div className="cartDetailsCont">

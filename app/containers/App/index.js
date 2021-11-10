@@ -29,6 +29,7 @@ import AddCartWebinar from 'containers/student-panel/AddCartWebinar/Loadable';
 import AddCartBootcamp from 'containers/student-panel/AddCartBootcamp/Loadable';
 import CourseDetails from 'containers/student-panel/CourseDetails/Loadable';
 import AboutCourse from 'containers/AboutCourse/Loadable';
+import CourseCertificate from 'containers/CourseCertificate/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 // Instructor Panel pages routes
 import Home from 'containers/instructor-panel/HomePage/Loadable';
@@ -113,6 +114,7 @@ const App = () => {
         <Route path="/bootcamp_details/:id" component={AddCartBootcamp} />
         <Route path="/course_details" component={CourseDetails} />
         <Route path="/about_course" component={AboutCourse} />
+        <Route path="/course_certificate" component={CourseCertificate} />
         {/* Instructor Panel pages routes */}
         {/* {userInfo && userInfo.roles[0].roleName == "Super Admin" || userInfo && userInfo.roles[0].roleName == "Instructor" ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={HomePage} />} */}
         <Route exact path="/add_webinar" component={AddWebinarPage} />

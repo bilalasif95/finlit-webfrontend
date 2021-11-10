@@ -1,7 +1,7 @@
 /*
  * Cart Checkout Description Component
  */
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 // import PropTypes from 'prop-types';
 import { BiCheck } from 'react-icons/bi';
@@ -47,14 +47,12 @@ import coursedummy from '../../../../images/coursedummy.png';
 import MoreCourses from '../../MoreCourses';
 import './videoplayer.css';
 
-function CourseDetail(props) {
+function CourseDetail() {
   // const editor = useRef(null);
   // const config = {
   //   readonly: true,
   // };
-  const {
-    className
-  } = props;
+  // const {className} = props;
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -209,7 +207,7 @@ function CourseDetail(props) {
               </p> */}
                 <p>
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industry&apos;s
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
                   specimen book. It has survived not only five centuries, but
@@ -221,7 +219,7 @@ function CourseDetail(props) {
                 </p>
                 <p>
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industry&apos;s
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
                   specimen book. It has survived not only five centuries, but
@@ -233,7 +231,7 @@ function CourseDetail(props) {
                 </p>
               </div>
               <div className="content_in">
-                <h4>What you'll learn</h4>
+                <h4>What you&apos;ll learn</h4>
                 <ul>
                   <li>
                     <BiCheck />

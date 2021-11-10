@@ -80,12 +80,12 @@ const Menubar = styled.div`
   }
   .mycart {
     .dropdown-menu {
-      left: 200px  !important;
+      left: 200px !important;
     }
   }
   .notify {
     .dropdown-menu {
-      left: 155px  !important;
+      left: 155px !important;
     }
   }
   .registration {
@@ -276,7 +276,7 @@ const Menubar = styled.div`
     }
     .mycart {
       .dropdown-menu {
-        left: 0  !important;
+        left: 0 !important;
       }
     }
     .notify {
