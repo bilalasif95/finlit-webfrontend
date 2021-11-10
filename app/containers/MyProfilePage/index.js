@@ -122,10 +122,6 @@ export default function MyProfilePage() {
           <div className="profileContent">
             <div className="mainCont">
               <h2>My Personal</h2>
-              {/* <div className="profileHeader">
-                <h3>Create New Course</h3>
-                <button className="btn btn-default createBtn"><span>+</span> Create Course</button>
-              </div> */}
               <div className="uploadImg">
                 <div className="inner">
                   <Img
