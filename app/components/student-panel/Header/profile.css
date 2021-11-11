@@ -669,3 +669,63 @@ aside > a {
   width: 70px;
   margin: 0px auto;
 }
+.Paginataion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.socialList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0px;
+}
+.socialList li {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  border: 1px solid #d8d8d8;
+  cursor: pointer;
+}
+.ShareModal .modal-header .close {
+  font-size: 30px !important;
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
+  background-color: #f9f9f9 !important;
+}
+.ShareModal h5 {
+  text-align: left;
+  color: #404041;
+  font-size: 18px;
+}
+.copyLink .copyInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.copyLink input {
+  border-radius: 5px;
+  height: 55px;
+  color: #8b8b8b;
+  font-weight: 700;
+  padding: 12px 25px;
+}
+.copyLink input:focus {
+  color: #8b8b8b;
+}
+.copyLink .copyInput button {
+  position: absolute;
+  right: 13px;
+  color: #3e952e;
+  font-weight: 600;
+  background: #fff;
+}
+@media (min-width: 576px){
+.ShareModal {
+    max-width: 770px !important;
+}
+}

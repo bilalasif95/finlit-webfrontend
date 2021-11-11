@@ -80,6 +80,72 @@ function CoursesTable() {
       deleteIcon: <RiDeleteBin7Line />,
       editIcon: <FiEdit3 />,
     },
+
+    {
+      name: 'The Web Developer BootCamp',
+      img: TableImg,
+      type: 'Web Development',
+      level: 'All Level',
+      fees: '$44.99',
+      date: '10/07/2021',
+      deleteIcon: <RiDeleteBin7Line />,
+      editIcon: <FiEdit3 />,
+    },
+
+    {
+      name: 'The Web Developer BootCamp',
+      img: TableImg,
+      type: 'Web Development',
+      level: 'All Level',
+      fees: '$44.99',
+      date: '10/07/2021',
+      deleteIcon: <RiDeleteBin7Line />,
+      editIcon: <FiEdit3 />,
+    },
+
+    {
+      name: 'The Web Developer BootCamp',
+      img: TableImg,
+      type: 'Web Development',
+      level: 'All Level',
+      fees: '$44.99',
+      date: '10/07/2021',
+      deleteIcon: <RiDeleteBin7Line />,
+      editIcon: <FiEdit3 />,
+    },
+
+    {
+      name: 'The Web Developer BootCamp',
+      img: TableImg,
+      type: 'Web Development',
+      level: 'All Level',
+      fees: '$44.99',
+      date: '10/07/2021',
+      deleteIcon: <RiDeleteBin7Line />,
+      editIcon: <FiEdit3 />,
+    },
+
+    {
+      name: 'The Web Developer BootCamp',
+      img: TableImg,
+      type: 'Web Development',
+      level: 'All Level',
+      fees: '$44.99',
+      date: '10/07/2021',
+      deleteIcon: <RiDeleteBin7Line />,
+      editIcon: <FiEdit3 />,
+    },
+
+    {
+      name: 'The Web Developer BootCamp',
+      img: TableImg,
+      type: 'Web Development',
+      level: 'All Level',
+      fees: '$44.99',
+      date: '10/07/2021',
+      deleteIcon: <RiDeleteBin7Line />,
+      editIcon: <FiEdit3 />,
+    },
   ];
 
   return (

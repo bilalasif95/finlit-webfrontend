@@ -1381,6 +1381,8 @@ const GlobalStyle = createGlobalStyle`
       }
       .modal-title {
         text-align: left;
+        color: #404041;
+        font-size: 24px;
       }
       .modal-body {
         padding: 0;
