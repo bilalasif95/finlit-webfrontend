@@ -2,6 +2,31 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   margin: 30px 0 16px;
+  .graph-box {
+    padding: 0.5rem;
+    width: 100%;
+    img {
+      height: 90px;
+      width: 90px;
+    }
+  }
+  .PieChartCustom {
+    position: relative;
+    .inner {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      text-align: center;
+      font-size: 9px;
+      height: 100%;
+      width: 100%;
+      span {
+        font-size: 18px;
+      }
+    }
+  }
   .sidebar {
     width: 100%;
     .course_status {
@@ -404,6 +429,19 @@ const Wrapper = styled.div`
       }
     }
   }
+  @media (max-width: 540px) {
+    .graph-box {
+                display: flex;
+                justify-content: center;
+                padding: 0.5rem;
+                width: 100%;
+                .PieChartCustom {
+                  height: 100%;
+                  max-width: 5.5rem;
+                  width: 100%;
+                }
+              }
+    }
 `;
 
 export default Wrapper;

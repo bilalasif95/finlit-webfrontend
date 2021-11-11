@@ -20,6 +20,7 @@ import { FiCheck } from 'react-icons/fi';
 import { GrCart, GrCirclePlay } from 'react-icons/gr';
 // GrCertificate
 import { HiUser, HiOutlineArrowNarrowRight } from 'react-icons/hi';
+import { PieChart } from 'react-minimal-pie-chart';
 import Wrapper from './Wrapper';
 import messages from './messages';
 // import { API } from '../../../../config/config';
@@ -169,12 +170,48 @@ function CourseSidebar() {
               <p>Expend time 8.3hr</p>
             </div>
             <div className="chart">
-              <img
-                src="https://cdn.discordapp.com/attachments/548125906472796170/905387362706681866/unknown.png"
-                alt="chart"
-                height="100%"
-                width="100%"
-              />
+              <div className="graph-box">
+                <div className="PieChartCustom">
+                  <div className="inner">
+                    <div>
+                      <span
+                      // className={
+                      //   Math.max(
+                      //     data.voted_percentage,
+                      //     data.not_voted_percentage,
+                      //   ) === data.voted_percentage
+                      //     ? 'green-text'
+                      //     : 'mehroon-text'
+                      // }
+                      >
+                        {/* {Math.max(
+                          data.voted_percentage,
+                          data.not_voted_percentage,
+                        ).toFixed() + '%'} */}
+                        10%
+                      </span>
+                      <br />
+                      {/* {props.i18n.t('Most_Voted_On')} */}
+                      Completed
+                    </div>
+                  </div>
+                  <PieChart
+                    lineWidth={20}
+                    viewBoxSize={[100, 100]}
+                    totalValue={100}
+                    rounded
+                    background="#f8f9fb"
+                    startAngle={270}
+                    data={[
+                      {
+                        // title: props.i18n.t('Voted'),
+                        value: 10,
+                        color: '#f59d07',
+                      },
+                    ]}
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div className="progress_session">
