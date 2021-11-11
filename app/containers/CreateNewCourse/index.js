@@ -23,6 +23,7 @@ import Dropzone from 'react-dropzone';
 // import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 // import { IoIosClose } from 'react-icons/io';
+import { RiDeleteBin7Line } from 'react-icons/ri'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -34,6 +35,7 @@ import Img from '../../components/Img';
 import Wrapper from './Wrapper';
 import Upload from '../../images/upload.png';
 import messages from './messages';
+import TagsComponent from '../../components/CourseTag/TagsComponent';
 
 const BootstrapInput = withStyles(theme => ({
   root: {
@@ -424,7 +426,61 @@ export default function CreateNewCourse() {
               )}
               {courseStepTwo && (
                 <>
-                  <div className="create_course">Step 2</div>
+                  <div className="create_course">
+                    {/* Create Course */}
+                    <div className="profileHeader">
+                      <h3>Courses Details</h3>
+                      <button type="button" className="btn btn-default detailsBtn">
+                        <span>+</span> Add More Details
+                      </button>
+                    </div>
+                    <div className="createCourseCont">
+                      <div className="card">
+                        <div className="card-header">
+                          Course Details
+                        </div>
+                        <div className="card-body">
+                          <div className="form-group">
+                            <label>Heading</label>
+                            <input type="email" className="form-control" placeholder="Enter Title" />
+                          </div>
+                          <div className="form-group mt-4">
+                            <label>Description</label>
+                            <textarea className="form-control" rows="6" placeholder="Enter Description"></textarea>
+                          </div>
+                        </div>
+                        <div className="card_Divider">
+                          <div className="card-body">
+                            <div className="form-group">
+                              <label>Heading</label>
+                              <input type="email" className="form-control" placeholder="Enter Title" />
+                            </div>
+                            <div className="form-group mt-4">
+                              <label>Description</label>
+                              <textarea className="form-control" rows="6" placeholder="Enter Description"></textarea>
+                            </div>
+                            <div className="delete">
+                              <RiDeleteBin7Line />
+                              <span>Delete Section</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="card mt-4">
+                        <div className="card-header">
+                          Course Tags
+                        </div>
+                        <div className="card-body">
+                          <FormGroup>
+                            <Label for="price">
+                              <FormattedMessage {...messages.AddTag} />
+                            </Label>
+                            <TagsComponent data={{ tags: [] }} tags={[]} />
+                          </FormGroup>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div className="form_footer">
                     <div className="bottom_btns">
                       <Button

@@ -60,4 +60,24 @@ export default defineMessages({
     id: `${scope}.Next`,
     defaultMessage: 'Next',
   },
+  Published: {
+    id: `${scope}.Published`,
+    defaultMessage: 'Published',
+  },
+  Pending: {
+    id: `${scope}.Pending`,
+    defaultMessage: 'Pending',
+  },
+  AddTag: {
+    id: `${scope}.AddTag`,
+    defaultMessage: `Tags`,
+  },
+  Expired: {
+    id: `${scope}.Expired`,
+    defaultMessage: 'Expired',
+  },
+  Draft: {
+    id: `${scope}.Draft`,
+    defaultMessage: 'Draft',
+  },
 });

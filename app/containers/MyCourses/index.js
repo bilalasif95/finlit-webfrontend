@@ -32,7 +32,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from '../../components/student-panel/Sidebar/index';
 // import ChangePassword from '../../components/MyProfilePage/ChangePassword';
 import CoursesTable from '../../components/instructor-panel/CoursesTable';
-import TagsComponent from '../../components/CourseTag/TagsComponent';
+
 // import Profile from '../../images/profile.jpg';
 
 export default function MyCourses() {
@@ -60,69 +60,8 @@ export default function MyCourses() {
           {/* Profile Content */}
           <div className="profileContent">
             <div className="mainCont profileSettingCont">
-              {/* Create Course */}
-              <div className="profileHeader">
-                <h3>Courses Details</h3>
-                <button type="button" className="btn btn-default detailsBtn">
-                  <span>+</span> Add More Details
-                </button>
-              </div>
-              <div className="createCourseCont">
-                <div className="card">
-                  <div className="card-header">
-                    Course Details
-                  </div>
-                  <div className="card-body">
-                    <div className="form-group">
-                      <label>Heading</label>
-                      <input type="email" className="form-control" placeholder="Enter Title" />
-                    </div>
-                    <div className="form-group mt-4">
-                      <label>Description</label>
-                      <textarea className="form-control" rows="6" placeholder="Enter Description"></textarea>
-                    </div>
-                  </div>
-                  <div className="card_Divider">
-                    <div className="card-body">
-                      <div className="form-group">
-                        <label>Heading</label>
-                        <input type="email" className="form-control" placeholder="Enter Title" />
-                      </div>
-                      <div className="form-group mt-4">
-                        <label>Description</label>
-                        <textarea className="form-control" rows="6" placeholder="Enter Description"></textarea>
-                      </div>
-                      <div className="delete">
-                        <RiDeleteBin7Line />
-                        <span>Delete Section</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="card mt-4">
-                  <div className="card-header">
-                    Course Tags
-                  </div>
-                  <div className="card-body">
-                    <FormGroup>
-                      <Label for="price">
-                        <FormattedMessage {...messages.AddTag} />
-                      </Label>
-                      <TagsComponent data={{ tags: [] }} tags={[]} />
-                    </FormGroup>
-                  </div>
-                </div>
-                <div className="form_footer">
-                  <div className="bottom_btns">
-                    <Button className="btn_save">
-                      Back
-                    </Button>
-                    <Button className="btn_submit">
-                      Next
-                    </Button>
-                  </div>
-                </div>
-              </div>
+              
+
               {/* Create Course */}
               <div className="profileHeader">
                 <h3>My Courses</h3>
