@@ -46,6 +46,12 @@ import Wrapper from './Wrapper';
 import coursedummy from '../../../../images/coursedummy.png';
 import MoreCourses from '../../MoreCourses';
 import './videoplayer.css';
+import Pinterest from '../../../../images/pinterest.png';
+import Twitter from '../../../../images/twitter.png';
+import Instagram from '../../../../images/instagram.png';
+import Facebook from '../../../../images/facebook.png';
+import LinkedIn from '../../../../images/linkedIN.png';
+import Ticon from '../../../../images/tIcon.png';
 
 function CourseDetail() {
   // const editor = useRef(null);
@@ -55,7 +61,9 @@ function CourseDetail() {
   // const {className} = props;
 
   const [modal, setModal] = useState(false);
+  const [sharemodal, setShareModal] = useState(false);
   const toggle = () => setModal(!modal);
+  const toggleShare = () => setShareModal(!sharemodal);
   const [activeTab, setActiveTab] = useState('1');
 
   const toggleTab = tab => {
@@ -132,7 +140,7 @@ function CourseDetail() {
               <FaRegHeart />
               <FormattedMessage {...messages.Wishlist} />
             </Button>
-            <Button>
+            <Button onClick={toggleShare}>
               <IoMdShare />
               <FormattedMessage {...messages.Share} />
             </Button>
@@ -729,6 +737,48 @@ function CourseDetail() {
               Submit
             </Button>
           </ModalFooter>
+        </Modal>
+      </div>
+      {/* Share Modal */}
+      {/* Modal */}
+      <div className="shareModal">
+        <Modal
+          isOpen={sharemodal}
+          toggle={toggleShare}
+          className="ShareModal ratingModal"
+        >
+          <ModalHeader toggle={toggleShare}>Share this course</ModalHeader>
+          <ModalBody>
+            <ul className="list-unstyled socialList">
+              <li>
+                <img src={Pinterest} alt="Pinterest" />
+              </li>
+              <li>
+                <img src={Twitter} alt="Twitter" />
+              </li>
+              <li>
+                <img src={Instagram} alt="Instagram" />
+              </li>
+              <li>
+                <img src={Facebook} alt="Facebook" />
+              </li>
+              <li>
+                <img src={LinkedIn} alt="LinkedIn" />
+              </li>
+              <li>
+                <img src={Ticon} alt="Ticon" />
+              </li>
+            </ul>
+            <div className="copyLink">
+              <h5 className="mb-3">Or copy link</h5>
+              <div className="copyInput">
+                <input type="text" className="form-control" />
+                <button type="button" className="btn btn-default">
+                  Copy
+                </button>
+              </div>
+            </div>
+          </ModalBody>
         </Modal>
       </div>
     </Wrapper>
