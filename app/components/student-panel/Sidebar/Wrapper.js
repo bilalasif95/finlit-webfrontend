@@ -1,101 +1,112 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.footer`
-  border-top: 1px solid #ececed;
-  padding: 2.5rem 0;
-  background-color: #f8f9fb;
-  margin: 0;
-  .copyright {
-    p {
-      color: #a6a6a7;
-      font-size: 0.8rem;
-      margin: 0;
-    }
-  }
-  .social-links {
-    align-items: center;
-    display: flex;
-    justify-content: flex-start;
-    margin: 0;
-    padding: 0;
-    li {
-      list-style: none;
-      padding-right: 0.5rem;
-      &:first-child {
-        svg {
-          path {
-            fill: #475993;
-          }
-        }
-      }
-      &:nth-child(2) {
-        svg {
-          path {
-            fill: #0077b7;
-          }
-        }
-      }
-      &:nth-child(3) {
-        svg {
-          path {
-            fill: #f61c0d;
-          }
-        }
-      }
-      &:last-child {
-        svg {
-          path {
-            fill: #00aaf2;
-          }
-        }
-      }
-    }
-  }
-  .footer_links {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    li {
-      color: #484848;
-      font-size: 0.8rem;
-      padding-left: 1rem;
-      list-style: none;
-      a {
-        color: #484848;
-        font-size: 0.8rem;
-        margin: 0;
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-  @media (max-width: 575px) {
-    .copyright {
-      width: 100%;
-      p {
+const Wrapper = styled.div`
+  background-color: #fff;
+  // box-shadow: 2px 3px 4px #cececeb8;
+  padding: 50px 0px 30px 0px;
+  z-index: 1;
+  top: 0;
+  width: 155px;
+  .profileAside {
+    height: 100%;
+    position: relative;
+    .sideNav {
+      margin: 0 0 5rem;
+      padding: 50px 0px 30px 0px;
+      .sideNavLink {
+        display: block;
         text-align: center;
+        font-size: 14px;
+        color: #404041;
+        font-weight: 600;
+        padding: 12px 0px;
+        border-width: 0px 0px 0px 4px;
+        border-style: solid;
+        border-color: transparent;
+        transition: 0.4s linear;
+        a {
+          color: #404041;
+          display: block;
+        }
+        svg {
+          height: 24px;
+          width: 24px;
+        }
+        img {
+          height: 24px;
+          width: 24px;
+        }
+        &:hover {
+          background-color: #46a13524;
+          border-left: 4px solid #46a135;
+          color: #46a135;
+          text-decoration: none;
+        }
+        &:hover a {
+          color: #46a135;
+          text-decoration: none;
+        }
+      }
+      .active.sideNavLink {
+        color: #46a135;
+        text-decoration: none;
+        background-color: #46a1353b !important;
+        border-left: 4px solid #46a135;
+      }
+      .active.sideNavLink a {
+        color: #46a135;
       }
     }
-    .social-links {
-      justify-content: center;
+    .customDropdown button {
       width: 100%;
-    }
-    .footer_links {
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 1rem 0 0;
-      li {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+      border-radius: 0px;
+      background-color: transparent !important;
+      margin-bottom: 0px !important;
+      span svg {
+        width: 12px !important;
+      }
+      &:focus,
+      &:hover,
+      &:active {
+        outline: none;
+        box-shadow: none !important;
+        border-left: 4px solid #46a135;
+        color: #46a135;
+        background-color: #46a1353b !important;
       }
     }
-  }
-  @media (max-width: 991px) {
-    margin: 2rem 0 0 !important;
-    padding: 1rem 0 2rem;
+    .collapse .card {
+      border: none;
+      .card-body {
+        padding: 20px 12px 0px 28px;
+      }
+    }
+    .sideList li a {
+      color: #909090;
+      text-decoration: none;
+      margin-bottom: 10px;
+      display: inline-block;
+      &:hover {
+        color: #46a135;
+      }
+    }
+    .homeBtn {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      .backBtn {
+        border: 1px solid #d8d8d8;
+        padding: 7px 10px;
+        display: table;
+        margin: 0px auto;
+        color: #404041;
+        border-radius: 5px;
+        &:hover {
+          color: #404041;
+          text-decoration: none;
+        }
+      }
+    }
   }
 `;
 

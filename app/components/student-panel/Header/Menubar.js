@@ -152,9 +152,6 @@ const Menubar = styled.div`
         }
       }
     }
-    @media (min-width: 1400px) {
-      width: 25%;
-    }
     @media (max-width: 991px) {
       width: 100%;
     }

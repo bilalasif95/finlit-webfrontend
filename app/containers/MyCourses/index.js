@@ -5,6 +5,7 @@
 import React, { useState } from 'react';
 // import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
+import history from 'utils/history';
 import '../../components/student-panel/Header/profile.css';
 // import { withStyles } from '@material-ui/core/styles';
 import {
@@ -38,13 +39,17 @@ export default function MyCourses() {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
+  const goToCreateCourse = () => {
+    history.push('/create_course');
+  }
+
   return (
     <>
       {/* <ToastContainer /> */}
       <div className="sub_pages profilePages">
         <Helmet>
           <title>My Courses</title>
-          <meta name="description" content="My Profile Page" />
+          <meta name="description" content="My Courses Page" />
         </Helmet>
         <div className="profileMain">
           <Sidebar />
@@ -53,7 +58,7 @@ export default function MyCourses() {
             <div className="mainCont profileSettingCont">
               <div className="profileHeader">
                 <h3>My Courses</h3>
-                <button type="button" className="btn btn-default createBtn">
+                <button type="button" className="btn btn-default createBtn" onClick={goToCreateCourse}>
                   <span>+</span> Create Course
                 </button>
               </div>

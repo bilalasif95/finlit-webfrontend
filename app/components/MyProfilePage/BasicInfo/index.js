@@ -177,9 +177,6 @@ function BasicInfo() {
   return (
     <Wrapper>
       <div className="basic_info">
-        {/* <h4>
-          <FormattedMessage {...messages.BasicInfo} />
-        </h4> */}
         <Row>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>

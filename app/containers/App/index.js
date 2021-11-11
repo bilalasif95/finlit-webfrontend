@@ -48,6 +48,7 @@ import HackathonListPage from 'containers/instructor-panel/HackathonListPage/Loa
 import BootcampListPage from 'containers/instructor-panel/BootcampListPage/Loadable';
 import MyProfilePage from 'containers/MyProfilePage/Loadable';
 import MyCourses from 'containers/MyCourses/Loadable';
+import CreateNewCourse from 'containers/CreateNewCourse/Loadable';
 import Notification from 'containers/Notification/Loadable';
 import Setting from 'containers/ProfileSetting/Loadable';
 import SigninPage from 'containers/SigninPage/Loadable';
@@ -90,6 +91,7 @@ const App = () => {
         history.location.pathname === '/notification' ||
         history.location.pathname === '/setting' ||
         history.location.pathname === '/my_courses' ||
+        history.location.pathname === '/create_course' ||
         // history.location.pathname === '/forgot_password' ||
         history.location.pathname === '/two_fa' ? null : userInfo &&
           userInfo.roles[0].roleName === 'Instructor' ? (
@@ -134,6 +136,7 @@ const App = () => {
         <Route path="/bootcamps_list" component={BootcampListPage} />
         <Route path="/my_profile" component={MyProfilePage} />
         <Route path="/my_courses" component={MyCourses} />
+        <Route path="/create_course" component={CreateNewCourse} />
         <Route path="/notification" component={Notification} />
         <Route path="/setting" component={Setting} />
         <Route path="/login" component={SigninPage} />
@@ -146,7 +149,7 @@ const App = () => {
       </Switch>
       {history.location.pathname === '/signup' ||
       history.location.pathname === '/login' ||
-      history.location.pathname === '/my_profile' ||
+      // history.location.pathname === '/my_profile' ||
       // history.location.pathname === '/email_verification' ||
       history.location.pathname === '/create_new_password' ||
       // history.location.pathname === '/notification' ||

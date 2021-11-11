@@ -17,6 +17,8 @@ import Img from '../Img';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import pro1 from '../../images/cartImg.png';
+import Green from '../../images/green-e.png';
+import Red from '../../images/red-e.png';
 
 function Notifications() {
   return (
@@ -38,7 +40,7 @@ function Notifications() {
               <span className="time">17 days ago</span>
             </div>
             <div className="right">
-              <BiEnvelope />
+              <img src={Red} alt="notification-icon" />
             </div>
           </div>
         </li>
@@ -53,7 +55,7 @@ function Notifications() {
               <span className="time">17 days ago</span>
             </div>
             <div className="right">
-              <BiEnvelope />
+              <img src={Green} alt="notification-icon" />
             </div>
           </div>
         </li>
@@ -68,7 +70,7 @@ function Notifications() {
               <span className="time">17 days ago</span>
             </div>
             <div className="right">
-              <BiEnvelope />
+              <img src={Green} alt="notification-icon" />
             </div>
           </div>
         </li>

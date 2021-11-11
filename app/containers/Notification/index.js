@@ -115,31 +115,32 @@ export default function Notification() {
           <Sidebar />
           {/* Profile Content */}
           <div className="profileContent">
-            <div className="mainCont notificationPanel">
+            <div className="mainCont">
               <div className="profileHeader">
                 <h3>Notification (3)</h3>
                 <button type="button" className="btn btn-default readAllBtn">
                   Mark all as read
                 </button>
               </div>
-              {Notifications.map(data => (
-                <div className="NotificationCont">
-                  <div className="NotificationImg">
-                    <div className="notiImg">
-                      <img src={data.img} alt="notification" />
+              <div className="notificationPanel">
+                {Notifications.map(data => (
+                  <div className="NotificationCont">
+                    <div className="NotificationImg">
+                      <div className="notiImg">
+                        <img src={data.img} alt="notification" />
+                      </div>
+                      <p>{data.message}</p>
                     </div>
-                    <p>{data.message}</p>
+                    <div className="NotificationImg">
+                      <p className="notitime">{data.time} </p>
+                      <img src={data.icon} alt="notification-icon" />
+                    </div>
                   </div>
-                  <div className="NotificationImg">
-                    <p className="notitime">{data.time} </p>
-                    <img src={data.icon} alt="notification-icon" />
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
-
         {/* end */}
       </div>
     </>

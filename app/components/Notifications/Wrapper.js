@@ -75,7 +75,9 @@ const Wrapper = styled.div`
           }
         }
         .right {
+          align-items: flex-start;
           display: flex;
+          justify-content: flex-end;
           width: 2rem;
         }
       }
