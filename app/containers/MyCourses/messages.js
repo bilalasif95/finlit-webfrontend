@@ -16,6 +16,10 @@ export default defineMessages({
     id: `${scope}.Pending`,
     defaultMessage: 'Pending',
   },
+  AddTag: {
+    id: `${scope}.AddTag`,
+    defaultMessage: `Tags`,
+  },
   Expired: {
     id: `${scope}.Expired`,
     defaultMessage: 'Expired',
