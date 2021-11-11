@@ -623,6 +623,70 @@ aside > a {
   font-weight: 600;
   background: #fff;
 }
+.detailsBtn {
+  color: #46a135;
+  font-weight: 500;
+  font-weight: 600;
+}
+.detailsBtn span {
+  font-size: 20px;
+}
+.createCourseCont .card-header {
+  font-size: 20px;
+  color: #404041;
+  font-weight: 600;
+  background-color: #f9f9f9;
+  padding: 1rem 1.8rem;
+  border-radius: 0;
+}
+.createCourseCont .card-body {
+  padding: 2rem 1.8rem;
+}
+.createCourseCont .card-body label {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.createCourseCont .card-body input::placeholder, .createCourseCont .card-body textarea::placeholder {
+  color: #d8d8d8;
+}
+.createCourseCont .card {
+  border-radius: 0 0 5px 5px;
+}
+.tagForm {
+  position: relative;
+}
+.tagForm input {
+  padding-left: 45px !important;
+}
+.tagIcon {
+  position: absolute;
+  top: 30%;
+  left: 20px;
+  height: 18px;
+  width: 18px;
+  color: #d8d8d8;
+}
+.createCourseCont .form_footer button {
+  min-width: 140px;
+  margin: 50px 0px 50px 16px;
+}
+.card_Divider {
+  border-top: 1px solid #d8d8d8;
+}
+.delete {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: red;
+  margin-top: 10px;
+  cursor: pointer;
+  max-width: 130px;
+}
+.delete svg {
+  height: 18px;
+  width: 18px;
+  margin-right: 8px;
+}
 @media (min-width: 576px){
 .ShareModal {
     max-width: 770px !important;
