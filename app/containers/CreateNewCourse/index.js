@@ -19,9 +19,11 @@ import {
   InputGroupAddon,
   FormText,
 } from 'reactstrap';
+import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
+import { IoIosClose } from 'react-icons/io';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -29,7 +31,9 @@ import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/student-panel/Sidebar/index';
 import { API } from '../../config/config';
+import Img from '../../components/Img';
 import Wrapper from './Wrapper';
+import Upload from '../../images/upload.png';
 
 const BootstrapInput = withStyles(theme => ({
   root: {
@@ -58,6 +62,7 @@ export default function CreateNewCourse() {
   const [categoryType, setCategoryType] = useState("Financial Literacy");
   const [level, setLevel] = useState("Beginner");
   const [language, setLanguage] = useState("English");
+  const [courseVideo, setCourseVideo] = useState('');
   const [userInfo, setUserInfo] = useState({
     firstName: '',
     lastName: '',
@@ -69,6 +74,8 @@ export default function CreateNewCourse() {
     address: '',
   });
   const [errors, setErrors] = useState({});
+
+  const dataVideo = { courseVideo: '' };
 
   // const getCurrentUserInfo = () => {
   //   const token = localStorage.getItem('token');
@@ -266,6 +273,79 @@ export default function CreateNewCourse() {
                   <p className="error"> Error message</p>
                 </FormText> */}
                     </FormGroup>
+                  </Col>
+                  <Col lg={12}>
+                    <div className="graphics">
+                      {courseVideo === '' ? (
+                        <div className="view_graphic">
+                          <Img src={Upload} alt="Upload" height="100%" width="100%" />
+                        </div>
+                      ) : (
+                        <div className="view_thumb">
+                          <div className="del_btn">
+                            <Button
+                              onClick={() => {
+                                setCourseVideo('');
+                                dataVideo.courseVideo = null;
+                              }}
+                            >
+                              <IoIosClose />
+                            </Button>
+                          </div>
+                          <video>
+                            <source
+                              src={
+                                dataVideo.courseVideo
+                                  ? typeof dataVideo.courseVideo === 'string'
+                                    ? dataVideo.courseVideo
+                                    : courseVideo
+                                  : courseVideo
+                              }
+                            />
+                            <track
+                              src={
+                                dataVideo.courseVideo
+                                  ? typeof dataVideo.courseVideo === 'string'
+                                    ? dataVideo.courseVideo
+                                    : courseVideo
+                                  : courseVideo
+                              }
+                              kind="captions"
+                              srcLang="en"
+                              label="Course Video"
+                            />
+                          </video>
+                        </div>
+                      )}
+                      <Dropzone
+                        accept="video/*"
+                        multiple={false}
+                        onDrop={acceptedFiles => {
+                          if (acceptedFiles && acceptedFiles[0]) {
+                            const courseVdo = acceptedFiles[0];
+                            dataVideo.courseVideo = courseVdo;
+                            // setcourseVideoFile(acceptedFiles[0]);
+                            const reader = new FileReader();
+                            reader.onload = e => {
+                              setCourseVideo(e.target.result);
+                            };
+                            reader.readAsDataURL(acceptedFiles[0]);
+                          }
+                        }}
+                      >
+                        {({ getRootProps, getInputProps }) => (
+                          <div className="camera" {...getRootProps()}>
+                            <input {...getInputProps()} />
+                            <p>
+                              <FormattedMessage {...messages.DragDrop} />
+                            </p>
+                            <div className="upload_btn">
+                              <FormattedMessage {...messages.UploadVideo} />
+                            </div>
+                          </div>
+                        )}
+                      </Dropzone>
+                    </div>
                   </Col>
                 </Row>
               </div>
