@@ -42,7 +42,15 @@ export default defineMessages({
   },
   UploadVideo: {
     id: `${scope}.UploadVideo`,
-    defaultMessage: 'Upload a Video',
+    defaultMessage: 'Upload Video',
+  },
+  DeleteVideo: {
+    id: `${scope}.DeleteVideo`,
+    defaultMessage: 'Delete Video',
+  },
+  Back: {
+    id: `${scope}.Back`,
+    defaultMessage: 'Back',
   },
   Save: {
     id: `${scope}.Save`,

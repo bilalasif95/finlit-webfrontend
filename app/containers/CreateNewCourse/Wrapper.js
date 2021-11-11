@@ -41,7 +41,7 @@ const Wrapper = styled.div`
       .form-control {
         border-top-right-radius: 0.25rem !important;
         border-bottom-right-radius: 0.25rem !important;
-        padding: 0.75rem 1rem 0.75rem 3rem;
+        padding: 0.75rem 1rem 0.75rem 1.6rem;
       }
     }
     .input-group-text {
@@ -49,6 +49,7 @@ const Wrapper = styled.div`
       color: #404041;
       background-color: transparent;
       border: 1px solid transparent;
+      line-height: 1.3;
       position: absolute;
       left: 0;
       z-index: 3;
@@ -60,8 +61,18 @@ const Wrapper = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 3.5rem;
+      margin: 0 0 2rem;
+      position: relative;
       width: 100%;
+      .view_cont {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        left: 42%;
+        position: absolute;
+        top: 3.5rem;
+        // width: 100%
+      }
       .view_graphic {
         align-items: center;
         border: 1px solid #eaeaea;
@@ -117,7 +128,10 @@ const Wrapper = styled.div`
       .camera {
         display: flex;
         flex-direction: column;
+        height: 100%;
         justify-content: center;
+        padding: 15rem 3.5rem 3.5rem;
+        width: 100%;
         p {
           color: #404041;
           font-size: 0.875rem;
@@ -132,22 +146,43 @@ const Wrapper = styled.div`
           justify-content: flex-end;
           width: 40px;
         }
-        .input--file input[type="file"] {
+        .input--file input[type='file'] {
           position: absolute;
           top: 0;
           left: 0;
           opacity: 0;
           width: 40px;
         }
-        .upload_btn {
-          background-color: #3e952e;
-          color: #fff;
-          cursor: pointer;
-          font-size: 0.875rem;
-          margin: 1.5rem auto 0;
-          padding: 0.75rem 1.5rem;
-          text-align: center;
-          width: 10rem;
+        .upload_delete {
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          margin: 1.5rem 0 0;
+          .upload_btn {
+            background-color: #3e952e;
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.875rem;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            width: 10rem;
+          }
+          button {
+            background-color: #3e952e;
+            border: none;
+            border-radius: 0px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.875rem;
+            margin: 0 0 0 1rem;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            width: 10rem;
+            z-index: 2;
+            &:focus {
+              box-shadow: none;
+            }
+          }
         }
       }
     }

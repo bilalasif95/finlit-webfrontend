@@ -41,7 +41,7 @@ export default function MyCourses() {
 
   const goToCreateCourse = () => {
     history.push('/create_course');
-  }
+  };
 
   return (
     <>
@@ -58,7 +58,11 @@ export default function MyCourses() {
             <div className="mainCont profileSettingCont">
               <div className="profileHeader">
                 <h3>My Courses</h3>
-                <button type="button" className="btn btn-default createBtn" onClick={goToCreateCourse}>
+                <button
+                  type="button"
+                  className="btn btn-default createBtn"
+                  onClick={goToCreateCourse}
+                >
                   <span>+</span> Create Course
                 </button>
               </div>

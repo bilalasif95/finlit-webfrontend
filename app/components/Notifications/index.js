@@ -12,7 +12,7 @@ import { Button } from 'reactstrap';
 //   FaYoutube,
 //   FaSkype,
 // } from 'react-icons/fa';
-import { BiEnvelope } from 'react-icons/bi';
+// import { BiEnvelope } from 'react-icons/bi';
 import Img from '../Img';
 import messages from './messages';
 import Wrapper from './Wrapper';

@@ -245,6 +245,18 @@ const GlobalStyle = createGlobalStyle`
   }
   // Page Footer Btns Styles
   .form_footer {
+    align-items: center;
+    display: flex;
+    justigy-content: space-between;
+    button {
+      color: #fff;
+      margin: 0;
+      min-width: 200px;
+      padding: 0.75rem;
+      &:focus {
+        box-shadow: none;
+      }
+    }
     .top_btns {
       align-items: center;
       display: flex;
@@ -285,6 +297,11 @@ const GlobalStyle = createGlobalStyle`
     .btn_save {
       background-color: #adadad;
       border: 1px solid #adadad;
+    }
+    .btn_back {
+      background-color: transparent;
+      border: 1px solid #d8d8d8;
+      color: #404041 !important;
     }
     .btn_submit {
       background-color: #46a135;
