@@ -48,7 +48,8 @@ class Input extends React.Component {
       // <>
       //   <p className={classes.limitText}>Maximum of 4</p>
       <div className={classes.inputWrapper}>
-        <form className="tagForm"
+        <form
+          className="tagForm"
           ref={input => {
             this.tagForm = input;
             return 0;

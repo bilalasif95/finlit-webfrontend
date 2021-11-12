@@ -5,10 +5,10 @@ import { Provider } from 'react-redux';
 // import { browserHistory, BrowserRouter } from 'react-router-dom';
 import { Router } from 'react-router-dom';
 import history from 'utils/history';
-import HackathonSidebar from '../index';
+import CourseSidebar from '../index';
 // import configureStore from '../../../../../configureStore';
 import Store2 from '../../../../../containers/reduxSetup/store';
-describe('<HackathonSidebar />', () => {
+describe('<CourseSidebar />', () => {
   let store;
 
   beforeAll(() => {
@@ -23,7 +23,8 @@ describe('<HackathonSidebar />', () => {
           <IntlProvider locale="en">
             {/* <BrowserRouter> */}
             <Router history={history}>
-              <HackathonSidebar detail={{ data: {} }} />
+              {/* <CourseSidebar detail={{ data: {} }} /> */}
+              <CourseSidebar />
               {/* </BrowserRouter> */}
             </Router>
           </IntlProvider>

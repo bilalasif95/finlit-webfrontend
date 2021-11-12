@@ -14,9 +14,6 @@ const styles = () =>
       // "&-moz-box-shadow": "0px 3px 14px 1px rgba(74,74,74,0.2)",
       // "&-webkit-box-shadow": "0px 3px 14px 1px rgba(74,74,74,0.2)",
       background: 'white',
-      border: '1px solid #d8d8d8',
-      borderColor: '#d8d8d8',
-      borderRadius: '4px',
       // boxShadow: "0px 3px 14px 1px rgba(74,74,74,0.2)",
       display: 'flex',
       flexWrap: 'wrap',
@@ -45,20 +42,21 @@ const styles = () =>
         '&:foucs': {
           border: '1px solid #000',
         },
-        border: 'transparent',
+        border: '1px solid #d8d8d8',
+        borderColor: '#d8d8d8',
         borderRadius: '4px',
         color: '#000',
         flex: '1',
         fontSize: '0.875rem',
         lineHeight: '1.5',
-        margin: '0',
+        margin: '0 0 1rem',
         outline: 'none',
         padding: '0.75rem 1rem',
       },
       display: 'flex',
       flex: '1',
       // minHeight: "48px",
-      minWidth: '60px',
+      minWidth: '100%',
       overflow: 'hidden',
     },
     limitText: {
@@ -67,18 +65,20 @@ const styles = () =>
     },
     tile: {
       backgroundColor: '#f5f5f5',
-      borderRadius: '3px',
+      borderRadius: '1rem',
       color: '#000',
       display: 'flex',
       fontSize: '0.875rem',
+      fontWeight: '550',
       justifyContent: 'space-between',
       lineHeight: '1.5',
-      margin: '0.25rem 0 0.25rem 0.25rem',
-      padding: '0 0 0 0.25rem',
+      margin: '0.5rem 0.5rem 0.5rem 0',
+      padding: '0 0.5rem 0 1rem',
     },
     iconClose: {
       backgroundColor: 'transparent',
       border: 'none',
+      fontSize: '1.5rem',
       padding: 0,
     },
   });
@@ -168,7 +168,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
     addTile(tile) {
       // pull tiles array out of the state
       // see destructoring
-      if (tile.length && Object.keys(this.state.tiles).length <= 10) {
+      if (tile.length && Object.keys(this.state.tiles).length <= 100) {
         const { tiles, tileIds } = this.state;
 
         const newTileId = tileIds.length - 1 + 1;
@@ -219,6 +219,13 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
             Face Masks, Groceries)
           </p> */}
           <div className={classes.fieldContainer}>
+            <Input
+              addTile={this.addTile}
+              editLastTile={this.editLastTile}
+              tiles={this.state.tiles}
+              value={this.state.currentValue}
+              classes={classes}
+            />
             {Object.keys(this.state.tiles).map(key => (
               <Tile
                 key={key}
@@ -228,13 +235,6 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
                 classes={classes}
               />
             ))}
-            <Input
-              addTile={this.addTile}
-              editLastTile={this.editLastTile}
-              tiles={this.state.tiles}
-              value={this.state.currentValue}
-              classes={classes}
-            />
           </div>
         </>
       );

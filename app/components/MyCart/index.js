@@ -2,12 +2,12 @@
  * Notifications Component
  */
 import React from 'react';
-// import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 // import LocaleToggle from 'containers/LocaleToggle';
 // import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import Img from '../Img';
-// import messages from './messages';
+import messages from './messages';
 import Wrapper from './Wrapper';
 import pro1 from '../../images/cartImg.png';
 
@@ -56,19 +56,12 @@ function MyCart() {
             </div>
           </div>
         </li>
-        {/* <li>
-          <FaLinkedin />
-        </li>
-        <li>
-          <FaYoutube />
-        </li>
-        <li>
-          <FaSkype />
-        </li> */}
       </ul>
       <div className="total_checkout">
         <p>Total: $425.00</p>
-        <Button>Checkout</Button>
+        <Button>
+          <FormattedMessage {...messages.Checkout} />
+        </Button>
       </div>
     </Wrapper>
   );

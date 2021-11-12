@@ -1,35 +1,19 @@
 /*
- * Webinars Filters Messages
+ * Courses Table Messages
  *
- * This contains all the text for the Webinars Filters component.
+ * This contains all the text for the Courses Table component.
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.components.WebinarsFilters';
+export const scope = 'boilerplate.components.CoursesTable';
 
 export default defineMessages({
-  ChangePassword: {
-    id: `${scope}.ChangePassword`,
-    defaultMessage: 'Change Password',
+  Showing: {
+    id: `${scope}.Showing`,
+    defaultMessage: 'Showing',
   },
-  YourCurrentPassword: {
-    id: `${scope}.YourCurrentPassword`,
-    defaultMessage: 'Current password',
-  },
-  NewPassword: {
-    id: `${scope}.NewPassword`,
-    defaultMessage: 'New password',
-  },
-  ConfirmPassword: {
-    id: `${scope}.ConfirmPassword`,
-    defaultMessage: 'Confirm password',
-  },
-  Cancel: {
-    id: `${scope}.Cancel`,
-    defaultMessage: 'Cancel',
-  },
-  Save: {
-    id: `${scope}.Save`,
-    defaultMessage: 'Update Password',
+  Entries: {
+    id: `${scope}.Entries`,
+    defaultMessage: 'entries',
   },
 });

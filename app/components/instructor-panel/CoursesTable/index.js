@@ -2,7 +2,7 @@
  * Change Password Component
  */
 import React from 'react';
-// import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import {
   Row,
   Col,
@@ -21,7 +21,7 @@ import { FiEdit3 } from 'react-icons/fi';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import TableImg from '../../../images/tableImg.png';
 import TableImg1 from '../../../images/tableImg1.png';
-// import messages from './messages';
+import messages from './messages';
 import Wrapper from './Wrapper';
 
 function CoursesTable() {
@@ -193,7 +193,11 @@ function CoursesTable() {
                 </tbody>
               </table>
               <div className="Paginataion">
-                <p>Showing 1 to 8 of 8 entries</p>
+                <p>
+                  <FormattedMessage {...messages.Showing} />
+                  1 to 8 of 8
+                  <FormattedMessage {...messages.Entries} />
+                </p>
               </div>
             </div>
           </Col>

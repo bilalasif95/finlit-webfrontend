@@ -80,4 +80,8 @@ export default defineMessages({
     id: `${scope}.Draft`,
     defaultMessage: 'Draft',
   },
+  Publish: {
+    id: `${scope}.Publish`,
+    defaultMessage: 'Publish',
+  },
 });

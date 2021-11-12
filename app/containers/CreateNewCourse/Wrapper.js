@@ -96,7 +96,7 @@ const Wrapper = styled.div`
         justify-content: center;
         width: 10rem;
         height: 10rem;
-        margin: 0 0 2rem;
+        margin: 0 0 3rem;
         overflow: hidden;
         position: relative;
         .del_btn {

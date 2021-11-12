@@ -18,12 +18,9 @@ import {
   InputGroupAddon,
   Button,
   Input,
-  FormGroup,
-  Label,
 } from 'reactstrap';
 import classnames from 'classnames';
 import { HiSearch } from 'react-icons/hi';
-import { RiDeleteBin7Line } from 'react-icons/ri'
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
@@ -60,8 +57,6 @@ export default function MyCourses() {
           {/* Profile Content */}
           <div className="profileContent">
             <div className="mainCont profileSettingCont">
-              
-
               {/* Create Course */}
               <div className="profileHeader">
                 <h3>My Courses</h3>

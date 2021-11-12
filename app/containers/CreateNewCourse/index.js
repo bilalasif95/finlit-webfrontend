@@ -20,10 +20,11 @@ import {
   FormText,
 } from 'reactstrap';
 import Dropzone from 'react-dropzone';
+import history from 'utils/history';
 // import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 // import { IoIosClose } from 'react-icons/io';
-import { RiDeleteBin7Line } from 'react-icons/ri'
+import { RiDeleteBin7Line } from 'react-icons/ri';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -70,8 +71,6 @@ export default function CreateNewCourse() {
   const [courseStepOne, setCourseStepOne] = useState(true);
   const [courseStepTwo, setCourseStepTwo] = useState(false);
   const [courseStepThree, setCourseStepThree] = useState(false);
-  const [courseStepFour, setCourseStepFour] = useState(false);
-  const [courseStepFive, setCourseStepFive] = useState(false);
 
   const dataVideo = { courseVideo: '' };
 
@@ -79,40 +78,22 @@ export default function CreateNewCourse() {
     setCourseStepOne(true);
     setCourseStepTwo(false);
     setCourseStepThree(false);
-    setCourseStepFour(false);
-    setCourseStepFive(false);
   };
 
   const handleCourseStepTwo = () => {
     setCourseStepOne(false);
     setCourseStepTwo(true);
     setCourseStepThree(false);
-    setCourseStepFour(false);
-    setCourseStepFive(false);
   };
 
   const handleCourseStepThree = () => {
     setCourseStepOne(false);
     setCourseStepTwo(false);
     setCourseStepThree(true);
-    setCourseStepFour(false);
-    setCourseStepFive(false);
   };
 
-  const handleCourseStepFour = () => {
-    setCourseStepOne(false);
-    setCourseStepTwo(false);
-    setCourseStepThree(false);
-    setCourseStepFour(true);
-    setCourseStepFive(false);
-  };
-
-  const handleCourseStepFive = () => {
-    setCourseStepOne(false);
-    setCourseStepTwo(false);
-    setCourseStepThree(false);
-    setCourseStepFour(false);
-    setCourseStepFive(true);
+  const goToCoursesList = () => {
+    history.push('/my_courses');
   };
 
   // const getCurrentUserInfo = () => {
@@ -411,8 +392,8 @@ export default function CreateNewCourse() {
                   </div>
                   <div className="form_footer">
                     <div className="bottom_btns">
-                      <Button className="btn_back">
-                        <FormattedMessage {...messages.Save} />
+                      <Button className="btn_back" onClick={goToCoursesList}>
+                        <FormattedMessage {...messages.Back} />
                       </Button>
                       <Button
                         className="btn_submit"
@@ -430,35 +411,49 @@ export default function CreateNewCourse() {
                     {/* Create Course */}
                     <div className="profileHeader">
                       <h3>Courses Details</h3>
-                      <button type="button" className="btn btn-default detailsBtn">
+                      <button
+                        type="button"
+                        className="btn btn-default detailsBtn"
+                      >
                         <span>+</span> Add More Details
                       </button>
                     </div>
                     <div className="createCourseCont">
                       <div className="card">
-                        <div className="card-header">
-                          Course Details
-                        </div>
+                        <div className="card-header">Course Details</div>
                         <div className="card-body">
-                          <div className="form-group">
-                            <label>Heading</label>
-                            <input type="email" className="form-control" placeholder="Enter Title" />
-                          </div>
-                          <div className="form-group mt-4">
-                            <label>Description</label>
-                            <textarea className="form-control" rows="6" placeholder="Enter Description"></textarea>
-                          </div>
+                          <FormGroup>
+                            <Label>Heading</Label>
+                            <Input type="text" placeholder="Enter Title" />
+                          </FormGroup>
+                          <FormGroup className="mt-4">
+                            <Label>Description</Label>
+                            <textarea
+                              className="form-control"
+                              rows="6"
+                              placeholder="Enter Description"
+                            />
+                          </FormGroup>
                         </div>
                         <div className="card_Divider">
                           <div className="card-body">
-                            <div className="form-group">
-                              <label>Heading</label>
-                              <input type="email" className="form-control" placeholder="Enter Title" />
-                            </div>
-                            <div className="form-group mt-4">
-                              <label>Description</label>
-                              <textarea className="form-control" rows="6" placeholder="Enter Description"></textarea>
-                            </div>
+                            <FormGroup>
+                              <Label>Heading</Label>
+                              <Input
+                                type="text"
+                                value="Overview - Programming"
+                                readOnly
+                              />
+                            </FormGroup>
+                            <FormGroup className="mt-4">
+                              <Label>Description</Label>
+                              <textarea
+                                className="form-control"
+                                rows="6"
+                                value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                readOnly
+                              />
+                            </FormGroup>
                             <div className="delete">
                               <RiDeleteBin7Line />
                               <span>Delete Section</span>
@@ -466,10 +461,8 @@ export default function CreateNewCourse() {
                           </div>
                         </div>
                       </div>
-                      <div className="card mt-4">
-                        <div className="card-header">
-                          Course Tags
-                        </div>
+                      <div className="card mt-4 mb-5">
+                        <div className="card-header">Course Tags</div>
                         <div className="card-body">
                           <FormGroup>
                             <Label for="price">
@@ -503,57 +496,18 @@ export default function CreateNewCourse() {
                 <>
                   <div className="create_course">Step 3</div>
                   <div className="form_footer">
+                    <Button className="btn_back" onClick={handleCourseStepTwo}>
+                      <FormattedMessage {...messages.Back} />
+                    </Button>
                     <div className="bottom_btns">
                       <Button
                         className="btn_back"
                         onClick={handleCourseStepTwo}
                       >
-                        <FormattedMessage {...messages.Back} />
-                      </Button>
-                      <Button
-                        className="btn_submit"
-                        onClick={handleCourseStepFour}
-                      >
-                        <FormattedMessage {...messages.Next} />
-                      </Button>
-                    </div>
-                  </div>
-                </>
-              )}
-              {courseStepFour && (
-                <>
-                  <div className="create_course">Step 4</div>
-                  <div className="form_footer">
-                    <div className="bottom_btns">
-                      <Button
-                        className="btn_back"
-                        onClick={handleCourseStepThree}
-                      >
-                        <FormattedMessage {...messages.Back} />
-                      </Button>
-                      <Button
-                        className="btn_submit"
-                        onClick={handleCourseStepFive}
-                      >
-                        <FormattedMessage {...messages.Next} />
-                      </Button>
-                    </div>
-                  </div>
-                </>
-              )}
-              {courseStepFive && (
-                <>
-                  <div className="create_course">Step 5</div>
-                  <div className="form_footer">
-                    <Button className="btn_back" onClick={handleCourseStepFour}>
-                      <FormattedMessage {...messages.Back} />
-                    </Button>
-                    <div className="bottom_btns">
-                      <Button className="btn_back">
-                        <FormattedMessage {...messages.Save} />
+                        <FormattedMessage {...messages.Draft} />
                       </Button>
                       <Button className="btn_submit">
-                        <FormattedMessage {...messages.Next} />
+                        <FormattedMessage {...messages.Publish} />
                       </Button>
                     </div>
                   </div>
