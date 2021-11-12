@@ -541,8 +541,8 @@ const GlobalStyle = createGlobalStyle`
       // padding: 2rem;
       .form_content {
           padding: 1rem;
-          margin: 0 auto;
-          max-width: 475px;
+          margin: 0 auto !important;
+          max-width: 475px !important;
           width: 100%;
           img {
             margin: 0 0 2rem;
@@ -701,7 +701,7 @@ const GlobalStyle = createGlobalStyle`
       height: 100% !important;
       .form_container {
           height: 100vh; 
-          width: 65% !important;
+          width: 65%;
           .form_content {
               padding: 2.5rem 1rem !important;
               h2 {

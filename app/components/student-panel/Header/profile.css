@@ -626,7 +626,6 @@ aside > a {
 .detailsBtn {
   color: #46a135;
   font-weight: 500;
-  font-weight: 600;
 }
 .detailsBtn span {
   font-size: 20px;
@@ -637,7 +636,7 @@ aside > a {
   font-weight: 600;
   background-color: #f9f9f9;
   padding: 1rem 1.8rem;
-  border-radius: 0;
+  border-radius: 5px 5px 0px 0px;
 }
 .createCourseCont .card-body {
   padding: 2rem 1.8rem;
@@ -650,7 +649,7 @@ aside > a {
   color: #d8d8d8;
 }
 .createCourseCont .card {
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
 }
 .tagForm {
   position: relative;
@@ -681,11 +680,37 @@ aside > a {
   margin-top: 10px;
   cursor: pointer;
   max-width: 130px;
+  font-weight: normal;
 }
 .delete svg {
   height: 18px;
   width: 18px;
   margin-right: 8px;
+}
+.detailsBtn:hover {
+  color: #46a135;
+}
+.cardCustomHeader {
+  padding: 0.5rem 1.8rem !important;
+}
+.cardCustomHeader {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-bottom: initial;
+}
+.uploadBtn {
+  background-color: #3e952e;
+  color: #fff;
+  height: 47px;
+  border-radius: 0;
+}
+.uploadCont {
+  padding: 0 0 0 1rem;
+  height: 47px;
+}
+.uploadCont p {
+  padding: 12px 0px;
+  color: #d8d8d8;
 }
 @media (min-width: 576px){
 .ShareModal {

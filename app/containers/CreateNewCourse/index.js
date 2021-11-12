@@ -24,6 +24,7 @@ import history from 'utils/history';
 // import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 // import { IoIosClose } from 'react-icons/io';
+// import { IoMdAttach } from 'react-icons/io';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -364,7 +365,7 @@ export default function CreateNewCourse() {
                           >
                             {({ getRootProps, getInputProps }) => (
                               <div className="camera" {...getRootProps()}>
-                                <input {...getInputProps()} />
+                                <Input {...getInputProps()} />
                                 <p>
                                   <FormattedMessage {...messages.DragDrop} />
                                 </p>
@@ -410,7 +411,7 @@ export default function CreateNewCourse() {
                   <div className="create_course">
                     {/* Create Course */}
                     <div className="profileHeader">
-                      <h3>Courses Details</h3>
+                      <h3>Course Details</h3>
                       <button
                         type="button"
                         className="btn btn-default detailsBtn"
@@ -424,7 +425,11 @@ export default function CreateNewCourse() {
                         <div className="card-body">
                           <FormGroup>
                             <Label>Heading</Label>
-                            <Input type="text" placeholder="Enter Title" />
+                            <Input
+                              type="email"
+                              className="form-control"
+                              placeholder="Enter Title"
+                            />
                           </FormGroup>
                           <FormGroup className="mt-4">
                             <Label>Description</Label>
@@ -440,18 +445,17 @@ export default function CreateNewCourse() {
                             <FormGroup>
                               <Label>Heading</Label>
                               <Input
-                                type="text"
-                                value="Overview - Programming"
-                                readOnly
+                                type="email"
+                                className="form-control"
+                                placeholder="Enter Title"
                               />
                             </FormGroup>
-                            <FormGroup className="mt-4">
+                            <FormGroup className="mt-4 mb-0">
                               <Label>Description</Label>
                               <textarea
                                 className="form-control"
                                 rows="6"
-                                value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                                readOnly
+                                placeholder="Enter Description"
                               />
                             </FormGroup>
                             <div className="delete">
@@ -494,7 +498,123 @@ export default function CreateNewCourse() {
               )}
               {courseStepThree && (
                 <>
-                  <div className="create_course">Step 3</div>
+                  <div className="create_course">
+                    <div className="profileHeader">
+                      <h3>Course Content</h3>
+                      <button
+                        type="button"
+                        className="btn btn-default detailsBtn"
+                      >
+                        <span>+</span> Add More Details
+                      </button>
+                    </div>
+                    <div className="createCourseCont">
+                      <div className="card">
+                        <div className="card-header d-flex justify-content-between align-items-center">
+                          Lesson 2
+                          <div className="delete">
+                            <RiDeleteBin7Line />
+                            <span>Delete Section</span>
+                          </div>
+                        </div>
+                        <div className="card-body">
+                          <FormGroup>
+                            <Label>Lesson Name</Label>
+                            <Input
+                              type="email"
+                              className="form-control"
+                              placeholder="Enter Title"
+                            />
+                          </FormGroup>
+                          <div className="card">
+                            <div className="card-header d-flex justify-content-between align-items-center cardCustomHeader">
+                              Lectures
+                              <button
+                                type="button"
+                                className="btn btn-default detailsBtn"
+                              >
+                                <span>+</span> Add Lectures
+                              </button>
+                            </div>
+                            <div className="card-body">
+                              <Row>
+                                <Col lg={6}>
+                                  <FormGroup>
+                                    <Label>Lecture 2</Label>
+                                    <Input
+                                      type="email"
+                                      className="form-control"
+                                      placeholder="Enter Lecture Title"
+                                    />
+                                  </FormGroup>
+                                </Col>
+                                <Col lg={6}>
+                                  <FormGroup>
+                                    <Label>
+                                      <FormattedMessage
+                                        {...messages.DemoVideo}
+                                      />
+                                    </Label>
+                                    <Dropzone
+                                      accept="video/*"
+                                      multiple={false}
+                                      onDrop={acceptedFiles => {
+                                        if (acceptedFiles && acceptedFiles[0]) {
+                                          const courseVdo = acceptedFiles[0];
+                                          dataVideo.courseVideo = courseVdo;
+                                          // setcourseVideoFile(acceptedFiles[0]);
+                                          const reader = new FileReader();
+                                          reader.onload = e => {
+                                            setCourseVideo(e.target.result);
+                                          };
+                                          reader.readAsDataURL(
+                                            acceptedFiles[0],
+                                          );
+                                        }
+                                      }}
+                                    >
+                                      {({ getRootProps, getInputProps }) => (
+                                        <div
+                                          className="camera"
+                                          {...getRootProps()}
+                                        >
+                                          <Input {...getInputProps()} />
+                                          <div className="form-control uploadCont">
+                                            <p>Upload Lecture Video</p>
+                                            <div>
+                                              <button
+                                                type="button"
+                                                className="btn btn-default uploadBtn"
+                                              >
+                                                Upload
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      )}
+                                    </Dropzone>
+                                  </FormGroup>
+                                </Col>
+                              </Row>
+                            </div>
+                          </div>
+
+                          <div className="card mt-4">
+                            <div className="card-header d-flex justify-content-between align-items-center cardCustomHeader">
+                              Question
+                              <button
+                                type="button"
+                                className="btn btn-default detailsBtn"
+                              >
+                                <span>+</span> Add Quiz
+                              </button>
+                            </div>
+                            <div className="card-body" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div className="form_footer">
                     <Button className="btn_back" onClick={handleCourseStepTwo}>
                       <FormattedMessage {...messages.Back} />

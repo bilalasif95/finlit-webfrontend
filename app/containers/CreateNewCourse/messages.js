@@ -12,6 +12,10 @@ export default defineMessages({
     id: `${scope}.CreateNewCourse`,
     defaultMessage: 'Create New Course',
   },
+  DemoVideo: {
+    id: `${scope}.LectureVideo`,
+    defaultMessage: `Lecture Video`,
+  },
   CourseTitle: {
     id: `${scope}.CourseTitle`,
     defaultMessage: 'Course Title',
