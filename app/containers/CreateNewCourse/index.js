@@ -541,7 +541,7 @@ export default function CreateNewCourse() {
                                 <Col lg={6}>
                                   <FormGroup>
                                     <Label>Lecture 2</Label>
-                                    <Input
+                                    <input
                                       type="email"
                                       className="form-control"
                                       placeholder="Enter Lecture Title"
