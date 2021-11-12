@@ -23,6 +23,7 @@ import Dropzone from 'react-dropzone';
 // import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 // import { IoIosClose } from 'react-icons/io';
+import { IoMdAttach } from 'react-icons/io';
 import { RiDeleteBin7Line } from 'react-icons/ri'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -429,7 +430,7 @@ export default function CreateNewCourse() {
                   <div className="create_course">
                     {/* Create Course */}
                     <div className="profileHeader">
-                      <h3>Courses Details</h3>
+                      <h3>Course Details</h3>
                       <button type="button" className="btn btn-default detailsBtn">
                         <span>+</span> Add More Details
                       </button>
@@ -440,25 +441,33 @@ export default function CreateNewCourse() {
                           Course Details
                         </div>
                         <div className="card-body">
-                          <div className="form-group">
-                            <label>Heading</label>
+                          <FormGroup>
+                            <Label>
+                              Heading
+                            </Label>
                             <input type="email" className="form-control" placeholder="Enter Title" />
-                          </div>
-                          <div className="form-group mt-4">
-                            <label>Description</label>
+                          </FormGroup>
+                          <FormGroup className="mt-4">
+                            <Label>
+                              Description
+                            </Label>
                             <textarea className="form-control" rows="6" placeholder="Enter Description"></textarea>
-                          </div>
+                          </FormGroup>
                         </div>
                         <div className="card_Divider">
                           <div className="card-body">
-                            <div className="form-group">
-                              <label>Heading</label>
+                            <FormGroup>
+                              <Label>
+                                Heading
+                              </Label>
                               <input type="email" className="form-control" placeholder="Enter Title" />
-                            </div>
-                            <div className="form-group mt-4">
-                              <label>Description</label>
+                            </FormGroup>
+                            <FormGroup className="mt-4 mb-0">
+                              <Label>
+                                Description
+                              </Label>
                               <textarea className="form-control" rows="6" placeholder="Enter Description"></textarea>
-                            </div>
+                            </FormGroup>
                             <div className="delete">
                               <RiDeleteBin7Line />
                               <span>Delete Section</span>
@@ -501,7 +510,101 @@ export default function CreateNewCourse() {
               )}
               {courseStepThree && (
                 <>
-                  <div className="create_course">Step 3</div>
+                  <div className="create_course">
+                    <div className="profileHeader">
+                      <h3>Course Content</h3>
+                      <button type="button" className="btn btn-default detailsBtn">
+                        <span>+</span> Add More Details
+                      </button>
+                    </div>
+                    <div className="createCourseCont">
+                      <div className="card">
+                        <div className="card-header d-flex justify-content-between align-items-center">
+                          Lesson 2
+                          <div className="delete">
+                            <RiDeleteBin7Line />
+                            <span>Delete Section</span>
+                          </div>
+                        </div>
+                        <div className="card-body">
+                          <FormGroup>
+                            <Label>
+                              Lesson Name
+                            </Label>
+                            <input type="email" className="form-control" placeholder="Enter Title" />
+                          </FormGroup>
+                          <div className="card">
+                            <div className="card-header d-flex justify-content-between align-items-center cardCustomHeader">
+                              Lectures
+                              <button type="button" className="btn btn-default detailsBtn">
+                                <span>+</span> Add Lectures
+                              </button>
+                            </div>
+                            <div className="card-body">
+                              <Row>
+                                <Col lg={6}>
+                                  <FormGroup>
+                                    <Label>
+                                      Lecture 2
+                                    </Label>
+                                    <input type="email" className="form-control" placeholder="Enter Lecture Title" />
+                                  </FormGroup>
+                                </Col>
+                                <Col lg={6}>
+                                  <FormGroup>
+                                    <Label>
+                                      <FormattedMessage {...messages.DemoVideo} />
+                                    </Label>
+                                    <Dropzone
+                                      accept="video/*"
+                                      multiple={false}
+                                      onDrop={acceptedFiles => {
+                                        if (acceptedFiles && acceptedFiles[0]) {
+                                          const courseVdo = acceptedFiles[0];
+                                          data.courseVideo = courseVdo;
+                                          // setcourseVideoFile(acceptedFiles[0]);
+                                          const reader = new FileReader();
+                                          reader.onload = e => {
+                                            setCourseVideo(e.target.result);
+                                          };
+                                          reader.readAsDataURL(acceptedFiles[0]);
+                                        }
+                                      }}
+                                    >
+                                      {({ getRootProps, getInputProps }) => (
+                                        <div className="camera" {...getRootProps()}>
+                                          <input {...getInputProps()} />
+                                          <div className="form-control uploadCont">
+                                            <p>Upload Lecture Video</p>
+                                            <div>
+                                              <button type="button" className="btn btn-default uploadBtn">Upload</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      )}
+                                    </Dropzone>
+                                  </FormGroup>
+                                </Col>
+                              </Row>
+                            </div>
+                          </div>
+
+                          <div className="card mt-4">
+                            <div className="card-header d-flex justify-content-between align-items-center cardCustomHeader">
+                              Question
+                              <button type="button" className="btn btn-default detailsBtn">
+                                <span>+</span> Add Quiz
+                              </button>
+                            </div>
+                            <div className="card-body">
+                                
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
                   <div className="form_footer">
                     <div className="bottom_btns">
                       <Button
