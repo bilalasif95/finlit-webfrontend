@@ -16,6 +16,14 @@ export default defineMessages({
     id: `${scope}.LectureVideo`,
     defaultMessage: `Lecture Video`,
   },
+  Type: {
+    id: `${scope}.Type`,
+    defaultMessage: `Question 1`,
+  },
+  Quiz: {
+    id: `${scope}.Quiz`,
+    defaultMessage: `Add Quiz`,
+  },
   CourseTitle: {
     id: `${scope}.CourseTitle`,
     defaultMessage: 'Course Title',

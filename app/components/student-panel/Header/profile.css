@@ -659,7 +659,7 @@ aside > a {
 }
 .tagIcon {
   position: absolute;
-  top: 30%;
+  top: 26%;
   left: 20px;
   height: 18px;
   width: 18px;
@@ -703,6 +703,10 @@ aside > a {
   color: #fff;
   height: 47px;
   border-radius: 0;
+  min-width: 120px;
+}
+.uploadBtn:hover {
+  color: #fff;
 }
 .uploadCont {
   padding: 0 0 0 1rem;
@@ -711,6 +715,82 @@ aside > a {
 .uploadCont p {
   padding: 12px 0px;
   color: #d8d8d8;
+}
+.quizAnswer .Answers {
+  border: 1px solid #d8d8d8;
+  padding: 13px 15px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.quizAnswer .Answers:not(:last-child) {
+  margin-bottom: 15px;
+}
+.quizAnswer .Answers .radio {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 25px;
+}
+.quizAnswer .Answers .textField {
+  width: 100% !important;
+  border: none;
+}
+.quizAnswer .Answers .textField:focus {
+  border: none;
+  box-shadow: inherit;
+  outline: none;
+}
+.editQuiz {
+  font-size: 16px;
+  color: #404041;
+  font-weight: 600;
+  background-color: #f9f9f9;
+  padding: 1rem 1.8rem;
+  border-radius: 3px;
+  border: 1px solid #d8d8d8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.editQuiz:first-child {
+  margin-bottom: 20px;;
+}
+.quizQuestions {
+margin-top: 30px;
+}
+.quizIcons span svg {
+  cursor: pointer;
+}
+.quizIcons span:first-child {
+  margin-right: 20px;
+}.quizIcons span:last-child {
+  color: red;
+}
+.customAccordion {
+  position: relative;
+}
+.customAccordion .accordion__button {
+  font-size: 20px !important;
+  color: #404041;
+  font-weight: 600;
+  padding: 1rem 1.8rem !important;
+}
+.customAccordion .delete {
+  position: absolute;
+  right: 55px;
+  top: 15%;
+}
+.accordionMain .headingBtn {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+.accordionMain .accordion__panel {
+  padding: 2rem 1.8rem !important;
+}
+.accordionMain .accordion__item {
+  padding: 0 !important;
 }
 @media (min-width: 576px){
 .ShareModal {
