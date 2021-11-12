@@ -140,7 +140,8 @@ function CourseDetail() {
               <FaRegHeart />
               <FormattedMessage {...messages.Wishlist} />
             </Button>
-            <Button onClick={toggleShare}>
+            <Button>
+              {/* <Button onClick={toggleShare}> */}
               <IoMdShare />
               <FormattedMessage {...messages.Share} />
             </Button>

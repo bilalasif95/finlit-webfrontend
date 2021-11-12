@@ -1083,7 +1083,13 @@ exports[`<CoursesTable /> should render and match the snapshot 1`] = `
             className="Paginataion"
           >
             <p>
-              Showing 1 to 8 of 8 entries
+              <span>
+                Showing
+              </span>
+              1 to 8 of 8
+              <span>
+                entries
+              </span>
             </p>
           </div>
         </div>

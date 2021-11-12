@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import '../../components/student-panel/Header/profile.css';
+import { FiEdit3 } from 'react-icons/fi';
 // import { withStyles } from '@material-ui/core/styles';
 import {
   FormGroup,
@@ -19,6 +20,13 @@ import {
   InputGroupAddon,
   FormText,
 } from 'reactstrap';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
 import Dropzone from 'react-dropzone';
 import history from 'utils/history';
 // import axios from 'axios';
@@ -67,6 +75,7 @@ export default function CreateNewCourse() {
   const [level, setLevel] = useState('Select Level');
   const [language, setLanguage] = useState('Select Language');
   const [courseVideo, setCourseVideo] = useState('');
+  // const [category, setCategory] = useState('0');
 
   // const [errors, setErrors] = useState({});
   const [courseStepOne, setCourseStepOne] = useState(true);
@@ -586,7 +595,7 @@ export default function CreateNewCourse() {
                                                 type="button"
                                                 className="btn btn-default uploadBtn"
                                               >
-                                                Upload
+                                                Upload File
                                               </button>
                                             </div>
                                           </div>
@@ -596,6 +605,77 @@ export default function CreateNewCourse() {
                                   </FormGroup>
                                 </Col>
                               </Row>
+                            </div>
+
+                            <div className="card_Divider">
+                              <div className="card-body">
+                                <Row>
+                                  <Col lg={6}>
+                                    <FormGroup className="mb-0">
+                                      <Label>Lecture 1</Label>
+                                      <input
+                                        type="email"
+                                        className="form-control"
+                                        // placeholder="Enter Lecture Title"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                  <Col lg={6}>
+                                    <FormGroup className="mb-0">
+                                      <Label>
+                                        <FormattedMessage
+                                          {...messages.DemoVideo}
+                                        />
+                                      </Label>
+                                      <Dropzone
+                                        accept="video/*"
+                                        multiple={false}
+                                        onDrop={acceptedFiles => {
+                                          if (
+                                            acceptedFiles &&
+                                            acceptedFiles[0]
+                                          ) {
+                                            const courseVdo = acceptedFiles[0];
+                                            dataVideo.courseVideo = courseVdo;
+                                            // setcourseVideoFile(acceptedFiles[0]);
+                                            const reader = new FileReader();
+                                            reader.onload = e => {
+                                              setCourseVideo(e.target.result);
+                                            };
+                                            reader.readAsDataURL(
+                                              acceptedFiles[0],
+                                            );
+                                          }
+                                        }}
+                                      >
+                                        {({ getRootProps, getInputProps }) => (
+                                          <div
+                                            className="camera"
+                                            {...getRootProps()}
+                                          >
+                                            <Input {...getInputProps()} />
+                                            <div className="form-control uploadCont">
+                                              <p>Upload Lecture Video</p>
+                                              <div>
+                                                <button
+                                                  type="button"
+                                                  className="btn btn-default uploadBtn"
+                                                >
+                                                  Upload File
+                                                </button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        )}
+                                      </Dropzone>
+                                    </FormGroup>
+                                  </Col>
+                                </Row>
+                                <div className="delete">
+                                  <RiDeleteBin7Line />
+                                  <span>Delete Lecture</span>
+                                </div>
+                              </div>
                             </div>
                           </div>
 
@@ -609,9 +689,150 @@ export default function CreateNewCourse() {
                                 <span>+</span> Add Quiz
                               </button>
                             </div>
-                            <div className="card-body" />
+                            <div className="card-body">
+                              <div className="add_forms">
+                                <div className="add_form">
+                                  <Row>
+                                    <Col lg={12} md={12} sm={12} xs={12}>
+                                      <FormGroup className="mb-3">
+                                        <Label for="sub_title">
+                                          <FormattedMessage
+                                            {...messages.Type}
+                                          />
+                                        </Label>
+                                        <Input
+                                          type="text"
+                                          name="title"
+                                          id="sub_title"
+                                          placeholder="Type the Question"
+                                        />
+                                      </FormGroup>
+                                      <div className="quizAnswer">
+                                        <div className="Answers">
+                                          <input
+                                            className="radio"
+                                            type="radio"
+                                            id="age1"
+                                            name="age"
+                                            value="30"
+                                          />
+                                          <input
+                                            className="textField"
+                                            placeholder="Answer 1"
+                                            type="text"
+                                          />
+                                        </div>
+                                        <div className="Answers">
+                                          <input
+                                            className="radio"
+                                            type="radio"
+                                            id="age2"
+                                            name="age"
+                                            value="60"
+                                          />
+                                          <input
+                                            className="textField"
+                                            placeholder="Answer 2"
+                                            type="text"
+                                          />
+                                        </div>
+                                        <div className="Answers">
+                                          <input
+                                            className="radio"
+                                            type="radio"
+                                            id="age3"
+                                            name="age"
+                                            value="100"
+                                          />
+                                          <input
+                                            className="textField"
+                                            placeholder="Answer 3"
+                                            type="text"
+                                          />
+                                        </div>
+                                        <div className="quizQuestions">
+                                          <div className="editQuiz">
+                                            <p>
+                                              The instructor was well prepared
+                                              for the class?
+                                            </p>
+                                            <div className="quizIcons">
+                                              <span>
+                                                <FiEdit3 />
+                                              </span>
+                                              <span>
+                                                <RiDeleteBin7Line />
+                                              </span>
+                                            </div>
+                                          </div>
+                                          <div className="editQuiz">
+                                            <p>Well prepared for the class?</p>
+                                            <div className="quizIcons">
+                                              <span>
+                                                <FiEdit3 />
+                                              </span>
+                                              <span>
+                                                <RiDeleteBin7Line />
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </Col>
+                                  </Row>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
+                      </div>
+                      <div className="add_form mt-4 accordionMain">
+                        <Accordion allowZeroExpanded>
+                          <AccordionItem uuid="a">
+                            <div className="customAccordion">
+                              <AccordionItemHeading className="headingBtn">
+                                <AccordionItemButton>
+                                  Lesson 1
+                                </AccordionItemButton>
+                              </AccordionItemHeading>
+                              <div className="delete">
+                                <RiDeleteBin7Line />
+                                <span>Delete Section</span>
+                              </div>
+                            </div>
+                            <AccordionItemPanel>
+                              <div className="section_in">
+                                <div className="item">
+                                  <div className="left">
+                                    {/* <GrCirclePlay /> */}
+                                    Introduction Copy
+                                  </div>
+                                  <div className="right">
+                                    {/* <TiLockClosed /> */}
+                                  </div>
+                                </div>
+                                <div className="item">
+                                  <div className="left">
+                                    {/* <GrCirclePlay /> */}
+                                    Interactive lesson Copy
+                                  </div>
+                                  <div className="right">
+                                    {/* <TiLockClosed /> */}
+                                  </div>
+                                </div>
+                                <div className="item">
+                                  <div className="left">
+                                    {/* <GrCirclePlay /> */}
+                                    Lesson 1.1 Copy
+                                  </div>
+                                  <div className="right">
+                                    {/* <TiLockClosed /> */}
+                                  </div>
+                                </div>
+                              </div>
+                            </AccordionItemPanel>
+                          </AccordionItem>
+                        </Accordion>
                       </div>
                     </div>
                   </div>

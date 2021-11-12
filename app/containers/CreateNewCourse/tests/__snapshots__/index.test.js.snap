@@ -432,6 +432,7 @@ exports[`<CreateNewCourse /> should render its heading 1`] = `
                     <input
                       accept="video/*"
                       autocomplete="off"
+                      class="form-control-file"
                       style="display: none;"
                       tabindex="-1"
                       type="file"
