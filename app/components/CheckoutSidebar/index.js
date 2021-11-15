@@ -5,7 +5,18 @@ import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import NumberFormat from 'react-number-format';
 // import PropTypes from 'prop-types';
-import { Row, Col, FormGroup, Input, Label, Button } from 'reactstrap';
+import {
+  Row,
+  Col,
+  FormGroup,
+  Input,
+  Label,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from 'reactstrap';
 import { IoMdLock } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 // import axios from 'axios';
@@ -13,6 +24,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import history from 'utils/history';
 import mastercard from '../../images/mastercard.svg';
+import Logo from '../../images/logo.svg';
 import paypalicon from '../../images/paypal.svg';
 import Back from '../../images/back.png';
 import Info from '../../images/info.png';
@@ -23,6 +35,8 @@ import messages from './messages';
 
 function CheckoutSidebar() {
   const [paymentType, setPaymentType] = useState({ card: true, paypal: false });
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
   // const [loader, setLoader] = useState(false);
   // const [checkoutInfo, setCheckoutInfo] = useState({
   //   email: '',
@@ -312,7 +326,7 @@ function CheckoutSidebar() {
                   </li>
                 </ul>
               </div>
-              <Button>
+              <Button onClick={toggle}>
                 {/* <Button onClick={() => handleCheckout()}> */}
                 {/* {loader ? `loading...` : `Pay $${props.details.total}`} */}
                 Pay $1000
@@ -337,6 +351,32 @@ function CheckoutSidebar() {
         </Wrapper>
       </Col>
       <ToastContainer />
+      {/* Modal */}
+      <div>
+        <Modal
+          isOpen={modal}
+          toggle={toggle}
+          className="successModal ratingModal"
+        >
+          <ModalHeader toggle={toggle} />
+          <ModalBody>
+            <img src={Logo} alt="Logo" />
+            <h4>Enrollment Successful</h4>
+            <p>
+              Congratulations, your course
+              <span>
+                Programming with python : HandsOn Introduction for Beginners
+              </span>
+              for finlit is approved.
+            </p>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={toggle}>
+              Go to the course
+            </Button>
+          </ModalFooter>
+        </Modal>
+      </div>
     </Row>
   );
 }

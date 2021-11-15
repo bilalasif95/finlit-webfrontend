@@ -267,7 +267,7 @@ aside > a {
   border-radius: 5px;
   min-width: 200px;
 }
-.uploadImg button:hover  {
+.uploadImg button:hover {
   color: #8b8b8b;
 }
 .uploadImg .inner {
@@ -292,7 +292,7 @@ aside > a {
   align-items: center;
 }
 
-.profileHeader h3  {
+.profileHeader h3 {
   font-size: 24px;
   color: #404041;
   font-weight: 600;
@@ -502,7 +502,8 @@ aside > a {
   padding: 13px 8px;
   color: #404041;
 }
-.tableCont thead th:last-child, .tableCont thead tr td:last-child {
+.tableCont thead th:last-child,
+.tableCont thead tr td:last-child {
   text-align: center;
 }
 .tableCont thead th:first-child {
@@ -512,10 +513,12 @@ aside > a {
 .tableCont thead th:nth-child(2) {
   width: 17% !important;
 }
-.tableCont tbody th:nth-child(3), .tableCont tbody th:nth-child(4) {
+.tableCont tbody th:nth-child(3),
+.tableCont tbody th:nth-child(4) {
   width: 10%;
 }
-.tableCont tbody th:nth-child(5), .tableCont tbody th:nth-child(6) {
+.tableCont tbody th:nth-child(5),
+.tableCont tbody th:nth-child(6) {
   width: 12% !important;
 }
 .tableCont tbody tr td:first-child {
@@ -524,10 +527,12 @@ aside > a {
 .tableCont tbody tr td:nth-child(2) {
   width: 17% !important;
 }
-.tableCont tbody tr td:nth-child(3), .tableCont tbody tr td:nth-child(4) {
+.tableCont tbody tr td:nth-child(3),
+.tableCont tbody tr td:nth-child(4) {
   width: 10% !important;
 }
-.tableCont tbody tr td:nth-child(6), .tableCont tbody tr td:nth-child(5) {
+.tableCont tbody tr td:nth-child(6),
+.tableCont tbody tr td:nth-child(5) {
   width: 12% !important;
 }
 .tableCont thead {
@@ -542,8 +547,8 @@ aside > a {
 }
 .courseTitle h4 {
   color: #404041;
-  white-space: nowrap; 
-  width: 255px; 
+  white-space: nowrap;
+  width: 255px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 20px;
@@ -645,7 +650,8 @@ aside > a {
   margin-bottom: 10px;
   font-size: 14px;
 }
-.createCourseCont .card-body input::placeholder, .createCourseCont .card-body textarea::placeholder {
+.createCourseCont .card-body input::placeholder,
+.createCourseCont .card-body textarea::placeholder {
   color: #d8d8d8;
 }
 .createCourseCont .card {
@@ -755,17 +761,18 @@ aside > a {
   justify-content: space-between;
 }
 .editQuiz:first-child {
-  margin-bottom: 20px;;
+  margin-bottom: 20px;
 }
 .quizQuestions {
-margin-top: 30px;
+  margin-top: 30px;
 }
 .quizIcons span svg {
   cursor: pointer;
 }
 .quizIcons span:first-child {
   margin-right: 20px;
-}.quizIcons span:last-child {
+}
+.quizIcons span:last-child {
   color: red;
 }
 .customAccordion {
@@ -792,8 +799,25 @@ margin-top: 30px;
 .accordionMain .accordion__item {
   padding: 0 !important;
 }
-@media (min-width: 576px){
-.ShareModal {
-    max-width: 770px !important;
+.successModal .modal-content {
+  text-align: center;
 }
+.successModal .modal-content p span {
+  color: #000;
+}
+.successModal .modal-content p {
+  margin: 10px 0px 30px !important;
+}
+.successModal .modal-content h4 {
+  margin-top: 25px;
+}
+.successModal .modal-content .modal-footer button {
+  display: table;
+  margin: 0px auto;
+  min-width: 300px;
+}
+@media (min-width: 576px) {
+  .ShareModal {
+    max-width: 770px !important;
+  }
 }
