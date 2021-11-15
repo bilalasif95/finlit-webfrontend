@@ -35,7 +35,6 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
-// import Wrapper from './Wrapper';
 import Img from '../../components/Img';
 // import Logo from '../../images/logoS.png';
 import Cam from '../../images/cam.png';

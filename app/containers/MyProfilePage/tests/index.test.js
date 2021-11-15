@@ -2,14 +2,14 @@ import React from 'react';
 import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
-import MyProfilePage from '../index';
+import Loadable from '../Loadable';
 
 describe('<MyProfilePage />', () => {
   it('should render its heading', () => {
     const { container } = render(
       <IntlProvider locale="en">
         <BrowserRouter>
-          <MyProfilePage />
+          <Loadable />
         </BrowserRouter>
       </IntlProvider>,
     );

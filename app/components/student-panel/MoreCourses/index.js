@@ -8,7 +8,6 @@ import Card from '../../../images/cardImg1.png';
 import Card2 from '../../../images/cardImg2.png';
 import CardIcon from '../../../images/cardIcon.png';
 import Cart from '../../../images/cart.png';
-// import messages from './messages';
 import Wrapper from './Wrapper';
 
 function MoreCourses() {
