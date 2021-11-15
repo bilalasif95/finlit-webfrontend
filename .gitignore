@@ -121,7 +121,7 @@ npm-debug.log
 /app/components/student-panel/Sidebar/tests/__snapshots__
 /app/components/student-panel/CourseDetails/CourseSidebar/tests/__snapshots__
 /app/components/student-panel/MoreCourses/tests/__snapshots__
-/app/components/instructor-panel/CoursesTable/tests/snapshots__
+/app/components/instructor-panel/CoursesTable/tests/__snapshots__
 /app/containers/CreateNewCourse/tests/__snapshots__
 
 # Cypress

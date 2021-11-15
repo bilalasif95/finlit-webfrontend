@@ -1,6 +1,37 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  .pdf-container {
+    margin: 0 auto;
+    max-width: 50rem;
+  }
+  .pdf-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 1.5rem;
+    button {
+      background-color: #3e952e;
+      border: none;
+      border-radius: 0px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 0.875rem;
+      margin: 0 0 0 1rem;
+      padding: 0.75rem 1.5rem;
+      text-align: center;
+      width: 15rem;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+  .pdf-body {
+    max-width: 50rem;
+    overflow-x: auto;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
 .breadcrumb_bar {
   a {
     color:#5ca54e;
@@ -186,7 +217,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif !important;
   }
 
   body.fontLoaded {

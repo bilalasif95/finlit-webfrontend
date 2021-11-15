@@ -5,26 +5,34 @@ const Wrapper = styled.div`
   padding: 2rem 0 0;
   .course_certificate {
     border: 1px solid #e9e9e9;
-    margin: 0 auto;
-    max-width: 55rem;
-    width: 100%;
+    // transform: rotate(90deg);
+    position: relative;
+    width: 50rem;
+    .circle_bg {
+      bottom: 0;
+      display: none;
+      position: absolute;
+      right: 0;
+      width: 25rem;
+    }
     .header {
       // background-color: #255f2b;
       background: url('https://i.imgur.com/4mnVfVZ.png') no-repeat;
-      background-size: 100%;
+      background-size: cover;
       background-position: top center;
       border-bottom: 5px solid #ffd430;
       padding: 2.5rem 3rem;
+      z-index: 1;
       h4 {
         color: #fff;
-        font-size: 2rem;
+        font-size: 1.75rem;
         font-weight: 300;
         line-height: 24px;
         margin: 0 0 2rem;
       }
       h2 {
         color: #fff;
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-weight: 500;
         line-height: 24px;
         margin: 0 0 0.25rem;
@@ -40,7 +48,7 @@ const Wrapper = styled.div`
       width: 100%;
       h1 {
         color: #3e952e;
-        font-size: 3rem;
+        font-size: 2.75rem;
         line-height: 44px;
         margin: 0 0 0.75rem;
       }
