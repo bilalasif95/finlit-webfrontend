@@ -486,6 +486,19 @@ const Wrapper = styled.div`
       }
     }
   }
+  @media (max-width: 575px) {
+    .addcart_detail {
+      .header {
+        h3 {
+          color: #404041;
+          font-size: 1.5rem;
+          line-height: 30px;
+          margin: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
 `;
 
 export default Wrapper;

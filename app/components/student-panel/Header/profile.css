@@ -627,6 +627,7 @@ aside > a {
   color: #3e952e;
   font-weight: 600;
   background: #fff;
+  width: 83px;
 }
 .detailsBtn {
   color: #46a135;
@@ -816,8 +817,41 @@ aside > a {
   margin: 0px auto;
   min-width: 300px;
 }
+::-webkit-scrollbar {
+  display: none !important;
+}
 @media (min-width: 576px) {
   .ShareModal {
     max-width: 770px !important;
   }
+}
+@media (max-width: 575px) {
+  .sm-mt-16 {
+    margin-top: 16px;
+  }
+  .successModal .modal-content .modal-footer button {
+    min-width: auto;
+  }
+  .socialList li {
+    height: 35px;
+    width: 35px;
+  }
+  .socialList li img {
+    height: 25px;
+    width: 25px;
+  }
+  .ratingModal .modal-content {
+    padding: 30px 30px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.ratingModal .modal-content .modal-title {
+  font-size: 20px;
+}
+.ShareModal h5 {
+  font-size: 16px;
+}
+.copyLink input {
+  padding: 12px 12px;
+}
 }

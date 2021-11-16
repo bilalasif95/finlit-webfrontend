@@ -3,6 +3,11 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   .cart_checkout {
     margin-top: 31px;
+    .breadcrumb_bar {
+      nav {
+        z-index: initial;
+      }
+    }
     .header {
       align-tems: center;
       display: flex;

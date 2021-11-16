@@ -52,7 +52,7 @@ function MoreCourses() {
           </div>
         </div>
         <div className="col-md-6">
-          <div className="card">
+          <div className="card sm-mt-16">
             <img className="card-img-top" src={Card} alt="CardCap" />
             <div className="card-body">
               <h5 className="card-title">
