@@ -44,7 +44,7 @@ function CourseSidebar() {
     setQuestionOne(false);
     setQuestionTwo(true);
     // setQuestionThree(true);
-  }
+  };
   // const handleQuestionThree = () => {
   //   setQuestionOne(true);
   //   setQuestionTwo(false);

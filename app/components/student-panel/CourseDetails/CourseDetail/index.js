@@ -40,11 +40,12 @@ import {
 // import JoditEditor from 'jodit-react';
 import { Player } from 'video-react';
 import classnames from 'classnames';
+import { useCopyAddress } from '../../../../config/copyAddress';
 import 'react-accessible-accordion/dist/fancy-example.css';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import coursedummy from '../../../../images/coursedummy.png';
-import MoreCourses from '../../MoreCourses';
+// import MoreCourses from '../../MoreCourses';
 import './videoplayer.css';
 import Pinterest from '../../../../images/pinterest.png';
 import Twitter from '../../../../images/twitter.png';
@@ -59,12 +60,12 @@ function CourseDetail() {
   //   readonly: true,
   // };
   // const {className} = props;
-
   const [modal, setModal] = useState(false);
   const [sharemodal, setShareModal] = useState(false);
   const toggle = () => setModal(!modal);
   const toggleShare = () => setShareModal(!sharemodal);
   const [activeTab, setActiveTab] = useState('1');
+  const [copyText, CopyContactAddress] = useCopyAddress();
 
   const toggleTab = tab => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -140,8 +141,7 @@ function CourseDetail() {
               <FaRegHeart />
               <FormattedMessage {...messages.Wishlist} />
             </Button>
-            <Button>
-              {/* <Button onClick={toggleShare}> */}
+            <Button onClick={toggleShare}>
               <IoMdShare />
               <FormattedMessage {...messages.Share} />
             </Button>
@@ -756,9 +756,18 @@ function CourseDetail() {
             <div className="copyLink">
               <h5 className="mb-3">Or copy link</h5>
               <div className="copyInput">
-                <input type="text" className="form-control" />
-                <button type="button" className="btn btn-default">
-                  Copy
+                <input
+                  type="text"
+                  value={window.location.href}
+                  readOnly
+                  className="form-control"
+                />
+                <button
+                  onClick={() => CopyContactAddress(window.location.href)}
+                  type="button"
+                  className="btn btn-default"
+                >
+                  {copyText === window.location.href ? 'Copied!' : 'Copy'}
                 </button>
               </div>
             </div>

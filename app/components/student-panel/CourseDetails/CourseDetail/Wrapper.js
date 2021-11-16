@@ -627,9 +627,9 @@ const Wrapper = styled.div`
                   padding: 0 0 0 1rem;
                   width: 75%;
                 }
-              } 
-            } 
-          } 
+              }
+            }
+          }
         }
       }
       .main_img {
@@ -691,7 +691,7 @@ const Wrapper = styled.div`
             li {
               padding: 0.25rem 1rem !important;
             }
-          } 
+          }
         }
         .rating_status {
           .status {
