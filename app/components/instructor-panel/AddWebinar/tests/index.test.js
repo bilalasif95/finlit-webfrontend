@@ -7,6 +7,10 @@ import { browserHistory, BrowserRouter } from 'react-router-dom';
 import AddWebinar from '../index';
 import configureStore from '../../../../configureStore';
 
+jest.mock('react-text-mask', () => props => (
+  <input type="text" {...{ ...props }} />
+));
+
 describe('<AddWebinar />', () => {
   let store;
 
