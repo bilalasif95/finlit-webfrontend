@@ -44,6 +44,11 @@ const GlobalStyle = createGlobalStyle`
   .breadcrumb-item+.breadcrumb-item::before {
     content: var(--bs-breadcrumb-divider, ">");
   }
+  @media (max-width: 480x) {
+    .active {
+      padding: 0 !important;
+    }
+  }
 }
 .deleteModal {
   text-align: center !important;
@@ -1364,6 +1369,7 @@ const GlobalStyle = createGlobalStyle`
         align-items: center;
         background-color: transparent;
         border: none;
+        border-left: 4px solid #fff;
         color: #404041;
         display: flex;
         font-size: 1rem;
@@ -1400,12 +1406,12 @@ const GlobalStyle = createGlobalStyle`
       }
       @media (max-width: 575px) {
         margin: 0 0 1rem;
-        .accordion__item {
-          padding: 0 0.5rem;
+        .accordion__panel {
+          padding: 1rem;
         }
         .accordion__button {
-          font-size: 1.125rem;
-          padding: 0.75rem 0;
+          font-size: 1rem;
+          padding: 0.75rem 1rem;
         }
       }
     }

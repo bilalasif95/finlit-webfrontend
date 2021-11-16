@@ -36,15 +36,15 @@ function CourseSidebar() {
   // const dataDetails = detail.data;
 
   const handleQuestionOne = () => {
-    setQuestionOne(false);
-    setQuestionTwo(true);
+    setQuestionOne(true);
+    setQuestionTwo(false);
     // setQuestionThree(false);
   };
-  // const handleQuestionTwo = () => {
-  //   setQuestionOne(false);
-  //   setQuestionTwo(false);
-  //   setQuestionThree(true);
-  // }
+  const handleQuestionTwo = () => {
+    setQuestionOne(false);
+    setQuestionTwo(true);
+    // setQuestionThree(true);
+  }
   // const handleQuestionThree = () => {
   //   setQuestionOne(true);
   //   setQuestionTwo(false);
@@ -188,7 +188,7 @@ function CourseSidebar() {
                           data.voted_percentage,
                           data.not_voted_percentage,
                         ).toFixed() + '%'} */}
-                        10%
+                        100%
                       </span>
                       <br />
                       {/* {props.i18n.t('Most_Voted_On')} */}
@@ -205,7 +205,7 @@ function CourseSidebar() {
                     data={[
                       {
                         // title: props.i18n.t('Voted'),
-                        value: 10,
+                        value: 54,
                         color: '#f59d07',
                       },
                     ]}
@@ -377,9 +377,14 @@ function CourseSidebar() {
             </div>
             <div className="quiz_step">
               <p>Question 1 of 3</p>
-              <Button className="btn_next" onClick={handleQuestionOne}>
-                Next
-              </Button>
+              <div>
+                <Button className="btn_next" onClick={handleQuestionOne}>
+                  Prev
+                </Button>
+                <Button className="btn_next" onClick={handleQuestionTwo}>
+                  Next
+                </Button>
+              </div>
             </div>
           </div>
         </div>

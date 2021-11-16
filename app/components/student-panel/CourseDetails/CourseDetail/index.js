@@ -685,24 +685,7 @@ function CourseDetail() {
             </TabPane>
           </TabContent>
         </div>
-        {/* <div className="requirement">
-          <h4>Registration Requirements:</h4>
-          <ul>
-            <li>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </li>
-            <li>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </li>
-            <li>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </li>
-          </ul>
-        </div> */}
-        <MoreCourses />
+        {/* <MoreCourses /> */}
       </div>
       {/* Modal */}
       <div className="ratingModal">

@@ -2,30 +2,8 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   margin: 30px 0 16px;
-  .graph-box {
-    padding: 0.5rem;
-    width: 100%;
-    img {
-      height: 90px;
-      width: 90px;
-    }
-  }
-  .PieChartCustom {
-    position: relative;
-    .inner {
-      align-items: center;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      position: absolute;
-      text-align: center;
-      font-size: 9px;
-      height: 100%;
-      width: 100%;
-      span {
-        font-size: 18px;
-      }
-    }
+  @media (max-width: 767px) {
+    margin: 0 0 1rem;
   }
   .sidebar {
     width: 100%;
@@ -51,6 +29,44 @@ const Wrapper = styled.div`
         }
         .chart {
           width: 30%;
+          .graph-box {
+            padding: 0.5rem;
+            width: 100%;
+            img {
+              height: 90px;
+              width: 90px;
+            }
+          }
+          .PieChartCustom {
+            position: relative;
+            .inner {
+              align-items: center;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              position: absolute;
+              text-align: center;
+              font-size: 9px;
+              height: 100%;
+              width: 100%;
+              span {
+                font-size: 18px;
+              }
+            }
+          }
+          @media (max-width: 540px) {
+            .graph-box {
+              display: flex;
+              justify-content: center;
+              padding: 0;
+              width: 100%;
+              .PieChartCustom {
+                height: 100%;
+                max-width: 5.5rem;
+                width: 100%;
+              }
+            }
+          }
         }
       }
       .progress_session {
@@ -79,6 +95,17 @@ const Wrapper = styled.div`
             .progress-bar {
               background-color: #f59d07;
             }
+          }
+        }
+      }
+      @media (max-width: 575px) {
+        .progress_chart {
+          padding: 1rem;
+          .progress_chart {
+            width: 60%;
+          }
+          .chart {
+            width: 40%;
           }
         }
       }
@@ -189,9 +216,20 @@ const Wrapper = styled.div`
           border: none;
           color: #3e952e;
           font-size: 0.875rem;
+          margin: 0 0 0 1rem;
           padding: 0;
           &:focus {
             box-shadow: none;
+          }
+        }
+      }
+      @media (max-width: 575px) {
+        .inner_box {
+          .title {
+            padding: 1rem;
+          }
+          .quiz_box {
+            padding: 1rem;
           }
         }
       }
@@ -424,24 +462,8 @@ const Wrapper = styled.div`
       @media (max-width: 960px) and (min-width: 768px) {
         margin: 0 0 1.5rem;
       }
-      @media (max-width: 767px) {
-        margin: 1rem 0;
-      }
     }
   }
-  @media (max-width: 540px) {
-    .graph-box {
-                display: flex;
-                justify-content: center;
-                padding: 0.5rem;
-                width: 100%;
-                .PieChartCustom {
-                  height: 100%;
-                  max-width: 5.5rem;
-                  width: 100%;
-                }
-              }
-    }
 `;
 
 export default Wrapper;
