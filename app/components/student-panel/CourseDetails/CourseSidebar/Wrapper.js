@@ -188,26 +188,26 @@ const Wrapper = styled.div`
             li {
               list-style: none;
               margin: 0 0 0.5rem;
-              // .form-check {
-              //   border: 1px solid #d8d8d8;
-              //   margin-bottom: 0;
-              //   padding-left: 0;
-              //   position: relative;
-              //   .check_mark {
-              //     align-items: center;
-              //     display: flex;
-              //     height: 1.5rem;
-              //     justify-content: center;
-              //     position: absolute;
-              //     width: 1.5rem;
-              //     span {
-              //       text-align: center;
-              //       width: 100%;
-              //     }
-              //     svg {
-              //       display: none;
-              //     }
-              //   }
+              .form-check {
+                border: 1px solid #d8d8d8;
+                margin-bottom: 0;
+                padding-left: 0;
+                position: relative;
+                // .check_mark {
+                //   align-items: center;
+                //   display: flex;
+                //   height: 1.5rem;
+                //   justify-content: center;
+                //   position: absolute;
+                //   width: 1.5rem;
+                //   span {
+                //     text-align: center;
+                //     width: 100%;
+                //   }
+                //   svg {
+                //     display: none;
+                //   }
+                // }
               }
               label {
                 align-items: center;
@@ -237,22 +237,22 @@ const Wrapper = styled.div`
             }
           }
           .form-check-input:checked[type=radio] {
-            background-image: none;
+            background-image: url('https://i.imgur.com/dWps3M3.png');
             background-color: transparent;
-            border: none;
+            border: 1px solid #47a135;
           }
 
-          .form-check-input[type=radio] {
-            border-radius: 0px !important;
-          }
+          // .form-check-input[type=radio] {
+          //   border-radius: 0px !important;
+          // }
           .form-check-input {
-            background-color: #d8d8d8;
+            // background-color: #d8d8d8;
             border: 1px solid #d8d8d8;
-            height: 1.5rem;
+            height: 1rem;
             margin-top: 0;
             margin-left: 0;
             margin-right: 1rem;
-            width: 1.5rem;
+            width: 1rem;
             &:focus {
               box-shadow: none;
             }
