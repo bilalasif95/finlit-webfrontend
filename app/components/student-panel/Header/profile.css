@@ -820,12 +820,104 @@ aside > a {
 ::-webkit-scrollbar {
   display: none !important;
 }
+.deleteBtn {
+  background-color: #ec5252 !important;
+  width: 150px !important;
+  display: table;
+  margin: 0px auto !important;
+}
+.deleteModal p {
+  color: #404041 !important;
+  font-weight: 600;
+}
+.resetHeading {
+  margin-bottom: 60px !important;
+}
+.resetField {
+  margin: 25px 0px 30px !important;
+}
 @media (min-width: 576px) {
   .ShareModal {
     max-width: 770px !important;
   }
+  .profileAside {
+    display: block !important;
+  }
+  .MobileNav {
+    display: none !important;
+  }
 }
 @media (max-width: 575px) {
+  .coursesTabs {
+    flex-direction: column-reverse;
+  }
+  .searchBox {
+    width: 100%;
+    margin-bottom: 20px;
+}
+  .EndpointBtns {
+    display: initial;
+  }
+  .Langcontainer {
+    width: 100%;
+  }
+  .basic_info .form_footer {
+    right: inherit;
+  }
+  .uploadImg {
+    display: initial;
+    text-align: center;
+  }
+  .uploadImg .inner {
+    margin: 0px auto;
+  }
+  .collapseBtn {
+    padding: 0px;
+  }
+  .collapseBtn svg {
+    height: 30px;
+    width: 30px;
+  }
+  .mainCont {
+    padding: 20px 20px;
+  }
+  .profileContent {
+    padding: 20px 10px;
+  }
+  .MobileNav .sideNav .card-body {
+    text-align: center;
+  }
+  .MobileNav {
+    width: 100% !important;
+    padding: 30px 10px !important;
+  }
+  .profileMain {
+    flex-wrap: wrap;
+    display: initial;
+  }
+  .uploadBtns {
+    display: table;
+    margin: 0px auto;
+  }
+  .MobileNav .sideNav {
+    margin: 0px !important;
+  }
+  .MobileNav .sideNav .active.sideNavLink, .MobileNav .sideNav .sideNavLink:hover {
+    border-left: initial !important;
+  }
+  .uploadImg button {
+    margin-bottom: 30px;
+  }
+  .uploadImg .upload {
+    margin: 20px 0px 20px 0px;
+    width: 200px;
+  }
+  .profileAside {
+    display: none;
+  }
+  .MobileNav {
+    display: block !important;
+  }
   .sm-mt-16 {
     margin-top: 16px;
   }

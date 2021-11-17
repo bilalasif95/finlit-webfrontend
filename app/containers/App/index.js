@@ -56,6 +56,7 @@ import TwoFAPage from 'containers/TwoFAPage/Loadable';
 import SignupPage from 'containers/SignupPage/Loadable';
 import EmailVerificationPage from 'containers/EmailVerification/Loadable';
 import ForgotPasswordPage from 'containers/ForgotPasswordPage/Loadable';
+import ResetPasswordPage from 'containers/ResetPassword/Loadable';
 import CreateNewPasswordPage from 'containers/CreateNewPasswordPage/Loadable';
 import Header from 'components/student-panel/Header';
 // import InstructorHeader from 'components/instructor-panel/Header';
@@ -92,7 +93,8 @@ const App = () => {
           history.location.pathname === '/setting' ||
           history.location.pathname === '/my_courses' ||
           history.location.pathname === '/create_course' ||
-          // history.location.pathname === '/forgot_password' ||
+          history.location.pathname === '/forgot_password' ||
+          history.location.pathname === '/reset_password' ||
           history.location.pathname === '/two_fa' ? null : userInfo &&
             userInfo.roles[0].roleName === 'Instructor' ? (
           <Header />
@@ -144,6 +146,7 @@ const App = () => {
         <Route path="/signup" component={SignupPage} />
         <Route path="/email_verification" component={EmailVerificationPage} />
         <Route path="/forgot_password" component={ForgotPasswordPage} />
+        <Route path="/reset_password" component={ResetPasswordPage} />
         <Route path="/create_new_password" component={CreateNewPasswordPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
@@ -153,7 +156,8 @@ const App = () => {
         // history.location.pathname === '/my_profile' ||
         // history.location.pathname === '/email_verification' ||
         // history.location.pathname === '/notification' ||
-        // history.location.pathname === '/forgot_password' ||
+        history.location.pathname === '/forgot_password' ||
+        history.location.pathname === '/reset_password' ||
         history.location.pathname === '/two_fa' ? null : (
         <Footer />
       )}

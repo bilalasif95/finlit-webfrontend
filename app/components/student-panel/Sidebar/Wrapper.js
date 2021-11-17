@@ -3,13 +3,13 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   background-color: #fff;
   // box-shadow: 2px 3px 4px #cececeb8;
-  padding: 50px 0px 30px 0px;
   z-index: 1;
   top: 0;
-  width: 155px;
   .profileAside {
+    width: 155px;
     height: 100%;
     position: relative;
+    padding: 50px 0px 30px 0px;
     .sideNav {
       margin: 0 0 5rem;
       padding: 50px 0px 30px 0px;

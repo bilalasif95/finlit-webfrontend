@@ -314,7 +314,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 2rem;
         font-weight: 500;
         line-height: 44px;
-        margin: 0 0 1.5rem !important;
+        margin: 0 0 1.5rem;
         text-align: center;
       }
       p {
@@ -644,7 +644,7 @@ const GlobalStyle = createGlobalStyle`
         color: #484848;
         font-weight: 500;
         line-height: 44px;
-        margin: 0 0 1.5rem !important;
+        margin: 0 0 1.5rem;
         text-align: center;
       }
       p {
@@ -718,7 +718,7 @@ const GlobalStyle = createGlobalStyle`
       .form_content {
           padding: 1rem;
           margin: 0 auto !important;
-          max-width: 475px !important;
+          max-width: 645px !important;
           width: 100%;
           img {
             margin: 0 0 2rem;

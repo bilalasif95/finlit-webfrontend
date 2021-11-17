@@ -126,6 +126,7 @@ npm-debug.log
 /app/containers/MyCourses/tests/__snapshots__
 /app/containers/CourseCertificate/tests/__snapshots__
 /app/components/student-panel/CourseDetails/CourseDetail/tests/__snapshots__
+/app/containers/ResetPassword/tests/__snapshots__
 
 # Cypress
 cypress/videos/
