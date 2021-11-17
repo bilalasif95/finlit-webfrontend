@@ -29,7 +29,9 @@ import {
 } from '../reduxSetup/actions/registeration';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
-import Logo from '../../images/logoGreen.svg';
+import Logo from '../../images/logo.svg';
+import loginImg from '../../images/loginImg.png';
+import Img from '../../components/Img';
 
 // import { response } from 'express';
 const SigninPage = props => {
@@ -230,7 +232,9 @@ const SigninPage = props => {
             </div>
           </div>
         </div>
-        <div className="img_container welcome" />
+        <div className="img_container">
+          <Img src={loginImg} alt="instrutor" height="100%" width="100%" />
+        </div>
       </div>
       <ToastContainer />
     </>

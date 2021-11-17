@@ -246,6 +246,22 @@ const Wrapper = styled.div`
                 margin: 0;
               }
               .left {
+                width: 90%;
+                button {
+                  background-color: transparent;
+                  border: none;
+                  border-radius: 0;
+                  color: #575757;
+                  font-size: 0.875rem;
+                  padding: 0;
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                  white-space: nowrap;
+                  max-width: 70%;
+                  &:focus {
+                    box-shadow: none;
+                  }
+                }
                 svg {
                   margin: 0 0.75rem 0 0;
                   font-size: 1.5rem;
@@ -255,6 +271,9 @@ const Wrapper = styled.div`
                 }
               }
               .right {
+                display: flex;
+                justify-content: flex-end;
+                width: 10%;
                 svg {
                   color: #ec5252;
                   font-size: 1.5rem;

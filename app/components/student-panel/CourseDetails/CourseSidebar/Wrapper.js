@@ -20,7 +20,7 @@ const Wrapper = styled.div`
         padding: 1rem 1.5rem;
         width: 100%;
         .progress_time {
-          width: 70%;
+          width: 60%;
           p {
             color: #8b8b8b;
             font-size: 0.875rem;
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
           }
         }
         .chart {
-          width: 30%;
+          width: 40%;
           .graph-box {
             padding: 0.5rem;
             width: 100%;
@@ -101,12 +101,12 @@ const Wrapper = styled.div`
       @media (max-width: 575px) {
         .progress_chart {
           padding: 1rem;
-          .progress_chart {
-            width: 60%;
-          }
-          .chart {
-            width: 40%;
-          }
+          // .progress_chart {
+          //   width: 60%;
+          // }
+          // .chart {
+          //   width: 40%;
+          // }
         }
       }
     }
@@ -116,39 +116,98 @@ const Wrapper = styled.div`
       .inner_box {
         border: 1px solid #d8d8d8;
         border-radius: 0.313rem;
+        overflow: hidden;
         .title {
+          align-items: center;
+          display: flex;
           background-color: #fbfbf8;
           border-bottom: 1px solid #d8d8d8;
+          justify-content: space-between;
           padding: 1rem 1.5rem;
         }
         .quiz_box {
           padding: 1.5rem;
+          .quiz_start {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            padding: 5rem 0;
+            width: 100%;
+            button {
+              background-color: #46a135;
+              border: none;
+              color: #fff;
+              font-size: 0.825rem;
+              -webkit-transition: background-color 2s;
+              transition: background-color 2s;
+              padding: 0.75rem;
+              width: 7rem;
+            }
+          }
+          .quiz_step {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0 0;
+            width: 100%;
+            p {
+              color: #404041;
+              font-size: 0.875rem;
+              margin: 0;
+            }
+            .btn_prev {
+              background-color: #fff;
+              border: 1px solid #46a135;
+              color: #46a135;
+              font-size: 0.825rem;
+              -webkit-transition: background-color 2s;
+              transition: background-color 2s;
+              padding: 0.75rem;
+              width: 47%;
+              &:focus {
+                box-shadow: none;
+              }
+            }
+            .btn_next {
+              background-color: #46a135;
+              border: 1px solid #46a135;
+              color: #fff;
+              font-size: 0.825rem;
+              -webkit-transition: background-color 2s;
+              transition: background-color 2s;
+              padding: 0.75rem;
+              width: 47%;
+              &:focus {
+                box-shadow: none;
+              }
+            }
+          }
           ul {
             margin: 1rem 0 0;
             padding: 0;
             li {
               list-style: none;
               margin: 0 0 0.5rem;
-              .form-check {
-                border: 1px solid #d8d8d8;
-                margin-bottom: 0;
-                padding-left: 0;
-                position: relative;
-                .check_mark {
-                  align-items: center;
-                  display: flex;
-                  height: 1.5rem;
-                  justify-content: center;
-                  position: absolute;
-                  width: 1.5rem;
-                  span {
-                    text-align: center;
-                    width: 100%;
-                  }
-                  svg {
-                    display: none;
-                  }
-                }
+              // .form-check {
+              //   border: 1px solid #d8d8d8;
+              //   margin-bottom: 0;
+              //   padding-left: 0;
+              //   position: relative;
+              //   .check_mark {
+              //     align-items: center;
+              //     display: flex;
+              //     height: 1.5rem;
+              //     justify-content: center;
+              //     position: absolute;
+              //     width: 1.5rem;
+              //     span {
+              //       text-align: center;
+              //       width: 100%;
+              //     }
+              //     svg {
+              //       display: none;
+              //     }
+              //   }
               }
               label {
                 align-items: center;
@@ -160,21 +219,21 @@ const Wrapper = styled.div`
                 margin: 0;
                 padding: 0.5rem;
               }
-              .radio_bg {
-                background-color: #47a135;
-                color: #fff;
-                font-weight: 550;
-                .check_mark {
-                  span {
-                    display: none;
-                  }
-                  svg {
-                    color: #fff;
-                    display: block;
-                    font-size: 1.5rem;
-                  }
-                }
-              }
+              // .radio_bg {
+              //   background-color: #47a135;
+              //   color: #fff;
+              //   font-weight: 550;
+              //   .check_mark {
+              //     span {
+              //       display: none;
+              //     }
+              //     svg {
+              //       color: #fff;
+              //       display: block;
+              //       font-size: 1.5rem;
+              //     }
+              //   }
+              // }
             }
           }
           .form-check-input:checked[type=radio] {
@@ -197,29 +256,6 @@ const Wrapper = styled.div`
             &:focus {
               box-shadow: none;
             }
-          }
-        }
-      }
-      .quiz_step {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        margin: 1rem 0 0;
-        width: 100%;
-        p {
-          color: #404041;
-          font-size: 0.875rem;
-          margin: 0;
-        }
-        .btn_next {
-          background-color: transparent;
-          border: none;
-          color: #3e952e;
-          font-size: 0.875rem;
-          margin: 0 0 0 1rem;
-          padding: 0;
-          &:focus {
-            box-shadow: none;
           }
         }
       }

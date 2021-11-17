@@ -9,7 +9,7 @@ import { IoMdShare } from 'react-icons/io';
 import { BsDot, BsPerson } from 'react-icons/bs';
 // , BsChatLeftText, BsCardList
 import { FaRegHeart } from 'react-icons/fa';
-import { RiStarSFill } from 'react-icons/ri';
+import { RiStarSFill, RiArrowDownSLine } from 'react-icons/ri';
 import { TiLockClosed } from 'react-icons/ti';
 import { GrCirclePlay } from 'react-icons/gr';
 // import { MdOutlineRateReview } from 'react-icons/gr';
@@ -29,13 +29,13 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemHeading,
-  AccordionItemButton,
-  AccordionItemPanel,
-} from 'react-accessible-accordion';
+// import {
+//   Accordion,
+//   AccordionItem,
+//   AccordionItemHeading,
+//   AccordionItemButton,
+//   AccordionItemPanel,
+// } from 'react-accessible-accordion';
 // import moment from 'moment';
 // import JoditEditor from 'jodit-react';
 import { Player } from 'video-react';
@@ -67,11 +67,57 @@ function CourseDetail() {
   const [activeTab, setActiveTab] = useState('1');
   const [copyText, CopyContactAddress] = useCopyAddress();
 
+  const [accordinOne, setAccordinOne] = useState(true);
+  const [accordinTwo, setAccordinTwo] = useState(false);
+  const [accordinThree, setAccordinThree] = useState(false);
+  const [accordinFour, setAccordinFour] = useState(false);
+  const [accordinFive, setAccordinFive] = useState(false);
+
   const toggleTab = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
   // const { detail } = props;
   // const dataDetails = detail.data;
+
+  const openAccordinOne = () => {
+    setAccordinOne(true);
+    setAccordinTwo(false);
+    setAccordinThree(false);
+    setAccordinFour(false);
+    setAccordinFive(false);
+  };
+
+  const openAccordinTwo = () => {
+    setAccordinOne(false);
+    setAccordinTwo(true);
+    setAccordinThree(false);
+    setAccordinFour(false);
+    setAccordinFive(false);
+  };
+
+  const openAccordinThree = () => {
+    setAccordinOne(false);
+    setAccordinTwo(false);
+    setAccordinThree(true);
+    setAccordinFour(false);
+    setAccordinFive(false);
+  };
+
+  const openAccordinFour = () => {
+    setAccordinOne(false);
+    setAccordinTwo(false);
+    setAccordinThree(false);
+    setAccordinFour(true);
+    setAccordinFive(false);
+  };
+
+  const openAccordinFive = () => {
+    setAccordinOne(false);
+    setAccordinTwo(false);
+    setAccordinThree(false);
+    setAccordinFour(false);
+    setAccordinFive(true);
+  };
 
   return (
     <Wrapper id="list">
@@ -301,188 +347,167 @@ function CourseDetail() {
                   <BsDot />
                   <p>44h 29m total length</p>
                 </div>
-                <Accordion>
-                  <AccordionItem uuid="a">
-                    <AccordionItemHeading className="headingBtn">
-                      <AccordionItemButton>Getting started</AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel>
-                      <div className="section_in">
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Introduction Copy
+                <div className="custom_accordin">
+                  <div className="accordin_item">
+                    <Button
+                      className={
+                        accordinOne
+                          ? 'active accordin_header'
+                          : 'accordin_header'
+                      }
+                      onClick={openAccordinOne}
+                    >
+                      Getting started
+                      <div className="accordin_icon">
+                        <RiArrowDownSLine />
+                      </div>
+                    </Button>
+                    {accordinOne && (
+                      <div className="accordin_content">
+                        <div className="section_in">
+                          <div className="item">
+                            <div className="left">
+                              <Button>
+                                <GrCirclePlay />
+                                Reference site about Lorem Ipsum, giving
+                                information on its origins
+                              </Button>
+                            </div>
+                            <div className="right">
+                              <TiLockClosed />
+                            </div>
                           </div>
-                          <div className="right">
-                            <TiLockClosed />
+                          <div className="item">
+                            <div className="left">
+                              <Button>
+                                <GrCirclePlay />
+                                Giving information on its origins
+                              </Button>
+                            </div>
+                            <div className="right">
+                              <TiLockClosed />
+                            </div>
                           </div>
-                        </div>
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Interactive lesson Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
-                          </div>
-                        </div>
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Lesson 1.1 Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
+                          <div className="item">
+                            <div className="left">
+                              <Button>
+                                <GrCirclePlay />
+                                As well as a random Lipsum generator.
+                              </Button>
+                            </div>
+                            <div className="right">
+                              <TiLockClosed />
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </AccordionItemPanel>
-                  </AccordionItem>
-                  <AccordionItem uuid="b">
-                    <AccordionItemHeading>
-                      <AccordionItemButton>Lesson 2</AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel>
-                      <div className="section_in">
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Introduction Copy
+                    )}
+                  </div>
+                  <div className="accordin_item">
+                    <Button
+                      className={
+                        accordinTwo
+                          ? 'active accordin_header'
+                          : 'accordin_header'
+                      }
+                      onClick={openAccordinTwo}
+                    >
+                      Lesson 2
+                      <div className="accordin_icon">
+                        <RiArrowDownSLine />
+                      </div>
+                    </Button>
+                    {accordinTwo && (
+                      <div className="accordin_content">
+                        <div className="section_in">
+                          <div className="item">
+                            <div className="left">
+                              <Button>
+                                <GrCirclePlay />
+                                Introduction Copy
+                              </Button>
+                            </div>
+                            <div className="right">
+                              <TiLockClosed />
+                            </div>
                           </div>
-                          <div className="right">
-                            <TiLockClosed />
+                          <div className="item">
+                            <div className="left">
+                              <GrCirclePlay />
+                              Interactive lesson Copy
+                            </div>
+                            <div className="right">
+                              <TiLockClosed />
+                            </div>
                           </div>
-                        </div>
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Interactive lesson Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
-                          </div>
-                        </div>
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Lesson 1.1 Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
+                          <div className="item">
+                            <div className="left">
+                              <GrCirclePlay />
+                              Lesson 1.1 Copy
+                            </div>
+                            <div className="right">
+                              <TiLockClosed />
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </AccordionItemPanel>
-                  </AccordionItem>
-                  <AccordionItem uuid="c">
-                    <AccordionItemHeading>
-                      <AccordionItemButton>Lesson 3</AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel>
-                      <div className="section_in">
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Introduction Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
-                          </div>
-                        </div>
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Interactive lesson Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
-                          </div>
-                        </div>
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Lesson 1.1 Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
-                          </div>
-                        </div>
+                    )}
+                  </div>
+                  <div className="accordin_item">
+                    <Button
+                      className={
+                        accordinThree
+                          ? 'active accordin_header'
+                          : 'accordin_header'
+                      }
+                      onClick={openAccordinThree}
+                    >
+                      Lesson 3
+                      <div className="accordin_icon">
+                        <RiArrowDownSLine />
                       </div>
-                    </AccordionItemPanel>
-                  </AccordionItem>
-                  <AccordionItem uuid="d">
-                    <AccordionItemHeading>
-                      <AccordionItemButton>Lesson 4</AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel>
-                      <div className="section_in">
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Introduction Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
-                          </div>
-                        </div>
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Interactive lesson Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
-                          </div>
-                        </div>
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Lesson 1.1 Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
-                          </div>
-                        </div>
+                    </Button>
+                    {accordinThree && (
+                      <div className="accordin_content">Lesson 3</div>
+                    )}
+                  </div>
+                  <div className="accordin_item">
+                    <Button
+                      className={
+                        accordinFour
+                          ? 'active accordin_header'
+                          : 'accordin_header'
+                      }
+                      onClick={openAccordinFour}
+                    >
+                      Lesson 4
+                      <div className="accordin_icon">
+                        <RiArrowDownSLine />
                       </div>
-                    </AccordionItemPanel>
-                  </AccordionItem>
-                  <AccordionItem uuid="e">
-                    <AccordionItemHeading>
-                      <AccordionItemButton>Lesson 5</AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel>
-                      <div className="section_in">
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Introduction Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
-                          </div>
-                        </div>
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Interactive lesson Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
-                          </div>
-                        </div>
-                        <div className="item">
-                          <div className="left">
-                            <GrCirclePlay />
-                            Lesson 1.1 Copy
-                          </div>
-                          <div className="right">
-                            <TiLockClosed />
-                          </div>
-                        </div>
+                    </Button>
+                    {accordinFour && (
+                      <div className="accordin_content"> Lesson 4</div>
+                    )}
+                  </div>
+                  <div className="accordin_item">
+                    <Button
+                      className={
+                        accordinFive
+                          ? 'active accordin_header'
+                          : 'accordin_header'
+                      }
+                      onClick={openAccordinFive}
+                    >
+                      Lesson 5
+                      <div className="accordin_icon">
+                        <RiArrowDownSLine />
                       </div>
-                    </AccordionItemPanel>
-                  </AccordionItem>
-                </Accordion>
+                    </Button>
+                    {accordinFive && (
+                      <div className="accordin_content">Lesson 5</div>
+                    )}
+                  </div>
+                </div>
               </div>
               {/* </div> */}
             </TabPane>

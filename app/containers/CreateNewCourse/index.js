@@ -20,20 +20,24 @@ import {
   InputGroupAddon,
   FormText,
 } from 'reactstrap';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemHeading,
-  AccordionItemButton,
-  AccordionItemPanel,
-} from 'react-accessible-accordion';
+// import {
+//   Accordion,
+//   AccordionItem,
+//   AccordionItemHeading,
+//   AccordionItemButton,
+//   AccordionItemPanel,
+// } from 'react-accessible-accordion';
 import Dropzone from 'react-dropzone';
 import history from 'utils/history';
 // import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 // import { IoIosClose } from 'react-icons/io';
 // import { IoMdAttach } from 'react-icons/io';
-import { RiDeleteBin7Line } from 'react-icons/ri';
+import {
+  // RiStarSFill,
+  RiArrowDownSLine,
+  RiDeleteBin7Line,
+} from 'react-icons/ri';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -82,6 +86,10 @@ export default function CreateNewCourse() {
   const [courseStepTwo, setCourseStepTwo] = useState(false);
   const [courseStepThree, setCourseStepThree] = useState(false);
 
+  const [accordinOne, setAccordinOne] = useState(false);
+  const [accordinTwo, setAccordinTwo] = useState(false);
+  const [accordinThree, setAccordinThree] = useState(false);
+
   const dataVideo = { courseVideo: '' };
 
   const handleCourseStepOne = () => {
@@ -104,6 +112,24 @@ export default function CreateNewCourse() {
 
   const goToCoursesList = () => {
     history.push('/my_courses');
+  };
+
+  const openAccordinOne = () => {
+    setAccordinOne(true);
+    setAccordinTwo(false);
+    setAccordinThree(false);
+  };
+
+  const openAccordinTwo = () => {
+    setAccordinOne(false);
+    setAccordinTwo(true);
+    setAccordinThree(false);
+  };
+
+  const openAccordinThree = () => {
+    setAccordinOne(false);
+    setAccordinTwo(false);
+    setAccordinThree(true);
   };
 
   // const getCurrentUserInfo = () => {
@@ -467,7 +493,7 @@ export default function CreateNewCourse() {
                                 placeholder="Enter Description"
                               />
                             </FormGroup>
-                            <div className="delete">
+                            <div className="delete_item">
                               <RiDeleteBin7Line />
                               <span>Delete Section</span>
                             </div>
@@ -521,10 +547,10 @@ export default function CreateNewCourse() {
                       <div className="card">
                         <div className="card-header d-flex justify-content-between align-items-center">
                           Lesson 2
-                          <div className="delete">
+                          {/* <div className="delete_item">
                             <RiDeleteBin7Line />
                             <span>Delete Section</span>
-                          </div>
+                          </div> */}
                         </div>
                         <div className="card-body">
                           <FormGroup>
@@ -616,7 +642,6 @@ export default function CreateNewCourse() {
                                       <input
                                         type="email"
                                         className="form-control"
-                                        // placeholder="Enter Lecture Title"
                                       />
                                     </FormGroup>
                                   </Col>
@@ -787,7 +812,7 @@ export default function CreateNewCourse() {
                         </div>
                       </div>
                       <div className="add_form mt-4 accordionMain">
-                        <Accordion allowZeroExpanded>
+                        {/* <Accordion allowZeroExpanded>
                           <AccordionItem uuid="a">
                             <div className="customAccordion">
                               <AccordionItemHeading className="headingBtn">
@@ -795,7 +820,7 @@ export default function CreateNewCourse() {
                                   Lesson 1
                                 </AccordionItemButton>
                               </AccordionItemHeading>
-                              <div className="delete">
+                              <div className="delete_item">
                                 <RiDeleteBin7Line />
                                 <span>Delete Section</span>
                               </div>
@@ -804,35 +829,97 @@ export default function CreateNewCourse() {
                               <div className="section_in">
                                 <div className="item">
                                   <div className="left">
-                                    {/* <GrCirclePlay /> */}
                                     Introduction Copy
                                   </div>
                                   <div className="right">
-                                    {/* <TiLockClosed /> */}
                                   </div>
                                 </div>
                                 <div className="item">
                                   <div className="left">
-                                    {/* <GrCirclePlay /> */}
                                     Interactive lesson Copy
                                   </div>
                                   <div className="right">
-                                    {/* <TiLockClosed /> */}
                                   </div>
                                 </div>
                                 <div className="item">
                                   <div className="left">
-                                    {/* <GrCirclePlay /> */}
                                     Lesson 1.1 Copy
                                   </div>
                                   <div className="right">
-                                    {/* <TiLockClosed /> */}
                                   </div>
                                 </div>
                               </div>
                             </AccordionItemPanel>
                           </AccordionItem>
-                        </Accordion>
+                        </Accordion> */}
+                        <div className="custom_accordin">
+                          <div className="accordin_item">
+                            <div className="accordin_header">
+                              <Button
+                                className="accordin_title"
+                                onClick={openAccordinOne}
+                              >
+                                Lesson 1
+                                <div className="accordin_icon">
+                                  <RiArrowDownSLine />
+                                </div>
+                              </Button>
+                              <div className="delete_item">
+                                <Button>
+                                  <RiDeleteBin7Line />
+                                  <span>Delete Section</span>
+                                </Button>
+                              </div>
+                            </div>
+                            {accordinOne && (
+                              <div className="accordin_content">Lesson 1</div>
+                            )}
+                          </div>
+                          <div className="accordin_item">
+                            <div className="accordin_header">
+                              <Button
+                                className="accordin_title"
+                                onClick={openAccordinTwo}
+                              >
+                                Lesson 2
+                                <div className="accordin_icon">
+                                  <RiArrowDownSLine />
+                                </div>
+                              </Button>
+                              <div className="delete_item">
+                                <Button>
+                                  <RiDeleteBin7Line />
+                                  <span>Delete Section</span>
+                                </Button>
+                              </div>
+                            </div>
+                            {accordinTwo && (
+                              <div className="accordin_content">Lesson 2</div>
+                            )}
+                          </div>
+                          <div className="accordin_item">
+                            <div className="accordin_header">
+                              <Button
+                                className="accordin_title"
+                                onClick={openAccordinThree}
+                              >
+                                Lesson 3
+                                <div className="accordin_icon">
+                                  <RiArrowDownSLine />
+                                </div>
+                              </Button>
+                              <div className="delete_item">
+                                <Button>
+                                  <RiDeleteBin7Line />
+                                  <span>Delete Section</span>
+                                </Button>
+                              </div>
+                            </div>
+                            {accordinThree && (
+                              <div className="accordin_content">Lesson 3</div>
+                            )}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

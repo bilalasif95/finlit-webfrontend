@@ -28,7 +28,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
 import { API } from '../../config/config';
-import Logo from '../../images/logoGreen.svg';
+import Logo from '../../images/logo.svg';
+import instructorImg from '../../images/instructorImg.png';
+import studentImg from '../../images/studentImg.png';
+import Img from '../../components/Img';
 
 const BootstrapInput = withStyles(theme => ({
   root: {
@@ -529,11 +532,13 @@ export default function SignupPage() {
             </div>
           </div>
         </div>
-        {instructorDiv ? (
-          <div className="img_container instructor" />
-        ) : (
-          <div className="img_container student" />
-        )}
+        <div className="img_container">
+          {instructorDiv ? (
+            <Img src={instructorImg} alt="instrutor" height="100%" width="100%" />
+          ) : (
+            <Img src={studentImg} alt="instrutor" height="100%" width="100%" />
+          )}
+        </div>
       </div>
       <ToastContainer />
     </>

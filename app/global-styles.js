@@ -1,6 +1,147 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  .course_content {
+    .custom_accordin {
+      border: 1px solid #e5e5e5;
+      .accordin_item {
+        border-radius: 0;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 100%;
+        .accordin_header {
+          align-items: center;
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid #ebebeb;
+          border-left: 4px solid #fff;
+          border-radius: 0;
+          color: #404041;
+          display: flex;
+          font-size: 1rem;
+          font-weight: 520;
+          justify-content: space-between;
+          padding: 1rem 1.25rem;
+          position: relative;
+          width: 100%;
+          &:focus {
+            box-shadow: none;
+          }
+          .accordin_icon {
+            svg {
+              color: #3e952e;
+              font-size: 1.5rem;
+            }
+          }
+        }
+        .active {
+          background-color: #f9f9f9;
+          border-left: 4px solid #3e952e;
+          color: #3e952e;
+          .accordin_icon {
+            svg {
+              transform: rotate(180deg);
+            }
+          }
+        }
+        .accordin_content {
+          border-bottom: 1px solid #ebebeb;
+          padding: 2rem 1.5rem;
+          width: 100%;
+        }
+        &:last-child {
+          .accordin_header {
+            border-bottom: none;
+          }
+          .accordin_content {
+            border-top: 1px solid #ebebeb;
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+  .accordionMain {
+    .custom_accordin {
+      .accordin_item {
+        border: 1px solid #ebebeb;
+        border-radius: 0.313rem;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin: 0 0 1.5rem;
+        overflow: hidden;
+        width: 100%;
+        .accordin_header {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          position: relative;
+          width: 100%;
+          .accordin_title {
+            align-items: center;
+            background-color: #f9f9f9;
+            border: none;
+            color: #404041;
+            display: flex;
+            font-size: 1rem;
+            font-weight: 520;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 1rem 1.25rem;
+            width: 100%;
+            &:focus {
+              box-shadow: none;
+            }
+            .accordin_icon {
+              svg {
+                color: #3e952e;
+                font-size: 1.5rem;
+              }
+            }
+          }
+          .delete_item {
+            position: absolute;
+            right: 3rem;
+            button {
+              align-items: center;
+              background-color: #f9f9f9;
+              border: none;
+              border-radius: 0;
+              color: red;
+              display: flex;
+              font-size: 1rem;
+              font-weight: 450;
+              justify-content: space-between;
+              padding: 0;
+              width: 100%;
+              &:focus {
+                box-shadow: none;
+              }
+              svg {
+                margin: 0 0.5rem 0 0;
+              }
+            }
+          }
+        }
+        .active {
+          border-bottom: 1px solid #ebebeb;
+          color: #3e952e;
+          .accordin_icon {
+            svg {
+              transform: rotate(180deg);
+            }
+          }
+        }
+        .accordin_content {
+          border-top: 1px solid #ebebeb;
+          padding: 2rem 1.5rem;
+          width: 100%;
+        }
+      }
+    }
+  }
   .pdf-container {
     margin: 0 auto;
     max-width: 50rem;
@@ -557,7 +698,7 @@ const GlobalStyle = createGlobalStyle`
   background-color: #fff;
   display: flex;
   justify-content: space-between;
-  height: 100vh;
+  height: 100%;
   // position: fixed;
   width: 100%;
   .error {
@@ -566,11 +707,10 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 20px !important;
     text-align: left;
   }
-  .Login-form {
-    height: 100vh !important;
-  }
+  // .Login-form {
+  //   height: 100vh !important;
+  // }
   .form_container {
-      height: 100%;
       width: 50%;
       display: flex;
       align-items: center;
@@ -717,16 +857,23 @@ const GlobalStyle = createGlobalStyle`
       }
   }
   .img_container {
-      background-size: cover;
-      background-position: center;
-      height: 100%;
+      align-items: center;
+      background-size: contain;
+      background-position: top right;
+      // height: 100%;
       width: 50%;
-      position: fixed;
+      display: flex;
+      justify-content: flex-end;
+      // position: fixed;
       right: 0;
+      img {
+        height: 100%;
+        width: 100%;
+      }
   }
-  .instructor {
-    background-image: url(https://i.imgur.com/eovcCDw.png);
-  }
+  // .instructor {
+  //   background-image: url(https://i.imgur.com/eovcCDw.png);
+  // }
   .student {
     background-image: url(https://cdn.discordapp.com/attachments/548125906472796170/882576760540114994/reg.png);
   }
@@ -736,8 +883,6 @@ const GlobalStyle = createGlobalStyle`
   @media (max-width: 991px) {
       height: 100% !important;
       .form_container {
-          height: 100vh; 
-          width: 65%;
           .form_content {
               padding: 2.5rem 1rem !important;
               h2 {
@@ -745,10 +890,9 @@ const GlobalStyle = createGlobalStyle`
               }
           }
       }
-      .img_container {
-        background-position: top left -5rem;
-        width: 35% !important;
-      }
+      // .img_container {
+      //   width: 35% !important;
+      // }
   }
   @media (max-width: 767px) {
     .form_container {
