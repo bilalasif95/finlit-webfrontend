@@ -33,7 +33,7 @@ function Articles() {
         },
       })
       .then(res => {
-        setArticleList(res && res.data.data);
+        setArticleList(res && res.data && res.data.data);
         setLoader(false);
       })
       .catch(() => {

@@ -450,7 +450,7 @@
     vertical-align: middle;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    background-size: contain;
+    background-size: cover;
     background-color: #000000;
     cursor: pointer;
     margin: 0;
@@ -902,3 +902,9 @@
   .video-react video::-webkit-media-text-track-container {
     -webkit-transform: translateY(-30px);
     transform: translateY(-30px); }
+
+    @media (max-width: 575px) {
+      .video-react .video-react-big-play-button {
+        left: 40%;
+      }
+    }

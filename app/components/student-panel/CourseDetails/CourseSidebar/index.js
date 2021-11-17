@@ -29,27 +29,48 @@ import messages from './messages';
 function CourseSidebar() {
   // const [loader, setLoader] = useState(false);
   const [checkedValue, setCheckedValue] = useState(false);
-  const [questionOne, setQuestionOne] = useState(true);
+  const [quizStart, setQuizStart] = useState(true);
+  const [questionOne, setQuestionOne] = useState(false);
   const [questionTwo, setQuestionTwo] = useState(false);
-  // const [questionThree, setQuestionThree] = useState(false);
+  const [questionThree, setQuestionThree] = useState(false);
+  const [questionFour, setQuestionFour] = useState(false);
   // const { detail } = props;
   // const dataDetails = detail.data;
-
-  const handleQuestionOne = () => {
-    setQuestionOne(false);
-    setQuestionTwo(true);
-    // setQuestionThree(false);
-  };
-  // const handleQuestionTwo = () => {
-  //   setQuestionOne(false);
-  //   setQuestionTwo(false);
-  //   setQuestionThree(true);
-  // }
-  // const handleQuestionThree = () => {
+  // const handleQuizStart = () => {
+  //   setQuestionOne(true);
   //   setQuestionOne(true);
   //   setQuestionTwo(false);
   //   setQuestionThree(false);
-  // }
+  //   setQuestionFour(false);
+  // };
+  const handleQuestionOne = () => {
+    setQuizStart(false);
+    setQuestionOne(true);
+    setQuestionTwo(false);
+    setQuestionThree(false);
+    setQuestionFour(false);
+  };
+  const handleQuestionTwo = () => {
+    setQuizStart(false);
+    setQuestionOne(false);
+    setQuestionTwo(true);
+    setQuestionThree(false);
+    setQuestionFour(false);
+  };
+  const handleQuestionThree = () => {
+    setQuizStart(false);
+    setQuestionOne(false);
+    setQuestionTwo(false);
+    setQuestionThree(true);
+    setQuestionFour(false);
+  }
+  const handleQuestionFour = () => {
+    setQuizStart(false);
+    setQuestionOne(false);
+    setQuestionTwo(false);
+    setQuestionThree(false);
+    setQuestionFour(true);
+  }
 
   // const handleAddToCart = () => {
   //   setLoader(true);
@@ -188,7 +209,7 @@ function CourseSidebar() {
                           data.voted_percentage,
                           data.not_voted_percentage,
                         ).toFixed() + '%'} */}
-                        10%
+                        100%
                       </span>
                       <br />
                       {/* {props.i18n.t('Most_Voted_On')} */}
@@ -205,7 +226,7 @@ function CourseSidebar() {
                     data={[
                       {
                         // title: props.i18n.t('Voted'),
-                        value: 10,
+                        value: 54,
                         color: '#f59d07',
                       },
                     ]}
@@ -227,7 +248,15 @@ function CourseSidebar() {
             <div className="inner_box">
               <div className="title">
                 <h6>Quiz 1</h6>
+                <h6>Question 01/05</h6>
               </div>
+              {quizStart && (
+                <div className="quiz_box">
+                  <div className="quiz_start">
+                    <Button onClick={handleQuestionOne}>Start</Button>
+                  </div>
+                </div>
+              )}
               {questionOne && (
                 <div className="quiz_box">
                   <h6>The acronym PC stands for?</h6>
@@ -236,9 +265,9 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                          className={
-                            checkedValue === 'radio1' ? 'radio_bg' : ''
-                          }
+                        // className={
+                        //   checkedValue === 'radio1' ? 'radio_bg' : ''
+                        // }
                         >
                           <Input
                             type="radio"
@@ -246,10 +275,10 @@ function CourseSidebar() {
                             value="radio1"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
-                          <div className="check_mark">
+                          {/* <div className="check_mark">
                             <span>1</span>
                             <FiCheck />
-                          </div>
+                          </div> */}
                           <p>Private Computer</p>
                         </Label>
                       </FormGroup>
@@ -258,9 +287,9 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                          className={
-                            checkedValue === 'radio2' ? 'radio_bg' : ''
-                          }
+                        // className={
+                        //   checkedValue === 'radio2' ? 'radio_bg' : ''
+                        // }
                         >
                           <Input
                             type="radio"
@@ -268,10 +297,10 @@ function CourseSidebar() {
                             value="radio2"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
-                          <div className="check_mark">
+                          {/* <div className="check_mark">
                             <span>2</span>
                             <FiCheck />
-                          </div>
+                          </div> */}
                           <p>Personal Computer</p>
                         </Label>
                       </FormGroup>
@@ -280,9 +309,9 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                          className={
-                            checkedValue === 'radio3' ? 'radio_bg' : ''
-                          }
+                        // className={
+                        //   checkedValue === 'radio3' ? 'radio_bg' : ''
+                        // }
                         >
                           <Input
                             type="radio"
@@ -290,96 +319,63 @@ function CourseSidebar() {
                             value="radio3"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
-                          <div className="check_mark">
+                          {/* <div className="check_mark">
                             <span>3</span>
                             <FiCheck />
-                          </div>
+                          </div> */}
                           <p>Personal Compact</p>
                         </Label>
                       </FormGroup>
                     </li>
                   </ul>
+                  <div className="quiz_step">
+                    <span />
+                    <Button className="btn_next" onClick={handleQuestionTwo}>
+                      Next
+                    </Button>
+                  </div>
                 </div>
               )}
               {questionTwo && (
                 <div className="quiz_box">
-                  <h6>The acronym PC stands for2?</h6>
-                  <ul>
-                    <li>
-                      <FormGroup check>
-                        <Label
-                          check
-                          className={
-                            checkedValue === 'radio1' ? 'radio_bg' : ''
-                          }
-                        >
-                          <Input
-                            type="radio"
-                            name="radio1"
-                            value="radio1"
-                            onChange={e => setCheckedValue(e.target.value)}
-                          />{' '}
-                          <div className="check_mark">
-                            <span>1</span>
-                            <FiCheck />
-                          </div>
-                          <p>Private Computer</p>
-                        </Label>
-                      </FormGroup>
-                    </li>
-                    <li>
-                      <FormGroup check>
-                        <Label
-                          check
-                          className={
-                            checkedValue === 'radio2' ? 'radio_bg' : ''
-                          }
-                        >
-                          <Input
-                            type="radio"
-                            name="radio2"
-                            value="radio2"
-                            onChange={e => setCheckedValue(e.target.value)}
-                          />{' '}
-                          <div className="check_mark">
-                            <span>2</span>
-                            <FiCheck />
-                          </div>
-                          <p>Personal Computer</p>
-                        </Label>
-                      </FormGroup>
-                    </li>
-                    <li>
-                      <FormGroup check>
-                        <Label
-                          check
-                          className={
-                            checkedValue === 'radio3' ? 'radio_bg' : ''
-                          }
-                        >
-                          <Input
-                            type="radio"
-                            name="radio3"
-                            value="radio3"
-                            onChange={e => setCheckedValue(e.target.value)}
-                          />{' '}
-                          <div className="check_mark">
-                            <span>3</span>
-                            <FiCheck />
-                          </div>
-                          <p>Personal Compact</p>
-                        </Label>
-                      </FormGroup>
-                    </li>
-                  </ul>
+                  qus 2
+                  <div className="quiz_step">
+                    <Button className="btn_prev" onClick={handleQuestionOne}>
+                      Previous
+                    </Button>
+                    <Button className="btn_next" onClick={handleQuestionThree}>
+                      Next
+                    </Button>
+                  </div>
                 </div>
               )}
-            </div>
-            <div className="quiz_step">
-              <p>Question 1 of 3</p>
-              <Button className="btn_next" onClick={handleQuestionOne}>
-                Next
-              </Button>
+              {questionThree && (
+                <div className="quiz_box">
+                  qus 3
+                  <div className="quiz_step">
+                    <Button className="btn_prev" onClick={handleQuestionTwo}>
+                      Previous
+                    </Button>
+                    <Button className="btn_next" onClick={handleQuestionFour}>
+                      Next
+                    </Button>
+                  </div>
+                </div>
+              )}
+              {questionFour && (
+                <div className="quiz_box">
+                  qus 4
+                  <div className="quiz_step">
+                    <Button className="btn_prev" onClick={handleQuestionThree}>
+                      Previous
+                    </Button>
+                    <Button className="btn_next">
+                      {/* onClick={handleSeeResult} */}
+                      Next
+                    </Button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

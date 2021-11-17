@@ -27,7 +27,7 @@ import classnames from 'classnames';
 import messages from './messages';
 import Wrapper from './Wrapper';
 import Cardimg from '../../../../images/CardImg.png';
-import Cardimg2 from '../../../../images/CardImg2.png';
+import Cardimg2 from '../../../../images/CardImg4.png';
 import Cardimg3 from '../../../../images/CardImg3.png';
 
 function CoursesList() {

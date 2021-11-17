@@ -15,7 +15,7 @@ function MoreCourses() {
     <Wrapper>
       <h2>More courses for you</h2>
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-lg-6 col-md-6 col-sm-6">
           <div className="card">
             <img className="card-img-top" src={Card2} alt="CardCap" />
             <div className="card-body">
@@ -50,8 +50,8 @@ function MoreCourses() {
             </div>
           </div>
         </div>
-        <div className="col-md-6">
-          <div className="card sm-mt-16">
+        <div className="col-lg-6 col-md-6 col-sm-6">
+          <div className="card">
             <img className="card-img-top" src={Card} alt="CardCap" />
             <div className="card-body">
               <h5 className="card-title">
