@@ -239,15 +239,13 @@ const Wrapper = styled.div`
           .form-check-input:checked[type=radio] {
             background-image: url('https://i.imgur.com/dWps3M3.png');
             background-color: transparent;
-            border: 1px solid #47a135;
+            border: 0.13rem solid #47a135;
           }
-
           // .form-check-input[type=radio] {
           //   border-radius: 0px !important;
           // }
           .form-check-input {
-            // background-color: #d8d8d8;
-            border: 1px solid #d8d8d8;
+            border: 0.13rem solid #404041;
             height: 1rem;
             margin-top: 0;
             margin-left: 0;
