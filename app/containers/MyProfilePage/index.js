@@ -19,16 +19,21 @@ import {
   // Nav,
   // NavItem,
   // NavLink,
-  // Button,
+  Button,
   // Collapse,
   // Card,
   // CardBody,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
 } from 'reactstrap';
 // import { BiUserCircle, } from 'react-icons/bi';
 // import { BsChatSquare } from 'react-icons/bs';
 // import { FaChevronDown } from 'react-icons/fa';
 // import { RiUserSettingsLine } from 'react-icons/ri';
 // import Bell from '../../images/bell.svg';
+import Delete from '../../images/delete.png';
 // import { RiKeyLine } from 'react-icons/ri';
 // import classnames from 'classnames';
 import { toast } from 'react-toastify';
@@ -47,6 +52,8 @@ import Sidebar from '../../components/student-panel/Sidebar/index';
 
 export default function MyProfilePage() {
   // const [activeTab, setActiveTab] = useState('1');
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
   const [userObj, setUserObj] = useState({});
   // const [collapse, setCollapse] = useState(false);
   // const toggle = tab => {
@@ -150,7 +157,7 @@ export default function MyProfilePage() {
                       onChange={e => updateProfileImg(e)}
                     />
                   </Label>
-                  <button type="button" className="btn btn-default">
+                  <button type="button" onClick={toggle} className="btn btn-default">
                     Delete Photo
                   </button>
                 </div>
@@ -161,6 +168,19 @@ export default function MyProfilePage() {
         </div>
         {/* end */}
       </div>
+      {/* Modal */}
+        <Modal isOpen={modal} toggle={toggle} className="ratingModal deleteModal">
+          <ModalHeader toggle={toggle}></ModalHeader>
+          <ModalBody>
+            <img src={Delete} alt="Delete" />
+            <p>Do you really want to delete profile image?</p>
+          </ModalBody>
+          <ModalFooter>
+            <Button className="deleteBtn" onClick={toggle}>
+              Delete
+            </Button>
+          </ModalFooter>
+        </Modal>
     </>
   );
 }
