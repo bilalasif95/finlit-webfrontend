@@ -534,7 +534,12 @@ export default function SignupPage() {
         </div>
         <div className="img_container">
           {instructorDiv ? (
-            <Img src={instructorImg} alt="instrutor" height="100%" width="100%" />
+            <Img
+              src={instructorImg}
+              alt="instrutor"
+              height="100%"
+              width="100%"
+            />
           ) : (
             <Img src={studentImg} alt="instrutor" height="100%" width="100%" />
           )}

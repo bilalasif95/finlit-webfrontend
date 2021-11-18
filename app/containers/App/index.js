@@ -28,7 +28,7 @@ import AddCartHackathon from 'containers/student-panel/AddCartHackathon/Loadable
 import AddCartWebinar from 'containers/student-panel/AddCartWebinar/Loadable';
 import AddCartBootcamp from 'containers/student-panel/AddCartBootcamp/Loadable';
 import CourseDetails from 'containers/student-panel/CourseDetails/Loadable';
-import AboutCourse from 'containers/AboutCourse/Loadable';
+import Wishlist from 'containers/Wishlist/Loadable';
 import CourseCertificate from 'containers/CourseCertificate/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 // Instructor Panel pages routes
@@ -85,18 +85,18 @@ const App = () => {
           <meta name="description" content="FinLit" />
         </Helmet>
         {history.location.pathname === '/signup' ||
-          history.location.pathname === '/my_profile' ||
-          history.location.pathname === '/login' ||
-          // history.location.pathname === '/email_verification' ||
-          history.location.pathname === '/create_new_password' ||
-          history.location.pathname === '/notification' ||
-          history.location.pathname === '/setting' ||
-          history.location.pathname === '/my_courses' ||
-          history.location.pathname === '/create_course' ||
-          history.location.pathname === '/forgot_password' ||
-          history.location.pathname === '/reset_password' ||
-          history.location.pathname === '/two_fa' ? null : userInfo &&
-            userInfo.roles[0].roleName === 'Instructor' ? (
+        history.location.pathname === '/my_profile' ||
+        history.location.pathname === '/login' ||
+        // history.location.pathname === '/email_verification' ||
+        history.location.pathname === '/create_new_password' ||
+        history.location.pathname === '/notification' ||
+        history.location.pathname === '/setting' ||
+        history.location.pathname === '/my_courses' ||
+        history.location.pathname === '/create_course' ||
+        history.location.pathname === '/forgot_password' ||
+        history.location.pathname === '/reset_password' ||
+        history.location.pathname === '/two_fa' ? null : userInfo &&
+          userInfo.roles[0].roleName === 'Instructor' ? (
           <Header />
         ) : (
           <Header />
@@ -119,7 +119,7 @@ const App = () => {
         <Route path="/webinar_details/:id" component={AddCartWebinar} />
         <Route path="/bootcamp_details/:id" component={AddCartBootcamp} />
         <Route path="/course_details" component={CourseDetails} />
-        <Route path="/about_course" component={AboutCourse} />
+        <Route path="/wishlist" component={Wishlist} />
         <Route path="/course_certificate" component={CourseCertificate} />
         {/* Instructor Panel pages routes */}
         {/* {userInfo && userInfo.roles[0].roleName == "Super Admin" || userInfo && userInfo.roles[0].roleName == "Instructor" ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={HomePage} />} */}
@@ -151,14 +151,14 @@ const App = () => {
         <Route path="" component={NotFoundPage} />
       </Switch>
       {history.location.pathname === '/create_new_password' ||
-        // history.location.pathname === '/signup' ||
-        // history.location.pathname === '/login' ||
-        // history.location.pathname === '/my_profile' ||
-        // history.location.pathname === '/email_verification' ||
-        // history.location.pathname === '/notification' ||
-        history.location.pathname === '/forgot_password' ||
-        history.location.pathname === '/reset_password' ||
-        history.location.pathname === '/two_fa' ? null : (
+      // history.location.pathname === '/signup' ||
+      // history.location.pathname === '/login' ||
+      // history.location.pathname === '/my_profile' ||
+      // history.location.pathname === '/email_verification' ||
+      // history.location.pathname === '/notification' ||
+      history.location.pathname === '/forgot_password' ||
+      history.location.pathname === '/reset_password' ||
+      history.location.pathname === '/two_fa' ? null : (
         <Footer />
       )}
       <GlobalStyle />

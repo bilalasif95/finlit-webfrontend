@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AboutCourse /> should render its heading 1`] = `
+<div
+  class="sub_pages"
+>
+  <div
+    class="Wrapper-sc-16iq352-0 cRHkYe"
+  >
+    <div
+      class="container-xl"
+    >
+      <div
+        class="about_course"
+      >
+        <div
+          class="top_info"
+        >
+          <h6>
+            About this course
+          </h6>
+          <b>
+            <span>
+              Complete Programming with Python : HandsOn Introduction for Beginners
+            </span>
+          </b>
+          <p>
+            Approved by 
+            <b>
+              FinLit
+            </b>
+          </p>
+        </div>
+        <div
+          class="user_details"
+        >
+          <div
+            class="row"
+          >
+            <div
+              class="col-sm-12 col-md-6 col-lg-4"
+            >
+              <ul>
+                <li>
+                  <p>
+                    Student name
+                  </p>
+                  <p>
+                    Chad Sanders
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Language
+                  </p>
+                  <p>
+                    English
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Skill Level
+                  </p>
+                  <p>
+                    Medium
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Completion date
+                  </p>
+                  <p>
+                    12/02/1978
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="col-sm-12 col-md-6 col-lg-8"
+            >
+              <ul>
+                <li>
+                  <p>
+                    Instructor
+                  </p>
+                  <p>
+                    Beatrice Ross
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Grade
+                  </p>
+                  <p>
+                    A+
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Marks
+                  </p>
+                  <p>
+                    90%
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Duration of course
+                  </p>
+                  <p>
+                    2hr 30m
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Description
+                  </p>
+                  <p>
+                    <span>
+                      Aenean sed lorem est. Sed quis neque ut nibh suscipit
+    imperdiet ac non augue. Aenean ornare sit amet lectus
+    non tristique. Nunc ut volutpat lectus. Nulla 
+    velit augue, pulvinar sed nisi sit amet, eleifend fermentum est.
+                    </span>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="get_certificate"
+        >
+          <div
+            class="row"
+          >
+            <div
+              class="col-12 col-sm-3 col-md-3 col-lg-2"
+            >
+              <p>
+                Certificates
+              </p>
+            </div>
+            <div
+              class="col-12 col-sm-9 col-md-9 col-lg-10"
+            >
+              <p>
+                Get FinLit certificate by completing entire course
+              </p>
+              <button
+                class="btn btn-secondary"
+              >
+                 FinLit certificate 
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
