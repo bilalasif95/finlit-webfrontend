@@ -201,7 +201,7 @@ aside > a {
 }
 .profileContent {
   width: 100%;
-  padding: 50px 50px;
+  padding: 50px;
   /* box-shadow: 2px 3px 4px #cececeb8; */
   /* margin-left: 156px; */
 }
@@ -836,7 +836,29 @@ aside > a {
 .resetField {
   margin: 25px 0px 30px !important;
 }
+@media (max-width: 1200px) {
+  .tableCont tbody tr td:nth-child(2) {
+    min-width: 135px !important;
+}
+.tableCont tbody tr td:nth-child(3), .tableCont tbody tr td:nth-child(4) {
+  min-width: 77px;
+}
+.tableCont tbody tr td:nth-child(6), .tableCont tbody tr td:nth-child(5) {
+  min-width: 100px;
+}
+}
+@media (max-width: 768px) {
+  .publishBtns button, .publishBtns .bottom_btns button {
+    min-width: 130px;
+  }
+}
 @media (min-width: 576px) {
+  .quizIcons {
+    min-width: 55px;
+  }
+  .courseImg {
+    margin-right: 20px;
+}
   .ShareModal {
     max-width: 770px !important;
   }
@@ -848,6 +870,74 @@ aside > a {
   }
 }
 @media (max-width: 575px) {
+  .publishBtns .bottom_btns {
+    margin: 0 0 1rem;
+    justify-content: space-between;
+}
+.publishBtns .bottom_btns button {
+  margin: 0;
+}
+.publishBtns .bottom_btns button:first-child {
+  margin-right: 16px;
+}
+.publishBtns {
+  flex-direction: column-reverse;
+}
+.publishBtns button {
+  width: 100%;
+}
+  .accordionMain .custom_accordin .accordin_item .accordin_header .accordin_title {
+    padding: 10px;
+  }
+  .accordionMain .custom_accordin .accordin_item .accordin_header .delete_item {
+    right: 35px;
+}
+  .editQuiz {
+    font-size: 14px;
+    padding: 35px 10px 10px;
+    position: relative;
+}
+.quizIcons {
+  min-width: 55px;
+  position: absolute;
+  right: 0px;
+  top: 5px;
+  width: auto;
+}
+  .uploadBtn {
+    min-width: 100px;
+    font-size: 14px;
+}
+  .createCourseCont .card-body {
+    padding: 10px;
+}
+.detailsBtn {
+  font-size: 14px;
+  padding: 0;
+}
+.createCourseCont .card-header {
+  font-size: 16px !important;
+  padding: 10px !important;
+}
+  .customTabs {
+    margin-bottom: 20px;
+}
+  .profileHeader h3 {
+    font-size: 18px;
+}
+.createBtn {
+  padding: 10px 7px;
+  font-size: 12px;
+}
+  .Paginataion {
+    justify-content: center;
+}
+  .courseTitle h4 {
+    font-size: 18px;
+  }
+  .customTabs .nav-tabs .nav-item .nav-link {
+    padding: 10px;
+  }
   .coursesTabs {
     flex-direction: column-reverse;
   }
@@ -879,7 +969,7 @@ aside > a {
     width: 30px;
   }
   .mainCont {
-    padding: 20px 20px;
+    padding: 10px;
   }
   .profileContent {
     padding: 20px 10px;
@@ -909,7 +999,7 @@ aside > a {
     margin-bottom: 30px;
   }
   .uploadImg .upload {
-    margin: 20px 0px 20px 0px;
+    margin: 20px 0px;
     width: 200px;
   }
   .profileAside {
@@ -933,7 +1023,7 @@ aside > a {
     width: 25px;
   }
   .ratingModal .modal-content {
-    padding: 30px 30px;
+    padding: 30px;
     border-radius: 10px;
     background-color: #fff;
 }
@@ -944,6 +1034,11 @@ aside > a {
   font-size: 16px;
 }
 .copyLink input {
-  padding: 12px 12px;
+  padding: 12px;
 }
+}
+@media (max-width: 320px) {
+  .customTabs .nav-tabs .nav-item .nav-link span {
+    font-size: 12px;
+  }
 }

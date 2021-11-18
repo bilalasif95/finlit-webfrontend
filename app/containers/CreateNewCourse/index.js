@@ -493,7 +493,7 @@ export default function CreateNewCourse() {
                                 placeholder="Enter Description"
                               />
                             </FormGroup>
-                            <div className="delete_item">
+                            <div className="delete">
                               <RiDeleteBin7Line />
                               <span>Delete Section</span>
                             </div>
@@ -923,7 +923,7 @@ export default function CreateNewCourse() {
                       </div>
                     </div>
                   </div>
-                  <div className="form_footer">
+                  <div className="form_footer publishBtns">
                     <Button className="btn_back" onClick={handleCourseStepTwo}>
                       <FormattedMessage {...messages.Back} />
                     </Button>
