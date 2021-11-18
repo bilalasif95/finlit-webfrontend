@@ -16,7 +16,7 @@ import { BiTimeFive } from 'react-icons/bi';
 import { FaAward } from 'react-icons/fa';
 // import { BsTagFill } from 'react-icons/bs';
 // import { SiAirplayvideo } from 'react-icons/si';
-import { FiCheck } from 'react-icons/fi';
+// import { FiCheck } from 'react-icons/fi';
 import { GrCart, GrCirclePlay } from 'react-icons/gr';
 // GrCertificate
 import { HiUser, HiOutlineArrowNarrowRight } from 'react-icons/hi';
@@ -63,14 +63,14 @@ function CourseSidebar() {
     setQuestionTwo(false);
     setQuestionThree(true);
     setQuestionFour(false);
-  }
+  };
   const handleQuestionFour = () => {
     setQuizStart(false);
     setQuestionOne(false);
     setQuestionTwo(false);
     setQuestionThree(false);
     setQuestionFour(true);
-  }
+  };
 
   // const handleAddToCart = () => {
   //   setLoader(true);
@@ -265,14 +265,10 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                        // className={
-                        //   checkedValue === 'radio1' ? 'radio_bg' : ''
-                        // }
                         >
                           <Input
                             type="radio"
-                            name="radio1"
-                            value="radio1"
+                            value={checkedValue}
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
                           {/* <div className="check_mark">
@@ -287,14 +283,10 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                        // className={
-                        //   checkedValue === 'radio2' ? 'radio_bg' : ''
-                        // }
                         >
                           <Input
                             type="radio"
-                            name="radio2"
-                            value="radio2"
+                            value={checkedValue}
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
                           {/* <div className="check_mark">
@@ -309,14 +301,10 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                        // className={
-                        //   checkedValue === 'radio3' ? 'radio_bg' : ''
-                        // }
                         >
                           <Input
                             type="radio"
-                            name="radio3"
-                            value="radio3"
+                            value={checkedValue}
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
                           {/* <div className="check_mark">
@@ -350,7 +338,6 @@ function CourseSidebar() {
                         >
                           <Input
                             type="radio"
-                            name="radio1"
                             value="radio1"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
@@ -372,7 +359,6 @@ function CourseSidebar() {
                         >
                           <Input
                             type="radio"
-                            name="radio2"
                             value="radio2"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
@@ -394,7 +380,6 @@ function CourseSidebar() {
                         >
                           <Input
                             type="radio"
-                            name="radio3"
                             value="radio3"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
@@ -431,7 +416,6 @@ function CourseSidebar() {
                         >
                           <Input
                             type="radio"
-                            name="radio1"
                             value="radio1"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
@@ -453,7 +437,6 @@ function CourseSidebar() {
                         >
                           <Input
                             type="radio"
-                            name="radio2"
                             value="radio2"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
@@ -475,7 +458,6 @@ function CourseSidebar() {
                         >
                           <Input
                             type="radio"
-                            name="radio3"
                             value="radio3"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
@@ -512,7 +494,6 @@ function CourseSidebar() {
                         >
                           <Input
                             type="radio"
-                            name="radio1"
                             value="radio1"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
@@ -534,7 +515,6 @@ function CourseSidebar() {
                         >
                           <Input
                             type="radio"
-                            name="radio2"
                             value="radio2"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}
@@ -556,7 +536,6 @@ function CourseSidebar() {
                         >
                           <Input
                             type="radio"
-                            name="radio3"
                             value="radio3"
                             onChange={e => setCheckedValue(e.target.value)}
                           />{' '}

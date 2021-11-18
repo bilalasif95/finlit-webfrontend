@@ -247,6 +247,16 @@ function CourseDetail() {
                 Reviews
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink
+                className={classnames({ active: activeTab === '5' })}
+                onClick={() => {
+                  toggleTab('5');
+                }}
+              >
+                Certificate
+              </NavLink>
+            </NavItem>
           </Nav>
           <TabContent activeTab={activeTab}>
             <TabPane tabId="1">
@@ -705,6 +715,57 @@ function CourseDetail() {
                 </div>
                 <div className="more_reviews">
                   <Button>More reviews</Button>
+                </div>
+              </div>
+            </TabPane>
+            <TabPane tabId="5">
+              <div className="content_in">
+                <div className="certify_header">
+                  <h4>About this course</h4>
+                  {/* <Button onClick={toggle}>Add Review</Button> */}
+                  <b>
+                    Complete Programming with python: HandsOn Introduction for Beginners
+                    </b>
+                  <p>
+                    Approved by <b>FinLit</b>
+                    </p>
+                </div>
+                <div className="user_details">
+                  <div className="item">
+                    <div className="left">Student Name</div>
+                    <div className="right">Chad Sanders</div>
+                  </div>
+                  <div className="item">
+                    <div className="left">Completion Date</div>
+                    <div className="right">12/02/2021</div>
+                  </div>
+                  <div className="item">
+                    <div className="left">Language</div>
+                    <div className="right">English</div>
+                  </div>
+                  <div className="item">
+                    <div className="left">Skill Level</div>
+                    <div className="right">Expert</div>
+                  </div>
+                  <div className="item">
+                    <div className="left">Instructor</div>
+                    <div className="right">Beatrice Ross</div>
+                  </div>
+                  <div className="item">
+                    <div className="left">Description</div>
+                    <div className="right">
+                      Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
+                      Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
+                      Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
+                    </div>
+                  </div>
+                  <div className="item">
+                    <div className="left">Certificate</div>
+                    <div className="right">
+                      Get FinLit certificate by completing entire course
+                      <Button>Download Certificate</Button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </TabPane>
