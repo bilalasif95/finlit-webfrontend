@@ -28,10 +28,11 @@ const Wrapper = styled.div`
           }
         }
         .chart {
+          display: flex;
+          justify-content: flex-end;
           width: 40%;
           .graph-box {
             padding: 0.5rem;
-            width: 100%;
             img {
               height: 90px;
               width: 90px;
@@ -98,15 +99,29 @@ const Wrapper = styled.div`
           }
         }
       }
+      @media (max-width: 767px) {
+        .progress_chart {
+          .progress_chart {
+            width: 80%;
+          }
+          .chart {
+            width: 20%;
+          }
+        }
+      }
       @media (max-width: 575px) {
         .progress_chart {
           padding: 1rem;
-          // .progress_chart {
-          //   width: 60%;
-          // }
-          // .chart {
-          //   width: 40%;
-          // }
+        }
+      }
+      @media (max-width: 480px) {
+        .progress_chart {
+          .progress_chart {
+            width: 60%;
+          }
+          .chart {
+            width: 40%;
+          }
         }
       }
     }

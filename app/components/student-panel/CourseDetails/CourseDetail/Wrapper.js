@@ -494,6 +494,45 @@ const Wrapper = styled.div`
             }
           }
         }
+        .user_details {
+          border-top: 1px solid #d8d8d8;
+          margin: 1.5rem 0 0;
+          padding: 1.5rem 0 0;
+          .item {
+            display: flex;
+            justify-content: flex-start;
+            margin: 0 0 1rem;
+            width: 100%;
+            &:lastchild {
+              margin: 0;
+            }
+            .left {
+              width: 25%;
+            }
+            .right {
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              padding: 0 0 0 1rem;
+              width: 75%;
+              button {
+                background-color: #41952e;
+                border: 1px solid #41952e;
+                color: #fff;
+                font-size: 0.825rem;
+                font-weight: 500;
+                -webkit-transition: background-color 2s;
+                transition: background-color 2s;
+                margin: 1.5rem 0 0;
+                padding: 0.75rem;
+                width: 12rem;
+                &:focus {
+                  box-shadow: none;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -549,6 +588,16 @@ const Wrapper = styled.div`
             }
             .status {
               width: 100%;
+            }
+          }
+          .user_details {
+            .item {
+              .left {
+                width: 30%;
+              }
+              .right {
+                width: 70%;
+              }
             }
           }
         }
@@ -649,6 +698,16 @@ const Wrapper = styled.div`
               }
             }
           }
+          .user_details {
+            .item {
+              .left {
+                width: 40%;
+              }
+              .right {
+                width: 60%;
+              }
+            }
+          }
         }
       }
       .main_img {
@@ -727,6 +786,26 @@ const Wrapper = styled.div`
               }
               .progress {
                 width: 35%;
+              }
+            }
+          }
+        }
+        .user_details {
+          .item {
+            &:last-child {
+              padding: 0 0 5rem;
+              position: relative;
+            }
+            .left {
+              width: 40%;
+            }
+            .right {
+              width: 60%;
+              button {
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                width: 100% !important;
               }
             }
           }
