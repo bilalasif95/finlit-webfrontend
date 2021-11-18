@@ -1,7 +1,7 @@
 /*
  * Sign Up Page
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import {
@@ -27,7 +27,7 @@ import './app.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
-import { API } from '../../config/config';
+import { API, endpoints } from '../../config/config';
 import Logo from '../../images/logo.svg';
 import instructorImg from '../../images/instructorImg.png';
 import studentImg from '../../images/studentImg.png';
@@ -61,6 +61,7 @@ export default function SignupPage() {
   // const [firstName, setFirstName] = useState('');
   // const [lastName, setLastName] = useState('');
   const [roleId, setRoleId] = useState(1);
+  const [roles, setRoles] = useState([]);
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   // const [gender, setGender] = useState('Male');
@@ -70,6 +71,13 @@ export default function SignupPage() {
   const [instructorDiv, setInstructorDiv] = useState(true);
   const [error, setError] = useState({ type: '', error: '' });
   const [btnClick, setBtnClick] = useState(false);
+
+  useEffect(() => {
+    axios.get(endpoints.getRoles)
+      .then((res) => {
+        setRoles(res.data.data)
+      })
+  }, [])
 
   const signup = () => {
     setError({ type: '', error: '' });
@@ -114,15 +122,11 @@ export default function SignupPage() {
         .post(`${API}api/auth/register`, {
           email,
           // firstName,
-          firstName: 'firstName',
-          lastName: 'lastname',
           // lastName,
           roleId,
           password,
           passwordConfirmation,
-          gender: 'male',
           // gender,
-          country: 'country',
           profession,
           // address,
         })
