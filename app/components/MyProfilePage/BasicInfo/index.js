@@ -40,7 +40,7 @@ const BootstrapInput = withStyles(theme => ({
     borderRadius: 4,
     position: 'relative',
     backgroundColor: theme.palette.background.paper,
-    border: '1px solid #e6e6e6',
+    border: '1px solid #d8d8d8',
     fontSize: 14,
     color: '#484848',
     padding: '0.82rem 1.5rem 0.82rem 1rem',

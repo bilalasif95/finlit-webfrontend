@@ -68,7 +68,7 @@ const Wrapper = styled.div`
    }
  }
  .main {
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid #d8d8d8;
     padding-bottom: 31px;
     margin-bottom: 26px;
  }

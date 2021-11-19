@@ -89,7 +89,7 @@ const Wrapper = styled.div`
       }
     }
     .List-box:not(:last-child) {
-      border-bottom: 1px solid #e6e6e6;
+      border-bottom: 1px solid #d8d8d8;
     }
     .List-box {
       padding: 30px 0;

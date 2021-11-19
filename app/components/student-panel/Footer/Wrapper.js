@@ -8,7 +8,7 @@ const Wrapper = styled.footer`
   .copyright {
     p {
       color: #a6a6a7;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       margin: 0;
     }
   }
@@ -16,11 +16,14 @@ const Wrapper = styled.footer`
     align-items: center;
     display: flex;
     justify-content: flex-start;
-    margin: 0;
+    margin: 1rem 0 0;
     padding: 0;
     li {
       list-style: none;
       padding-right: 0.5rem;
+      svg {
+        font-size: 1.125rem;
+      }
       &:first-child {
         svg {
           path {
@@ -58,13 +61,15 @@ const Wrapper = styled.footer`
     padding: 0;
     width: 100%;
     li {
-      color: #484848;
-      font-size: 0.8rem;
+      color: #404041;
+      font-size: 0.875rem;
+      font-weight: 550;
       padding-left: 1rem;
       list-style: none;
       a {
-        color: #484848;
-        font-size: 0.8rem;
+        color: #404041;
+        font-size: 0.875rem;
+        font-weight: 500;
         margin: 0;
         text-decoration: none;
         &:hover {
@@ -73,7 +78,14 @@ const Wrapper = styled.footer`
       }
     }
   }
-  @media (max-width: 575px) {
+  @media (max-width: 960px) {
+    .footer_links {
+      li {
+        font-size: 0.75rem;
+      }
+    }
+  }
+  @media (max-width: 767px) {
     .copyright {
       width: 100%;
       p {
