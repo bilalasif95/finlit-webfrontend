@@ -66,7 +66,7 @@ function CourseSidebar() {
   };
   const handleQuestionFour = () => {
     setQuizStart(false);
-    setQuestionOne(false);
+    setQuestionOne(false); 
     setQuestionTwo(false);
     setQuestionThree(false);
     setQuestionFour(true);
