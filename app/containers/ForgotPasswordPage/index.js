@@ -12,6 +12,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
 import { endpoints } from '../../config/config';
 import UseEnterKeyListener from '../../config/useEnterKeyListener';
+import Logo from '../../images/logo.svg';
+import Img from '../../components/Img';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
@@ -56,54 +58,63 @@ export default function ForgotPasswordPage() {
   };
   return (
     <>
-      <div className="registration_page forgot_page">
+      <div className="forgot_page">
         <Helmet>
           <title>Forgot Password</title>
           <meta name="description" content="FinLit - Forgot Password Page" />
         </Helmet>
         <Container>
           <div className="form_container">
-            <div className="form_content">
-              <h2>
-                <FormattedMessage {...messages.ForgotPassword} />
-              </h2>
-              <p>
-                <FormattedMessage {...messages.ForgotPasswordLine} />
-              </p>
-              <div className="form">
-                <FormGroup>
-                  <Label for="email">
-                    <FormattedMessage {...messages.EmailAddress} />
-                  </Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Your email"
-                    onChange={e => {
-                      setEmail(e.target.value);
-                    }}
-                  />
-                  <div className="error-box">
-                    {error && <p className="error">{error}</p>}
-                    {/* <p className="error">
+            <div className="forgot_inner">
+              <div className="form_content">
+                <Img
+                  src={Logo}
+                  alt="FinLit"
+                  className="logo"
+                  height="100%"
+                  width="100%"
+                />
+                <h2>
+                  <FormattedMessage {...messages.ForgotPassword} />
+                </h2>
+                <p>
+                  <FormattedMessage {...messages.ForgotPasswordLine} />
+                </p>
+                <div className="form">
+                  <FormGroup>
+                    <Label for="email">
+                      <FormattedMessage {...messages.EmailAddress} />
+                    </Label>
+                    <Input
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="Your email"
+                      onChange={e => {
+                        setEmail(e.target.value);
+                      }}
+                    />
+                    <div className="error-box">
+                      {error && <p className="error">{error}</p>}
+                      {/* <p className="error">
                       <FormattedMessage {...messages.EmailError} />
                     </p> */}
+                    </div>
+                  </FormGroup>
+                  <Button
+                    id="submitButton"
+                    onClick={() => {
+                      forgotPasswordBtn();
+                    }}
+                    disabled={btnClick || !email}
+                  >
+                    <FormattedMessage {...messages.ResetPassword} />
+                  </Button>
+                  <div className="back_link">
+                    <Link to="/login">
+                      <FormattedMessage {...messages.BackLogin} />
+                    </Link>
                   </div>
-                </FormGroup>
-                <Button
-                  id="submitButton"
-                  onClick={() => {
-                    forgotPasswordBtn();
-                  }}
-                  disabled={btnClick || !email}
-                >
-                  <FormattedMessage {...messages.ResetPassword} />
-                </Button>
-                <div className="back_link">
-                  <Link to="/login">
-                    <FormattedMessage {...messages.BackLogin} />
-                  </Link>
                 </div>
               </div>
             </div>
