@@ -65,7 +65,7 @@ function CourseDetail() {
   const toggle = () => setModal(!modal);
   const toggleShare = () => setShareModal(!sharemodal);
   const [activeTab, setActiveTab] = useState('1');
-  const [copyText, CopyContactAddress] = useCopyAddress();
+  const [copyText, CopyContactAddress] = useCopyAddress(); 
 
   const [accordinOne, setAccordinOne] = useState(true);
   const [accordinTwo, setAccordinTwo] = useState(false);

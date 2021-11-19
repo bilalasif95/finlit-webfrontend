@@ -24,4 +24,8 @@ export default defineMessages({
     id: `${scope}.Language`,
     defaultMessage: 'Language',
   },
+  Authentication: {
+    id: `${scope}.Authentication`,
+    defaultMessage: '2FA',
+  },
 });
