@@ -61,15 +61,17 @@ const SigninPage = props => {
   const login = () => {
     setError({ type: '', error: '' });
     // debugger;
-    if (!email) {
-      setError({ type: 'email', error: 'Email is required' });
-    } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
+    // if (!email) {
+    //   setError({ type: 'email', error: 'Email is required' });
+    // } else
+    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError({ type: 'email', error: 'Invalid email address' });
-    } else if (!password) {
-      setError({ type: 'password', error: 'Password is required' });
-      // setError('Please enter Password');
-      // return;
     }
+    // else if (!password) {
+    //   setError({ type: 'password', error: 'Password is required' });
+    //   // setError('Please enter Password');
+    //   // return;
+    // }
     // if (rememberMe) {
     //   localStorage.setItem('remember_me_email', email);
     //   localStorage.setItem('remember_me_password', password);
@@ -242,12 +244,13 @@ const SigninPage = props => {
                   onChange={onCaptchaHandler}
                   height="100px"
                   width="100%"
+                  value={value}
                 />
               </div>
               <Button
                 id="submitButton"
                 onClick={login}
-                disabled={btnClick || !value}
+                disabled={btnClick || !email || !password}
               >
                 <FormattedMessage {...messages.Login} />
               </Button>

@@ -84,9 +84,10 @@ export default function SignupPage(props) {
 
   const signup = () => {
     setError({ type: '', error: '' });
-    if (!email) {
-      setError({ type: 'email', error: 'Email is required' });
-    } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
+    // if (!email) {
+    //   setError({ type: 'email', error: 'Email is required' });
+    // } else
+    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError({ type: 'email', error: 'Invalid email address' });
     }
     // else if (
@@ -588,9 +589,15 @@ export default function SignupPage(props) {
                   onChange={onCaptchaHandler}
                   height="100px"
                   width="100%"
+                  value={value}
                 />
               </div>
-              <Button onClick={signup} disabled={btnClick || !value}>
+              <Button
+                onClick={signup}
+                disabled={
+                  btnClick || !email || !password || !passwordConfirmation
+                }
+              >
                 <FormattedMessage {...messages.SignUp} />
               </Button>
               <div className="reg_footer">

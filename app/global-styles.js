@@ -714,6 +714,10 @@ const GlobalStyle = createGlobalStyle`
     height: 85vh;
   }
 }
+.disabled {
+  cursor: not-allowed !important;
+  pointer-events: default !important;
+}
 .form {
   .form-group {
     margin: 0 0 1.5rem;
@@ -779,10 +783,7 @@ button {
         background-color: #2c821c;
         box-shadow: none;
     }
-    &:hover {
-        background-color: #2c821c;
-    }
-}
+  }
 }
 .registration_page {
   background-color: #fff;
