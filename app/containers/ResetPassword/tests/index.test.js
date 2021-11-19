@@ -8,7 +8,7 @@ describe('ResetPassword />', () => {
   it('should render its heading', () => {
     const {
       container: { firstChild },
-    } = render(
+    } = render( 
       <IntlProvider locale="en">
         <BrowserRouter>
           <ResetPassword />

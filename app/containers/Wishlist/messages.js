@@ -1,11 +1,11 @@
 /*
- * My Profile Page Messages
+ * Wishlist Page Messages
  *
- * This contains all the text for the My Profile Page.
+ * This contains all the text for the Wishlist Page.
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.containers.MyProfilesPage';
+export const scope = 'boilerplate.containers.WishlistPage';
 
 export default defineMessages({
   ChangeProfile: {

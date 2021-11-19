@@ -7,7 +7,18 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import '../../components/student-panel/Header/profile.css';
 // import { withStyles } from '@material-ui/core/styles';
-import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import {
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from 'reactstrap';
 import classnames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -20,12 +31,15 @@ import ChangePassword from '../../components/MyProfilePage/ChangePassword';
 
 export default function ProfileSetting() {
   const [activeTab, setActiveTab] = useState('1');
+  const [modal, setModal] = useState(false);
+ 
+  const toggle2FA = () => setModal(!modal);
+  const [switchChecked, setswitchChecked ] = useState(false);
   // const [userObj, setUserObj] = useState({});
   const [language, setLanguage] = useState('english');
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
-
   return (
     <>
       {/* <ToastContainer /> */}
@@ -62,6 +76,16 @@ export default function ProfileSetting() {
                       }}
                     >
                       <FormattedMessage {...messages.Language} />
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className={classnames({ active: activeTab === '3' })}
+                      onClick={() => {
+                        toggle('3');
+                      }}
+                    >
+                      <FormattedMessage {...messages.Authentication} />
                     </NavLink>
                   </NavItem>
                 </Nav>
@@ -111,6 +135,15 @@ export default function ProfileSetting() {
                       </label>
                     </div>
                   </TabPane>
+                  <TabPane tabId="3">
+                    <h5>2FA Authentication</h5>
+                    <div className="toggleSwitch">
+                      <label className="switch">
+                        <input type="checkbox" checked={switchChecked} onChange={(e) => {setswitchChecked(e.target.checked);toggle2FA()}} />
+                        <span className="slider round"></span>
+                      </label>
+                    </div>
+                  </TabPane>
                 </TabContent>
               </div>
             </div>
@@ -119,6 +152,19 @@ export default function ProfileSetting() {
 
         {/* end */}
       </div>
+      {/* Modal */}
+      <Modal isOpen={modal} toggle={toggle2FA} className="ratingModal deleteModal">
+        <ModalHeader toggle={toggle2FA} />
+        <ModalBody>
+         
+          <p>Do you really want to delete profile image?</p>
+        </ModalBody>
+        <ModalFooter>
+          <Button className="deleteBtn" onClick={toggle2FA}>
+            Delete
+          </Button>
+        </ModalFooter>
+      </Modal>
     </>
   );
 }

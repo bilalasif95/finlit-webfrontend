@@ -33,11 +33,11 @@ import {
 // import { FaChevronDown } from 'react-icons/fa';
 // import { RiUserSettingsLine } from 'react-icons/ri';
 // import Bell from '../../images/bell.svg';
-import Delete from '../../images/delete.png';
 // import { RiKeyLine } from 'react-icons/ri';
 // import classnames from 'classnames';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import Delete from '../../images/delete.png';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
 import Img from '../../components/Img';
@@ -62,7 +62,7 @@ export default function MyProfilePage() {
   const getCurrentUser = () => {
     const token = localStorage.getItem('token');
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {}; 
     axios
       .get(`${API}api/user/${userInfo && userInfo.id}`, {
         headers: {
@@ -157,7 +157,11 @@ export default function MyProfilePage() {
                       onChange={e => updateProfileImg(e)}
                     />
                   </Label>
-                  <button type="button" onClick={toggle} className="btn btn-default">
+                  <button
+                    type="button"
+                    onClick={toggle}
+                    className="btn btn-default"
+                  >
                     Delete Photo
                   </button>
                 </div>
@@ -169,18 +173,18 @@ export default function MyProfilePage() {
         {/* end */}
       </div>
       {/* Modal */}
-        <Modal isOpen={modal} toggle={toggle} className="ratingModal deleteModal">
-          <ModalHeader toggle={toggle}></ModalHeader>
-          <ModalBody>
-            <img src={Delete} alt="Delete" />
-            <p>Do you really want to delete profile image?</p>
-          </ModalBody>
-          <ModalFooter>
-            <Button className="deleteBtn" onClick={toggle}>
-              Delete
-            </Button>
-          </ModalFooter>
-        </Modal>
+      <Modal isOpen={modal} toggle={toggle} className="ratingModal deleteModal">
+        <ModalHeader toggle={toggle} />
+        <ModalBody>
+          <img src={Delete} alt="Delete" />
+          <p>Do you really want to delete profile image?</p>
+        </ModalBody>
+        <ModalFooter>
+          <Button className="deleteBtn" onClick={toggle}>
+            Delete
+          </Button>
+        </ModalFooter>
+      </Modal>
     </>
   );
 }

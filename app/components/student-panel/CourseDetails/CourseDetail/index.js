@@ -65,7 +65,7 @@ function CourseDetail() {
   const toggle = () => setModal(!modal);
   const toggleShare = () => setShareModal(!sharemodal);
   const [activeTab, setActiveTab] = useState('1');
-  const [copyText, CopyContactAddress] = useCopyAddress();
+  const [copyText, CopyContactAddress] = useCopyAddress(); 
 
   const [accordinOne, setAccordinOne] = useState(true);
   const [accordinTwo, setAccordinTwo] = useState(false);
@@ -131,14 +131,16 @@ function CourseDetail() {
               <Link to="/">Courses</Link>
             </BreadcrumbItem>
             <BreadcrumbItem active>
-              Programming with Python: HandsOn Introduction for Beginners
+              <FormattedMessage {...messages.CourseTitle} />
             </BreadcrumbItem>
           </Breadcrumb>
         </div>
         {/* <FormattedMessage {...messages.Subtotal} /> */}
         <div className="header">
           {/* <h4>{dataDetails && dataDetails.mainTitle}</h4> */}
-          <h3>Programming with Python: HandsOn Introduction for Beginners</h3>
+          <h3>
+            <FormattedMessage {...messages.CourseTitle} />
+          </h3>
         </div>
         <div className="cat_rating">
           <div className="cat_type">
@@ -724,11 +726,11 @@ function CourseDetail() {
                   <h4>About this course</h4>
                   {/* <Button onClick={toggle}>Add Review</Button> */}
                   <b>
-                    Complete Programming with python: HandsOn Introduction for Beginners
-                    </b>
+                    Complete <FormattedMessage {...messages.CourseTitle} />
+                  </b>
                   <p>
                     Approved by <b>FinLit</b>
-                    </p>
+                  </p>
                 </div>
                 <div className="user_details">
                   <div className="item">
@@ -754,9 +756,7 @@ function CourseDetail() {
                   <div className="item">
                     <div className="left">Description</div>
                     <div className="right">
-                      Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
-                      Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
-                      Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
+                      <FormattedMessage {...messages.UserDesc} />
                     </div>
                   </div>
                   <div className="item">

@@ -68,8 +68,9 @@ const Wrapper = styled.div`
         align-items: center;
         display: flex;
         justify-content: center;
-        left: 42%;
+        left: 50%;
         position: absolute;
+        transform: translate(-50%, 0%);
         top: 3.5rem;
         // width: 100%
       }

@@ -66,7 +66,7 @@ function CourseSidebar() {
   };
   const handleQuestionFour = () => {
     setQuizStart(false);
-    setQuestionOne(false);
+    setQuestionOne(false); 
     setQuestionTwo(false);
     setQuestionThree(false);
     setQuestionFour(true);
@@ -263,9 +263,7 @@ function CourseSidebar() {
                   <ul>
                     <li>
                       <FormGroup check>
-                        <Label
-                          check
-                        >
+                        <Label check>
                           <Input
                             type="radio"
                             value={checkedValue}
@@ -281,9 +279,7 @@ function CourseSidebar() {
                     </li>
                     <li>
                       <FormGroup check>
-                        <Label
-                          check
-                        >
+                        <Label check>
                           <Input
                             type="radio"
                             value={checkedValue}
@@ -299,9 +295,7 @@ function CourseSidebar() {
                     </li>
                     <li>
                       <FormGroup check>
-                        <Label
-                          check
-                        >
+                        <Label check>
                           <Input
                             type="radio"
                             value={checkedValue}
@@ -330,12 +324,7 @@ function CourseSidebar() {
                   <ul>
                     <li>
                       <FormGroup check>
-                        <Label
-                          check
-                        // className={
-                        //   checkedValue === 'radio1' ? 'radio_bg' : ''
-                        // }
-                        >
+                        <Label check>
                           <Input
                             type="radio"
                             value="radio1"
@@ -351,12 +340,7 @@ function CourseSidebar() {
                     </li>
                     <li>
                       <FormGroup check>
-                        <Label
-                          check
-                        // className={
-                        //   checkedValue === 'radio2' ? 'radio_bg' : ''
-                        // }
-                        >
+                        <Label check>
                           <Input
                             type="radio"
                             value="radio2"
@@ -374,9 +358,9 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                        // className={
-                        //   checkedValue === 'radio3' ? 'radio_bg' : ''
-                        // }
+                          // className={
+                          //   checkedValue === 'radio3' ? 'radio_bg' : ''
+                          // }
                         >
                           <Input
                             type="radio"
@@ -410,9 +394,9 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                        // className={
-                        //   checkedValue === 'radio1' ? 'radio_bg' : ''
-                        // }
+                          // className={
+                          //   checkedValue === 'radio1' ? 'radio_bg' : ''
+                          // }
                         >
                           <Input
                             type="radio"
@@ -431,9 +415,9 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                        // className={
-                        //   checkedValue === 'radio2' ? 'radio_bg' : ''
-                        // }
+                          // className={
+                          //   checkedValue === 'radio2' ? 'radio_bg' : ''
+                          // }
                         >
                           <Input
                             type="radio"
@@ -452,9 +436,9 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                        // className={
-                        //   checkedValue === 'radio3' ? 'radio_bg' : ''
-                        // }
+                          // className={
+                          //   checkedValue === 'radio3' ? 'radio_bg' : ''
+                          // }
                         >
                           <Input
                             type="radio"
@@ -488,9 +472,9 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                        // className={
-                        //   checkedValue === 'radio1' ? 'radio_bg' : ''
-                        // }
+                          // className={
+                          //   checkedValue === 'radio1' ? 'radio_bg' : ''
+                          // }
                         >
                           <Input
                             type="radio"
@@ -509,9 +493,9 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                        // className={
-                        //   checkedValue === 'radio2' ? 'radio_bg' : ''
-                        // }
+                          // className={
+                          //   checkedValue === 'radio2' ? 'radio_bg' : ''
+                          // }
                         >
                           <Input
                             type="radio"
@@ -530,9 +514,9 @@ function CourseSidebar() {
                       <FormGroup check>
                         <Label
                           check
-                        // className={
-                        //   checkedValue === 'radio3' ? 'radio_bg' : ''
-                        // }
+                          // className={
+                          //   checkedValue === 'radio3' ? 'radio_bg' : ''
+                          // }
                         >
                           <Input
                             type="radio"

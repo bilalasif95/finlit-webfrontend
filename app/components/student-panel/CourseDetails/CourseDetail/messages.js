@@ -12,6 +12,10 @@ export default defineMessages({
     id: `${scope}.Title`,
     defaultMessage: 'Hackathon TechnoDiva Fresher',
   },
+  CourseTitle: {
+    id: `${scope}.CourseTitle`,
+    defaultMessage: `Programming with Python: HandsOn Introduction for Beginners`,
+  },
   LastUpdate: {
     id: `${scope}.LastUpdate`,
     defaultMessage: 'Last Updates',
@@ -51,5 +55,11 @@ export default defineMessages({
   Subtotal: {
     id: `${scope}.Subtotal`,
     defaultMessage: 'Subtotal :',
+  },
+  UserDesc: {
+    id: `${scope}.UserDesc`,
+    defaultMessage: `Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
+    Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
+    Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.`,
   },
 });

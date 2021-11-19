@@ -99,7 +99,7 @@ const GlobalStyle = createGlobalStyle`
                 color: #3e952e;
                 font-size: 1.5rem;
               }
-            }
+            } 
           }
           .delete_item {
             position: absolute;
