@@ -62,7 +62,7 @@ export default function MyProfilePage() {
   const getCurrentUser = () => {
     const token = localStorage.getItem('token');
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {}; 
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .get(`${API}api/user/${userInfo && userInfo.id}`, {
         headers: {

@@ -32,9 +32,9 @@ import ChangePassword from '../../components/MyProfilePage/ChangePassword';
 export default function ProfileSetting() {
   const [activeTab, setActiveTab] = useState('1');
   const [modal, setModal] = useState(false);
- 
+
   const toggle2FA = () => setModal(!modal);
-  const [switchChecked, setswitchChecked ] = useState(false);
+  const [switchChecked, setswitchChecked] = useState(false);
   // const [userObj, setUserObj] = useState({});
   const [language, setLanguage] = useState('english');
   const toggle = tab => {
@@ -139,8 +139,15 @@ export default function ProfileSetting() {
                     <h5>2FA Authentication</h5>
                     <div className="toggleSwitch">
                       <label className="switch">
-                        <input type="checkbox" checked={switchChecked} onChange={(e) => {setswitchChecked(e.target.checked);toggle2FA()}} />
-                        <span className="slider round"></span>
+                        <input
+                          type="checkbox"
+                          checked={switchChecked}
+                          onChange={e => {
+                            setswitchChecked(e.target.checked);
+                            toggle2FA();
+                          }}
+                        />
+                        <span className="slider round" />
                       </label>
                     </div>
                   </TabPane>
@@ -153,10 +160,13 @@ export default function ProfileSetting() {
         {/* end */}
       </div>
       {/* Modal */}
-      <Modal isOpen={modal} toggle={toggle2FA} className="ratingModal deleteModal">
+      <Modal
+        isOpen={modal}
+        toggle={toggle2FA}
+        className="ratingModal deleteModal"
+      >
         <ModalHeader toggle={toggle2FA} />
         <ModalBody>
-         
           <p>Do you really want to delete profile image?</p>
         </ModalBody>
         <ModalFooter>

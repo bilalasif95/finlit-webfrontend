@@ -8,7 +8,14 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import '../../components/student-panel/Header/profile.css';
 // import { withStyles } from '@material-ui/core/styles';
-import { Container, Row, Col, Button, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Breadcrumb,
+  BreadcrumbItem,
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import {
   AiFillStar,

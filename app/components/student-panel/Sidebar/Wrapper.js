@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   z-index: 1;
   top: 0;
   .profileAside {
-    width: 155px; 
+    width: 155px;
     height: 100%;
     position: relative;
     padding: 50px 0px 30px 0px;
