@@ -11,7 +11,8 @@ npm-debug.log
 
 /app/containers/App/tests/__snapshots__/
 /app/containers/CreateNewPasswordPage/tests/__snapshots__/
-/app/containers/EmailVerification/tests/__snapshots__/
+/app/containers/EmailVerificationPage/tests/__snapshots__/
+/app/containers/VerifyEmailPage/tests/__snapshots__/
 /app/containers/FeaturePage/tests/__snapshots__/
 /app/containers/ForgotPasswordPage/tests/__snapshots__/
 /app/containers/LocaleToggle/tests/__snapshots__/

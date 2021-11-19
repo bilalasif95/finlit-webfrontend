@@ -19,15 +19,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
-import { BsEyeFill } from 'react-icons/bs';
-// BsEyeSlashFill
+import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './app.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
-import { API, endpoints } from '../../config/config';
+import { endpoints } from '../../config/config';
 import Logo from '../../images/logo.svg';
 import instructorImg from '../../images/instructorImg.png';
 import studentImg from '../../images/studentImg.png';
@@ -56,13 +55,15 @@ const BootstrapInput = withStyles(theme => ({
   },
 }))(InputBase);
 
-export default function SignupPage() {
+export default function SignupPage(props) {
   const [email, setEmail] = useState('');
   // const [firstName, setFirstName] = useState('');
   // const [lastName, setLastName] = useState('');
   const [roleId, setRoleId] = useState(1);
   const [roles, setRoles] = useState([]);
   const [password, setPassword] = useState('');
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showCreatePassword, setShowCreatePassword] = useState(false);
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   // const [gender, setGender] = useState('Male');
   // const [country, setCountry] = useState('PAK');
@@ -73,18 +74,17 @@ export default function SignupPage() {
   const [btnClick, setBtnClick] = useState(false);
 
   useEffect(() => {
-    axios.get(endpoints.getRoles)
-      .then((res) => {
-        setRoles(res.data.data)
-      })
-  }, [])
+    axios.get(endpoints.getRoles).then(res => {
+      setRoles(res.data.data);
+    });
+  }, []);
 
   const signup = () => {
     setError({ type: '', error: '' });
     if (!email) {
       setError({ type: 'email', error: 'Email is required' });
     } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
-      setError({ type: 'email', error: 'Please enter valid email' });
+      setError({ type: 'email', error: 'Invalid email address' });
     }
     // else if (
     //   !/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(firstName)
@@ -112,33 +112,42 @@ export default function SignupPage() {
       setError({
         type: 'password',
         error:
-          'Password must contains one special character or capital letter and length should be in between 8 to 15 characters.',
+          'Use 8-15 characters with a mix of letters, numbers & symbols',
       });
     } else if (password !== passwordConfirmation) {
-      setError({ type: 'passwordconfirm', error: '**Password does not match' });
+      setError({ type: 'passwordconfirm', error: 'Password does not match' });
     } else {
       setBtnClick(true);
-      axios
-        .post(`${API}api/auth/register`, {
+      let data;
+      if (roleId === 1) {
+        data = {
           email,
-          // firstName,
-          // lastName,
           roleId,
           password,
           passwordConfirmation,
-          // gender,
           profession,
-          // address,
-        })
-        .then(result => {
-          toast.success(
-            result.data && result.data.message
-              ? result.data.message
-              : 'Message Not Readable',
-          );
-          setTimeout(() => {
-            setBtnClick(false);
-          }, 5000);
+        }
+      }
+      else {
+        data = {
+          email,
+          roleId,
+          password,
+          passwordConfirmation,
+        }
+      }
+      axios
+        .post(endpoints.register, data)
+        .then(() => {
+          props.history.push("/verify_email", { email: email.substring(email.lastIndexOf("@") + 1) })
+          // toast.success(
+          //   result.data && result.data.message
+          //     ? result.data.message
+          //     : 'Message Not Readable',
+          // );
+          // setTimeout(() => {
+          //   setBtnClick(false);
+          // }, 5000);
         })
         .catch(err => {
           toast.error(
@@ -244,8 +253,9 @@ export default function SignupPage() {
                             getContentAnchorEl: null,
                           }}
                         >
-                          <MenuItem value={1}>Educator</MenuItem>
-                          <MenuItem value={2}>Student</MenuItem>
+                          {roles && roles.map((res) => <MenuItem key={res.id} value={res.id}>{res.roleName}</MenuItem>)}
+                          {/* <MenuItem value={1}>Educator</MenuItem>
+                          <MenuItem value={2}>Student</MenuItem> */}
                         </Select>
                       </FormControl>
                     </FormGroup>
@@ -322,8 +332,9 @@ export default function SignupPage() {
                             getContentAnchorEl: null,
                           }}
                         >
-                          <MenuItem value={1}>Educator</MenuItem>
-                          <MenuItem value={2}>Student</MenuItem>
+                          {roles && roles.map((res) => <MenuItem key={res.id} value={res.id}>{res.roleName}</MenuItem>)}
+                          {/* <MenuItem value={1}>Educator</MenuItem>
+                          <MenuItem value={2}>Student</MenuItem> */}
                         </Select>
                       </FormControl>
                     </FormGroup>
@@ -388,17 +399,16 @@ export default function SignupPage() {
                     </Label>
                     <InputGroup>
                       <Input
-                        type="password"
+                        type={showCreatePassword ? "text" : "password"}
                         name="createpassword"
                         id="createpassword"
                         onChange={e => setPassword(e.target.value)}
                         placeholder="******"
                       />
                       <InputGroupAddon addonType="append">
-                        <Button className="btn_eye">
-                          <BsEyeFill />
+                        <Button onClick={() => setShowCreatePassword(!showCreatePassword)} className="btn_eye">
+                          {showCreatePassword ? <BsEyeFill /> : <BsEyeSlashFill />}
                         </Button>
-                        {/* <BsEyeSlashFill /> */}
                       </InputGroupAddon>
                     </InputGroup>
                     {/* <Input
@@ -421,17 +431,16 @@ export default function SignupPage() {
                     </Label>
                     <InputGroup>
                       <Input
-                        type="password"
+                        type={showConfirmPassword ? "text" : "password"}
                         name="confirmpassword"
                         id="confirmpassword"
                         onChange={e => setPasswordConfirmation(e.target.value)}
                         placeholder="******"
                       />
                       <InputGroupAddon addonType="append">
-                        <Button className="btn_eye">
-                          <BsEyeFill />
+                        <Button onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="btn_eye">
+                          {showConfirmPassword ? <BsEyeFill /> : <BsEyeSlashFill />}
                         </Button>
-                        {/* <BsEyeSlashFill /> */}
                       </InputGroupAddon>
                     </InputGroup>
                     {/* <Input
@@ -538,7 +547,12 @@ export default function SignupPage() {
         </div>
         <div className="img_container">
           {instructorDiv ? (
-            <Img src={instructorImg} alt="instrutor" height="100%" width="100%" />
+            <Img
+              src={instructorImg}
+              alt="instrutor"
+              height="100%"
+              width="100%"
+            />
           ) : (
             <Img src={studentImg} alt="instrutor" height="100%" width="100%" />
           )}

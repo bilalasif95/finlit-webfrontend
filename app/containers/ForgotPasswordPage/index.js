@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
-import { API } from '../../config/config';
+import { endpoints } from '../../config/config';
 import UseEnterKeyListener from '../../config/useEnterKeyListener';
 
 export default function ForgotPasswordPage() {
@@ -23,37 +23,37 @@ export default function ForgotPasswordPage() {
 
   const forgotPasswordBtn = () => {
     setError('');
-    if (email === '') {
-      setError('Please enter email');
+    if (!email) {
+      setError('Email is required');
       return;
-    }
-    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
-      setError('Please enter valid email');
+    } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
+      setError('Invalid email address');
       return;
+    } else {
+      setBtnClick(true);
+      axios
+        .get(`${endpoints.forgotPassword}?email=${email}`)
+        .then(result => {
+          toast.success(
+            result.data && result.data.message
+              ? result.data.message
+              : 'Message Not Readable',
+          );
+          setTimeout(() => {
+            setBtnClick(false);
+          }, 5000);
+        })
+        .catch(err => {
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
+          setTimeout(() => {
+            setBtnClick(false);
+          }, 5000);
+        });
     }
-    setBtnClick(true);
-    axios
-      .get(`${API}api/auth/forgotPassword?email=${email}`)
-      .then(result => {
-        toast.success(
-          result.data && result.data.message
-            ? result.data.message
-            : 'Message Not Readable',
-        );
-        setTimeout(() => {
-          setBtnClick(false);
-        }, 5000);
-      })
-      .catch(err => {
-        toast.error(
-          err.response && err.response.data.message
-            ? err.response.data.message.toString()
-            : 'Message Not Readable',
-        );
-        setTimeout(() => {
-          setBtnClick(false);
-        }, 5000);
-      });
   };
   return (
     <>
@@ -97,7 +97,7 @@ export default function ForgotPasswordPage() {
                   onClick={() => {
                     forgotPasswordBtn();
                   }}
-                  disabled={btnClick || !email}
+                  disabled={btnClick}
                 >
                   <FormattedMessage {...messages.ResetPassword} />
                 </Button>

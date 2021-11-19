@@ -5,7 +5,7 @@
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.containers.EmailVerificationPage';
+export const scope = 'boilerplate.containers.VerifyEmailPage';
 
 export default defineMessages({
   EmailTitle: {

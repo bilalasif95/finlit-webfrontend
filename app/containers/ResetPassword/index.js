@@ -5,25 +5,27 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Button, FormGroup, Label, Input, Container, InputGroup, InputGroupAddon } from 'reactstrap';
+import * as qs from 'query-string';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 // import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
-import { API } from '../../config/config';
+import { endpoints } from '../../config/config';
 import UseEnterKeyListener from '../../config/useEnterKeyListener';
 import Logo from '../../images/logo.svg';
-import { BsEyeFill } from 'react-icons/bs';
-import { BsEyeSlashFill } from 'react-icons/bs';
+import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 
-export default function ResetPassword() {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+export default function ResetPassword(props) {
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmNewPassword] = useState('');
+  const [error, setError] = useState({ type: '', error: '' });
   const [btnClick, setBtnClick] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
-  const [confirmpasswordShown, setConfirmPasswordShown] = useState(false);
+  const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
+  const parsed = qs.parse(window.location.search);
   const confirmtogglePasswordVisiblity = () => {
-    setConfirmPasswordShown(!confirmpasswordShown);
+    setConfirmPasswordShown(!confirmPasswordShown);
   };
   const togglePasswordVisiblity = () => {
     setPasswordShown(!passwordShown);
@@ -33,38 +35,60 @@ export default function ResetPassword() {
   });
 
   const forgotPasswordBtn = () => {
-    setError('');
-    if (email === '') {
-      setError('Please enter email');
-      return;
-    }
-    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
-      setError('Please enter valid email');
-      return;
-    }
-    setBtnClick(true);
-    axios
-      .get(`${API}api/auth/forgotPassword?email=${email}`)
-      .then(result => {
-        toast.success(
-          result.data && result.data.message
-            ? result.data.message
-            : 'Message Not Readable',
-        );
-        setTimeout(() => {
-          setBtnClick(false);
-        }, 5000);
-      })
-      .catch(err => {
-        toast.error(
-          err.response && err.response.data.message
-            ? err.response.data.message.toString()
-            : 'Message Not Readable',
-        );
-        setTimeout(() => {
-          setBtnClick(false);
-        }, 5000);
+    setError({ type: '', error: '' });
+    if (!newPassword) {
+      setError({ type: 'newPassword', error: 'New Password is required' });
+    } else if (
+      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(newPassword) ||
+      (!newPassword.length >= 8 && !newPassword.length <= 15)
+    ) {
+      setError({
+        type: 'newPassword',
+        error:
+          'Use 8-15 characters with a mix of letters, numbers & symbols',
       });
+    } else if (!confirmPassword) {
+      setError({ type: 'confirmPassword', error: 'New Password is required' });
+    } else if (
+      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(confirmPassword) ||
+      (!confirmPassword.length >= 8 && !confirmPassword.length <= 15)
+    ) {
+      setError({
+        type: 'confirmPassword',
+        error:
+          'Use 8-15 characters with a mix of letters, numbers & symbols',
+      });
+    }
+    else {
+      setBtnClick(true);
+      const authHeaders = parsed ? { Authorization: `Bearer ${parsed.token}` } : {};
+      axios
+        .post(endpoints.forgotConfirmPassword, { password: newPassword }, {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        })
+        .then(result => {
+          toast.success(
+            result.data && result.data.message
+              ? result.data.message
+              : 'Message Not Readable',
+          );
+          props.history.push("/login")
+        })
+        .catch(err => {
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
+          setTimeout(() => {
+            setBtnClick(false);
+          }, 5000);
+        });
+    }
   };
   return (
     <>
@@ -82,65 +106,65 @@ export default function ResetPassword() {
               </h2>
               <div className="form">
                 <FormGroup>
-                  <Label for="email">
-                    <FormattedMessage {...messages.EmailAddress} />
+                  <Label for="newPassword">
+                    <FormattedMessage {...messages.NewPassword} />
                   </Label>
                   <InputGroup>
                     <Input
                       type={passwordShown ? "text" : "password"}
-                      name="email"
-                      id="email"
+                      name="newPassword"
+                      id="newPassword"
+                      defaultValue={newPassword}
                       placeholder="Enter Password"
                       onChange={e => {
-                        setEmail(e.target.value);
+                        setNewPassword(e.target.value);
                       }}
                     />
                     <InputGroupAddon addonType="append">
-                    <Button type="button" className="btn_eye" onClick={togglePasswordVisiblity}>
-                        {passwordShown ? <BsEyeFill /> : <BsEyeSlashFill /> }
+                      <Button type="button" className="btn_eye" onClick={togglePasswordVisiblity}>
+                        {passwordShown ? <BsEyeFill /> : <BsEyeSlashFill />}
                       </Button>
                     </InputGroupAddon>
                   </InputGroup>
                   <div className="error-box">
                     {/* {error && <p className="error">{error}</p>} */}
-                    {/* <p className="error">
-                      <FormattedMessage {...messages.EmailError} />
-                    </p> */}
+                    <p className="error">
+                      {error.type === 'newPassword' ? error.error : ''}
+                    </p>
                   </div>
                 </FormGroup>
                 <FormGroup className="resetField">
-                  <Label for="email">
+                  <Label for="confirmPassword">
                     <FormattedMessage {...messages.Password} />
                   </Label>
                   <InputGroup>
                     <Input
-                      type={confirmpasswordShown ? "text" : "password"}
-                      name="email"
-                      id="email"
+                      type={confirmPasswordShown ? "text" : "password"}
+                      name="confirmPassword"
+                      id="confirmPassword"
+                      defaultValue={confirmPassword}
                       placeholder="Confirm Password"
                       onChange={e => {
-                        setEmail(e.target.value);
+                        setConfirmNewPassword(e.target.value);
                       }}
                     />
                     <InputGroupAddon addonType="append">
                       <Button type="button" className="btn_eye" onClick={confirmtogglePasswordVisiblity}>
-                        {confirmpasswordShown ? <BsEyeFill /> : <BsEyeSlashFill /> }
+                        {confirmPasswordShown ? <BsEyeFill /> : <BsEyeSlashFill />}
                       </Button>
                     </InputGroupAddon>
                   </InputGroup>
                   <div className="error-box">
                     {/* {error && <p className="error">{error}</p>} */}
-                    {/* <p className="error">
-                      <FormattedMessage {...messages.EmailError} />
-                    </p> */}
+                    <p className="error">
+                      {error.type === 'confirmPassword' ? error.error : ''}
+                    </p>
                   </div>
                 </FormGroup>
                 <Button
                   id="submitButton"
-                  onClick={() => {
-                    forgotPasswordBtn();
-                  }}
-                  disabled={btnClick || !email}
+                  onClick={forgotPasswordBtn}
+                  disabled={btnClick}
                 >
                   <FormattedMessage {...messages.ResetPassword} />
                 </Button>

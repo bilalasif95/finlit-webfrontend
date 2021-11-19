@@ -14,7 +14,7 @@ export default defineMessages({
   },
   ForgotPasswordLine: {
     id: `${scope}.ForgotPasswordLine`,
-    defaultMessage: `Don't worry! Just fill in your email and we'll send you a link to reset your password`,
+    defaultMessage: `Enter your email address & we'll send you a link to reset your password`,
   },
   EmailAddress: {
     id: `${scope}.EmailAddress`,
@@ -27,7 +27,7 @@ export default defineMessages({
   },
   ResetPassword: {
     id: `${scope}.ResetPassword`,
-    defaultMessage: `Reset Password`,
+    defaultMessage: `Send Link`,
   },
   BackLogin: {
     id: `${scope}.BackLogin`,

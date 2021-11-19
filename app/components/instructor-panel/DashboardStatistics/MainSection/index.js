@@ -50,9 +50,9 @@ function MainSection(props) {
               </Link>
             </li>
             {userObj &&
-            userObj.roles &&
-            userObj.roles[0] &&
-            userObj.roles[0].roleName === 'Instructor' ? (
+              userObj.roles &&
+              userObj.roles[0] &&
+              userObj.roles[0].roleName === 'Instructor' ? (
               <>
                 <li>
                   <Link className="link" to="/courses_list">
@@ -100,9 +100,9 @@ function MainSection(props) {
           </ul>
           <div className="main_links">
             {userObj &&
-            userObj.roles &&
-            userObj.roles[0] &&
-            userObj.roles[0].roleName === 'Instructor' ? (
+              userObj.roles &&
+              userObj.roles[0] &&
+              userObj.roles[0].roleName === 'Instructor' ? (
               <>
                 <Link to="/webinars_list">
                   <FormattedMessage {...messages.Webinars} />
@@ -129,15 +129,15 @@ function MainSection(props) {
             )}
           </div>
           {userObj &&
-          userObj.roles &&
-          userObj.roles[0] &&
-          userObj.roles[0].roleName === 'Instructor' ? (
+            userObj.roles &&
+            userObj.roles[0] &&
+            userObj.roles[0].roleName === 'Instructor' ? (
             <>
               <div className="stats">
                 <Row>
                   <Col lg={3} md={6} sm={6} xs={12}>
                     <div className="single_item">
-                      <h2>{statistics.totalBootcamps}</h2>
+                      <h2>{statistics && statistics.totalBootcamps}</h2>
                       <span className="vl" />
                       <p>
                         <FormattedMessage {...messages.Bootcamps} />
@@ -146,7 +146,7 @@ function MainSection(props) {
                   </Col>
                   <Col lg={3} md={6} sm={6} xs={12}>
                     <div className="single_item">
-                      <h2>{statistics.totalWebinars}</h2>
+                      <h2>{statistics && statistics.totalWebinars}</h2>
                       <span />
                       <p>
                         <FormattedMessage {...messages.Webinars} />
@@ -155,7 +155,7 @@ function MainSection(props) {
                   </Col>
                   <Col lg={3} md={6} sm={6} xs={12}>
                     <div className="single_item">
-                      <h2>{statistics.totalCourses}</h2>
+                      <h2>{statistics && statistics.totalCourses}</h2>
                       <span />
                       <p>
                         <FormattedMessage {...messages.Courses} />
@@ -164,7 +164,7 @@ function MainSection(props) {
                   </Col>
                   <Col lg={3} md={6} sm={6} xs={12}>
                     <div className="single_item">
-                      <h2>{statistics.totalHackathons}</h2>
+                      <h2>{statistics && statistics.totalHackathons}</h2>
                       <span />
                       <p>
                         <FormattedMessage {...messages.Hackathons} />

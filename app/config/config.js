@@ -13,4 +13,9 @@ export const JoditEditorConfig = {
 
 export const endpoints = {
   getRoles: `${API}api/role`,
-}
+  register: `${API}api/auth/register`,
+  confirmEmail: `${API}api/auth/confirmEmail`,
+  login: `${API}api/auth/login`,
+  forgotPassword: `${API}api/auth/forgotPassword`,
+  forgotConfirmPassword: `${API}api/user/forgotConfirmPassword`,
+};

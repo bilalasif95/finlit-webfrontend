@@ -54,10 +54,11 @@ import Setting from 'containers/ProfileSetting/Loadable';
 import SigninPage from 'containers/SigninPage/Loadable';
 import TwoFAPage from 'containers/TwoFAPage/Loadable';
 import SignupPage from 'containers/SignupPage/Loadable';
-import EmailVerificationPage from 'containers/EmailVerification/Loadable';
+import EmailVerificationPage from 'containers/EmailVerificationPage/Loadable';
+import VerifyEmailPage from 'containers/VerifyEmailPage/Loadable';
 import ForgotPasswordPage from 'containers/ForgotPasswordPage/Loadable';
 import ResetPasswordPage from 'containers/ResetPassword/Loadable';
-import CreateNewPasswordPage from 'containers/CreateNewPasswordPage/Loadable';
+// import CreateNewPasswordPage from 'containers/CreateNewPasswordPage/Loadable';
 import Header from 'components/student-panel/Header';
 // import InstructorHeader from 'components/instructor-panel/Header';
 import Footer from 'components/student-panel/Footer';
@@ -87,7 +88,8 @@ const App = () => {
         {history.location.pathname === '/signup' ||
           history.location.pathname === '/my_profile' ||
           history.location.pathname === '/login' ||
-          // history.location.pathname === '/email_verification' ||
+          history.location.pathname === '/email_verification' ||
+          history.location.pathname === '/verify_email' ||
           history.location.pathname === '/create_new_password' ||
           history.location.pathname === '/notification' ||
           history.location.pathname === '/setting' ||
@@ -145,19 +147,20 @@ const App = () => {
         <Route path="/two_fa" component={TwoFAPage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="/email_verification" component={EmailVerificationPage} />
+        <Route path="/verify_email" component={VerifyEmailPage} />
         <Route path="/forgot_password" component={ForgotPasswordPage} />
-        <Route path="/reset_password" component={ResetPasswordPage} />
-        <Route path="/create_new_password" component={CreateNewPasswordPage} />
+        <Route path="/create_new_password" component={ResetPasswordPage} />
+        {/* <Route path="/reset_password" component={CreateNewPasswordPage} /> */}
         <Route path="" component={NotFoundPage} />
       </Switch>
-      {history.location.pathname === '/create_new_password' ||
+      {history.location.pathname === '/reset_password' ||
         // history.location.pathname === '/signup' ||
         // history.location.pathname === '/login' ||
         // history.location.pathname === '/my_profile' ||
         // history.location.pathname === '/email_verification' ||
         // history.location.pathname === '/notification' ||
-        history.location.pathname === '/forgot_password' ||
-        history.location.pathname === '/reset_password' ||
+        // history.location.pathname === '/forgot_password' ||
+        // history.location.pathname === '/create_new_password' ||
         history.location.pathname === '/two_fa' ? null : (
         <Footer />
       )}

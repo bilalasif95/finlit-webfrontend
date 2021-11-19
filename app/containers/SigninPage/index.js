@@ -17,12 +17,12 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { BsEyeFill } from 'react-icons/bs';
+import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 // BsEyeSlashFill
 // import { IoIosCheckmarkCircle } from 'react-icons/io';
 import { ToastContainer, toast } from 'react-toastify';
 import UseEnterKeyListener from '../../config/useEnterKeyListener';
-import { API } from '../../config/config';
+import { endpoints } from '../../config/config';
 import {
   mapStateToProps,
   mapDispatchToProps,
@@ -37,77 +37,84 @@ import Img from '../../components/Img';
 const SigninPage = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState({ type: '', error: '' });
   const [btnClick, setBtnClick] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   // const [isDisabled, setDisabled] = useState(false);
   UseEnterKeyListener({
     querySelectorToExecuteClick: '#submitButton',
   });
-  const [rememberMe, setRememberMe] = useState(false);
+  // const [rememberMe, setRememberMe] = useState(false);
 
-  React.useEffect(() => {
-    setEmail(localStorage.getItem('remember_me_email') || '');
-    setPassword(localStorage.getItem('remember_me_password') || '');
-    if (
-      localStorage.getItem('remember_me_email') &&
-      localStorage.getItem('remember_me_password')
-    ) {
-      setRememberMe(true);
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   setEmail(localStorage.getItem('remember_me_email') || '');
+  //   setPassword(localStorage.getItem('remember_me_password') || '');
+  //   if (
+  //     localStorage.getItem('remember_me_email') &&
+  //     localStorage.getItem('remember_me_password')
+  //   ) {
+  //     setRememberMe(true);
+  //   }
+  // }, []);
   const login = () => {
-    setError('');
+    setError({ type: '', error: '' });
     // debugger;
     if (!email) {
-      setError('Please enter email');
-      return;
+      setError({ type: 'email', error: 'Email is required' });
+    } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
+      setError({ type: 'email', error: 'Invalid email address' });
+    } else if (!password) {
+      setError({ type: 'password', error: 'Password is required' });
+      // setError('Please enter Password');
+      // return;
     }
-    if (!password) {
-      setError('Please enter Password');
-      return;
-    }
-    if (rememberMe) {
-      localStorage.setItem('remember_me_email', email);
-      localStorage.setItem('remember_me_password', password);
-    }
-    setBtnClick(true);
-    axios
-      .post(`${API}api/auth/login`, { email, password })
-      .then(res => {
-        if (res.data.status === 200) {
-          localStorage.setItem('token', res.data.data.accessToken);
-          localStorage.setItem(
-            'userInfo',
-            JSON.stringify(res.data.data.user && res.data.data.user),
-          );
-          props.Login(res.data.data.user);
-          if (
-            res &&
-            res.data &&
-            res.data.data &&
-            res.data.data.user &&
-            res.data.data.user.roles[0] &&
-            res.data.data.user.roles[0].roleName === 'Instructor'
-          ) {
-            history.push('/dashboard');
+    // if (rememberMe) {
+    //   localStorage.setItem('remember_me_email', email);
+    //   localStorage.setItem('remember_me_password', password);
+    // }
+    else {
+      setBtnClick(true);
+      axios
+        .post(endpoints.login, { email, password })
+        .then(res => {
+          if (res.data.status === 200) {
+            localStorage.setItem('token', res.data.data.accessToken);
+            localStorage.setItem(
+              'userInfo',
+              JSON.stringify(res.data.data.user && res.data.data.user),
+            );
+            props.Login(res.data.data.user);
+            if (
+              res &&
+              res.data &&
+              res.data.data &&
+              res.data.data.user &&
+              res.data.data.user.roles[0] &&
+              res.data.data.user.roles[0].roleName === 'Instructor'
+            ) {
+              history.push('/dashboard');
+            } else {
+              history.push('/');
+            }
           } else {
-            history.push('/');
+            localStorage.setItem('email', email);
+            history.push('/two_fa');
           }
-        } else {
-          localStorage.setItem('email', email);
-          history.push('/two_fa');
-        }
-      })
-      .catch(err => {
-        toast.error(
-          err.response && err.response.data.message
-            ? err.response.data.message.toString()
-            : 'Message Not Readable',
-        );
-        setTimeout(() => {
-          setBtnClick(false);
-        }, 5000);
-      });
+        })
+        .catch(err => {
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
+          setTimeout(() => {
+            setBtnClick(false);
+          }, 5000);
+        });
+    }
+    setTimeout(() => {
+      setError({ type: '', error: '' });
+    }, 5000);
   };
   return (
     <>
@@ -143,6 +150,9 @@ const SigninPage = props => {
                   onChange={e => setEmail(e.target.value)}
                   placeholder="Your email"
                 />
+                <p className="error">
+                  {error.type === 'email' ? error.error : ''}
+                </p>
               </FormGroup>
               <FormGroup className="form_err">
                 <Label for="password">
@@ -150,7 +160,7 @@ const SigninPage = props => {
                 </Label>
                 <InputGroup>
                   <Input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     name="password"
                     id="password"
                     defaultValue={password}
@@ -164,12 +174,15 @@ const SigninPage = props => {
                     placeholder="******"
                   />
                   <InputGroupAddon addonType="append">
-                    <Button className="btn_eye">
-                      <BsEyeFill />
+                    <Button onClick={() => setShowPassword(!showPassword)} className="btn_eye">
+                      {showPassword ? <BsEyeFill /> : <BsEyeSlashFill />}
                     </Button>
                     {/* <BsEyeSlashFill /> */}
                   </InputGroupAddon>
                 </InputGroup>
+                <p className="error">
+                  {error.type === 'password' ? error.error : ''}
+                </p>
                 {/* <Input
                   type="password"
                   name="password"
@@ -184,9 +197,9 @@ const SigninPage = props => {
                   }}
                   placeholder="******"
                 /> */}
-                <div className="error-box">
+                {/* <div className="error-box">
                   {error && <p className="error">{error}</p>}
-                </div>
+                </div> */}
               </FormGroup>
               <div className="remember_forgot">
                 {/* <FormGroup check>
@@ -210,7 +223,7 @@ const SigninPage = props => {
               <Button
                 id="submitButton"
                 onClick={login}
-                disabled={btnClick || !email || !password}
+                disabled={btnClick}
               >
                 <FormattedMessage {...messages.Login} />
               </Button>
