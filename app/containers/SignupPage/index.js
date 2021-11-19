@@ -21,6 +21,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import './app.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -590,3 +591,7 @@ export default function SignupPage(props) {
     </>
   );
 }
+
+SignupPage.propTypes = {
+  history: PropTypes.any,
+};

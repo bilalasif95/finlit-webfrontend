@@ -14,6 +14,7 @@ import {
   InputGroupAddon,
 } from 'reactstrap';
 import * as qs from 'query-string';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 // import { Link } from 'react-router-dom';
@@ -110,7 +111,7 @@ export default function ResetPassword(props) {
       <div className="registration_page forgot_page">
         <Helmet>
           <title>Reset Password</title>
-          <meta name="description" content="FinLit - Forgot Password Page" />
+          <meta name="description" content="FinLit - Reset Password Page" />
         </Helmet>
         <Container>
           <div className="form_container">
@@ -154,7 +155,7 @@ export default function ResetPassword(props) {
                 </FormGroup>
                 <FormGroup className="resetField">
                   <Label for="confirmPassword">
-                    <FormattedMessage {...messages.Password} />
+                    <FormattedMessage {...messages.ConfirmPassword} />
                   </Label>
                   <InputGroup>
                     <Input
@@ -204,3 +205,7 @@ export default function ResetPassword(props) {
     </>
   );
 }
+
+ResetPassword.propTypes = {
+  history: PropTypes.any,
+};

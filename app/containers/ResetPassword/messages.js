@@ -20,18 +20,14 @@ export default defineMessages({
     id: `${scope}.NewPassword`,
     defaultMessage: 'New Password',
   },
-  Password: {
-    id: `${scope}.Password`,
+  ConfirmPassword: {
+    id: `${scope}.ConfirmPassword`,
     defaultMessage: 'Confirm Password',
   },
   EmailError: {
     id: `${scope}.EmailError`,
     defaultMessage: `
     Unable to reset password due to unkonown error. Please try again`,
-  },
-  ResetPassword: {
-    id: `${scope}.ResetPassword`,
-    defaultMessage: `Reset Password`,
   },
   BackLogin: {
     id: `${scope}.BackLogin`,

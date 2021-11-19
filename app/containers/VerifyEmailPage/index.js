@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 import { MdMail } from 'react-icons/md';
+import PropTypes from 'prop-types';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
 
@@ -49,3 +50,7 @@ export default function VerifyEmailPage(props) {
     </>
   );
 }
+
+VerifyEmailPage.propTypes = {
+  location: PropTypes.any,
+};

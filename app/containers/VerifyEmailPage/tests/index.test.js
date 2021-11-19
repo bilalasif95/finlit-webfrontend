@@ -11,7 +11,7 @@ describe('VerifyEmailPage />', () => {
     } = render(
       <IntlProvider locale="en">
         <BrowserRouter>
-          <VerifyEmailPage />
+          <VerifyEmailPage location={{ state: '' }} />
         </BrowserRouter>
       </IntlProvider>,
     );
