@@ -45,9 +45,10 @@ export default function ResetPassword(props) {
 
   const forgotPasswordBtn = () => {
     setError({ type: '', error: '' });
-    if (!newPassword) {
-      setError({ type: 'newPassword', error: 'New Password is required' });
-    } else if (
+    // if (!newPassword) {
+    //   setError({ type: 'newPassword', error: 'New Password is required' });
+    // } else
+    if (
       !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(
         newPassword,
       ) ||
@@ -57,19 +58,21 @@ export default function ResetPassword(props) {
         type: 'newPassword',
         error: 'Use 8-15 characters with a mix of letters, numbers & symbols',
       });
-    } else if (!confirmPassword) {
-      setError({ type: 'confirmPassword', error: 'New Password is required' });
-    } else if (
-      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(
-        confirmPassword,
-      ) ||
-      (!confirmPassword.length >= 8 && !confirmPassword.length <= 15)
-    ) {
-      setError({
-        type: 'confirmPassword',
-        error: 'Use 8-15 characters with a mix of letters, numbers & symbols',
-      });
-    } else if (newPassword !== confirmPassword) {
+    }
+    // else if (!confirmPassword) {
+    //   setError({ type: 'confirmPassword', error: 'New Password is required' });
+    // } else if (
+    //   !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(
+    //     confirmPassword,
+    //   ) ||
+    //   (!confirmPassword.length >= 8 && !confirmPassword.length <= 15)
+    // ) {
+    //   setError({
+    //     type: 'confirmPassword',
+    //     error: 'Use 8-15 characters with a mix of letters, numbers & symbols',
+    //   });
+    // }
+    else if (newPassword !== confirmPassword) {
       setError({ type: 'confirmPassword', error: "Password doesn't match" });
     } else {
       setBtnClick(true);
@@ -194,7 +197,7 @@ export default function ResetPassword(props) {
                 <Button
                   id="submitButton"
                   onClick={forgotPasswordBtn}
-                  disabled={btnClick}
+                  disabled={btnClick || !newPassword || !confirmPassword}
                 >
                   <FormattedMessage {...messages.ResetPassword} />
                 </Button>

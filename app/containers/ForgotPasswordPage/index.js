@@ -23,9 +23,10 @@ export default function ForgotPasswordPage() {
 
   const forgotPasswordBtn = () => {
     setError('');
-    if (!email) {
-      setError('Email is required');
-    } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
+    // if (!email) {
+    //   setError('Email is required');
+    // } else
+    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError('Invalid email address');
     } else {
       setBtnClick(true);
@@ -95,7 +96,7 @@ export default function ForgotPasswordPage() {
                   onClick={() => {
                     forgotPasswordBtn();
                   }}
-                  disabled={btnClick}
+                  disabled={btnClick || !email}
                 >
                   <FormattedMessage {...messages.ResetPassword} />
                 </Button>
