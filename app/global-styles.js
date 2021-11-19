@@ -722,54 +722,54 @@ const GlobalStyle = createGlobalStyle`
   .form-group {
     margin: 0 0 1.5rem;
     position: relative;
-}
-.input-group {
-  position: relative;
-  input {
-    border-bottom-right-radius: 0.25rem !important;
-    border-top-right-radius: 0.25rem !important;
   }
-  .input-group-append {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 3rem;
-    z-index: 3;
-  }
-  .btn_eye {
-    background-color: transparent;
-    margin: 0;
-    padding: 0;
-    svg {
-      fill: #8b8b8b;
-      font-size: 1.135rem;
+  .input-group {
+    position: relative;
+    input {
+      border-bottom-right-radius: 0.25rem !important;
+      border-top-right-radius: 0.25rem !important;
+    }
+    .input-group-append {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 3rem;
+      z-index: 3;
+    }
+    .btn_eye {
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
+      svg {
+        fill: #8b8b8b;
+        font-size: 1.135rem;
+      }
     }
   }
-}
-.form_err {
-  margin: 0 0 1.5rem;
-}
-label {
-  color: #484848;
-  line-height: 1rem;
-  font-size: 0.875rem;
-}
-.form-control {
-  color: #484848;
-  border-radius: 3px;
-  border: 1px solid #d8d8d8;
-  &:focus {
-    border: 1px solid #80bb2b;
-    box-shadow: none;
+  .form_err {
+    margin: 0 0 1.5rem;
   }
-  &::placeholder {
-    color: #e6e6e6;
+  label {
+    color: #484848;
+    line-height: 1rem;
+    font-size: 0.875rem;
   }
-}
-button {
+  .form-control {
+    color: #484848;
+    border-radius: 3px;
+    border: 1px solid #d8d8d8;
+    &:focus {
+      border: 1px solid #80bb2b;
+      box-shadow: none;
+    }
+    &::placeholder {
+      color: #e6e6e6;
+    }
+  }
+  button {
     background-color: #3e952e;
     border: none;
     color: #fff;
