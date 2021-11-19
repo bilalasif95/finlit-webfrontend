@@ -2,7 +2,7 @@
  * My Profile Page
  *
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
 import history from 'utils/history';
@@ -29,7 +29,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from '../../components/student-panel/Sidebar/index';
 // import ChangePassword from '../../components/MyProfilePage/ChangePassword';
 import CoursesTable from '../../components/instructor-panel/CoursesTable';
-
+import { redirectToLogin } from '../../utils/redirectToLogin';
 // import Profile from '../../images/profile.jpg';
 
 export default function MyCourses() {
@@ -43,6 +43,10 @@ export default function MyCourses() {
   const goToCreateCourse = () => {
     history.push('/create_course');
   };
+
+  useEffect(() => {
+    redirectToLogin();
+  }, []);
 
   return (
     <>

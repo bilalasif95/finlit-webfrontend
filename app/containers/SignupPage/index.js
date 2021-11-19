@@ -589,13 +589,16 @@ export default function SignupPage(props) {
                   onChange={onCaptchaHandler}
                   height="100px"
                   width="100%"
-                  value={value}
                 />
               </div>
               <Button
                 onClick={signup}
                 disabled={
-                  btnClick || !email || !password || !passwordConfirmation
+                  btnClick ||
+                  !email ||
+                  !password ||
+                  !passwordConfirmation ||
+                  !value
                 }
               >
                 <FormattedMessage {...messages.SignUp} />
