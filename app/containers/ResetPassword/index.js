@@ -111,7 +111,7 @@ export default function ResetPassword(props) {
   };
   return (
     <>
-      <div className="registration_page forgot_page">
+      <div className="forgot_page">
         <Helmet>
           <title>Reset Password</title>
           <meta name="description" content="FinLit - Reset Password Page" />

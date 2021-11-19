@@ -57,7 +57,7 @@ export default function ForgotPasswordPage() {
   };
   return (
     <>
-      <div className="registration_page forgot_page">
+      <div className="forgot_page">
         <Helmet>
           <title>Forgot Password</title>
           <meta name="description" content="FinLit - Forgot Password Page" />

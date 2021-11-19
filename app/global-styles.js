@@ -631,6 +631,11 @@ const GlobalStyle = createGlobalStyle`
 }
 .forgot_page {
   background-color: #e4e4e4 !important;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  // position: fixed;
+  width: 100%;
   .form_container {
     display: flex;
     justify-content: center;
@@ -638,12 +643,11 @@ const GlobalStyle = createGlobalStyle`
     .forgot_inner {
       background-color: #fff;
       border-radius: 0.5rem;
-      max-width: 40.438rem;
+      width: 40.438rem;
       margin: 5rem auto;
       padding: 4rem;
     }
     .form_content {
-      padding: 0 !important;
       img {
         display: block;
         margin: 0 auto 2rem !important;
@@ -705,6 +709,80 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+  @media (min-width: 1440px) {
+    align-items: center;
+    height: 85vh;
+  }
+}
+.form {
+  .form-group {
+    margin: 0 0 1.5rem;
+    position: relative;
+}
+.input-group {
+  position: relative;
+  input {
+    border-bottom-right-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+  }
+  .input-group-append {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 3rem;
+    z-index: 3;
+  }
+  .btn_eye {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    svg {
+      fill: #8b8b8b;
+      font-size: 1.135rem;
+    }
+  }
+}
+.form_err {
+  margin: 0 0 1.5rem;
+}
+label {
+  color: #484848;
+  line-height: 1rem;
+  font-size: 0.875rem;
+}
+.form-control {
+  color: #484848;
+  border-radius: 3px;
+  border: 1px solid #d8d8d8;
+  &:focus {
+    border: 1px solid #80bb2b;
+    box-shadow: none;
+  }
+  &::placeholder {
+    color: #e6e6e6;
+  }
+}
+button {
+    background-color: #3e952e;
+    border: none;
+    color: #fff;
+    font-size: 0.875rem;
+    -webkit-transition: background-color 2s; /* For Safari 3.0 to 6.0 */
+    transition: background-color 2s; /* For modern browsers */
+    padding: 0.75rem;
+    width: 100%;
+    margin: 14px 0px 0px;
+    &:focus {
+        background-color: #2c821c;
+        box-shadow: none;
+    }
+    &:hover {
+        background-color: #2c821c;
+    }
+}
 }
 .registration_page {
   background-color: #fff;
@@ -741,74 +819,6 @@ const GlobalStyle = createGlobalStyle`
               font-weight: 500;
               line-height: 44px;
               margin: 0 0 2.25rem;
-          }
-          .form-group {
-              margin: 0 0 1.5rem;
-              position: relative;
-          }
-          .input-group {
-            position: relative;
-            input {
-              border-bottom-right-radius: 0.25rem !important;
-              border-top-right-radius: 0.25rem !important;
-            }
-            .input-group-append {
-              position: absolute;
-              top: 0;
-              right: 0;
-              display: flex;
-              align-items: center;
-              height: 100%;
-              width: 3rem;
-              z-index: 3;
-            }
-            .btn_eye {
-              background-color: transparent;
-              margin: 0;
-              padding: 0;
-              svg {
-                fill: #8b8b8b;
-                font-size: 1.135rem;
-              }
-            }
-          }
-          .form_err {
-            margin: 0 0 1.5rem;
-          }
-          label {
-            color: #484848;
-            line-height: 1rem;
-            font-size: 0.875rem;
-          }
-          .form-control {
-            color: #484848;
-            border-radius: 3px;
-            border: 1px solid #d8d8d8;
-            &:focus {
-              border: 1px solid #80bb2b;
-              box-shadow: none;
-            }
-            &::placeholder {
-              color: #e6e6e6;
-            }
-          }
-          button {
-              background-color: #3e952e;
-              border: none;
-              color: #fff;
-              font-size: 0.875rem;
-              -webkit-transition: background-color 2s; /* For Safari 3.0 to 6.0 */
-              transition: background-color 2s; /* For modern browsers */
-              padding: 0.75rem;
-              width: 100%;
-              margin: 14px 0px 0px;
-              &:focus {
-                  background-color: #2c821c;
-                  box-shadow: none;
-              }
-              &:hover {
-                  background-color: #2c821c;
-              }
           }
           .remember_forgot {
               display: flex;

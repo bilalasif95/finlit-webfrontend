@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.footer`
-  border-top: 1px solid #ececed;
+  border-top: 1px solid #eee;
   padding: 2.5rem 0;
   background-color: #f8f9fb;
   margin: 0;
