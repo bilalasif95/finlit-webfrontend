@@ -111,8 +111,7 @@ export default function SignupPage(props) {
     ) {
       setError({
         type: 'password',
-        error:
-          'Use 8-15 characters with a mix of letters, numbers & symbols',
+        error: 'Use 8-15 characters with a mix of letters, numbers & symbols',
       });
     } else if (password !== passwordConfirmation) {
       setError({ type: 'passwordconfirm', error: 'Password does not match' });
@@ -126,20 +125,21 @@ export default function SignupPage(props) {
           password,
           passwordConfirmation,
           profession,
-        }
-      }
-      else {
+        };
+      } else {
         data = {
           email,
           roleId,
           password,
           passwordConfirmation,
-        }
+        };
       }
       axios
         .post(endpoints.register, data)
         .then(() => {
-          props.history.push("/verify_email", { email: email.substring(email.lastIndexOf("@") + 1) })
+          props.history.push('/verify_email', {
+            email: email.substring(email.lastIndexOf('@') + 1),
+          });
           // toast.success(
           //   result.data && result.data.message
           //     ? result.data.message
@@ -253,7 +253,12 @@ export default function SignupPage(props) {
                             getContentAnchorEl: null,
                           }}
                         >
-                          {roles && roles.map((res) => <MenuItem key={res.id} value={res.id}>{res.roleName}</MenuItem>)}
+                          {roles &&
+                            roles.map(res => (
+                              <MenuItem key={res.id} value={res.id}>
+                                {res.roleName}
+                              </MenuItem>
+                            ))}
                           {/* <MenuItem value={1}>Educator</MenuItem>
                           <MenuItem value={2}>Student</MenuItem> */}
                         </Select>
@@ -332,7 +337,12 @@ export default function SignupPage(props) {
                             getContentAnchorEl: null,
                           }}
                         >
-                          {roles && roles.map((res) => <MenuItem key={res.id} value={res.id}>{res.roleName}</MenuItem>)}
+                          {roles &&
+                            roles.map(res => (
+                              <MenuItem key={res.id} value={res.id}>
+                                {res.roleName}
+                              </MenuItem>
+                            ))}
                           {/* <MenuItem value={1}>Educator</MenuItem>
                           <MenuItem value={2}>Student</MenuItem> */}
                         </Select>
@@ -399,15 +409,24 @@ export default function SignupPage(props) {
                     </Label>
                     <InputGroup>
                       <Input
-                        type={showCreatePassword ? "text" : "password"}
+                        type={showCreatePassword ? 'text' : 'password'}
                         name="createpassword"
                         id="createpassword"
                         onChange={e => setPassword(e.target.value)}
                         placeholder="******"
                       />
                       <InputGroupAddon addonType="append">
-                        <Button onClick={() => setShowCreatePassword(!showCreatePassword)} className="btn_eye">
-                          {showCreatePassword ? <BsEyeFill /> : <BsEyeSlashFill />}
+                        <Button
+                          onClick={() =>
+                            setShowCreatePassword(!showCreatePassword)
+                          }
+                          className="btn_eye"
+                        >
+                          {showCreatePassword ? (
+                            <BsEyeFill />
+                          ) : (
+                            <BsEyeSlashFill />
+                          )}
                         </Button>
                       </InputGroupAddon>
                     </InputGroup>
@@ -431,15 +450,24 @@ export default function SignupPage(props) {
                     </Label>
                     <InputGroup>
                       <Input
-                        type={showConfirmPassword ? "text" : "password"}
+                        type={showConfirmPassword ? 'text' : 'password'}
                         name="confirmpassword"
                         id="confirmpassword"
                         onChange={e => setPasswordConfirmation(e.target.value)}
                         placeholder="******"
                       />
                       <InputGroupAddon addonType="append">
-                        <Button onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="btn_eye">
-                          {showConfirmPassword ? <BsEyeFill /> : <BsEyeSlashFill />}
+                        <Button
+                          onClick={() =>
+                            setShowConfirmPassword(!showConfirmPassword)
+                          }
+                          className="btn_eye"
+                        >
+                          {showConfirmPassword ? (
+                            <BsEyeFill />
+                          ) : (
+                            <BsEyeSlashFill />
+                          )}
                         </Button>
                       </InputGroupAddon>
                     </InputGroup>

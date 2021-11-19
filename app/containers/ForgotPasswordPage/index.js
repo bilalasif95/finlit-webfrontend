@@ -25,10 +25,8 @@ export default function ForgotPasswordPage() {
     setError('');
     if (!email) {
       setError('Email is required');
-      return;
     } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError('Invalid email address');
-      return;
     } else {
       setBtnClick(true);
       axios

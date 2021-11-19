@@ -160,7 +160,7 @@ const SigninPage = props => {
                 </Label>
                 <InputGroup>
                   <Input
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword ? 'text' : 'password'}
                     name="password"
                     id="password"
                     defaultValue={password}
@@ -174,7 +174,10 @@ const SigninPage = props => {
                     placeholder="******"
                   />
                   <InputGroupAddon addonType="append">
-                    <Button onClick={() => setShowPassword(!showPassword)} className="btn_eye">
+                    <Button
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="btn_eye"
+                    >
                       {showPassword ? <BsEyeFill /> : <BsEyeSlashFill />}
                     </Button>
                     {/* <BsEyeSlashFill /> */}
@@ -220,11 +223,7 @@ const SigninPage = props => {
                   <FormattedMessage {...messages.ForgotPassword} />
                 </Link>
               </div>
-              <Button
-                id="submitButton"
-                onClick={login}
-                disabled={btnClick}
-              >
+              <Button id="submitButton" onClick={login} disabled={btnClick}>
                 <FormattedMessage {...messages.Login} />
               </Button>
               <div className="reg_footer">

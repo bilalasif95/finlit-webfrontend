@@ -86,19 +86,19 @@ const App = () => {
           <meta name="description" content="FinLit" />
         </Helmet>
         {history.location.pathname === '/signup' ||
-          history.location.pathname === '/my_profile' ||
-          history.location.pathname === '/login' ||
-          history.location.pathname === '/email_verification' ||
-          history.location.pathname === '/verify_email' ||
-          history.location.pathname === '/create_new_password' ||
-          history.location.pathname === '/notification' ||
-          history.location.pathname === '/setting' ||
-          history.location.pathname === '/my_courses' ||
-          history.location.pathname === '/create_course' ||
-          history.location.pathname === '/forgot_password' ||
-          history.location.pathname === '/reset_password' ||
-          history.location.pathname === '/two_fa' ? null : userInfo &&
-            userInfo.roles[0].roleName === 'Instructor' ? (
+        history.location.pathname === '/my_profile' ||
+        history.location.pathname === '/login' ||
+        history.location.pathname === '/email_verification' ||
+        history.location.pathname === '/verify_email' ||
+        history.location.pathname === '/create_new_password' ||
+        history.location.pathname === '/notification' ||
+        history.location.pathname === '/setting' ||
+        history.location.pathname === '/my_courses' ||
+        history.location.pathname === '/create_course' ||
+        history.location.pathname === '/forgot_password' ||
+        history.location.pathname === '/reset_password' ||
+        history.location.pathname === '/two_fa' ? null : userInfo &&
+          userInfo.roles[0].roleName === 'Instructor' ? (
           <Header />
         ) : (
           <Header />
@@ -154,14 +154,14 @@ const App = () => {
         <Route path="" component={NotFoundPage} />
       </Switch>
       {history.location.pathname === '/reset_password' ||
-        // history.location.pathname === '/signup' ||
-        // history.location.pathname === '/login' ||
-        // history.location.pathname === '/my_profile' ||
-        // history.location.pathname === '/email_verification' ||
-        // history.location.pathname === '/notification' ||
-        // history.location.pathname === '/forgot_password' ||
-        // history.location.pathname === '/create_new_password' ||
-        history.location.pathname === '/two_fa' ? null : (
+      // history.location.pathname === '/signup' ||
+      // history.location.pathname === '/login' ||
+      // history.location.pathname === '/my_profile' ||
+      // history.location.pathname === '/email_verification' ||
+      // history.location.pathname === '/notification' ||
+      // history.location.pathname === '/forgot_password' ||
+      // history.location.pathname === '/create_new_password' ||
+      history.location.pathname === '/two_fa' ? null : (
         <Footer />
       )}
       <GlobalStyle />

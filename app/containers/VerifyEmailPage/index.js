@@ -32,7 +32,11 @@ export default function VerifyEmailPage(props) {
                   <a
                     className="verification-button"
                     target="_blank"
-                    href={props.location.state ? "https://" + props.location.state.email : ""}
+                    href={
+                      props.location.state
+                        ? `https://${props.location.state.email}`
+                        : ''
+                    }
                   >
                     Go to Email
                   </a>

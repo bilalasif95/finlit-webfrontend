@@ -16,7 +16,9 @@ export default function EmailVerificationPage() {
   const parsed = qs.parse(window.location.search);
   useEffect(() => {
     if (parsed.token) {
-      const authHeaders = parsed ? { Authorization: `Bearer ${parsed.token}` } : {};
+      const authHeaders = parsed
+        ? { Authorization: `Bearer ${parsed.token}` }
+        : {};
       axios
         .get(endpoints.confirmEmail, {
           headers: {
@@ -36,7 +38,7 @@ export default function EmailVerificationPage() {
           );
         });
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -60,10 +62,7 @@ export default function EmailVerificationPage() {
                   <p>
                     <FormattedMessage {...messages.Emaildetail} />
                   </p>
-                  <Link
-                    className="verification-button"
-                    to="/login"
-                  >
+                  <Link className="verification-button" to="/login">
                     Go to Login
                   </Link>
                 </div>
