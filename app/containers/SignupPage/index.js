@@ -23,6 +23,7 @@ import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './app.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -73,6 +74,7 @@ export default function SignupPage(props) {
   const [instructorDiv, setInstructorDiv] = useState(true);
   const [error, setError] = useState({ type: '', error: '' });
   const [btnClick, setBtnClick] = useState(false);
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     axios.get(endpoints.getRoles).then(res => {
@@ -114,8 +116,18 @@ export default function SignupPage(props) {
         type: 'password',
         error: 'Use 8-15 characters with a mix of letters, numbers & symbols',
       });
+    } else if (
+      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(
+        passwordConfirmation,
+      ) ||
+      (!passwordConfirmation.length >= 8 && !passwordConfirmation.length <= 15)
+    ) {
+      setError({
+        type: 'passwordconfirm',
+        error: 'Use 8-15 characters with a mix of letters, numbers & symbols',
+      });
     } else if (password !== passwordConfirmation) {
-      setError({ type: 'passwordconfirm', error: 'Password does not match' });
+      setError({ type: 'passwordconfirm', error: "Password doesn't match" });
     } else {
       setBtnClick(true);
       let data;
@@ -168,6 +180,11 @@ export default function SignupPage(props) {
       setError({ type: '', error: '' });
     }, 5000);
   };
+
+  const onCaptchaHandler = val => {
+    setValue(val);
+  };
+
   return (
     <>
       <div className="registration_page">
@@ -559,7 +576,21 @@ export default function SignupPage(props) {
               {/* <div className="error-box">
                 {error && <p className="error">{error}</p>}
               </div> */}
-              <Button onClick={signup} disabled={btnClick}>
+              <div className="recaptcha">
+                <ReCAPTCHA
+                  style={{
+                    transform: 'scale(0.77)',
+                    transformOrigin: '0 0',
+                  }}
+                  className="g-recaptcha"
+                  data-theme="light"
+                  sitekey="6LfRcUQdAAAAANsH6WSa--gOTPYuPu-VKYd89S7q"
+                  onChange={onCaptchaHandler}
+                  height="100px"
+                  width="100%"
+                />
+              </div>
+              <Button onClick={signup} disabled={btnClick || !value}>
                 <FormattedMessage {...messages.SignUp} />
               </Button>
               <div className="reg_footer">

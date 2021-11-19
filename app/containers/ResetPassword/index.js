@@ -70,6 +70,8 @@ export default function ResetPassword(props) {
         type: 'confirmPassword',
         error: 'Use 8-15 characters with a mix of letters, numbers & symbols',
       });
+    } else if (newPassword !== confirmPassword) {
+      setError({ type: 'confirmPassword', error: "Password doesn't match" });
     } else {
       setBtnClick(true);
       const authHeaders = parsed
