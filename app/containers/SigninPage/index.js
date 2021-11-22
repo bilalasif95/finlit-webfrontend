@@ -244,13 +244,12 @@ const SigninPage = props => {
                   onChange={onCaptchaHandler}
                   height="100px"
                   width="100%"
-                  value={value}
                 />
               </div>
               <Button
                 id="submitButton"
                 onClick={login}
-                disabled={btnClick || !email || !password}
+                disabled={btnClick || !email || !password || !value}
               >
                 <FormattedMessage {...messages.Login} />
               </Button>

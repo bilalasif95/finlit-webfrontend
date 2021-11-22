@@ -82,32 +82,34 @@ function BasicInfo() {
     const token = localStorage.getItem('token');
     const userId = JSON.parse(localStorage.getItem('userInfo'));
     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-    axios
-      .get(`${API}api/user/${userId && userId.id}`, {
-        headers: {
-          Accept: 'application/json',
-          ...authHeaders,
-        },
-      })
-      .then(res => {
-        setUserInfo({
-          firstName: res.data.firstName,
-          lastName: res.data.lastName,
-          description: res.data.description,
-          country: res.data.country,
-          address: res.data.address,
-          profession: res.data.profession,
-          email: res.data.email,
-          gender: res.data.gender,
+    if (token) {
+      axios
+        .get(`${API}api/user/${userId && userId.id}`, {
+          headers: {
+            Accept: 'application/json',
+            ...authHeaders,
+          },
+        })
+        .then(res => {
+          setUserInfo({
+            firstName: res.data.firstName,
+            lastName: res.data.lastName,
+            description: res.data.description,
+            country: res.data.country,
+            address: res.data.address,
+            profession: res.data.profession,
+            email: res.data.email,
+            gender: res.data.gender,
+          });
+        })
+        .catch(err => {
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
         });
-      })
-      .catch(err => {
-        toast.error(
-          err.response && err.response.data.message
-            ? err.response.data.message.toString()
-            : 'Message Not Readable',
-        );
-      });
+    }
   };
   // const handleUpdateProfileSave = () => {
   //   if (Object.keys(updateProfileValidator(userInfo)).length > 0) {

@@ -14,8 +14,7 @@ const Wrapper = styled.div`
     text-align: center;
   }
   .security_verify {
-    padding: 5rem 0;
-    max-width: 40rem;
+    max-width: 32rem;
     margin: 0 auto;
     width: 100%;
     display: flex;
@@ -28,7 +27,15 @@ const Wrapper = styled.div`
       margin: 2.5rem auto;
       width: 5rem;
     }
-
+    h4 {
+      font-weight: 600 !important;
+      font-size: 20px !important;
+    }
+    h5 {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 50px;
+    }
     .app_store {
       align-items: center;
       display: flex;

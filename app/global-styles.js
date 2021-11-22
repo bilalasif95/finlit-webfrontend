@@ -983,7 +983,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .security_verify {
     margin: 0 auto;
-    max-width: 27rem;
+    // max-width: 27rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1164,9 +1164,11 @@ const GlobalStyle = createGlobalStyle`
 .form-text {
   display: flex;
   justify-content: space-between;
-  position: absolute;
   height: 24px;
   width: 100%;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #404041 !important;
   .error {
     color: red !important;
     font-size: 0.75rem;

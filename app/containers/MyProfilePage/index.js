@@ -49,6 +49,7 @@ import Sidebar from '../../components/student-panel/Sidebar/index';
 // import ChangePassword from '../../components/MyProfilePage/ChangePassword';
 // import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthentication';
 // import Profile from '../../images/profile.jpg';
+import { redirectToLogin } from '../../utils/redirectToLogin';
 
 export default function MyProfilePage() {
   // const [activeTab, setActiveTab] = useState('1');
@@ -63,23 +64,25 @@ export default function MyProfilePage() {
     const token = localStorage.getItem('token');
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-    axios
-      .get(`${API}api/user/${userInfo && userInfo.id}`, {
-        headers: {
-          Accept: 'application/json',
-          ...authHeaders,
-        },
-      })
-      .then(res => {
-        setUserObj(res.data);
-      })
-      .catch(err => {
-        toast.error(
-          err.response && err.response.data.message
-            ? err.response.data.message.toString()
-            : 'Message Not Readable',
-        );
-      });
+    if (token) {
+      axios
+        .get(`${API}api/user/${userInfo && userInfo.id}`, {
+          headers: {
+            Accept: 'application/json',
+            ...authHeaders,
+          },
+        })
+        .then(res => {
+          setUserObj(res.data);
+        })
+        .catch(err => {
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
+        });
+    }
   };
   const updateProfileImg = e => {
     // setNewProfileImg(e.target.files[0]);
@@ -112,6 +115,7 @@ export default function MyProfilePage() {
       });
   };
   useEffect(() => {
+    redirectToLogin();
     getCurrentUser();
   }, []);
   return (

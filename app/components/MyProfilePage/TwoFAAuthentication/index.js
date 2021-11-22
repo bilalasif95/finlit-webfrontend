@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // import { withStyles } from '@material-ui/core/styles';
 // import Switch from '@material-ui/core/Switch';
 // import { BsPencil } from 'react-icons/bs';
-import { FaCheckCircle } from 'react-icons/fa';
+// import { BiCheck } from 'react-icons/bi';
 import axios from 'axios';
 import QRCode from 'qrcode.react';
 import PropTypes from 'prop-types';
@@ -24,8 +24,9 @@ import Wrapper from './Wrapper';
 import { API } from '../../../config/config';
 import Img from '../../Img';
 // import Profile from '../../../images/profile.jpg';
-import GooglePlay from '../../../images/GooglePlay.png';
-import AppStore from '../../../images/AppStore.png';
+import GoogleAuth from '../../../images/GoogleAuth.png';
+import Check from '../../../images/check.png';
+// import AppStore from '../../../images/AppStore.png';
 
 function TwoFAAuthentication(props) {
   const [stepOne, setStepOne] = useState(true);
@@ -125,13 +126,13 @@ function TwoFAAuthentication(props) {
     setStepFour(false);
     setStepFive(false);
   };
-  const handleStepThree = () => {
-    setStepOne(false);
-    setStepTwo(false);
-    setStepThree(false);
-    setStepFour(true);
-    setStepFive(false);
-  };
+  // const handleStepThree = () => {
+  //   setStepOne(false);
+  //   setStepTwo(false);
+  //   setStepThree(false);
+  //   setStepFour(true);
+  //   setStepFive(false);
+  // };
   const handleStepFour = () => {
     setStepOne(false);
     setStepTwo(false);
@@ -139,27 +140,27 @@ function TwoFAAuthentication(props) {
     setStepFour(false);
     setStepFive(true);
   };
-  const handleStepOneClose = () => {
-    setStepOne(true);
-    setStepTwo(false);
-    setStepThree(false);
-    setStepFour(false);
-    setStepFive(false);
-  };
-  const handleStepTwoClose = () => {
-    setStepOne(false);
-    setStepTwo(true);
-    setStepThree(false);
-    setStepFour(false);
-    setStepFive(false);
-  };
-  const handleStepThreeClose = () => {
-    setStepOne(false);
-    setStepTwo(false);
-    setStepThree(true);
-    setStepFour(false);
-    setStepFive(false);
-  };
+  // const handleStepOneClose = () => {
+  //   setStepOne(true);
+  //   setStepTwo(false);
+  //   setStepThree(false);
+  //   setStepFour(false);
+  //   setStepFive(false);
+  // };
+  // const handleStepTwoClose = () => {
+  //   setStepOne(false);
+  //   setStepTwo(true);
+  //   setStepThree(false);
+  //   setStepFour(false);
+  //   setStepFive(false);
+  // };
+  // const handleStepThreeClose = () => {
+  //   setStepOne(false);
+  //   setStepTwo(false);
+  //   setStepThree(true);
+  //   setStepFour(false);
+  //   setStepFive(false);
+  // };
   useEffect(() => {
     if (props.userData.twoFA === true) {
       setStepOne(false);
@@ -180,24 +181,24 @@ function TwoFAAuthentication(props) {
       {stepOne && (
         <div className="step_one">
           <div className="security_verify">
+            <div className="app_store">
+              <img src={Check} alt="Check" />
+            </div>
             <h4>
               <FormattedMessage {...messages.SecurityVerification} />
             </h4>
-            <p>
+            <h5>
               Enable 2FA Google Authenticator, to increase your account
               security.
-            </p>
-            <FaCheckCircle />
+            </h5>
+            {/*           
             <h4>Enable Google Authenticator</h4>
-            <p>Recommended</p>
+            <p>Recommended</p> */}
           </div>
-          <div className="form_footer">
+          <div className="form_footer TwofaBtns">
             <div className="bottom_btns">
-              <Button className="btn_cancel">
-                <FormattedMessage {...messages.Cancel} />
-              </Button>
               <Button className="btn_submit" onClick={handleStepOne}>
-                <FormattedMessage {...messages.ContinueVerify} />
+                <FormattedMessage {...messages.Continue} />
               </Button>
             </div>
           </div>
@@ -206,34 +207,27 @@ function TwoFAAuthentication(props) {
       {stepTwo && (
         <div className="step_two">
           <div className="security_verify">
-            <h4>
-              <FormattedMessage {...messages.DownloadGA} />
-            </h4>
-            <p>
-              Enable 2FA Google Authenticator, to increase your account
-              security.
-            </p>
             <div className="app_store">
               <Img
-                src={GooglePlay}
-                alt="Google Play"
+                src={GoogleAuth}
+                alt="google Auth."
                 height="100%"
                 width="100%"
               />
-              <Img src={AppStore} alt="App Store" height="100%" width="100%" />
+              {/* <Img src={AppStore} alt="App Store" height="100%" width="100%" /> */}
             </div>
-            <p>
-              Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-              used in laying out print, graphic or web designs.{' '}
-            </p>
+            <h4>
+              <FormattedMessage {...messages.DownloadGA} />
+            </h4>
+            <h5>
+              Enable 2FA Google Authenticator, to increase your account
+              security.
+            </h5>
           </div>
-          <div className="form_footer">
+          <div className="form_footer TwofaBtns">
             <div className="bottom_btns">
-              <Button className="btn_cancel" onClick={handleStepOneClose}>
-                <FormattedMessage {...messages.Cancel} />
-              </Button>
-              <Button className="btn_submit" onClick={getQrCodeUri}>
-                <FormattedMessage {...messages.ContinueVerify} />
+              <Button className="btn_submit" onClick={handleStepTwo}>
+                <FormattedMessage {...messages.Continue} />
               </Button>
             </div>
           </div>
@@ -242,54 +236,73 @@ function TwoFAAuthentication(props) {
       {stepThree && (
         <div className="step_three">
           <div className="security_verify">
-            <h4>
-              <FormattedMessage {...messages.ScanQR} />
-            </h4>
-            <p>
-              Enable 2FA Google Authenticator, to increase your account
-              security.
-            </p>
             <div className="app_store">
-              <QRCode value={QrUri} />
+              <QRCode className="customQR" value={QrUri} />
             </div>
+            <h4 className="left">
+              <FormattedMessage {...messages.EnableAuth} />
+            </h4>
+            <FormGroup className="mb-5">
+              {/* <Label for="authcode">
+              <FormattedMessage {...messages.AuthenticatorCode} />
+            </Label> */}
+              <FormText color="muted">
+                Enter the 6 digit code that you see in the app
+              </FormText>
+              <Input
+                type="text"
+                name="authcode"
+                id="authcode"
+                placeholder="Enter 6 Digit Code"
+                value={twoFaCode}
+                onChange={e => {
+                  setTwoFaCode(e.target.value);
+                }}
+              />
+              <Label for="authcode">
+                {error ? <p className="error">{error}</p> : ''}
+              </Label>
+            </FormGroup>
           </div>
-          <div className="form_footer">
+          <div className="form_footer TwofaBtns">
             <div className="bottom_btns">
-              <Button className="btn_cancel" onClick={handleStepTwoClose}>
-                <FormattedMessage {...messages.Cancel} />
+              <Button className="btn_submit" onClick={verifyTwoFaCode}>
+                Verify
               </Button>
-              <Button className="btn_submit" onClick={handleStepThree}>
-                <FormattedMessage {...messages.ContinueVerify} />
-              </Button>
+              {/* <Button className="btn_submit" onClick={handleStepThree}>
+              <FormattedMessage {...messages.Continue} />
+            </Button> */}
             </div>
           </div>
         </div>
       )}
       {stepFour && (
         <div className="step_four">
-          <div className="enable_auth">
+          <div className="enable_auth security_verify">
             {props.userData.twoFA ? (
               <>
                 <h4>
                   <FormattedMessage {...messages.DisableAuth} />
                 </h4>
-                <p>Disable 2FA Authentication.</p>
               </>
             ) : (
               <>
                 <h4>
                   <FormattedMessage {...messages.EnableAuth} />
                 </h4>
-                <p>
+                {/* <p>
                   Enable 2FA Google Authenticator, to increase your account
                   security.
-                </p>
+                </p> */}
               </>
             )}
             <FormGroup>
-              <Label for="authcode">
+              {/* <Label for="authcode">
                 <FormattedMessage {...messages.AuthenticatorCode} />
-              </Label>
+              </Label> */}
+              <FormText color="muted">
+                Enter the 6 digit code that you see in the app
+              </FormText>
               <Input
                 type="text"
                 name="authcode"
@@ -303,12 +316,9 @@ function TwoFAAuthentication(props) {
               <Label for="authcode">
                 {error ? <p className="error">{error}</p> : ''}
               </Label>
-              <FormText color="muted">
-                Enter the 6 digit code visible on your google authenticator app
-              </FormText>
             </FormGroup>
           </div>
-          <div className="form_footer">
+          <div className="form_footer TwofaBtns">
             <div className="bottom_btns">
               {props.userData.twoFA ? (
                 <Button
@@ -320,13 +330,13 @@ function TwoFAAuthentication(props) {
                   <FormattedMessage {...messages.Cancel} />
                 </Button>
               ) : (
-                <Button className="btn_cancel" onClick={handleStepThreeClose}>
+                <Button className="btn_cancel" onClick={getQrCodeUri}>
                   <FormattedMessage {...messages.Cancel} />
                 </Button>
               )}
-              <Button className="btn_submit" onClick={verifyTwoFaCode}>
-                <FormattedMessage {...messages.ContinueVerify} />
-              </Button>
+              {/* <Button className="btn_submit" onClick={verifyTwoFaCode}>
+                <FormattedMessage {...messages.Continue} />
+              </Button> */}
             </div>
           </div>
         </div>
