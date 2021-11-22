@@ -50,11 +50,15 @@ export default defineMessages({
   },
   DragDrop: {
     id: `${scope}.DragDrop`,
-    defaultMessage: `Drag and drop your video here, or use the button below`,
+    defaultMessage: `Drag and drop your video here, or`,
   },
-  UploadVideo: {
-    id: `${scope}.UploadVideo`,
-    defaultMessage: 'Upload Video',
+  Browse: {
+    id: `${scope}.Browse`,
+    defaultMessage: 'Browse',
+  },
+  Support: {
+    id: `${scope}.Support`,
+    defaultMessage: 'Supports: AVI, MOV, MP4, FLV, AAF, MKV, WMV, PMEG',
   },
   DeleteVideo: {
     id: `${scope}.DeleteVideo`,

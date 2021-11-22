@@ -31,7 +31,7 @@ import Dropzone from 'react-dropzone';
 import history from 'utils/history';
 // import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-// import { IoIosClose } from 'react-icons/io';
+import { IoIosClose } from 'react-icons/io';
 // import { IoMdAttach } from 'react-icons/io';
 import {
   // RiStarSFill,
@@ -91,7 +91,7 @@ export default function CreateNewCourse() {
   const [accordinTwo, setAccordinTwo] = useState(false);
   const [accordinThree, setAccordinThree] = useState(false);
 
-  const dataVideo = { courseVideo: '' };
+  const dataVideo = { courseVideo: null };
 
   const handleCourseStepOne = () => {
     setCourseStepOne(true);
@@ -347,8 +347,8 @@ export default function CreateNewCourse() {
                       </Col>
                       <Col lg={12}>
                         <div className="graphics">
-                          <div className="view_cont">
-                            {courseVideo === '' ? (
+                          {courseVideo === '' ? (
+                            <div className="view_cont">
                               <div className="view_graphic">
                                 <Img
                                   src={Upload}
@@ -357,76 +357,83 @@ export default function CreateNewCourse() {
                                   width="100%"
                                 />
                               </div>
-                            ) : (
-                              <div className="view_thumb">
-                                <video>
-                                  <source
-                                    src={
-                                      dataVideo.courseVideo
-                                        ? typeof dataVideo.courseVideo ===
-                                          'string'
-                                          ? dataVideo.courseVideo
-                                          : courseVideo
-                                        : courseVideo
-                                    }
-                                  />
-                                  <track
-                                    src={
-                                      dataVideo.courseVideo
-                                        ? typeof dataVideo.courseVideo ===
-                                          'string'
-                                          ? dataVideo.courseVideo
-                                          : courseVideo
-                                        : courseVideo
-                                    }
-                                    kind="captions"
-                                    srcLang="en"
-                                    label="Course Video"
-                                  />
-                                </video>
-                              </div>
-                            )}
-                          </div>
-                          <Dropzone
-                            accept="video/*"
-                            multiple={false}
-                            onDrop={acceptedFiles => {
-                              if (acceptedFiles && acceptedFiles[0]) {
-                                const courseVdo = acceptedFiles[0];
-                                dataVideo.courseVideo = courseVdo;
-                                // setcourseVideoFile(acceptedFiles[0]);
-                                const reader = new FileReader();
-                                reader.onload = e => {
-                                  setCourseVideo(e.target.result);
-                                };
-                                reader.readAsDataURL(acceptedFiles[0]);
-                              }
-                            }}
-                          >
-                            {({ getRootProps, getInputProps }) => (
-                              <div className="camera" {...getRootProps()}>
-                                <Input {...getInputProps()} />
-                                <p>
-                                  <FormattedMessage {...messages.DragDrop} />
-                                </p>
-                                <div className="upload_delete">
-                                  <div className="upload_btn">
-                                    <FormattedMessage
-                                      {...messages.UploadVideo}
-                                    />
+                              <Dropzone
+                                accept="video/*"
+                                multiple={false}
+                                onDrop={acceptedFiles => {
+                                  if (acceptedFiles && acceptedFiles[0]) {
+                                    const courseVdo = acceptedFiles[0];
+                                    dataVideo.courseVideo = courseVdo;
+                                    // setcourseVideoFile(acceptedFiles[0]);
+                                    const reader = new FileReader();
+                                    reader.onload = e => {
+                                      setCourseVideo(e.target.result);
+                                    };
+                                    reader.readAsDataURL(acceptedFiles[0]);
+                                  }
+                                }}
+                              >
+                                {({ getRootProps, getInputProps }) => (
+                                  <div className="camera" {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    <div className="drop_upload">
+                                      <p>
+                                        <FormattedMessage
+                                          {...messages.DragDrop}
+                                        />
+                                      </p>
+                                      <div className="upload_btn">
+                                        <FormattedMessage
+                                          {...messages.Browse}
+                                        />
+                                      </div>
+                                    </div>
+                                    <span className="support">
+                                      <FormattedMessage {...messages.Support} />
+                                    </span>
                                   </div>
-                                  {/* <Button
-                                    onClick={() => {
-                                      setCourseVideo('');
-                                      dataVideo.courseVideo = null;
-                                    }}
-                                  >
-                                    <FormattedMessage {...messages.DeleteVideo} />
-                                  </Button> */}
-                                </div>
-                              </div>
-                            )}
-                          </Dropzone>
+                                )}
+                              </Dropzone>
+                            </div>
+                          ) : (
+                            <div className="view_thumb">
+                              <Button
+                                className="del_btn"
+                                onClick={() => {
+                                  setCourseVideo('');
+                                  dataVideo.courseVideo = null;
+                                }}
+                              >
+                                <IoIosClose />
+                                {/* <FormattedMessage {...messages.DeleteVideo} /> */}
+                              </Button>
+                              <video>
+                                <source
+                                  src={
+                                    dataVideo.courseVideo
+                                      ? typeof dataVideo.courseVideo ===
+                                        'string'
+                                        ? dataVideo.courseVideo
+                                        : courseVideo
+                                      : courseVideo
+                                  }
+                                />
+                                <track
+                                  src={
+                                    dataVideo.courseVideo
+                                      ? typeof dataVideo.courseVideo ===
+                                        'string'
+                                        ? dataVideo.courseVideo
+                                        : courseVideo
+                                      : courseVideo
+                                  }
+                                  kind="captions"
+                                  srcLang="en"
+                                  label="Course Video"
+                                />
+                              </video>
+                            </div>
+                          )}
                         </div>
                       </Col>
                     </Row>
@@ -595,7 +602,7 @@ export default function CreateNewCourse() {
                                         {...messages.DemoVideo}
                                       />
                                     </Label>
-                                    <Dropzone
+                                    {/* <Dropzone
                                       accept="video/*"
                                       multiple={false}
                                       onDrop={acceptedFiles => {
@@ -632,7 +639,7 @@ export default function CreateNewCourse() {
                                           </div>
                                         </div>
                                       )}
-                                    </Dropzone>
+                                    </Dropzone> */}
                                   </FormGroup>
                                 </Col>
                               </Row>
@@ -657,7 +664,7 @@ export default function CreateNewCourse() {
                                           {...messages.DemoVideo}
                                         />
                                       </Label>
-                                      <Dropzone
+                                      {/* <Dropzone
                                         accept="video/*"
                                         multiple={false}
                                         onDrop={acceptedFiles => {
@@ -697,7 +704,7 @@ export default function CreateNewCourse() {
                                             </div>
                                           </div>
                                         )}
-                                      </Dropzone>
+                                      </Dropzone> */}
                                     </FormGroup>
                                   </Col>
                                 </Row>

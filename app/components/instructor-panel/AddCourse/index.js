@@ -24,7 +24,8 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 import { IoMdAttach, IoIosClose, IoMdClose } from 'react-icons/io';
-import { MdEdit, MdPhotoLibrary } from 'react-icons/md';
+import { MdEdit } from 'react-icons/md';
+// MdPhotoLibrary
 import { FaVideo } from 'react-icons/fa';
 import Dropzone from 'react-dropzone';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -66,11 +67,11 @@ function AddCourse() {
   const [content, setContent] = useState('');
   const [language, setLanguage] = useState('0');
   const [category, setCategory] = useState('0');
-  const [courseImage, setCourseImage] = useState('');
-  const [courseVideo, setCourseVideo] = useState('');
+  // const [courseImage, setCourseImage] = useState('');
+  // const [courseVideo, setCourseVideo] = useState('');
   const [lectureVideo, setLectureVideo] = useState('');
   const data = { courseImage: '' };
-  const dataVideo = { courseVideo: '' };
+  // const dataVideo = { courseVideo: null };
   const lecVideo = { lectureVideo: '' };
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -243,51 +244,63 @@ function AddCourse() {
                     </FormGroup>
                   </Col>
                   {/* <Col lg={6}>
-                        <p>Preview:</p>
+                    <p>Preview:</p>
+                    <div>
+                      <div>
                         <div>
-                          <div>
-                            <div>
-                              {logo === "" ? (
-                                'dummy'
-                              ) : (
-                                <img src={data.logo ? typeof data.logo === "string" ? data.logo : logo : logo} />
-                              )}
-                            </div>
-                          </div>
-
-                          <div>
-                            <Dropzone
-                              accept="image/*"
-                              multiple={false}
-                              onDrop={acceptedFiles => {
-                                if (acceptedFiles && acceptedFiles[0]) {
-                                  data.logo = acceptedFiles[0];
-                                  // setLogoFile(acceptedFiles[0]);
-                                  const reader = new FileReader();
-                                  reader.onload = e => {
-                                    setLogo(e.target.result);
-                                  };
-                                  reader.readAsDataURL(acceptedFiles[0]);
-                                }
-                              }}
-                            >
-                              {({ getRootProps, getInputProps }) => (
-                                <section>
-                                  <div {...getRootProps()}>
-                                    <input {...getInputProps()} />
-
-                                    <p>Drag and drop an image here or click</p>
-                                    'file upload img'
-                                  </div>
-                                </section>
-                              )}
-                            </Dropzone>
-                          </div>
+                          {logo === '' ? (
+                            'dummy'
+                          ) : (
+                            <img
+                              src={
+                                data.logo
+                                  ? typeof data.logo === 'string'
+                                    ? data.logo
+                                    : logo
+                                  : logo
+                              }
+                            />
+                          )}
                         </div>
-                        <button onClick={() => { setLogo(""); data.logo = null }}>
-                          Remove
-                        </button>
-                      </Col> */}
+                      </div>
+
+                      <div>
+                        <Dropzone
+                          accept="image/*"
+                          multiple={false}
+                          onDrop={acceptedFiles => {
+                            if (acceptedFiles && acceptedFiles[0]) {
+                              data.logo = acceptedFiles[0];
+                              // setLogoFile(acceptedFiles[0]);
+                              const reader = new FileReader();
+                              reader.onload = e => {
+                                setLogo(e.target.result);
+                              };
+                              reader.readAsDataURL(acceptedFiles[0]);
+                            }
+                          }}
+                        >
+                          {({ getRootProps, getInputProps }) => (
+                            <section>
+                              <div {...getRootProps()}>
+                                <input {...getInputProps()} />
+                                <p>Drag and drop an image here or click</p>
+                                'file upload img'
+                              </div>
+                            </section>
+                          )}
+                        </Dropzone>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setLogo('');
+                        data.logo = null;
+                      }}
+                    >
+                      Remove
+                    </button>
+                  </Col>
                   <Col lg={6} md={6} sm={12} xs={12}>
                     <div className="graphics">
                       {courseImage === '' ? (
@@ -351,8 +364,8 @@ function AddCourse() {
                         </Dropzone>
                       </FormGroup>
                     </div>
-                  </Col>
-                  <Col lg={6} md={6} sm={12} xs={12}>
+                  </Col> */}
+                  {/* <Col lg={6} md={6} sm={12} xs={12}>
                     <div className="graphics">
                       {courseVideo === '' ? (
                         <div className="view_graphic">
@@ -363,7 +376,7 @@ function AddCourse() {
                           <Button
                             onClick={() => {
                               setCourseVideo('');
-                              data.courseVideo = null;
+                              dataVideo.courseVideo = null;
                             }}
                             className="del_btn"
                           >
@@ -404,7 +417,7 @@ function AddCourse() {
                           onDrop={acceptedFiles => {
                             if (acceptedFiles && acceptedFiles[0]) {
                               const courseVdo = acceptedFiles[0];
-                              data.courseVideo = courseVdo;
+                              dataVideo.courseVideo = courseVdo;
                               // setcourseVideoFile(acceptedFiles[0]);
                               const reader = new FileReader();
                               reader.onload = e => {
@@ -428,7 +441,7 @@ function AddCourse() {
                         </Dropzone>
                       </FormGroup>
                     </div>
-                  </Col>
+                  </Col> */}
                 </Row>
               </AccordionItemPanel>
             </AccordionItem>

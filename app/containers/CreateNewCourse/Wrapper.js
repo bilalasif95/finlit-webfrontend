@@ -56,7 +56,7 @@ const Wrapper = styled.div`
     }
     .graphics {
       align-items: center;
-      border: 1px solid #d8d8d8;
+      border: 1px dashed #d8d8d8;
       border-radius: 0.35rem;
       display: flex;
       flex-direction: column;
@@ -67,63 +67,26 @@ const Wrapper = styled.div`
       .view_cont {
         align-items: center;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, 0%);
-        top: 3.5rem;
-        // width: 100%
+        // transform: translate(-50%, 0%);
+        width: 100%;
       }
       .view_graphic {
         align-items: center;
-        border: 1px solid #eaeaea;
+        border: 1px solid #3e952e;
         border-radius: 5rem;
         display: flex;
         justify-content: center;
         width: 10rem;
         height: 10rem;
         margin: 0 0 2rem;
-        position: relative;
-        padding: 2rem;
+        left: 42%;
+        position: absolute;
+        padding: 2.5rem;
+        top: 3.5rem;
         img {
           width: 100%;
-        }
-      }
-      .view_thumb {
-        align-items: center;
-        border: 1px solid #eaeaea;
-        border-radius: 5rem;
-        display: flex;
-        justify-content: center;
-        width: 10rem;
-        height: 10rem;
-        margin: 0 0 3rem;
-        overflow: hidden;
-        position: relative;
-        .del_btn {
-          align-items: center;
-          display: flex;
-          background-color: #00000021;
-          height: 100%;
-          justify-content: center;
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          z-index: 1;
-          button {
-            background-color: #fff;
-            border: none;
-            border-radius: 1.5rem;
-            cursor: pointer;
-            height: 2rem;
-            padding: 0;
-            width: 2rem;
-          }
-          svg {
-            color: #000;
-            font-size: 2rem;
-          }
         }
       }
       .camera {
@@ -131,12 +94,13 @@ const Wrapper = styled.div`
         flex-direction: column;
         height: 100%;
         justify-content: center;
-        padding: 15rem 3.5rem 3.5rem;
+        padding: 17rem 3.5rem 3.5rem;
+        position: relative;
         width: 100%;
-        p {
-          color: #404041;
+        .support {
+          color: #949494;
           font-size: 0.875rem;
-          font-weight: 550;
+          margin: 0.5rem 0 0;
           text-align: center;
         }
         .input--file {
@@ -154,35 +118,73 @@ const Wrapper = styled.div`
           opacity: 0;
           width: 40px;
         }
-        .upload_delete {
-          align-items: center;
+        .drop_upload {
           display: flex;
           justify-content: center;
-          margin: 1.5rem 0 0;
-          .upload_btn {
-            background-color: #3e952e;
-            color: #fff;
-            cursor: pointer;
-            font-size: 0.875rem;
-            padding: 0.75rem 1.5rem;
+          p {
+            color: #404041;
+            font-size: 1.25rem;
+            font-weight: 600;
             text-align: center;
-            width: 10rem;
           }
-          button {
-            background-color: #3e952e;
-            border: none;
-            border-radius: 0px;
-            color: #fff;
+          .upload_btn {
+            color: #3e952e;
             cursor: pointer;
-            font-size: 0.875rem;
-            margin: 0 0 0 1rem;
-            padding: 0.75rem 1.5rem;
-            text-align: center;
-            width: 10rem;
-            z-index: 2;
-            &:focus {
-              box-shadow: none;
-            }
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 0 0.25rem;
+          }
+        }
+
+        button {
+          background-color: #3e952e;
+          border: none;
+          border-radius: 0px;
+          color: #fff;
+          cursor: pointer;
+          font-size: 0.875rem;
+          margin: 0 0 0 1rem;
+          padding: 0.75rem 1.5rem;
+          text-align: center;
+          width: 10rem;
+          z-index: 2;
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+      .view_thumb {
+        align-items: center;
+        border: 1px solid #d8d8d8;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 20rem;
+        overflow: hidden;
+        position: relative;
+        video {
+          // height: 100%;
+          width: 100%;
+        }
+        .del_btn {
+          align-items: center;
+          display: flex;
+          background-color: #fff;
+          border: none;
+          border-radius: 1.5rem;
+          cursor: pointer;
+          height: 2rem;
+          padding: 0;
+          width: 2rem;
+          justify-content: center;
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 2rem;
+          z-index: 1;
+          svg {
+            color: #000;
+            font-size: 2rem;
           }
         }
       }
