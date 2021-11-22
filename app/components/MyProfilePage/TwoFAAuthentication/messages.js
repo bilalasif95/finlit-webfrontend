@@ -34,8 +34,7 @@ export default defineMessages({
   },
   DisableAuth: {
     id: `${scope}.DisableAuth`,
-    defaultMessage:
-      'Disable Authenticator by verifying your account',
+    defaultMessage: 'Disable Authenticator by verifying your account',
   },
   AuthenticatorCode: {
     id: `${scope}.AuthenticatorCode`,

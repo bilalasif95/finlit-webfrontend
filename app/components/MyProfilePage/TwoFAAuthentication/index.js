@@ -140,13 +140,13 @@ function TwoFAAuthentication(props) {
     setStepFour(false);
     setStepFive(true);
   };
-  const handleStepOneClose = () => {
-    setStepOne(true);
-    setStepTwo(false);
-    setStepThree(false);
-    setStepFour(false);
-    setStepFive(false);
-  };
+  // const handleStepOneClose = () => {
+  //   setStepOne(true);
+  //   setStepTwo(false);
+  //   setStepThree(false);
+  //   setStepFour(false);
+  //   setStepFive(false);
+  // };
   // const handleStepTwoClose = () => {
   //   setStepOne(false);
   //   setStepTwo(true);

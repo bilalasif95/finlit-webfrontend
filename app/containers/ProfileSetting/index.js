@@ -13,11 +13,11 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button,
+  // Button,
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
+  // ModalFooter,
 } from 'reactstrap';
 import classnames from 'classnames';
 import { FormattedMessage } from 'react-intl';
@@ -174,7 +174,7 @@ export default function ProfileSetting() {
       >
         <ModalHeader toggle={toggle2FA} />
         <ModalBody>
-        <TwoFAAuthentication userData={{ twoFA: false }} />
+          <TwoFAAuthentication userData={{ twoFA: false }} />
         </ModalBody>
         {/* <ModalFooter>
           <Button className="deleteBtn" onClick={toggle2FA}>
