@@ -44,4 +44,36 @@ export default defineMessages({
     id: `${scope}.Signup`,
     defaultMessage: 'Sign up',
   },
+  MyCourses: {
+    id: `${scope}.MyCourses`,
+    defaultMessage: 'My Courses',
+  },
+  Settings: {
+    id: `${scope}.Settings`,
+    defaultMessage: 'Settings',
+  },
+  Profile: {
+    id: `${scope}.Profile`,
+    defaultMessage: 'Profile',
+  },
+  Wishlist: {
+    id: `${scope}.Wishlist`,
+    defaultMessage: 'Wishlist',
+  },
+  Messages: {
+    id: `${scope}.Messages`,
+    defaultMessage: 'Messages',
+  },
+  MyCart: {
+    id: `${scope}.MyCart`,
+    defaultMessage: 'My Cart',
+  },
+  Help: {
+    id: `${scope}.Help`,
+    defaultMessage: 'Help',
+  },
+  LogOut: {
+    id: `${scope}.LogOut`,
+    defaultMessage: 'Logout',
+  },
 });

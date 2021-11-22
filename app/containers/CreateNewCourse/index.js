@@ -2,10 +2,11 @@
  * Create New Course Page
  *
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 // import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
+import JoditEditor from 'jodit-react';
 import '../../components/student-panel/Header/profile.css';
 import { FiEdit3 } from 'react-icons/fi';
 // import { withStyles } from '@material-ui/core/styles';
@@ -18,7 +19,7 @@ import {
   Input,
   InputGroup,
   InputGroupAddon,
-  FormText,
+  // FormText,
 } from 'reactstrap';
 // import {
 //   Accordion,
@@ -31,7 +32,7 @@ import Dropzone from 'react-dropzone';
 import history from 'utils/history';
 // import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-// import { IoIosClose } from 'react-icons/io';
+import { IoIosClose } from 'react-icons/io';
 // import { IoMdAttach } from 'react-icons/io';
 import {
   // RiStarSFill,
@@ -76,6 +77,8 @@ const BootstrapInput = withStyles(theme => ({
 }))(InputBase);
 
 export default function CreateNewCourse() {
+  const editor = useRef(null);
+  const [content, setContent] = useState('');
   const [categoryType, setCategoryType] = useState('Select Category Type');
   const [level, setLevel] = useState('Select Level');
   const [language, setLanguage] = useState('Select Language');
@@ -91,7 +94,7 @@ export default function CreateNewCourse() {
   const [accordinTwo, setAccordinTwo] = useState(false);
   const [accordinThree, setAccordinThree] = useState(false);
 
-  const dataVideo = { courseVideo: '' };
+  const dataVideo = { courseVideo: null };
 
   const handleCourseStepOne = () => {
     setCourseStepOne(true);
@@ -177,7 +180,7 @@ export default function CreateNewCourse() {
   return (
     <Wrapper>
       {/* <ToastContainer /> */}
-      <div className="sub_pages profilePages">
+      <div className="profilePages">
         <Helmet>
           <title>Create New Course</title>
           <meta name="description" content="Create New Course" />
@@ -196,7 +199,7 @@ export default function CreateNewCourse() {
                   </div>
                   <div className="create_course">
                     <Row>
-                      <Col lg={6} md={6} sm={6} xs={12}>
+                      <Col lg={12} md={12} sm={12} xs={12}>
                         <FormGroup>
                           <Label for="coursetitle">
                             <FormattedMessage {...messages.CourseTitle} />
@@ -207,12 +210,12 @@ export default function CreateNewCourse() {
                             id="coursetitle"
                             placeholder="Enter Course Title"
                           />
-                          <FormText>
-                            <div className="error">
-                              {/* <span>Error message</span> */}
-                            </div>
-                            {/* <span>0/60</span> */}
-                          </FormText>
+                          {/* <FormText>
+                            <div className="error"> */}
+                          {/* <span>Error message</span> */}
+                          {/* </div> */}
+                          {/* <span>0/60</span> */}
+                          {/* </FormText> */}
                         </FormGroup>
                       </Col>
                       <Col lg={6} md={6} sm={6} xs={12}>
@@ -347,86 +350,95 @@ export default function CreateNewCourse() {
                       </Col>
                       <Col lg={12}>
                         <div className="graphics">
-                          <div className="view_cont">
-                            {courseVideo === '' ? (
+                          {courseVideo === '' ? (
+                            <div className="view_cont">
                               <div className="view_graphic">
-                                <Img
-                                  src={Upload}
-                                  alt="Upload"
-                                  height="100%"
-                                  width="100%"
-                                />
-                              </div>
-                            ) : (
-                              <div className="view_thumb">
-                                <video>
-                                  <source
-                                    src={
-                                      dataVideo.courseVideo
-                                        ? typeof dataVideo.courseVideo ===
-                                          'string'
-                                          ? dataVideo.courseVideo
-                                          : courseVideo
-                                        : courseVideo
-                                    }
+                                <div className="upload_icon">
+                                  <Img
+                                    src={Upload}
+                                    alt="Upload"
+                                    height="100%"
+                                    width="100%"
                                   />
-                                  <track
-                                    src={
-                                      dataVideo.courseVideo
-                                        ? typeof dataVideo.courseVideo ===
-                                          'string'
-                                          ? dataVideo.courseVideo
-                                          : courseVideo
-                                        : courseVideo
-                                    }
-                                    kind="captions"
-                                    srcLang="en"
-                                    label="Course Video"
-                                  />
-                                </video>
-                              </div>
-                            )}
-                          </div>
-                          <Dropzone
-                            accept="video/*"
-                            multiple={false}
-                            onDrop={acceptedFiles => {
-                              if (acceptedFiles && acceptedFiles[0]) {
-                                const courseVdo = acceptedFiles[0];
-                                dataVideo.courseVideo = courseVdo;
-                                // setcourseVideoFile(acceptedFiles[0]);
-                                const reader = new FileReader();
-                                reader.onload = e => {
-                                  setCourseVideo(e.target.result);
-                                };
-                                reader.readAsDataURL(acceptedFiles[0]);
-                              }
-                            }}
-                          >
-                            {({ getRootProps, getInputProps }) => (
-                              <div className="camera" {...getRootProps()}>
-                                <Input {...getInputProps()} />
-                                <p>
-                                  <FormattedMessage {...messages.DragDrop} />
-                                </p>
-                                <div className="upload_delete">
-                                  <div className="upload_btn">
-                                    <FormattedMessage
-                                      {...messages.UploadVideo}
-                                    />
-                                  </div>
-                                  {/* <Button
-                                    onClick={() => {
-                                      setCourseVideo('');
-                                      dataVideo.courseVideo = null;
-                                    }}
-                                  >
-                                    <FormattedMessage {...messages.DeleteVideo} />
-                                  </Button> */}
                                 </div>
                               </div>
-                            )}
-                          </Dropzone>
+                              <Dropzone
+                                accept="video/*"
+                                multiple={false}
+                                onDrop={acceptedFiles => {
+                                  if (acceptedFiles && acceptedFiles[0]) {
+                                    const courseVdo = acceptedFiles[0];
+                                    dataVideo.courseVideo = courseVdo;
+                                    // setcourseVideoFile(acceptedFiles[0]);
+                                    const reader = new FileReader();
+                                    reader.onload = e => {
+                                      setCourseVideo(e.target.result);
+                                    };
+                                    reader.readAsDataURL(acceptedFiles[0]);
+                                  }
+                                }}
+                              >
+                                {({ getRootProps, getInputProps }) => (
+                                  <div className="camera" {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    <div className="drop_upload">
+                                      <p>
+                                        <FormattedMessage
+                                          {...messages.DragDrop}
+                                        />
+                                        <span className="browse">
+                                          <FormattedMessage
+                                            {...messages.Browse}
+                                          />
+                                        </span>
+                                      </p>
+                                    </div>
+                                    <span className="support">
+                                      <FormattedMessage {...messages.Support} />
+                                    </span>
+                                  </div>
+                                )}
+                              </Dropzone>
+                            </div>
+                          ) : (
+                            <div className="view_thumb">
+                              <Button
+                                className="del_btn"
+                                onClick={() => {
+                                  setCourseVideo('');
+                                  dataVideo.courseVideo = null;
+                                }}
+                              >
+                                <IoIosClose />
+                                {/* <FormattedMessage {...messages.DeleteVideo} /> */}
+                              </Button>
+                              <video>
+                                <source
+                                  src={
+                                    dataVideo.courseVideo
+                                      ? typeof dataVideo.courseVideo ===
+                                        'string'
+                                        ? dataVideo.courseVideo
+                                        : courseVideo
+                                      : courseVideo
+                                  }
+                                />
+                                <track
+                                  src={
+                                    dataVideo.courseVideo
+                                      ? typeof dataVideo.courseVideo ===
+                                        'string'
+                                        ? dataVideo.courseVideo
+                                        : courseVideo
+                                      : courseVideo
+                                  }
+                                  kind="captions"
+                                  srcLang="en"
+                                  label="Course Video"
+                                />
+                              </video>
+                            </div>
+                          )}
                         </div>
                       </Col>
                     </Row>
@@ -473,11 +485,18 @@ export default function CreateNewCourse() {
                           </FormGroup>
                           <FormGroup className="mt-4">
                             <Label>Description</Label>
-                            <textarea
+                            <JoditEditor
+                              ref={editor}
+                              value={content}
+                              // config={JoditEditorConfig}
+                              tabIndex={0} // tabIndex of textarea
+                              onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                            />
+                            {/* <textarea
                               className="form-control"
                               rows="6"
                               placeholder="Enter Description"
-                            />
+                            /> */}
                           </FormGroup>
                         </div>
                         <div className="card_Divider">
@@ -492,11 +511,18 @@ export default function CreateNewCourse() {
                             </FormGroup>
                             <FormGroup className="mt-4 mb-0">
                               <Label>Description</Label>
-                              <textarea
+                              <JoditEditor
+                                ref={editor}
+                                value={content}
+                                // config={JoditEditorConfig}
+                                tabIndex={0} // tabIndex of textarea
+                                onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                              />
+                              {/* <textarea
                                 className="form-control"
                                 rows="6"
                                 placeholder="Enter Description"
-                              />
+                              /> */}
                             </FormGroup>
                             <div className="delete">
                               <RiDeleteBin7Line />

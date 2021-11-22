@@ -1,6 +1,6 @@
 export const API = process.env.REACT_APP_API
   ? process.env.REACT_APP_API
-  : 'http://61.85.154.156:3016/';
+  : 'https://dev-finlit-backend.rnssol.com/';
 
 export const JoditEditorConfig = {
   statusbar: false,

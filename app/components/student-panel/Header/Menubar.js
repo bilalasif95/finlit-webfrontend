@@ -216,41 +216,7 @@ const Menubar = styled.div`
     background: url(https://i.imgur.com/aZKcsWl.png);
     background-size: 100% 100%;
   }
-  .user_account {
-    align-items: center;
-    display: flex;
-    justify-content: flex-start;
-    .user_icon {
-      border: 1px solid #fff;
-      height: 40px;
-      width: 40px;
-      overflow: hidden;
-      border-radius: 2rem;
-      img {
-        width: 100%;
-      }
-    }
-    .user_name {
-      align-items: flex-start;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding: 0 0.5rem;
-      width: 135px;
-      p {
-        color: #8b8b8b;
-        font-size: 0.875rem;
-      }
-      span {
-        color: #404041;
-        font-size: 0.75rem;
-        max-width: 130px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-      }
-    }
-  }
+
   @media (max-width: 1100px) and (min-width: 992px) {
     .navbar-collapse {
       width: 60%;
