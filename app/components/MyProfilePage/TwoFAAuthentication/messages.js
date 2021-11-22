@@ -16,13 +16,13 @@ export default defineMessages({
     id: `${scope}.Cancel`,
     defaultMessage: 'Cancel',
   },
-  ContinueVerify: {
-    id: `${scope}.ContinueVerify`,
-    defaultMessage: 'Continue Verification',
+  Continue: {
+    id: `${scope}.Continue`,
+    defaultMessage: 'Continue',
   },
   DownloadGA: {
     id: `${scope}.DownloadGA`,
-    defaultMessage: 'Download and install the Authenticator App',
+    defaultMessage: 'Download & install the Authenticator app',
   },
   ScanQR: {
     id: `${scope}.ScanQR`,
@@ -35,7 +35,7 @@ export default defineMessages({
   DisableAuth: {
     id: `${scope}.DisableAuth`,
     defaultMessage:
-      'Disable Authentication By Providing Code On Your Authenticator APP.',
+      'Disable Authenticator by verifying your account',
   },
   AuthenticatorCode: {
     id: `${scope}.AuthenticatorCode`,

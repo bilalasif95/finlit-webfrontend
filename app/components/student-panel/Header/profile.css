@@ -889,6 +889,26 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+.TwofaBtns {
+  position: initial !important;
+}
+.TwofaBtns .bottom_btns {
+  justify-content: center;
+}
+.TwofaBtns button {
+  min-width: 150px !important;
+}
+.left {
+  text-align: left;
+  margin-top: 10px !important;
+}
+.customQR {
+  height: 80px !important;
+  width: 80px !important;
+}
+.error {
+  margin: 1rem 0 0 !important; 
+}
 @media (max-width: 1200px) {
   .tableCont tbody tr td:nth-child(2) {
     min-width: 135px !important;

@@ -18,4 +18,5 @@ export const endpoints = {
   login: `${API}api/auth/login`,
   forgotPassword: `${API}api/auth/forgotPassword`,
   forgotConfirmPassword: `${API}api/user/forgotConfirmPassword`,
+  changePassword: `${API}api/auth/changePassword`,
 };

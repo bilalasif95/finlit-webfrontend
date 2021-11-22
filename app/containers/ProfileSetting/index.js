@@ -27,7 +27,7 @@ import English from '../../images/english.png';
 import Arabic from '../../images/arabic.png';
 import Sidebar from '../../components/student-panel/Sidebar/index';
 import ChangePassword from '../../components/MyProfilePage/ChangePassword';
-// import Profile from '../../images/profile.jpg';
+import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthentication';
 
 export default function ProfileSetting() {
   const [activeTab, setActiveTab] = useState('1');
@@ -167,13 +167,13 @@ export default function ProfileSetting() {
       >
         <ModalHeader toggle={toggle2FA} />
         <ModalBody>
-          <p>Do you really want to delete profile image?</p>
+        <TwoFAAuthentication userData={{ twoFA: false }} />
         </ModalBody>
-        <ModalFooter>
+        {/* <ModalFooter>
           <Button className="deleteBtn" onClick={toggle2FA}>
             Delete
           </Button>
-        </ModalFooter>
+        </ModalFooter> */}
       </Modal>
     </>
   );
