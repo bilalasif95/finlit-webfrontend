@@ -300,6 +300,7 @@ aside > a {
 .readAllBtn {
   color: #46a135;
   font-weight: 600;
+  padding: 0px;
 }
 .readAllBtn:hover {
   color: #46a135;
@@ -326,9 +327,6 @@ aside > a {
   object-fit: cover;
   border-radius: 100%;
   border: 1px solid #afafaf;
-}
-.notitime {
-  margin-right: 100px;
 }
 .notificationPanel {
   height: 87vh;
@@ -909,7 +907,25 @@ input:checked + .slider:before {
 .error {
   margin: 1rem 0 0 !important; 
 }
+.notificationPanel .table tbody tr td:first-child {
+  width: 72%;
+}
+.notificationPanel .table tbody tr td:nth-child(2) {
+  width: 18% !important;
+} 
+.notificationPanel .table tbody tr td:nth-child(3) {
+  width: 10% !important;
+} 
 @media (max-width: 1200px) {
+  .notificationPanel .table tbody tr td:first-child {
+    min-width: 300px;
+  }
+  .notificationPanel .table tbody tr td:nth-child(2) {
+    min-width: 130px !important;
+  } 
+  .notificationPanel .table tbody tr td:nth-child(3) {
+    min-width: 50px !important;
+  } 
   .tableCont tbody tr td:nth-child(2) {
     min-width: 135px !important;
 }
@@ -943,6 +959,14 @@ input:checked + .slider:before {
   }
 }
 @media (max-width: 575px) {
+  .modal-dialog {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .modal-dialog {
+    margin: 0 !important;
+}
   .publishBtns .bottom_btns {
     margin: 0 0 1rem;
     justify-content: space-between;
@@ -1096,7 +1120,7 @@ input:checked + .slider:before {
     width: 25px;
   }
   .ratingModal .modal-content {
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     background-color: #fff;
 }
@@ -1109,6 +1133,22 @@ input:checked + .slider:before {
 .copyLink input {
   padding: 12px;
 }
+.ratingModal .modal-content .modal-header .close {
+  z-index: 1;
+}
+.successModal .modal-content h4 {
+    font-size: 20px;
+}
+.ratingModal .modal-content .modal-body p {
+  font-size: 14px;
+}
+/* .MobileNav {
+  top: 0;
+  position: fixed !important;      
+  z-index: 1;
+  width: 100%;
+  background: #fff;
+} */
 }
 @media (max-width: 320px) {
   .customTabs .nav-tabs .nav-item .nav-link span {
