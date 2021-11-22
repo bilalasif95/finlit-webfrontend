@@ -40,7 +40,7 @@ const BootstrapInput = withStyles(theme => ({
     borderRadius: 4,
     position: 'relative',
     backgroundColor: theme.palette.background.paper,
-    border: '1px solid #e6e6e6',
+    border: '1px solid #d8d8d8',
     fontSize: 14,
     color: '#484848',
     padding: '0.82rem 1.5rem 0.82rem 1rem',
@@ -82,32 +82,34 @@ function BasicInfo() {
     const token = localStorage.getItem('token');
     const userId = JSON.parse(localStorage.getItem('userInfo'));
     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-    axios
-      .get(`${API}api/user/${userId && userId.id}`, {
-        headers: {
-          Accept: 'application/json',
-          ...authHeaders,
-        },
-      })
-      .then(res => {
-        setUserInfo({
-          firstName: res.data.firstName,
-          lastName: res.data.lastName,
-          description: res.data.description,
-          country: res.data.country,
-          address: res.data.address,
-          profession: res.data.profession,
-          email: res.data.email,
-          gender: res.data.gender,
+    if (token) {
+      axios
+        .get(`${API}api/user/${userId && userId.id}`, {
+          headers: {
+            Accept: 'application/json',
+            ...authHeaders,
+          },
+        })
+        .then(res => {
+          setUserInfo({
+            firstName: res.data.firstName,
+            lastName: res.data.lastName,
+            description: res.data.description,
+            country: res.data.country,
+            address: res.data.address,
+            profession: res.data.profession,
+            email: res.data.email,
+            gender: res.data.gender,
+          });
+        })
+        .catch(err => {
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
         });
-      })
-      .catch(err => {
-        toast.error(
-          err.response && err.response.data.message
-            ? err.response.data.message.toString()
-            : 'Message Not Readable',
-        );
-      });
+    }
   };
   // const handleUpdateProfileSave = () => {
   //   if (Object.keys(updateProfileValidator(userInfo)).length > 0) {

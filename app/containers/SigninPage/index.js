@@ -16,6 +16,7 @@ import history from 'utils/history';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 // BsEyeSlashFill
@@ -40,6 +41,7 @@ const SigninPage = props => {
   const [error, setError] = useState({ type: '', error: '' });
   const [btnClick, setBtnClick] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [value, setValue] = useState('');
   // const [isDisabled, setDisabled] = useState(false);
   UseEnterKeyListener({
     querySelectorToExecuteClick: '#submitButton',
@@ -59,15 +61,17 @@ const SigninPage = props => {
   const login = () => {
     setError({ type: '', error: '' });
     // debugger;
-    if (!email) {
-      setError({ type: 'email', error: 'Email is required' });
-    } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
+    // if (!email) {
+    //   setError({ type: 'email', error: 'Email is required' });
+    // } else
+    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(email)) {
       setError({ type: 'email', error: 'Invalid email address' });
-    } else if (!password) {
-      setError({ type: 'password', error: 'Password is required' });
-      // setError('Please enter Password');
-      // return;
     }
+    // else if (!password) {
+    //   setError({ type: 'password', error: 'Password is required' });
+    //   // setError('Please enter Password');
+    //   // return;
+    // }
     // if (rememberMe) {
     //   localStorage.setItem('remember_me_email', email);
     //   localStorage.setItem('remember_me_password', password);
@@ -116,6 +120,11 @@ const SigninPage = props => {
       setError({ type: '', error: '' });
     }, 5000);
   };
+
+  const onCaptchaHandler = val => {
+    setValue(val);
+  };
+
   return (
     <>
       <div className="registration_page">
@@ -223,7 +232,25 @@ const SigninPage = props => {
                   <FormattedMessage {...messages.ForgotPassword} />
                 </Link>
               </div>
-              <Button id="submitButton" onClick={login} disabled={btnClick}>
+              <div className="recaptcha">
+                <ReCAPTCHA
+                  style={{
+                    transform: 'scale(0.77)',
+                    transformOrigin: '0 0',
+                  }}
+                  className="g-recaptcha"
+                  data-theme="light"
+                  sitekey="6LfRcUQdAAAAANsH6WSa--gOTPYuPu-VKYd89S7q"
+                  onChange={onCaptchaHandler}
+                  height="100px"
+                  width="100%"
+                />
+              </div>
+              <Button
+                id="submitButton"
+                onClick={login}
+                disabled={btnClick || !email || !password || !value}
+              >
                 <FormattedMessage {...messages.Login} />
               </Button>
               <div className="reg_footer">

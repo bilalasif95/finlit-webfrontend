@@ -2,7 +2,7 @@
  * Create New Course Page
  *
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
@@ -50,6 +50,7 @@ import Wrapper from './Wrapper';
 import Upload from '../../images/upload.png';
 import messages from './messages';
 import TagsComponent from '../../components/CourseTag/TagsComponent';
+import { redirectToLogin } from '../../utils/redirectToLogin';
 
 const BootstrapInput = withStyles(theme => ({
   root: {
@@ -61,7 +62,7 @@ const BootstrapInput = withStyles(theme => ({
     borderRadius: 4,
     position: 'relative',
     backgroundColor: theme.palette.background.paper,
-    border: '1px solid #e6e6e6',
+    border: '1px solid #d8d8d8',
     fontSize: 14,
     color: '#484848',
     padding: '0.82rem 1.5rem 0.82rem 1rem',
@@ -168,6 +169,10 @@ export default function CreateNewCourse() {
   //   setErrors({});
   //   getCurrentUserInfo();
   // }, []);
+
+  useEffect(() => {
+    redirectToLogin();
+  }, []);
 
   return (
     <Wrapper>

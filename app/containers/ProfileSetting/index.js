@@ -2,7 +2,7 @@
  * My Profile Page
  *
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
 import '../../components/student-panel/Header/profile.css';
@@ -28,6 +28,8 @@ import Arabic from '../../images/arabic.png';
 import Sidebar from '../../components/student-panel/Sidebar/index';
 import ChangePassword from '../../components/MyProfilePage/ChangePassword';
 import TwoFAAuthentication from '../../components/MyProfilePage/TwoFAAuthentication';
+// import Profile from '../../images/profile.jpg';
+import { redirectToLogin } from '../../utils/redirectToLogin';
 
 export default function ProfileSetting() {
   const [activeTab, setActiveTab] = useState('1');
@@ -40,6 +42,11 @@ export default function ProfileSetting() {
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+
+  useEffect(() => {
+    redirectToLogin();
+  }, []);
+
   return (
     <>
       {/* <ToastContainer /> */}

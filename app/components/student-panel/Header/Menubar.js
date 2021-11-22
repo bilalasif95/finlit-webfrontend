@@ -93,6 +93,7 @@ const Menubar = styled.div`
     .dropdown {
       display: flex;
       justify-content: flex-end;
+      margin: 0;
       padding: 0 0 0 1rem;
       width: 100%;
       .dropdown-toggle {
@@ -235,7 +236,7 @@ const Menubar = styled.div`
       flex-direction: column;
       justify-content: flex-start;
       padding: 0 0.5rem;
-      width: 134px;
+      width: 135px;
       p {
         color: #8b8b8b;
         font-size: 0.875rem;
@@ -243,7 +244,7 @@ const Menubar = styled.div`
       span {
         color: #404041;
         font-size: 0.75rem;
-        max-width: 150px;
+        max-width: 130px;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;

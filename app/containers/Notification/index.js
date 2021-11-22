@@ -2,7 +2,7 @@
  * My Profile Page
  *
  */
-import React from 'react';
+import React, { useEffect } from 'react';
 // import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
 import '../../components/student-panel/Header/profile.css';
@@ -31,12 +31,18 @@ import Girl from '../../images/girl.png';
 import Red from '../../images/red-e.png';
 import Sidebar from '../../components/student-panel/Sidebar/index';
 // import Profile from '../../images/profile.jpg';
+import { redirectToLogin } from '../../utils/redirectToLogin';
 
 export default function Notification() {
   // const [activeTab, setActiveTab] = useState('1');
   // const toggle = tab => {
   //   if (activeTab !== tab) setActiveTab(tab);
   // };
+
+  useEffect(() => {
+    redirectToLogin();
+  }, []);
+
   const Notifications = [
     {
       img: Logo,
