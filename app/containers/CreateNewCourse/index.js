@@ -2,10 +2,11 @@
  * Create New Course Page
  *
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 // import InputBase from '@material-ui/core/InputBase';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
+import JoditEditor from 'jodit-react';
 import '../../components/student-panel/Header/profile.css';
 import { FiEdit3 } from 'react-icons/fi';
 // import { withStyles } from '@material-ui/core/styles';
@@ -18,7 +19,7 @@ import {
   Input,
   InputGroup,
   InputGroupAddon,
-  FormText,
+  // FormText,
 } from 'reactstrap';
 // import {
 //   Accordion,
@@ -76,6 +77,8 @@ const BootstrapInput = withStyles(theme => ({
 }))(InputBase);
 
 export default function CreateNewCourse() {
+  const editor = useRef(null);
+  const [content, setContent] = useState('');
   const [categoryType, setCategoryType] = useState('Select Category Type');
   const [level, setLevel] = useState('Select Level');
   const [language, setLanguage] = useState('Select Language');
@@ -177,7 +180,7 @@ export default function CreateNewCourse() {
   return (
     <Wrapper>
       {/* <ToastContainer /> */}
-      <div className="sub_pages profilePages">
+      <div className="profilePages">
         <Helmet>
           <title>Create New Course</title>
           <meta name="description" content="Create New Course" />
@@ -196,7 +199,7 @@ export default function CreateNewCourse() {
                   </div>
                   <div className="create_course">
                     <Row>
-                      <Col lg={6} md={6} sm={6} xs={12}>
+                      <Col lg={12} md={12} sm={12} xs={12}>
                         <FormGroup>
                           <Label for="coursetitle">
                             <FormattedMessage {...messages.CourseTitle} />
@@ -207,12 +210,12 @@ export default function CreateNewCourse() {
                             id="coursetitle"
                             placeholder="Enter Course Title"
                           />
-                          <FormText>
-                            <div className="error">
-                              {/* <span>Error message</span> */}
-                            </div>
-                            {/* <span>0/60</span> */}
-                          </FormText>
+                          {/* <FormText>
+                            <div className="error"> */}
+                          {/* <span>Error message</span> */}
+                          {/* </div> */}
+                          {/* <span>0/60</span> */}
+                          {/* </FormText> */}
                         </FormGroup>
                       </Col>
                       <Col lg={6} md={6} sm={6} xs={12}>
@@ -350,12 +353,14 @@ export default function CreateNewCourse() {
                           {courseVideo === '' ? (
                             <div className="view_cont">
                               <div className="view_graphic">
-                                <Img
-                                  src={Upload}
-                                  alt="Upload"
-                                  height="100%"
-                                  width="100%"
-                                />
+                                <div className="upload_icon">
+                                  <Img
+                                    src={Upload}
+                                    alt="Upload"
+                                    height="100%"
+                                    width="100%"
+                                  />
+                                </div>
                               </div>
                               <Dropzone
                                 accept="video/*"
@@ -381,12 +386,12 @@ export default function CreateNewCourse() {
                                         <FormattedMessage
                                           {...messages.DragDrop}
                                         />
+                                        <span className="browse">
+                                          <FormattedMessage
+                                            {...messages.Browse}
+                                          />
+                                        </span>
                                       </p>
-                                      <div className="upload_btn">
-                                        <FormattedMessage
-                                          {...messages.Browse}
-                                        />
-                                      </div>
                                     </div>
                                     <span className="support">
                                       <FormattedMessage {...messages.Support} />
@@ -480,11 +485,18 @@ export default function CreateNewCourse() {
                           </FormGroup>
                           <FormGroup className="mt-4">
                             <Label>Description</Label>
-                            <textarea
+                            <JoditEditor
+                              ref={editor}
+                              value={content}
+                              // config={JoditEditorConfig}
+                              tabIndex={0} // tabIndex of textarea
+                              onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                            />
+                            {/* <textarea
                               className="form-control"
                               rows="6"
                               placeholder="Enter Description"
-                            />
+                            /> */}
                           </FormGroup>
                         </div>
                         <div className="card_Divider">
@@ -499,11 +511,18 @@ export default function CreateNewCourse() {
                             </FormGroup>
                             <FormGroup className="mt-4 mb-0">
                               <Label>Description</Label>
-                              <textarea
+                              <JoditEditor
+                                ref={editor}
+                                value={content}
+                                // config={JoditEditorConfig}
+                                tabIndex={0} // tabIndex of textarea
+                                onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                              />
+                              {/* <textarea
                                 className="form-control"
                                 rows="6"
                                 placeholder="Enter Description"
-                              />
+                              /> */}
                             </FormGroup>
                             <div className="delete">
                               <RiDeleteBin7Line />
@@ -602,7 +621,7 @@ export default function CreateNewCourse() {
                                         {...messages.DemoVideo}
                                       />
                                     </Label>
-                                    {/* <Dropzone
+                                    <Dropzone
                                       accept="video/*"
                                       multiple={false}
                                       onDrop={acceptedFiles => {
@@ -639,7 +658,7 @@ export default function CreateNewCourse() {
                                           </div>
                                         </div>
                                       )}
-                                    </Dropzone> */}
+                                    </Dropzone>
                                   </FormGroup>
                                 </Col>
                               </Row>
@@ -664,7 +683,7 @@ export default function CreateNewCourse() {
                                           {...messages.DemoVideo}
                                         />
                                       </Label>
-                                      {/* <Dropzone
+                                      <Dropzone
                                         accept="video/*"
                                         multiple={false}
                                         onDrop={acceptedFiles => {
@@ -704,7 +723,7 @@ export default function CreateNewCourse() {
                                             </div>
                                           </div>
                                         )}
-                                      </Dropzone> */}
+                                      </Dropzone>
                                     </FormGroup>
                                   </Col>
                                 </Row>

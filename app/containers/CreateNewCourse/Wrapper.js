@@ -56,8 +56,6 @@ const Wrapper = styled.div`
     }
     .graphics {
       align-items: center;
-      border: 1px dashed #d8d8d8;
-      border-radius: 0.35rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -73,23 +71,32 @@ const Wrapper = styled.div`
         width: 100%;
       }
       .view_graphic {
-        align-items: center;
-        border: 1px solid #3e952e;
-        border-radius: 5rem;
         display: flex;
         justify-content: center;
-        width: 10rem;
-        height: 10rem;
-        margin: 0 0 2rem;
-        left: 42%;
+        left: 0;
         position: absolute;
-        padding: 2.5rem;
         top: 3.5rem;
+        width: 100%;
+        .upload_icon {
+          align-items: center;
+          border: 1px solid #3e952e;
+          border-radius: 5rem;
+          display: flex;
+          justify-content: center;
+          width: 10rem;
+          height: 10rem;
+          margin: 0 0 2rem;
+          padding: 2.5rem;
+        }
         img {
           width: 100%;
         }
       }
       .camera {
+        border-color: #d8d8d8;
+        border-style: dashed;
+        border-width: 1px;
+        border-radius: 0.35rem;
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -127,7 +134,7 @@ const Wrapper = styled.div`
             font-weight: 600;
             text-align: center;
           }
-          .upload_btn {
+          .browse {
             color: #3e952e;
             cursor: pointer;
             font-size: 1.25rem;
@@ -156,10 +163,11 @@ const Wrapper = styled.div`
       .view_thumb {
         align-items: center;
         border: 1px solid #d8d8d8;
+        border-radius: 0.35rem;
         display: flex;
         justify-content: center;
         width: 100%;
-        height: 20rem;
+        height: 24.25rem;
         overflow: hidden;
         position: relative;
         video {
@@ -186,6 +194,21 @@ const Wrapper = styled.div`
             color: #000;
             font-size: 2rem;
           }
+        }
+      }
+      @media (max-width: 991px) {
+        .view_thumb {
+          height: 100%;
+        }
+      }
+      @media (max-width: 767px) {
+        .camera {
+          padding: 17rem 2.5rem 2.5rem;
+        }
+      }
+      @media (max-width: 575px) {
+        .camera {
+          padding: 15rem 0.5rem 2rem;
         }
       }
     }

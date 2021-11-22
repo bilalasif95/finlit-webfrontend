@@ -121,7 +121,7 @@ export default function MyProfilePage() {
   return (
     <>
       {/* <ToastContainer /> */}
-      <div className="sub_pages profilePages">
+      <div className="profilePages">
         <Helmet>
           <title>My Profile</title>
           <meta name="description" content="My Profile Page" />

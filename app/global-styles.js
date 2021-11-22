@@ -1,6 +1,76 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  .user_account {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    .user_icon {
+      border: 1px solid #fff;
+      height: 40px;
+      width: 40px;
+      overflow: hidden;
+      border-radius: 2rem;
+      img {
+        width: 100%;
+      }
+    }
+    .user_name {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 0 0.5rem;
+      width: 135px;
+      p {
+        color: #8b8b8b;
+        font-size: 0.875rem;
+      }
+      span {
+        color: #404041;
+        font-size: 0.75rem;
+        max-width: 130px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+  }
+  .dropdown-menu {
+    padding: 0 !important;
+    top: 1rem !important;
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 550;
+      color: #404041;
+      // border-bottom: 1px solid #f6f6f6;
+      &:active {
+        background: initial;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+      svg {
+        color: #404041;
+        font-size: 1.25rem;
+        margin-right: 1rem;
+      }
+      .notify {
+        background-color: #ec5252;
+        border-radius: 0.55rem;
+        color: #fff;
+        margin-left: 1rem;
+        padding: 0.05rem 0.25rem;
+        font-size: 0.65rem;
+        max-width: 30px;
+        text-align: center;
+      }
+    }
+  }
   .course_content {
     .custom_accordin {
       border: 1px solid #e5e5e5;
@@ -716,7 +786,7 @@ const GlobalStyle = createGlobalStyle`
 }
 .disabled {
   cursor: not-allowed !important;
-  pointer-events: default !important;
+  pointer-events: auto !important;
 }
 .form {
   .form-group {
@@ -779,8 +849,8 @@ const GlobalStyle = createGlobalStyle`
     padding: 0.75rem;
     width: 100%;
     margin: 14px 0px 0px;
+    &:hover,
     &:focus {
-        background-color: #2c821c;
         box-shadow: none;
     }
   }
