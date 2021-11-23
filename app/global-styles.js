@@ -851,7 +851,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 14px 0px 0px;
     &:hover,
     &:focus {
-        box-shadow: none;
+      box-shadow: none;
     }
   }
 }
