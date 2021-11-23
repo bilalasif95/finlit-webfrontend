@@ -110,7 +110,7 @@ const Wrapper = styled.div`
       h4 {
         color: #fff;
         margin: 0 0 1rem;
-        z-index: 1;
+        // z-index: 1;
       }
     }
   }

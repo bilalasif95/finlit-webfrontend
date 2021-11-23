@@ -51,7 +51,7 @@ export default function MyCourses() {
   return (
     <>
       {/* <ToastContainer /> */}
-      <div className="sub_pages profilePages">
+      <div className="profilePages">
         <Helmet>
           <title>My Courses</title>
           <meta name="description" content="My Courses Page" />

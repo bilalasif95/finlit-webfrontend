@@ -69,6 +69,7 @@ class Input extends React.Component {
             onKeyDown={e => this.tagEvent(e)}
           />
           <GoTag className="tagIcon" />
+          <div className="tagCount">0/10</div>
         </form>
       </div>
       // </>

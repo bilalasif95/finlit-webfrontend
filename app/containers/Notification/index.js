@@ -112,7 +112,7 @@ export default function Notification() {
   return (
     <>
       {/* <ToastContainer /> */}
-      <div className="sub_pages profilePages">
+      <div className="profilePages">
         <Helmet>
           <title>My Profile</title>
           <meta name="description" content="My Profile Page" />
@@ -128,8 +128,38 @@ export default function Notification() {
                   Mark all as read
                 </button>
               </div>
-              <div className="notificationPanel">
-                {Notifications.map(data => (
+              <div className="notificationPanel table-responsive">
+                <table className="table tableCont">
+                  <thead />
+                  <tbody>
+                    {Notifications.map(data => (
+                      <tr>
+                        <td>
+                          <div className="courseName">
+                            <div className="NotificationImg">
+                              <div className="notiImg">
+                                <img src={data.img} alt="notification" />
+                              </div>
+                            </div>
+                            <div className="courseTitle">
+                              <p>{data.message}</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p className="notitime">{data.time} </p>
+                        </td>
+
+                        <td>
+                          <div className="tableIcons">
+                            <img src={data.icon} alt="notification-icon" />
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {/* {Notifications.map(data => (
                   <div className="NotificationCont">
                     <div className="NotificationImg">
                       <div className="notiImg">
@@ -138,11 +168,9 @@ export default function Notification() {
                       <p>{data.message}</p>
                     </div>
                     <div className="NotificationImg">
-                      <p className="notitime">{data.time} </p>
-                      <img src={data.icon} alt="notification-icon" />
                     </div>
                   </div>
-                ))}
+                ))} */}
               </div>
             </div>
           </div>

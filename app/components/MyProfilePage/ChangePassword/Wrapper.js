@@ -7,9 +7,9 @@ const Wrapper = styled.div`
       margin: 0 0 2rem;
     }
     .form_footer {
-      position: absolute;
-      bottom: 50px;
-      right: 40px;
+      // position: absolute;
+      // bottom: 50px;
+      // right: 40px;
     }
   }
 `;
