@@ -7,7 +7,7 @@ const Wrapper = styled.div`
     border: 1px solid #e9e9e9;
     // transform: rotate(90deg);
     position: relative;
-    width: 50rem;
+    max-width: 80rem;
     .circle_bg {
       bottom: 0;
       display: none;
@@ -20,19 +20,19 @@ const Wrapper = styled.div`
       background: url('https://i.imgur.com/4mnVfVZ.png') no-repeat;
       background-size: cover;
       background-position: top center;
-      border-bottom: 5px solid #ffd430;
-      padding: 2.5rem 3rem;
+      border-bottom: 10px solid #ffd430;
+      padding: 4.5rem 6rem;
       z-index: 1;
       h4 {
         color: #fff;
-        font-size: 1.75rem;
+        font-size: 2.5rem;
         font-weight: 300;
         line-height: 24px;
-        margin: 0 0 2rem;
+        margin: 0 0 2.5rem;
       }
       h2 {
         color: #fff;
-        font-size: 2.5rem;
+        font-size: 3.5rem;
         font-weight: 500;
         line-height: 24px;
         margin: 0 0 0.25rem;
@@ -40,7 +40,7 @@ const Wrapper = styled.div`
     }
   }
   .certificate_details {
-    padding: 3rem;
+    padding: 4rem 6rem;
     .name_date {
       display: flex;
       flex-wrap: wrap;
@@ -48,52 +48,59 @@ const Wrapper = styled.div`
       width: 100%;
       h1 {
         color: #3e952e;
-        font-size: 2.75rem;
+        font-size: 4rem;
+        font-style: italic;
         line-height: 44px;
-        margin: 0 0 0.75rem;
+        margin: 0 0 1rem;
       }
       .comp_date {
+        align-items: center;
         display: inherit;
         justify-content: space-between;
         width: 100%;
         p {
+          color: #404041;
+          font-size: 1.15rem;
           margin: 0;
         }
       }
     }
     .course_title {
+      color: #404041;
+      font-size: 1.15rem;
       margin: 2rem 0 5rem;
     }
     .certified_by {
       width: 100%;
-      .name {
-        color: #0072c5;
+      img {
         margin: 0 0 0.5rem;
+        width: 10rem;
       }
       p {
-        color: #8b8b8b;
-        font-size: 0.875rem;
+        color: #404041;
+        font-size: 1rem;
+        font-style: italic;
         margin: 0;
       }
     }
   }
   .footer {
     background-color: #41952e;
-    padding: 1.5rem 3rem;
+    padding: 1.5rem 6rem;
     position: relative;
     a {
       color: #fff;
-      font-size: 0.875rem;
+      font-size: 1.25rem;
       margin: 1.5rem 0 0;
     }
     .logo {
       background-color: #255f2b;
       bottom: 1.5rem;
-      padding: 2.25rem 5rem 2.25rem 2.25rem;
+      padding: 2.5rem 10rem 2.5rem 2.5rem;
       position: absolute;
       right: 0;
       img {
-        width: 7rem;
+        width: 8rem;
       }
     }
   }
