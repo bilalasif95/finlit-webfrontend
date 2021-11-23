@@ -11,8 +11,10 @@ import {
   FaYoutube,
   FaSkype,
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import messages from './messages';
 import Wrapper from './Wrapper';
+import A from '../../A';
 
 function Footer() {
   return (
@@ -29,24 +31,24 @@ function Footer() {
               </div>
               <ul className="social-links">
                 <li>
-                  {/* <A href="/" target="_blank" type="text/html"> */}
-                  <FaFacebookSquare />
-                  {/* </A> */}
+                  <A href="/" target="_blank" type="text/html">
+                    <FaFacebookSquare />
+                  </A>
                 </li>
                 <li>
-                  {/* <A href="/" target="_blank" type="text/html"> */}
-                  <FaLinkedin />
-                  {/* </A> */}
+                  <A href="/" target="_blank" type="text/html">
+                    <FaLinkedin />
+                  </A>
                 </li>
                 <li>
-                  {/* <A href="/" target="_blank" type="text/html"> */}
-                  <FaYoutube />
-                  {/* </A> */}
+                  <A href="/" target="_blank" type="text/html">
+                    <FaYoutube />
+                  </A>
                 </li>
                 <li>
-                  {/* <A href="/" target="_blank" type="text/html"> */}
-                  <FaSkype />
-                  {/* </A> */}
+                  <A href="/" target="_blank" type="text/html">
+                    <FaSkype />
+                  </A>
                 </li>
               </ul>
             </div>
@@ -54,34 +56,34 @@ function Footer() {
           <Col lg={7} md={8} sm={12}>
             <ul className="footer_links">
               <li>
-                {/* <Link to="/features"> */}
-                <FormattedMessage {...messages.Category} />
-                {/* </Link> */}
+                <Link to="/">
+                  <FormattedMessage {...messages.Category} />
+                </Link>
               </li>
               <li>
-                {/* <Link to="/"> */}
-                <FormattedMessage {...messages.AboutCompany} />
-                {/* </Link> */}
+                <Link to="/">
+                  <FormattedMessage {...messages.AboutCompany} />
+                </Link>
               </li>
               <li>
-                {/* <Link to="/"> */}
-                <FormattedMessage {...messages.Terms} />
-                {/* </Link> */}
+                <Link to="/">
+                  <FormattedMessage {...messages.Terms} />
+                </Link>
               </li>
               <li>
-                {/* <Link to="/"> */}
-                <FormattedMessage {...messages.PrivacyPolicy} />
-                {/* </Link> */}
+                <Link to="/">
+                  <FormattedMessage {...messages.PrivacyPolicy} />
+                </Link>
               </li>
               <li>
-                {/* <Link to="/"> */}
-                <FormattedMessage {...messages.HelpCenter} />
-                {/* </Link> */}
+                <Link to="/">
+                  <FormattedMessage {...messages.HelpCenter} />
+                </Link>
               </li>
               <li>
-                {/* <Link to="/"> */}
-                <FormattedMessage {...messages.ContactUs} />
-                {/* </Link> */}
+                <Link to="/">
+                  <FormattedMessage {...messages.ContactUs} />
+                </Link>
               </li>
             </ul>
           </Col>

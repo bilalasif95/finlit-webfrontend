@@ -61,15 +61,15 @@ const Wrapper = styled.footer`
     padding: 0;
     width: 100%;
     li {
-      color: #404041;
-      font-size: 0.875rem;
-      font-weight: 550;
+      // color: #404041;
+      // font-size: 0.875rem;
+      // font-weight: 550;
       padding-left: 1rem;
       list-style: none;
       a {
         color: #404041;
         font-size: 0.875rem;
-        font-weight: 500;
+        font-weight: 550;
         margin: 0;
         text-decoration: none;
         &:hover {
