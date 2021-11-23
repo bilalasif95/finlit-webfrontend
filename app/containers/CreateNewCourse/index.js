@@ -29,7 +29,7 @@ import {
 // } from 'react-accessible-accordion';
 import Dropzone from 'react-dropzone';
 import history from 'utils/history';
-// import axios from 'axios';
+import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 // import { IoIosClose } from 'react-icons/io';
 // import { IoMdAttach } from 'react-icons/io';
@@ -44,7 +44,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/student-panel/Sidebar/index';
-// import { API } from '../../config/config';
+import { endpoints } from '../../config/config';
 import Img from '../../components/Img';
 import Wrapper from './Wrapper';
 import Upload from '../../images/upload.png';
@@ -76,10 +76,15 @@ const BootstrapInput = withStyles(theme => ({
 }))(InputBase);
 
 export default function CreateNewCourse() {
-  const [categoryType, setCategoryType] = useState('Select Category Type');
-  const [level, setLevel] = useState('Select Level');
-  const [language, setLanguage] = useState('Select Language');
+  const [categories, setCategories] = useState([]);
+  const [categoryType, setCategoryType] = useState('');
+  const [level, setLevel] = useState('Beginner');
+  const [language, setLanguage] = useState('English');
+  const [title, setTitle] = useState('');
+  const [price, setPrice] = useState('');
+  const [loading, setLoading] = useState(false);
   const [courseVideo, setCourseVideo] = useState('');
+  const [draftCourseId, setDraftCourseId] = useState(0);
   // const [category, setCategory] = useState('0');
 
   // const [errors, setErrors] = useState({});
@@ -92,6 +97,38 @@ export default function CreateNewCourse() {
   const [accordinThree, setAccordinThree] = useState(false);
 
   const dataVideo = { courseVideo: '' };
+
+  const token = localStorage.getItem('token');
+  const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+
+  const data = {
+    title,
+    courseLanguage: language,
+    courseLevel: level,
+    categoryId: categoryType.toString(),
+    price,
+    promotionalVideo: courseVideo,
+  };
+
+  const createDraft = () => {
+    setLoading(true);
+    axios
+      .post(endpoints.createCourseAsDraft, data, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          ...authHeaders,
+        },
+      })
+      .then(res => {
+        setLoading(false);
+        setDraftCourseId(res.data.data.draftCourseId);
+        handleCourseStepTwo();
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  };
 
   const handleCourseStepOne = () => {
     setCourseStepOne(true);
@@ -172,6 +209,14 @@ export default function CreateNewCourse() {
 
   useEffect(() => {
     redirectToLogin();
+    setLoading(true);
+    axios.get(endpoints.courseCategory).then(res => {
+      setLoading(false);
+      setCategories(res.data.data);
+      if (res.data.data.length > 0) {
+        setCategoryType(1);
+      }
+    });
   }, []);
 
   return (
@@ -205,6 +250,8 @@ export default function CreateNewCourse() {
                             type="text"
                             name="coursetitle"
                             id="coursetitle"
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
                             placeholder="Enter Course Title"
                           />
                           <FormText>
@@ -237,7 +284,12 @@ export default function CreateNewCourse() {
                                 getContentAnchorEl: null,
                               }}
                             >
-                              <MenuItem value="Select Category Type">
+                              {categories.map(res => (
+                                <MenuItem key={res.id} value={res.id}>
+                                  {res.categoryName}
+                                </MenuItem>
+                              ))}
+                              {/* <MenuItem value="Select Category Type">
                                 Select Category Type
                               </MenuItem>
                               <MenuItem value="Financial Literacy">
@@ -257,7 +309,7 @@ export default function CreateNewCourse() {
                               </MenuItem>
                               <MenuItem value="Data Scientist">
                                 Data Scientist
-                              </MenuItem>
+                              </MenuItem> */}
                             </Select>
                           </FormControl>
                         </FormGroup>
@@ -284,10 +336,10 @@ export default function CreateNewCourse() {
                                 getContentAnchorEl: null,
                               }}
                             >
-                              <MenuItem value="Select Level">
-                                Select Level
-                              </MenuItem>
                               <MenuItem value="Beginner">Beginner</MenuItem>
+                              <MenuItem value="Intermediate">
+                                Intermediate
+                              </MenuItem>
                               <MenuItem value="Expert">Expert</MenuItem>
                             </Select>
                           </FormControl>
@@ -315,9 +367,6 @@ export default function CreateNewCourse() {
                                 getContentAnchorEl: null,
                               }}
                             >
-                              <MenuItem value="Select Language">
-                                Select Language
-                              </MenuItem>
                               <MenuItem value="English">English</MenuItem>
                               <MenuItem value="Arabic">عربي</MenuItem>
                             </Select>
@@ -331,9 +380,12 @@ export default function CreateNewCourse() {
                           </Label>
                           <InputGroup>
                             <Input
-                              type="text"
+                              type="number"
+                              min={0}
                               name="price"
                               id="price"
+                              value={price}
+                              onChange={e => setPrice(e.target.value)}
                               placeholder="Enter Price"
                             />
                             <InputGroupAddon addonType="prepend">
@@ -394,18 +446,19 @@ export default function CreateNewCourse() {
                               if (acceptedFiles && acceptedFiles[0]) {
                                 const courseVdo = acceptedFiles[0];
                                 dataVideo.courseVideo = courseVdo;
+                                setCourseVideo(acceptedFiles[0]);
                                 // setcourseVideoFile(acceptedFiles[0]);
                                 const reader = new FileReader();
-                                reader.onload = e => {
-                                  setCourseVideo(e.target.result);
-                                };
+                                // reader.onload = e => {
+                                //   setCourseVideo(e.target.result);
+                                // };
                                 reader.readAsDataURL(acceptedFiles[0]);
                               }
                             }}
                           >
                             {({ getRootProps, getInputProps }) => (
                               <div className="camera" {...getRootProps()}>
-                                <Input {...getInputProps()} />
+                                <input {...getInputProps()} />
                                 <p>
                                   <FormattedMessage {...messages.DragDrop} />
                                 </p>
@@ -438,7 +491,8 @@ export default function CreateNewCourse() {
                       </Button>
                       <Button
                         className="btn_submit"
-                        onClick={handleCourseStepTwo}
+                        disabled={!title || !price || loading}
+                        onClick={createDraft}
                       >
                         <FormattedMessage {...messages.Next} />
                       </Button>

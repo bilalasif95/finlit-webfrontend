@@ -61,7 +61,7 @@ export default function SignupPage(props) {
   const [email, setEmail] = useState('');
   // const [firstName, setFirstName] = useState('');
   // const [lastName, setLastName] = useState('');
-  const [roleId, setRoleId] = useState(1);
+  const [roleId, setRoleId] = useState('');
   const [roles, setRoles] = useState([]);
   const [password, setPassword] = useState('');
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -79,6 +79,9 @@ export default function SignupPage(props) {
   useEffect(() => {
     axios.get(endpoints.getRoles).then(res => {
       setRoles(res.data.data);
+      if (res.data.data.length > 0) {
+        setRoleId(1);
+      }
     });
   }, []);
 
