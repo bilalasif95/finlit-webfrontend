@@ -32,7 +32,7 @@ import Dropzone from 'react-dropzone';
 import history from 'utils/history';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-import { IoIosClose } from 'react-icons/io';
+// import { IoIosClose } from 'react-icons/io';
 // import { IoMdAttach } from 'react-icons/io';
 import {
   // RiStarSFill,
