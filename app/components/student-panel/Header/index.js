@@ -81,9 +81,9 @@ const Header = () => {
             <MenuSidebar />
           </div>
           {userObj &&
-          userObj.roles &&
-          userObj.roles[0] &&
-          userObj.roles[0].roleName === 'Instructor' ? (
+            userObj.roles &&
+            userObj.roles[0] &&
+            userObj.roles[0].roleName === 'Instructor' ? (
             <Link to="/dashboard">
               <img
                 src={Logo}
@@ -189,9 +189,9 @@ const Header = () => {
                       <div />
                     </DropdownItem> */}
                       <DropdownItem
-                      // onClick={() => {
-                      //   history.push('/course');
-                      // }}
+                        onClick={() => {
+                          history.push('/my_courses');
+                        }}
                       >
                         <div>
                           <FaRegListAlt />
@@ -207,9 +207,9 @@ const Header = () => {
                         <div />
                       </DropdownItem> */}
                       <DropdownItem
-                      // onClick={() => {
-                      //   history.push('/course');
-                      // }}
+                        onClick={() => {
+                          history.push('/setting');
+                        }}
                       >
                         <div>
                           {/* <FaUserCog /> */}
@@ -219,9 +219,9 @@ const Header = () => {
                         <div />
                       </DropdownItem>
                       <DropdownItem
-                      // onClick={() => {
-                      //   history.push('/course');
-                      // }}
+                        onClick={() => {
+                          history.push('/wishlist');
+                        }}
                       >
                         <div>
                           <BiHeart />
