@@ -32,7 +32,7 @@ import Dropzone from 'react-dropzone';
 import history from 'utils/history';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-import { IoIosClose } from 'react-icons/io';
+// import { IoIosClose } from 'react-icons/io';
 // import { IoMdAttach } from 'react-icons/io';
 import {
   // RiStarSFill,
@@ -478,7 +478,7 @@ export default function CreateNewCourse() {
                             </div>
                           ) : (
                             <div className="view_thumb">
-                              <Button
+                              {/* <Button
                                 className="del_btn"
                                 onClick={() => {
                                   setCourseVideo('');
@@ -486,8 +486,7 @@ export default function CreateNewCourse() {
                                 }}
                               >
                                 <IoIosClose />
-                                {/* <FormattedMessage {...messages.DeleteVideo} /> */}
-                              </Button>
+                              </Button> */}
                               <video>
                                 <source
                                   src={
@@ -520,6 +519,19 @@ export default function CreateNewCourse() {
                     </Row>
                   </div>
                   <div className="form_footer">
+                    {courseVideo === '' ? (
+                      ''
+                    ) : (
+                      <Button
+                        className="btn_submit"
+                        onClick={() => {
+                          setCourseVideo('');
+                          dataVideo.courseVideo = null;
+                        }}
+                      >
+                        <FormattedMessage {...messages.DeleteVideo} />
+                      </Button>
+                    )}
                     <div className="bottom_btns">
                       <Button className="btn_back" onClick={goToCoursesList}>
                         <FormattedMessage {...messages.Back} />

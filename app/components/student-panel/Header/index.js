@@ -189,9 +189,9 @@ const Header = () => {
                       <div />
                     </DropdownItem> */}
                       <DropdownItem
-                      // onClick={() => {
-                      //   history.push('/course');
-                      // }}
+                        onClick={() => {
+                          history.push('/my_courses');
+                        }}
                       >
                         <div>
                           <FaRegListAlt />
@@ -207,9 +207,9 @@ const Header = () => {
                         <div />
                       </DropdownItem> */}
                       <DropdownItem
-                      // onClick={() => {
-                      //   history.push('/course');
-                      // }}
+                        onClick={() => {
+                          history.push('/setting');
+                        }}
                       >
                         <div>
                           {/* <FaUserCog /> */}
@@ -219,9 +219,9 @@ const Header = () => {
                         <div />
                       </DropdownItem>
                       <DropdownItem
-                      // onClick={() => {
-                      //   history.push('/course');
-                      // }}
+                        onClick={() => {
+                          history.push('/wishlist');
+                        }}
                       >
                         <div>
                           <BiHeart />

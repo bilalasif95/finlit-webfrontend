@@ -3,7 +3,17 @@
  */
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { FormGroup, Input, Progress, Button, Label } from 'reactstrap';
+import {
+  FormGroup,
+  Input,
+  Progress,
+  Button,
+  Label,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from 'reactstrap';
 // import axios from 'axios';
 // import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
@@ -28,6 +38,8 @@ import messages from './messages';
 
 function CourseSidebar() {
   // const [loader, setLoader] = useState(false);
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
   const [checkedValue, setCheckedValue] = useState(false);
   const [quizStart, setQuizStart] = useState(true);
   const [questionOne, setQuestionOne] = useState(false);
@@ -491,12 +503,7 @@ function CourseSidebar() {
                     </li>
                     <li>
                       <FormGroup check>
-                        <Label
-                          check
-                          // className={
-                          //   checkedValue === 'radio2' ? 'radio_bg' : ''
-                          // }
-                        >
+                        <Label check>
                           <Input
                             type="radio"
                             value="radio2"
@@ -536,7 +543,7 @@ function CourseSidebar() {
                     <Button className="btn_prev" onClick={handleQuestionThree}>
                       Previous
                     </Button>
-                    <Button className="btn_next">
+                    <Button className="btn_next" onClick={toggle}>
                       {/* onClick={handleSeeResult} */}
                       See Result
                     </Button>
@@ -547,6 +554,16 @@ function CourseSidebar() {
           </div>
         </div>
       </div>
+      {/* Result Modal */}
+      <Modal isOpen={modal} toggle={toggle} className="ratingModal">
+        <ModalHeader toggle={toggle} />
+        <ModalBody>
+          <div className="security_verify">
+            <h1>Quiz Result</h1>
+          </div>
+        </ModalBody>
+        <ModalFooter />
+      </Modal>
       <ToastContainer />
     </Wrapper>
   );

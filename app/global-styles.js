@@ -214,7 +214,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .pdf-container {
     margin: 0 auto;
-    max-width: 50rem;
+    max-width: 80rem;
   }
   .pdf-toolbar {
     display: flex;
@@ -237,10 +237,13 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   .pdf-body {
-    max-width: 50rem;
+    max-width: 100%;
     overflow-x: auto;
     ::-webkit-scrollbar {
       display: none;
+    }
+    .pdf_inner {
+      width: 80rem;
     }
   }
 .breadcrumb_bar {
@@ -713,6 +716,9 @@ const GlobalStyle = createGlobalStyle`
     .forgot_inner {
       background-color: #fff;
       border-radius: 0.5rem;
+      box-shadow: 1px 2px 7px 0px rgba(0,0,0,0.35);
+      -webkit-box-shadow: 1px 2px 7px 0px rgba(0,0,0,0.35);
+      -moz-box-shadow: 1px 2px 7px 0px rgba(0,0,0,0.35);
       width: 40.438rem;
       margin: 5rem auto;
       padding: 4rem;
@@ -849,7 +855,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0.75rem;
     width: 100%;
     margin: 14px 0px 0px;
-    &:hover,
     &:focus {
       box-shadow: none;
     }

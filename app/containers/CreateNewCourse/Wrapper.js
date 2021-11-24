@@ -13,7 +13,6 @@ const Wrapper = styled.div`
       .form-control {
         border-top-right-radius: 0.25rem !important;
         border-bottom-right-radius: 0.25rem !important;
-        color: #8d8d8d;
       }
       .input-group-append {
         position: absolute;
