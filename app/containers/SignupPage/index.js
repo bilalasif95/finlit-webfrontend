@@ -69,7 +69,7 @@ export default function SignupPage(props) {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   // const [gender, setGender] = useState('Male');
   // const [country, setCountry] = useState('PAK');
-  const [profession, setProfession] = useState('Software Developer');
+  const [profession, setProfession] = useState('Financial Literacy');
   // const [address, setAddress] = useState('');
   const [instructorDiv, setInstructorDiv] = useState(true);
   const [error, setError] = useState({ type: '', error: '' });
@@ -118,16 +118,6 @@ export default function SignupPage(props) {
     ) {
       setError({
         type: 'password',
-        error: 'Use 8-15 characters with a mix of letters, numbers & symbols',
-      });
-    } else if (
-      !/(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(
-        passwordConfirmation,
-      ) ||
-      (!passwordConfirmation.length >= 8 && !passwordConfirmation.length <= 15)
-    ) {
-      setError({
-        type: 'passwordconfirm',
         error: 'Use 8-15 characters with a mix of letters, numbers & symbols',
       });
     } else if (password !== passwordConfirmation) {

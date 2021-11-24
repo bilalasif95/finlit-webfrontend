@@ -91,7 +91,7 @@ const Tile = props => (
   // const { classes } = this.props;
   // return (
   <span className={props.classes.tile}>
-    <span>{props.tile.name}</span>
+    <span>{props.tile}</span>
     <div className={props.classes.icon}>
       <button
         type="button"
@@ -150,7 +150,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
 
             const newTileId = tileIds.length - 1 + 1;
             tileIds.push(newTileId);
-            tiles[newTileId] = { name: tag.name };
+            tiles[newTileId] = tag.name;
 
             // reset the input value
             const currentValue = '';
@@ -173,7 +173,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
 
         const newTileId = tileIds.length - 1 + 1;
         tileIds.push(newTileId);
-        tiles[newTileId] = { name: tile };
+        tiles[newTileId] = tile;
 
         // reset the input value
         const currentValue = '';
@@ -201,7 +201,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
         .pop();
       // console.log('the last tile object is:', tiles[lastTileValue].text);
       // store last tile text value before deleting it
-      const currentValue = tiles[lastTileValue].name;
+      const currentValue = tiles[lastTileValue];
       delete tiles[lastTileValue];
       this.setState({
         currentValue,
@@ -211,7 +211,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
 
     render() {
       const { classes } = this.props;
-      this.props.data.tags = Object.values(this.state.tiles);
+      this.props.data(Object.values(this.state.tiles));
       return (
         <>
           {/* <p>

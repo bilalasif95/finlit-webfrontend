@@ -11,6 +11,12 @@ export const JoditEditorConfig = {
     'bold,italic,underline,ul,ol,left,center,right,justify,font,indent,outdent,fontsize,paragraph,brush,image,copyformat,cut,copy,paste,selectall,hr,table,link,symbol,undo,redo,find',
 };
 
+export const JoditEditorReadOnlyConfig = {
+  readonly: true,
+  toolbar: false,
+  statusbar: false,
+};
+
 export const endpoints = {
   getRoles: `${API}api/role`,
   register: `${API}api/auth/register`,

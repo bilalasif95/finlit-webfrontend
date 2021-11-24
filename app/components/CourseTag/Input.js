@@ -4,9 +4,9 @@ import { GoTag } from 'react-icons/go';
 
 class Input extends React.Component {
   static propTypes = {
-    tiles: PropTypes.any,
+    // tiles: PropTypes.any,
     addTile: PropTypes.func,
-    editLastTile: PropTypes.func,
+    // editLastTile: PropTypes.func,
     value: PropTypes.any,
     classes: PropTypes.any,
   };
@@ -18,8 +18,8 @@ class Input extends React.Component {
   tagEvent(e) {
     const tag = this.name.value;
     const tagGroup = tag.split(' ');
-    const { tiles } = this.props;
-    const hasTiles = Object.keys(tiles).length > 0;
+    // const { tiles } = this.props;
+    // const hasTiles = Object.keys(tiles).length > 0;
 
     if (e.keyCode === 32 || e.keyCode === 13) {
       e.preventDefault();
@@ -27,12 +27,12 @@ class Input extends React.Component {
       this.tagForm.reset();
     }
 
-    if (e.keyCode === 8 && hasTiles && tag === '') {
-      e.preventDefault();
-      this.props.editLastTile();
-      // this trigger the default value eachtime we hit delete
-      this.tagForm.reset();
-    }
+    // if (e.keyCode === 8 && hasTiles && tag === '') {
+    //   e.preventDefault();
+    //   this.props.editLastTile();
+    //   // this trigger the default value eachtime we hit delete
+    //   this.tagForm.reset();
+    // }
   }
 
   componentDidUpdate(prevProps) {

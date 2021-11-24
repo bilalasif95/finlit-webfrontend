@@ -45,7 +45,11 @@ import FormControl from '@material-ui/core/FormControl';
 import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/student-panel/Sidebar/index';
-import { endpoints, JoditEditorConfig } from '../../config/config';
+import {
+  endpoints,
+  JoditEditorConfig,
+  JoditEditorReadOnlyConfig,
+} from '../../config/config';
 import Img from '../../components/Img';
 import Wrapper from './Wrapper';
 import Upload from '../../images/upload.png';
@@ -78,6 +82,7 @@ const BootstrapInput = withStyles(theme => ({
 
 export default function CreateNewCourse() {
   const editor = useRef(null);
+  const notEditableEditor = useRef(null);
   const [content, setContent] = useState('');
   const [categories, setCategories] = useState([]);
   const [categoryType, setCategoryType] = useState('');
@@ -88,7 +93,14 @@ export default function CreateNewCourse() {
   const [loading, setLoading] = useState(false);
   const [courseVideo, setCourseVideo] = useState('');
   const [draftCourseId, setDraftCourseId] = useState(0);
+  const [heading, setHeading] = useState('');
+  const [detailsSection, setDetailsSection] = useState([]);
+  const [tags, setTags] = useState([]);
   // const [category, setCategory] = useState('0');
+
+  const setTagsFunc = tags => {
+    console.log(tags, "=========tags");
+  };
 
   // const [errors, setErrors] = useState({});
   const [courseStepOne, setCourseStepOne] = useState(true);
@@ -98,25 +110,23 @@ export default function CreateNewCourse() {
   const [accordinOne, setAccordinOne] = useState(false);
   const [accordinTwo, setAccordinTwo] = useState(false);
   const [accordinThree, setAccordinThree] = useState(false);
-
-  const dataVideo = { courseVideo: null };
+  const [dataVideo, setDataVideo] = useState(null);
 
   const token = localStorage.getItem('token');
   const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
 
-  const data = {
-    title,
-    courseLanguage: language,
-    courseLevel: level,
-    categoryId: categoryType.toString(),
-    price,
-    promotionalVideo: courseVideo,
-  };
+  const bodyFormData = new FormData();
+  bodyFormData.append('title', title);
+  bodyFormData.append('courseLanguage', language);
+  bodyFormData.append('categoryId', categoryType);
+  bodyFormData.append('courseLevel', level);
+  bodyFormData.append('price', price);
+  bodyFormData.append('promotionalVideo', dataVideo);
 
   const createDraft = () => {
     setLoading(true);
     axios
-      .post(endpoints.createCourseAsDraft, data, {
+      .post(endpoints.createCourseAsDraft, bodyFormData, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -221,6 +231,22 @@ export default function CreateNewCourse() {
       }
     });
   }, []);
+
+  const addDetailsSection = () => {
+    const section = {
+      heading,
+      description: content,
+    };
+    setDetailsSection(prev => prev.concat(section));
+    setHeading('');
+    setContent('');
+  };
+
+  const onDeleteSection = (e, index) => {
+    e.preventDefault();
+    const filterData = detailsSection.filter((res, ind) => ind !== index);
+    setDetailsSection(filterData);
+  };
 
   return (
     <Wrapper>
@@ -419,14 +445,11 @@ export default function CreateNewCourse() {
                                 multiple={false}
                                 onDrop={acceptedFiles => {
                                   if (acceptedFiles && acceptedFiles[0]) {
-                                    const courseVdo = acceptedFiles[0];
-                                    dataVideo.courseVideo = courseVdo;
-                                    setCourseVideo(acceptedFiles[0]);
-                                    // setcourseVideoFile(acceptedFiles[0]);
+                                    setDataVideo(acceptedFiles[0]);
                                     const reader = new FileReader();
-                                    // reader.onload = e => {
-                                    //   setCourseVideo(e.target.result);
-                                    // };
+                                    reader.onload = e => {
+                                      setCourseVideo(e.target.result);
+                                    };
                                     reader.readAsDataURL(acceptedFiles[0]);
                                   }
                                 }}
@@ -459,7 +482,7 @@ export default function CreateNewCourse() {
                                 className="del_btn"
                                 onClick={() => {
                                   setCourseVideo('');
-                                  dataVideo.courseVideo = null;
+                                  setDataVideo(null);
                                 }}
                               >
                                 <IoIosClose />
@@ -468,20 +491,20 @@ export default function CreateNewCourse() {
                               <video>
                                 <source
                                   src={
-                                    dataVideo.courseVideo
-                                      ? typeof dataVideo.courseVideo ===
+                                    dataVideo
+                                      ? typeof dataVideo ===
                                         'string'
-                                        ? dataVideo.courseVideo
+                                        ? dataVideo
                                         : courseVideo
                                       : courseVideo
                                   }
                                 />
                                 <track
                                   src={
-                                    dataVideo.courseVideo
-                                      ? typeof dataVideo.courseVideo ===
+                                    dataVideo
+                                      ? typeof dataVideo ===
                                         'string'
-                                        ? dataVideo.courseVideo
+                                        ? dataVideo
                                         : courseVideo
                                       : courseVideo
                                   }
@@ -505,6 +528,7 @@ export default function CreateNewCourse() {
                         className="btn_submit"
                         disabled={!title || !price || loading}
                         onClick={createDraft}
+                      // onClick={handleCourseStepTwo}
                       >
                         <FormattedMessage {...messages.Next} />
                       </Button>
@@ -522,7 +546,13 @@ export default function CreateNewCourse() {
                         type="button"
                         className="btn btn-default detailsBtn"
                       >
-                        <span>+</span> Add More Details
+                        <span>+</span>
+                        <button
+                          onClick={addDetailsSection}
+                          disabled={!heading || !content}
+                        >
+                          Add More Details
+                        </button>
                       </button>
                     </div>
                     <div className="createCourseCont">
@@ -532,7 +562,10 @@ export default function CreateNewCourse() {
                           <FormGroup>
                             <Label>Heading</Label>
                             <Input
-                              type="email"
+                              type="heading"
+                              name="heading"
+                              value={heading}
+                              onChange={e => setHeading(e.target.value)}
                               className="form-control"
                               placeholder="Enter Title"
                             />
@@ -554,35 +587,40 @@ export default function CreateNewCourse() {
                           </FormGroup>
                         </div>
                         <div className="card_Divider">
-                          <div className="card-body">
-                            <FormGroup>
-                              <Label>Heading</Label>
-                              <Input
-                                type="email"
-                                className="form-control"
-                                placeholder="Enter Title"
-                              />
-                            </FormGroup>
-                            <FormGroup className="mt-4 mb-0">
-                              <Label>Description</Label>
-                              <JoditEditor
-                                ref={editor}
-                                value={content}
-                                config={JoditEditorConfig}
-                                tabIndex={0} // tabIndex of textarea
-                                onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-                              />
-                              {/* <textarea
+                          {detailsSection.map((res, index) => (
+                            <div className="card-body">
+                              <FormGroup>
+                                <Label>Heading</Label>
+                                <Input
+                                  readOnly
+                                  value={res.heading}
+                                  className="form-control"
+                                  placeholder="Enter Title"
+                                />
+                              </FormGroup>
+                              <FormGroup className="mt-4 mb-0">
+                                <Label>Description</Label>
+                                <JoditEditor
+                                  ref={notEditableEditor}
+                                  value={res.description}
+                                  config={JoditEditorReadOnlyConfig}
+                                  tabIndex={0} // tabIndex of textarea
+                                />
+                                {/* <textarea
                                 className="form-control"
                                 rows="6"
                                 placeholder="Enter Description"
                               /> */}
-                            </FormGroup>
-                            <div className="delete">
-                              <RiDeleteBin7Line />
-                              <span>Delete Section</span>
+                              </FormGroup>
+                              <div
+                                className="delete"
+                                onClick={e => onDeleteSection(e, index)}
+                              >
+                                <RiDeleteBin7Line />
+                                <span>Delete Section</span>
+                              </div>
                             </div>
-                          </div>
+                          ))}
                         </div>
                       </div>
                       <div className="card mt-4 mb-5">
@@ -592,7 +630,7 @@ export default function CreateNewCourse() {
                             <Label for="price">
                               <FormattedMessage {...messages.AddTag} />
                             </Label>
-                            <TagsComponent data={{ tags: [] }} tags={[]} />
+                            <TagsComponent data={setTagsFunc} tags={tags} />
                           </FormGroup>
                         </div>
                       </div>
@@ -680,16 +718,12 @@ export default function CreateNewCourse() {
                                       multiple={false}
                                       onDrop={acceptedFiles => {
                                         if (acceptedFiles && acceptedFiles[0]) {
-                                          const courseVdo = acceptedFiles[0];
-                                          dataVideo.courseVideo = courseVdo;
-                                          // setcourseVideoFile(acceptedFiles[0]);
+                                          setDataVideo(acceptedFiles[0]);
                                           const reader = new FileReader();
                                           reader.onload = e => {
                                             setCourseVideo(e.target.result);
                                           };
-                                          reader.readAsDataURL(
-                                            acceptedFiles[0],
-                                          );
+                                          reader.readAsDataURL(acceptedFiles[0]);
                                         }
                                       }}
                                     >
@@ -745,16 +779,12 @@ export default function CreateNewCourse() {
                                             acceptedFiles &&
                                             acceptedFiles[0]
                                           ) {
-                                            const courseVdo = acceptedFiles[0];
-                                            dataVideo.courseVideo = courseVdo;
-                                            // setcourseVideoFile(acceptedFiles[0]);
+                                            setDataVideo(acceptedFiles[0]);
                                             const reader = new FileReader();
                                             reader.onload = e => {
                                               setCourseVideo(e.target.result);
                                             };
-                                            reader.readAsDataURL(
-                                              acceptedFiles[0],
-                                            );
+                                            reader.readAsDataURL(acceptedFiles[0]);
                                           }
                                         }}
                                       >
