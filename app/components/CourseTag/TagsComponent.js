@@ -64,9 +64,9 @@ const styles = () =>
       right: '13px',
     },
     tile: {
-      backgroundColor: '#f5f5f5',
-      borderRadius: '1rem',
-      color: '#000',
+      backgroundColor: '#e4e4e4',
+      borderRadius: '0.313rem',
+      color: '#404041',
       display: 'flex',
       fontSize: '0.875rem',
       fontWeight: '550',
@@ -78,7 +78,8 @@ const styles = () =>
     iconClose: {
       backgroundColor: 'transparent',
       border: 'none',
-      fontSize: '1.5rem',
+      color: '#404041',
+      fontSize: '1.75rem',
       padding: 0,
     },
   });

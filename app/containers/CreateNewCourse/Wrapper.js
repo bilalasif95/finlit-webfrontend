@@ -5,6 +5,124 @@ const Wrapper = styled.div`
   .create_course {
     height: 100%;
     width: 100%;
+    .details_list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      .item {
+        align-items: center;
+        background-color: #f4f6f9;
+        border: 1px solid #d8d8d8;
+        border-radius: 0.313rem;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 1rem;
+        width: 100%;
+        button {
+          background-color: transparent;
+          border: none;
+          color: #484848;
+          font-size: 0.875rem;
+          font-weight: 550;
+          padding: 0.875rem 1rem 0.875rem 1.75rem;
+          text-align: left;
+          width: 100%;
+          &:focus {
+            box-shadow: none;
+          }
+          &:last-child {
+            width: 5rem;
+            svg {
+              font-size: 1.5rem;
+            }
+          }
+        }
+        .main_title {
+          font-size: 1.25rem;
+        }
+      }
+    }
+    .add_btn {
+      align-items: center;
+      display: flex;
+      background-color: transparent;
+      border: none;
+      color: #46a135;
+      font-size: 0.875rem;
+      font-weight: 550;
+      padding: 0.7rem 0;
+      &:focus {
+        box-shadow: none;
+        outline: none;
+      }
+      span {
+        color: #46a135;
+        font-size: 1rem;
+        font-weight: 550;
+        margin: 0 0.5rem 0 0;
+      }
+    }
+    .uploading_video {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      .file_progress {
+        width: 100%;
+        p {
+          color: #aaa;
+          display: flex;
+          font-size: 0.75rem;
+          margin: 0 0 0.5rem;
+        }
+        span {
+          color: #484848;
+          font-weight: 550;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          max-width: 15rem;
+          display: inline-block;
+          margin: 0 0.25rem;
+        }
+        .progress {
+          height: 0.5rem;
+          .progress-bar {
+            background-color: #3e952e;
+          }
+        }
+      }
+      .del_video {
+        display: flex;
+        justify-content: flex-end;
+        width: 4rem;
+        button {
+          background-color: transparent;
+          border: none;
+          color: #ec5252;
+          height: 3rem;
+          padding: 0 0.25rem 0 0;
+          width: 3rem;
+          &:focus {
+            box-shadow: none;
+          }
+          svg {
+            height: 2.5rem;
+            width: 2.5rem;
+          }
+        }
+      }
+    }
+    .quiz_footer {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      p {
+        font-size: 0.875rem;
+        font-style: italic;
+      }
+    }
     .form-group {
       margin: 0 0 2rem;
     }
@@ -13,6 +131,20 @@ const Wrapper = styled.div`
       .form-control {
         border-top-right-radius: 0.25rem !important;
         border-bottom-right-radius: 0.25rem !important;
+      }
+      .text_limit {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 5;
+        .input-group-text {
+          padding: 0.75rem 1rem;
+          color: #404041;
+          background-color: transparent;
+          border: 1px solid transparent;
+          line-height: 1.3;
+          position: static;
+        }
       }
       .input-group-append {
         position: absolute;
@@ -42,16 +174,16 @@ const Wrapper = styled.div`
         border-bottom-right-radius: 0.25rem !important;
         padding: 0.75rem 1rem 0.75rem 1.6rem;
       }
-    }
-    .input-group-text {
-      padding: 0.75rem 1rem;
-      color: #404041;
-      background-color: transparent;
-      border: 1px solid transparent;
-      line-height: 1.3;
-      position: absolute;
-      left: 0;
-      z-index: 3;
+      .input-group-text {
+        padding: 0.75rem 1rem;
+        color: #404041;
+        background-color: transparent;
+        border: 1px solid transparent;
+        line-height: 1.3;
+        position: absolute;
+        left: 0;
+        z-index: 3;
+      }
     }
     .graphics {
       align-items: center;

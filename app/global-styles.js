@@ -618,6 +618,21 @@ const GlobalStyle = createGlobalStyle`
       height: 1.5rem;
       width: 1.5rem;
     }
+    .uploadBtn {
+      align-items: center;
+      background-color: #f4fdf3;
+      border-radius: 0.313rem;
+      cursor:pointer;
+      display: flex;
+      height: 47px;
+      justify-content: center;
+      width: 10rem;
+      span {
+        color: #3e952e;
+        font-size: 0.875rem;
+        font-weight: 550;
+      }
+    }
   }
 
   #services {

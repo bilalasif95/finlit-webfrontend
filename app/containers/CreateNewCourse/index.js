@@ -8,7 +8,9 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import JoditEditor from 'jodit-react';
 import '../../components/student-panel/Header/profile.css';
-import { FiEdit3 } from 'react-icons/fi';
+// import { FiEdit3 } from 'react-icons/fi';
+// import { FaVideo } from 'react-icons/fa';
+import { IoIosClose, IoIosCloseCircleOutline } from 'react-icons/io';
 // import { withStyles } from '@material-ui/core/styles';
 import {
   FormGroup,
@@ -19,7 +21,8 @@ import {
   Input,
   InputGroup,
   InputGroupAddon,
-  FormText,
+  // FormText,
+  Progress,
 } from 'reactstrap';
 // import {
 //   Accordion,
@@ -32,13 +35,12 @@ import Dropzone from 'react-dropzone';
 import history from 'utils/history';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-// import { IoIosClose } from 'react-icons/io';
 // import { IoMdAttach } from 'react-icons/io';
-import {
-  // RiStarSFill,
-  RiArrowDownSLine,
-  RiDeleteBin7Line,
-} from 'react-icons/ri';
+// import {
+//   RiStarSFill,
+//   RiArrowDownSLine,
+//   RiDeleteBin7Line,
+// } from 'react-icons/ri';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -48,7 +50,7 @@ import Sidebar from '../../components/student-panel/Sidebar/index';
 import {
   endpoints,
   JoditEditorConfig,
-  JoditEditorReadOnlyConfig,
+  // JoditEditorReadOnlyConfig,
 } from '../../config/config';
 import Img from '../../components/Img';
 import Wrapper from './Wrapper';
@@ -82,7 +84,7 @@ const BootstrapInput = withStyles(theme => ({
 
 export default function CreateNewCourse() {
   const editor = useRef(null);
-  const notEditableEditor = useRef(null);
+  // const notEditableEditor = useRef(null);
   const [content, setContent] = useState('');
   const [categories, setCategories] = useState([]);
   const [categoryType, setCategoryType] = useState('');
@@ -96,10 +98,13 @@ export default function CreateNewCourse() {
   const [heading, setHeading] = useState('');
   const [detailsSection, setDetailsSection] = useState([]);
   const [tags, setTags] = useState([]);
+  const [lectureVideo, setLectureVideo] = useState('');
   // const [category, setCategory] = useState('0');
 
+  const lecVideo = { lectureVideo: '' };
+
   const setTagsFunc = tags => {
-    console.log(tags, "=========tags");
+    console.log(tags, '=========tags');
   };
 
   // const [errors, setErrors] = useState({});
@@ -107,9 +112,9 @@ export default function CreateNewCourse() {
   const [courseStepTwo, setCourseStepTwo] = useState(false);
   const [courseStepThree, setCourseStepThree] = useState(false);
 
-  const [accordinOne, setAccordinOne] = useState(false);
-  const [accordinTwo, setAccordinTwo] = useState(false);
-  const [accordinThree, setAccordinThree] = useState(false);
+  // const [accordinOne, setAccordinOne] = useState(false);
+  // const [accordinTwo, setAccordinTwo] = useState(false);
+  // const [accordinThree, setAccordinThree] = useState(false);
   const [dataVideo, setDataVideo] = useState(null);
 
   const token = localStorage.getItem('token');
@@ -165,23 +170,23 @@ export default function CreateNewCourse() {
     history.push('/my_courses');
   };
 
-  const openAccordinOne = () => {
-    setAccordinOne(true);
-    setAccordinTwo(false);
-    setAccordinThree(false);
-  };
+  // const openAccordinOne = () => {
+  //   setAccordinOne(true);
+  //   setAccordinTwo(false);
+  //   setAccordinThree(false);
+  // };
 
-  const openAccordinTwo = () => {
-    setAccordinOne(false);
-    setAccordinTwo(true);
-    setAccordinThree(false);
-  };
+  // const openAccordinTwo = () => {
+  //   setAccordinOne(false);
+  //   setAccordinTwo(true);
+  //   setAccordinThree(false);
+  // };
 
-  const openAccordinThree = () => {
-    setAccordinOne(false);
-    setAccordinTwo(false);
-    setAccordinThree(true);
-  };
+  // const openAccordinThree = () => {
+  //   setAccordinOne(false);
+  //   setAccordinTwo(false);
+  //   setAccordinThree(true);
+  // };
 
   // const getCurrentUserInfo = () => {
   //   const token = localStorage.getItem('token');
@@ -273,22 +278,24 @@ export default function CreateNewCourse() {
                       <Col lg={12} md={12} sm={12} xs={12}>
                         <FormGroup>
                           <Label for="coursetitle">
-                            <FormattedMessage {...messages.CourseTitle} />
+                            <FormattedMessage {...messages.Title} />
                           </Label>
-                          <Input
-                            type="text"
-                            name="coursetitle"
-                            id="coursetitle"
-                            value={title}
-                            onChange={e => setTitle(e.target.value)}
-                            placeholder="Enter Course Title"
-                          />
-                          <FormText>
-                            <div className="error">
-                              {/* <span>Error message</span> */}
-                            </div>
-                            {/* <span>0/60</span> */}
-                          </FormText>
+                          <InputGroup>
+                            <Input
+                              type="text"
+                              name="coursetitle"
+                              id="coursetitle"
+                              value={title}
+                              onChange={e => setTitle(e.target.value)}
+                              placeholder="Enter Course Title"
+                            />
+                            <InputGroupAddon
+                              addonType="prepend"
+                              className="text_limit"
+                            >
+                              0/60
+                            </InputGroupAddon>
+                          </InputGroup>
                         </FormGroup>
                       </Col>
                       <Col lg={6} md={6} sm={6} xs={12}>
@@ -478,21 +485,11 @@ export default function CreateNewCourse() {
                             </div>
                           ) : (
                             <div className="view_thumb">
-                              {/* <Button
-                                className="del_btn"
-                                onClick={() => {
-                                  setCourseVideo('');
-                                  setDataVideo(null);
-                                }}
-                              >
-                                <IoIosClose />
-                              </Button> */}
                               <video>
                                 <source
                                   src={
                                     dataVideo
-                                      ? typeof dataVideo ===
-                                        'string'
+                                      ? typeof dataVideo === 'string'
                                         ? dataVideo
                                         : courseVideo
                                       : courseVideo
@@ -501,8 +498,7 @@ export default function CreateNewCourse() {
                                 <track
                                   src={
                                     dataVideo
-                                      ? typeof dataVideo ===
-                                        'string'
+                                      ? typeof dataVideo === 'string'
                                         ? dataVideo
                                         : courseVideo
                                       : courseVideo
@@ -539,8 +535,8 @@ export default function CreateNewCourse() {
                       <Button
                         className="btn_submit"
                         disabled={!title || !price || loading}
-                        onClick={createDraft}
-                      // onClick={handleCourseStepTwo}
+                        // onClick={createDraft}
+                        onClick={handleCourseStepTwo}
                       >
                         <FormattedMessage {...messages.Next} />
                       </Button>
@@ -553,28 +549,16 @@ export default function CreateNewCourse() {
                   <div className="create_course">
                     {/* Create Course */}
                     <div className="profileHeader">
-                      <h3>Course Details</h3>
-                      <button
-                        type="button"
-                        className="btn btn-default detailsBtn"
-                      >
-                        <span>+</span>
-                        <button
-                          onClick={addDetailsSection}
-                          disabled={!heading || !content}
-                        >
-                          Add More Details
-                        </button>
-                      </button>
+                      <h3>Course Introduction</h3>
                     </div>
                     <div className="createCourseCont">
                       <div className="card">
-                        <div className="card-header">Course Details</div>
+                        <div className="card-header">Introduction</div>
                         <div className="card-body">
                           <FormGroup>
-                            <Label>Heading</Label>
+                            <Label>Title</Label>
                             <Input
-                              type="heading"
+                              type="text"
                               name="heading"
                               value={heading}
                               onChange={e => setHeading(e.target.value)}
@@ -597,8 +581,31 @@ export default function CreateNewCourse() {
                               placeholder="Enter Description"
                             /> */}
                           </FormGroup>
+                          <div className="details_list">
+                            {detailsSection.map((res, index) => (
+                              <div className="item">
+                                <Button className="title_btn">
+                                  {res.heading}
+                                </Button>
+                                <Button
+                                  onClick={e => onDeleteSection(e, index)}
+                                >
+                                  <IoIosCloseCircleOutline />
+                                </Button>
+                              </div>
+                            ))}
+                          </div>
+                          <Button
+                            type="button"
+                            className="add_btn"
+                            onClick={addDetailsSection}
+                            disabled={!heading || !content}
+                          >
+                            <span>+</span>
+                            Add More Details
+                          </Button>
                         </div>
-                        <div className="card_Divider">
+                        {/* <div className="card_Divider">
                           {detailsSection.map((res, index) => (
                             <div className="card-body">
                               <FormGroup>
@@ -618,11 +625,6 @@ export default function CreateNewCourse() {
                                   config={JoditEditorReadOnlyConfig}
                                   tabIndex={0} // tabIndex of textarea
                                 />
-                                {/* <textarea
-                                className="form-control"
-                                rows="6"
-                                placeholder="Enter Description"
-                              /> */}
                               </FormGroup>
                               <div
                                 className="delete"
@@ -633,7 +635,7 @@ export default function CreateNewCourse() {
                               </div>
                             </div>
                           ))}
-                        </div>
+                        </div> */}
                       </div>
                       <div className="card mt-4 mb-5">
                         <div className="card-header">Course Tags</div>
@@ -671,385 +673,380 @@ export default function CreateNewCourse() {
                   <div className="create_course">
                     <div className="profileHeader">
                       <h3>Course Content</h3>
-                      <button
-                        type="button"
-                        className="btn btn-default detailsBtn"
-                      >
-                        <span>+</span> Add More Details
-                      </button>
                     </div>
                     <div className="createCourseCont">
-                      <div className="card">
-                        <div className="card-header d-flex justify-content-between align-items-center">
+                      <div className="card mb-3">
+                        <div className="card-header d-flex justify-content-between align-items-center cardCustomHeader">
                           Lesson 2
-                          {/* <div className="delete_item">
-                            <RiDeleteBin7Line />
-                            <span>Delete Section</span>
-                          </div> */}
                         </div>
                         <div className="card-body">
-                          <FormGroup>
-                            <Label>Lesson Name</Label>
-                            <Input
-                              type="email"
-                              className="form-control"
-                              placeholder="Enter Title"
-                            />
-                          </FormGroup>
-                          <div className="card">
-                            <div className="card-header d-flex justify-content-between align-items-center cardCustomHeader">
-                              Lectures
-                              <button
-                                type="button"
-                                className="btn btn-default detailsBtn"
-                              >
-                                <span>+</span> Add Lectures
-                              </button>
+                          <Row>
+                            <Col lg={12}>
+                              <FormGroup>
+                                <Label>Title</Label>
+                                <Input
+                                  type="text"
+                                  className="form-control"
+                                  placeholder="Enter Title"
+                                />
+                              </FormGroup>
+                            </Col>
+                            <Col lg={6}>
+                              <FormGroup>
+                                <Label>Lecture 2</Label>
+                                <input
+                                  type="email"
+                                  className="form-control"
+                                  placeholder="Enter Lecture Title"
+                                />
+                              </FormGroup>
+                            </Col>
+                            <Col lg={6}>
+                              <FormGroup>
+                                <Label>
+                                  <FormattedMessage {...messages.DemoVideo} />
+                                </Label>
+                                {lectureVideo === '' ? (
+                                  <Dropzone
+                                    accept="video/*"
+                                    multiple={false}
+                                    onDrop={acceptedFiles => {
+                                      if (acceptedFiles && acceptedFiles[0]) {
+                                        const lecVdo = acceptedFiles[0];
+                                        lecVideo.lectureVideo = lecVdo;
+                                        // setcourseVideoFile(acceptedFiles[0]);
+                                        const reader = new FileReader();
+                                        reader.onload = e => {
+                                          setLectureVideo(e.target.result);
+                                        };
+                                        reader.readAsDataURL(acceptedFiles[0]);
+                                      }
+                                    }}
+                                  >
+                                    {({ getRootProps, getInputProps }) => (
+                                      <div
+                                        className="camera"
+                                        {...getRootProps()}
+                                      >
+                                        <input {...getInputProps()} />
+                                        <div
+                                          type="button"
+                                          className="uploadBtn"
+                                        >
+                                          <span>Upload Video</span>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </Dropzone>
+                                ) : (
+                                  <div className="uploading_video">
+                                    <div className="file_progress">
+                                      <p>
+                                        File
+                                        <span>video File name here</span>
+                                        is uploading
+                                      </p>
+                                      <Progress value={70} />
+                                    </div>
+                                    <div className="del_video">
+                                      <Button
+                                        onClick={() => {
+                                          setLectureVideo('');
+                                          lecVideo.lectureVideo = null;
+                                        }}
+                                        className="del_btn"
+                                      >
+                                        <IoIosClose />
+                                      </Button>
+                                    </div>
+                                  </div>
+                                )}
+                              </FormGroup>
+                            </Col>
+                          </Row>
+                          <div className="details_list">
+                            {/* {detailsSection.map((res, index) => ( */}
+                            <div className="item">
+                              <Button className="title_btn">Lecture 1</Button>
+                              <Button>
+                                {/* onClick={e => onDeleteSection(e, index)} */}
+                                <IoIosCloseCircleOutline />
+                              </Button>
                             </div>
-                            <div className="card-body">
+                            <div className="item">
+                              <Button className="title_btn">Lecture 2</Button>
+                              <Button>
+                                {/* onClick={e => onDeleteSection(e, index)} */}
+                                <IoIosCloseCircleOutline />
+                              </Button>
+                            </div>
+                            <div className="item">
+                              <Button className="title_btn">Lecture 3</Button>
+                              <Button>
+                                {/* onClick={e => onDeleteSection(e, index)} */}
+                                <IoIosCloseCircleOutline />
+                              </Button>
+                            </div>
+                            {/* ))} */}
+                          </div>
+                          <Button type="button" className="add_btn">
+                            <span>+</span> Add more lectures
+                          </Button>
+                        </div>
+                      </div>
+                      <div className="details_list">
+                        {/* {detailsSection.map((res, index) => ( */}
+                        <div className="item">
+                          <Button className="main_title">Lesson 1</Button>
+                          <Button>
+                            {/* onClick={e => onDeleteSection(e, index)} */}
+                            <IoIosCloseCircleOutline />
+                          </Button>
+                        </div>
+                        <div className="item">
+                          <Button className="main_title">Lesson 2</Button>
+                          <Button>
+                            {/* onClick={e => onDeleteSection(e, index)} */}
+                            <IoIosCloseCircleOutline />
+                          </Button>
+                        </div>
+                        <div className="item">
+                          <Button className="main_title">Lesson 3</Button>
+                          <Button>
+                            {/* onClick={e => onDeleteSection(e, index)} */}
+                            <IoIosCloseCircleOutline />
+                          </Button>
+                        </div>
+                        {/* ))} */}
+                        <Button type="button" className="add_btn">
+                          <span>+</span> Add more Lesson
+                        </Button>
+                      </div>
+
+                      <div className="card mt-4 mb-5">
+                        <div className="card-header d-flex justify-content-between align-items-center cardCustomHeader">
+                          Lecture Quiz
+                          {/* <button
+                            type="button"
+                            className="btn btn-default detailsBtn"
+                          >
+                            <span>+</span> Add Quiz
+                          </button> */}
+                        </div>
+                        <div className="card-body">
+                          <div className="add_forms">
+                            <div className="add_form">
                               <Row>
-                                <Col lg={6}>
-                                  <FormGroup>
-                                    <Label>Lecture 2</Label>
-                                    <input
-                                      type="email"
-                                      className="form-control"
-                                      placeholder="Enter Lecture Title"
+                                <Col lg={12} md={12} sm={12} xs={12}>
+                                  <FormGroup className="mb-3">
+                                    <Label for="sub_title">
+                                      <FormattedMessage {...messages.Type} />
+                                    </Label>
+                                    <Input
+                                      type="text"
+                                      name="title"
+                                      id="sub_title"
+                                      placeholder="Type the Question"
                                     />
                                   </FormGroup>
-                                </Col>
-                                <Col lg={6}>
-                                  <FormGroup>
-                                    <Label>
-                                      <FormattedMessage
-                                        {...messages.DemoVideo}
+                                  <div className="quizAnswer">
+                                    <div className="Answers">
+                                      <input
+                                        className="radio"
+                                        type="radio"
+                                        id="age1"
+                                        name="age"
+                                        value="30"
                                       />
-                                    </Label>
-                                    <Dropzone
-                                      accept="video/*"
-                                      multiple={false}
-                                      onDrop={acceptedFiles => {
-                                        if (acceptedFiles && acceptedFiles[0]) {
-                                          setDataVideo(acceptedFiles[0]);
-                                          const reader = new FileReader();
-                                          reader.onload = e => {
-                                            setCourseVideo(e.target.result);
-                                          };
-                                          reader.readAsDataURL(acceptedFiles[0]);
-                                        }
-                                      }}
-                                    >
-                                      {({ getRootProps, getInputProps }) => (
-                                        <div
-                                          className="camera"
-                                          {...getRootProps()}
+                                      <input
+                                        className="textField"
+                                        placeholder="Answer 1"
+                                        type="text"
+                                      />
+                                    </div>
+                                    <div className="Answers">
+                                      <input
+                                        className="radio"
+                                        type="radio"
+                                        id="age2"
+                                        name="age"
+                                        value="60"
+                                      />
+                                      <input
+                                        className="textField"
+                                        placeholder="Answer 2"
+                                        type="text"
+                                      />
+                                    </div>
+                                    <div className="Answers">
+                                      <input
+                                        className="radio"
+                                        type="radio"
+                                        id="age3"
+                                        name="age"
+                                        value="100"
+                                      />
+                                      <input
+                                        className="textField"
+                                        placeholder="Answer 3"
+                                        type="text"
+                                      />
+                                    </div>
+                                    <div className="details_list">
+                                      {/* {detailsSection.map((res, index) => ( */}
+                                      <div className="item">
+                                        <Button className="title_btn">
+                                          Question 1
+                                        </Button>
+                                        <Button>
+                                          {/* onClick={e => onDeleteSection(e, index)} */}
+                                          <IoIosCloseCircleOutline />
+                                        </Button>
+                                      </div>
+                                      <div className="item">
+                                        <Button className="title_btn">
+                                          Question 2
+                                        </Button>
+                                        <Button>
+                                          {/* onClick={e => onDeleteSection(e, index)} */}
+                                          <IoIosCloseCircleOutline />
+                                        </Button>
+                                      </div>
+                                      <div className="item">
+                                        <Button className="title_btn">
+                                          Question 3
+                                        </Button>
+                                        <Button>
+                                          {/* onClick={e => onDeleteSection(e, index)} */}
+                                          <IoIosCloseCircleOutline />
+                                        </Button>
+                                      </div>
+                                      <div className="item">
+                                        <Button className="title_btn">
+                                          Question 4
+                                        </Button>
+                                        <Button>
+                                          {/* onClick={e => onDeleteSection(e, index)} */}
+                                          <IoIosCloseCircleOutline />
+                                        </Button>
+                                      </div>
+                                      {/* ))} */}
+                                      <div className="quiz_footer">
+                                        <Button
+                                          type="button"
+                                          className="add_btn"
                                         >
-                                          <Input {...getInputProps()} />
-                                          <div className="form-control uploadCont">
-                                            <p>Upload Lecture Video</p>
-                                            <div>
-                                              <button
-                                                type="button"
-                                                className="btn btn-default uploadBtn"
-                                              >
-                                                Upload File
-                                              </button>
-                                            </div>
-                                          </div>
+                                          <span>+</span> Add Question
+                                        </Button>
+                                        <p>Question 5 of 5</p>
+                                      </div>
+                                    </div>
+                                    {/* <div className="quizQuestions">
+                                      <div className="editQuiz">
+                                        <p>
+                                          The instructor was well prepared
+                                          for the class?
+                                        </p>
+                                        <div className="quizIcons">
+                                          <span>
+                                            <FiEdit3 />
+                                          </span>
+                                          <span>
+                                            <RiDeleteBin7Line />
+                                          </span>
                                         </div>
-                                      )}
-                                    </Dropzone>
-                                  </FormGroup>
+                                      </div>
+                                      <div className="editQuiz">
+                                        <p>Well prepared for the class?</p>
+                                        <div className="quizIcons">
+                                          <span>
+                                            <FiEdit3 />
+                                          </span>
+                                          <span>
+                                            <RiDeleteBin7Line />
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </div> */}
+                                  </div>
                                 </Col>
                               </Row>
                             </div>
-
-                            <div className="card_Divider">
-                              <div className="card-body">
-                                <Row>
-                                  <Col lg={6}>
-                                    <FormGroup className="mb-0">
-                                      <Label>Lecture 1</Label>
-                                      <input
-                                        type="email"
-                                        className="form-control"
-                                      />
-                                    </FormGroup>
-                                  </Col>
-                                  <Col lg={6}>
-                                    <FormGroup className="mb-0">
-                                      <Label>
-                                        <FormattedMessage
-                                          {...messages.DemoVideo}
-                                        />
-                                      </Label>
-                                      <Dropzone
-                                        accept="video/*"
-                                        multiple={false}
-                                        onDrop={acceptedFiles => {
-                                          if (
-                                            acceptedFiles &&
-                                            acceptedFiles[0]
-                                          ) {
-                                            setDataVideo(acceptedFiles[0]);
-                                            const reader = new FileReader();
-                                            reader.onload = e => {
-                                              setCourseVideo(e.target.result);
-                                            };
-                                            reader.readAsDataURL(acceptedFiles[0]);
-                                          }
-                                        }}
-                                      >
-                                        {({ getRootProps, getInputProps }) => (
-                                          <div
-                                            className="camera"
-                                            {...getRootProps()}
-                                          >
-                                            <Input {...getInputProps()} />
-                                            <div className="form-control uploadCont">
-                                              <p>Upload Lecture Video</p>
-                                              <div>
-                                                <button
-                                                  type="button"
-                                                  className="btn btn-default uploadBtn"
-                                                >
-                                                  Upload File
-                                                </button>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        )}
-                                      </Dropzone>
-                                    </FormGroup>
-                                  </Col>
-                                </Row>
-                                <div className="delete">
-                                  <RiDeleteBin7Line />
-                                  <span>Delete Lecture</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="card mt-4">
-                            <div className="card-header d-flex justify-content-between align-items-center cardCustomHeader">
-                              Question
-                              <button
-                                type="button"
-                                className="btn btn-default detailsBtn"
-                              >
-                                <span>+</span> Add Quiz
-                              </button>
-                            </div>
-                            <div className="card-body">
-                              <div className="add_forms">
-                                <div className="add_form">
-                                  <Row>
-                                    <Col lg={12} md={12} sm={12} xs={12}>
-                                      <FormGroup className="mb-3">
-                                        <Label for="sub_title">
-                                          <FormattedMessage
-                                            {...messages.Type}
-                                          />
-                                        </Label>
-                                        <Input
-                                          type="text"
-                                          name="title"
-                                          id="sub_title"
-                                          placeholder="Type the Question"
-                                        />
-                                      </FormGroup>
-                                      <div className="quizAnswer">
-                                        <div className="Answers">
-                                          <input
-                                            className="radio"
-                                            type="radio"
-                                            id="age1"
-                                            name="age"
-                                            value="30"
-                                          />
-                                          <input
-                                            className="textField"
-                                            placeholder="Answer 1"
-                                            type="text"
-                                          />
-                                        </div>
-                                        <div className="Answers">
-                                          <input
-                                            className="radio"
-                                            type="radio"
-                                            id="age2"
-                                            name="age"
-                                            value="60"
-                                          />
-                                          <input
-                                            className="textField"
-                                            placeholder="Answer 2"
-                                            type="text"
-                                          />
-                                        </div>
-                                        <div className="Answers">
-                                          <input
-                                            className="radio"
-                                            type="radio"
-                                            id="age3"
-                                            name="age"
-                                            value="100"
-                                          />
-                                          <input
-                                            className="textField"
-                                            placeholder="Answer 3"
-                                            type="text"
-                                          />
-                                        </div>
-                                        <div className="quizQuestions">
-                                          <div className="editQuiz">
-                                            <p>
-                                              The instructor was well prepared
-                                              for the class?
-                                            </p>
-                                            <div className="quizIcons">
-                                              <span>
-                                                <FiEdit3 />
-                                              </span>
-                                              <span>
-                                                <RiDeleteBin7Line />
-                                              </span>
-                                            </div>
-                                          </div>
-                                          <div className="editQuiz">
-                                            <p>Well prepared for the class?</p>
-                                            <div className="quizIcons">
-                                              <span>
-                                                <FiEdit3 />
-                                              </span>
-                                              <span>
-                                                <RiDeleteBin7Line />
-                                              </span>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </Col>
-                                  </Row>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="add_form mt-4 accordionMain">
-                        {/* <Accordion allowZeroExpanded>
-                          <AccordionItem uuid="a">
-                            <div className="customAccordion">
-                              <AccordionItemHeading className="headingBtn">
-                                <AccordionItemButton>
-                                  Lesson 1
-                                </AccordionItemButton>
-                              </AccordionItemHeading>
-                              <div className="delete_item">
-                                <RiDeleteBin7Line />
-                                <span>Delete Section</span>
-                              </div>
-                            </div>
-                            <AccordionItemPanel>
-                              <div className="section_in">
-                                <div className="item">
-                                  <div className="left">
-                                    Introduction Copy
-                                  </div>
-                                  <div className="right">
-                                  </div>
-                                </div>
-                                <div className="item">
-                                  <div className="left">
-                                    Interactive lesson Copy
-                                  </div>
-                                  <div className="right">
-                                  </div>
-                                </div>
-                                <div className="item">
-                                  <div className="left">
-                                    Lesson 1.1 Copy
-                                  </div>
-                                  <div className="right">
-                                  </div>
-                                </div>
-                              </div>
-                            </AccordionItemPanel>
-                          </AccordionItem>
-                        </Accordion> */}
-                        <div className="custom_accordin">
-                          <div className="accordin_item">
-                            <div className="accordin_header">
-                              <Button
-                                className="accordin_title"
-                                onClick={openAccordinOne}
-                              >
-                                Lesson 1
-                                <div className="accordin_icon">
-                                  <RiArrowDownSLine />
-                                </div>
-                              </Button>
-                              <div className="delete_item">
-                                <Button>
-                                  <RiDeleteBin7Line />
-                                  <span>Delete Section</span>
-                                </Button>
-                              </div>
-                            </div>
-                            {accordinOne && (
-                              <div className="accordin_content">Lesson 1</div>
-                            )}
-                          </div>
-                          <div className="accordin_item">
-                            <div className="accordin_header">
-                              <Button
-                                className="accordin_title"
-                                onClick={openAccordinTwo}
-                              >
-                                Lesson 2
-                                <div className="accordin_icon">
-                                  <RiArrowDownSLine />
-                                </div>
-                              </Button>
-                              <div className="delete_item">
-                                <Button>
-                                  <RiDeleteBin7Line />
-                                  <span>Delete Section</span>
-                                </Button>
-                              </div>
-                            </div>
-                            {accordinTwo && (
-                              <div className="accordin_content">Lesson 2</div>
-                            )}
-                          </div>
-                          <div className="accordin_item">
-                            <div className="accordin_header">
-                              <Button
-                                className="accordin_title"
-                                onClick={openAccordinThree}
-                              >
-                                Lesson 3
-                                <div className="accordin_icon">
-                                  <RiArrowDownSLine />
-                                </div>
-                              </Button>
-                              <div className="delete_item">
-                                <Button>
-                                  <RiDeleteBin7Line />
-                                  <span>Delete Section</span>
-                                </Button>
-                              </div>
-                            </div>
-                            {accordinThree && (
-                              <div className="accordin_content">Lesson 3</div>
-                            )}
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                  {/* <div className="add_form mt-4 accordionMain">
+                    <div className="custom_accordin">
+                      <div className="accordin_item">
+                        <div className="accordin_header">
+                          <Button
+                            className="accordin_title"
+                            onClick={openAccordinOne}
+                          >
+                            Lesson 1
+                            <div className="accordin_icon">
+                              <RiArrowDownSLine />
+                            </div>
+                          </Button>
+                          <div className="delete_item">
+                            <Button>
+                              <RiDeleteBin7Line />
+                              <span>Delete Section</span>
+                            </Button>
+                          </div>
+                        </div>
+                        {accordinOne && (
+                          <div className="accordin_content">Lesson 1</div>
+                        )}
+                      </div>
+                      <div className="accordin_item">
+                        <div className="accordin_header">
+                          <Button
+                            className="accordin_title"
+                            onClick={openAccordinTwo}
+                          >
+                            Lesson 2
+                            <div className="accordin_icon">
+                              <RiArrowDownSLine />
+                            </div>
+                          </Button>
+                          <div className="delete_item">
+                            <Button>
+                              <RiDeleteBin7Line />
+                              <span>Delete Section</span>
+                            </Button>
+                          </div>
+                        </div>
+                        {accordinTwo && (
+                          <div className="accordin_content">Lesson 2</div>
+                        )}
+                      </div>
+                      <div className="accordin_item">
+                        <div className="accordin_header">
+                          <Button
+                            className="accordin_title"
+                            onClick={openAccordinThree}
+                          >
+                            Lesson 3
+                            <div className="accordin_icon">
+                              <RiArrowDownSLine />
+                            </div>
+                          </Button>
+                          <div className="delete_item">
+                            <Button>
+                              <RiDeleteBin7Line />
+                              <span>Delete Section</span>
+                            </Button>
+                          </div>
+                        </div>
+                        {accordinThree && (
+                          <div className="accordin_content">Lesson 3</div>
+                        )}
+                      </div>
+                    </div>
+                  </div> */}
                   <div className="form_footer publishBtns">
                     <Button className="btn_back" onClick={handleCourseStepTwo}>
                       <FormattedMessage {...messages.Back} />

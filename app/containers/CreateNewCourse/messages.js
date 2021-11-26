@@ -24,9 +24,9 @@ export default defineMessages({
     id: `${scope}.Quiz`,
     defaultMessage: `Add Quiz`,
   },
-  CourseTitle: {
-    id: `${scope}.CourseTitle`,
-    defaultMessage: 'Course Title',
+  Title: {
+    id: `${scope}.Title`,
+    defaultMessage: 'Title',
   },
   CategoryType: {
     id: `${scope}.CategoryType`,

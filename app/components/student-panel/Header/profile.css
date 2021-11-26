@@ -655,13 +655,6 @@ aside > a {
   background: #fff;
   width: 83px;
 }
-.detailsBtn {
-  color: #46a135;
-  font-weight: 500;
-}
-.detailsBtn span {
-  font-size: 20px;
-}
 .createCourseCont .card-header {
   font-size: 20px;
   color: #404041;
@@ -727,35 +720,7 @@ aside > a {
   width: 18px;
   margin-right: 8px;
 }
-.detailsBtn:hover {
-  color: #46a135;
-}
-.cardCustomHeader {
-  padding: 0.5rem 1.8rem !important;
-}
-.cardCustomHeader {
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  border-bottom: initial;
-}
-.uploadBtn {
-  background-color: #3e952e;
-  color: #fff;
-  height: 47px;
-  border-radius: 0;
-  min-width: 120px;
-}
-.uploadBtn:hover {
-  color: #fff;
-}
-.uploadCont {
-  padding: 0 0 0 1rem;
-  height: 47px;
-}
-.uploadCont p {
-  padding: 12px 0px;
-  color: #d8d8d8;
-}
+
 .quizAnswer .Answers {
   border: 1px solid #d8d8d8;
   padding: 13px 15px;
@@ -1050,13 +1015,9 @@ input:checked + .slider:before {
   .createCourseCont .card-body {
     padding: 10px;
   }
-  .detailsBtn {
-    font-size: 14px;
-    padding: 0;
-  }
   .createCourseCont .card-header {
     font-size: 16px !important;
-    padding: 10px !important;
+    padding: 0.938rem 1.8rem !important;
   }
   .customTabs {
     margin-bottom: 20px;
