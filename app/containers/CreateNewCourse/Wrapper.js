@@ -51,6 +51,7 @@ const Wrapper = styled.div`
       font-size: 0.875rem;
       font-weight: 550;
       padding: 0.7rem 0;
+      max-width: 10rem;
       &:focus {
         box-shadow: none;
         outline: none;

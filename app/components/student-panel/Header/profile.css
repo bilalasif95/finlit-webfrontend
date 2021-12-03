@@ -788,16 +788,6 @@ aside > a {
   right: 55px;
   top: 15%;
 }
-.accordionMain .headingBtn {
-  background-color: #f9f9f9;
-  border-radius: 5px;
-}
-.accordionMain .accordion__panel {
-  padding: 2rem 1.8rem !important;
-}
-.accordionMain .accordion__item {
-  padding: 0 !important;
-}
 .successModal .modal-content {
   text-align: center;
 }
@@ -985,16 +975,6 @@ input:checked + .slider:before {
   }
   .publishBtns button {
     width: 100%;
-  }
-  .accordionMain
-    .custom_accordin
-    .accordin_item
-    .accordin_header
-    .accordin_title {
-    padding: 10px;
-  }
-  .accordionMain .custom_accordin .accordin_item .accordin_header .delete_item {
-    right: 35px;
   }
   .editQuiz {
     font-size: 14px;

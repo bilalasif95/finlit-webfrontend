@@ -287,7 +287,7 @@ export default function CreateNewCourse() {
                               id="coursetitle"
                               value={title}
                               onChange={e => setTitle(e.target.value)}
-                              placeholder="Enter Course Title"
+                              placeholder="Enter Title"
                             />
                             <InputGroupAddon
                               addonType="prepend"
@@ -977,76 +977,6 @@ export default function CreateNewCourse() {
                       </div>
                     </div>
                   </div>
-                  {/* <div className="add_form mt-4 accordionMain">
-                    <div className="custom_accordin">
-                      <div className="accordin_item">
-                        <div className="accordin_header">
-                          <Button
-                            className="accordin_title"
-                            onClick={openAccordinOne}
-                          >
-                            Lesson 1
-                            <div className="accordin_icon">
-                              <RiArrowDownSLine />
-                            </div>
-                          </Button>
-                          <div className="delete_item">
-                            <Button>
-                              <RiDeleteBin7Line />
-                              <span>Delete Section</span>
-                            </Button>
-                          </div>
-                        </div>
-                        {accordinOne && (
-                          <div className="accordin_content">Lesson 1</div>
-                        )}
-                      </div>
-                      <div className="accordin_item">
-                        <div className="accordin_header">
-                          <Button
-                            className="accordin_title"
-                            onClick={openAccordinTwo}
-                          >
-                            Lesson 2
-                            <div className="accordin_icon">
-                              <RiArrowDownSLine />
-                            </div>
-                          </Button>
-                          <div className="delete_item">
-                            <Button>
-                              <RiDeleteBin7Line />
-                              <span>Delete Section</span>
-                            </Button>
-                          </div>
-                        </div>
-                        {accordinTwo && (
-                          <div className="accordin_content">Lesson 2</div>
-                        )}
-                      </div>
-                      <div className="accordin_item">
-                        <div className="accordin_header">
-                          <Button
-                            className="accordin_title"
-                            onClick={openAccordinThree}
-                          >
-                            Lesson 3
-                            <div className="accordin_icon">
-                              <RiArrowDownSLine />
-                            </div>
-                          </Button>
-                          <div className="delete_item">
-                            <Button>
-                              <RiDeleteBin7Line />
-                              <span>Delete Section</span>
-                            </Button>
-                          </div>
-                        </div>
-                        {accordinThree && (
-                          <div className="accordin_content">Lesson 3</div>
-                        )}
-                      </div>
-                    </div>
-                  </div> */}
                   <div className="form_footer publishBtns">
                     <Button className="btn_back" onClick={handleCourseStepTwo}>
                       <FormattedMessage {...messages.Back} />

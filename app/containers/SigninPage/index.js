@@ -134,13 +134,15 @@ const SigninPage = props => {
         </Helmet>
         <div className="form_container Login-form">
           <div className="form_content">
-            <img
-              src={Logo}
-              alt="FinLit"
-              className="logo"
-              height="100%"
-              width="100%"
-            />
+            <Link to="/">
+              <img
+                src={Logo}
+                alt="FinLit"
+                className="logo"
+                height="100%"
+                width="100%"
+              />
+            </Link>
             <h2>
               <FormattedMessage {...messages.WelcomeBack} />
             </h2>
