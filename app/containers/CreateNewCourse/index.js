@@ -709,7 +709,7 @@ export default function CreateNewCourse() {
                   </div>
                 </>
               )} */}
-              {courseStepOne && (
+              {courseStepTwo && (
                 <>
                   <div className="create_course">
                     <div className="profileHeader">
