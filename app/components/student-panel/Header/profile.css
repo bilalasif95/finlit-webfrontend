@@ -464,6 +464,9 @@ aside > a {
     margin: 0 0 0 1rem;
     min-width: 47%;
   }
+  .createCourseCont .card-body {
+    padding: 1rem 1rem 1.75rem !important;
+  }
 }
 @media (max-width: 640px) {
   .asideCont {
@@ -481,6 +484,15 @@ aside > a {
   .profileNav {
     padding-top: 1.5rem;
     width: 90%;
+  }
+}
+
+@media (max-width: 414px) {
+  .createCourseCont .card {
+    border: none;
+  }
+  .createCourseCont .card-body {
+    padding: 0 !important;
   }
 }
 

@@ -399,6 +399,11 @@ const Wrapper = styled.div`
         }
       }
     }
+    @media (max-width: 414px) {
+      .details_list {
+        margin: 0 0 0.5rem;
+      }
+    }
   }
 `;
 

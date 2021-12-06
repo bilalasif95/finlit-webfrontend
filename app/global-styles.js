@@ -420,7 +420,7 @@ a {
 .sec_footer {
   align-items: center;
   display: flex;
-  justigy-content: space-between;
+  justify-content: space-between;
   button {
     color: #fff;
     margin: 0;
@@ -475,6 +475,18 @@ a {
     background-color: #255f2b;
     border: 1px solid #255f2b;
   }
+  @media (max-width: 767px) {
+    .bottom_btns {
+      justify-content: space-between !important;
+      button {
+        min-width: 8rem;
+        width: 50%;
+        &:first-child {
+          margin: 0;
+        }
+      }
+    }
+  }
 }
 .add_section {
   background-color: #46a135;
@@ -485,12 +497,15 @@ a {
   &:focus {
     box-shadow: none;
   }
+  @media (max-width: 414px) {
+    width: 100%;
+  }
 }
 // Page Footer Btns Styles
 .form_footer {
   align-items: center;
   display: flex;
-  justigy-content: space-between;
+  justify-content: space-between;
   button {
     color: #fff;
     margin: 0;
@@ -503,7 +518,7 @@ a {
   .top_btns {
     align-items: center;
     display: flex;
-    justigy-content: flex-start;
+    justify-content: flex-start;
     button {
       color: #fff;
       margin: 0 1rem 0 0;
@@ -554,6 +569,18 @@ a {
     background-color: #8b8b8b;
     border: 1px solid #8b8b8b;
   }
+  @media (max-width: 767px) {
+    .bottom_btns {
+      justify-content: space-between !important;
+      button {
+        min-width: 8rem;
+        width: 50%;
+        &:first-child {
+          margin: 0;
+        }
+      }
+    }
+  }
   @media (max-width: 480px) {
     width: 100%;
     .top_btns {
@@ -565,18 +592,18 @@ a {
         width: 48%;
       }
     }
-    .bottom_btns {
-      justify-content: space-between;
-      margin: 0 0 1rem;
-      button {
-        margin: 0;
-        min-width: 100px;
-        width: 47%;
-        &:last-child {
-          min-width: 100px;
-        }
-      }
-    }
+    // .bottom_btns {
+    //   justify-content: space-between;
+    //   margin: 0 0 1rem;
+    //   button {
+    //     margin: 0;
+    //     min-width: 100px;
+    //     width: 47%;
+    //     &:last-child {
+    //       min-width: 100px;
+    //     }
+    //   }
+    // }
   }
 }
 .camera {
