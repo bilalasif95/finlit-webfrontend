@@ -8,6 +8,7 @@ const Wrapper = styled.div`
     .details_list {
       display: flex;
       flex-direction: column;
+      margin: 0 0 1rem;
       width: 100%;
       .item {
         align-items: center;
@@ -24,7 +25,6 @@ const Wrapper = styled.div`
           color: #484848;
           font-size: 0.875rem;
           font-weight: 550;
-          padding: 0.875rem 1rem 0.875rem 1.75rem;
           text-align: left;
           width: 100%;
           &:focus {
@@ -37,8 +37,33 @@ const Wrapper = styled.div`
             }
           }
         }
+        .title_btn {
+          align-items: center;
+          display: inherit;
+          font-size: 1.125rem;
+          padding: 0.875rem 1rem 0.875rem 1.75rem;
+          svg {
+            height: 1.5rem;
+            margin: 0 0.5rem 0 0;
+            width: 1.5rem;
+          }
+        }
         .main_title {
           font-size: 1.25rem;
+        }
+        .action_btns {
+          display: flex;
+          justify-content: flex-end;
+          margin: 0 1rem 0 0;
+          button {
+            width: 3rem;
+            &:first-child {
+              svg {
+                height: 1.4rem;
+                width: 1.4rem;
+              }
+            }
+          }
         }
       }
     }
@@ -63,10 +88,21 @@ const Wrapper = styled.div`
         margin: 0 0.5rem 0 0;
       }
     }
+    .upload_file {
+      align-items: center;
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      p {
+        color: #575757;
+        font-size: 0.875rem;
+      }
+    }
     .uploading_video {
       align-items: center;
       display: flex;
       justify-content: space-between;
+      height: 6rem;
       width: 100%;
       .file_progress {
         width: 100%;
@@ -196,6 +232,7 @@ const Wrapper = styled.div`
       width: 100%;
       .view_cont {
         align-items: center;
+        background-color: #f4fcf3;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -211,7 +248,8 @@ const Wrapper = styled.div`
         width: 100%;
         .upload_icon {
           align-items: center;
-          border: 1px solid #3e952e;
+          background-color: #fff;
+          // border: 1px solid #3e952e;
           border-radius: 5rem;
           display: flex;
           justify-content: center;
@@ -306,25 +344,42 @@ const Wrapper = styled.div`
           // height: 100%;
           width: 100%;
         }
-        .del_btn {
+        .del_btn_container {
           align-items: center;
+          background-color: transparent;
           display: flex;
-          background-color: #fff;
-          border: none;
-          border-radius: 1.5rem;
-          cursor: pointer;
-          height: 2rem;
-          padding: 0;
-          width: 2rem;
+          height: 100%;
           justify-content: center;
           position: absolute;
-          right: 0;
-          top: 0;
-          width: 2rem;
+          transition: background-color 1s;
+          width: 100%;
           z-index: 1;
-          svg {
-            color: #000;
-            font-size: 2rem;
+          .del_btn {
+            align-items: center;
+            display: none;
+            background-color: #fff;
+            border: none;
+            border-radius: 3rem;
+            cursor: pointer;
+            height: 5rem;
+            padding: 0;
+            width: 2rem;
+            justify-content: center;
+            width: 5rem;
+            z-index: 1;
+            svg {
+              color: #000;
+              font-size: 2rem;
+            }
+            &:focus {
+              box-shadow: none;
+            }
+          }
+          &:hover {
+            background-color: #0000006b;
+            .del_btn {
+              display: flex;
+            }
           }
         }
       }

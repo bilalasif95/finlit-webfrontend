@@ -416,6 +416,76 @@ a {
     outline: none;
   }
 }
+
+.sec_footer {
+  align-items: center;
+  display: flex;
+  justigy-content: space-between;
+  button {
+    color: #fff;
+    margin: 0;
+    padding: 0.75rem;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .add_lec_quiz {
+    align-items: center;
+    display: inherit;
+    justify-content: flex-start;
+    button {
+      background-color: transparent;
+      border: none;
+      color: #41952e;
+      margin: 0 1rem 0 0;
+      padding: 0;
+      min-width: 8rem;
+      &:focus {
+        box-shadow: none;
+      }
+      svg {
+        color: #41952e;
+        height: 1.5rem;
+        margin: 0 0.5rem 0 0;
+        width: 1.5rem;
+      }
+    }
+  }
+  .bottom_btns {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    button {
+      color: #fff;
+      margin: 0 0 0 1rem;
+      min-width: 200px;
+      padding: 0.75rem;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+  .btn_back {
+    background-color: transparent;
+    border: 1px solid #d8d8d8;
+    color: #404041 !important;
+  }
+  .btn_save {
+    background-color: #255f2b;
+    border: 1px solid #255f2b;
+  }
+}
+.add_section {
+  background-color: #46a135;
+  border: 1px solid #46a135;
+  color: #fff;
+  min-width: 200px;
+  padding: 0.75rem;
+  &:focus {
+    box-shadow: none;
+  }
+}
 // Page Footer Btns Styles
 .form_footer {
   align-items: center;
@@ -541,21 +611,26 @@ a {
     height: 1.5rem;
     width: 1.5rem;
   }
-  .uploadBtn {
-    align-items: center;
-    background-color: #f4fdf3;
-    border-radius: 0.313rem;
-    cursor: pointer;
-    display: flex;
-    height: 47px;
-    justify-content: center;
-    width: 10rem;
-    span {
-      color: #3e952e;
-      font-size: 0.875rem;
-      font-weight: 550;
-    }
+}
+.uploadBtn {
+  align-items: center;
+  background-color: #f4fdf3;
+  border-radius: 3rem;
+  cursor: pointer;
+  display: flex;
+  height: 5rem;
+  justify-content: center;
+  margin: 0 2rem 0 0;
+  width: 5rem;
+  svg {
+    color: #3e952e;
+    height: 1.5rem;
+    width: 1.5rem;
   }
+}
+
+.publishBtns {
+  margin: 2rem 0 0;
 }
 
 #services {

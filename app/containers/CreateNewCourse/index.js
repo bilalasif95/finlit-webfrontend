@@ -8,8 +8,7 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import JoditEditor from 'jodit-react';
 import '../../components/student-panel/Header/profile.css';
-// import { FiEdit3 } from 'react-icons/fi';
-// import { FaVideo } from 'react-icons/fa';
+import { FiEdit3, FiUpload } from 'react-icons/fi';
 import { IoIosClose, IoIosCloseCircleOutline } from 'react-icons/io';
 // import { withStyles } from '@material-ui/core/styles';
 import {
@@ -35,7 +34,9 @@ import Dropzone from 'react-dropzone';
 import history from 'utils/history';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-// import { IoMdAttach } from 'react-icons/io';
+import { MdDelete, MdCheckCircle } from 'react-icons/md';
+import { FaVideo } from 'react-icons/fa';
+import { RiQuestionnaireFill } from 'react-icons/ri';
 // import {
 //   RiStarSFill,
 //   RiArrowDownSLine,
@@ -100,6 +101,10 @@ export default function CreateNewCourse() {
   const [tags, setTags] = useState([]);
   const [lectureVideo, setLectureVideo] = useState('');
   // const [category, setCategory] = useState('0');
+  const [hideBtns, setHideBtns] = useState(true);
+  const [showBtns, setShowBtns] = useState(false);
+  const [addLectureSection, setAddLectureSection] = useState(false);
+  const [addQuizSection, setAddQuizSection] = useState(false);
 
   const lecVideo = { lectureVideo: '' };
 
@@ -252,6 +257,19 @@ export default function CreateNewCourse() {
     const filterData = detailsSection.filter((res, ind) => ind !== index);
     setDetailsSection(filterData);
   };
+
+  const handleLectureSection = () => {
+    setAddLectureSection(true);
+  }
+
+  const handleQuizSection = () => {
+    setAddQuizSection(true);
+  }
+
+  const handleShowBtns = () => {
+    setHideBtns(false);
+    setShowBtns(true);
+  }
 
   return (
     <Wrapper>
@@ -485,6 +503,21 @@ export default function CreateNewCourse() {
                             </div>
                           ) : (
                             <div className="view_thumb">
+                              <div className="del_btn_container">
+                                {courseVideo === '' ? (
+                                  ''
+                                ) : (
+                                  <Button
+                                    className="del_btn"
+                                    onClick={() => {
+                                      setCourseVideo('');
+                                      dataVideo.courseVideo = null;
+                                    }}
+                                  >
+                                    <MdDelete />
+                                  </Button>
+                                )}
+                              </div>
                               <video>
                                 <source
                                   src={
@@ -514,46 +547,13 @@ export default function CreateNewCourse() {
                       </Col>
                     </Row>
                   </div>
-                  <div className="form_footer">
-                    {courseVideo === '' ? (
-                      ''
-                    ) : (
-                      <Button
-                        className="btn_submit"
-                        onClick={() => {
-                          setCourseVideo('');
-                          dataVideo.courseVideo = null;
-                        }}
-                      >
-                        <FormattedMessage {...messages.DeleteVideo} />
-                      </Button>
-                    )}
-                    <div className="bottom_btns">
-                      <Button className="btn_back" onClick={goToCoursesList}>
-                        <FormattedMessage {...messages.Back} />
-                      </Button>
-                      <Button
-                        className="btn_submit"
-                        disabled={!title || !price || loading}
-                        // onClick={createDraft}
-                        onClick={handleCourseStepTwo}
-                      >
-                        <FormattedMessage {...messages.Next} />
-                      </Button>
-                    </div>
-                  </div>
-                </>
-              )}
-              {courseStepTwo && (
-                <>
                   <div className="create_course">
                     {/* Create Course */}
                     <div className="profileHeader">
-                      <h3>Course Introduction</h3>
+                      <h3>Basic Info</h3>
                     </div>
                     <div className="createCourseCont">
-                      <div className="card">
-                        <div className="card-header">Introduction</div>
+                      <div className="card mb-4">
                         <div className="card-body">
                           <FormGroup>
                             <Label>Title</Label>
@@ -581,29 +581,22 @@ export default function CreateNewCourse() {
                               placeholder="Enter Description"
                             /> */}
                           </FormGroup>
-                          <div className="details_list">
-                            {detailsSection.map((res, index) => (
-                              <div className="item">
-                                <Button className="title_btn">
-                                  {res.heading}
-                                </Button>
-                                <Button
-                                  onClick={e => onDeleteSection(e, index)}
-                                >
-                                  <IoIosCloseCircleOutline />
-                                </Button>
-                              </div>
-                            ))}
+                          <div className="sec_footer">
+                            <div className="bottom_btns">
+                              <Button
+                                className="btn_back"
+                              // onClick={handleCourseStepOne}
+                              >
+                                Cancel
+                              </Button>
+                              <Button
+                                className="btn_save"
+                              // onClick={handleCourseStepThree}
+                              >
+                                Save Section
+                              </Button>
+                            </div>
                           </div>
-                          <Button
-                            type="button"
-                            className="add_btn"
-                            onClick={addDetailsSection}
-                            disabled={!heading || !content}
-                          >
-                            <span>+</span>
-                            Add More Details
-                          </Button>
                         </div>
                         {/* <div className="card_Divider">
                           {detailsSection.map((res, index) => (
@@ -637,8 +630,37 @@ export default function CreateNewCourse() {
                           ))}
                         </div> */}
                       </div>
+                      <div className="details_list">
+                        {detailsSection.map((res, index) => (
+                          <div className="item">
+                            <Button className="title_btn">
+                              <MdCheckCircle /> {res.heading}
+                            </Button>
+                            <div className="action_btns">
+                              <Button>
+                                <FiEdit3 />
+                              </Button>
+                              <Button
+                                onClick={e => onDeleteSection(e, index)}
+                              >
+                                <MdDelete />
+                              </Button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <Button
+                        type="button"
+                        className="add_section"
+                        onClick={addDetailsSection}
+                        disabled={!heading || !content}
+                      >
+                        New Section
+                      </Button>
+                      <div className="profileHeader mt-4">
+                        <h3>Tags</h3>
+                      </div>
                       <div className="card mt-4 mb-5">
-                        <div className="card-header">Course Tags</div>
                         <div className="card-body">
                           <FormGroup>
                             <Label for="price">
@@ -650,6 +672,25 @@ export default function CreateNewCourse() {
                       </div>
                     </div>
                   </div>
+                  <div className="form_footer">
+                    <div className="bottom_btns">
+                      <Button className="btn_back" onClick={goToCoursesList}>
+                        <FormattedMessage {...messages.Back} />
+                      </Button>
+                      <Button
+                        className="btn_submit"
+                        disabled={!title || !price || loading}
+                        // onClick={createDraft}
+                        onClick={handleCourseStepTwo}
+                      >
+                        <FormattedMessage {...messages.Next} />
+                      </Button>
+                    </div>
+                  </div>
+                </>
+              )}
+              {/* {courseStepTwo && (
+                <>
                   <div className="form_footer">
                     <div className="bottom_btns">
                       <Button
@@ -667,18 +708,15 @@ export default function CreateNewCourse() {
                     </div>
                   </div>
                 </>
-              )}
-              {courseStepThree && (
+              )} */}
+              {courseStepOne && (
                 <>
                   <div className="create_course">
                     <div className="profileHeader">
-                      <h3>Course Content</h3>
+                      <h3>Lesson 1</h3>
                     </div>
                     <div className="createCourseCont">
                       <div className="card mb-3">
-                        <div className="card-header d-flex justify-content-between align-items-center cardCustomHeader">
-                          Lesson 2
-                        </div>
                         <div className="card-body">
                           <Row>
                             <Col lg={12}>
@@ -691,21 +729,53 @@ export default function CreateNewCourse() {
                                 />
                               </FormGroup>
                             </Col>
-                            <Col lg={6}>
-                              <FormGroup>
-                                <Label>Lecture 2</Label>
-                                <input
-                                  type="email"
-                                  className="form-control"
-                                  placeholder="Enter Lecture Title"
-                                />
-                              </FormGroup>
+                            <Col lg={12}>
+                              <div className="sec_footer mb-4">
+                                {showBtns && (
+                                  <div className="add_lec_quiz">
+                                    <Button onClick={handleLectureSection}>
+                                      <FaVideo />
+                                      Add Lecture
+                                    </Button>
+                                    <Button onClick={handleQuizSection}>
+                                      <RiQuestionnaireFill />
+                                      Add Quiz
+                                    </Button>
+                                  </div>
+                                )}
+                                {hideBtns && (
+                                  <div className="bottom_btns">
+                                    <Button
+                                      className="btn_back"
+                                    // onClick={handleCourseStepOne}
+                                    >
+                                      Cancel
+                                    </Button>
+                                    <Button
+                                      className="btn_save"
+                                      onClick={handleShowBtns}
+                                    // onClick={handleCourseStepThree}
+                                    >
+                                      Save Section
+                                    </Button>
+                                  </div>
+                                )}
+                              </div>
                             </Col>
-                            <Col lg={6}>
-                              <FormGroup>
-                                <Label>
-                                  <FormattedMessage {...messages.DemoVideo} />
-                                </Label>
+                          </Row>
+                          {addLectureSection && (
+                            <Row>
+                              <Col lg={6}>
+                                <FormGroup>
+                                  <Label>Lecture 2</Label>
+                                  <input
+                                    type="email"
+                                    className="form-control"
+                                    placeholder="Enter Lecture Title"
+                                  />
+                                </FormGroup>
+                              </Col>
+                              <Col lg={6}>
                                 {lectureVideo === '' ? (
                                   <Dropzone
                                     accept="video/*"
@@ -725,7 +795,7 @@ export default function CreateNewCourse() {
                                   >
                                     {({ getRootProps, getInputProps }) => (
                                       <div
-                                        className="camera"
+                                        className="upload_file"
                                         {...getRootProps()}
                                       >
                                         <input {...getInputProps()} />
@@ -733,8 +803,13 @@ export default function CreateNewCourse() {
                                           type="button"
                                           className="uploadBtn"
                                         >
-                                          <span>Upload Video</span>
+                                          <span>
+                                            <FiUpload />
+                                          </span>
                                         </div>
+                                        <p>
+                                          <FormattedMessage {...messages.UploadVideo} />
+                                        </p>
                                       </div>
                                     )}
                                   </Dropzone>
@@ -761,230 +836,260 @@ export default function CreateNewCourse() {
                                     </div>
                                   </div>
                                 )}
-                              </FormGroup>
-                            </Col>
-                          </Row>
-                          <div className="details_list">
-                            {/* {detailsSection.map((res, index) => ( */}
-                            <div className="item">
-                              <Button className="title_btn">Lecture 1</Button>
-                              <Button>
-                                {/* onClick={e => onDeleteSection(e, index)} */}
-                                <IoIosCloseCircleOutline />
-                              </Button>
-                            </div>
-                            <div className="item">
-                              <Button className="title_btn">Lecture 2</Button>
-                              <Button>
-                                {/* onClick={e => onDeleteSection(e, index)} */}
-                                <IoIosCloseCircleOutline />
-                              </Button>
-                            </div>
-                            <div className="item">
-                              <Button className="title_btn">Lecture 3</Button>
-                              <Button>
-                                {/* onClick={e => onDeleteSection(e, index)} */}
-                                <IoIosCloseCircleOutline />
-                              </Button>
-                            </div>
-                            {/* ))} */}
-                          </div>
-                          <Button type="button" className="add_btn">
-                            <span>+</span> Add more lectures
-                          </Button>
+                              </Col>
+                              <Col lg={12}>
+                                <div className="sec_footer">
+                                  <div className="bottom_btns">
+                                    <Button
+                                      className="btn_back"
+                                    // onClick={handleCourseStepOne}
+                                    >
+                                      Cancel
+                                    </Button>
+                                    <Button
+                                      className="btn_save"
+                                    // onClick={handleCourseStepThree}
+                                    >
+                                      Save Lecture
+                                    </Button>
+                                  </div>
+                                </div>
+                              </Col>
+                              <Col lg={12}>
+                                <div className="details_list mt-5">
+                                  {/* {detailsSection.map((res, index) => ( */}
+                                  <div className="item">
+                                    <Button className="title_btn">
+                                      <MdCheckCircle /> Lecture 1
+                                    </Button>
+                                    <div className="action_btns">
+                                      <Button>
+                                        <FiEdit3 />
+                                      </Button>
+                                      <Button
+                                        onClick={e => onDeleteSection(e, index)}
+                                      >
+                                        <MdDelete />
+                                      </Button>
+                                    </div>
+                                  </div>
+                                  <div className="item">
+                                    <Button className="title_btn">
+                                      <MdCheckCircle /> Lecture 2
+                                    </Button>
+                                    <div className="action_btns">
+                                      <Button>
+                                        <FiEdit3 />
+                                      </Button>
+                                      <Button
+                                        onClick={e => onDeleteSection(e, index)}
+                                      >
+                                        <MdDelete />
+                                      </Button>
+                                    </div>
+                                  </div>
+                                  <div className="item">
+                                    <Button className="title_btn">
+                                      <MdCheckCircle /> Lecture 3
+                                    </Button>
+                                    <div className="action_btns">
+                                      <Button>
+                                        <FiEdit3 />
+                                      </Button>
+                                      <Button
+                                        onClick={e => onDeleteSection(e, index)}
+                                      >
+                                        <MdDelete />
+                                      </Button>
+                                    </div>
+                                  </div>
+                                  {/* ))} */}
+                                </div>
+                              </Col>
+                            </Row>
+                          )}
+                          {addQuizSection && (
+                            <>
+                              <div className="profileHeader">
+                                <h3>Quiz</h3>
+                              </div>
+                              <div className="card mt-4 mb-5">
+                                <div className="card-body">
+                                  <div className="add_forms">
+                                    <div className="add_form">
+                                      <Row>
+                                        <Col lg={12} md={12} sm={12} xs={12}>
+                                          <FormGroup className="mb-3">
+                                            <Label for="sub_title">
+                                              <FormattedMessage {...messages.Type} />
+                                            </Label>
+                                            <Input
+                                              type="text"
+                                              name="title"
+                                              id="sub_title"
+                                              placeholder="Type the Question"
+                                            />
+                                          </FormGroup>
+                                          <div className="quizAnswer">
+                                            <div className="Answers">
+                                              <Input
+                                                className="radio"
+                                                type="radio"
+                                                id="age1"
+                                                name="age"
+                                                value="30"
+                                              />
+                                              <Input
+                                                placeholder="Answer 1"
+                                                type="text"
+                                              />
+                                            </div>
+                                            <div className="Answers">
+                                              <Input
+                                                className="radio"
+                                                type="radio"
+                                                id="age2"
+                                                name="age"
+                                                value="60"
+                                              />
+                                              <Input
+                                                placeholder="Answer 2"
+                                                type="text"
+                                              />
+                                            </div>
+                                            <div className="Answers">
+                                              <Input
+                                                className="radio"
+                                                type="radio"
+                                                id="age3"
+                                                name="age"
+                                                value="100"
+                                              />
+                                              <Input
+                                                placeholder="Answer 3"
+                                                type="text"
+                                              />
+                                            </div>
+                                          </div>
+                                        </Col>
+                                        <Col lg={12}>
+                                          <div className="sec_footer mt-4">
+                                            <div className="bottom_btns">
+                                              <Button
+                                                className="btn_back"
+                                              // onClick={handleCourseStepOne}
+                                              >
+                                                Cancel
+                                              </Button>
+                                              <Button
+                                                className="btn_save"
+                                              // onClick={handleCourseStepThree}
+                                              >
+                                                Save Question
+                                              </Button>
+                                            </div>
+                                          </div>
+                                        </Col>
+                                      </Row>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="details_list">
+                                {/* {detailsSection.map((res, index) => ( */}
+                                <div className="item">
+                                  <Button className="title_btn">
+                                    <MdCheckCircle /> Question 1
+                                  </Button>
+                                  <div className="action_btns">
+                                    <Button>
+                                      <FiEdit3 />
+                                    </Button>
+                                    <Button
+                                      onClick={e => onDeleteSection(e, index)}
+                                    >
+                                      <MdDelete />
+                                    </Button>
+                                  </div>
+                                </div>
+                                <div className="item">
+                                  <Button className="title_btn">
+                                    <MdCheckCircle /> Question 2
+                                  </Button>
+                                  <div className="action_btns">
+                                    <Button>
+                                      <FiEdit3 />
+                                    </Button>
+                                    <Button
+                                      onClick={e => onDeleteSection(e, index)}
+                                    >
+                                      <MdDelete />
+                                    </Button>
+                                  </div>
+                                </div>
+                                <div className="item">
+                                  <Button className="title_btn">
+                                    <MdCheckCircle /> Question 3
+                                  </Button>
+                                  <div className="action_btns">
+                                    <Button>
+                                      <FiEdit3 />
+                                    </Button>
+                                    <Button
+                                      onClick={e => onDeleteSection(e, index)}
+                                    >
+                                      <MdDelete />
+                                    </Button>
+                                  </div>
+                                </div>
+                                {/* ))} */}
+                                <div className="quiz_footer">
+                                  <Button
+                                    type="button"
+                                    className="add_btn"
+                                  >
+                                    <span>+</span> Add Question
+                                  </Button>
+                                  <p>Question 5 of 5</p>
+                                </div>
+                              </div>
+                            </>
+                          )}
+
                         </div>
                       </div>
                       <div className="details_list">
                         {/* {detailsSection.map((res, index) => ( */}
                         <div className="item">
-                          <Button className="main_title">Lesson 1</Button>
-                          <Button>
-                            {/* onClick={e => onDeleteSection(e, index)} */}
-                            <IoIosCloseCircleOutline />
+                          <Button className="title_btn">
+                            <MdCheckCircle /> Lesson 1
                           </Button>
-                        </div>
-                        <div className="item">
-                          <Button className="main_title">Lesson 2</Button>
-                          <Button>
-                            {/* onClick={e => onDeleteSection(e, index)} */}
-                            <IoIosCloseCircleOutline />
-                          </Button>
-                        </div>
-                        <div className="item">
-                          <Button className="main_title">Lesson 3</Button>
-                          <Button>
-                            {/* onClick={e => onDeleteSection(e, index)} */}
-                            <IoIosCloseCircleOutline />
-                          </Button>
-                        </div>
-                        {/* ))} */}
-                        <Button type="button" className="add_btn">
-                          <span>+</span> Add more Lesson
-                        </Button>
-                      </div>
-
-                      <div className="card mt-4 mb-5">
-                        <div className="card-header d-flex justify-content-between align-items-center cardCustomHeader">
-                          Lecture Quiz
-                          {/* <button
-                            type="button"
-                            className="btn btn-default detailsBtn"
-                          >
-                            <span>+</span> Add Quiz
-                          </button> */}
-                        </div>
-                        <div className="card-body">
-                          <div className="add_forms">
-                            <div className="add_form">
-                              <Row>
-                                <Col lg={12} md={12} sm={12} xs={12}>
-                                  <FormGroup className="mb-3">
-                                    <Label for="sub_title">
-                                      <FormattedMessage {...messages.Type} />
-                                    </Label>
-                                    <Input
-                                      type="text"
-                                      name="title"
-                                      id="sub_title"
-                                      placeholder="Type the Question"
-                                    />
-                                  </FormGroup>
-                                  <div className="quizAnswer">
-                                    <div className="Answers">
-                                      <input
-                                        className="radio"
-                                        type="radio"
-                                        id="age1"
-                                        name="age"
-                                        value="30"
-                                      />
-                                      <input
-                                        className="textField"
-                                        placeholder="Answer 1"
-                                        type="text"
-                                      />
-                                    </div>
-                                    <div className="Answers">
-                                      <input
-                                        className="radio"
-                                        type="radio"
-                                        id="age2"
-                                        name="age"
-                                        value="60"
-                                      />
-                                      <input
-                                        className="textField"
-                                        placeholder="Answer 2"
-                                        type="text"
-                                      />
-                                    </div>
-                                    <div className="Answers">
-                                      <input
-                                        className="radio"
-                                        type="radio"
-                                        id="age3"
-                                        name="age"
-                                        value="100"
-                                      />
-                                      <input
-                                        className="textField"
-                                        placeholder="Answer 3"
-                                        type="text"
-                                      />
-                                    </div>
-                                    <div className="details_list">
-                                      {/* {detailsSection.map((res, index) => ( */}
-                                      <div className="item">
-                                        <Button className="title_btn">
-                                          Question 1
-                                        </Button>
-                                        <Button>
-                                          {/* onClick={e => onDeleteSection(e, index)} */}
-                                          <IoIosCloseCircleOutline />
-                                        </Button>
-                                      </div>
-                                      <div className="item">
-                                        <Button className="title_btn">
-                                          Question 2
-                                        </Button>
-                                        <Button>
-                                          {/* onClick={e => onDeleteSection(e, index)} */}
-                                          <IoIosCloseCircleOutline />
-                                        </Button>
-                                      </div>
-                                      <div className="item">
-                                        <Button className="title_btn">
-                                          Question 3
-                                        </Button>
-                                        <Button>
-                                          {/* onClick={e => onDeleteSection(e, index)} */}
-                                          <IoIosCloseCircleOutline />
-                                        </Button>
-                                      </div>
-                                      <div className="item">
-                                        <Button className="title_btn">
-                                          Question 4
-                                        </Button>
-                                        <Button>
-                                          {/* onClick={e => onDeleteSection(e, index)} */}
-                                          <IoIosCloseCircleOutline />
-                                        </Button>
-                                      </div>
-                                      {/* ))} */}
-                                      <div className="quiz_footer">
-                                        <Button
-                                          type="button"
-                                          className="add_btn"
-                                        >
-                                          <span>+</span> Add Question
-                                        </Button>
-                                        <p>Question 5 of 5</p>
-                                      </div>
-                                    </div>
-                                    {/* <div className="quizQuestions">
-                                      <div className="editQuiz">
-                                        <p>
-                                          The instructor was well prepared
-                                          for the class?
-                                        </p>
-                                        <div className="quizIcons">
-                                          <span>
-                                            <FiEdit3 />
-                                          </span>
-                                          <span>
-                                            <RiDeleteBin7Line />
-                                          </span>
-                                        </div>
-                                      </div>
-                                      <div className="editQuiz">
-                                        <p>Well prepared for the class?</p>
-                                        <div className="quizIcons">
-                                          <span>
-                                            <FiEdit3 />
-                                          </span>
-                                          <span>
-                                            <RiDeleteBin7Line />
-                                          </span>
-                                        </div>
-                                      </div>
-                                    </div> */}
-                                  </div>
-                                </Col>
-                              </Row>
-                            </div>
+                          <div className="action_btns">
+                            <Button>
+                              <FiEdit3 />
+                            </Button>
+                            <Button
+                              onClick={e => onDeleteSection(e, index)}
+                            >
+                              <MdDelete />
+                            </Button>
                           </div>
                         </div>
+                        {/* ))} */}
                       </div>
+                      <Button type="button" className="add_section">
+                        Add Lesson
+                      </Button>
                     </div>
                   </div>
                   <div className="form_footer publishBtns">
-                    <Button className="btn_back" onClick={handleCourseStepTwo}>
+                    <Button className="btn_back" onClick={handleCourseStepOne}>
                       <FormattedMessage {...messages.Back} />
                     </Button>
                     <div className="bottom_btns">
                       <Button
                         className="btn_back"
-                        onClick={handleCourseStepTwo}
+                        onClick={handleCourseStepOne}
                       >
                         <FormattedMessage {...messages.Draft} />
                       </Button>

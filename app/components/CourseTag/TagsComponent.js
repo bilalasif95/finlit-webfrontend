@@ -49,7 +49,7 @@ const styles = () =>
         flex: '1',
         fontSize: '0.875rem',
         lineHeight: '1.5',
-        margin: '0 0 1rem',
+        margin: '0 0 0.5rem',
         outline: 'none',
         padding: '0.75rem 1rem',
       },
@@ -169,7 +169,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
     addTile(tile) {
       // pull tiles array out of the state
       // see destructoring
-      if (tile.length && Object.keys(this.state.tiles).length <= 100) {
+      if (tile.length && Object.keys(this.state.tiles).length <= 10) {
         const { tiles, tileIds } = this.state;
 
         const newTileId = tileIds.length - 1 + 1;
@@ -227,6 +227,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
               value={this.state.currentValue}
               classes={classes}
             />
+            <div className="tagCount">0/10 Tags</div>
             {Object.keys(this.state.tiles).map(key => (
               <Tile
                 key={key}
