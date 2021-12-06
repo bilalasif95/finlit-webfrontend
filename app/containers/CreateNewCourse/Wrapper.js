@@ -43,9 +43,9 @@ const Wrapper = styled.div`
           font-size: 1.125rem;
           padding: 0.875rem 1rem 0.875rem 1.75rem;
           svg {
-            height: 1.5rem;
+            height: 24px;
             margin: 0 0.5rem 0 0;
-            width: 1.5rem;
+            width: 24px;
           }
         }
         .main_title {
@@ -399,9 +399,23 @@ const Wrapper = styled.div`
         }
       }
     }
-    @media (max-width: 414px) {
+    @media (max-width: 767px) {
       .details_list {
         margin: 0 0 0.5rem;
+        .item {
+          flex-wrap: wrap-reverse;
+          .title_btn {
+            font-size: 1rem;
+            padding: 0.25rem 1rem 0.75rem 1rem;
+          }
+          .action_btns {
+            margin: 0.75rem 0 0;
+            width: 100%;
+          }
+        }
+      }
+      .upload_file {
+        margin: 0 0 1rem;
       }
     }
   }

@@ -9,7 +9,8 @@ import { FormattedMessage } from 'react-intl';
 import JoditEditor from 'jodit-react';
 import '../../components/student-panel/Header/profile.css';
 import { FiEdit3, FiUpload } from 'react-icons/fi';
-import { IoIosClose, IoIosCloseCircleOutline } from 'react-icons/io';
+import { IoIosClose } from 'react-icons/io';
+// , IoIosCloseCircleOutline
 // import { withStyles } from '@material-ui/core/styles';
 import {
   FormGroup,
@@ -115,7 +116,7 @@ export default function CreateNewCourse() {
   // const [errors, setErrors] = useState({});
   const [courseStepOne, setCourseStepOne] = useState(true);
   const [courseStepTwo, setCourseStepTwo] = useState(false);
-  const [courseStepThree, setCourseStepThree] = useState(false);
+  // const [courseStepThree, setCourseStepThree] = useState(false);
 
   // const [accordinOne, setAccordinOne] = useState(false);
   // const [accordinTwo, setAccordinTwo] = useState(false);
@@ -156,20 +157,20 @@ export default function CreateNewCourse() {
   const handleCourseStepOne = () => {
     setCourseStepOne(true);
     setCourseStepTwo(false);
-    setCourseStepThree(false);
+    // setCourseStepThree(false);
   };
 
   const handleCourseStepTwo = () => {
     setCourseStepOne(false);
     setCourseStepTwo(true);
-    setCourseStepThree(false);
+    // setCourseStepThree(false);
   };
 
-  const handleCourseStepThree = () => {
-    setCourseStepOne(false);
-    setCourseStepTwo(false);
-    setCourseStepThree(true);
-  };
+  // const handleCourseStepThree = () => {
+  //   setCourseStepOne(false);
+  //   setCourseStepTwo(false);
+  //   setCourseStepThree(true);
+  // };
 
   const goToCoursesList = () => {
     history.push('/my_courses');
@@ -260,16 +261,16 @@ export default function CreateNewCourse() {
 
   const handleLectureSection = () => {
     setAddLectureSection(true);
-  }
+  };
 
   const handleQuizSection = () => {
     setAddQuizSection(true);
-  }
+  };
 
   const handleShowBtns = () => {
     setHideBtns(false);
     setShowBtns(true);
-  }
+  };
 
   return (
     <Wrapper>
@@ -583,18 +584,8 @@ export default function CreateNewCourse() {
                           </FormGroup>
                           <div className="sec_footer">
                             <div className="bottom_btns">
-                              <Button
-                                className="btn_back"
-                              // onClick={handleCourseStepOne}
-                              >
-                                Cancel
-                              </Button>
-                              <Button
-                                className="btn_save"
-                              // onClick={handleCourseStepThree}
-                              >
-                                Save Section
-                              </Button>
+                              <Button className="btn_back">Cancel</Button>
+                              <Button className="btn_save">Save Section</Button>
                             </div>
                           </div>
                         </div>
@@ -634,15 +625,16 @@ export default function CreateNewCourse() {
                         {detailsSection.map((res, index) => (
                           <div className="item">
                             <Button className="title_btn">
-                              <MdCheckCircle /> {res.heading}
+                              <div className="tick_icon">
+                                <MdCheckCircle />
+                              </div>
+                              {res.heading}
                             </Button>
                             <div className="action_btns">
                               <Button>
                                 <FiEdit3 />
                               </Button>
-                              <Button
-                                onClick={e => onDeleteSection(e, index)}
-                              >
+                              <Button onClick={e => onDeleteSection(e, index)}>
                                 <MdDelete />
                               </Button>
                             </div>
@@ -745,16 +737,10 @@ export default function CreateNewCourse() {
                                 )}
                                 {hideBtns && (
                                   <div className="bottom_btns">
-                                    <Button
-                                      className="btn_back"
-                                    // onClick={handleCourseStepOne}
-                                    >
-                                      Cancel
-                                    </Button>
+                                    <Button className="btn_back">Cancel</Button>
                                     <Button
                                       className="btn_save"
                                       onClick={handleShowBtns}
-                                    // onClick={handleCourseStepThree}
                                     >
                                       Save Section
                                     </Button>
@@ -808,7 +794,9 @@ export default function CreateNewCourse() {
                                           </span>
                                         </div>
                                         <p>
-                                          <FormattedMessage {...messages.UploadVideo} />
+                                          <FormattedMessage
+                                            {...messages.UploadVideo}
+                                          />
                                         </p>
                                       </div>
                                     )}
@@ -842,13 +830,13 @@ export default function CreateNewCourse() {
                                   <div className="bottom_btns">
                                     <Button
                                       className="btn_back"
-                                    // onClick={handleCourseStepOne}
+                                      // onClick={handleCourseStepOne}
                                     >
                                       Cancel
                                     </Button>
                                     <Button
                                       className="btn_save"
-                                    // onClick={handleCourseStepThree}
+                                      // onClick={handleCourseStepThree}
                                     >
                                       Save Lecture
                                     </Button>
@@ -867,7 +855,7 @@ export default function CreateNewCourse() {
                                         <FiEdit3 />
                                       </Button>
                                       <Button
-                                        onClick={e => onDeleteSection(e, index)}
+                                      // onClick={e => onDeleteSection(e, index)}
                                       >
                                         <MdDelete />
                                       </Button>
@@ -882,7 +870,7 @@ export default function CreateNewCourse() {
                                         <FiEdit3 />
                                       </Button>
                                       <Button
-                                        onClick={e => onDeleteSection(e, index)}
+                                      // onClick={e => onDeleteSection(e, index)}
                                       >
                                         <MdDelete />
                                       </Button>
@@ -897,7 +885,7 @@ export default function CreateNewCourse() {
                                         <FiEdit3 />
                                       </Button>
                                       <Button
-                                        onClick={e => onDeleteSection(e, index)}
+                                      // onClick={e => onDeleteSection(e, index)}
                                       >
                                         <MdDelete />
                                       </Button>
@@ -921,7 +909,9 @@ export default function CreateNewCourse() {
                                         <Col lg={12} md={12} sm={12} xs={12}>
                                           <FormGroup className="mb-3">
                                             <Label for="sub_title">
-                                              <FormattedMessage {...messages.Type} />
+                                              <FormattedMessage
+                                                {...messages.Type}
+                                              />
                                             </Label>
                                             <Input
                                               type="text"
@@ -932,39 +922,45 @@ export default function CreateNewCourse() {
                                           </FormGroup>
                                           <div className="quizAnswer">
                                             <div className="Answers">
-                                              <Input
-                                                className="radio"
-                                                type="radio"
-                                                id="age1"
-                                                name="age"
-                                                value="30"
-                                              />
+                                              <div className="check_quiz">
+                                                <Input
+                                                  className="radio"
+                                                  type="radio"
+                                                  id="age1"
+                                                  name="age"
+                                                  value="30"
+                                                />
+                                              </div>
                                               <Input
                                                 placeholder="Answer 1"
                                                 type="text"
                                               />
                                             </div>
                                             <div className="Answers">
-                                              <Input
-                                                className="radio"
-                                                type="radio"
-                                                id="age2"
-                                                name="age"
-                                                value="60"
-                                              />
+                                              <div className="check_quiz">
+                                                <Input
+                                                  className="radio"
+                                                  type="radio"
+                                                  id="age2"
+                                                  name="age"
+                                                  value="60"
+                                                />
+                                              </div>
                                               <Input
                                                 placeholder="Answer 2"
                                                 type="text"
                                               />
                                             </div>
                                             <div className="Answers">
-                                              <Input
-                                                className="radio"
-                                                type="radio"
-                                                id="age3"
-                                                name="age"
-                                                value="100"
-                                              />
+                                              <div className="check_quiz">
+                                                <Input
+                                                  className="radio"
+                                                  type="radio"
+                                                  id="age3"
+                                                  name="age"
+                                                  value="100"
+                                                />
+                                              </div>
                                               <Input
                                                 placeholder="Answer 3"
                                                 type="text"
@@ -977,13 +973,13 @@ export default function CreateNewCourse() {
                                             <div className="bottom_btns">
                                               <Button
                                                 className="btn_back"
-                                              // onClick={handleCourseStepOne}
+                                                // onClick={handleCourseStepOne}
                                               >
                                                 Cancel
                                               </Button>
                                               <Button
                                                 className="btn_save"
-                                              // onClick={handleCourseStepThree}
+                                                // onClick={handleCourseStepThree}
                                               >
                                                 Save Question
                                               </Button>
@@ -1006,7 +1002,7 @@ export default function CreateNewCourse() {
                                       <FiEdit3 />
                                     </Button>
                                     <Button
-                                      onClick={e => onDeleteSection(e, index)}
+                                    // onClick={e => onDeleteSection(e, index)}
                                     >
                                       <MdDelete />
                                     </Button>
@@ -1021,7 +1017,7 @@ export default function CreateNewCourse() {
                                       <FiEdit3 />
                                     </Button>
                                     <Button
-                                      onClick={e => onDeleteSection(e, index)}
+                                    // onClick={e => onDeleteSection(e, index)}
                                     >
                                       <MdDelete />
                                     </Button>
@@ -1036,7 +1032,7 @@ export default function CreateNewCourse() {
                                       <FiEdit3 />
                                     </Button>
                                     <Button
-                                      onClick={e => onDeleteSection(e, index)}
+                                    // onClick={e => onDeleteSection(e, index)}
                                     >
                                       <MdDelete />
                                     </Button>
@@ -1044,10 +1040,7 @@ export default function CreateNewCourse() {
                                 </div>
                                 {/* ))} */}
                                 <div className="quiz_footer">
-                                  <Button
-                                    type="button"
-                                    className="add_btn"
-                                  >
+                                  <Button type="button" className="add_btn">
                                     <span>+</span> Add Question
                                   </Button>
                                   <p>Question 5 of 5</p>
@@ -1055,7 +1048,6 @@ export default function CreateNewCourse() {
                               </div>
                             </>
                           )}
-
                         </div>
                       </div>
                       <div className="details_list">
@@ -1069,7 +1061,7 @@ export default function CreateNewCourse() {
                               <FiEdit3 />
                             </Button>
                             <Button
-                              onClick={e => onDeleteSection(e, index)}
+                            // onClick={e => onDeleteSection(e, index)}
                             >
                               <MdDelete />
                             </Button>

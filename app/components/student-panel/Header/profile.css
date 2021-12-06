@@ -981,9 +981,9 @@ input:checked + .slider:before {
   .publishBtns .bottom_btns button {
     margin: 0;
   }
-  .publishBtns .bottom_btns button:first-child {
+  /* .publishBtns .bottom_btns button:first-child {
     margin-right: 16px;
-  }
+  } */
   .publishBtns {
     flex-direction: column-reverse;
   }
@@ -1001,10 +1001,6 @@ input:checked + .slider:before {
     right: 0px;
     top: 5px;
     width: auto;
-  }
-  .uploadBtn {
-    min-width: 100px;
-    font-size: 14px;
   }
   .createCourseCont .card-body {
     padding: 10px;
