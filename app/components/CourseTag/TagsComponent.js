@@ -156,6 +156,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
             // reset the input value
             const currentValue = '';
             return this.setState({
+              ...this.state,
               currentValue,
               tileIds,
               tiles,
@@ -181,6 +182,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
 
         // this is the same as saying tiles : tiles
         this.setState({
+          ...this.state,
           currentValue,
           tileIds,
           tiles,
@@ -192,7 +194,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
       // console.log('removeTile::', this.state.tiles[id]);
       const { tiles } = this.state;
       delete tiles[id];
-      this.setState({ tiles });
+      this.setState({ ...this.state, tiles });
     }
 
     editLastTile() {
@@ -205,6 +207,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
       const currentValue = tiles[lastTileValue];
       delete tiles[lastTileValue];
       this.setState({
+        ...this.state,
         currentValue,
         tiles,
       });
@@ -213,6 +216,8 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
     render() {
       const { classes } = this.props;
       this.props.data(Object.values(this.state.tiles));
+      console.log('state', this.state);
+
       return (
         <>
           {/* <p>
@@ -227,7 +232,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
               value={this.state.currentValue}
               classes={classes}
             />
-            <div className="tagCount">0/10 Tags</div>
+            <div className="tagCount">{this.state.tileIds.length}/10 Tags</div>
             {Object.keys(this.state.tiles).map(key => (
               <Tile
                 key={key}

@@ -52,7 +52,7 @@ import Sidebar from '../../components/student-panel/Sidebar/index';
 import {
   endpoints,
   JoditEditorConfig,
-  // JoditEditorReadOnlyConfig,
+  JoditEditorReadOnlyConfig,
 } from '../../config/config';
 import Img from '../../components/Img';
 import Wrapper from './Wrapper';
@@ -60,6 +60,7 @@ import Upload from '../../images/upload.png';
 import messages from './messages';
 import TagsComponent from '../../components/CourseTag/TagsComponent';
 import { redirectToLogin } from '../../utils/redirectToLogin';
+import { apiPostRequest } from '../../helpers/Requests';
 
 const BootstrapInput = withStyles(theme => ({
   root: {
@@ -85,8 +86,11 @@ const BootstrapInput = withStyles(theme => ({
 }))(InputBase);
 
 export default function CreateNewCourse() {
+  const [toggleReadView, setToggleReadView] = useState(-1);
+  const [toggleEditView, setToggleEditView] = useState(-1);
+  const [newSectionToggle, setNewSectionToggle] = useState(false);
   const editor = useRef(null);
-  // const notEditableEditor = useRef(null);
+  const notEditableEditor = useRef(null);
   const [content, setContent] = useState('');
   const [categories, setCategories] = useState([]);
   const [categoryType, setCategoryType] = useState('');
@@ -106,26 +110,25 @@ export default function CreateNewCourse() {
   const [showBtns, setShowBtns] = useState(false);
   const [addLectureSection, setAddLectureSection] = useState(false);
   const [addQuizSection, setAddQuizSection] = useState(false);
-
+  const titleLimit = `${title.length}/60`;
   const lecVideo = { lectureVideo: '' };
 
   const setTagsFunc = tags => {
-    console.log(tags, '=========tags');
+    // console.log("tags", tags);
   };
-
   // const [errors, setErrors] = useState({});
   const [courseStepOne, setCourseStepOne] = useState(true);
   const [courseStepTwo, setCourseStepTwo] = useState(false);
   // const [courseStepThree, setCourseStepThree] = useState(false);
 
-  // const [accordinOne, setAccordinOne] = useState(false);
-  // const [accordinTwo, setAccordinTwo] = useState(false);
-  // const [accordinThree, setAccordinThree] = useState(false);
+  const [accordinOne, setAccordinOne] = useState(false);
+
   const [dataVideo, setDataVideo] = useState(null);
 
   const token = localStorage.getItem('token');
   const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-
+  const details = JSON.stringify(detailsSection);
+  const staticTags = JSON.stringify(['Usman', 'Bilal']);
   const bodyFormData = new FormData();
   bodyFormData.append('title', title);
   bodyFormData.append('courseLanguage', language);
@@ -133,6 +136,8 @@ export default function CreateNewCourse() {
   bodyFormData.append('courseLevel', level);
   bodyFormData.append('price', price);
   bodyFormData.append('promotionalVideo', dataVideo);
+  bodyFormData.append('details', details);
+  bodyFormData.append('tags', staticTags);
 
   const createDraft = () => {
     setLoading(true);
@@ -166,33 +171,21 @@ export default function CreateNewCourse() {
     // setCourseStepThree(false);
   };
 
-  // const handleCourseStepThree = () => {
-  //   setCourseStepOne(false);
-  //   setCourseStepTwo(false);
-  //   setCourseStepThree(true);
-  // };
-
   const goToCoursesList = () => {
     history.push('/my_courses');
   };
 
-  // const openAccordinOne = () => {
-  //   setAccordinOne(true);
-  //   setAccordinTwo(false);
-  //   setAccordinThree(false);
-  // };
+  const toggleHandler = index => {
+    index === toggleReadView ? setToggleReadView(-1) : setToggleReadView(index);
+    setToggleEditView(-1);
+  };
 
-  // const openAccordinTwo = () => {
-  //   setAccordinOne(false);
-  //   setAccordinTwo(true);
-  //   setAccordinThree(false);
-  // };
-
-  // const openAccordinThree = () => {
-  //   setAccordinOne(false);
-  //   setAccordinTwo(false);
-  //   setAccordinThree(true);
-  // };
+  const editToggleHandler = (index, item) => {
+    index === toggleEditView ? setToggleEditView(-1) : setToggleEditView(index);
+    setToggleReadView(-1);
+    setHeading(item.heading);
+    setContent(item.description);
+  };
 
   // const getCurrentUserInfo = () => {
   //   const token = localStorage.getItem('token');
@@ -248,7 +241,20 @@ export default function CreateNewCourse() {
       heading,
       description: content,
     };
-    setDetailsSection(prev => prev.concat(section));
+    const infoDetails = [...detailsSection];
+    infoDetails.push(section);
+    setDetailsSection(infoDetails);
+    setHeading('');
+    setContent('');
+    setNewSectionToggle(false);
+  };
+
+  const saveEditDetailsSection = index => {
+    const item = { ...detailsSection[index] };
+    item.heading = heading;
+    item.description = content;
+    detailsSection[index] = item;
+    setToggleEditView(-1);
     setHeading('');
     setContent('');
   };
@@ -292,7 +298,7 @@ export default function CreateNewCourse() {
                       <FormattedMessage {...messages.CreateNewCourse} />
                     </h3>
                   </div>
-                  <div className="create_course">
+                  <div className="add_form">
                     <Row>
                       <Col lg={12} md={12} sm={12} xs={12}>
                         <FormGroup>
@@ -312,7 +318,7 @@ export default function CreateNewCourse() {
                               addonType="prepend"
                               className="text_limit"
                             >
-                              0/60
+                              {titleLimit}
                             </InputGroupAddon>
                           </InputGroup>
                         </FormGroup>
@@ -344,27 +350,6 @@ export default function CreateNewCourse() {
                                   {res.categoryName}
                                 </MenuItem>
                               ))}
-                              {/* <MenuItem value="Select Category Type">
-                                Select Category Type
-                              </MenuItem>
-                              <MenuItem value="Financial Literacy">
-                                Financial Literacy
-                              </MenuItem>
-                              <MenuItem value="Software Developer">
-                                Software Developer
-                              </MenuItem>
-                              <MenuItem value="Medical and Health Services">
-                                Medical and Health Services
-                              </MenuItem>
-                              <MenuItem value="Statistician">
-                                Statistician
-                              </MenuItem>
-                              <MenuItem value="Speech-Language">
-                                Speech-Language
-                              </MenuItem>
-                              <MenuItem value="Data Scientist">
-                                Data Scientist
-                              </MenuItem> */}
                             </Select>
                           </FormControl>
                         </FormGroup>
@@ -548,107 +533,212 @@ export default function CreateNewCourse() {
                       </Col>
                     </Row>
                   </div>
-                  <div className="create_course">
-                    {/* Create Course */}
+                  <div className="add_form">
                     <div className="profileHeader">
                       <h3>Basic Info</h3>
                     </div>
                     <div className="createCourseCont">
-                      <div className="card mb-4">
-                        <div className="card-body">
-                          <FormGroup>
-                            <Label>Title</Label>
-                            <Input
-                              type="text"
-                              name="heading"
-                              value={heading}
-                              onChange={e => setHeading(e.target.value)}
-                              className="form-control"
-                              placeholder="Enter Title"
-                            />
-                          </FormGroup>
-                          <FormGroup className="mt-4">
-                            <Label>Description</Label>
-                            <JoditEditor
-                              ref={editor}
-                              value={content}
-                              config={JoditEditorConfig}
-                              tabIndex={0} // tabIndex of textarea
-                              onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-                            />
-                            {/* <textarea
-                              className="form-control"
-                              rows="6"
-                              placeholder="Enter Description"
-                            /> */}
-                          </FormGroup>
-                          <div className="sec_footer">
-                            <div className="bottom_btns">
-                              <Button className="btn_back">Cancel</Button>
-                              <Button className="btn_save">Save Section</Button>
+                      {detailsSection.length === 0 && (
+                        <div className="card mb-4">
+                          <div className="card-body">
+                            <FormGroup>
+                              <Label>Title</Label>
+                              <Input
+                                type="text"
+                                name="heading"
+                                value={heading}
+                                onChange={e => setHeading(e.target.value)}
+                                className="form-control"
+                                placeholder="Enter Title"
+                              />
+                            </FormGroup>
+                            <FormGroup className="mt-4">
+                              <Label>Description</Label>
+                              <JoditEditor
+                                ref={editor}
+                                value={content}
+                                config={JoditEditorConfig}
+                                tabIndex={0} // tabIndex of textarea
+                                onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                              />
+                            </FormGroup>
+                            <div className="sec_footer">
+                              <div className="bottom_btns">
+                                <Button className="btn_back">Cancel</Button>
+                                <Button
+                                  className="btn_save"
+                                  onClick={addDetailsSection}
+                                >
+                                  Save Section
+                                </Button>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        {/* <div className="card_Divider">
-                          {detailsSection.map((res, index) => (
-                            <div className="card-body">
-                              <FormGroup>
-                                <Label>Heading</Label>
-                                <Input
-                                  readOnly
-                                  value={res.heading}
-                                  className="form-control"
-                                  placeholder="Enter Title"
-                                />
-                              </FormGroup>
-                              <FormGroup className="mt-4 mb-0">
-                                <Label>Description</Label>
-                                <JoditEditor
-                                  ref={notEditableEditor}
-                                  value={res.description}
-                                  config={JoditEditorReadOnlyConfig}
-                                  tabIndex={0} // tabIndex of textarea
-                                />
-                              </FormGroup>
-                              <div
-                                className="delete"
-                                onClick={e => onDeleteSection(e, index)}
-                              >
-                                <RiDeleteBin7Line />
-                                <span>Delete Section</span>
+                      )}
+                      {newSectionToggle && (
+                        <div className="card mb-4">
+                          <div className="card-body">
+                            <FormGroup>
+                              <Label>Title</Label>
+                              <Input
+                                type="text"
+                                name="heading"
+                                value={heading}
+                                onChange={e => setHeading(e.target.value)}
+                                className="form-control"
+                                placeholder="Enter Title"
+                              />
+                            </FormGroup>
+                            <FormGroup className="mt-4">
+                              <Label>Description</Label>
+                              <JoditEditor
+                                ref={editor}
+                                value={content}
+                                config={JoditEditorConfig}
+                                tabIndex={0} // tabIndex of textarea
+                                onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                              />
+                            </FormGroup>
+                            <div className="sec_footer">
+                              <div className="bottom_btns">
+                                <Button
+                                  className="btn_back"
+                                  onClick={() => setNewSectionToggle(false)}
+                                >
+                                  Cancel
+                                </Button>
+                                <Button
+                                  className="btn_save"
+                                  onClick={addDetailsSection}
+                                >
+                                  Save Section
+                                </Button>
                               </div>
                             </div>
-                          ))}
-                        </div> */}
-                      </div>
-                      <div className="details_list">
-                        {detailsSection.map((res, index) => (
-                          <div className="item">
-                            <Button className="title_btn">
-                              <div className="tick_icon">
-                                <MdCheckCircle />
+                          </div>
+                        </div>
+                      )}
+                      {detailsSection.length > 0 &&
+                        detailsSection.map((item, index) => (
+                          <div key={index} className="custom_accordin">
+                            <div className="accordin_item">
+                              <div className="accordin_header">
+                                <Button
+                                  className={
+                                    accordinOne
+                                      ? 'active title_btn'
+                                      : 'title_btn'
+                                  }
+                                  onClick={() => toggleHandler(index)}
+                                >
+                                  <div className="tick_icon">
+                                    <MdCheckCircle />
+                                  </div>
+                                  {item.heading}
+                                </Button>
+                                <div className="action_btns">
+                                  <Button>
+                                    <FiEdit3
+                                      onClick={() =>
+                                        editToggleHandler(index, item)
+                                      }
+                                    />
+                                  </Button>
+                                  <Button
+                                    onClick={e => onDeleteSection(e, index)}
+                                  >
+                                    <MdDelete />
+                                  </Button>
+                                </div>
                               </div>
-                              {res.heading}
-                            </Button>
-                            <div className="action_btns">
-                              <Button>
-                                <FiEdit3 />
-                              </Button>
-                              <Button onClick={e => onDeleteSection(e, index)}>
-                                <MdDelete />
-                              </Button>
+                              {toggleReadView === index && (
+                                <div className="accordin_content">
+                                  <div className="section_in">
+                                    <FormGroup>
+                                      <Label>Title</Label>
+                                      <Input
+                                        type="text"
+                                        name="heading"
+                                        value={item.heading}
+                                        readOnly
+                                      />
+                                    </FormGroup>
+                                    <FormGroup className="mt-4">
+                                      <Label>Description</Label>
+                                      <JoditEditor
+                                        ref={notEditableEditor}
+                                        value={item.description}
+                                        config={JoditEditorReadOnlyConfig}
+                                        tabIndex={0} // tabIndex of textarea
+                                      />
+                                    </FormGroup>
+                                  </div>
+                                </div>
+                              )}
+                              {toggleEditView === index && (
+                                <div className="accordin_content">
+                                  <div className="section_in">
+                                    <FormGroup>
+                                      <Label>Title</Label>
+                                      <Input
+                                        type="text"
+                                        name="heading"
+                                        value={heading}
+                                        onChange={e =>
+                                          setHeading(e.target.value)
+                                        }
+                                        className="form-control"
+                                        placeholder="Enter Title"
+                                      />
+                                    </FormGroup>
+                                    <FormGroup className="mt-4">
+                                      <Label>Description</Label>
+                                      <JoditEditor
+                                        ref={editor}
+                                        value={content}
+                                        config={JoditEditorConfig}
+                                        tabIndex={0} // tabIndex of textarea
+                                        onBlur={newContent =>
+                                          setContent(newContent)
+                                        } // preferred to use only this option to update the content for performance reasons
+                                      />
+                                    </FormGroup>
+                                  </div>
+                                  <div className="sec_footer">
+                                    <div className="bottom_btns">
+                                      <Button
+                                        className="btn_back"
+                                        onClick={() => setToggleEditView(-1)}
+                                      >
+                                        Cancel
+                                      </Button>
+                                      <Button
+                                        className="btn_save"
+                                        onClick={() =>
+                                          saveEditDetailsSection(index)
+                                        }
+                                      >
+                                        Save Section
+                                      </Button>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           </div>
                         ))}
-                      </div>
-                      <Button
-                        type="button"
-                        className="add_section"
-                        onClick={addDetailsSection}
-                        disabled={!heading || !content}
-                      >
-                        New Section
-                      </Button>
+
+                      {detailsSection.length > 0 && (
+                        <Button
+                          type="button"
+                          className="add_section"
+                          onClick={() => setNewSectionToggle(true)}
+                          disabled={newSectionToggle}
+                        >
+                          New Section
+                        </Button>
+                      )}
                       <div className="profileHeader mt-4">
                         <h3>Tags</h3>
                       </div>
@@ -672,8 +762,8 @@ export default function CreateNewCourse() {
                       <Button
                         className="btn_submit"
                         disabled={!title || !price || loading}
-                        // onClick={createDraft}
-                        onClick={handleCourseStepTwo}
+                        onClick={createDraft}
+                        // onClick={handleCourseStepTwo}
                       >
                         <FormattedMessage {...messages.Next} />
                       </Button>
@@ -703,7 +793,7 @@ export default function CreateNewCourse() {
               )} */}
               {courseStepTwo && (
                 <>
-                  <div className="create_course">
+                  <div className="add_form">
                     <div className="profileHeader">
                       <h3>Lesson 1</h3>
                     </div>
