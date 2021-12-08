@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import JoditEditor from 'jodit-react';
 import '../../components/student-panel/Header/profile.css';
 import { FiEdit3, FiUpload } from 'react-icons/fi';
-import { IoIosClose } from 'react-icons/io';
+import { IoIosClose, IoMdChatboxes } from 'react-icons/io';
 // , IoIosCloseCircleOutline
 // import { withStyles } from '@material-ui/core/styles';
 import {
@@ -84,6 +84,21 @@ const BootstrapInput = withStyles(theme => ({
     },
   },
 }))(InputBase);
+
+// var editor = new Jodit("#editor", {
+//   "useSearch": false,
+//   "uploader": {
+//     "insertImageAsBase64URI": true
+//   },
+//   "spellcheck": false,
+//   "showCharsCounter": false,
+//   "showWordsCounter": false,
+//   "showXPathInStatusbar": false,
+//   "inline": true,
+//   "toolbarInlineForSelection": true,
+//   "showPlaceholder": false,
+//   "buttons": "bold,italic,underline,strikethrough,ul,ol,left,font,fontsize,paragraph,image,file,hr,table,link"
+// });
 
 export default function CreateNewCourse() {
   const [toggleReadView, setToggleReadView] = useState(-1);
@@ -763,7 +778,7 @@ export default function CreateNewCourse() {
                         className="btn_submit"
                         disabled={!title || !price || loading}
                         onClick={createDraft}
-                        // onClick={handleCourseStepTwo}
+                      // onClick={handleCourseStepTwo}
                       >
                         <FormattedMessage {...messages.Next} />
                       </Button>
@@ -840,151 +855,259 @@ export default function CreateNewCourse() {
                             </Col>
                           </Row>
                           {addLectureSection && (
-                            <Row>
-                              <Col lg={6}>
-                                <FormGroup>
-                                  <Label>Lecture 2</Label>
-                                  <input
-                                    type="email"
-                                    className="form-control"
-                                    placeholder="Enter Lecture Title"
-                                  />
-                                </FormGroup>
-                              </Col>
-                              <Col lg={6}>
-                                {lectureVideo === '' ? (
-                                  <Dropzone
-                                    accept="video/*"
-                                    multiple={false}
-                                    onDrop={acceptedFiles => {
-                                      if (acceptedFiles && acceptedFiles[0]) {
-                                        const lecVdo = acceptedFiles[0];
-                                        lecVideo.lectureVideo = lecVdo;
-                                        // setcourseVideoFile(acceptedFiles[0]);
-                                        const reader = new FileReader();
-                                        reader.onload = e => {
-                                          setLectureVideo(e.target.result);
-                                        };
-                                        reader.readAsDataURL(acceptedFiles[0]);
-                                      }
-                                    }}
-                                  >
-                                    {({ getRootProps, getInputProps }) => (
-                                      <div
-                                        className="upload_file"
-                                        {...getRootProps()}
+                            <>
+                              <Row>
+                                <Col lg={12}>
+                                  <div className="profileHeader">
+                                    <h3>Lecture</h3>
+                                  </div>
+                                </Col>
+                              </Row>
+                              <div className="add_lecture_list">
+                                <Row>
+                                  <Col lg={6}>
+                                    <FormGroup>
+                                      <Label>Lecture 2</Label>
+                                      <input
+                                        type="email"
+                                        className="form-control"
+                                        placeholder="Enter Lecture Title"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                  <Col lg={6}>
+                                    {lectureVideo === '' ? (
+                                      <Dropzone
+                                        accept="video/*"
+                                        multiple={false}
+                                        onDrop={acceptedFiles => {
+                                          if (acceptedFiles && acceptedFiles[0]) {
+                                            const lecVdo = acceptedFiles[0];
+                                            lecVideo.lectureVideo = lecVdo;
+                                            // setcourseVideoFile(acceptedFiles[0]);
+                                            const reader = new FileReader();
+                                            reader.onload = e => {
+                                              setLectureVideo(e.target.result);
+                                            };
+                                            reader.readAsDataURL(acceptedFiles[0]);
+                                          }
+                                        }}
                                       >
-                                        <input {...getInputProps()} />
-                                        <div
-                                          type="button"
-                                          className="uploadBtn"
-                                        >
-                                          <span>
-                                            <FiUpload />
-                                          </span>
+                                        {({ getRootProps, getInputProps }) => (
+                                          <div
+                                            className="upload_file"
+                                            {...getRootProps()}
+                                          >
+                                            <input {...getInputProps()} />
+                                            <div
+                                              type="button"
+                                              className="uploadBtn"
+                                            >
+                                              <span>
+                                                <FiUpload />
+                                              </span>
+                                            </div>
+                                            <p>
+                                              <FormattedMessage
+                                                {...messages.UploadVideo}
+                                              />
+                                            </p>
+                                          </div>
+                                        )}
+                                      </Dropzone>
+                                    ) : (
+                                      <div className="uploading_video">
+                                        <div className="file_progress">
+                                          <p>
+                                            File
+                                            <span>video File name here</span>
+                                            is uploading
+                                          </p>
+                                          <Progress value={70} />
                                         </div>
-                                        <p>
-                                          <FormattedMessage
-                                            {...messages.UploadVideo}
-                                          />
-                                        </p>
+                                        <div className="del_video">
+                                          <Button
+                                            onClick={() => {
+                                              setLectureVideo('');
+                                              lecVideo.lectureVideo = null;
+                                            }}
+                                            className="del_btn"
+                                          >
+                                            <IoIosClose />
+                                          </Button>
+                                        </div>
                                       </div>
                                     )}
-                                  </Dropzone>
-                                ) : (
-                                  <div className="uploading_video">
-                                    <div className="file_progress">
-                                      <p>
-                                        File
-                                        <span>video File name here</span>
-                                        is uploading
-                                      </p>
-                                      <Progress value={70} />
+                                  </Col>
+                                  <Col lg={12}>
+                                    <div className="sec_footer">
+                                      <div className="bottom_btns">
+                                        <Button
+                                          className="btn_back"
+                                        // onClick={handleCourseStepOne}
+                                        >
+                                          Cancel
+                                        </Button>
+                                        <Button
+                                          className="btn_save"
+                                        // onClick={handleCourseStepThree}
+                                        >
+                                          Save Lecture
+                                        </Button>
+                                      </div>
                                     </div>
-                                    <div className="del_video">
-                                      <Button
-                                        onClick={() => {
-                                          setLectureVideo('');
-                                          lecVideo.lectureVideo = null;
+                                  </Col>
+                                </Row>
+
+                                <Row>
+                                  <Col lg={6}>
+                                    <FormGroup>
+                                      <Label>Lecture 2</Label>
+                                      <input
+                                        type="email"
+                                        className="form-control"
+                                        placeholder="Enter Lecture Title"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                  <Col lg={6}>
+                                    {lectureVideo === '' ? (
+                                      <Dropzone
+                                        accept="video/*"
+                                        multiple={false}
+                                        onDrop={acceptedFiles => {
+                                          if (acceptedFiles && acceptedFiles[0]) {
+                                            const lecVdo = acceptedFiles[0];
+                                            lecVideo.lectureVideo = lecVdo;
+                                            // setcourseVideoFile(acceptedFiles[0]);
+                                            const reader = new FileReader();
+                                            reader.onload = e => {
+                                              setLectureVideo(e.target.result);
+                                            };
+                                            reader.readAsDataURL(acceptedFiles[0]);
+                                          }
                                         }}
-                                        className="del_btn"
                                       >
-                                        <IoIosClose />
-                                      </Button>
+                                        {({ getRootProps, getInputProps }) => (
+                                          <div
+                                            className="upload_file"
+                                            {...getRootProps()}
+                                          >
+                                            <input {...getInputProps()} />
+                                            <div
+                                              type="button"
+                                              className="uploadBtn"
+                                            >
+                                              <span>
+                                                <FiUpload />
+                                              </span>
+                                            </div>
+                                            <p>
+                                              <FormattedMessage
+                                                {...messages.UploadVideo}
+                                              />
+                                            </p>
+                                          </div>
+                                        )}
+                                      </Dropzone>
+                                    ) : (
+                                      <div className="uploading_video">
+                                        <div className="file_progress">
+                                          <p>
+                                            File
+                                            <span>video File name here</span>
+                                            is uploading
+                                          </p>
+                                          <Progress value={70} />
+                                        </div>
+                                        <div className="del_video">
+                                          <Button
+                                            onClick={() => {
+                                              setLectureVideo('');
+                                              lecVideo.lectureVideo = null;
+                                            }}
+                                            className="del_btn"
+                                          >
+                                            <IoIosClose />
+                                          </Button>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </Col>
+                                  <Col lg={12}>
+                                    <div className="sec_footer">
+                                      <div className="bottom_btns">
+                                        <Button
+                                          className="btn_back"
+                                        // onClick={handleCourseStepOne}
+                                        >
+                                          Cancel
+                                        </Button>
+                                        <Button
+                                          className="btn_save"
+                                        // onClick={handleCourseStepThree}
+                                        >
+                                          Save Lecture
+                                        </Button>
+                                      </div>
                                     </div>
-                                  </div>
-                                )}
-                              </Col>
-                              <Col lg={12}>
-                                <div className="sec_footer">
-                                  <div className="bottom_btns">
-                                    <Button
-                                      className="btn_back"
-                                      // onClick={handleCourseStepOne}
-                                    >
-                                      Cancel
-                                    </Button>
-                                    <Button
-                                      className="btn_save"
-                                      // onClick={handleCourseStepThree}
-                                    >
-                                      Save Lecture
-                                    </Button>
-                                  </div>
-                                </div>
-                              </Col>
-                              <Col lg={12}>
-                                <div className="details_list mt-5">
-                                  {/* {detailsSection.map((res, index) => ( */}
-                                  <div className="item">
-                                    <Button className="title_btn">
-                                      <MdCheckCircle /> Lecture 1
-                                    </Button>
-                                    <div className="action_btns">
-                                      <Button>
-                                        <FiEdit3 />
+                                  </Col>
+                                </Row>
+                              </div>
+                              <Row>
+                                <Col lg={12}>
+                                  <div className="details_list mt-5">
+                                    {/* {detailsSection.map((res, index) => ( */}
+                                    <div className="item">
+                                      <Button className="title_btn">
+                                        <MdCheckCircle /> Lecture 1
                                       </Button>
-                                      <Button
-                                      // onClick={e => onDeleteSection(e, index)}
-                                      >
-                                        <MdDelete />
-                                      </Button>
+                                      <div className="action_btns">
+                                        <Button>
+                                          <FiEdit3 />
+                                        </Button>
+                                        <Button
+                                        // onClick={e => onDeleteSection(e, index)}
+                                        >
+                                          <MdDelete />
+                                        </Button>
+                                      </div>
                                     </div>
-                                  </div>
-                                  <div className="item">
-                                    <Button className="title_btn">
-                                      <MdCheckCircle /> Lecture 2
-                                    </Button>
-                                    <div className="action_btns">
-                                      <Button>
-                                        <FiEdit3 />
+                                    <div className="item">
+                                      <Button className="title_btn">
+                                        <MdCheckCircle /> Lecture 2
                                       </Button>
-                                      <Button
-                                      // onClick={e => onDeleteSection(e, index)}
-                                      >
-                                        <MdDelete />
-                                      </Button>
+                                      <div className="action_btns">
+                                        <Button>
+                                          <FiEdit3 />
+                                        </Button>
+                                        <Button
+                                        // onClick={e => onDeleteSection(e, index)}
+                                        >
+                                          <MdDelete />
+                                        </Button>
+                                      </div>
                                     </div>
-                                  </div>
-                                  <div className="item">
-                                    <Button className="title_btn">
-                                      <MdCheckCircle /> Lecture 3
-                                    </Button>
-                                    <div className="action_btns">
-                                      <Button>
-                                        <FiEdit3 />
+                                    <div className="item">
+                                      <Button className="title_btn">
+                                        <MdCheckCircle /> Lecture 3
                                       </Button>
-                                      <Button
-                                      // onClick={e => onDeleteSection(e, index)}
-                                      >
-                                        <MdDelete />
-                                      </Button>
+                                      <div className="action_btns">
+                                        <Button>
+                                          <FiEdit3 />
+                                        </Button>
+                                        <Button
+                                        // onClick={e => onDeleteSection(e, index)}
+                                        >
+                                          <MdDelete />
+                                        </Button>
+                                      </div>
                                     </div>
+                                    {/* ))} */}
                                   </div>
-                                  {/* ))} */}
-                                </div>
-                              </Col>
-                            </Row>
+                                </Col>
+                              </Row>
+                            </>
                           )}
                           {addQuizSection && (
                             <>
@@ -1063,13 +1186,13 @@ export default function CreateNewCourse() {
                                             <div className="bottom_btns">
                                               <Button
                                                 className="btn_back"
-                                                // onClick={handleCourseStepOne}
+                                              // onClick={handleCourseStepOne}
                                               >
                                                 Cancel
                                               </Button>
                                               <Button
                                                 className="btn_save"
-                                                // onClick={handleCourseStepThree}
+                                              // onClick={handleCourseStepThree}
                                               >
                                                 Save Question
                                               </Button>
@@ -1131,9 +1254,9 @@ export default function CreateNewCourse() {
                                 {/* ))} */}
                                 <div className="quiz_footer">
                                   <Button type="button" className="add_btn">
-                                    <span>+</span> Add Question
+                                    <IoMdChatboxes /> Add Question
                                   </Button>
-                                  <p>Question 5 of 5</p>
+                                  {/* <p>Question 5 of 5</p> */}
                                 </div>
                               </div>
                             </>
