@@ -74,7 +74,7 @@ function Sidebar(props) {
                         <Link to="/my_courses">Course</Link>
                       </li>
                       <li>
-                        <Link to="/#">Bootcamp</Link>
+                        <Link to="/add_bootcamp">Bootcamp</Link>
                       </li>
                       <li>
                         <Link to="/#">Hackathon</Link>
