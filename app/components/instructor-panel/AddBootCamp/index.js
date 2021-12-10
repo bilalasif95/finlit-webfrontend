@@ -24,14 +24,14 @@ import FormControl from '@material-ui/core/FormControl';
 import { MdDelete } from 'react-icons/md';
 import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
-import Img from '../../components/Img';
+import Img from '../../Img';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { API, JoditEditorConfig } from '../../../config/config';
 import { redirectToLogin } from '../../../utils/redirectToLogin';
-import Sidebar from '../../components/student-panel/Sidebar';
+import Sidebar from '../../student-panel/Sidebar';
 import Upload from '../../../images/upload.png';
-import TagsComponent from '../../components/CourseTag/TagsComponent';
+import TagsComponent from '../../CourseTag/TagsComponent';
 
 const BootstrapInput = withStyles(theme => ({
   root: {

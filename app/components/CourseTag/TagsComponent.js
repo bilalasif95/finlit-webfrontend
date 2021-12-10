@@ -125,9 +125,7 @@ Tile.propTypes = {
 const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
   class TagsComponent extends React.Component {
     static propTypes = {
-      tags: PropTypes.any,
-      classes: PropTypes.any,
-      data: PropTypes.any,
+      setTags: PropTypes.func
     };
 
     constructor(props) {
@@ -143,6 +141,9 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
     }
 
     componentDidUpdate(prevProps) {
+      if (prevProps.tags === this.props.tags){
+        return
+      }
       if (prevProps.tags !== this.props.tags) {
         return (
           this.props.tags &&
@@ -155,7 +156,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
 
             // reset the input value
             const currentValue = '';
-            return this.setState({
+             this.setState({
               ...this.state,
               currentValue,
               tileIds,
@@ -179,7 +180,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
 
         // reset the input value
         const currentValue = '';
-
+        this.props.setTags(tiles)
         // this is the same as saying tiles : tiles
         this.setState({
           ...this.state,
@@ -215,8 +216,8 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
 
     render() {
       const { classes } = this.props;
-      this.props.data(Object.values(this.state.tiles));
-      console.log('state', this.state);
+      // this.props.data(Object.values(this.state.tiles));
+      // console.log('state', this.state);
 
       return (
         <>

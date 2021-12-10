@@ -212,6 +212,74 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+  .custom_accordin_lesson {
+    .accordin_item {
+      border-radius: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin: 0 0 1rem;
+      width: 100%;
+      .accordin_header {
+        align-items: center;
+        background-color: #f4f6f9;
+        border: 1px solid #d8d8d8;
+        border-radius: 0.313rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        position: relative;
+        width: 100%;
+        svg {
+          font-size: 1.5rem;
+        }
+
+        .active {
+          border-bottom: none;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+        .title_btn {
+          align-items: center;
+          display: inherit;
+          font-size: 1.125rem;
+          padding: 0.875rem 1rem 0.875rem 1.75rem;
+          svg {
+            height: 24px;
+            margin: 0 0.5rem 0 0;
+            width: 24px;
+          }
+        }
+        .action_btns {
+          display: flex;
+          justify-content: flex-end;
+          margin: 0 1rem 0 0;
+          position: absolute;
+          right: 0;
+          z-index: 1;
+          button {
+            background-color: transparent;
+            border: none;
+            width: 3rem;
+            padding: 0;
+            &:first-child {
+              svg {
+                height: 1.4rem;
+                width: 1.4rem;
+              }
+            }
+          }
+        }
+      }
+      .accordin_content {
+        border: 1px solid #d8d8d8;
+        border-bottom-left-radius: 0.313rem;
+        border-bottom-right-radius: 0.313rem;
+        padding: 2rem 1.5rem;
+        width: 100%;
+      }
+    }
+  }
 }
 .pdf-container {
   margin: 0 auto;
@@ -508,28 +576,6 @@ a {
     padding: 0.75rem;
     &:focus {
       box-shadow: none;
-    }
-  }
-  .add_lec_quiz {
-    align-items: center;
-    display: inherit;
-    justify-content: flex-start;
-    button {
-      background-color: transparent;
-      border: none;
-      color: #41952e;
-      margin: 0 1rem 0 0;
-      padding: 0;
-      min-width: 8rem;
-      &:focus {
-        box-shadow: none;
-      }
-      svg {
-        color: #41952e;
-        height: 1.5rem;
-        margin: 0 0.5rem 0 0;
-        width: 1.5rem;
-      }
     }
   }
   .bottom_btns {
@@ -1825,6 +1871,8 @@ a {
       display: flex;
       justify-content: space-between;
       margin: 0 0 1rem;
+      padding: 0 0 3rem;
+      position: relative;
       width: 100%;
       button {
         background-color: transparent;

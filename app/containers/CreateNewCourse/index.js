@@ -61,7 +61,10 @@ import messages from './messages';
 import TagsComponent from '../../components/CourseTag/TagsComponent';
 import { redirectToLogin } from '../../utils/redirectToLogin';
 import { apiPostRequest } from '../../helpers/Requests';
-
+import AddLecture from './AddLecture/AddLecture';
+import LectureList from './LectureList/LectureList';
+import AddQuiz from './AddQuiz/AddQuiz';
+import QuestionList from './QuestionList/QuestionList';
 const BootstrapInput = withStyles(theme => ({
   root: {
     'label + &': {
@@ -103,6 +106,8 @@ const BootstrapInput = withStyles(theme => ({
 export default function CreateNewCourse() {
   const [toggleReadView, setToggleReadView] = useState(-1);
   const [toggleEditView, setToggleEditView] = useState(-1);
+  const [toggleLessonReadView, setToggleLessonReadView] = useState(-1);
+  const [toggleLessonEditView, setToggleLessonEditView] = useState(-1);
   const [newSectionToggle, setNewSectionToggle] = useState(false);
   const editor = useRef(null);
   const notEditableEditor = useRef(null);
@@ -115,10 +120,14 @@ export default function CreateNewCourse() {
   const [price, setPrice] = useState('');
   const [loading, setLoading] = useState(false);
   const [courseVideo, setCourseVideo] = useState('');
-  const [draftCourseId, setDraftCourseId] = useState(0);
+  const [draftCourseId, setDraftCourseId] = useState(41);
   const [heading, setHeading] = useState('');
   const [detailsSection, setDetailsSection] = useState([]);
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState({});
+
+  const [lessonTitle, setLessonTitle] = useState('')
+  const [lessonsList, setLessonsList] = useState([])
+  const [lessonId, setLessonId] = useState(1)
   const [lectureVideo, setLectureVideo] = useState('');
   // const [category, setCategory] = useState('0');
   const [hideBtns, setHideBtns] = useState(true);
@@ -128,9 +137,7 @@ export default function CreateNewCourse() {
   const titleLimit = `${title.length}/60`;
   const lecVideo = { lectureVideo: '' };
 
-  const setTagsFunc = tags => {
-    // console.log("tags", tags);
-  };
+
   // const [errors, setErrors] = useState({});
   const [courseStepOne, setCourseStepOne] = useState(true);
   const [courseStepTwo, setCourseStepTwo] = useState(false);
@@ -140,38 +147,51 @@ export default function CreateNewCourse() {
 
   const [dataVideo, setDataVideo] = useState(null);
 
-  const token = localStorage.getItem('token');
-  const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-  const details = JSON.stringify(detailsSection);
-  const staticTags = JSON.stringify(['Usman', 'Bilal']);
-  const bodyFormData = new FormData();
-  bodyFormData.append('title', title);
-  bodyFormData.append('courseLanguage', language);
-  bodyFormData.append('categoryId', categoryType);
-  bodyFormData.append('courseLevel', level);
-  bodyFormData.append('price', price);
-  bodyFormData.append('promotionalVideo', dataVideo);
-  bodyFormData.append('details', details);
-  bodyFormData.append('tags', staticTags);
+
+  const getPayload = () => {
+    const details = JSON.stringify(detailsSection);
+    const staticTags = JSON.stringify(Object.values(tags));
+    const bodyFormData = new FormData();
+    bodyFormData.append('title', title);
+    bodyFormData.append('courseLanguage', language);
+    bodyFormData.append('categoryId', categoryType);
+    bodyFormData.append('courseLevel', level);
+    bodyFormData.append('price', price);
+    bodyFormData.append('promotionalVideo', dataVideo);
+    bodyFormData.append('details', details);
+    bodyFormData.append('tags', staticTags);
+    return bodyFormData;
+
+  }
 
   const createDraft = () => {
-    setLoading(true);
-    axios
-      .post(endpoints.createCourseAsDraft, bodyFormData, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          ...authHeaders,
-        },
-      })
-      .then(res => {
-        setLoading(false);
-        setDraftCourseId(res.data.data.draftCourseId);
-        handleCourseStepTwo();
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    const token = localStorage.getItem('token');
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+    const payload = getPayload();
+
+    for (var pair of payload.entries()) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
+
+    // setLoading(true);
+    // axios
+    //   .post(endpoints.createCourseAsDraft, bodyFormData, {
+    //     headers: {
+    //       Accept: 'application/json',
+    //       'Content-Type': 'application/json',
+    //       ...authHeaders,
+    //     },
+    //   })
+    //   .then(res => {
+    //     setLoading(false);
+    //     setDraftCourseId(res.data.data.draftCourseId);
+    //     handleCourseStepTwo();
+    //   })
+    //   .catch(() => {
+    //     setLoading(false);
+    //   });
+    handleCourseStepTwo();
+
   };
 
   const handleCourseStepOne = () => {
@@ -201,6 +221,38 @@ export default function CreateNewCourse() {
     setHeading(item.heading);
     setContent(item.description);
   };
+
+  const toggleLessonHandler = index => {
+    index === toggleLessonReadView ? setToggleLessonReadView(-1) : setToggleLessonReadView(index);
+    setToggleLessonEditView(-1);
+  };
+
+  const editToggleLessonHandler = (index) => {
+    index === toggleLessonEditView ? setToggleLessonEditView(-1) : setToggleLessonEditView(index);
+    setToggleLessonReadView(-1);
+
+  };
+
+  const updateLessonTitleHandler = (index) => {
+    const item = { ...lessonsList[index] };
+    item.name = lessonTitle;
+    lessonsList[index] = item;
+    setToggleLessonEditView(-1);
+    setLessonTitle('');
+  }
+
+  const deleteLessonTitleHandler = (index) => {
+    if (lessonsList.length === 1) {
+      const list = [...lessonsList]
+      list.splice(index, 1);
+      setLessonsList(list);
+      setHideBtns(true)
+    }
+    const list = [...lessonsList]
+    list.splice(index, 1);
+    setLessonsList(list);
+  }
+
 
   // const getCurrentUserInfo = () => {
   //   const token = localStorage.getItem('token');
@@ -248,6 +300,8 @@ export default function CreateNewCourse() {
       if (res.data.data.length > 0) {
         setCategoryType(1);
       }
+    }).catch((err) => {
+      setLoading(false)
     });
   }, []);
 
@@ -256,9 +310,8 @@ export default function CreateNewCourse() {
       heading,
       description: content,
     };
-    const infoDetails = [...detailsSection];
-    infoDetails.push(section);
-    setDetailsSection(infoDetails);
+
+    setDetailsSection([...detailsSection, section]);
     setHeading('');
     setContent('');
     setNewSectionToggle(false);
@@ -288,9 +341,37 @@ export default function CreateNewCourse() {
     setAddQuizSection(true);
   };
 
-  const handleShowBtns = () => {
+  const saveLessonHandler = async () => {
+    const data = {
+      name: lessonTitle,
+      courseId: draftCourseId,
+      lessonId,
+    }
+    // setLoading(true)
+    // try {
+    //   const res = await apiPostRequest(endpoints.createLessonAsDraft, data);
+    //   if (!res) {
+    //     throw 'No Internet Access'
+    //   }
+    //   if (res.status !== 201) {
+    //     throw 'Something Went Wrong'
+    //   }
+    //   setLessonId(res.data.draftLessonId)
+    //   setHideBtns(false);
+    //   setShowBtns(true);
+    //   const lessonsArray = [];
+    //   lessonsArray.push(data);
+    //   setLessonsList(lessonsArray);
+    // } catch (err) {
+    //   console.log(err);
+    //   setLoading(false)
+    // }
     setHideBtns(false);
     setShowBtns(true);
+    const lessonsArray = [...lessonsList];
+    lessonsArray.push(data);
+    setLessonsList(lessonsArray);
+
   };
 
   return (
@@ -326,6 +407,7 @@ export default function CreateNewCourse() {
                               name="coursetitle"
                               id="coursetitle"
                               value={title}
+                              maxLength="60"
                               onChange={e => setTitle(e.target.value)}
                               placeholder="Enter Title"
                             />
@@ -763,7 +845,7 @@ export default function CreateNewCourse() {
                             <Label for="price">
                               <FormattedMessage {...messages.AddTag} />
                             </Label>
-                            <TagsComponent data={setTagsFunc} tags={tags} />
+                            <TagsComponent setTags={setTags} />
                           </FormGroup>
                         </div>
                       </div>
@@ -776,7 +858,7 @@ export default function CreateNewCourse() {
                       </Button>
                       <Button
                         className="btn_submit"
-                        disabled={!title || !price || loading}
+                        // disabled={!title || !price || loading}
                         onClick={createDraft}
                       // onClick={handleCourseStepTwo}
                       >
@@ -786,34 +868,15 @@ export default function CreateNewCourse() {
                   </div>
                 </>
               )}
-              {/* {courseStepTwo && (
-                <>
-                  <div className="form_footer">
-                    <div className="bottom_btns">
-                      <Button
-                        className="btn_back"
-                        onClick={handleCourseStepOne}
-                      >
-                        <FormattedMessage {...messages.Back} />
-                      </Button>
-                      <Button
-                        className="btn_submit"
-                        onClick={handleCourseStepThree}
-                      >
-                        <FormattedMessage {...messages.Next} />
-                      </Button>
-                    </div>
-                  </div>
-                </>
-              )} */}
               {courseStepTwo && (
                 <>
+
                   <div className="add_form">
                     <div className="profileHeader">
-                      <h3>Lesson 1</h3>
+                      <h3>Lesson</h3>
                     </div>
                     <div className="createCourseCont">
-                      <div className="card mb-3">
+                      {hideBtns && <div className="card mb-3">
                         <div className="card-body">
                           <Row>
                             <Col lg={12}>
@@ -823,468 +886,178 @@ export default function CreateNewCourse() {
                                   type="text"
                                   className="form-control"
                                   placeholder="Enter Title"
+                                  onChange={(e) => setLessonTitle(e.target.value)}
                                 />
                               </FormGroup>
                             </Col>
                             <Col lg={12}>
                               <div className="sec_footer mb-4">
-                                {showBtns && (
-                                  <div className="add_lec_quiz">
-                                    <Button onClick={handleLectureSection}>
-                                      <FaVideo />
-                                      Add Lecture
-                                    </Button>
-                                    <Button onClick={handleQuizSection}>
-                                      <RiQuestionnaireFill />
-                                      Add Quiz
-                                    </Button>
+                                <div className="bottom_btns">
+                                  <Button
+                                    onClick={() => setHideBtns(false)}
+                                    hidden={lessonsList.length === 0 ? true : false}
+                                    className="btn_back">Cancel</Button>
+                                  <Button
+                                    className="btn_save"
+                                    onClick={saveLessonHandler}
+                                    disabled={!lessonTitle || loading}
+                                  >
+                                    Save Section
+                                  </Button>
+                                </div>
+                              </div>
+                            </Col>
+                          </Row>
+                        </div>
+                      </div>}
+                      {/* {addLectureSection && (
+                            <>
+                              <AddLecture
+                                lectureVideo={lectureVideo}
+                                setLectureVideo={setLectureVideo} />
+                              <LectureList />
+                            </>
+                          )} */}
+                      {/* {addQuizSection && (
+                            <>
+                              <AddQuiz />
+                              <QuestionList />
+                              <div className="quiz_footer">
+                                <Button type="button" className="add_btn">
+                                  <IoMdChatboxes /> Add Question
+                                </Button>
+                              </div>
+                            </>
+                          )} */}
+                      {lessonsList.length > 0 && lessonsList.map((res, index) => (
+                        <div key={index} className="custom_accordin_lesson">
+                          <div className="accordin_item">
+                            <div className="accordin_header">
+                              <div className="top-layer">
+                                <Button
+                                  className={
+                                    accordinOne
+                                      ? 'active title_btn'
+                                      : 'title_btn'
+                                  }
+                                  onClick={() => toggleLessonHandler(index)}
+                                >
+                                  <div className="tick_icon">
+                                    <MdCheckCircle />
                                   </div>
-                                )}
-                                {hideBtns && (
+                                  {res.name}
+                                </Button>
+                                <div className="action_btns">
+                                  <Button>
+                                    <FiEdit3
+                                      onClick={() =>
+                                        editToggleLessonHandler(index, res)
+                                      }
+                                    />
+                                  </Button>
+                                  <Button
+                                    onClick={() => deleteLessonTitleHandler(index)}
+                                  >
+                                    <MdDelete />
+                                  </Button>
+                                </div>
+                              </div>
+                              <div className="add_lec_quiz">
+                                <Button onClick={handleLectureSection}>
+                                  <FaVideo />
+                                  Add Lecture
+                                </Button>
+                                <Button onClick={handleQuizSection}>
+                                  <RiQuestionnaireFill />
+                                  Add Quiz
+                                </Button>
+                              </div>
+                            </div>
+                            {toggleLessonReadView === index && (
+                              <div className="accordin_content">
+                                <div className="section_in">
+                                  <FormGroup>
+                                    <Label>Title</Label>
+                                    <Input
+                                      type="text"
+                                      name="heading"
+                                      value={res.name}
+                                      readOnly
+                                    />
+                                  </FormGroup>
+                                </div>
+                              </div>
+                            )}
+                            {toggleLessonEditView === index && (
+                              <div className="accordin_content">
+                                <div className="section_in">
+                                  <FormGroup>
+                                    <Label>Title</Label>
+                                    <Input
+                                      type="text"
+                                      name="heading"
+                                      value={lessonTitle}
+                                      onChange={e =>
+                                        setLessonTitle(e.target.value)
+                                      }
+                                      className="form-control"
+                                      placeholder="Enter Title"
+                                    />
+                                  </FormGroup>
+                                </div>
+                                <div className="sec_footer">
                                   <div className="bottom_btns">
-                                    <Button className="btn_back">Cancel</Button>
+                                    <Button
+                                      className="btn_back"
+                                      onClick={() => setToggleLessonEditView(-1)}
+                                    >
+                                      Cancel
+                                    </Button>
                                     <Button
                                       className="btn_save"
-                                      onClick={handleShowBtns}
+                                      onClick={() =>
+                                        updateLessonTitleHandler(index)
+                                      }
                                     >
                                       Save Section
                                     </Button>
                                   </div>
+                                </div>
+                              </div>
+                            )}
+                            {/* <div className="accordin_content">
+                              <div className="section_in">
+                                {addLectureSection && (
+                                  <>
+                                    <AddLecture
+                                      lectureVideo={lectureVideo}
+                                      setLectureVideo={setLectureVideo} />
+                                    <LectureList />
+                                  </>
+                                )}
+                                {addQuizSection && (
+                                  <>
+                                    <AddQuiz />
+                                    <QuestionList />
+                                    <div className="quiz_footer">
+                                      <Button type="button" className="add_btn">
+                                        <IoMdChatboxes /> Add Question
+                                      </Button>
+                                    </div>
+                                  </>
                                 )}
                               </div>
-                            </Col>
-                          </Row>
-                          {addLectureSection && (
-                            <>
-                              <Row>
-                                <Col lg={12}>
-                                  <div className="profileHeader">
-                                    <h3>Lecture</h3>
-                                  </div>
-                                </Col>
-                              </Row>
-                              <div className="add_lecture_list">
-                                <Row>
-                                  <Col lg={6}>
-                                    <FormGroup>
-                                      <Label>Lecture 2</Label>
-                                      <input
-                                        type="email"
-                                        className="form-control"
-                                        placeholder="Enter Lecture Title"
-                                      />
-                                    </FormGroup>
-                                  </Col>
-                                  <Col lg={6}>
-                                    {lectureVideo === '' ? (
-                                      <Dropzone
-                                        accept="video/*"
-                                        multiple={false}
-                                        onDrop={acceptedFiles => {
-                                          if (acceptedFiles && acceptedFiles[0]) {
-                                            const lecVdo = acceptedFiles[0];
-                                            lecVideo.lectureVideo = lecVdo;
-                                            // setcourseVideoFile(acceptedFiles[0]);
-                                            const reader = new FileReader();
-                                            reader.onload = e => {
-                                              setLectureVideo(e.target.result);
-                                            };
-                                            reader.readAsDataURL(acceptedFiles[0]);
-                                          }
-                                        }}
-                                      >
-                                        {({ getRootProps, getInputProps }) => (
-                                          <div
-                                            className="upload_file"
-                                            {...getRootProps()}
-                                          >
-                                            <input {...getInputProps()} />
-                                            <div
-                                              type="button"
-                                              className="uploadBtn"
-                                            >
-                                              <span>
-                                                <FiUpload />
-                                              </span>
-                                            </div>
-                                            <p>
-                                              <FormattedMessage
-                                                {...messages.UploadVideo}
-                                              />
-                                            </p>
-                                          </div>
-                                        )}
-                                      </Dropzone>
-                                    ) : (
-                                      <div className="uploading_video">
-                                        <div className="file_progress">
-                                          <p>
-                                            File
-                                            <span>video File name here</span>
-                                            is uploading
-                                          </p>
-                                          <Progress value={70} />
-                                        </div>
-                                        <div className="del_video">
-                                          <Button
-                                            onClick={() => {
-                                              setLectureVideo('');
-                                              lecVideo.lectureVideo = null;
-                                            }}
-                                            className="del_btn"
-                                          >
-                                            <IoIosClose />
-                                          </Button>
-                                        </div>
-                                      </div>
-                                    )}
-                                  </Col>
-                                  <Col lg={12}>
-                                    <div className="sec_footer">
-                                      <div className="bottom_btns">
-                                        <Button
-                                          className="btn_back"
-                                        // onClick={handleCourseStepOne}
-                                        >
-                                          Cancel
-                                        </Button>
-                                        <Button
-                                          className="btn_save"
-                                        // onClick={handleCourseStepThree}
-                                        >
-                                          Save Lecture
-                                        </Button>
-                                      </div>
-                                    </div>
-                                  </Col>
-                                </Row>
-
-                                <Row>
-                                  <Col lg={6}>
-                                    <FormGroup>
-                                      <Label>Lecture 2</Label>
-                                      <input
-                                        type="email"
-                                        className="form-control"
-                                        placeholder="Enter Lecture Title"
-                                      />
-                                    </FormGroup>
-                                  </Col>
-                                  <Col lg={6}>
-                                    {lectureVideo === '' ? (
-                                      <Dropzone
-                                        accept="video/*"
-                                        multiple={false}
-                                        onDrop={acceptedFiles => {
-                                          if (acceptedFiles && acceptedFiles[0]) {
-                                            const lecVdo = acceptedFiles[0];
-                                            lecVideo.lectureVideo = lecVdo;
-                                            // setcourseVideoFile(acceptedFiles[0]);
-                                            const reader = new FileReader();
-                                            reader.onload = e => {
-                                              setLectureVideo(e.target.result);
-                                            };
-                                            reader.readAsDataURL(acceptedFiles[0]);
-                                          }
-                                        }}
-                                      >
-                                        {({ getRootProps, getInputProps }) => (
-                                          <div
-                                            className="upload_file"
-                                            {...getRootProps()}
-                                          >
-                                            <input {...getInputProps()} />
-                                            <div
-                                              type="button"
-                                              className="uploadBtn"
-                                            >
-                                              <span>
-                                                <FiUpload />
-                                              </span>
-                                            </div>
-                                            <p>
-                                              <FormattedMessage
-                                                {...messages.UploadVideo}
-                                              />
-                                            </p>
-                                          </div>
-                                        )}
-                                      </Dropzone>
-                                    ) : (
-                                      <div className="uploading_video">
-                                        <div className="file_progress">
-                                          <p>
-                                            File
-                                            <span>video File name here</span>
-                                            is uploading
-                                          </p>
-                                          <Progress value={70} />
-                                        </div>
-                                        <div className="del_video">
-                                          <Button
-                                            onClick={() => {
-                                              setLectureVideo('');
-                                              lecVideo.lectureVideo = null;
-                                            }}
-                                            className="del_btn"
-                                          >
-                                            <IoIosClose />
-                                          </Button>
-                                        </div>
-                                      </div>
-                                    )}
-                                  </Col>
-                                  <Col lg={12}>
-                                    <div className="sec_footer">
-                                      <div className="bottom_btns">
-                                        <Button
-                                          className="btn_back"
-                                        // onClick={handleCourseStepOne}
-                                        >
-                                          Cancel
-                                        </Button>
-                                        <Button
-                                          className="btn_save"
-                                        // onClick={handleCourseStepThree}
-                                        >
-                                          Save Lecture
-                                        </Button>
-                                      </div>
-                                    </div>
-                                  </Col>
-                                </Row>
-                              </div>
-                              <Row>
-                                <Col lg={12}>
-                                  <div className="details_list mt-5">
-                                    {/* {detailsSection.map((res, index) => ( */}
-                                    <div className="item">
-                                      <Button className="title_btn">
-                                        <MdCheckCircle /> Lecture 1
-                                      </Button>
-                                      <div className="action_btns">
-                                        <Button>
-                                          <FiEdit3 />
-                                        </Button>
-                                        <Button
-                                        // onClick={e => onDeleteSection(e, index)}
-                                        >
-                                          <MdDelete />
-                                        </Button>
-                                      </div>
-                                    </div>
-                                    <div className="item">
-                                      <Button className="title_btn">
-                                        <MdCheckCircle /> Lecture 2
-                                      </Button>
-                                      <div className="action_btns">
-                                        <Button>
-                                          <FiEdit3 />
-                                        </Button>
-                                        <Button
-                                        // onClick={e => onDeleteSection(e, index)}
-                                        >
-                                          <MdDelete />
-                                        </Button>
-                                      </div>
-                                    </div>
-                                    <div className="item">
-                                      <Button className="title_btn">
-                                        <MdCheckCircle /> Lecture 3
-                                      </Button>
-                                      <div className="action_btns">
-                                        <Button>
-                                          <FiEdit3 />
-                                        </Button>
-                                        <Button
-                                        // onClick={e => onDeleteSection(e, index)}
-                                        >
-                                          <MdDelete />
-                                        </Button>
-                                      </div>
-                                    </div>
-                                    {/* ))} */}
-                                  </div>
-                                </Col>
-                              </Row>
-                            </>
-                          )}
-                          {addQuizSection && (
-                            <>
-                              <div className="profileHeader">
-                                <h3>Quiz</h3>
-                              </div>
-                              <div className="card mt-4 mb-5">
-                                <div className="card-body">
-                                  <div className="add_forms">
-                                    <div className="add_form">
-                                      <Row>
-                                        <Col lg={12} md={12} sm={12} xs={12}>
-                                          <FormGroup className="mb-3">
-                                            <Label for="sub_title">
-                                              <FormattedMessage
-                                                {...messages.Type}
-                                              />
-                                            </Label>
-                                            <Input
-                                              type="text"
-                                              name="title"
-                                              id="sub_title"
-                                              placeholder="Type the Question"
-                                            />
-                                          </FormGroup>
-                                          <div className="quizAnswer">
-                                            <div className="Answers">
-                                              <div className="check_quiz">
-                                                <Input
-                                                  className="radio"
-                                                  type="radio"
-                                                  id="age1"
-                                                  name="age"
-                                                  value="30"
-                                                />
-                                              </div>
-                                              <Input
-                                                placeholder="Answer 1"
-                                                type="text"
-                                              />
-                                            </div>
-                                            <div className="Answers">
-                                              <div className="check_quiz">
-                                                <Input
-                                                  className="radio"
-                                                  type="radio"
-                                                  id="age2"
-                                                  name="age"
-                                                  value="60"
-                                                />
-                                              </div>
-                                              <Input
-                                                placeholder="Answer 2"
-                                                type="text"
-                                              />
-                                            </div>
-                                            <div className="Answers">
-                                              <div className="check_quiz">
-                                                <Input
-                                                  className="radio"
-                                                  type="radio"
-                                                  id="age3"
-                                                  name="age"
-                                                  value="100"
-                                                />
-                                              </div>
-                                              <Input
-                                                placeholder="Answer 3"
-                                                type="text"
-                                              />
-                                            </div>
-                                          </div>
-                                        </Col>
-                                        <Col lg={12}>
-                                          <div className="sec_footer mt-4">
-                                            <div className="bottom_btns">
-                                              <Button
-                                                className="btn_back"
-                                              // onClick={handleCourseStepOne}
-                                              >
-                                                Cancel
-                                              </Button>
-                                              <Button
-                                                className="btn_save"
-                                              // onClick={handleCourseStepThree}
-                                              >
-                                                Save Question
-                                              </Button>
-                                            </div>
-                                          </div>
-                                        </Col>
-                                      </Row>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="details_list">
-                                {/* {detailsSection.map((res, index) => ( */}
-                                <div className="item">
-                                  <Button className="title_btn">
-                                    <MdCheckCircle /> Question 1
-                                  </Button>
-                                  <div className="action_btns">
-                                    <Button>
-                                      <FiEdit3 />
-                                    </Button>
-                                    <Button
-                                    // onClick={e => onDeleteSection(e, index)}
-                                    >
-                                      <MdDelete />
-                                    </Button>
-                                  </div>
-                                </div>
-                                <div className="item">
-                                  <Button className="title_btn">
-                                    <MdCheckCircle /> Question 2
-                                  </Button>
-                                  <div className="action_btns">
-                                    <Button>
-                                      <FiEdit3 />
-                                    </Button>
-                                    <Button
-                                    // onClick={e => onDeleteSection(e, index)}
-                                    >
-                                      <MdDelete />
-                                    </Button>
-                                  </div>
-                                </div>
-                                <div className="item">
-                                  <Button className="title_btn">
-                                    <MdCheckCircle /> Question 3
-                                  </Button>
-                                  <div className="action_btns">
-                                    <Button>
-                                      <FiEdit3 />
-                                    </Button>
-                                    <Button
-                                    // onClick={e => onDeleteSection(e, index)}
-                                    >
-                                      <MdDelete />
-                                    </Button>
-                                  </div>
-                                </div>
-                                {/* ))} */}
-                                <div className="quiz_footer">
-                                  <Button type="button" className="add_btn">
-                                    <IoMdChatboxes /> Add Question
-                                  </Button>
-                                  {/* <p>Question 5 of 5</p> */}
-                                </div>
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                      <div className="details_list">
-                        {/* {detailsSection.map((res, index) => ( */}
-                        <div className="item">
-                          <Button className="title_btn">
-                            <MdCheckCircle /> Lesson 1
-                          </Button>
-                          <div className="action_btns">
-                            <Button>
-                              <FiEdit3 />
-                            </Button>
-                            <Button
-                            // onClick={e => onDeleteSection(e, index)}
-                            >
-                              <MdDelete />
-                            </Button>
+                            </div> */}
                           </div>
                         </div>
-                        {/* ))} */}
-                      </div>
-                      <Button type="button" className="add_section">
-                        Add Lesson
-                      </Button>
+                      ))}
+
+                      {lessonsList.length > 0 &&
+                        <Button type="button" className="add_section"
+                          onClick={() => setHideBtns(true)}
+                          disabled={hideBtns}>
+                          Add Lesson
+                        </Button>}
                     </div>
                   </div>
                   <div className="form_footer publishBtns">
