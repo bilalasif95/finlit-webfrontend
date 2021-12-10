@@ -1025,7 +1025,7 @@ export default function CreateNewCourse() {
                                 </div>
                               </div>
                             )}
-                            {/* <div className="accordin_content">
+                            <div className="accordin_content">
                               <div className="section_in">
                                 {addLectureSection && (
                                   <>
@@ -1047,7 +1047,7 @@ export default function CreateNewCourse() {
                                   </>
                                 )}
                               </div>
-                            </div> */}
+                            </div>
                           </div>
                         </div>
                       ))}
