@@ -124,10 +124,11 @@ export default function CreateNewCourse() {
   const [heading, setHeading] = useState('');
   const [detailsSection, setDetailsSection] = useState([]);
   const [tags, setTags] = useState({});
+  const [addLectureList, setAddLectureList] = useState([])
 
   const [lessonTitle, setLessonTitle] = useState('')
   const [lessonsList, setLessonsList] = useState([])
-  const [lessonId, setLessonId] = useState(1)
+  const [lessonId, setLessonId] = useState(null)
   const [lectureVideo, setLectureVideo] = useState('');
   // const [category, setCategory] = useState('0');
   const [hideBtns, setHideBtns] = useState(true);
@@ -169,9 +170,9 @@ export default function CreateNewCourse() {
     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     const payload = getPayload();
 
-    for (var pair of payload.entries()) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
+    // for (var pair of payload.entries()) {
+    //   console.log(pair[0] + ', ' + pair[1]);
+    // }
 
     // setLoading(true);
     // axios
@@ -345,7 +346,9 @@ export default function CreateNewCourse() {
     const data = {
       name: lessonTitle,
       courseId: draftCourseId,
-      lessonId,
+      lessonId: null,
+      lectureList: [],
+      showLecture: false,
     }
     // setLoading(true)
     // try {
@@ -357,10 +360,14 @@ export default function CreateNewCourse() {
     //     throw 'Something Went Wrong'
     //   }
     //   setLessonId(res.data.draftLessonId)
+    //   data.lessonId = res.data.draftLessonId
+    //   console.log(data)
     //   setHideBtns(false);
     //   setShowBtns(true);
-    //   const lessonsArray = [];
+    //   const lessonsArray = [...lessonsList];
     //   lessonsArray.push(data);
+    //   console.log(lessonsArray);
+    //   setLessonTitle("")
     //   setLessonsList(lessonsArray);
     // } catch (err) {
     //   console.log(err);
@@ -371,7 +378,43 @@ export default function CreateNewCourse() {
     const lessonsArray = [...lessonsList];
     lessonsArray.push(data);
     setLessonsList(lessonsArray);
+    setLessonTitle("")
 
+  };
+
+  const saveLectureHandler = () => {
+    
+  }
+
+  const addLectureChangeHandler = (e, lectureIndex, lessonIndex) => {
+    const lessonsArray = JSON.parse(JSON.stringify(lessonsList));
+    console.log(lessonsArray)
+    const lessonItem = lessonsArray[lessonIndex];
+    lessonItem.lectureList[lectureIndex].title = e.target.value
+    setLessonsList(lessonsArray)
+  };
+
+  // handle click event of the Remove button
+  const removeLectureHandler = (lectureIndex, lessonIndex) => {
+    const lessonsArray = JSON.parse(JSON.stringify(lessonsList));
+    const lessonItem = lessonsArray[lessonIndex];
+    setLessonsList(lessonsArray)
+    if (lessonItem.lectureList.length === 1) {
+      lessonItem.lectureList.splice(lectureIndex, 1)
+      lessonItem.showLecture = false;
+      setLessonsList(lessonsArray)
+    }
+    lessonItem.lectureList.splice(lectureIndex, 1)
+    setLessonsList(lessonsArray)
+  };
+
+  // handle click event of the Add button
+  const addLectureHandler = (index) => {
+    const lessonsArray = JSON.parse(JSON.stringify(lessonsList));
+    const lessonItem = lessonsArray[index]
+    lessonItem.showLecture = true;
+    lessonItem.lectureList.push({ title: "", lectureVideo: "" })
+    setLessonsList(lessonsArray);
   };
 
   return (
@@ -902,7 +945,7 @@ export default function CreateNewCourse() {
                                     onClick={saveLessonHandler}
                                     disabled={!lessonTitle || loading}
                                   >
-                                    Save Section
+                                    Save Lesson
                                   </Button>
                                 </div>
                               </div>
@@ -910,25 +953,7 @@ export default function CreateNewCourse() {
                           </Row>
                         </div>
                       </div>}
-                      {/* {addLectureSection && (
-                            <>
-                              <AddLecture
-                                lectureVideo={lectureVideo}
-                                setLectureVideo={setLectureVideo} />
-                              <LectureList />
-                            </>
-                          )} */}
-                      {/* {addQuizSection && (
-                            <>
-                              <AddQuiz />
-                              <QuestionList />
-                              <div className="quiz_footer">
-                                <Button type="button" className="add_btn">
-                                  <IoMdChatboxes /> Add Question
-                                </Button>
-                              </div>
-                            </>
-                          )} */}
+
                       {lessonsList.length > 0 && lessonsList.map((res, index) => (
                         <div key={index} className="custom_accordin_lesson">
                           <div className="accordin_item">
@@ -963,7 +988,7 @@ export default function CreateNewCourse() {
                                 </div>
                               </div>
                               <div className="add_lec_quiz">
-                                <Button onClick={handleLectureSection}>
+                                <Button onClick={() => addLectureHandler(index)}>
                                   <FaVideo />
                                   Add Lecture
                                 </Button>
@@ -1025,20 +1050,26 @@ export default function CreateNewCourse() {
                                 </div>
                               </div>
                             )}
-                            <div className="accordin_content">
+                            <div hidden={!res.showLecture} className="accordin_content">
                               <div className="section_in">
-                                {addLectureSection && (
+                                {res.showLecture &&
                                   <>
                                     <AddLecture
+                                      lecVideo={lecVideo}
+                                      item={res}
+                                      lessonIndex={index}
+                                      addLectureChangeHandler={addLectureChangeHandler}
+                                      removeLectureHandler={removeLectureHandler}
+                                      addLectureList={addLectureList}
                                       lectureVideo={lectureVideo}
                                       setLectureVideo={setLectureVideo} />
-                                    <LectureList />
+                                    {/* <LectureList /> */}
                                   </>
-                                )}
+                                }
                                 {addQuizSection && (
                                   <>
                                     <AddQuiz />
-                                    <QuestionList />
+                                    {/* <QuestionList /> */}
                                     <div className="quiz_footer">
                                       <Button type="button" className="add_btn">
                                         <IoMdChatboxes /> Add Question
