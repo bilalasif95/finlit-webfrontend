@@ -73,7 +73,7 @@ export default function MyProfilePage() {
           },
         })
         .then(res => {
-          setUserObj(res.data);
+          setUserObj(res.data.data);
         })
         .catch(err => {
           toast.error(
@@ -135,7 +135,7 @@ export default function MyProfilePage() {
               <div className="uploadImg">
                 <div className="inner">
                   <Img
-                    src={userObj.image || 'https://i.imgur.com/qUzPHy4.jpg'}
+                    src={userObj.image ? userObj.image : 'https://i.imgur.com/qUzPHy4.jpg'}
                     alt="Profile"
                   />
                   <Label className="edit">
@@ -161,13 +161,15 @@ export default function MyProfilePage() {
                       onChange={e => updateProfileImg(e)}
                     />
                   </Label>
-                  <button
-                    type="button"
-                    onClick={toggle}
-                    className="btn btn-default"
-                  >
-                    Delete Photo
-                  </button>
+                  {userObj.image &&
+                    <button
+                      type="button"
+                      onClick={toggle}
+                      className="btn btn-default"
+                    >
+                      Delete Photo
+                    </button>
+                  }
                 </div>
               </div>
               <BasicInfo />

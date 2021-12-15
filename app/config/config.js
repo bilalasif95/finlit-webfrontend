@@ -18,14 +18,14 @@ export const JoditEditorReadOnlyConfig = {
 };
 
 export const endpoints = {
-  getRoles: `api/role`,
+  getRoles: `api/role/all`,
   register: `api/auth/register`,
   confirmEmail: `api/auth/confirmEmail`,
   login: `api/auth/login`,
   forgotPassword: `api/auth/forgotPassword`,
   forgotConfirmPassword: `api/user/forgotConfirmPassword`,
   changePassword: `api/auth/changePassword`,
-  courseCategory: `${API}api/category/all`,
+  courseCategory: `api/category/all`,
   createCourseAsDraft: `api/course/saveAsDraft`,
   createLessonAsDraft: `api/course/createDraftLesson`,
   updateLessonAsDraft: `api/course/updateDraftLesson/`

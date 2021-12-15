@@ -59,25 +59,24 @@ function BasicInfo() {
     lastName: '',
     profession: '',
     email: '',
+    roles: [],
     description: '',
-    country: '',
-    gender: '',
+    country: 'PAK',
+    gender: 'Male',
     address: '',
   });
   const [errors, setErrors] = useState({});
   // const [loader, setLoader] = useState(false);
-  // const [disableBtn, setDisableBtn] = useState(false);
-  // const updateProfileValidator = values => {
-  //   const error = {};
-  //   if (!values.firstName) {
-  //     error.firstName = 'First Name Is required';
-  //   } else if (!values.lastName) {
-  //     error.lastName = 'Last Name Is required';
-  //   } else if (!values.gender) {
-  //     error.gender = 'Gender is Required';
-  //   }
-  //   return error;
-  // };
+  const [disableBtn, setDisableBtn] = useState(false);
+  const updateProfileValidator = values => {
+    const error = {};
+    if (!values.firstName) {
+      error.firstName = 'First Name is required';
+    } else if (!values.lastName) {
+      error.lastName = 'Last Name is required';
+    }
+    return error;
+  };
   const getCurrentUserInfo = () => {
     const token = localStorage.getItem('token');
     const userId = JSON.parse(localStorage.getItem('userInfo'));
@@ -92,14 +91,15 @@ function BasicInfo() {
         })
         .then(res => {
           setUserInfo({
-            firstName: res.data.firstName,
-            lastName: res.data.lastName,
-            description: res.data.description,
-            country: res.data.country,
-            address: res.data.address,
-            profession: res.data.profession,
-            email: res.data.email,
-            gender: res.data.gender,
+            firstName: res.data.data.firstName,
+            lastName: res.data.data.lastName,
+            description: res.data.data.description,
+            country: res.data.data.country ? res.data.data.country : 'PAK',
+            address: res.data.data.address,
+            roles: res.data.data.roles,
+            profession: res.data.data.profession,
+            email: res.data.data.email,
+            gender: res.data.data.gender ? res.data.data.gender : 'Male',
           });
         })
         .catch(err => {
@@ -111,67 +111,67 @@ function BasicInfo() {
         });
     }
   };
-  // const handleUpdateProfileSave = () => {
-  //   if (Object.keys(updateProfileValidator(userInfo)).length > 0) {
-  //     setErrors(updateProfileValidator(userInfo));
-  //     setTimeout(() => {
-  //       setErrors({});
-  //     }, 4000);
-  //   } else {
-  //     setLoader(true);
-  //     setDisableBtn(true);
-  //     const token = localStorage.getItem('token');
-  //     const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-  //     const bodyFormData = {
-  //       firstName: userInfo.firstName,
-  //       lastName: userInfo.lastName,
-  //       gender: userInfo.gender,
-  //       description: userInfo.description,
-  //       profession: userInfo.profession,
-  //       country: userInfo.country,
-  //       address: userInfo.address,
-  //     };
-  //     axios
-  //       .put(`${API}api/user`, bodyFormData, {
-  //         headers: {
-  //           Accept: 'application/json',
-  //           'Content-Type': 'application/json',
-  //           ...authHeaders,
-  //         },
-  //       })
-  //       .then(res => {
-  //         setLoader(false);
-  //         toast.success(
-  //           res && res.data ? res.data.message : 'Message Not Readable',
-  //         );
-  //         setUserInfo({
-  //           firstName: '',
-  //           lastName: '',
-  //           description: '',
-  //           country: '',
-  //           address: '',
-  //           profession: '',
-  //           email: '',
-  //           gender: '',
-  //         });
-  //         setTimeout(() => {
-  //           setDisableBtn(false);
-  //           getCurrentUserInfo();
-  //         }, 5000);
-  //       })
-  //       .catch(err => {
-  //         setLoader(false);
-  //         toast.error(
-  //           err.response && err.response.data.message
-  //             ? err.response.data.message.toString()
-  //             : 'Message Not Readable',
-  //         );
-  //         setTimeout(() => {
-  //           setDisableBtn(false);
-  //         }, 5000);
-  //       });
-  //   }
-  // };
+  const handleUpdateProfileSave = () => {
+    if (Object.keys(updateProfileValidator(userInfo)).length > 0) {
+      setErrors(updateProfileValidator(userInfo));
+      setTimeout(() => {
+        setErrors({});
+      }, 4000);
+    } else {
+      // setLoader(true);
+      setDisableBtn(true);
+      const token = localStorage.getItem('token');
+      const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+      const bodyFormData = {
+        firstName: userInfo.firstName,
+        lastName: userInfo.lastName,
+        gender: userInfo.gender,
+        description: userInfo.description,
+        country: userInfo.country,
+        address: userInfo.address,
+      };
+      axios
+        .put(`${API}api/user`, bodyFormData, {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        })
+        .then(res => {
+          // setLoader(false);
+          toast.success(
+            res && res.data ? res.data.message : 'Message Not Readable',
+          );
+          // setUserInfo({
+          //   firstName: '',
+          //   lastName: '',
+          //   description: '',
+          //   country: 'PAK',
+          //   roles: [],
+          //   address: '',
+          //   profession: '',
+          //   email: '',
+          //   gender: 'Male',
+          // });
+          setTimeout(() => {
+            setDisableBtn(false);
+            getCurrentUserInfo();
+          }, 3000);
+        })
+        .catch(err => {
+          // setLoader(false);
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
+          setTimeout(() => {
+            setDisableBtn(false);
+          }, 3000);
+        });
+    }
+  };
   useEffect(() => {
     setErrors({});
     getCurrentUserInfo();
@@ -182,15 +182,15 @@ function BasicInfo() {
         <Row>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
-              <Label for="fname">
+              <Label for="firstName">
                 <FormattedMessage {...messages.Fname} />
               </Label>
               <Input
                 type="text"
                 name="firstName"
-                id="fname"
+                id="firstName"
                 placeholder="Enter first name"
-                defaultValue={userInfo.firstName}
+                value={userInfo.firstName}
                 onChange={e => {
                   setUserInfo({
                     ...userInfo,
@@ -209,15 +209,15 @@ function BasicInfo() {
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
-              <Label for="lname">
+              <Label for="lastName">
                 <FormattedMessage {...messages.Lname} />
               </Label>
               <Input
                 type="text"
                 name="lastName"
-                id="lname"
+                id="lastName"
                 placeholder="Enter last name"
-                defaultValue={userInfo.lastName}
+                value={userInfo.lastName}
                 onChange={e => {
                   setUserInfo({
                     ...userInfo,
@@ -236,23 +236,18 @@ function BasicInfo() {
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
-              <Label for="fname">
+              <Label for="userType">
                 <FormattedMessage {...messages.Type} />
               </Label>
               <Input
                 type="text"
-                name="firstName"
-                id="fname"
-                onChange={e => {
-                  setUserInfo({
-                    ...userInfo,
-                    [e.target.name]: e.target.value,
-                  });
-                }}
+                id="userType"
+                readOnly
+                value={userInfo.roles.map((res) => res.roleName)}
               />
               <FormText className="form-text">
-                {errors.firstName ? (
-                  <p className="error">{errors.firstName}</p>
+                {errors.userType ? (
+                  <p className="error">{errors.userType}</p>
                 ) : (
                   ''
                 )}
@@ -261,14 +256,15 @@ function BasicInfo() {
           </Col>
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
-              <Label for="lname">
+              <Label for="email">
                 <FormattedMessage {...messages.Email} />
               </Label>
               <Input
                 type="text"
-                name="lastName"
-                id="lname"
-                defaultValue={userInfo.lastName}
+                name="email"
+                id="email"
+                readOnly
+                value={userInfo.email}
                 onChange={e => {
                   setUserInfo({
                     ...userInfo,
@@ -277,8 +273,8 @@ function BasicInfo() {
                 }}
               />
               <FormText className="form-text">
-                {errors.lastName ? (
-                  <p className="error">{errors.lastName}</p>
+                {errors.email ? (
+                  <p className="error">{errors.email}</p>
                 ) : (
                   ''
                 )}
@@ -288,10 +284,14 @@ function BasicInfo() {
           <Col lg={6} md={6} sm={6} xs={12}>
             <FormGroup>
               <FormControl fullWidth>
-                <Label>
+                <Label for="profession">
                   <FormattedMessage {...messages.Profession} />
                 </Label>
-                <Select
+                <Input
+                  type="text"
+                  name="profession"
+                  id="profession"
+                  readOnly
                   value={userInfo.profession}
                   onChange={e => {
                     setUserInfo({
@@ -299,30 +299,14 @@ function BasicInfo() {
                       [e.target.name]: e.target.value,
                     });
                   }}
-                  input={<BootstrapInput />}
-                  fullWidth
-                  name="profession"
-                  MenuProps={{
-                    anchorOrigin: {
-                      vertical: 'bottom',
-                      horizontal: 'left',
-                    },
-                    getContentAnchorEl: null,
-                  }}
-                >
-                  <MenuItem value="Financial Literacy">
-                    Financial Literacy
-                  </MenuItem>
-                  <MenuItem value="Software Developer">
-                    Software Developer
-                  </MenuItem>
-                  <MenuItem value="Medical and Health Services">
-                    Medical and Health Services
-                  </MenuItem>
-                  <MenuItem value="Statistician">Statistician</MenuItem>
-                  <MenuItem value="Speech-Language">Speech-Language</MenuItem>
-                  <MenuItem value="Data Scientist">Data Scientist</MenuItem>
-                </Select>
+                />
+                <FormText className="form-text">
+                  {errors.profession ? (
+                    <p className="error">{errors.profession}</p>
+                  ) : (
+                    ''
+                  )}
+                </FormText>
               </FormControl>
             </FormGroup>
           </Col>
@@ -400,7 +384,7 @@ function BasicInfo() {
                 name="address"
                 id="address"
                 placeholder="Enter Address"
-                defaultValue={userInfo.address}
+                value={userInfo.address}
                 onChange={e => {
                   setUserInfo({
                     ...userInfo,
@@ -408,6 +392,13 @@ function BasicInfo() {
                   });
                 }}
               />
+              <FormText className="form-text">
+                {errors.address ? (
+                  <p className="error">{errors.address}</p>
+                ) : (
+                  ''
+                )}
+              </FormText>
             </FormGroup>
           </Col>
           <Col lg={12} md={12} sm={12} xs={12}>
@@ -440,7 +431,7 @@ function BasicInfo() {
         </Row>
         <div className="form_footer">
           <div className="bottom_btns">
-            <Button className="btn_cancel" onClick={getCurrentUserInfo}>
+            <Button disabled={disableBtn || !userInfo.firstName || !userInfo.lastName} className="btn_submit" onClick={handleUpdateProfileSave}>
               <FormattedMessage {...messages.Save} />
             </Button>
             {/* <Button

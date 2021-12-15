@@ -28,7 +28,7 @@ import './app.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
-import { endpoints } from '../../config/config';
+import { API, endpoints } from '../../config/config';
 import Logo from '../../images/logo.svg';
 import instructorImg from '../../images/instructorImg.png';
 import studentImg from '../../images/studentImg.png';
@@ -77,7 +77,7 @@ export default function SignupPage(props) {
   const [value, setValue] = useState('');
 
   useEffect(() => {
-    axios.get(endpoints.getRoles).then(res => {
+    axios.get(API + endpoints.getRoles).then(res => {
       setRoles(res.data.data);
       if (res.data.data.length > 0) {
         setRoleId(1);
@@ -128,7 +128,7 @@ export default function SignupPage(props) {
       if (roleId === 1) {
         data = {
           email,
-          roleId,
+          roleId: roleId.toString(),
           password,
           passwordConfirmation,
           profession,
@@ -136,13 +136,13 @@ export default function SignupPage(props) {
       } else {
         data = {
           email,
-          roleId,
+          roleId: roleId.toString(),
           password,
           passwordConfirmation,
         };
       }
       axios
-        .post(endpoints.register, data)
+        .post(API + endpoints.register, data)
         .then(() => {
           props.history.push('/verify_email', {
             email: email.substring(email.lastIndexOf('@') + 1),

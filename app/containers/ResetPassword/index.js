@@ -21,7 +21,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import messages from './messages';
-import { endpoints } from '../../config/config';
+import { API, endpoints } from '../../config/config';
 import UseEnterKeyListener from '../../config/useEnterKeyListener';
 import Logo from '../../images/logo.svg';
 import Img from '../../components/Img';
@@ -82,7 +82,7 @@ export default function ResetPassword(props) {
         : {};
       axios
         .post(
-          endpoints.forgotConfirmPassword,
+          API + endpoints.forgotConfirmPassword,
           { password: newPassword },
           {
             headers: {

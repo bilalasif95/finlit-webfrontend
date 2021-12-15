@@ -23,7 +23,7 @@ import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 // import { IoIosCheckmarkCircle } from 'react-icons/io';
 import { ToastContainer, toast } from 'react-toastify';
 import UseEnterKeyListener from '../../config/useEnterKeyListener';
-import { endpoints } from '../../config/config';
+import { API, endpoints } from '../../config/config';
 import {
   mapStateToProps,
   mapDispatchToProps,
@@ -79,9 +79,9 @@ const SigninPage = props => {
     else {
       setBtnClick(true);
       axios
-        .post(endpoints.login, { email, password })
+        .post(API + endpoints.login, { email, password })
         .then(res => {
-          if (res.data.status === 200) {
+          if (res.data.statusCode === 200) {
             localStorage.setItem('token', res.data.data.accessToken);
             localStorage.setItem(
               'userInfo',

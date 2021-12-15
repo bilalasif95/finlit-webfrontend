@@ -8,7 +8,7 @@ import { FormattedMessage } from 'react-intl';
 import { ToastContainer, toast } from 'react-toastify';
 import { MdMail } from 'react-icons/md';
 import 'react-toastify/dist/ReactToastify.css';
-import { endpoints } from '../../config/config';
+import { API, endpoints } from '../../config/config';
 import messages from './messages';
 // import Check from '../../images/checkImg.svg';
 
@@ -20,7 +20,7 @@ export default function EmailVerificationPage() {
         ? { Authorization: `Bearer ${parsed.token}` }
         : {};
       axios
-        .get(endpoints.confirmEmail, {
+        .get(API + endpoints.confirmEmail, {
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',

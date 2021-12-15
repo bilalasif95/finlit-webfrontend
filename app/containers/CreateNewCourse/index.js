@@ -50,6 +50,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/student-panel/Sidebar/index';
 import {
+  API,
   endpoints,
   JoditEditorConfig,
   JoditEditorReadOnlyConfig,
@@ -295,7 +296,7 @@ export default function CreateNewCourse() {
   useEffect(() => {
     redirectToLogin();
     setLoading(true);
-    axios.get(endpoints.courseCategory).then(res => {
+    axios.get(API + endpoints.courseCategory).then(res => {
       setLoading(false);
       setCategories(res.data.data);
       if (res.data.data.length > 0) {
@@ -383,7 +384,7 @@ export default function CreateNewCourse() {
   };
 
   const saveLectureHandler = () => {
-    
+
   }
 
   const addLectureChangeHandler = (e, lectureIndex, lessonIndex) => {

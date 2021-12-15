@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import messages from './messages';
-import { endpoints } from '../../config/config';
+import { API, endpoints } from '../../config/config';
 import UseEnterKeyListener from '../../config/useEnterKeyListener';
 import Logo from '../../images/logo.svg';
 import Img from '../../components/Img';
@@ -33,7 +33,7 @@ export default function ForgotPasswordPage() {
     } else {
       setBtnClick(true);
       axios
-        .get(`${endpoints.forgotPassword}?email=${email}`)
+        .get(`${API + endpoints.forgotPassword}?email=${email}`)
         .then(result => {
           toast.success(
             result.data && result.data.message

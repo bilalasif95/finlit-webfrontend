@@ -28,7 +28,7 @@ import axios from 'axios';
 // import { FiCamera } from 'react-icons/fi';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import { endpoints } from '../../../config/config';
+import { API, endpoints } from '../../../config/config';
 
 function ChangePassword() {
   const [changePassword, setChangePassword] = useState({
@@ -95,7 +95,7 @@ function ChangePassword() {
       setLoader(true);
       setDisableBtn(true);
       axios
-        .post(endpoints.changePassword, postData, {
+        .post(API + endpoints.changePassword, postData, {
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
