@@ -9,6 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import JoditEditor from 'jodit-react';
 import '../../components/student-panel/Header/profile.css';
 import { FiEdit3, FiUpload } from 'react-icons/fi';
+import _ from 'lodash'
 import { IoIosClose, IoMdChatboxes } from 'react-icons/io';
 // , IoIosCloseCircleOutline
 // import { withStyles } from '@material-ui/core/styles';
@@ -108,6 +109,8 @@ export default function CreateNewCourse() {
   const [toggleEditView, setToggleEditView] = useState(-1);
   const [toggleLessonReadView, setToggleLessonReadView] = useState(-1);
   const [toggleLessonEditView, setToggleLessonEditView] = useState(-1);
+  const [toggleLectureReadView, setToggleLectureReadView] = useState(-1);
+  const [toggleLectureEditView, setToggleLectureEditView] = useState(-1);
   const [newSectionToggle, setNewSectionToggle] = useState(false);
   const editor = useRef(null);
   const notEditableEditor = useRef(null);
@@ -128,7 +131,7 @@ export default function CreateNewCourse() {
 
   const [lessonTitle, setLessonTitle] = useState('')
   const [lessonsList, setLessonsList] = useState([])
-  const [lessonId, setLessonId] = useState(null)
+  const [lessonId, setLessonId] = useState(2)
   const [lectureVideo, setLectureVideo] = useState('');
   // const [category, setCategory] = useState('0');
   const [hideBtns, setHideBtns] = useState(true);
@@ -231,6 +234,24 @@ export default function CreateNewCourse() {
   const editToggleLessonHandler = (index) => {
     index === toggleLessonEditView ? setToggleLessonEditView(-1) : setToggleLessonEditView(index);
     setToggleLessonReadView(-1);
+
+  };
+
+  const toggleLectureHandler = (lectureIndex, lessonIndex) => {
+    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonItem = lessonsArray[lessonIndex];
+    lessonItem.savedLectureList[lectureIndex].readView = !lessonItem.savedLectureList[lectureIndex].readView;
+    lessonItem.savedLectureList[lectureIndex].editView = false; 
+    setLessonsList(lessonsArray)
+  };
+
+  const editToggleLectureHandler = (lectureIndex, lessonIndex) => {
+    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonItem = lessonsArray[lessonIndex];
+    lessonItem.savedLectureList[lectureIndex].editView = !lessonItem.savedLectureList[lectureIndex].editView;
+    lessonItem.savedLectureList[lectureIndex].readView = false; 
+
+    setLessonsList(lessonsArray)
 
   };
 
@@ -346,13 +367,14 @@ export default function CreateNewCourse() {
     const data = {
       name: lessonTitle,
       courseId: draftCourseId,
-      lessonId: null,
+      lessonId,
       lectureList: [],
+      savedLectureList: [],
       showLecture: false,
     }
     // setLoading(true)
     // try {
-    //   const res = await apiPostRequest(endpoints.createLessonAsDraft, data);
+    //   const res = await apiPostRequest(endpoints.createLectureAsDraft, data);
     //   if (!res) {
     //     throw 'No Internet Access'
     //   }
@@ -360,8 +382,6 @@ export default function CreateNewCourse() {
     //     throw 'Something Went Wrong'
     //   }
     //   setLessonId(res.data.draftLessonId)
-    //   data.lessonId = res.data.draftLessonId
-    //   console.log(data)
     //   setHideBtns(false);
     //   setShowBtns(true);
     //   const lessonsArray = [...lessonsList];
@@ -382,24 +402,53 @@ export default function CreateNewCourse() {
 
   };
 
-  const saveLectureHandler = () => {
-    
+  const saveLectureHandler = async (lectureIndex, lessonIndex) => {
+    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonItem = lessonsArray[lessonIndex];
+    const payload = {
+      title: lessonItem.lectureList[lectureIndex].title,
+      lectureVideo: lessonItem.lectureList[lectureIndex].lectureVideo,
+      lectureTime: lessonItem.lectureList[lectureIndex].lectureTime,
+      lessonId: lessonItem.lessonId
+    }
+    console.log(payload)
+    // try {
+    //   const res = await apiPostRequest(endpoints.createLectureAsDraft, payload);
+    //   if (!res) {
+    //     throw 'No Internet Access'
+    //   }
+    //   console.log(res);
+    //   if (res.status !== 201) {
+    //     throw 'Something Went Wrong'
+    //   }
+    //   lessonItem.lectureList[lectureIndex].id = res.data.data.draftLectureId
+    //   lessonItem.savedLectureList.push(lessonItem.lectureList[lectureIndex])
+    //   // lessonItem.lectureList.splice(lectureIndex, 1)
+    //   console.log(lessonsArray)
+    //   setLessonsList(lessonsArray);
+    // } catch (err) {
+    //   console.log(err);
+    //   setLoading(false)
+    // }
+    lessonItem.lectureList[lectureIndex].id = 5
+    lessonItem.savedLectureList.push(lessonItem.lectureList[lectureIndex])
+    lessonItem.lectureList.splice(lectureIndex, 1)
+    console.log(lessonsArray)
+    setLessonsList(lessonsArray);
+
   }
 
   const addLectureChangeHandler = (e, lectureIndex, lessonIndex) => {
-    const lessonsArray = JSON.parse(JSON.stringify(lessonsList));
-    console.log(lessonsArray)
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
     lessonItem.lectureList[lectureIndex].title = e.target.value
     setLessonsList(lessonsArray)
   };
 
-  // handle click event of the Remove button
   const removeLectureHandler = (lectureIndex, lessonIndex) => {
-    const lessonsArray = JSON.parse(JSON.stringify(lessonsList));
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
-    setLessonsList(lessonsArray)
-    if (lessonItem.lectureList.length === 1) {
+    if (lessonItem.lectureList.length === 1 && lessonItem.savedLectureList.length === 0) {
       lessonItem.lectureList.splice(lectureIndex, 1)
       lessonItem.showLecture = false;
       setLessonsList(lessonsArray)
@@ -408,12 +457,12 @@ export default function CreateNewCourse() {
     setLessonsList(lessonsArray)
   };
 
-  // handle click event of the Add button
   const addLectureHandler = (index) => {
-    const lessonsArray = JSON.parse(JSON.stringify(lessonsList));
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[index]
     lessonItem.showLecture = true;
-    lessonItem.lectureList.push({ title: "", lectureVideo: "" })
+    lessonItem.lectureList.push({ title: "", lectureVideo: "", 
+    lectureTime: null, fileSelected: null, readView:false, editView: false })
     setLessonsList(lessonsArray);
   };
 
@@ -1055,15 +1104,20 @@ export default function CreateNewCourse() {
                                 {res.showLecture &&
                                   <>
                                     <AddLecture
-                                      lecVideo={lecVideo}
                                       item={res}
+                                      lessonsList={lessonsList}
+                                      setLessonsList={setLessonsList}
                                       lessonIndex={index}
                                       addLectureChangeHandler={addLectureChangeHandler}
                                       removeLectureHandler={removeLectureHandler}
-                                      addLectureList={addLectureList}
-                                      lectureVideo={lectureVideo}
-                                      setLectureVideo={setLectureVideo} />
-                                    {/* <LectureList /> */}
+                                      saveLectureHandler={saveLectureHandler} />
+                                    <LectureList 
+                                    res={res} 
+                                    lessonIndex={index}
+                                    toggleLectureReadView={toggleLectureReadView} 
+                                    toggleLectureEditView={toggleLectureEditView}
+                                    toggleLectureHandler={toggleLectureHandler} 
+                                    editToggleLectureHandler={editToggleLectureHandler} /> 
                                   </>
                                 }
                                 {addQuizSection && (

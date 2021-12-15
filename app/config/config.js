@@ -28,5 +28,6 @@ export const endpoints = {
   courseCategory: `${API}api/category/all`,
   createCourseAsDraft: `api/course/saveAsDraft`,
   createLessonAsDraft: `api/course/createDraftLesson`,
-  updateLessonAsDraft: `api/course/updateDraftLesson/`
+  updateLessonAsDraft: `api/course/updateDraftLesson/`,
+  createLectureAsDraft: `api/lecture/saveAsDraft`
 };

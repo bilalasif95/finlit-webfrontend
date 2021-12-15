@@ -85,7 +85,7 @@
     "ip": "1.1.5",
     "jest-environment-jsdom-sixteen": "^2.0.0",
     "jodit-react": "^1.1.4",
-    "lodash": "4.17.11",
+    "lodash": "^4.17.11",
     "minimist": "1.2.0",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",

@@ -8,44 +8,32 @@ import { FiEdit3 } from 'react-icons/fi';
 import { MdDelete, MdCheckCircle } from 'react-icons/md';
 import AddLecture from '../AddLecture/AddLecture';
 function LectureList(props) {
-  const { lectureVideo, setLectureVideo } = props;
+  const { res, toggleLectureHandler, editToggleLectureHandler, lessonIndex, 
+    toggleLectureEditView, toggleLectureReadView } = props;
+  // console.log(item,"=====")
   return (
     <React.Fragment>
       <Row>
         <Col lg={12}>
-          {/* <div className="details_list">
-            <div className="item">
-              <Button className="title_btn">
-                <MdCheckCircle /> Lecture 1
-              </Button>
-              <div className="action_btns">
-                <Button>
-                  <FiEdit3 />
-                </Button>
-                <Button>
-                  <MdDelete />
-                </Button>
-              </div>
-            </div>
-          </div> */}
-          <div className="custom_accordin  mt-5">
-            <div className="accordin_item">
+        <div className="custom_accordin  mt-5">
+        {res.savedLectureList.length > 0 && res.savedLectureList.map((item, i) => 
+              <div key={i} className="accordin_item">
               <div className="accordin_header">
                 <Button
                   className="title_btn"
-                  // onClick={() => toggleHandler(index)}
+                  onClick={() => toggleLectureHandler(i, lessonIndex)}
                 >
                   <div className="tick_icon">
                     <MdCheckCircle />
                   </div>
-                 lecture
+                 {item.title}
                 </Button>
                 <div className="action_btns">
                   <Button>
                     <FiEdit3
-                      // onClick={() =>
-                      //   editToggleHandler(index, item)
-                      // }
+                      onClick={() =>
+                        editToggleLectureHandler(i, lessonIndex)
+                      }
                     />
                   </Button>
                   <Button
@@ -55,13 +43,21 @@ function LectureList(props) {
                   </Button>
                 </div>
               </div>
-                <div className="accordin_content">
+                {res.savedLectureList[i].readView ===  true && <div className="accordin_content">
                   <div className="section_in">
-                   <AddLecture />
+                   {/* <AddLecture /> */}
+                   <h2> Usman Read</h2>
                   </div>
-                </div>
+                </div>} 
+                {res.savedLectureList[i].editView ===  true && <div className="accordin_content">
+                  <div className="section_in">
+                  <h2> Usman toggleEditView</h2>
+                  </div>
+                </div>}     
+                
             </div>
-          </div>
+             )}
+            </div>
         </Col>
       </Row>
     </React.Fragment>)

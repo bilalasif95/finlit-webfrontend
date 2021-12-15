@@ -10,7 +10,7 @@ import Dropzone from 'react-dropzone';
 import { FiUpload } from 'react-icons/fi';
 import { IoIosClose } from 'react-icons/io';
 import { apiGetRequest, apiPostRequest } from '../../../helpers/Requests';
-
+import _ from 'lodash'
 export default class Index extends Component {
   constructor(props) {
     super(props);
@@ -50,8 +50,11 @@ export default class Index extends Component {
       let start, end, blob;
 
       for (let index = 1; index < CHUNKS_COUNT + 1; index++) {
-        this.setState( {percentage: (index / CHUNKS_COUNT) * 100 })
-        this.props.setData((prevState) => ({ ...prevState,  percentage: (index / CHUNKS_COUNT) * 100 }))
+        this.setState({ percentage: (index / CHUNKS_COUNT) * 100 })
+        // const lessonsArray = _.cloneDeep(this.props.lessonsList);
+        // const lessonItem = lessonsArray[this.props.lessonIndex];
+        // lessonItem.lectureList[this.props.lectureIndex].percentage = (index / CHUNKS_COUNT) * 100;
+        // this.props.setLessonsList(lessonsArray)
         start = (index - 1) * CHUNK_SIZE;
         end = index * CHUNK_SIZE;
         blob =
@@ -89,9 +92,10 @@ export default class Index extends Component {
           },
         }
       );
-
-      console.log(completeUploadResp.data.data.key, 'complete upload response');
-      this.props.setData((prevState) => ({ ...prevState, lectureVideo: completeUploadResp.data.data.key }))
+      const lessonsArray = _.cloneDeep(this.props.lessonsList);
+      const lessonItem = lessonsArray[this.props.lessonIndex];
+      lessonItem.lectureList[this.props.lectureIndex].lectureVideo = completeUploadResp.data.data.key;
+      this.props.setLessonsList(lessonsArray)
 
     } catch (err) {
       console.log(err);
@@ -99,29 +103,41 @@ export default class Index extends Component {
   }
 
   render() {
-    const { setData , item } = this.props;
+    const { lessonIndex, lectureIndex, lessonsList, setLessonsList } = this.props;
     return (
       <div>
-        {!this.state.fileSelected ? (
+        {!lessonsList[lessonIndex].lectureList[lectureIndex].fileSelected ? (
           <Dropzone
             accept="video/*"
             multiple={false}
             onDrop={(acceptedFiles) => {
+              const lessonsArray = _.cloneDeep(this.props.lessonsList);
+              const lessonItem = lessonsArray[this.props.lessonIndex];
               try {
                 if (acceptedFiles && acceptedFiles[0]) {
+                  lessonItem.lectureList[this.props.lectureIndex].fileSelected = acceptedFiles[0];
                   let fileSelected = acceptedFiles[0];
-                  let fileName = fileSelected.name;
+                  let currentdate = new Date();
+                  let datetime = currentdate.getFullYear() + "-"
+                    + (currentdate.getMonth() + 1) + "-"
+                    + currentdate.getDate() + "T"
+                    + currentdate.getHours() + ":"
+                    + currentdate.getMinutes() + ":"
+                    + currentdate.getSeconds() + "."; 
+                    let fileName = `${datetime}${fileSelected.name}`;
                   const reader = new FileReader();
                   reader.onload = (e) => {
                     var media = new Audio(e.target.result);
                     media.onloadedmetadata = (e) => {
                       this.setState({ videoDuration: media.duration })
-                      setData((prevState) => ({ ...prevState, lectureTime: media.duration }))
+                      lessonItem.lectureList[this.props.lectureIndex].lectureTime = parseInt(media.duration.toFixed(0));
+                      this.props.setLessonsList(lessonsArray)
 
                     };
                   };
                   reader.readAsDataURL(acceptedFiles[0]);
                   this.setState({ ...this.state, fileSelected, fileName, fileSize: fileSelected.size });
+                  
                   this.startUpload()
                 }
 
@@ -158,8 +174,9 @@ export default class Index extends Component {
               <p>
                 File
                 <span>{this.state.fileSelected.name}</span>
-                is uploading
+                {lessonsList[lessonIndex].lectureList[lectureIndex].lectureVideo ? 'uploaded successfully' : 'is uploading'}
               </p>
+
               <Progress value={this.state.percentage} />
             </div>
             <div className="del_video">
@@ -168,7 +185,11 @@ export default class Index extends Component {
                   this.setState({
                     fileSelected: null
                   })
-                  setData((prevState) => ({ ...prevState, lectureVideo: ""}))
+                  const lessonsArray = _.cloneDeep(lessonsList);
+                  const lessonItem = lessonsArray[lessonIndex];
+                  lessonItem.lectureList[lectureIndex].lectureVideo = "";
+                  lessonItem.lectureList[lectureIndex].fileSelected = null;
+                  setLessonsList(lessonsArray)
                 }}
                 className="del_btn"
               >
