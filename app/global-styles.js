@@ -204,11 +204,14 @@ const GlobalStyle = createGlobalStyle`
         }
       }
       .accordin_content {
+        background-color: #fff;
         border: 1px solid #d8d8d8;
         border-bottom-left-radius: 0.313rem;
         border-bottom-right-radius: 0.313rem;
+        margin: -0.313rem 0 0;
         padding: 2rem 1.5rem;
         width: 100%;
+        z-index: 1;
       }
     }
   }
@@ -249,6 +252,13 @@ const GlobalStyle = createGlobalStyle`
             margin: 0 0.5rem 0 0;
             width: 24px;
           }
+          span {
+            display: block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 40rem;
+            overflow: hidden;
+          }
         }
         .action_btns {
           display: flex;
@@ -272,11 +282,17 @@ const GlobalStyle = createGlobalStyle`
         }
       }
       .accordin_content {
+        background-color: #fff;
         border: 1px solid #d8d8d8;
         border-bottom-left-radius: 0.313rem;
         border-bottom-right-radius: 0.313rem;
+        margin: -0.313rem 0 0;
         padding: 2rem 1.5rem;
         width: 100%;
+        z-index: 1;
+        .accordin_header {
+          border: none;
+        }
       }
     }
   }
@@ -616,8 +632,8 @@ a {
   }
 }
 .add_section {
-  background-color: #46a135;
-  border: 1px solid #46a135;
+  background-color: #46a135 !important;
+  border: 1px solid #46a135 !important;
   color: #fff;
   min-width: 200px;
   padding: 0.75rem;

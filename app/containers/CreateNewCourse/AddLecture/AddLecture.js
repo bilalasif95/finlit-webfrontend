@@ -9,10 +9,8 @@ import {
 import LectureVideoUpload from '../LectureVideoUpload/LectureVideoUpload';
 
 function AddLecture(props) {
-  const [data, setData] = React.useState({lectureVideo: "", lectureTime: null, lessonId: 2, percentage: 0 })
-  const { removeLectureHandler, addLectureChangeHandler, lessonIndex, item } = props;
-  console.log("item =>",item);
-  console.log("data =>",data);
+  const { removeLectureHandler, addLectureChangeHandler, lessonsList, setLessonsList,
+    lessonIndex, item, saveLectureHandler } = props;
   return (
     <React.Fragment>
       <Row>
@@ -41,7 +39,11 @@ function AddLecture(props) {
                 </FormGroup>
               </Col>
               <Col lg={6}>
-              <LectureVideoUpload item={item} setData={setData} />
+              <LectureVideoUpload 
+              lessonsList={lessonsList}
+              setLessonsList={setLessonsList} 
+              lessonIndex={lessonIndex} 
+              lectureIndex={i}  />
                 
               </Col>
               <Col lg={12}>
@@ -55,8 +57,8 @@ function AddLecture(props) {
                     </Button>
                     <Button
                       className="btn_save"
-                      disabled={!data.lectureVideo || !item.title}
-                    // onClick={handleCourseStepThree}
+                      // disabled={!item.lectureVideo || !item.title}
+                      onClick={() => saveLectureHandler(i, lessonIndex)}
                     >
                       Save Lecture
                     </Button>
