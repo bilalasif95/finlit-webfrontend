@@ -3,25 +3,26 @@ import { getToken } from './Tokens';
 
 const BASE_URL = 'https://dev-finlit-backend.rnssol.com/';
 
-export const apiGetRequest = (endpoint, token = null, props = {}) =>
-  apiRequest('GET', endpoint, token, props);
+export const apiGetRequest = (endpoint, props = {}) =>
+  apiRequest('GET', endpoint, props);
 
-export const apiPostRequest = (endpoint, payload, token = null) =>
-  apiRequest('POST', endpoint, token, { data: payload });
+export const apiPostRequest = (endpoint, payload) =>
+  apiRequest('POST', endpoint, { data: payload });
 
-export const apiPatchRequest = (endpoint, payload, token = null) =>
-  apiRequest('PATCH', endpoint, token, { data: payload });
+export const apiPatchRequest = (endpoint, payload) =>
+  apiRequest('PATCH', endpoint, { data: payload });
 
-export const apiPutRequest = (endpoint, payload, token = null) =>
-  apiRequest('PUT', endpoint, token, { data: payload });
+export const apiPutRequest = (endpoint, payload) =>
+  apiRequest('PUT', endpoint, { data: payload });
 
-export const apiDeleteRequest = (endpoint, payload, token = null) =>
-  apiRequest('DELETE', endpoint, token);
+export const apiDeleteRequest = (endpoint, payload, ) =>
+  apiRequest('DELETE', endpoint, payload);
 
-export const apiRequest = (method, endpoint, token = null, props = {}) => {
-  if (!token) {
-    token = getToken();
-  }
+export const apiRequest = (method, endpoint, props = {}) => {
+  
+   let token = getToken();
+  
+  // console.log(token)
   const params = {
     method,
     baseURL: BASE_URL,
