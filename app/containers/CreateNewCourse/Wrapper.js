@@ -17,7 +17,8 @@ const Wrapper = styled.div`
       font-weight: 520;
       justify-content: flex-start;
       padding: 1rem 1.25rem;
-      width: 100%;
+      text-align: left;
+      width: 80%;
       &:focus {
         box-shadow: none;
       }

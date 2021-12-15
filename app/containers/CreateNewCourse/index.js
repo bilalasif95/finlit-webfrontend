@@ -945,7 +945,7 @@ export default function CreateNewCourse() {
                                   <div className="tick_icon">
                                     <MdCheckCircle />
                                   </div>
-                                  {res.name}
+                                  <span> {res.name} </span>
                                 </Button>
                                 <div className="action_btns">
                                   <Button>
