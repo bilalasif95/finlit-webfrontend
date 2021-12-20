@@ -152,9 +152,9 @@ const GlobalStyle = createGlobalStyle`
         }
         button {
           align-items: center;
-          background-color: #f4f6f9;
-          border: 1px solid #d8d8d8;
-          border-radius: 0.313rem;
+          background-color: transparent;
+          border: none;
+          // border-radius: 0.313rem;
           color: #404041;
           display: flex;
           font-size: 1rem;
@@ -290,9 +290,9 @@ const GlobalStyle = createGlobalStyle`
         padding: 2rem 1.5rem;
         width: 100%;
         z-index: 1;
-        .accordin_header {
-          border: none;
-        }
+        // .accordin_header {
+        //   border: none;
+        // }
       }
     }
   }

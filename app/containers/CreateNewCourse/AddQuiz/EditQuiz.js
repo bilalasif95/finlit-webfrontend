@@ -15,8 +15,9 @@ import Dropzone from 'react-dropzone';
 import { FiUpload } from 'react-icons/fi';
 import { IoIosClose, IoMdChatboxes } from 'react-icons/io';
 
-function AddQuiz(props) {
-  const { res, lessonIndex, lessonsList, setLessonsList, saveQuestionHandler  } = props;
+function EditQuiz(props) {
+  const { res, lessonIndex, lessonsList, setLessonsList, 
+    saveQuestionHandler, readOnly, item, questionIndex} = props;
   // const [initialData, setInitialData] = React.useState([...res.quiz.questions])
 
   // React.useEffect(() => {
@@ -33,49 +34,33 @@ function AddQuiz(props) {
     })
     setLessonsList(lessonsArray);
   };
-  // const saveQuestions = () => {
-  //   if(_.size(initialData) === 0) {
-  //     return
-  //   }
-  //   saveQuestionHandler(initialData)
-  // }
-  // const saveQuestionHandler = (questionIndex, lessonIndex) => {
-  //   const lessonsArray = _.cloneDeep(lessonsList);
-  //   const lessonItem = lessonsArray[lessonIndex]
-  //   lessonItem.quiz.savedQuestions.push(lessonItem.quiz.questions[questionIndex])
-  //   lessonItem.quiz.questions.splice(questionIndex, 1)
-  //   console.log(lessonItem);
-  //   setLessonsList(lessonsArray)
-  // };
-  const removeQuestionHandler = (questionIndex, lessonIndex) => {
+
+  
+  const updateQuestionHandler = (questionIndex, lessonIndex) => {
     const lessonsArray = _.cloneDeep(lessonsList);
-    const lessonItem = lessonsArray[lessonIndex];
-    if (lessonItem.quiz.questions.length === 1 && lessonItem.quiz.savedQuestions.length === 0) {
-      lessonItem.quiz.questions.splice(questionIndex, 1)
-      lessonItem.showQuestion = false;
-      setLessonsList(lessonsArray)
-    }
-    lessonItem.quiz.questions.splice(questionIndex, 1)
+    const lessonItem = lessonsArray[lessonIndex]
+    lessonItem.quiz.savedQuestions[questionIndex].editView = false
+    lessonItem.quiz.savedQuestions[questionIndex].question = lessonItem.quiz.savedQuestions[questionIndex].editableTitle
     setLessonsList(lessonsArray)
   };
+
   const questionsChangeHandler = (e, questionIndex, lessonIndex) => {
     const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
-    lessonItem.quiz.questions[questionIndex][e.target.name] = e.target.value;
-    lessonItem.quiz.questions[questionIndex].question = lessonItem.quiz.questions[questionIndex].editableTitle;
+    lessonItem.quiz.savedQuestions[questionIndex][e.target.name] = e.target.value;
+    // setInitialData((prevState) => ({ ...prevState, [questionIndex][e.target.name] : e.target.value}))
+    // questions[questionIndex][e.target.name] = e.target.value;
+    // setInitialData(questions);
+    // console.log(initialData)
     setLessonsList(lessonsArray)
   }
 
   return (
     <React.Fragment>
-      <div className="profileHeader">
-        <h3>Quiz</h3>
-      </div>
-
       {/* {initialData.map((item, i) => */}
-      {_.get(lessonsList, `[${lessonIndex}].quiz.questions`, []).map((item, i) =>
-        <div key={i} className="card mt-4 mb-5">
-          <div className="card-body">
+      {/* {_.get(lessonsList, `[${lessonIndex}].quiz.questions`, []).map((item, i) => */}
+        {/* <div  className="card">
+          <div className="card-body"> */}
             <div className="add_forms">
               <div className="add_form">
                 <Row>
@@ -89,7 +74,8 @@ function AddQuiz(props) {
                       <Input
                         type="text"
                         name="editableTitle"
-                        onChange={(e) => questionsChangeHandler(e, i, lessonIndex)}
+                        readOnly={readOnly}
+                        onChange={(e) => questionsChangeHandler(e, questionIndex, lessonIndex)}
                         value={item.editableTitle}
                         id="sub_title"
                         placeholder="Type the Question"
@@ -101,16 +87,18 @@ function AddQuiz(props) {
                           <Input
                             className="radio"
                             name="rightAnswer"
+                            disabled={readOnly}
                             type="radio"
-                            onChange={(e) => questionsChangeHandler(e, i, lessonIndex)}
+                            onChange={(e) => questionsChangeHandler(e, questionIndex, lessonIndex)}
                             value={item.firstAnswer}
-                            // checked={item.rightAnswer === item.firstAnswer}
+                            checked={item.firstAnswer === item.rightAnswer}
                           />
                         </div>
                         <Input
                           placeholder="Answer 1"
                           name="firstAnswer"
-                          onChange={(e) => questionsChangeHandler(e, i, lessonIndex)}
+                          readOnly={readOnly}
+                          onChange={(e) => questionsChangeHandler(e, questionIndex, lessonIndex)}
                           value={item.firstAnswer}
                           type="text"
                         />
@@ -121,14 +109,18 @@ function AddQuiz(props) {
                             className="radio"
                             type="radio"
                             name="rightAnswer"
-                            onChange={(e) => questionsChangeHandler(e, i, lessonIndex)}
+                            disabled={readOnly}
+                            onChange={(e) => questionsChangeHandler(e, questionIndex, lessonIndex)}
                             value={item.secondAnswer}
+                            checked={item.secondAnswer === item.rightAnswer}
+
                           />
                         </div>
                         <Input
                           placeholder="Answer 2"
                           name="secondAnswer"
-                          onChange={(e) => questionsChangeHandler(e, i, lessonIndex)}
+                          readOnly={readOnly}
+                          onChange={(e) => questionsChangeHandler(e, questionIndex, lessonIndex)}
                           value={item.secondAnswer}
                           type="text"
                         />
@@ -138,15 +130,19 @@ function AddQuiz(props) {
                           <Input
                             className="radio"
                             type="radio"
-                            onChange={(e) => questionsChangeHandler(e, i, lessonIndex)}
+                            disabled={readOnly}
+                            onChange={(e) => questionsChangeHandler(e, questionIndex, lessonIndex)}
                             name="rightAnswer"
                             value={item.thirdAnswer}
+                            checked={item.thirdAnswer === item.rightAnswer}
+                            
                           />
                         </div>
                         <Input
                           placeholder="Answer 3"
                           name="thirdAnswer"
-                          onChange={(e) => questionsChangeHandler(e, i, lessonIndex)}
+                          readOnly={readOnly}
+                          onChange={(e) => questionsChangeHandler(e, questionIndex, lessonIndex)}
                           value={item.thirdAnswer}
                           type="text"
                         />
@@ -158,14 +154,14 @@ function AddQuiz(props) {
                       <div className="bottom_btns">
                         <Button
                           className="btn_back"
-                          onClick={() => removeQuestionHandler(i, lessonIndex)}
+                        // onClick={handleCourseStepOne}
                         >
                           Cancel
                         </Button>
                         <Button
                           disabled={!item.question || !item.firstAnswer || !item.secondAnswer || !item.thirdAnswer || !item.rightAnswer}
                           className="btn_save"
-                          onClick={() => saveQuestionHandler(i, lessonIndex)}
+                          onClick={() => updateQuestionHandler(questionIndex, lessonIndex)}
                         >
                           Save Question
                         </Button>
@@ -175,12 +171,12 @@ function AddQuiz(props) {
                 </Row>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          {/* </div>
+        </div> */}
+      {/* )} */}
 
     </React.Fragment>)
 
 }
 
-export default AddQuiz;
+export default EditQuiz;
