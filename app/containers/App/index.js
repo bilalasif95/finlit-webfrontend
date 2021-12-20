@@ -48,6 +48,7 @@ import HackathonListPage from 'containers/instructor-panel/HackathonListPage/Loa
 import BootcampListPage from 'containers/instructor-panel/BootcampListPage/Loadable';
 import MyProfilePage from 'containers/MyProfilePage/Loadable';
 import MyCourses from 'containers/MyCourses/Loadable';
+import Payments from 'containers/Payments/Loadable';
 import CreateNewCourse from 'containers/CreateNewCourse/Loadable';
 import Notification from 'containers/Notification/Loadable';
 import Setting from 'containers/ProfileSetting/Loadable';
@@ -98,6 +99,7 @@ const App = () => {
         history.location.pathname === '/add_bootcamp' ||
         history.location.pathname === '/forgot_password' ||
         history.location.pathname === '/reset_password' ||
+        history.location.pathname === '/payments' ||
         history.location.pathname === '/two_fa' ? null : userInfo &&
           userInfo.roles[0].roleName === 'Instructor' ? (
           <Header />
@@ -141,6 +143,7 @@ const App = () => {
         <Route path="/bootcamps_list" component={BootcampListPage} />
         <Route path="/my_profile" component={MyProfilePage} />
         <Route path="/my_courses" component={MyCourses} />
+        <Route path="/payments" component={Payments} />
         <Route path="/create_course" component={CreateNewCourse} />
         <Route path="/notification" component={Notification} />
         <Route path="/setting" component={Setting} />

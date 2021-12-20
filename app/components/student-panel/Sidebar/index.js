@@ -119,6 +119,18 @@ function Sidebar(props) {
               Notification
             </Link>
           </div>
+          <div
+            className={
+              active === '/payments' ? 'active sideNavLink' : 'sideNavLink'
+            }
+          >
+            <Link to="/payments">
+              <p>
+                <img src={Bell} alt="bell" />
+              </p>
+              Payments
+            </Link>
+          </div>
         </div>
         <div className="homeBtn">
           <Link to="/" className="backBtn">

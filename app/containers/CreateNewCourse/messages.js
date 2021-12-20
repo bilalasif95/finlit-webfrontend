@@ -18,7 +18,7 @@ export default defineMessages({
   },
   Type: {
     id: `${scope}.Type`,
-    defaultMessage: `Question 1`,
+    defaultMessage: `Question`,
   },
   Quiz: {
     id: `${scope}.Quiz`,
