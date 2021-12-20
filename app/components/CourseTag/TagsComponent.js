@@ -171,7 +171,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
     addTile(tile) {
       // pull tiles array out of the state
       // see destructoring
-      if (tile.length && Object.keys(this.state.tiles).length <= 10) {
+      if (tile.length && Object.keys(this.state.tiles).length < 10) {
         const { tiles, tileIds } = this.state;
 
         const newTileId = tileIds.length - 1 + 1;
@@ -233,7 +233,7 @@ const CourseTag = withStyles(styles, { name: 'TagsComponent' })(
               value={this.state.currentValue}
               classes={classes}
             />
-            <div className="tagCount">{this.state.tileIds.length}/10 Tags</div>
+            <div className="tagCount">{Object.values(this.state.tiles).length}/10 Tags</div>
             {Object.keys(this.state.tiles).map(key => (
               <Tile
                 key={key}

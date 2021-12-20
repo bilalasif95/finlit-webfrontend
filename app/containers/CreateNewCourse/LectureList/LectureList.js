@@ -34,22 +34,22 @@ function LectureList(props) {
       lectureTime: lessonItem.savedLectureList[lectureIndex].lectureTime,
       lessonId: lessonItem.lessonId
     }
-    // try {
-    //   const res = await apiPutRequest(`api/lecture/updateAsDraft/${id}`, payload);
-    //   if (!res) {
-    //     throw 'No Internet Access'
-    //   }
-    //   console.log(res);
-    //   if (res.status !== 201) {
-    //     throw 'Something Went Wrong'
-    //   }
-    //   lessonItem.savedLectureList[lectureIndex].editView = false;
-    //   lessonItem.savedLectureList[lectureIndex].title = lessonItem.savedLectureList[lectureIndex].editableTitle
-    //   setLessonsList(lessonsArray);
-    // } catch (err) {
-    //   console.log(err);
-    //   setLoading(false)
-    // }
+    try {
+      const res = await apiPutRequest(`api/lecture/updateAsDraft/${id}`, payload);
+      if (!res) {
+        throw 'No Internet Access'
+      }
+      console.log(res);
+      if (res.status !== 200) {
+        throw 'Something Went Wrong'
+      }
+      lessonItem.savedLectureList[lectureIndex].editView = false;
+      lessonItem.savedLectureList[lectureIndex].title = lessonItem.savedLectureList[lectureIndex].editableTitle
+      setLessonsList(lessonsArray);
+    } catch (err) {
+      console.log(err);
+      setLoading(false)
+    }
     lessonItem.savedLectureList[lectureIndex].editView = false;
     lessonItem.savedLectureList[lectureIndex].title = lessonItem.savedLectureList[lectureIndex].editableTitle
     setLessonsList(lessonsArray);
@@ -58,28 +58,33 @@ function LectureList(props) {
   const deleteLecturehandler = async (lectureIndex, lessonIndex, id) => {
     const lessonsArray = _.cloneDeep(lessonsList)
     const lessonItem = lessonsArray[lessonIndex];
-    // try {
-    //   const res = await apiPutRequest(`api//lecture/deleteDraft/${id}`);
-    //   if (!res) {
-    //     throw 'No Internet Access'
-    //   }
-    //   console.log(res);
-    //   if (res.status !== 201) {
-    //     throw 'Something Went Wrong'
-    //   }
-    //   lessonItem.savedLectureList.splice(lectureIndex, 1)
-    //   setLessonsList(lessonsArray);
-    // } catch (err) {
-    //   console.log(err);
-    //   setLoading(false)
-    // }
-    if (lessonItem.lectureList.length === 0 && lessonItem.savedLectureList.length === 1) {
+    try {
+      const res = await apiDeleteRequest(`api//lecture/deleteDraft/${id}`);
+      if (!res) {
+        throw 'No Internet Access'
+      }
+      console.log(res);
+      if (res.status !== 200) {
+        throw 'Something Went Wrong'
+      }
+      if (lessonItem.lectureList.length === 0 && lessonItem.savedLectureList.length === 1) {
+        lessonItem.savedLectureList.splice(lectureIndex, 1)
+        lessonItem.showLecture = false;
+        setLessonsList(lessonsArray)
+      }
       lessonItem.savedLectureList.splice(lectureIndex, 1)
-      lessonItem.showLecture = false;
-      setLessonsList(lessonsArray)
+      setLessonsList(lessonsArray);
+    } catch (err) {
+      console.log(err);
+      setLoading(false)
     }
-    lessonItem.savedLectureList.splice(lectureIndex, 1)
-    setLessonsList(lessonsArray);
+    // if (lessonItem.lectureList.length === 0 && lessonItem.savedLectureList.length === 1) {
+    //   lessonItem.savedLectureList.splice(lectureIndex, 1)
+    //   lessonItem.showLecture = false;
+    //   setLessonsList(lessonsArray)
+    // }
+    // lessonItem.savedLectureList.splice(lectureIndex, 1)
+    // setLessonsList(lessonsArray);
   }
 
   return (
@@ -175,7 +180,7 @@ function LectureList(props) {
                             </Button>
                             <Button
                               className="btn_save"
-                              // disabled={!item.lectureVideo || !item.title}
+                              disabled={!item.lectureVideo || !item.editableTitle}
                               onClick={() => updateLectureHandler(i, lessonIndex, item.id)}
                             >
                               Save Lecture

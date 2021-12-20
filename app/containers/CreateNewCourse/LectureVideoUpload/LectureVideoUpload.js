@@ -87,8 +87,8 @@ export default class Index extends Component {
             fileName: this.state.fileName,
             parts: uploadPartsArray,
             uploadId: this.state.uploadId,
-            courseId: 41,
-            lessonId: 2,
+            courseId: this.props.lessonsList[this.props.lessonIndex].courseId,
+            lessonId: this.props.lessonsList[this.props.lessonIndex].lessonId,
           },
         }
       );
@@ -173,7 +173,7 @@ export default class Index extends Component {
             <div className="file_progress">
               <p>
                 File
-                <span>{this.state.fileSelected.name}</span>
+                <span>{this.state.fileSelected && this.state.fileSelected.name}</span>
                 {lessonsList[lessonIndex].lectureList[lectureIndex].lectureVideo ? 'uploaded successfully' : 'is uploading'}
               </p>
 

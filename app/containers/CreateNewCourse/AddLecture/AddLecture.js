@@ -57,7 +57,7 @@ function AddLecture(props) {
                     </Button>
                     <Button
                       className="btn_save"
-                      // disabled={!item.lectureVideo || !item.title}
+                      disabled={!item.lectureVideo || !item.title}
                       onClick={() => saveLectureHandler(i, lessonIndex)}
                     >
                       Save Lecture

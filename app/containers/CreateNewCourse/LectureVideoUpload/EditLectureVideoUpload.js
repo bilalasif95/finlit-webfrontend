@@ -87,8 +87,8 @@ export default class Index extends Component {
             fileName: this.state.fileName,
             parts: uploadPartsArray,
             uploadId: this.state.uploadId,
-            courseId: 41,
-            lessonId: 2,
+            courseId: this.props.lessonsList[this.props.lessonIndex].courseId,
+            lessonId: this.props.lessonsList[this.props.lessonIndex].lessonId,
           },
         }
       );

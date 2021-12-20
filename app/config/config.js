@@ -29,5 +29,6 @@ export const endpoints = {
   createCourseAsDraft: `api/course/saveAsDraft`,
   createLessonAsDraft: `api/course/createDraftLesson`,
   updateLessonAsDraft: `api/course/updateDraftLesson/`,
-  createLectureAsDraft: `api/lecture/saveAsDraft`
+  createLectureAsDraft: `api/lecture/saveAsDraft`,
+  uploadVideo: 'api/upload/video',
 };
