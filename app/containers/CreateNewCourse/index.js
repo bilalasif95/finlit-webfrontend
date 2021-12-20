@@ -1037,19 +1037,21 @@ export default function CreateNewCourse() {
                           <div key={index} className="custom_accordin">
                             <div className="accordin_item">
                               <div className="accordin_header">
-                                <Button
-                                  className={
-                                    accordinOne
-                                      ? 'active title_btn'
-                                      : 'title_btn'
-                                  }
-                                  onClick={() => toggleHandler(index)}
-                                >
-                                  <div className="tick_icon">
-                                    <MdCheckCircle />
-                                  </div>
-                                  {item.heading}
-                                </Button>
+                                <div className="title">
+                                  <Button
+                                    className={
+                                      accordinOne
+                                        ? 'active title_btn'
+                                        : 'title_btn'
+                                    }
+                                    onClick={() => toggleHandler(index)}
+                                  >
+                                    <div className="tick_icon">
+                                      <MdCheckCircle />
+                                    </div>
+                                    {item.heading}
+                                  </Button>
+                                </div>
                                 <div className="action_btns">
                                   <Button>
                                     <FiEdit3
@@ -1187,7 +1189,6 @@ export default function CreateNewCourse() {
               )}
               {courseStepTwo && (
                 <>
-
                   <div className="add_form">
                     <div className="profileHeader">
                       <h3>Lesson</h3>
@@ -1233,19 +1234,21 @@ export default function CreateNewCourse() {
                           <div className="accordin_item">
                             <div className="accordin_header">
                               <div className="top-layer">
-                                <Button
-                                  className={
-                                    accordinOne
-                                      ? 'active title_btn'
-                                      : 'title_btn'
-                                  }
-                                  onClick={() => toggleLessonHandler(index)}
-                                >
-                                  <div className="tick_icon">
-                                    <MdCheckCircle />
-                                  </div>
-                                  <span> {res.name} </span>
-                                </Button>
+                                <div className="title">
+                                  <Button
+                                    className={
+                                      accordinOne
+                                        ? 'active title_btn'
+                                        : 'title_btn'
+                                    }
+                                    onClick={() => toggleLessonHandler(index)}
+                                  >
+                                    <div className="tick_icon">
+                                      <MdCheckCircle />
+                                    </div>
+                                    <span> {res.name} </span>
+                                  </Button>
+                                </div>
                                 <div className="action_btns">
                                   <Button>
                                     <FiEdit3

@@ -143,9 +143,13 @@ const GlobalStyle = createGlobalStyle`
       width: 100%;
       .accordin_header {
         align-items: center;
+        background-color: #f4f6f9;
+        border: 1px solid #d8d8d8;
+        border-radius: 0.313rem;
         display: flex;
         justify-content: space-between;
-        position: relative;
+        padding: 1rem 1.25rem;
+        // position: relative;
         width: 100%;
         svg {
           font-size: 1.5rem;
@@ -154,13 +158,12 @@ const GlobalStyle = createGlobalStyle`
           align-items: center;
           background-color: transparent;
           border: none;
-          // border-radius: 0.313rem;
           color: #404041;
           display: flex;
           font-size: 1rem;
           font-weight: 520;
           justify-content: flex-start;
-          padding: 1rem 1.25rem;
+          padding: 0;
           width: 100%;
           &:focus {
             box-shadow: none;
@@ -175,25 +178,34 @@ const GlobalStyle = createGlobalStyle`
           align-items: center;
           display: inherit;
           font-size: 1.125rem;
-          padding: 0.875rem 1rem 0.875rem 1.75rem;
+          // padding: 0.875rem 1rem 0.875rem 1.75rem;
           svg {
             height: 24px;
             margin: 0 0.5rem 0 0;
             width: 24px;
           }
+          .tick_icon {
+            margin: 0 0.5rem 0 0;
+          }
+        }
+        .title {
+          display: flex;
+          width: 80%;
         }
         .action_btns {
           display: flex;
           justify-content: flex-end;
-          margin: 0 1rem 0 0;
-          position: absolute;
-          right: 0;
-          z-index: 1;
+          // margin: 0 1rem 0 0;
+          // position: absolute;
+          // right: 0;
+          width: 20%;
+          // z-index: 1;
           button {
             background-color: transparent;
             border: none;
-            width: 3rem;
             padding: 0;
+            margin: 0 0 0 1rem;
+            width: 2rem;
             &:first-child {
               svg {
                 height: 1.4rem;
@@ -236,7 +248,6 @@ const GlobalStyle = createGlobalStyle`
         svg {
           font-size: 1.5rem;
         }
-
         .active {
           border-bottom: none;
           border-bottom-left-radius: 0;
@@ -244,9 +255,10 @@ const GlobalStyle = createGlobalStyle`
         }
         .title_btn {
           align-items: center;
-          display: inherit;
+          display: flex;
           font-size: 1.125rem;
-          padding: 0.875rem 1rem 0.875rem 1.75rem;
+          text-align: left;
+          // padding: 0.875rem 1rem 0.875rem 1.75rem;
           svg {
             height: 24px;
             margin: 0 0.5rem 0 0;
@@ -256,21 +268,22 @@ const GlobalStyle = createGlobalStyle`
             display: block;
             text-overflow: ellipsis;
             white-space: nowrap;
-            max-width: 40rem;
+            max-width: 50%;
             overflow: hidden;
           }
+        }
+        .title {
+          width: 80%;
         }
         .action_btns {
           display: flex;
           justify-content: flex-end;
-          margin: 0 1rem 0 0;
-          position: absolute;
-          right: 0;
-          z-index: 1;
+          width: 20%;
           button {
             background-color: transparent;
             border: none;
-            width: 3rem;
+            margin: 0 0 0 1rem;
+            width: 2rem;
             padding: 0;
             &:first-child {
               svg {
@@ -278,6 +291,14 @@ const GlobalStyle = createGlobalStyle`
                 width: 1.4rem;
               }
             }
+          }
+        }
+        @media (max-width: 767px) {
+          .title {
+            width: 65%;
+          }
+          .action_btns {
+            width: 35%;
           }
         }
       }
@@ -1868,10 +1889,10 @@ a {
   height: 100%;
   width: 100%;
   .add_lecture_list {
-    .row:not(:first-child) {
-      border-top: 1px solid #d8d8d8;
-      margin-top: 2rem;
-      padding: 2rem 0 0;
+    border-top: 1px solid #d8d8d8;
+    padding: 1.5rem 0;
+    &:first-child {
+      border-top: none;
     }
   }
   .details_list {

@@ -91,19 +91,21 @@ function LectureList(props) {
     <React.Fragment>
       <Row>
         <Col lg={12}>
-          <div className="custom_accordin  mt-5">
+          <div className="custom_accordin">
             {res.savedLectureList.length > 0 && res.savedLectureList.map((item, i) =>
               <div key={i} className="accordin_item">
                 <div className="accordin_header">
-                  <Button
-                    className="title_btn"
-                    onClick={() => toggleLectureHandler(i, lessonIndex)}
-                  >
-                    <div className="tick_icon">
-                      <MdCheckCircle />
-                    </div>
-                    {item.title}
-                  </Button>
+                  <div className="title">
+                    <Button
+                      className="title_btn"
+                      onClick={() => toggleLectureHandler(i, lessonIndex)}
+                    >
+                      <div className="tick_icon">
+                        <MdCheckCircle />
+                      </div>
+                      {item.title}
+                    </Button>
+                  </div>
                   <div className="action_btns">
                     <Button>
                       <FiEdit3
