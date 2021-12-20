@@ -6,6 +6,7 @@ const Wrapper = styled.div`
     align-items: center;
     display: inherit;
     justify-content: space-between;
+    padding: 1rem 1.25rem;
     width: 100%;
     button {
       align-items: center;
@@ -16,9 +17,8 @@ const Wrapper = styled.div`
       font-size: 1rem;
       font-weight: 520;
       justify-content: flex-start;
-      padding: 1rem 1.25rem;
+      padding: 0;
       text-align: left;
-      width: 80%;
       &:focus {
         box-shadow: none;
       }
@@ -36,7 +36,7 @@ const Wrapper = styled.div`
       font-weight: 400  !important; 
       margin: 0 1rem 0 0;
       padding: 0;
-      min-width: 8rem;
+      min-width: 7rem;
       &:focus {
         box-shadow: none;
       }

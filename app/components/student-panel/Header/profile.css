@@ -943,9 +943,22 @@ input:checked + .slider:before {
   }
 }
 @media (max-width: 768px) {
-  .publishBtns button,
+  /* .publishBtns button,
   .publishBtns .bottom_btns button {
     min-width: 130px;
+  } */
+  .publishBtns .bottom_btns {
+    margin: 0 0 1rem;
+    justify-content: space-between;
+  }
+  .publishBtns .bottom_btns button {
+    margin: 0;
+  }
+  .publishBtns {
+    flex-direction: column-reverse;
+  }
+  .publishBtns button {
+    width: 100%;
   }
 }
 @media (min-width: 576px) {
@@ -974,22 +987,6 @@ input:checked + .slider:before {
   .modal-dialog {
     margin: 0 !important;
 }
-  .publishBtns .bottom_btns {
-    margin: 0 0 1rem;
-    justify-content: space-between;
-  }
-  .publishBtns .bottom_btns button {
-    margin: 0;
-  }
-  /* .publishBtns .bottom_btns button:first-child {
-    margin-right: 16px;
-  } */
-  .publishBtns {
-    flex-direction: column-reverse;
-  }
-  .publishBtns button {
-    width: 100%;
-  }
   .editQuiz {
     font-size: 14px;
     padding: 35px 10px 10px;

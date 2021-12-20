@@ -21,7 +21,7 @@ function Footer() {
     <Wrapper id="footer">
       <Container fluid="xl">
         <Row>
-          <Col lg={5} md={4} sm={12}>
+          <Col lg={5} md={3} sm={12}>
             <div className="copyright_social">
               <div className="copyright">
                 <p>
@@ -53,7 +53,7 @@ function Footer() {
               </ul>
             </div>
           </Col>
-          <Col lg={7} md={8} sm={12}>
+          <Col lg={7} md={9} sm={12}>
             <ul className="footer_links">
               <li>
                 <Link to="/">
