@@ -7,23 +7,13 @@ import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 // import { Link } from 'react-router-dom';
 import '../../components/student-panel/Header/profile.css';
-import {
-  Label,
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from 'reactstrap';
-import Delete from '../../images/delete.png';
 import messages from './messages';
-import 'react-toastify/dist/ReactToastify.css';
-import Img from '../../components/Img';
-import Cam from '../../images/cam.png';
-import BasicInfo from '../../components/MyProfilePage/BasicInfo';
 import Sidebar from '../../components/student-panel/Sidebar/index';
+import PaymentOption from '../../components/instructor-panel/Payments/PaymentOption';
+import BankDetail from '../../components/instructor-panel/Payments/BankDetail';
 
 export default function Payments() {
+  const [paymentOption, setPaymentOption] = useState(true);
   return (
     <div className="profilePages">
       <Helmet>
@@ -35,7 +25,7 @@ export default function Payments() {
         {/* Payments Content */}
         <div className="profileContent">
           <div className="mainCont">
-            <h2>Payments</h2>
+            {paymentOption ? <PaymentOption setPaymentOption={setPaymentOption} /> : <BankDetail setPaymentOption={setPaymentOption} />}
           </div>
         </div>
       </div>

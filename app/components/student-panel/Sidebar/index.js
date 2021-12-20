@@ -3,9 +3,10 @@
  */
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+// import { AiFillBank } from 'react-icons/ai';
 import { BiUserCircle } from 'react-icons/bi';
-import { BsChatSquare } from 'react-icons/bs';
-import { FaChevronDown } from 'react-icons/fa';
+import { BsCardList } from 'react-icons/bs';
+import { FaChevronDown, FaUniversity, FaRegBell } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { RiUserSettingsLine } from 'react-icons/ri';
 import { Button, Collapse, Card, CardBody } from 'reactstrap';
@@ -58,7 +59,7 @@ function Sidebar(props) {
               }}
             >
               <p>
-                <BsChatSquare />
+                <BsCardList />
               </p>
               My Collection &nbsp;
               <span>
@@ -114,7 +115,8 @@ function Sidebar(props) {
           >
             <Link to="/notification">
               <p>
-                <img src={Bell} alt="bell" />
+                {/* <img src={Bell} alt="bell" /> */}
+                <FaRegBell />
               </p>
               Notification
             </Link>
@@ -126,7 +128,7 @@ function Sidebar(props) {
           >
             <Link to="/payments">
               <p>
-                <img src={Bell} alt="bell" />
+                <FaUniversity />
               </p>
               Payments
             </Link>
@@ -193,7 +195,7 @@ function Sidebar(props) {
                   }}
                 >
                   <p>
-                    <BsChatSquare />
+                    <BsCardList />
                   </p>
                   My Collection &nbsp;
                   <span>
@@ -251,7 +253,8 @@ function Sidebar(props) {
               >
                 <Link to="/notification">
                   <p>
-                    <img src={Bell} alt="bell" />
+                    {/* <img src={Bell} alt="bell" /> */}+
+                    <FaRegBell />
                   </p>
                   Notification
                 </Link>
