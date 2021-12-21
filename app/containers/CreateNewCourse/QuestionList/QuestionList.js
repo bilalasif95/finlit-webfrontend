@@ -33,15 +33,17 @@ function QuestionList(props) {
             {res.quiz.savedQuestions.length > 0 && res.quiz.savedQuestions.map((item, i) =>
               <div key={i} className="accordin_item">
                 <div className="accordin_header">
-                  <Button
-                    className="title_btn"
-                    onClick={() => toggleQuestionHandler(i, lessonIndex)}
-                  >
-                    <div className="tick_icon">
-                      <MdCheckCircle />
-                    </div>
-                    Question {i + 1} : {item.question}
-                  </Button>
+                  <div className="title">
+                    <Button
+                      className="title_btn"
+                      onClick={() => toggleQuestionHandler(i, lessonIndex)}
+                    >
+                      <div className="tick_icon">
+                        <MdCheckCircle />
+                      </div>
+                      Question {i + 1} : {item.question}
+                    </Button>
+                  </div>
                   <div className="action_btns">
                     <Button>
                       <FiEdit3
