@@ -81,9 +81,8 @@ const Header = () => {
             <MenuSidebar />
           </div>
           {userObj &&
-          userObj.roles &&
-          userObj.roles[0] &&
-          userObj.roles[0].roleName === 'Instructor' ? (
+          userObj.role &&
+          userObj.role.roleName === 'Instructor' ? (
             <Link to="/dashboard">
               <img
                 src={Logo}
@@ -230,9 +229,8 @@ const Header = () => {
                         <div />
                       </DropdownItem>
                       {/* {userObj &&
-                      userObj.roles &&
-                      userObj.roles[0] &&
-                      userObj.roles[0].roleName === 'Student' ? (
+                      userObj.role &&
+                      userObj.role.roleName === 'Student' ? (
                       <DropdownItem>
                         <Link to="/cart">
                           <div>

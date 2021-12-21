@@ -46,8 +46,8 @@ const TwoFAPage = props => {
           res.data &&
           res.data.data &&
           res.data.data.user &&
-          res.data.data.user.roles[0] &&
-          res.data.data.user.roles[0].roleName === 'Instructor'
+          res.data.data.user.role &&
+          res.data.data.user.role.roleName === 'Instructor'
         ) {
           history.push('/dashboard');
         } else {

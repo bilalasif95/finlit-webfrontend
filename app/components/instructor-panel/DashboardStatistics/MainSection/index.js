@@ -50,9 +50,8 @@ function MainSection(props) {
               </Link>
             </li>
             {userObj &&
-            userObj.roles &&
-            userObj.roles[0] &&
-            userObj.roles[0].roleName === 'Instructor' ? (
+            userObj.role &&
+            userObj.role.roleName === 'Instructor' ? (
               <>
                 <li>
                   <Link className="link" to="/courses_list">
@@ -100,9 +99,8 @@ function MainSection(props) {
           </ul>
           <div className="main_links">
             {userObj &&
-            userObj.roles &&
-            userObj.roles[0] &&
-            userObj.roles[0].roleName === 'Instructor' ? (
+            userObj.role &&
+            userObj.role.roleName === 'Instructor' ? (
               <>
                 <Link to="/webinars_list">
                   <FormattedMessage {...messages.Webinars} />
@@ -129,9 +127,8 @@ function MainSection(props) {
             )}
           </div>
           {userObj &&
-          userObj.roles &&
-          userObj.roles[0] &&
-          userObj.roles[0].roleName === 'Instructor' ? (
+          userObj.role &&
+          userObj.role.roleName === 'Instructor' ? (
             <>
               <div className="stats">
                 <Row>

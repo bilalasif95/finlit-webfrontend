@@ -55,7 +55,7 @@ import Setting from 'containers/ProfileSetting/Loadable';
 import SigninPage from 'containers/SigninPage/Loadable';
 import TwoFAPage from 'containers/TwoFAPage/Loadable';
 import SignupPage from 'containers/SignupPage/Loadable';
-import EmailVerificationPage from 'containers/EmailVerificationPage/Loadable';
+// import EmailVerificationPage from 'containers/EmailVerificationPage/Loadable';
 import VerifyEmailPage from 'containers/VerifyEmailPage/Loadable';
 import ForgotPasswordPage from 'containers/ForgotPasswordPage/Loadable';
 import ResetPasswordPage from 'containers/ResetPassword/Loadable';
@@ -89,7 +89,7 @@ const App = () => {
         {history.location.pathname === '/signup' ||
         history.location.pathname === '/my_profile' ||
         history.location.pathname === '/login' ||
-        history.location.pathname === '/email_verification' ||
+        // history.location.pathname === '/email_verification' ||
         history.location.pathname === '/verify_email' ||
         history.location.pathname === '/create_new_password' ||
         history.location.pathname === '/notification' ||
@@ -101,7 +101,7 @@ const App = () => {
         history.location.pathname === '/reset_password' ||
         history.location.pathname === '/payments' ||
         history.location.pathname === '/two_fa' ? null : userInfo &&
-          userInfo.roles[0].roleName === 'Instructor' ? (
+          userInfo.role.roleName === 'Instructor' ? (
           <Header />
         ) : (
           <Header />
@@ -127,7 +127,7 @@ const App = () => {
         <Route path="/wishlist" component={Wishlist} />
         <Route path="/course_certificate" component={CourseCertificate} />
         {/* Instructor Panel pages routes */}
-        {/* {userInfo && userInfo.roles[0].roleName == "Super Admin" || userInfo && userInfo.roles[0].roleName == "Instructor" ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={HomePage} />} */}
+        {/* {userInfo && userInfo.role.roleName == "Super Admin" || userInfo && userInfo.role.roleName == "Instructor" ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={HomePage} />} */}
         <Route exact path="/add_webinar" component={AddWebinarPage} />
         <Route path="/add_hackathon" component={AddHackathonPage} />
         <Route path="/add_bootcamp" component={AddBootCampPage} />
@@ -150,7 +150,7 @@ const App = () => {
         <Route path="/login" component={SigninPage} />
         <Route path="/two_fa" component={TwoFAPage} />
         <Route path="/signup" component={SignupPage} />
-        <Route path="/email_verification" component={EmailVerificationPage} />
+        {/* <Route path="/email_verification" component={EmailVerificationPage} /> */}
         <Route path="/verify_email" component={VerifyEmailPage} />
         <Route path="/forgot_password" component={ForgotPasswordPage} />
         <Route path="/create_new_password" component={ResetPasswordPage} />

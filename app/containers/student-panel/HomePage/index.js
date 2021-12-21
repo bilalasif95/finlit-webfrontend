@@ -19,9 +19,8 @@ export function HomePage() {
     const userObj = JSON.parse(localStorage.getItem('userInfo'));
     if (
       userObj &&
-      userObj.roles &&
-      userObj.roles[0] &&
-      userObj.roles[0].roleName === 'Instructor'
+      userObj.role &&
+      userObj.role.roleName === 'Instructor'
     ) {
       history.push('/dashboard');
     }

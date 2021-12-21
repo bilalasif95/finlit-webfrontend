@@ -23,7 +23,7 @@ export const endpoints = {
   confirmEmail: `api/auth/confirmEmail`,
   login: `api/auth/login`,
   forgotPassword: `api/auth/forgotPassword`,
-  forgotConfirmPassword: `api/user/forgotConfirmPassword`,
+  forgotConfirmPassword: `api/auth/forgotConfirmPassword`,
   changePassword: `api/auth/changePassword`,
   courseCategory: `api/category/all`,
   createCourseAsDraft: `api/course/saveAsDraft`,

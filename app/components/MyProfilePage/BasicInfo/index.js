@@ -59,7 +59,7 @@ function BasicInfo() {
     lastName: '',
     profession: '',
     email: '',
-    roles: [],
+    role: '',
     description: '',
     country: 'PAK',
     gender: 'Male',
@@ -96,7 +96,7 @@ function BasicInfo() {
             description: res.data.data.description,
             country: res.data.data.country ? res.data.data.country : 'PAK',
             address: res.data.data.address,
-            roles: res.data.data.roles,
+            role: res.data.data.role.roleName,
             profession: res.data.data.profession,
             email: res.data.data.email,
             gender: res.data.data.gender ? res.data.data.gender : 'Male',
@@ -243,7 +243,7 @@ function BasicInfo() {
                 type="text"
                 id="userType"
                 readOnly
-                value={userInfo.roles.map((res) => res.roleName)}
+                value={userInfo.role}
               />
               <FormText className="form-text">
                 {errors.userType ? (

@@ -92,13 +92,11 @@ export default function ResetPassword(props) {
             },
           },
         )
-        .then(result => {
-          toast.success(
-            result.data && result.data.message
-              ? result.data.message
-              : 'Message Not Readable',
-          );
-          props.history.push('/login');
+        .then(() => {
+          toast.success('Success, Please Login to Continue');
+          setTimeout(() => {
+            props.history.push('/login');
+          }, 3000);
         })
         .catch(err => {
           toast.error(
@@ -108,7 +106,7 @@ export default function ResetPassword(props) {
           );
           setTimeout(() => {
             setBtnClick(false);
-          }, 5000);
+          }, 3000);
         });
     }
   };
