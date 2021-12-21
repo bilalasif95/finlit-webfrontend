@@ -135,7 +135,11 @@ export default function MyProfilePage() {
               <div className="uploadImg">
                 <div className="inner">
                   <Img
-                    src={userObj.image ? userObj.image : 'https://i.imgur.com/qUzPHy4.jpg'}
+                    src={
+                      userObj.image
+                        ? userObj.image
+                        : 'https://i.imgur.com/qUzPHy4.jpg'
+                    }
                     alt="Profile"
                   />
                   <Label className="edit">
@@ -161,7 +165,7 @@ export default function MyProfilePage() {
                       onChange={e => updateProfileImg(e)}
                     />
                   </Label>
-                  {userObj.image &&
+                  {userObj.image && (
                     <button
                       type="button"
                       onClick={toggle}
@@ -169,7 +173,7 @@ export default function MyProfilePage() {
                     >
                       Delete Photo
                     </button>
-                  }
+                  )}
                 </div>
               </div>
               <BasicInfo />

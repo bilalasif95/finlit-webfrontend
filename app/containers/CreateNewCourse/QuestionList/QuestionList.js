@@ -1,12 +1,9 @@
 import React from 'react';
-import {
-  Row,
-  Col,
-  Button,
-} from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import { FiEdit3 } from 'react-icons/fi';
 import { MdDelete, MdCheckCircle } from 'react-icons/md';
 import EditQuiz from '../AddQuiz/EditQuiz';
+
 function QuestionList(props) {
   const { res,
     lessonIndex,
@@ -18,7 +15,9 @@ function QuestionList(props) {
   const deleteQuestionHandler = (questionIndex, lessonIndex) => {
     const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex]
-    if (lessonItem.quiz.questions.length === 0 && lessonItem.quiz.savedQuestions.length === 1) {
+    if (lessonItem.quiz.questions.length === 0 &&
+      lessonItem.quiz.savedQuestions.length === 1
+    ) {
       lessonItem.quiz.savedQuestions.splice(questionIndex, 1)
       lessonItem.showQuestion = false;
       setLessonsList(lessonsArray)
@@ -80,12 +79,11 @@ function QuestionList(props) {
                 </div>}
               </div>
             )}
-
           </div>
         </Col>
       </Row>
-    </React.Fragment>)
-
+    </React.Fragment>
+  );
 }
 
 export default QuestionList;

@@ -4,10 +4,10 @@ import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { browserHistory, BrowserRouter } from 'react-router-dom';
 
-import WebinarsList from '../index';
-import configureStore from '../../../configureStore';
+import PaymentOption from '../index';
+import configureStore from '../../../../../configureStore';
 
-describe('<WebinarsList />', () => {
+describe('<PaymentOption />', () => {
   let store;
 
   beforeAll(() => {
@@ -20,7 +20,7 @@ describe('<WebinarsList />', () => {
         <Provider store={store}>
           <IntlProvider locale="en">
             <BrowserRouter>
-              <WebinarsList />
+              <PaymentOption />
             </BrowserRouter>
           </IntlProvider>
         </Provider>,
