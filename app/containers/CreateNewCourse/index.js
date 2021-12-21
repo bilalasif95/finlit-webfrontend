@@ -142,8 +142,8 @@ export default function CreateNewCourse() {
 
 
   // const [errors, setErrors] = useState({});
-  const [courseStepOne, setCourseStepOne] = useState(false);
-  const [courseStepTwo, setCourseStepTwo] = useState(true);
+  const [courseStepOne, setCourseStepOne] = useState(true);
+  const [courseStepTwo, setCourseStepTwo] = useState(false);
   // const [courseStepThree, setCourseStepThree] = useState(false);
 
   const [accordinOne, setAccordinOne] = useState(false);
@@ -294,19 +294,18 @@ export default function CreateNewCourse() {
       name: item.name,
       courseId: draftCourseId,
     }
-
+    setLoading(true);
     try {
       const res = await apiPutRequest(`api/course/updateDraftLesson/${item.lessonId}`, payload);
       if (!res) {
         throw 'No Internet Access'
       }
-      console.log(res);
       if (res.status !== 200) {
         throw 'Something Went Wrong'
       }
+      setLoading(false);
       setLessonsList(lessonsArray);
     } catch (err) {
-      console.log(err);
       setLoading(false)
     }
 
@@ -314,9 +313,10 @@ export default function CreateNewCourse() {
     setLessonTitle('');
   }
 
-  const deleteLessonRequest = async (index) => {
+  const deleteLessonTitleHandler = async (index) => {
     const list = [...lessonsList];
     const item = { ...list[index] };
+    setLoading(true);
     try {
       const res = await apiDeleteRequest(`api/course/deleteDraftLesson/${item.lessonId}`);
       if (!res) {
@@ -325,69 +325,20 @@ export default function CreateNewCourse() {
       if (res.status !== 200) {
         throw 'Something Went Wrong'
       }
-      list.splice(index, 1);
-      setLessonsList(list);
-      // setHideBtns(true)
+      if (lessonsList.length === 1) {
+        list.splice(index, 1);
+        setHideBtns(true)
+        setLessonsList(list);
+      } else {
+        list.splice(index, 1);
+        setLessonsList(list);
+        setHideBtns(false)
+      }
+      setLoading(false);
     } catch (err) {
-      console.log(err);
       setLoading(false)
     }
   }
-
-  const deleteLessonTitleHandler = async (index) => {
-    const list = [...lessonsList];
-    const item = { ...list[index] };
-    if (lessonsList.length === 1) {
-      list.splice(index, 1);
-      setHideBtns(true)
-      setLessonsList(list);
-      // deleteLessonRequest(index);
-    } else {
-      list.splice(index, 1);
-      setLessonsList(list);
-      // deleteLessonRequest(index);
-      setHideBtns(false)
-
-    }
-  }
-
-
-  // const getCurrentUserInfo = () => {
-  //   const token = localStorage.getItem('token');
-  //   const userId = JSON.parse(localStorage.getItem('userInfo'));
-  //   const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-  //   axios
-  //     .get(`${API}api/user/${userId && userId.id}`, {
-  //       headers: {
-  //         Accept: 'application/json',
-  //         ...authHeaders,
-  //       },
-  //     })
-  //     .then(res => {
-  //       setUserInfo({
-  //         firstName: res.data.firstName,
-  //         lastName: res.data.lastName,
-  //         description: res.data.description,
-  //         country: res.data.country,
-  //         address: res.data.address,
-  //         profession: res.data.profession,
-  //         email: res.data.email,
-  //         gender: res.data.gender,
-  //       });
-  //     })
-  //     .catch(err => {
-  //       toast.error(
-  //         err.response && err.response.data.message
-  //           ? err.response.data.message.toString()
-  //           : 'Message Not Readable',
-  //       );
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   setErrors({});
-  //   getCurrentUserInfo();
-  // }, []);
 
   useEffect(() => {
     redirectToLogin();
@@ -435,59 +386,23 @@ export default function CreateNewCourse() {
     setAddLectureSection(true);
   };
 
-  const handleQuizSection = (index) => {
-    const lessonsArray = _.cloneDeep(lessonsList);
-    const lessonItem = lessonsArray[index]
-    lessonItem.showQuiz = true;
-    setLessonsList(lessonsArray);
-  };
 
   const saveLessonHandler = async () => {
     const payload = {
       name: lessonTitle,
-      courseId: 3,
+      courseId: draftCourseId,
     };
     setLoading(true)
-    // try {
-    //   const res = await apiPostRequest(endpoints.createLessonAsDraft, payload);
-    //   if (!res) {
-    //     throw 'No Internet Access'
-    //   }
-    //   if (res.status !== 201) {
-    //     throw 'Something Went Wrong'
-    //   }
-    //   setLessonId(res.data.data.draftLessonId)
-    //   const data = {
-    //     name: lessonTitle,
-    //     editableLessonTitle: lessonTitle,
-    //     courseId: draftCourseId,
-    //     lessonId,
-    //     lectureList: [],
-    //     savedLectureList: [],
-    //     showLecture: false,
-    //     showQuiz: false,
-    //     showQuestion: false,
-    //     quiz: {
-    //       questions: [],
-    //       totalQuestions: null,
-    //       savedQuestions: []
-    //     }
-    //   }
-    //   setHideBtns(false);
-    //   setShowBtns(true);
-    //   const lessonsArray = _.cloneDeep(lessonsList);
-    //   lessonsArray.push(data);
-    //   lessonsArray[lessonsArray.length - 1].lessonId = res.data.data.draftLessonId
-    //   lessonsArray[lessonsArray.length - 1].lessonId = 4
-    //   setLessonTitle("")
-    //   setLessonsList(lessonsArray);
-    //   setLoading(false)
-
-    // } catch (err) {
-    //   console.log(err);
-    //   setLoading(false)
-    // }
-       const data = {
+    try {
+      const res = await apiPostRequest(endpoints.createLessonAsDraft, payload);
+      if (!res) {
+        throw 'No Internet Access'
+      }
+      if (res.status !== 201) {
+        throw 'Something Went Wrong'
+      }
+      setLessonId(res.data.data.draftLessonId)
+      const data = {
         name: lessonTitle,
         editableLessonTitle: lessonTitle,
         courseId: draftCourseId,
@@ -500,25 +415,31 @@ export default function CreateNewCourse() {
         quiz: {
           questions: [],
           totalQuestions: null,
-          savedQuestions: []
+          savedQuestions: [],
+          isSubmitted: false,
+          id: null
         }
       }
-    setHideBtns(false);
+      setHideBtns(false);
       setShowBtns(true);
       const lessonsArray = _.cloneDeep(lessonsList);
       lessonsArray.push(data);
-      // lessonsArray[lessonsArray.length - 1].lessonId = res.data.data.draftLessonId
-      lessonsArray[lessonsArray.length - 1].lessonId = 4
+      lessonsArray[lessonsArray.length - 1].lessonId = res.data.data.draftLessonId
       setLessonTitle("")
       setLessonsList(lessonsArray);
       setLoading(false)
+
+    } catch (err) {
+      setLoading(false)
+    }
 
   };
 
   const submitQuizHandler = async (lessonIndex) => {
     const lessonsArray = _.cloneDeep(lessonsList)
     const lessonItem = lessonsArray[lessonIndex];
-    const questions = lessonItem.quiz.savedQuestions.map(element => {
+    const questions = _.cloneDeep(lessonItem.quiz.savedQuestions)
+    const payloadQuestions = questions.map(element => {
       delete element.readView;
       delete element.editView;
       delete element.firstAnswer;
@@ -531,85 +452,103 @@ export default function CreateNewCourse() {
       totalQuestions: lessonItem.quiz.savedQuestions.length,
       name: "Quiz",
       lessonId: lessonItem.lessonId,
-      questions: questions
+      questions: payloadQuestions
     }
-    lessonItem.showQuestion = false;
-    setLessonsList(lessonsArray);
+    setLoading(true);
     try {
       const res = await apiPostRequest(`api/quiz/saveAsDraft`, payload);
       if (!res) {
         throw 'No Internet Access'
       }
-      console.log(res);
       if (res.status !== 201) {
         throw 'Something Went Wrong'
       }
-      console.log(lessonsArray)
+      lessonItem.showQuestion = false;
+      lessonItem.quiz.isSubmitted = true;
+      lessonItem.quiz.id = res.data.data.draftQuizId;
       setLessonsList(lessonsArray);
+      setLoading(false);
     } catch (err) {
       console.log(err);
       setLoading(false)
     }
   }
 
-  const editQuizHandler = async (lessonIndex) => {
+  const updateQuizHandler = async (lessonIndex, id) => {
     const lessonsArray = _.cloneDeep(lessonsList)
     const lessonItem = lessonsArray[lessonIndex];
-    lessonItem.showQuestion = !lessonItem.showQuestion;
-    // const questions = lessonItem.quiz.savedQuestions.map(element => {
-    //   delete element.readView;
-    //   delete element.editView;
-    //   delete element.firstAnswer;
-    //   delete element.secondAnswer;
-    //   delete element.thirdAnswer;
-    //   delete element.editableTitle;
-    //   return element;
-    // });
-    // const payload = {
-    //   totalQuestions: lessonItem.quiz.savedQuestions.length,
-    //   name: "Quiz",
-    //   lessonId: lessonItem.lessonId,
-    //   questions: questions
-    // }
-    // console.log(payload);
-    setLessonsList(lessonsArray);
-    // try {
-    //   const res = await apiPutRequest(`api/quiz/updateAsDraft/${lessonItem.lessonId}`, payload);
-    //   if (!res) {
-    //     throw 'No Internet Access'
-    //   }
-    //   console.log(res);
-    //   if (res.status !== 201) {
-    //     throw 'Something Went Wrong'
-    //   }
-    //   setLessonsList(lessonsArray);
-    // } catch (err) {
-    //   console.log(err);
-    //   setLoading(false)
-    // }
-  }
-
-  const deleteQuizHandler = async (lessonIndex) => {
-    const lessonsArray = _.cloneDeep(lessonsList)
-    const lessonItem = lessonsArray[lessonIndex];
-    lessonItem.showQuiz = false;
-    setLessonsList(lessonsArray);
+    const questions = _.cloneDeep(lessonItem.quiz.savedQuestions)
+    const payloadQuestions = questions.map(element => {
+      delete element.readView;
+      delete element.editView;
+      delete element.firstAnswer;
+      delete element.secondAnswer;
+      delete element.thirdAnswer;
+      delete element.editableTitle;
+      return element;
+    });
+    const payload = {
+      totalQuestions: lessonItem.quiz.savedQuestions.length,
+      name: "Quiz",
+      lessonId: lessonItem.lessonId,
+      questions: payloadQuestions
+    }
+    setLoading(true);
     try {
-      const res = await apiDeleteRequest(`api/draftQuiz/${lessonItem.lessonId}`);
+      const res = await apiPutRequest(`api/quiz/updateAsDraft/${id}`, payload);
       if (!res) {
         throw 'No Internet Access'
       }
       console.log(res);
-      if (res.status !== 201) {
+      if (res.status !== 200) {
         throw 'Something Went Wrong'
       }
-      lessonItem.showQuiz = false;
+      lessonItem.showQuestion = false;
       setLessonsList(lessonsArray);
+      setLoading(false);
     } catch (err) {
       console.log(err);
       setLoading(false)
     }
   }
+
+  const handleQuizSection = (index) => {
+    const lessonsArray = _.cloneDeep(lessonsList);
+    const lessonItem = lessonsArray[index]
+    lessonItem.showQuiz = true;
+    setLessonsList(lessonsArray);
+  };
+
+  const editQuizHandler = (lessonIndex) => {
+    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonItem = lessonsArray[lessonIndex];
+    lessonItem.showQuestion = !lessonItem.showQuestion;
+    setLessonsList(lessonsArray)
+  }
+
+  const deleteQuizHandler = async (lessonIndex, id) => {
+    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonItem = lessonsArray[lessonIndex];
+    setLoading(true);
+    try {
+      const res = await apiDeleteRequest(`api/quiz/deleteDraft/${id}`);
+      if (!res) {
+        throw 'No Internet Access'
+      }
+      if (res.status !== 200) {
+        throw 'Something Went Wrong'
+      }
+      lessonItem.showQuiz = false;
+      lessonItem.showQuestion = false;
+      lessonItem.quiz.isSubmitted = false;
+      lessonItem.quiz.savedQuestions = [];
+      setLessonsList(lessonsArray);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false)
+    }
+  }
+
 
   const saveLectureHandler = async (lectureIndex, lessonIndex) => {
     const lessonsArray = _.cloneDeep(lessonsList)
@@ -620,7 +559,7 @@ export default function CreateNewCourse() {
       lectureTime: lessonItem.lectureList[lectureIndex].lectureTime,
       lessonId: lessonItem.lessonId
     }
-
+    setLoading(true);
     try {
       const res = await apiPostRequest(endpoints.createLectureAsDraft, payload);
       if (!res) {
@@ -634,16 +573,11 @@ export default function CreateNewCourse() {
       lessonItem.savedLectureList.push(lessonItem.lectureList[lectureIndex])
       lessonItem.lectureList.splice(lectureIndex, 1)
       setLessonsList(lessonsArray);
+      setLoading(false);
     } catch (err) {
       console.log(err);
       setLoading(false)
     }
-    // lessonItem.lectureList[lectureIndex].id = 5
-    // lessonItem.savedLectureList.push(lessonItem.lectureList[lectureIndex])
-    // lessonItem.lectureList.splice(lectureIndex, 1)
-    // console.log(lessonsArray)
-    // setLessonsList(lessonsArray);
-
   }
 
 
@@ -708,6 +642,7 @@ export default function CreateNewCourse() {
   };
 
   const publishCourseHandler = async () => {
+    setLoading(true);
     try {
       const res = await apiPostRequest(`api/course/publish?draftCourseId=${draftCourseId}`);
       if (!res) {
@@ -716,7 +651,8 @@ export default function CreateNewCourse() {
       if (res.status !== 201) {
         throw 'Something Went Wrong'
       }
-      console.log('Course Published')
+      goToCoursesList();
+      setLoading(false);
     } catch (err) {
       console.log(err);
       setLoading(false)
@@ -1292,6 +1228,7 @@ export default function CreateNewCourse() {
                                     />
                                   </Button>
                                   <Button
+                                    disabled={loading}
                                     onClick={() => deleteLessonTitleHandler(index)}
                                   >
                                     <MdDelete />
@@ -1358,7 +1295,7 @@ export default function CreateNewCourse() {
                                     </Button>
                                     <Button
                                       className="btn_save"
-                                      disabled={!lessonsList[index].editableLessonTitle}
+                                      disabled={!lessonsList[index].editableLessonTitle || loading}
                                       onClick={() =>
                                         updateLessonTitleHandler(index)
                                       }
@@ -1415,7 +1352,7 @@ export default function CreateNewCourse() {
                                                   </div>
                                                   Quiz
                                                 </Button>
-                                                <div className="action_btns">
+                                                {res.quiz.isSubmitted && <div className="action_btns">
                                                   <Button>
                                                     <FiEdit3
                                                       onClick={() =>
@@ -1424,11 +1361,13 @@ export default function CreateNewCourse() {
                                                     />
                                                   </Button>
                                                   <Button
-                                                    onClick={() => deleteQuizHandler(index)}
+                                                    disabled={loading}
+                                                    onClick={() => deleteQuizHandler(index, res.quiz.id)}
                                                   >
                                                     <MdDelete />
                                                   </Button>
                                                 </div>
+                                                }
                                               </div>
                                               <div className="add_lec_quiz">
                                                 <Button
@@ -1437,12 +1376,16 @@ export default function CreateNewCourse() {
                                                   type="button" className="add_btn">
                                                   <IoMdChatboxes /> Add Question
                                                 </Button>
-                                                <Button
-                                                  // onClick={() => addQuestionHandler(index)}
-                                                  disabled={!res.quiz.savedQuestions.length > 0}
+                                                {res.quiz.isSubmitted ? <Button
+                                                  disabled={!res.quiz.savedQuestions.length > 0 || loading}
+                                                  onClick={() => updateQuizHandler(index, res.quiz.id)}
+                                                  type="button" className="add_btn">
+                                                  <IoMdChatboxes /> Update Quiz
+                                                </Button> : <Button
+                                                  disabled={!res.quiz.savedQuestions.length > 0 || loading}
                                                   onClick={() => submitQuizHandler(index)} type="button" className="add_btn">
                                                   <IoMdChatboxes /> Submit Quiz
-                                                </Button>
+                                                </Button>}
                                               </div>
                                             </div>
                                             <div hidden={!res.showQuestion} className="accordin_content">
@@ -1493,7 +1436,7 @@ export default function CreateNewCourse() {
                       >
                         <FormattedMessage {...messages.Draft} />
                       </Button>
-                      <Button onClick={publishCourseHandler} className="btn_submit">
+                      <Button disabled={loading} onClick={publishCourseHandler} className="btn_submit">
                         <FormattedMessage {...messages.Publish} />
                       </Button>
                     </div>
