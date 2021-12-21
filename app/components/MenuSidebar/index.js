@@ -173,9 +173,8 @@ function MenuSidebar() {
                         <div />
                       </DropdownItem>
                       {/* {userObj &&
-                    userObj.roles &&
-                    userObj.roles[0] &&
-                    userObj.roles[0].roleName === 'Student' ? (
+                    userObj.role &&
+                    userObj.role.roleName === 'Student' ? (
                     <DropdownItem>
                       <Link to="/cart">
                         <div>

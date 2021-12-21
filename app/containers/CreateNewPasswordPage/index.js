@@ -46,7 +46,7 @@ export default function CreateNewPasswordPage() {
       : {};
     axios
       .post(
-        `${API}api/user/forgotConfirmPassword`,
+        `${API}api/auth/forgotConfirmPassword`,
         { password, confirmPassword },
         {
           headers: {

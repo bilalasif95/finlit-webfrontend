@@ -1,7 +1,7 @@
 /*
  * Sign In Page
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import {
@@ -14,6 +14,7 @@ import {
 } from 'reactstrap';
 import history from 'utils/history';
 import { Link, withRouter } from 'react-router-dom';
+import * as qs from 'query-string';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -58,6 +59,32 @@ const SigninPage = props => {
   //     setRememberMe(true);
   //   }
   // }, []);
+  const parsed = qs.parse(window.location.search);
+  useEffect(() => {
+    if (parsed.token) {
+      const authHeaders = parsed
+        ? { Authorization: `Bearer ${parsed.token}` }
+        : {};
+      axios
+        .get(API + endpoints.confirmEmail, {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            ...authHeaders,
+          },
+        })
+        .then(() => {
+          toast.success('Success, Please Login to Continue');
+        })
+        .catch(err => {
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message.toString()
+              : 'Message Not Readable',
+          );
+        });
+    }
+  }, []);
   const login = () => {
     setError({ type: '', error: '' });
     // debugger;
@@ -81,7 +108,7 @@ const SigninPage = props => {
       axios
         .post(API + endpoints.login, { email, password })
         .then(res => {
-          if (res.data.statusCode === 200) {
+          if (res.status === 200) {
             localStorage.setItem('token', res.data.data.accessToken);
             localStorage.setItem(
               'userInfo',
@@ -93,8 +120,8 @@ const SigninPage = props => {
               res.data &&
               res.data.data &&
               res.data.data.user &&
-              res.data.data.user.roles[0] &&
-              res.data.data.user.roles[0].roleName === 'Instructor'
+              res.data.data.user.role &&
+              res.data.data.user.role.roleName === 'Instructor'
             ) {
               history.push('/dashboard');
             } else {
