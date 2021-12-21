@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {
-  Button,
-  Progress,
-} from 'reactstrap';
+import { Button, Progress } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
-import messages from '../messages';
 import Dropzone from 'react-dropzone';
 import { FiUpload } from 'react-icons/fi';
 import { IoIosClose } from 'react-icons/io';
+import _ from 'lodash';
 import { apiGetRequest, apiPostRequest } from '../../../helpers/Requests';
-import _ from 'lodash'
+import messages from '../messages';
+
 export default class Index extends Component {
   constructor(props) {
     super(props);
@@ -31,9 +29,13 @@ export default class Index extends Component {
         fileName: this.state.fileName,
         contentType: this.state.fileSelected.type,
       };
-      let resp = await apiGetRequest(`${this.state.backendUrl}/start-upload?fileName=${params.fileName}&contentType=${params.contentType}`)
+      const resp = await apiGetRequest(`
+      ${this.state.backendUrl}/start-upload?fileName=${
+        params.fileName
+        }&contentType=${params.contentType}`
+      );
 
-      let uploadId = resp.data.data.uploadId;
+      const uploadId = resp.data.data.uploadId;
       this.setState({ uploadId });
       this.uploadMultipartFile();
     } catch (err) {
@@ -123,8 +125,8 @@ export default class Index extends Component {
                     + currentdate.getDate() + "T"
                     + currentdate.getHours() + ":"
                     + currentdate.getMinutes() + ":"
-                    + currentdate.getSeconds() + "."; 
-                    let fileName = `${datetime}${fileSelected.name}`;
+                    + currentdate.getSeconds() + ".";
+                  let fileName = `${datetime}${fileSelected.name}`;
                   const reader = new FileReader();
                   reader.onload = (e) => {
                     var media = new Audio(e.target.result);
@@ -137,7 +139,7 @@ export default class Index extends Component {
                   };
                   reader.readAsDataURL(acceptedFiles[0]);
                   this.setState({ ...this.state, fileSelected, fileName, fileSize: fileSelected.size });
-                  
+
                   this.startUpload()
                 }
 

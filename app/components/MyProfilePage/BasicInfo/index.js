@@ -239,12 +239,7 @@ function BasicInfo() {
               <Label for="userType">
                 <FormattedMessage {...messages.Type} />
               </Label>
-              <Input
-                type="text"
-                id="userType"
-                readOnly
-                value={userInfo.role}
-              />
+              <Input type="text" id="userType" readOnly value={userInfo.role} />
               <FormText className="form-text">
                 {errors.userType ? (
                   <p className="error">{errors.userType}</p>
@@ -273,11 +268,7 @@ function BasicInfo() {
                 }}
               />
               <FormText className="form-text">
-                {errors.email ? (
-                  <p className="error">{errors.email}</p>
-                ) : (
-                  ''
-                )}
+                {errors.email ? <p className="error">{errors.email}</p> : ''}
               </FormText>
             </FormGroup>
           </Col>
@@ -431,7 +422,11 @@ function BasicInfo() {
         </Row>
         <div className="form_footer">
           <div className="bottom_btns">
-            <Button disabled={disableBtn || !userInfo.firstName || !userInfo.lastName} className="btn_submit" onClick={handleUpdateProfileSave}>
+            <Button
+              disabled={disableBtn || !userInfo.firstName || !userInfo.lastName}
+              className="btn_submit"
+              onClick={handleUpdateProfileSave}
+            >
               <FormattedMessage {...messages.Save} />
             </Button>
             {/* <Button
