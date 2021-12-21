@@ -142,8 +142,8 @@ export default function CreateNewCourse() {
 
 
   // const [errors, setErrors] = useState({});
-  const [courseStepOne, setCourseStepOne] = useState(true);
-  const [courseStepTwo, setCourseStepTwo] = useState(false);
+  const [courseStepOne, setCourseStepOne] = useState(false);
+  const [courseStepTwo, setCourseStepTwo] = useState(true);
   // const [courseStepThree, setCourseStepThree] = useState(false);
 
   const [accordinOne, setAccordinOne] = useState(false);
@@ -335,10 +335,17 @@ export default function CreateNewCourse() {
   }
 
   const deleteLessonTitleHandler = async (index) => {
+    const list = [...lessonsList];
+    const item = { ...list[index] };
     if (lessonsList.length === 1) {
-      deleteLessonRequest(index);
+      list.splice(index, 1);
+      setHideBtns(true)
+      setLessonsList(list);
+      // deleteLessonRequest(index);
     } else {
-      deleteLessonRequest(index);
+      list.splice(index, 1);
+      setLessonsList(list);
+      // deleteLessonRequest(index);
       setHideBtns(false)
 
     }
@@ -438,19 +445,49 @@ export default function CreateNewCourse() {
   const saveLessonHandler = async () => {
     const payload = {
       name: lessonTitle,
-      courseId: draftCourseId,
+      courseId: 3,
     };
     setLoading(true)
-    try {
-      const res = await apiPostRequest(endpoints.createLessonAsDraft, payload);
-      if (!res) {
-        throw 'No Internet Access'
-      }
-      if (res.status !== 201) {
-        throw 'Something Went Wrong'
-      }
-      setLessonId(res.data.data.draftLessonId)
-      const data = {
+    // try {
+    //   const res = await apiPostRequest(endpoints.createLessonAsDraft, payload);
+    //   if (!res) {
+    //     throw 'No Internet Access'
+    //   }
+    //   if (res.status !== 201) {
+    //     throw 'Something Went Wrong'
+    //   }
+    //   setLessonId(res.data.data.draftLessonId)
+    //   const data = {
+    //     name: lessonTitle,
+    //     editableLessonTitle: lessonTitle,
+    //     courseId: draftCourseId,
+    //     lessonId,
+    //     lectureList: [],
+    //     savedLectureList: [],
+    //     showLecture: false,
+    //     showQuiz: false,
+    //     showQuestion: false,
+    //     quiz: {
+    //       questions: [],
+    //       totalQuestions: null,
+    //       savedQuestions: []
+    //     }
+    //   }
+    //   setHideBtns(false);
+    //   setShowBtns(true);
+    //   const lessonsArray = _.cloneDeep(lessonsList);
+    //   lessonsArray.push(data);
+    //   lessonsArray[lessonsArray.length - 1].lessonId = res.data.data.draftLessonId
+    //   lessonsArray[lessonsArray.length - 1].lessonId = 4
+    //   setLessonTitle("")
+    //   setLessonsList(lessonsArray);
+    //   setLoading(false)
+
+    // } catch (err) {
+    //   console.log(err);
+    //   setLoading(false)
+    // }
+       const data = {
         name: lessonTitle,
         editableLessonTitle: lessonTitle,
         courseId: draftCourseId,
@@ -466,19 +503,16 @@ export default function CreateNewCourse() {
           savedQuestions: []
         }
       }
-      setHideBtns(false);
+    setHideBtns(false);
       setShowBtns(true);
       const lessonsArray = _.cloneDeep(lessonsList);
       lessonsArray.push(data);
-      lessonsArray[lessonsArray.length - 1].lessonId = res.data.data.draftLessonId
+      // lessonsArray[lessonsArray.length - 1].lessonId = res.data.data.draftLessonId
+      lessonsArray[lessonsArray.length - 1].lessonId = 4
       setLessonTitle("")
       setLessonsList(lessonsArray);
       setLoading(false)
 
-    } catch (err) {
-      console.log(err);
-      setLoading(false)
-    }
   };
 
   const submitQuizHandler = async (lessonIndex) => {
