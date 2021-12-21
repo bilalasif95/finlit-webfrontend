@@ -268,7 +268,7 @@ const GlobalStyle = createGlobalStyle`
             display: block;
             text-overflow: ellipsis;
             white-space: nowrap;
-            max-width: 50%;
+            max-width: 30rem;
             overflow: hidden;
           }
         }

@@ -16,4 +16,28 @@ export default defineMessages({
     id: `${scope}.BankAccountDetail`,
     defaultMessage: 'Bank Account Details',
   },
+  AccountHolderName: {
+    id: `${scope}.AccountHolderName`,
+    defaultMessage: 'Account Holder Name',
+  },
+  AccountNumber: {
+    id: `${scope}.AccountNumber`,
+    defaultMessage: 'Account Number',
+  },
+  Currency: {
+    id: `${scope}.Currency`,
+    defaultMessage: 'Currency',
+  },
+  SwiftCode: {
+    id: `${scope}.SwiftCode`,
+    defaultMessage: 'Swift Code/ BIC',
+  },
+  IBAN: {
+    id: `${scope}.IBAN`,
+    defaultMessage: 'IBAN',
+  },
+  Address: {
+    id: `${scope}.Address`,
+    defaultMessage: 'Address',
+  },
 });

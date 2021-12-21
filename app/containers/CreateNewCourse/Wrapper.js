@@ -33,7 +33,7 @@ const Wrapper = styled.div`
       background-color: transparent;
       border: none;
       color: #41952e !important;
-      font-weight: 400  !important; 
+      font-weight: 400 !important;
       margin: 0 1rem 0 0;
       padding: 0;
       min-width: 7rem;

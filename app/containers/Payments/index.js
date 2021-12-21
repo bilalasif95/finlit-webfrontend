@@ -2,12 +2,10 @@
  * Payments Page
  *
  */
-import React, { useState, useEffect } from 'react';
-import { FormattedMessage } from 'react-intl';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 // import { Link } from 'react-router-dom';
 import '../../components/student-panel/Header/profile.css';
-import messages from './messages';
 import Sidebar from '../../components/student-panel/Sidebar/index';
 import PaymentOption from '../../components/instructor-panel/Payments/PaymentOption';
 import BankDetail from '../../components/instructor-panel/Payments/BankDetail';
@@ -25,7 +23,11 @@ export default function Payments() {
         {/* Payments Content */}
         <div className="profileContent">
           <div className="mainCont">
-            {paymentOption ? <PaymentOption setPaymentOption={setPaymentOption} /> : <BankDetail setPaymentOption={setPaymentOption} />}
+            {paymentOption ? (
+              <PaymentOption setPaymentOption={setPaymentOption} />
+            ) : (
+              <BankDetail setPaymentOption={setPaymentOption} />
+            )}
           </div>
         </div>
       </div>

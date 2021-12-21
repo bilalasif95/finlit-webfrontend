@@ -1,26 +1,18 @@
 /*
  * Payment Option Component
  */
-import React, { useState, useEffect } from 'react';
-// import { FormattedMessage } from 'react-intl';
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from 'reactstrap';
+import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { FiEdit3 } from 'react-icons/fi';
 import { MdDelete } from 'react-icons/md';
+// import history from 'utils/history';
 // import { Link } from 'react-router-dom';
-// import messages from './messages';
-import history from 'utils/history';
 import messages from './messages';
 import Wrapper from './Wrapper';
-import { API } from '../../../../config/config';
-import Loader from '../../../Loader';
-import Img from '../../../../components/Img';
+// import { API } from '../../../../config/config';
+// import Loader from '../../../Loader';
+import Img from '../../../Img';
 import Bank from '../../../../images/Bank.png';
 import Delete from '../../../../images/delete.png';
 
@@ -34,7 +26,9 @@ function PaymentOption(props) {
       <div className="payment-option">
         <Button className="item" onClick={() => props.setPaymentOption(false)}>
           <Img src={Bank} alt="Bank Account" height="100%" width=" 100%" />
-          <p><FormattedMessage {...messages.BankAccount} /></p>
+          <p>
+            <FormattedMessage {...messages.BankAccount} />
+          </p>
         </Button>
       </div>
       <div className="account-detail">
@@ -54,51 +48,39 @@ function PaymentOption(props) {
         <div className="account-data">
           <div className="item">
             <div className="property">
-              Account Holder Name
+              <FormattedMessage {...messages.AccountHolderName} />
             </div>
-            <div className="value">
-              Jacob
-            </div>
+            <div className="value">Jacob</div>
           </div>
           <div className="item">
             <div className="property">
-              Account Number
+              <FormattedMessage {...messages.AccountNumber} />
             </div>
-            <div className="value">
-              1234512321312
-            </div>
+            <div className="value">1234512321312</div>
           </div>
           <div className="item">
             <div className="property">
-              Currency
+              <FormattedMessage {...messages.Currency} />
             </div>
-            <div className="value">
-              USD
-            </div>
+            <div className="value">USD</div>
           </div>
           <div className="item">
             <div className="property">
-              Swift Code/ BIC
+              <FormattedMessage {...messages.SwiftCode} />
             </div>
-            <div className="value">
-              BWESTGBAV
-            </div>
+            <div className="value">BWESTGBAV</div>
           </div>
           <div className="item">
             <div className="property">
-              IBAN
+              <FormattedMessage {...messages.IBAN} />
             </div>
-            <div className="value">
-              GB82 1234 1234 1234 23
-            </div>
+            <div className="value">GB82 1234 1234 1234 23</div>
           </div>
           <div className="item">
             <div className="property">
-              Address
+              <FormattedMessage {...messages.Address} />
             </div>
-            <div className="value">
-              Al Jubail Kingdom of Saudi Arabia
-            </div>
+            <div className="value">Al Jubail Kingdom of Saudi Arabia</div>
           </div>
         </div>
       </div>

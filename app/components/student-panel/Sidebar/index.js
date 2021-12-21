@@ -11,7 +11,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { RiUserSettingsLine } from 'react-icons/ri';
 import { Button, Collapse, Card, CardBody } from 'reactstrap';
 import PropTypes from 'prop-types';
-import Bell from '../../../images/bell.svg';
+// import Bell from '../../../images/bell.svg';
 import Logo from '../../../images/logoS.png';
 import Wrapper from './Wrapper';
 

@@ -26,7 +26,7 @@ export default defineMessages({
   },
   SwiftCode: {
     id: `${scope}.SwiftCode`,
-    defaultMessage: 'Swift Code/BIC',
+    defaultMessage: 'Swift Code/ BIC',
   },
   IBAN: {
     id: `${scope}.IBAN`,

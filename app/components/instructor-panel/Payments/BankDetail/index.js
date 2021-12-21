@@ -1,7 +1,7 @@
 /*
  * Bank Detail Component
  */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // import { FormattedMessage } from 'react-intl';
 import {
   Button,
@@ -10,7 +10,7 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
+  // FormText,
 } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 import NumberFormat from 'react-number-format';
@@ -53,7 +53,9 @@ function BankDetail(props) {
   const [currency, setCurrency] = useState('USD');
   return (
     <Wrapper>
-      <h2><FormattedMessage {...messages.BankAccountDetail} /></h2>
+      <h2>
+        <FormattedMessage {...messages.BankAccountDetail} />
+      </h2>
       <div className="account-data-form">
         <div className="add_form">
           <Row>
@@ -68,7 +70,7 @@ function BankDetail(props) {
                   id="account-holder-name"
                   value=""
                   placeholder="Enter name"
-                // onChange={e => handleChangeEvent(e)}
+                  // onChange={e => handleChangeEvent(e)}
                 />
                 {/* <FormText color="danger">
                   {errors.mainTitle ? (
@@ -108,7 +110,7 @@ function BankDetail(props) {
                     value={currency}
                     onChange={e => {
                       setCurrency(e.target.value);
-                    }} i
+                    }}
                     name="gender"
                     input={<BootstrapInput />}
                     fullWidth
@@ -138,7 +140,7 @@ function BankDetail(props) {
                   id="swift-code"
                   value=""
                   placeholder="Enter code"
-                // onChange={e => handleChangeEvent(e)}
+                  // onChange={e => handleChangeEvent(e)}
                 />
                 {/* <FormText color="danger">
                   {errors.mainTitle ? (
@@ -179,7 +181,7 @@ function BankDetail(props) {
                   id="address"
                   value=""
                   placeholder="Enter address"
-                // onChange={e => handleChangeEvent(e)}
+                  // onChange={e => handleChangeEvent(e)}
                 />
                 {/* <FormText color="danger">
                   {errors.mainTitle ? (
@@ -198,12 +200,9 @@ function BankDetail(props) {
             >
               <FormattedMessage {...messages.Back} />
             </Button>
-            <Button className="btn_submit"
-            // onClick={handleUpdateProfileSave}
-            >
+            <Button className="btn_submit">
               <FormattedMessage {...messages.Save} />
             </Button>
-
           </div>
         </div>
         {/* <div className="form_footer">
