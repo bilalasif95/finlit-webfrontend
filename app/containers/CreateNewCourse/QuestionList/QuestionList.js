@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Button } from 'reactstrap';
 import { FiEdit3 } from 'react-icons/fi';
+import _ from 'lodash';
 import { MdDelete, MdCheckCircle } from 'react-icons/md';
 import EditQuiz from '../AddQuiz/EditQuiz';
 

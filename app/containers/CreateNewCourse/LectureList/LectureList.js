@@ -8,6 +8,7 @@ import {
 } from 'reactstrap';
 import EditLectureVideoUpload from '../LectureVideoUpload/EditLectureVideoUpload';
 import { FiEdit3 } from 'react-icons/fi';
+import _ from 'lodash';
 import { MdDelete, MdCheckCircle } from 'react-icons/md';
 import { apiPutRequest, apiDeleteRequest } from '../../../helpers/Requests';
 

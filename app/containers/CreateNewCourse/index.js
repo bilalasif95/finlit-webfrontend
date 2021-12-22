@@ -8,9 +8,9 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import JoditEditor from 'jodit-react';
 import '../../components/student-panel/Header/profile.css';
-import { FiEdit3, FiUpload } from 'react-icons/fi';
-import _ from 'lodash'
-import { IoIosClose, IoMdChatboxes } from 'react-icons/io';
+import { FiEdit3 } from 'react-icons/fi';
+import _ from 'lodash';
+import { IoMdChatboxes } from 'react-icons/io';
 // , IoIosCloseCircleOutline
 // import { withStyles } from '@material-ui/core/styles';
 import {
@@ -23,7 +23,6 @@ import {
   InputGroup,
   InputGroupAddon,
   // FormText,
-  Progress,
 } from 'reactstrap';
 // import {
 //   Accordion,
@@ -67,6 +66,7 @@ import AddLecture from './AddLecture/AddLecture';
 import LectureList from './LectureList/LectureList';
 import AddQuiz from './AddQuiz/AddQuiz';
 import QuestionList from './QuestionList/QuestionList';
+
 const BootstrapInput = withStyles(theme => ({
   root: {
     'label + &': {
@@ -126,19 +126,15 @@ export default function CreateNewCourse() {
   const [heading, setHeading] = useState('');
   const [detailsSection, setDetailsSection] = useState([]);
   const [tags, setTags] = useState({});
-  const [addLectureList, setAddLectureList] = useState([])
 
   const [lessonTitle, setLessonTitle] = useState('')
   const [lessonsList, setLessonsList] = useState([])
   const [lessonId, setLessonId] = useState(null)
-  const [lectureVideo, setLectureVideo] = useState('');
   // const [category, setCategory] = useState('0');
+  const [status, setStatus] = useState(null);
   const [hideBtns, setHideBtns] = useState(true);
   const [showBtns, setShowBtns] = useState(false);
-  const [addLectureSection, setAddLectureSection] = useState(false);
-  const [addQuizSection, setAddQuizSection] = useState(false);
   const titleLimit = `${title.length}/60`;
-  const lecVideo = { lectureVideo: '' };
 
 
   // const [errors, setErrors] = useState({});
@@ -382,11 +378,6 @@ export default function CreateNewCourse() {
     setDetailsSection(filterData);
   };
 
-  const handleLectureSection = () => {
-    setAddLectureSection(true);
-  };
-
-
   const saveLessonHandler = async () => {
     const payload = {
       name: lessonTitle,
@@ -432,8 +423,14 @@ export default function CreateNewCourse() {
     } catch {
       setLoading(false)
     }
-
   };
+
+  useEffect(() => {
+    if (lessonsList.length === 0) {
+      return
+    }
+    setStatus(lessonsList.every((item) => item.quiz.isSubmitted && item.name && item.savedLectureList.length > 0 && item.quiz.savedQuestions.length > 0))
+  }, [lessonsList])
 
   const submitQuizHandler = async (lessonIndex) => {
     const lessonsArray = _.cloneDeep(lessonsList)
@@ -643,7 +640,7 @@ export default function CreateNewCourse() {
       if (!res) {
         throw 'No Internet Access'
       }
-      if (res.status !== 201) {
+      if (res.status !== 200) {
         throw 'Something Went Wrong'
       }
       goToCoursesList();
@@ -1433,7 +1430,7 @@ export default function CreateNewCourse() {
                       >
                         <FormattedMessage {...messages.Draft} />
                       </Button>
-                      <Button disabled={loading} onClick={publishCourseHandler} className="btn_submit">
+                      <Button disabled={!status} onClick={publishCourseHandler} className="btn_submit">
                         <FormattedMessage {...messages.Publish} />
                       </Button>
                     </div>
