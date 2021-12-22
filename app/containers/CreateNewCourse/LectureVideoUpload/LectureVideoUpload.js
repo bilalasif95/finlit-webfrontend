@@ -97,6 +97,7 @@ export default class Index extends Component {
       const lessonsArray = _.cloneDeep(this.props.lessonsList);
       const lessonItem = lessonsArray[this.props.lessonIndex];
       lessonItem.lectureList[this.props.lectureIndex].lectureVideo = completeUploadResp.data.data.key;
+      lessonItem.lectureList[this.props.lectureIndex].editableLectureVideo = completeUploadResp.data.data.key;
       this.props.setLessonsList(lessonsArray)
 
     } catch (err) {
@@ -118,6 +119,7 @@ export default class Index extends Component {
               try {
                 if (acceptedFiles && acceptedFiles[0]) {
                   lessonItem.lectureList[this.props.lectureIndex].fileSelected = acceptedFiles[0];
+                  lessonItem.lectureList[this.props.lectureIndex].editableFileSelected = acceptedFiles[0];
                   let fileSelected = acceptedFiles[0];
                   let currentdate = new Date();
                   let datetime = currentdate.getFullYear() + "-"
