@@ -3,8 +3,14 @@ import { FormGroup, Label, Row, Col, Button } from 'reactstrap';
 import LectureVideoUpload from '../LectureVideoUpload/LectureVideoUpload';
 
 function AddLecture(props) {
-  const { removeLectureHandler, addLectureChangeHandler, lessonsList, setLessonsList,
-    lessonIndex, item, loading, saveLectureHandler } = props;
+  const {
+    removeLectureHandler,
+    addLectureChangeHandler,
+    lessonsList, setLessonsList,
+    lessonIndex,
+    item,
+    loading,
+    saveLectureHandler } = props;
   return (
     <React.Fragment>
       <Row>
@@ -26,7 +32,7 @@ function AddLecture(props) {
                     className="form-control"
                     name="title"
                     value={item.title}
-                    onChange={(e) => addLectureChangeHandler(e, i, lessonIndex)}
+                    onChange={e => addLectureChangeHandler(e, i, lessonIndex)}
                     placeholder="Enter Lecture Title"
                   />
                 </FormGroup>
@@ -36,7 +42,8 @@ function AddLecture(props) {
                   lessonsList={lessonsList}
                   setLessonsList={setLessonsList}
                   lessonIndex={lessonIndex}
-                  lectureIndex={i} />
+                  lectureIndex={i}
+                />
 
               </Col>
               <Col lg={12}>

@@ -196,7 +196,8 @@ function AddQuiz(props) {
               </div>
             </div>
           </div>
-        ))}
+        ),
+      )}
     </React.Fragment>
   );
 }
