@@ -39,7 +39,7 @@ export default class Index extends Component {
       this.setState({ uploadId });
       this.uploadMultipartFile();
     } catch (err) {
-      console.log(err);
+      return err;
     }
   }
 
@@ -100,7 +100,7 @@ export default class Index extends Component {
       this.props.setLessonsList(lessonsArray)
 
     } catch (err) {
-      console.log(err);
+      return err;
     }
   }
 

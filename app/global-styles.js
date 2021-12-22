@@ -1889,11 +1889,7 @@ a {
   height: 100%;
   width: 100%;
   .add_lecture_list {
-    border-top: 1px solid #d8d8d8;
-    padding: 1.5rem 0;
-    &:first-child {
-      border-top: none;
-    }
+    padding: 0.5rem 0;
   }
   .details_list {
     display: flex;

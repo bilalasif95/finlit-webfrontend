@@ -305,7 +305,7 @@ export default function CreateNewCourse() {
       }
       setLoading(false);
       setLessonsList(lessonsArray);
-    } catch (err) {
+    } catch {
       setLoading(false)
     }
 
@@ -335,7 +335,7 @@ export default function CreateNewCourse() {
         setHideBtns(false)
       }
       setLoading(false);
-    } catch (err) {
+    } catch {
       setLoading(false)
     }
   }
@@ -349,7 +349,7 @@ export default function CreateNewCourse() {
       if (res.data.data.length > 0) {
         setCategoryType(1);
       }
-    }).catch((err) => {
+    }).catch(() => {
       setLoading(false)
     });
   }, []);
@@ -429,7 +429,7 @@ export default function CreateNewCourse() {
       setLessonsList(lessonsArray);
       setLoading(false)
 
-    } catch (err) {
+    } catch {
       setLoading(false)
     }
 
@@ -468,8 +468,7 @@ export default function CreateNewCourse() {
       lessonItem.quiz.id = res.data.data.draftQuizId;
       setLessonsList(lessonsArray);
       setLoading(false);
-    } catch (err) {
-      console.log(err);
+    } catch {
       setLoading(false)
     }
   }
@@ -499,15 +498,13 @@ export default function CreateNewCourse() {
       if (!res) {
         throw 'No Internet Access'
       }
-      console.log(res);
       if (res.status !== 200) {
         throw 'Something Went Wrong'
       }
       lessonItem.showQuestion = false;
       setLessonsList(lessonsArray);
       setLoading(false);
-    } catch (err) {
-      console.log(err);
+    } catch {
       setLoading(false)
     }
   }
@@ -544,7 +541,7 @@ export default function CreateNewCourse() {
       lessonItem.quiz.savedQuestions = [];
       setLessonsList(lessonsArray);
       setLoading(false);
-    } catch (err) {
+    } catch {
       setLoading(false)
     }
   }
@@ -565,7 +562,6 @@ export default function CreateNewCourse() {
       if (!res) {
         throw 'No Internet Access'
       }
-      console.log(res);
       if (res.status !== 201) {
         throw 'Something Went Wrong'
       }
@@ -574,8 +570,7 @@ export default function CreateNewCourse() {
       lessonItem.lectureList.splice(lectureIndex, 1)
       setLessonsList(lessonsArray);
       setLoading(false);
-    } catch (err) {
-      console.log(err);
+    } catch {
       setLoading(false)
     }
   }
@@ -653,8 +648,7 @@ export default function CreateNewCourse() {
       }
       goToCoursesList();
       setLoading(false);
-    } catch (err) {
-      console.log(err);
+    } catch {
       setLoading(false)
     }
   }
@@ -1315,6 +1309,7 @@ export default function CreateNewCourse() {
                                   <>
                                     <AddLecture
                                       item={res}
+                                      loading={loading}
                                       lessonsList={lessonsList}
                                       setLessonsList={setLessonsList}
                                       lessonIndex={index}
@@ -1323,6 +1318,8 @@ export default function CreateNewCourse() {
                                       saveLectureHandler={saveLectureHandler} />
                                     <LectureList
                                       res={res}
+                                      loading={loading}
+                                      setLoading={setLoading}
                                       lessonIndex={index}
                                       addLectureChangeHandler={addLectureChangeHandler}
                                       lessonsList={lessonsList}
