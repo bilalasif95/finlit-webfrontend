@@ -37,7 +37,7 @@ export default class Index extends Component {
       this.setState({ uploadId });
       this.uploadMultipartFile();
     } catch (err) {
-      console.log(err);
+      return err;
     }
   }
 
@@ -98,7 +98,7 @@ export default class Index extends Component {
       this.props.setLessonsList(lessonsArray)
 
     } catch (err) {
-      console.log(err);
+      return err;
     }
   }
 
@@ -108,7 +108,7 @@ export default class Index extends Component {
       <div>
         {!lessonsList[lessonIndex].savedLectureList[lectureIndex].fileSelected ? (
           <Dropzone
-            disabled={lessonsList[lessonIndex].savedLectureList[lectureIndex].readView} 
+            disabled={lessonsList[lessonIndex].savedLectureList[lectureIndex].readView}
             accept="video/*"
             multiple={false}
             onDrop={(acceptedFiles) => {
@@ -124,8 +124,8 @@ export default class Index extends Component {
                     + currentdate.getDate() + "T"
                     + currentdate.getHours() + ":"
                     + currentdate.getMinutes() + ":"
-                    + currentdate.getSeconds() + "."; 
-                    let fileName = `${datetime}${fileSelected.name}`;
+                    + currentdate.getSeconds() + ".";
+                  let fileName = `${datetime}${fileSelected.name}`;
                   const reader = new FileReader();
                   reader.onload = (e) => {
                     var media = new Audio(e.target.result);
@@ -138,7 +138,7 @@ export default class Index extends Component {
                   };
                   reader.readAsDataURL(acceptedFiles[0]);
                   this.setState({ ...this.state, fileSelected, fileName, fileSize: fileSelected.size });
-                  
+
                   this.startUpload()
                 }
 

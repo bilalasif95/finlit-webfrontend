@@ -15,7 +15,7 @@ import { apiPutRequest, apiDeleteRequest } from '../../../helpers/Requests';
 
 function LectureList(props) {
   const { res, toggleLectureHandler, editToggleLectureHandler, addLectureChangeHandler,
-    lessonIndex, lessonsList, setLessonsList } = props;
+    lessonIndex, setLoading, loading, lessonsList, setLessonsList } = props;
 
   const cancelLectureHandler = (lectureIndex, lessonIndex) => {
     const lessonsArray = _.cloneDeep(lessonsList);
@@ -35,20 +35,20 @@ function LectureList(props) {
       lectureTime: lessonItem.savedLectureList[lectureIndex].lectureTime,
       lessonId: lessonItem.lessonId
     }
+    setLoading(true)
     try {
       const res = await apiPutRequest(`api/lecture/updateAsDraft/${id}`, payload);
       if (!res) {
         throw 'No Internet Access'
       }
-      console.log(res);
       if (res.status !== 200) {
         throw 'Something Went Wrong'
       }
       lessonItem.savedLectureList[lectureIndex].editView = false;
       lessonItem.savedLectureList[lectureIndex].title = lessonItem.savedLectureList[lectureIndex].editableTitle
       setLessonsList(lessonsArray);
-    } catch (err) {
-      console.log(err);
+      setLoading(false)
+    } catch {
       setLoading(false)
     }
     lessonItem.savedLectureList[lectureIndex].editView = false;
@@ -59,12 +59,12 @@ function LectureList(props) {
   const deleteLecturehandler = async (lectureIndex, lessonIndex, id) => {
     const lessonsArray = _.cloneDeep(lessonsList)
     const lessonItem = lessonsArray[lessonIndex];
+    setLoading(true)
     try {
       const res = await apiDeleteRequest(`api//lecture/deleteDraft/${id}`);
       if (!res) {
         throw 'No Internet Access'
       }
-      console.log(res);
       if (res.status !== 200) {
         throw 'Something Went Wrong'
       }
@@ -75,8 +75,8 @@ function LectureList(props) {
       }
       lessonItem.savedLectureList.splice(lectureIndex, 1)
       setLessonsList(lessonsArray);
-    } catch (err) {
-      console.log(err);
+      setLoading(false)
+    } catch {
       setLoading(false)
     }
     // if (lessonItem.lectureList.length === 0 && lessonItem.savedLectureList.length === 1) {
@@ -116,6 +116,7 @@ function LectureList(props) {
                       />
                     </Button>
                     <Button
+                      disabled={loading}
                       onClick={() => deleteLecturehandler(i, lessonIndex, item.id)}
                     >
                       <MdDelete />
@@ -183,7 +184,7 @@ function LectureList(props) {
                             </Button>
                             <Button
                               className="btn_save"
-                              disabled={!item.lectureVideo || !item.editableTitle}
+                              disabled={!item.lectureVideo || !item.editableTitle || !loading}
                               onClick={() => updateLectureHandler(i, lessonIndex, item.id)}
                             >
                               Save Lecture
