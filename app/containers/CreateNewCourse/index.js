@@ -665,9 +665,9 @@ export default function CreateNewCourse() {
               {courseStepOne && (
                 <>
                   <div className="profileHeader">
-                    <h3>
+                    <h4>
                       <FormattedMessage {...messages.CreateNewCourse} />
-                    </h3>
+                    </h4>
                   </div>
                   <div className="add_form">
                     <Row>
@@ -907,7 +907,7 @@ export default function CreateNewCourse() {
                   </div>
                   <div className="add_form">
                     <div className="profileHeader">
-                      <h3>Basic Info</h3>
+                      <h4>Basic Info</h4>
                     </div>
                     <div className="createCourseCont">
                       {detailsSection.length === 0 && (
@@ -1152,7 +1152,7 @@ export default function CreateNewCourse() {
                 <>
                   <div className="add_form">
                     <div className="profileHeader">
-                      <h3>Lesson</h3>
+                      <h4>Lesson</h4>
                     </div>
                     <div className="createCourseCont">
                       {hideBtns && <div className="card mb-3">

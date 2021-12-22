@@ -69,7 +69,7 @@ function AddQuiz(props) {
   return (
     <React.Fragment>
       <div className="profileHeader">
-        <h3>Quiz</h3>
+        <h4>Quiz</h4>
       </div>
       {/* {initialData.map((item, i) => */}
       {_.get(lessonsList, `[${lessonIndex}].quiz.questions`, []).map(

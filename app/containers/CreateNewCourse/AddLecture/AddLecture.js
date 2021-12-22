@@ -16,7 +16,7 @@ function AddLecture(props) {
       <Row>
         <Col lg={12}>
           <div className="profileHeader">
-            <h3>Lecture</h3>
+            <h4>Lecture</h4>
           </div>
         </Col>
       </Row>

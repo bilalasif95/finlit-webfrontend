@@ -33,7 +33,7 @@ const BootstrapInput = withStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     border: '1px solid #ced4da',
     fontSize: 14,
-    padding: '12px 26px 12px 12px',
+    padding: '15px 26px 15px 15px',
     color: '#000000',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     // Use the system font instead of the default Lato font.

@@ -142,7 +142,7 @@ export default function MyProfilePage() {
                     }
                     alt="Profile"
                   />
-                  <Label className="edit">
+                  {/* <Label className="edit">
                     <img src={Cam} alt="Cam" />
                     <input
                       type="file"
@@ -151,7 +151,7 @@ export default function MyProfilePage() {
                       placeholder="Upload Profile Image"
                       onChange={e => updateProfileImg(e)}
                     />
-                  </Label>
+                  </Label> */}
                 </div>
                 <div className="uploadBtns">
                   <Label className="upload">
