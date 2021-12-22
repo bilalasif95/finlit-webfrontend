@@ -152,6 +152,7 @@ const GlobalStyle = createGlobalStyle`
         // position: relative;
         width: 100%;
         svg {
+          color: #000;
           font-size: 1.5rem;
         }
         button {
@@ -180,6 +181,7 @@ const GlobalStyle = createGlobalStyle`
           font-size: 1.125rem;
           // padding: 0.875rem 1rem 0.875rem 1.75rem;
           svg {
+            color: #000;
             height: 24px;
             margin: 0 0.5rem 0 0;
             width: 24px;
@@ -260,6 +262,7 @@ const GlobalStyle = createGlobalStyle`
           text-align: left;
           // padding: 0.875rem 1rem 0.875rem 1.75rem;
           svg {
+            color: #000;
             height: 24px;
             margin: 0 0.5rem 0 0;
             width: 24px;
@@ -268,7 +271,7 @@ const GlobalStyle = createGlobalStyle`
             display: block;
             text-overflow: ellipsis;
             white-space: nowrap;
-            max-width: 30rem;
+            max-width: 40rem;
             overflow: hidden;
           }
         }
@@ -2152,9 +2155,9 @@ a {
       }
     }
     .camera {
-      border-color: #d8d8d8;
-      border-style: dashed;
-      border-width: 1px;
+      // border-color: #d8d8d8;
+      // border-style: dashed;
+      // border-width: 1px;
       border-radius: 0.35rem;
       display: flex;
       flex-direction: column;

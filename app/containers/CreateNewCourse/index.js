@@ -1151,7 +1151,7 @@ export default function CreateNewCourse() {
               )}
               {courseStepTwo && (
                 <>
-                  <div className="add_form">
+                  <div className="add_form add_lesson">
                     <div className="profileHeader">
                       <h4>Lesson</h4>
                     </div>
@@ -1171,7 +1171,7 @@ export default function CreateNewCourse() {
                               </FormGroup>
                             </Col>
                             <Col lg={12}>
-                              <div className="sec_footer mb-4">
+                              <div className="sec_footer">
                                 <div className="bottom_btns">
                                   <Button
                                     onClick={() => setHideBtns(false)}
