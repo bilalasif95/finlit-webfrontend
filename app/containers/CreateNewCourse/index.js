@@ -429,7 +429,8 @@ export default function CreateNewCourse() {
     if (lessonsList.length === 0) {
       return
     }
-    setStatus(lessonsList.every((item) => item.quiz.isSubmitted && item.name && item.savedLectureList.length > 0 && item.quiz.savedQuestions.length > 0))
+    setStatus(lessonsList.every((item) => item.quiz.isSubmitted && item.name && (item.savedLectureList.length > 0 && item.savedLectureList.every((lec) => lec.lectureVideo && lec.editableLectureVideo) )
+    && item.quiz.savedQuestions.length > 0 ))
   }, [lessonsList])
 
   const submitQuizHandler = async (lessonIndex) => {
@@ -605,7 +606,7 @@ export default function CreateNewCourse() {
     const lessonItem = lessonsArray[index]
     lessonItem.showLecture = true;
     lessonItem.lectureList.push({
-      title: "", lectureVideo: "",
+      title: "", lectureVideo: "", editableLectureVideo: "", editableFileSelected: null,
       lectureTime: null, fileSelected: null, readView: false, editView: false, editableTitle: ""
     })
     setLessonsList(lessonsArray);

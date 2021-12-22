@@ -22,6 +22,8 @@ function LectureList(props) {
     const lessonItem = lessonsArray[lessonIndex];
     lessonItem.savedLectureList[lectureIndex].editView = false;
     lessonItem.savedLectureList[lectureIndex].editableTitle = lessonItem.savedLectureList[lectureIndex].title
+    lessonItem.savedLectureList[lectureIndex].editableLectureVideo = lessonItem.savedLectureList[lectureIndex].lectureVideo
+    lessonItem.savedLectureList[lectureIndex].editableFileSelected = lessonItem.savedLectureList[lectureIndex].fileSelected
     setLessonsList(lessonsArray)
   }
 
@@ -29,6 +31,7 @@ function LectureList(props) {
     const lessonsArray = _.cloneDeep(lessonsList)
     const lessonItem = lessonsArray[lessonIndex];
     lessonItem.savedLectureList[lectureIndex].title = lessonItem.savedLectureList[lectureIndex].editableTitle;
+    lessonItem.savedLectureList[lectureIndex].lectureVideo = lessonItem.savedLectureList[lectureIndex].editableLectureVideo;
     const payload = {
       title: lessonItem.savedLectureList[lectureIndex].title,
       lectureVideo: lessonItem.savedLectureList[lectureIndex].lectureVideo,
@@ -46,6 +49,7 @@ function LectureList(props) {
       }
       lessonItem.savedLectureList[lectureIndex].editView = false;
       lessonItem.savedLectureList[lectureIndex].title = lessonItem.savedLectureList[lectureIndex].editableTitle
+      lessonItem.savedLectureList[lectureIndex].lectureVideo = lessonItem.savedLectureList[lectureIndex].editableLectureVideo;
       setLessonsList(lessonsArray);
       setLoading(false)
     } catch {
@@ -184,7 +188,7 @@ function LectureList(props) {
                             </Button>
                             <Button
                               className="btn_save"
-                              disabled={!item.lectureVideo || !item.editableTitle || !loading}
+                              disabled={!item.editableLectureVideo || !item.lectureVideo || !item.editableTitle || loading}
                               onClick={() => updateLectureHandler(i, lessonIndex, item.id)}
                             >
                               Save Lecture

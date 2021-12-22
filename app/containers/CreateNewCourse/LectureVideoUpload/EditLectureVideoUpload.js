@@ -16,6 +16,7 @@ export default class Index extends Component {
     super(props);
     this.state = {
       fileSelected: null,
+      editableFileSelected: null,
       fileSize: 0,
       videoDuration: 0,
       percentage: 100,
@@ -95,6 +96,7 @@ export default class Index extends Component {
       const lessonsArray = _.cloneDeep(this.props.lessonsList);
       const lessonItem = lessonsArray[this.props.lessonIndex];
       lessonItem.savedLectureList[this.props.lectureIndex].lectureVideo = completeUploadResp.data.data.key;
+      lessonItem.savedLectureList[this.props.lectureIndex].editableLectureVideo = completeUploadResp.data.data.key;
       this.props.setLessonsList(lessonsArray)
 
     } catch (err) {
@@ -106,7 +108,7 @@ export default class Index extends Component {
     const { lessonIndex, lectureIndex, lessonsList, setLessonsList } = this.props;
     return (
       <div>
-        {!lessonsList[lessonIndex].savedLectureList[lectureIndex].fileSelected ? (
+        {(!lessonsList[lessonIndex].savedLectureList[lectureIndex].editableFileSelected || !lessonsList[lessonIndex].savedLectureList[lectureIndex].fileSelected) ? (
           <Dropzone
             disabled={lessonsList[lessonIndex].savedLectureList[lectureIndex].readView}
             accept="video/*"
@@ -116,8 +118,10 @@ export default class Index extends Component {
               const lessonItem = lessonsArray[this.props.lessonIndex];
               try {
                 if (acceptedFiles && acceptedFiles[0]) {
+                  lessonItem.savedLectureList[this.props.lectureIndex].editableFileSelected = acceptedFiles[0];
                   lessonItem.savedLectureList[this.props.lectureIndex].fileSelected = acceptedFiles[0];
                   let fileSelected = acceptedFiles[0];
+                  let editableFileSelected = acceptedFiles[0];
                   let currentdate = new Date();
                   let datetime = currentdate.getFullYear() + "-"
                     + (currentdate.getMonth() + 1) + "-"
@@ -137,7 +141,7 @@ export default class Index extends Component {
                     };
                   };
                   reader.readAsDataURL(acceptedFiles[0]);
-                  this.setState({ ...this.state, fileSelected, fileName, fileSize: fileSelected.size });
+                  this.setState({ ...this.state, fileSelected, editableFileSelected, fileName, fileSize: fileSelected.size });
 
                   this.startUpload()
                 }
@@ -174,8 +178,8 @@ export default class Index extends Component {
             <div className="file_progress">
               <p>
                 File
-                <span>{this.state.fileSelected ? this.state.fileSelected.name : lessonsList[lessonIndex].savedLectureList[lectureIndex].fileSelected.name}</span>
-                {lessonsList[lessonIndex].savedLectureList[lectureIndex].lectureVideo ? 'uploaded successfully' : 'is uploading'}
+                <span>{this.state.editableFileSelected ? this.state.editableFileSelected.name : lessonsList[lessonIndex].savedLectureList[lectureIndex].editableFileSelected.name}</span>
+                {lessonsList[lessonIndex].savedLectureList[lectureIndex].editableLectureVideo ? 'uploaded successfully' : 'is uploading'}
               </p>
 
               <Progress value={this.state.percentage} />
@@ -184,12 +188,12 @@ export default class Index extends Component {
               <Button
                 onClick={() => {
                   this.setState({
-                    fileSelected: null
+                    editableFileSelected: null
                   })
                   const lessonsArray = _.cloneDeep(lessonsList);
                   const lessonItem = lessonsArray[lessonIndex];
-                  lessonItem.savedLectureList[lectureIndex].lectureVideo = "";
-                  lessonItem.savedLectureList[lectureIndex].fileSelected = null;
+                  lessonItem.savedLectureList[lectureIndex].editableLectureVideo = "";
+                  lessonItem.savedLectureList[lectureIndex].editableFileSelected = null;
                   setLessonsList(lessonsArray)
                 }}
                 className="del_btn"
