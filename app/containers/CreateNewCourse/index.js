@@ -1233,7 +1233,7 @@ export default function CreateNewCourse() {
                                   Add Lecture
                                 </Button>
                                 <Button
-                                  disabled={!res.savedLectureList.length > 0 || res.showQuiz}
+                                  disabled={res.showQuiz}
                                   onClick={() => handleQuizSection(index)}>
                                   <RiQuestionnaireFill />
                                   Add Quiz
