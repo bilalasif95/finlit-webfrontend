@@ -20,9 +20,9 @@ export default defineMessages({
     id: `${scope}.AddTag`,
     defaultMessage: `Tags`,
   },
-  Expired: {
-    id: `${scope}.Expired`,
-    defaultMessage: 'Expired',
+  Reject: {
+    id: `${scope}.Reject`,
+    defaultMessage: 'Reject',
   },
   Draft: {
     id: `${scope}.Draft`,

@@ -10,7 +10,6 @@ import JoditEditor from 'jodit-react';
 import '../../components/student-panel/Header/profile.css';
 import { FiEdit3 } from 'react-icons/fi';
 import _ from 'lodash';
-import { IoMdChatboxes } from 'react-icons/io';
 // , IoIosCloseCircleOutline
 // import { withStyles } from '@material-ui/core/styles';
 import {
@@ -24,13 +23,6 @@ import {
   InputGroupAddon,
   // FormText,
 } from 'reactstrap';
-// import {
-//   Accordion,
-//   AccordionItem,
-//   AccordionItemHeading,
-//   AccordionItemButton,
-//   AccordionItemPanel,
-// } from 'react-accessible-accordion';
 import Dropzone from 'react-dropzone';
 import history from 'utils/history';
 import axios from 'axios';
@@ -38,6 +30,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { MdDelete, MdCheckCircle } from 'react-icons/md';
 import { FaVideo } from 'react-icons/fa';
 import { RiQuestionnaireFill } from 'react-icons/ri';
+import { IoMdChatboxes } from 'react-icons/io';
 // import {
 //   RiStarSFill,
 //   RiArrowDownSLine,
@@ -61,7 +54,11 @@ import Upload from '../../images/upload.png';
 import messages from './messages';
 import TagsComponent from '../../components/CourseTag/TagsComponent';
 import { redirectToLogin } from '../../utils/redirectToLogin';
-import { apiPostRequest, apiPutRequest, apiDeleteRequest } from '../../helpers/Requests';
+import {
+  apiPostRequest,
+  apiPutRequest,
+  apiDeleteRequest,
+} from '../../helpers/Requests';
 import AddLecture from './AddLecture/AddLecture';
 import LectureList from './LectureList/LectureList';
 import AddQuiz from './AddQuiz/AddQuiz';
@@ -127,15 +124,14 @@ export default function CreateNewCourse() {
   const [detailsSection, setDetailsSection] = useState([]);
   const [tags, setTags] = useState({});
 
-  const [lessonTitle, setLessonTitle] = useState('')
-  const [lessonsList, setLessonsList] = useState([])
-  const [lessonId, setLessonId] = useState(null)
+  const [lessonTitle, setLessonTitle] = useState('');
+  const [lessonsList, setLessonsList] = useState([]);
+  const [lessonId, setLessonId] = useState(null);
   // const [category, setCategory] = useState('0');
   const [status, setStatus] = useState(null);
   const [hideBtns, setHideBtns] = useState(true);
   const [showBtns, setShowBtns] = useState(false);
   const titleLimit = `${title.length}/60`;
-
 
   // const [errors, setErrors] = useState({});
   const [courseStepOne, setCourseStepOne] = useState(true);
@@ -145,7 +141,6 @@ export default function CreateNewCourse() {
   const [accordinOne, setAccordinOne] = useState(false);
 
   const [dataVideo, setDataVideo] = useState('');
-
 
   // const getPayload = () => {
   //   const details = JSON.stringify(detailsSection);
@@ -174,7 +169,7 @@ export default function CreateNewCourse() {
       courseLevel: level,
       promotionalVideo: dataVideo,
       categoryId: categoryType.toString(),
-    }
+    };
     setLoading(true);
     axios
       .post(API + endpoints.createCourseAsDraft, payload, {
@@ -194,13 +189,13 @@ export default function CreateNewCourse() {
       });
   };
 
-  const uploadPromotionalVideo = (file) => {
+  const uploadPromotionalVideo = file => {
     const bodyFormData = new FormData();
     bodyFormData.append('video', file);
     setLoading(true);
     apiPostRequest(endpoints.uploadVideo, bodyFormData)
       .then(res => {
-        setDataVideo(res.data.data.key)
+        setDataVideo(res.data.data.key);
         setLoading(false);
       })
       .catch(() => {
@@ -237,117 +232,130 @@ export default function CreateNewCourse() {
   };
 
   const toggleLessonHandler = index => {
-    index === toggleLessonReadView ? setToggleLessonReadView(-1) : setToggleLessonReadView(index);
+    index === toggleLessonReadView
+      ? setToggleLessonReadView(-1)
+      : setToggleLessonReadView(index);
     setToggleLessonEditView(-1);
   };
 
-  const editToggleLessonHandler = (index) => {
-    index === toggleLessonEditView ? setToggleLessonEditView(-1) : setToggleLessonEditView(index);
+  const editToggleLessonHandler = index => {
+    index === toggleLessonEditView
+      ? setToggleLessonEditView(-1)
+      : setToggleLessonEditView(index);
     setToggleLessonReadView(-1);
-
   };
 
   const toggleQuestionHandler = (questionIndex, lessonIndex) => {
-    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
-    lessonItem.quiz.savedQuestions[questionIndex].readView = !lessonItem.quiz.savedQuestions[questionIndex].readView;
+    lessonItem.quiz.savedQuestions[questionIndex].readView = !lessonItem.quiz
+      .savedQuestions[questionIndex].readView;
     lessonItem.quiz.savedQuestions[questionIndex].editView = false;
-    setLessonsList(lessonsArray)
+    setLessonsList(lessonsArray);
   };
 
   const editToggleQuestionHandler = (questionIndex, lessonIndex) => {
-    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
-    lessonItem.quiz.savedQuestions[questionIndex].editView = !lessonItem.quiz.savedQuestions[questionIndex].editView;
+    lessonItem.quiz.savedQuestions[questionIndex].editView = !lessonItem.quiz
+      .savedQuestions[questionIndex].editView;
     lessonItem.quiz.savedQuestions[questionIndex].readView = false;
-    setLessonsList(lessonsArray)
+    setLessonsList(lessonsArray);
   };
 
   const toggleLectureHandler = (lectureIndex, lessonIndex) => {
-    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
-    lessonItem.savedLectureList[lectureIndex].readView = !lessonItem.savedLectureList[lectureIndex].readView;
+    lessonItem.savedLectureList[lectureIndex].readView = !lessonItem
+      .savedLectureList[lectureIndex].readView;
     lessonItem.savedLectureList[lectureIndex].editView = false;
-    setLessonsList(lessonsArray)
+    setLessonsList(lessonsArray);
   };
 
   const editToggleLectureHandler = (lectureIndex, lessonIndex) => {
-    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
-    lessonItem.savedLectureList[lectureIndex].editView = !lessonItem.savedLectureList[lectureIndex].editView;
+    lessonItem.savedLectureList[lectureIndex].editView = !lessonItem
+      .savedLectureList[lectureIndex].editView;
     lessonItem.savedLectureList[lectureIndex].readView = false;
-
-    setLessonsList(lessonsArray)
-
+    setLessonsList(lessonsArray);
   };
 
-  const updateLessonTitleHandler = async (index) => {
-    const lessonsArray = _.cloneDeep(lessonsList)
+  const updateLessonTitleHandler = async index => {
+    const lessonsArray = _.cloneDeep(lessonsList);
     const item = { ...lessonsArray[index] };
     item.name = item.editableLessonTitle;
     lessonsArray[index] = item;
     const payload = {
       name: item.name,
       courseId: draftCourseId,
-    }
+    };
     setLoading(true);
     try {
-      const res = await apiPutRequest(`api/course/updateDraftLesson/${item.lessonId}`, payload);
+      const res = await apiPutRequest(
+        `api/course/updateDraftLesson/
+        ${item.lessonId}`,
+        payload,
+      );
       if (!res) {
-        throw 'No Internet Access'
+        throw 'No Internet Access';
       }
       if (res.status !== 200) {
-        throw 'Something Went Wrong'
+        throw 'Something Went Wrong';
       }
       setLoading(false);
       setLessonsList(lessonsArray);
     } catch {
-      setLoading(false)
+      setLoading(false);
     }
-
     setToggleLessonEditView(-1);
     setLessonTitle('');
-  }
+  };
 
-  const deleteLessonTitleHandler = async (index) => {
+  const deleteLessonTitleHandler = async index => {
     const list = [...lessonsList];
     const item = { ...list[index] };
     setLoading(true);
     try {
-      const res = await apiDeleteRequest(`api/course/deleteDraftLesson/${item.lessonId}`);
+      const res = await apiDeleteRequest(
+        `api/course/deleteDraftLesson/${item.lessonId}`,
+      );
       if (!res) {
-        throw 'No Internet Access'
+        throw 'No Internet Access';
       }
       if (res.status !== 200) {
-        throw 'Something Went Wrong'
+        throw 'Something Went Wrong';
       }
       if (lessonsList.length === 1) {
         list.splice(index, 1);
-        setHideBtns(true)
+        setHideBtns(true);
         setLessonsList(list);
       } else {
         list.splice(index, 1);
         setLessonsList(list);
-        setHideBtns(false)
+        setHideBtns(false);
       }
       setLoading(false);
     } catch {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     redirectToLogin();
     setLoading(true);
-    axios.get(API + endpoints.courseCategory).then(res => {
-      setLoading(false);
-      setCategories(res.data.data);
-      if (res.data.data.length > 0) {
-        setCategoryType(1);
-      }
-    }).catch(() => {
-      setLoading(false)
-    });
+    axios
+      .get(API + endpoints.courseCategory)
+      .then(res => {
+        setLoading(false);
+        setCategories(res.data.data);
+        if (res.data.data.length > 0) {
+          setCategoryType(1);
+        }
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   }, []);
 
   const addDetailsSection = () => {
@@ -355,7 +363,6 @@ export default function CreateNewCourse() {
       heading,
       description: content,
     };
-
     setDetailsSection([...detailsSection, section]);
     setHeading('');
     setContent('');
@@ -383,16 +390,16 @@ export default function CreateNewCourse() {
       name: lessonTitle,
       courseId: draftCourseId,
     };
-    setLoading(true)
+    setLoading(true);
     try {
       const res = await apiPostRequest(endpoints.createLessonAsDraft, payload);
       if (!res) {
-        throw 'No Internet Access'
+        throw 'No Internet Access';
       }
       if (res.status !== 201) {
-        throw 'Something Went Wrong'
+        throw 'Something Went Wrong';
       }
-      setLessonId(res.data.data.draftLessonId)
+      setLessonId(res.data.data.draftLessonId);
       const data = {
         name: lessonTitle,
         editableLessonTitle: lessonTitle,
@@ -408,35 +415,45 @@ export default function CreateNewCourse() {
           totalQuestions: null,
           savedQuestions: [],
           isSubmitted: false,
-          id: null
-        }
-      }
+          id: null,
+        },
+      };
       setHideBtns(false);
       setShowBtns(true);
       const lessonsArray = _.cloneDeep(lessonsList);
       lessonsArray.push(data);
-      lessonsArray[lessonsArray.length - 1].lessonId = res.data.data.draftLessonId
-      setLessonTitle("")
+      lessonsArray[lessonsArray.length - 1].lessonId =
+        res.data.data.draftLessonId;
+      setLessonTitle('');
       setLessonsList(lessonsArray);
-      setLoading(false)
-
+      setLoading(false);
     } catch {
-      setLoading(false)
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     if (lessonsList.length === 0) {
-      return
+      return;
     }
-    setStatus(lessonsList.every((item) => item.quiz.isSubmitted && item.name && (item.savedLectureList.length > 0 && item.savedLectureList.every((lec) => lec.lectureVideo && lec.editableLectureVideo) )
-    && item.quiz.savedQuestions.length > 0 ))
-  }, [lessonsList])
+    setStatus(
+      lessonsList.every(
+        item =>
+          item.quiz.isSubmitted &&
+          item.name &&
+          (item.savedLectureList.length > 0 &&
+            item.savedLectureList.every(
+              lec => lec.lectureVideo && lec.editableLectureVideo,
+            )) &&
+          item.quiz.savedQuestions.length > 0,
+      ),
+    );
+  }, [lessonsList]);
 
-  const submitQuizHandler = async (lessonIndex) => {
-    const lessonsArray = _.cloneDeep(lessonsList)
+  const submitQuizHandler = async lessonIndex => {
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
-    const questions = _.cloneDeep(lessonItem.quiz.savedQuestions)
+    const questions = _.cloneDeep(lessonItem.quiz.savedQuestions);
     const payloadQuestions = questions.map(element => {
       delete element.readView;
       delete element.editView;
@@ -448,18 +465,18 @@ export default function CreateNewCourse() {
     });
     const payload = {
       totalQuestions: lessonItem.quiz.savedQuestions.length,
-      name: "Quiz",
+      name: 'Quiz',
       lessonId: lessonItem.lessonId,
-      questions: payloadQuestions
-    }
+      questions: payloadQuestions,
+    };
     setLoading(true);
     try {
       const res = await apiPostRequest(`api/quiz/saveAsDraft`, payload);
       if (!res) {
-        throw 'No Internet Access'
+        throw 'No Internet Access';
       }
       if (res.status !== 201) {
-        throw 'Something Went Wrong'
+        throw 'Something Went Wrong';
       }
       lessonItem.showQuestion = false;
       lessonItem.quiz.isSubmitted = true;
@@ -467,14 +484,14 @@ export default function CreateNewCourse() {
       setLessonsList(lessonsArray);
       setLoading(false);
     } catch {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const updateQuizHandler = async (lessonIndex, id) => {
-    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
-    const questions = _.cloneDeep(lessonItem.quiz.savedQuestions)
+    const questions = _.cloneDeep(lessonItem.quiz.savedQuestions);
     const payloadQuestions = questions.map(element => {
       delete element.readView;
       delete element.editView;
@@ -486,52 +503,52 @@ export default function CreateNewCourse() {
     });
     const payload = {
       totalQuestions: lessonItem.quiz.savedQuestions.length,
-      name: "Quiz",
+      name: 'Quiz',
       lessonId: lessonItem.lessonId,
-      questions: payloadQuestions
-    }
+      questions: payloadQuestions,
+    };
     setLoading(true);
     try {
       const res = await apiPutRequest(`api/quiz/updateAsDraft/${id}`, payload);
       if (!res) {
-        throw 'No Internet Access'
+        throw 'No Internet Access';
       }
       if (res.status !== 200) {
-        throw 'Something Went Wrong'
+        throw 'Something Went Wrong';
       }
       lessonItem.showQuestion = false;
       setLessonsList(lessonsArray);
       setLoading(false);
     } catch {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
-  const handleQuizSection = (index) => {
+  const handleQuizSection = index => {
     const lessonsArray = _.cloneDeep(lessonsList);
-    const lessonItem = lessonsArray[index]
+    const lessonItem = lessonsArray[index];
     lessonItem.showQuiz = true;
     setLessonsList(lessonsArray);
   };
 
-  const editQuizHandler = (lessonIndex) => {
-    const lessonsArray = _.cloneDeep(lessonsList)
+  const editQuizHandler = lessonIndex => {
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
     lessonItem.showQuestion = !lessonItem.showQuestion;
-    setLessonsList(lessonsArray)
-  }
+    setLessonsList(lessonsArray);
+  };
 
   const deleteQuizHandler = async (lessonIndex, id) => {
-    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
     setLoading(true);
     try {
       const res = await apiDeleteRequest(`api/quiz/deleteDraft/${id}`);
       if (!res) {
-        throw 'No Internet Access'
+        throw 'No Internet Access';
       }
       if (res.status !== 200) {
-        throw 'Something Went Wrong'
+        throw 'Something Went Wrong';
       }
       lessonItem.showQuiz = false;
       lessonItem.showQuestion = false;
@@ -540,116 +557,142 @@ export default function CreateNewCourse() {
       setLessonsList(lessonsArray);
       setLoading(false);
     } catch {
-      setLoading(false)
+      setLoading(false);
     }
-  }
-
+  };
 
   const saveLectureHandler = async (lectureIndex, lessonIndex) => {
-    const lessonsArray = _.cloneDeep(lessonsList)
+    const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
     const payload = {
       title: lessonItem.lectureList[lectureIndex].title,
       lectureVideo: lessonItem.lectureList[lectureIndex].lectureVideo,
       lectureTime: lessonItem.lectureList[lectureIndex].lectureTime,
-      lessonId: lessonItem.lessonId
-    }
+      lessonId: lessonItem.lessonId,
+    };
     setLoading(true);
     try {
       const res = await apiPostRequest(endpoints.createLectureAsDraft, payload);
       if (!res) {
-        throw 'No Internet Access'
+        throw 'No Internet Access';
       }
       if (res.status !== 201) {
-        throw 'Something Went Wrong'
+        throw 'Something Went Wrong';
       }
-      lessonItem.lectureList[lectureIndex].id = res.data.data.draftLectureId
-      lessonItem.savedLectureList.push(lessonItem.lectureList[lectureIndex])
-      lessonItem.lectureList.splice(lectureIndex, 1)
+      lessonItem.lectureList[lectureIndex].id = res.data.data.draftLectureId;
+      lessonItem.savedLectureList.push(lessonItem.lectureList[lectureIndex]);
+      lessonItem.lectureList.splice(lectureIndex, 1);
       setLessonsList(lessonsArray);
       setLoading(false);
     } catch {
-      setLoading(false)
+      setLoading(false);
     }
-  }
-
-
+  };
 
   const addLectureChangeHandler = (e, lectureIndex, lessonIndex) => {
     const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
-    if (lessonItem.savedLectureList.length > 0 && lessonItem.savedLectureList[lectureIndex].editView) {
-      lessonItem.savedLectureList[lectureIndex].editableTitle = e.target.value
-      setLessonsList(lessonsArray)
+    if (
+      lessonItem.savedLectureList.length > 0 &&
+      lessonItem.savedLectureList[lectureIndex].editView
+    ) {
+      lessonItem.savedLectureList[lectureIndex].editableTitle = e.target.value;
+      setLessonsList(lessonsArray);
     } else {
-      lessonItem.lectureList[lectureIndex].title = e.target.value
-      lessonItem.lectureList[lectureIndex].editableTitle = e.target.value
-      setLessonsList(lessonsArray)
+      lessonItem.lectureList[lectureIndex].title = e.target.value;
+      lessonItem.lectureList[lectureIndex].editableTitle = e.target.value;
+      setLessonsList(lessonsArray);
     }
-
   };
 
   const removeLectureHandler = (lectureIndex, lessonIndex) => {
     const lessonsArray = _.cloneDeep(lessonsList);
     const lessonItem = lessonsArray[lessonIndex];
-    if (lessonItem.lectureList.length === 1 && lessonItem.savedLectureList.length === 0) {
-      lessonItem.lectureList.splice(lectureIndex, 1)
+    if (
+      lessonItem.lectureList.length === 1 &&
+      lessonItem.savedLectureList.length === 0
+    ) {
+      lessonItem.lectureList.splice(lectureIndex, 1);
       lessonItem.showLecture = false;
-      setLessonsList(lessonsArray)
+      setLessonsList(lessonsArray);
     }
-    lessonItem.lectureList.splice(lectureIndex, 1)
-    setLessonsList(lessonsArray)
-  };
-
-  const addLectureHandler = (index) => {
-    const lessonsArray = _.cloneDeep(lessonsList);
-    const lessonItem = lessonsArray[index]
-    lessonItem.showLecture = true;
-    lessonItem.lectureList.push({
-      title: "", lectureVideo: "", editableLectureVideo: "", editableFileSelected: null,
-      lectureTime: null, fileSelected: null, readView: false, editView: false, editableTitle: ""
-    })
+    lessonItem.lectureList.splice(lectureIndex, 1);
     setLessonsList(lessonsArray);
   };
 
-  const addQuestionHandler = (lessonIndex) => {
+  const addLectureHandler = index => {
     const lessonsArray = _.cloneDeep(lessonsList);
-    const lessonItem = lessonsArray[lessonIndex]
+    const lessonItem = lessonsArray[index];
+    lessonItem.showLecture = true;
+    lessonItem.lectureList.push({
+      title: '',
+      lectureVideo: '',
+      editableLectureVideo: '',
+      editableFileSelected: null,
+      lectureTime: null,
+      fileSelected: null,
+      readView: false,
+      editView: false,
+      editableTitle: '',
+    });
+    setLessonsList(lessonsArray);
+  };
+
+  const addQuestionHandler = lessonIndex => {
+    const lessonsArray = _.cloneDeep(lessonsList);
+    const lessonItem = lessonsArray[lessonIndex];
     lessonItem.showQuestion = true;
     lessonItem.quiz.questions.push({
-      question: "", possibleAnswers: [], rightAnswer: "", readView: false, editView: false,
-      firstAnswer: "", secondAnswer: "", thirdAnswer: "", editableTitle: ""
-    })
+      question: '',
+      possibleAnswers: [],
+      rightAnswer: '',
+      readView: false,
+      editView: false,
+      firstAnswer: '',
+      secondAnswer: '',
+      thirdAnswer: '',
+      editableTitle: '',
+    });
     setLessonsList(lessonsArray);
   };
 
   const saveQuestionHandler = (questionIndex, lessonIndex) => {
     const lessonsArray = _.cloneDeep(lessonsList);
-    const lessonItem = lessonsArray[lessonIndex]
-    lessonItem.quiz.questions[questionIndex].possibleAnswers.push(lessonItem.quiz.questions[questionIndex].firstAnswer);
-    lessonItem.quiz.questions[questionIndex].possibleAnswers.push(lessonItem.quiz.questions[questionIndex].secondAnswer);
-    lessonItem.quiz.questions[questionIndex].possibleAnswers.push(lessonItem.quiz.questions[questionIndex].thirdAnswer);
-    lessonItem.quiz.savedQuestions.push(lessonItem.quiz.questions[questionIndex])
-    lessonItem.quiz.questions.splice(questionIndex, 1)
+    const lessonItem = lessonsArray[lessonIndex];
+    lessonItem.quiz.questions[questionIndex].possibleAnswers.push(
+      lessonItem.quiz.questions[questionIndex].firstAnswer,
+    );
+    lessonItem.quiz.questions[questionIndex].possibleAnswers.push(
+      lessonItem.quiz.questions[questionIndex].secondAnswer,
+    );
+    lessonItem.quiz.questions[questionIndex].possibleAnswers.push(
+      lessonItem.quiz.questions[questionIndex].thirdAnswer,
+    );
+    lessonItem.quiz.savedQuestions.push(
+      lessonItem.quiz.questions[questionIndex],
+    );
+    lessonItem.quiz.questions.splice(questionIndex, 1);
     setLessonsList(lessonsArray);
   };
 
   const publishCourseHandler = async () => {
     setLoading(true);
     try {
-      const res = await apiPostRequest(`api/course/publish?draftCourseId=${draftCourseId}`);
+      const res = await apiPostRequest(
+        `api/course/publish?draftCourseId=${draftCourseId}`,
+      );
       if (!res) {
-        throw 'No Internet Access'
+        throw 'No Internet Access';
       }
       if (res.status !== 200) {
-        throw 'Something Went Wrong'
+        throw 'Something Went Wrong';
       }
       goToCoursesList();
       setLoading(false);
     } catch {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
   return (
     <Wrapper>
       {/* <ToastContainer /> */}
@@ -870,7 +913,7 @@ export default function CreateNewCourse() {
                                     className="del_btn"
                                     onClick={() => {
                                       setCourseVideo('');
-                                      setDataVideo('')
+                                      setDataVideo('');
                                     }}
                                   >
                                     <MdDelete />
@@ -1106,7 +1149,6 @@ export default function CreateNewCourse() {
                             </div>
                           </div>
                         ))}
-
                       {detailsSection.length > 0 && (
                         <Button
                           type="button"
@@ -1139,9 +1181,15 @@ export default function CreateNewCourse() {
                       </Button>
                       <Button
                         className="btn_submit"
-                        disabled={!dataVideo || !title || !price || loading || !detailsSection.length > 0 || !Object.values(tags).length > 0}
+                        disabled={
+                          !dataVideo ||
+                          !title ||
+                          !price ||
+                          loading ||
+                          !detailsSection.length > 0 ||
+                          !Object.values(tags).length > 0
+                        }
                         onClick={createDraft}
-                      // onClick={handleCourseStepTwo}
                       >
                         <FormattedMessage {...messages.Next} />
                       </Button>
@@ -1156,268 +1204,367 @@ export default function CreateNewCourse() {
                       <h4>Lesson</h4>
                     </div>
                     <div className="createCourseCont">
-                      {hideBtns && <div className="card mb-3">
-                        <div className="card-body">
-                          <Row>
-                            <Col lg={12}>
-                              <FormGroup>
-                                <Label>Title</Label>
-                                <Input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Enter Title"
-                                  onChange={(e) => setLessonTitle(e.target.value)}
-                                />
-                              </FormGroup>
-                            </Col>
-                            <Col lg={12}>
-                              <div className="sec_footer">
-                                <div className="bottom_btns">
-                                  <Button
-                                    onClick={() => setHideBtns(false)}
-                                    hidden={lessonsList.length === 0 ? true : false}
-                                    className="btn_back">Cancel</Button>
-                                  <Button
-                                    className="btn_save"
-                                    onClick={saveLessonHandler}
-                                    disabled={!lessonTitle || loading}
-                                  >
-                                    Save Lesson
-                                  </Button>
-                                </div>
-                              </div>
-                            </Col>
-                          </Row>
-                        </div>
-                      </div>}
-
-                      {_.size(lessonsList) > 0 && lessonsList.map((res, index) => (
-                        <div key={index} className="custom_accordin_lesson">
-                          <div className="accordin_item">
-                            <div className="accordin_header">
-                              <div className="top-layer">
-                                <div className="title">
-                                  <Button
-                                    className={
-                                      accordinOne
-                                        ? 'active title_btn'
-                                        : 'title_btn'
+                      {hideBtns && (
+                        <div className="card mb-3">
+                          <div className="card-body">
+                            <Row>
+                              <Col lg={12}>
+                                <FormGroup>
+                                  <Label>Title</Label>
+                                  <Input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Enter Title"
+                                    onChange={e =>
+                                      setLessonTitle(e.target.value)
                                     }
-                                    onClick={() => toggleLessonHandler(index)}
-                                  >
-                                    <div className="tick_icon">
-                                      <MdCheckCircle />
-                                    </div>
-                                    <span> {res.name} </span>
-                                  </Button>
-                                </div>
-                                <div className="action_btns">
-                                  <Button>
-                                    <FiEdit3
-                                      onClick={() =>
-                                        editToggleLessonHandler(index, res)
-                                      }
-                                    />
-                                  </Button>
-                                  <Button
-                                    disabled={loading}
-                                    onClick={() => deleteLessonTitleHandler(index)}
-                                  >
-                                    <MdDelete />
-                                  </Button>
-                                </div>
-                              </div>
-                              <div className="add_lec_quiz">
-                                <Button disabled={res.lectureList.length === 1} onClick={() => addLectureHandler(index)}>
-                                  <FaVideo />
-                                  Add Lecture
-                                </Button>
-                                <Button
-                                  disabled={res.showQuiz}
-                                  onClick={() => handleQuizSection(index)}>
-                                  <RiQuestionnaireFill />
-                                  Add Quiz
-                                </Button>
-                              </div>
-                            </div>
-                            {toggleLessonReadView === index && (
-                              <div className="accordin_content">
-                                <div className="section_in">
-                                  <FormGroup>
-                                    <Label>Title</Label>
-                                    <Input
-                                      type="text"
-                                      name="heading"
-                                      value={res.name}
-                                      readOnly
-                                    />
-                                  </FormGroup>
-                                </div>
-                              </div>
-                            )}
-                            {toggleLessonEditView === index && (
-                              <div className="accordin_content">
-                                <div className="section_in">
-                                  <FormGroup>
-                                    <Label>Title</Label>
-                                    <Input
-                                      type="text"
-                                      name="heading"
-                                      value={res.editableLessonTitle}
-                                      onChange={(e) => {
-                                        const lessonsArray = _.cloneDeep(lessonsList)
-                                        lessonsArray[index].editableLessonTitle = e.target.value;
-                                        setLessonsList(lessonsArray)
-                                        // setLessonTitle(e.target.value)
-
-                                      }
-                                      }
-                                      className="form-control"
-                                      placeholder="Enter Title"
-                                    />
-                                  </FormGroup>
-                                </div>
+                                  />
+                                </FormGroup>
+                              </Col>
+                              <Col lg={12}>
                                 <div className="sec_footer">
                                   <div className="bottom_btns">
                                     <Button
+                                      onClick={() => setHideBtns(false)}
+                                      hidden={
+                                        lessonsList.length === 0 ? true : false
+                                      }
                                       className="btn_back"
-                                      onClick={() => setToggleLessonEditView(-1)}
                                     >
                                       Cancel
                                     </Button>
                                     <Button
                                       className="btn_save"
-                                      disabled={!lessonsList[index].editableLessonTitle || loading}
-                                      onClick={() =>
-                                        updateLessonTitleHandler(index)
-                                      }
+                                      onClick={saveLessonHandler}
+                                      disabled={!lessonTitle || loading}
                                     >
-                                      Save Section
+                                      Save Lesson
                                     </Button>
                                   </div>
                                 </div>
-                              </div>
-                            )}
-                            <div>
+                              </Col>
+                            </Row>
+                          </div>
+                        </div>
+                      )}
 
-                            </div>
-                            <div hidden={!res.showLecture} className="accordin_content">
-                              <div className="section_in">
-                                {res.showLecture &&
-                                  <>
-                                    <AddLecture
-                                      item={res}
-                                      loading={loading}
-                                      lessonsList={lessonsList}
-                                      setLessonsList={setLessonsList}
-                                      lessonIndex={index}
-                                      addLectureChangeHandler={addLectureChangeHandler}
-                                      removeLectureHandler={removeLectureHandler}
-                                      saveLectureHandler={saveLectureHandler} />
-                                    <LectureList
-                                      res={res}
-                                      loading={loading}
-                                      setLoading={setLoading}
-                                      lessonIndex={index}
-                                      addLectureChangeHandler={addLectureChangeHandler}
-                                      lessonsList={lessonsList}
-                                      setLessonsList={setLessonsList}
-                                      toggleLectureHandler={toggleLectureHandler}
-                                      editToggleLectureHandler={editToggleLectureHandler} />
-                                  </>
-                                }
+                      {_.size(lessonsList) > 0 &&
+                        lessonsList.map((res, index) => (
+                          <div key={index} className="custom_accordin_lesson">
+                            <div className="accordin_item">
+                              <div className="accordin_header">
+                                <div className="top-layer">
+                                  <div className="title">
+                                    <Button
+                                      className={
+                                        accordinOne
+                                          ? 'active title_btn'
+                                          : 'title_btn'
+                                      }
+                                      onClick={() => toggleLessonHandler(index)}
+                                    >
+                                      <div className="tick_icon">
+                                        <MdCheckCircle />
+                                      </div>
+                                      <span> {res.name} </span>
+                                    </Button>
+                                  </div>
+                                  <div className="action_btns">
+                                    <Button>
+                                      <FiEdit3
+                                        onClick={() =>
+                                          editToggleLessonHandler(index, res)
+                                        }
+                                      />
+                                    </Button>
+                                    <Button
+                                      disabled={loading}
+                                      onClick={() =>
+                                        deleteLessonTitleHandler(index)
+                                      }
+                                    >
+                                      <MdDelete />
+                                    </Button>
+                                  </div>
+                                </div>
+                                <div className="add_lec_quiz">
+                                  <Button
+                                    disabled={res.lectureList.length === 1}
+                                    onClick={() => addLectureHandler(index)}
+                                  >
+                                    <FaVideo />
+                                    Add Lecture
+                                  </Button>
+                                  <Button
+                                    disabled={res.showQuiz}
+                                    onClick={() => handleQuizSection(index)}
+                                  >
+                                    <RiQuestionnaireFill />
+                                    Add Quiz
+                                  </Button>
+                                </div>
                               </div>
-                            </div>
-                            <div hidden={!res.showQuiz} className="accordin_content">
-                              <div className="section_in">
-                                {res.showQuiz && (
-                                  <>
-                                    <Row>
-                                      <Col lg={12}>
-                                        <div className="custom_accordin_lesson">
-                                          <div className="accordin_item">
-                                            <div className="accordin_header">
-                                              <div className="top-layer">
-                                                <Button
-                                                  className="title_btn"
-                                                // onClick={() => toggleHandler(index)}
-                                                >
-                                                  <div className="tick_icon">
-                                                    <MdCheckCircle />
-                                                  </div>
-                                                  Quiz
-                                                </Button>
-                                                {res.quiz.isSubmitted && <div className="action_btns">
-                                                  <Button>
-                                                    <FiEdit3
-                                                      onClick={() =>
-                                                        editQuizHandler(index)
-                                                      }
-                                                    />
-                                                  </Button>
+                              {toggleLessonReadView === index && (
+                                <div className="accordin_content">
+                                  <div className="section_in">
+                                    <FormGroup>
+                                      <Label>Title</Label>
+                                      <Input
+                                        type="text"
+                                        name="heading"
+                                        value={res.name}
+                                        readOnly
+                                      />
+                                    </FormGroup>
+                                  </div>
+                                </div>
+                              )}
+                              {toggleLessonEditView === index && (
+                                <div className="accordin_content">
+                                  <div className="section_in">
+                                    <FormGroup>
+                                      <Label>Title</Label>
+                                      <Input
+                                        type="text"
+                                        name="heading"
+                                        value={res.editableLessonTitle}
+                                        onChange={e => {
+                                          const lessonsArray = _.cloneDeep(
+                                            lessonsList,
+                                          );
+                                          lessonsArray[
+                                            index
+                                          ].editableLessonTitle =
+                                            e.target.value;
+                                          setLessonsList(lessonsArray);
+                                          // setLessonTitle(e.target.value)
+                                        }}
+                                        className="form-control"
+                                        placeholder="Enter Title"
+                                      />
+                                    </FormGroup>
+                                  </div>
+                                  <div className="sec_footer">
+                                    <div className="bottom_btns">
+                                      <Button
+                                        className="btn_back"
+                                        onClick={() =>
+                                          setToggleLessonEditView(-1)
+                                        }
+                                      >
+                                        Cancel
+                                      </Button>
+                                      <Button
+                                        className="btn_save"
+                                        disabled={
+                                          !lessonsList[index]
+                                            .editableLessonTitle || loading
+                                        }
+                                        onClick={() =>
+                                          updateLessonTitleHandler(index)
+                                        }
+                                      >
+                                        Save Section
+                                      </Button>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+                              <div
+                                hidden={!res.showLecture}
+                                className="accordin_content"
+                              >
+                                <div className="section_in">
+                                  {res.showLecture && (
+                                    <>
+                                      <AddLecture
+                                        item={res}
+                                        loading={loading}
+                                        lessonsList={lessonsList}
+                                        setLessonsList={setLessonsList}
+                                        lessonIndex={index}
+                                        addLectureChangeHandler={
+                                          addLectureChangeHandler
+                                        }
+                                        removeLectureHandler={
+                                          removeLectureHandler
+                                        }
+                                        saveLectureHandler={saveLectureHandler}
+                                      />
+                                      <LectureList
+                                        res={res}
+                                        loading={loading}
+                                        setLoading={setLoading}
+                                        lessonIndex={index}
+                                        addLectureChangeHandler={
+                                          addLectureChangeHandler
+                                        }
+                                        lessonsList={lessonsList}
+                                        setLessonsList={setLessonsList}
+                                        toggleLectureHandler={
+                                          toggleLectureHandler
+                                        }
+                                        editToggleLectureHandler={
+                                          editToggleLectureHandler
+                                        }
+                                      />
+                                    </>
+                                  )}
+                                </div>
+                              </div>
+                              <div
+                                hidden={!res.showQuiz}
+                                className="accordin_content"
+                              >
+                                <div className="section_in">
+                                  {res.showQuiz && (
+                                    <>
+                                      <Row>
+                                        <Col lg={12}>
+                                          <div className="custom_accordin_lesson">
+                                            <div className="accordin_item">
+                                              <div className="accordin_header">
+                                                <div className="top-layer">
                                                   <Button
-                                                    disabled={loading}
-                                                    onClick={() => deleteQuizHandler(index, res.quiz.id)}
+                                                    className="title_btn"
+                                                    // onClick={() => toggleHandler(index)}
                                                   >
-                                                    <MdDelete />
+                                                    <div className="tick_icon">
+                                                      <MdCheckCircle />
+                                                    </div>
+                                                    Quiz
                                                   </Button>
+                                                  {res.quiz.isSubmitted && (
+                                                    <div className="action_btns">
+                                                      <Button>
+                                                        <FiEdit3
+                                                          onClick={() =>
+                                                            editQuizHandler(
+                                                              index,
+                                                            )
+                                                          }
+                                                        />
+                                                      </Button>
+                                                      <Button
+                                                        disabled={loading}
+                                                        onClick={() =>
+                                                          deleteQuizHandler(
+                                                            index,
+                                                            res.quiz.id,
+                                                          )
+                                                        }
+                                                      >
+                                                        <MdDelete />
+                                                      </Button>
+                                                    </div>
+                                                  )}
                                                 </div>
-                                                }
+                                                <div className="add_lec_quiz">
+                                                  <Button
+                                                    onClick={() =>
+                                                      addQuestionHandler(index)
+                                                    }
+                                                    disabled={
+                                                      res.quiz.savedQuestions
+                                                        .length === 5 ||
+                                                      res.quiz.questions
+                                                        .length > 0
+                                                    }
+                                                    type="button"
+                                                    className="add_btn"
+                                                  >
+                                                    <IoMdChatboxes />
+                                                    Add Question
+                                                  </Button>
+                                                  {res.quiz.isSubmitted ? (
+                                                    <Button
+                                                      disabled={
+                                                        !res.quiz.savedQuestions
+                                                          .length > 0 || loading
+                                                      }
+                                                      onClick={() =>
+                                                        updateQuizHandler(
+                                                          index,
+                                                          res.quiz.id,
+                                                        )
+                                                      }
+                                                      type="button"
+                                                      className="add_btn"
+                                                    >
+                                                      <IoMdChatboxes />
+                                                      Update Quiz
+                                                    </Button>
+                                                  ) : (
+                                                    <Button
+                                                      disabled={
+                                                        !res.quiz.savedQuestions
+                                                          .length > 0 || loading
+                                                      }
+                                                      onClick={() =>
+                                                        submitQuizHandler(index)
+                                                      }
+                                                      type="button"
+                                                      className="add_btn"
+                                                    >
+                                                      <IoMdChatboxes />
+                                                      Submit Quiz
+                                                    </Button>
+                                                  )}
+                                                </div>
                                               </div>
-                                              <div className="add_lec_quiz">
-                                                <Button
-                                                  onClick={() => addQuestionHandler(index)}
-                                                  disabled={res.quiz.savedQuestions.length === 5 || res.quiz.questions.length > 0}
-                                                  type="button" className="add_btn">
-                                                  <IoMdChatboxes /> Add Question
-                                                </Button>
-                                                {res.quiz.isSubmitted ? <Button
-                                                  disabled={!res.quiz.savedQuestions.length > 0 || loading}
-                                                  onClick={() => updateQuizHandler(index, res.quiz.id)}
-                                                  type="button" className="add_btn">
-                                                  <IoMdChatboxes /> Update Quiz
-                                                </Button> : <Button
-                                                  disabled={!res.quiz.savedQuestions.length > 0 || loading}
-                                                  onClick={() => submitQuizHandler(index)} type="button" className="add_btn">
-                                                  <IoMdChatboxes /> Submit Quiz
-                                                </Button>}
-                                              </div>
-                                            </div>
-                                            <div hidden={!res.showQuestion} className="accordin_content">
-                                              <div className="section_in">
-                                                <AddQuiz
-                                                  res={res}
-                                                  lessonIndex={index}
-                                                  lessonsList={lessonsList}
-                                                  setLessonsList={setLessonsList}
-                                                  saveQuestionHandler={saveQuestionHandler} />
-                                                <QuestionList
-                                                  res={res}
-                                                  lessonIndex={index}
-                                                  lessonsList={lessonsList}
-                                                  setLessonsList={setLessonsList}
-                                                  toggleQuestionHandler={toggleQuestionHandler}
-                                                  editToggleQuestionHandler={editToggleQuestionHandler} />
+                                              <div
+                                                hidden={!res.showQuestion}
+                                                className="accordin_content"
+                                              >
+                                                <div className="section_in">
+                                                  <AddQuiz
+                                                    res={res}
+                                                    lessonIndex={index}
+                                                    lessonsList={lessonsList}
+                                                    setLessonsList={
+                                                      setLessonsList
+                                                    }
+                                                    saveQuestionHandler={
+                                                      saveQuestionHandler
+                                                    }
+                                                  />
+                                                  <QuestionList
+                                                    res={res}
+                                                    lessonIndex={index}
+                                                    lessonsList={lessonsList}
+                                                    setLessonsList={
+                                                      setLessonsList
+                                                    }
+                                                    toggleQuestionHandler={
+                                                      toggleQuestionHandler
+                                                    }
+                                                    editToggleQuestionHandler={
+                                                      editToggleQuestionHandler
+                                                    }
+                                                  />
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
-                                      </Col>
-                                    </Row>
-                                  </>
-                                )}
+                                        </Col>
+                                      </Row>
+                                    </>
+                                  )}
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
-
-                      {lessonsList.length > 0 &&
-                        <Button type="button" className="add_section"
+                        ))}
+                      {lessonsList.length > 0 && (
+                        <Button
+                          type="button"
+                          className="add_section"
                           onClick={() => setHideBtns(true)}
-                          disabled={hideBtns}>
+                          disabled={hideBtns}
+                        >
                           Add Lesson
-                        </Button>}
+                        </Button>
+                      )}
                     </div>
                   </div>
                   <div className="form_footer publishBtns">
@@ -1425,13 +1572,14 @@ export default function CreateNewCourse() {
                       <FormattedMessage {...messages.Back} />
                     </Button>
                     <div className="bottom_btns">
-                      <Button
-                        className="btn_back"
-                        onClick={goToCoursesList}
-                      >
+                      <Button className="btn_back" onClick={goToCoursesList}>
                         <FormattedMessage {...messages.Draft} />
                       </Button>
-                      <Button disabled={!status} onClick={publishCourseHandler} className="btn_submit">
+                      <Button
+                        disabled={!status}
+                        onClick={publishCourseHandler}
+                        className="btn_submit"
+                      >
                         <FormattedMessage {...messages.Publish} />
                       </Button>
                     </div>

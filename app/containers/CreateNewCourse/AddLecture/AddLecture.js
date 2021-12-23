@@ -6,11 +6,13 @@ function AddLecture(props) {
   const {
     removeLectureHandler,
     addLectureChangeHandler,
-    lessonsList, setLessonsList,
+    lessonsList,
+    setLessonsList,
     lessonIndex,
     item,
     loading,
-    saveLectureHandler } = props;
+    saveLectureHandler,
+  } = props;
   return (
     <React.Fragment>
       <Row>
@@ -44,7 +46,6 @@ function AddLecture(props) {
                   lessonIndex={lessonIndex}
                   lectureIndex={i}
                 />
-
               </Col>
               <Col lg={12}>
                 <div className="sec_footer">

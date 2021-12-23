@@ -30,8 +30,9 @@ export default class Index extends Component {
         contentType: this.state.fileSelected.type,
       };
       const resp = await apiGetRequest(`
-      ${this.state.backendUrl}/start-upload?fileName=${params.fileName
-        }&contentType=${params.contentType}`);
+      ${this.state.backendUrl}/start-upload?fileName=${
+        params.fileName
+      }&contentType=${params.contentType}`);
       const uploadId = resp.data.data.uploadId;
       this.setState({ uploadId });
       this.uploadMultipartFile();
@@ -61,9 +62,11 @@ export default class Index extends Component {
             ? this.state.fileSelected.slice(start, end)
             : this.state.fileSelected.slice(start);
         const getUploadUrlResp = await apiGetRequest(`
-        ${this.state.backendUrl}/get-upload-url?fileName=${this.state.fileName
-          }&partNumber=${index}&uploadId=${this.state.uploadId}&contentType=${this.state.fileSelected.type
-          }`);
+        ${this.state.backendUrl}/get-upload-url?fileName=${
+          this.state.fileName
+        }&partNumber=${index}&uploadId=${this.state.uploadId}&contentType=${
+          this.state.fileSelected.type
+        }`);
 
         const { presignedUrl } = getUploadUrlResp.data.data;
         // Send part aws server
@@ -94,13 +97,15 @@ export default class Index extends Component {
       );
       const lessonsArray = _.cloneDeep(this.props.lessonsList);
       const lessonItem = lessonsArray[this.props.lessonIndex];
-      lessonItem.lectureList[this.props.lectureIndex].lectureVideo = completeUploadResp.data.data.key;
-      lessonItem.lectureList[this.props.lectureIndex].editableLectureVideo = completeUploadResp.data.data.key;
+      lessonItem.lectureList[this.props.lectureIndex].lectureVideo =
+        completeUploadResp.data.data.key;
+      lessonItem.lectureList[this.props.lectureIndex].editableLectureVideo =
+        completeUploadResp.data.data.key;
       this.props.setLessonsList(lessonsArray);
     } catch (err) {
       return err;
-    };
-  };
+    }
+  }
 
   render() {
     const {
@@ -115,33 +120,50 @@ export default class Index extends Component {
           <Dropzone
             accept="video/*"
             multiple={false}
-            onDrop={(acceptedFiles) => {
+            onDrop={acceptedFiles => {
               const lessonsArray = _.cloneDeep(this.props.lessonsList);
               const lessonItem = lessonsArray[this.props.lessonIndex];
               try {
                 if (acceptedFiles && acceptedFiles[0]) {
-                  lessonItem.lectureList[this.props.lectureIndex].fileSelected = acceptedFiles[0];
-                  lessonItem.lectureList[this.props.lectureIndex].editableFileSelected = acceptedFiles[0];
+                  lessonItem.lectureList[this.props.lectureIndex].fileSelected =
+                    acceptedFiles[0];
+                  lessonItem.lectureList[
+                    this.props.lectureIndex
+                  ].editableFileSelected = acceptedFiles[0];
                   let fileSelected = acceptedFiles[0];
                   let currentdate = new Date();
-                  let datetime = currentdate.getFullYear() + "-"
-                    + (currentdate.getMonth() + 1) + "-"
-                    + currentdate.getDate() + "T"
-                    + currentdate.getHours() + ":"
-                    + currentdate.getMinutes() + ":"
-                    + currentdate.getSeconds() + ".";
+                  let datetime =
+                  currentdate.getFullYear() +
+                    '-' +
+                    (currentdate.getMonth() + 1) +
+                    '-' +
+                    currentdate.getDate() +
+                    'T' +
+                    currentdate.getHours() +
+                    ':' +
+                    currentdate.getMinutes() +
+                    ':' +
+                    currentdate.getSeconds() +
+                    '.';
                   let fileName = `${datetime}${fileSelected.name}`;
                   const reader = new FileReader();
-                  reader.onload = (e) => {
+                  reader.onload = e => {
                     var media = new Audio(e.target.result);
-                    media.onloadedmetadata = (e) => {
-                      this.setState({ videoDuration: media.duration })
-                      lessonItem.lectureList[this.props.lectureIndex].lectureTime = parseInt(media.duration.toFixed(0));
+                    media.onloadedmetadata = e => {
+                      this.setState({ videoDuration: media.duration });
+                      lessonItem.lectureList[
+                        this.props.lectureIndex
+                      ].lectureTime = parseInt(media.duration.toFixed(0));
                       this.props.setLessonsList(lessonsArray);
                     };
                   };
                   reader.readAsDataURL(acceptedFiles[0]);
-                  this.setState({ ...this.state, fileSelected, fileName, fileSize: fileSelected.size });
+                  this.setState({
+                    ...this.state,
+                    fileSelected,
+                    fileName,
+                    fileSize:fileSelected.size,
+                  });
                   this.startUpload();
                 }
               } catch (err) {

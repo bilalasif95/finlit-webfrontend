@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {
-  Button,
-  Progress,
-} from 'reactstrap';
+import { Button, Progress } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
-import messages from '../messages';
 import Dropzone from 'react-dropzone';
 import { FiUpload } from 'react-icons/fi';
 import { IoIosClose } from 'react-icons/io';
+import _ from 'lodash';
+import messages from '../messages';
 import { apiGetRequest, apiPostRequest } from '../../../helpers/Requests';
-import _ from 'lodash'
+
 export default class Index extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +30,11 @@ export default class Index extends Component {
         fileName: this.state.fileName,
         contentType: this.state.fileSelected.type,
       };
-      let resp = await apiGetRequest(`${this.state.backendUrl}/start-upload?fileName=${params.fileName}&contentType=${params.contentType}`)
+      let resp = await apiGetRequest(
+        `${this.state.backendUrl}/start-upload?fileName=${
+          params.fileName
+        }&contentType=${params.contentType}`,
+      );
 
       let uploadId = resp.data.data.uploadId;
       this.setState({ uploadId });
@@ -51,7 +53,7 @@ export default class Index extends Component {
       let start, end, blob;
 
       for (let index = 1; index < CHUNKS_COUNT + 1; index++) {
-        this.setState({ percentage: (index / CHUNKS_COUNT) * 100 })
+        this.setState({ percentage: (index / CHUNKS_COUNT) * 100 });
         // const lessonsArray = _.cloneDeep(this.props.lessonsList);
         // const lessonItem = lessonsArray[this.props.lessonIndex];
         // lessonItem.lectureList[this.props.lectureIndex].percentage = (index / CHUNKS_COUNT) * 100;
@@ -63,7 +65,13 @@ export default class Index extends Component {
             ? this.state.fileSelected.slice(start, end)
             : this.state.fileSelected.slice(start);
 
-        let getUploadUrlResp = await apiGetRequest(`${this.state.backendUrl}/get-upload-url?fileName=${this.state.fileName}&partNumber=${index}&uploadId=${this.state.uploadId}&contentType=${this.state.fileSelected.type}`)
+        let getUploadUrlResp = await apiGetRequest(
+          `${this.state.backendUrl}/get-upload-url?fileName=${
+            this.state.fileName
+          }&partNumber=${index}&uploadId=${this.state.uploadId}&contentType=${
+            this.state.fileSelected.type
+          }`,
+        );
 
         let { presignedUrl } = getUploadUrlResp.data.data;
         // Send part aws server
@@ -74,7 +82,6 @@ export default class Index extends Component {
       let resolvedArray = await Promise.all(promisesArray);
       let uploadPartsArray = [];
       resolvedArray.forEach((resolvedPromise, index) => {
-
         uploadPartsArray.push({
           ETag: resolvedPromise.headers.etag,
           PartNumber: index + 1,
@@ -91,84 +98,105 @@ export default class Index extends Component {
             courseId: this.props.lessonsList[this.props.lessonIndex].courseId,
             lessonId: this.props.lessonsList[this.props.lessonIndex].lessonId,
           },
-        }
+        },
       );
       const lessonsArray = _.cloneDeep(this.props.lessonsList);
       const lessonItem = lessonsArray[this.props.lessonIndex];
-      lessonItem.savedLectureList[this.props.lectureIndex].lectureVideo = completeUploadResp.data.data.key;
-      lessonItem.savedLectureList[this.props.lectureIndex].editableLectureVideo = completeUploadResp.data.data.key;
-      this.props.setLessonsList(lessonsArray)
-
+      lessonItem.savedLectureList[this.props.lectureIndex].lectureVideo =
+        completeUploadResp.data.data.key;
+      lessonItem.savedLectureList[
+        this.props.lectureIndex
+      ].editableLectureVideo = completeUploadResp.data.data.key;
+      this.props.setLessonsList(lessonsArray);
     } catch (err) {
       return err;
     }
   }
 
   render() {
-    const { lessonIndex, lectureIndex, lessonsList, setLessonsList } = this.props;
+    const {
+      lessonIndex,
+      lectureIndex,
+      lessonsList,
+      setLessonsList,
+    } = this.props;
     return (
       <div>
-        {(!lessonsList[lessonIndex].savedLectureList[lectureIndex].editableFileSelected || !lessonsList[lessonIndex].savedLectureList[lectureIndex].fileSelected) ? (
+        {!lessonsList[lessonIndex].savedLectureList[lectureIndex]
+          .editableFileSelected ||
+          !lessonsList[lessonIndex].savedLectureList[lectureIndex]
+          .fileSelected ? (
           <Dropzone
-            disabled={lessonsList[lessonIndex].savedLectureList[lectureIndex].readView}
+            disabled={
+              lessonsList[lessonIndex].savedLectureList[lectureIndex].readView
+            }
             accept="video/*"
             multiple={false}
-            onDrop={(acceptedFiles) => {
+            onDrop={acceptedFiles => {
               const lessonsArray = _.cloneDeep(this.props.lessonsList);
               const lessonItem = lessonsArray[this.props.lessonIndex];
               try {
                 if (acceptedFiles && acceptedFiles[0]) {
-                  lessonItem.savedLectureList[this.props.lectureIndex].editableFileSelected = acceptedFiles[0];
-                  lessonItem.savedLectureList[this.props.lectureIndex].fileSelected = acceptedFiles[0];
+                  lessonItem.savedLectureList[
+                    this.props.lectureIndex
+                  ].editableFileSelected = acceptedFiles[0];
+                  lessonItem.savedLectureList[
+                    this.props.lectureIndex
+                  ].fileSelected = acceptedFiles[0];
                   let fileSelected = acceptedFiles[0];
                   let editableFileSelected = acceptedFiles[0];
                   let currentdate = new Date();
-                  let datetime = currentdate.getFullYear() + "-"
-                    + (currentdate.getMonth() + 1) + "-"
-                    + currentdate.getDate() + "T"
-                    + currentdate.getHours() + ":"
-                    + currentdate.getMinutes() + ":"
-                    + currentdate.getSeconds() + ".";
+                  let datetime =
+                    currentdate.getFullYear() +
+                    '-' +
+                    (currentdate.getMonth() + 1) +
+                    '-' +
+                    currentdate.getDate() +
+                    'T' +
+                    currentdate.getHours() +
+                    ':' +
+                    currentdate.getMinutes() +
+                    ':' +
+                    currentdate.getSeconds() +
+                    '.';
                   let fileName = `${datetime}${fileSelected.name}`;
                   const reader = new FileReader();
-                  reader.onload = (e) => {
+                  reader.onload = e => {
                     var media = new Audio(e.target.result);
-                    media.onloadedmetadata = (e) => {
-                      this.setState({ videoDuration: media.duration })
-                      lessonItem.savedLectureList[this.props.lectureIndex].lectureTime = parseInt(media.duration.toFixed(0));
-                      this.props.setLessonsList(lessonsArray)
-
+                    media.onloadedmetadata = e => {
+                      this.setState({ videoDuration: media.duration }),
+                      lessonItem.savedLectureList[
+                        this.props.lectureIndex
+                        ].lectureTime = parseInt(media.duration.toFixed(0));
+                      this.props.setLessonsList(lessonsArray);
                     };
                   };
                   reader.readAsDataURL(acceptedFiles[0]);
-                  this.setState({ ...this.state, fileSelected, editableFileSelected, fileName, fileSize: fileSelected.size });
+                  this.setState({
+                    ...this.state,
+                    fileSelected,
+                    editableFileSelected,
+                    fileName,
+                    fileSize: fileSelected.size,
+                  });
 
-                  this.startUpload()
+                  this.startUpload();
                 }
-
               } catch (err) {
                 console.error(err, err.message);
               }
             }}
           >
             {({ getRootProps, getInputProps }) => (
-              <div
-                className="upload_file"
-                {...getRootProps()}
-              >
+              <div className="upload_file" {...getRootProps()}>
                 <input {...getInputProps()} />
-                <div
-                  type="button"
-                  className="uploadBtn"
-                >
+                <div type="button" className="uploadBtn">
                   <span>
                     <FiUpload />
                   </span>
                 </div>
                 <p>
-                  <FormattedMessage
-                    {...messages.UploadVideo}
-                  />
+                  <FormattedMessage {...messages.UploadVideo} />
                 </p>
               </div>
             )}
@@ -178,29 +206,44 @@ export default class Index extends Component {
             <div className="file_progress">
               <p>
                 File
-                <span>{this.state.editableFileSelected ? this.state.editableFileSelected.name : lessonsList[lessonIndex].savedLectureList[lectureIndex].editableFileSelected.name}</span>
-                {lessonsList[lessonIndex].savedLectureList[lectureIndex].editableLectureVideo ? 'uploaded successfully' : 'is uploading'}
+                <span>
+                  {this.state.editableFileSelected
+                    ? this.state.editableFileSelected.name
+                    : lessonsList[lessonIndex].savedLectureList[lectureIndex]
+                        .editableFileSelected.name}
+                </span>
+                {lessonsList[lessonIndex].savedLectureList[lectureIndex]
+                  .editableLectureVideo
+                  ? 'uploaded successfully'
+                  : 'is uploading'}
               </p>
 
               <Progress value={this.state.percentage} />
             </div>
-            {!lessonsList[lessonIndex].savedLectureList[lectureIndex].readView && <div className="del_video">
-              <Button
-                onClick={() => {
-                  this.setState({
-                    editableFileSelected: null
-                  })
-                  const lessonsArray = _.cloneDeep(lessonsList);
-                  const lessonItem = lessonsArray[lessonIndex];
-                  lessonItem.savedLectureList[lectureIndex].editableLectureVideo = "";
-                  lessonItem.savedLectureList[lectureIndex].editableFileSelected = null;
-                  setLessonsList(lessonsArray)
-                }}
-                className="del_btn"
-              >
-                <IoIosClose />
-              </Button>
-            </div>}
+            {!lessonsList[lessonIndex].savedLectureList[lectureIndex]
+              .readView && (
+              <div className="del_video">
+                <Button
+                  onClick={() => {
+                    this.setState({
+                      editableFileSelected: null,
+                    });
+                    const lessonsArray = _.cloneDeep(lessonsList);
+                    const lessonItem = lessonsArray[lessonIndex];
+                    lessonItem.savedLectureList[
+                      lectureIndex
+                    ].editableLectureVideo = '';
+                    lessonItem.savedLectureList[
+                      lectureIndex
+                    ].editableFileSelected = null;
+                    setLessonsList(lessonsArray);
+                  }}
+                  className="del_btn"
+                >
+                  <IoIosClose />
+                </Button>
+              </div>
+            )}
           </div>
         )}
       </div>

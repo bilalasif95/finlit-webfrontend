@@ -22,6 +22,16 @@ import {
 import classnames from 'classnames';
 import { HiSearch } from 'react-icons/hi';
 import { FormattedMessage } from 'react-intl';
+// import axios from 'axios';
+// import {
+//   API,
+//   endpoints,
+// } from '../../config/config';
+// import {
+//   apiPostRequest,
+//   apiPutRequest,
+//   apiDeleteRequest,
+// } from '../../helpers/Requests';
 import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
 // import English from '../../images/english.png';
@@ -101,7 +111,7 @@ export default function MyCourses() {
                         toggle('3');
                       }}
                     >
-                      <FormattedMessage {...messages.Expired} />
+                      <FormattedMessage {...messages.Reject} />
                     </NavLink>
                   </NavItem>
                   <NavItem>
@@ -131,7 +141,6 @@ export default function MyCourses() {
                   </InputGroup>
                 </div>
               </div>
-
               <div className="customTabsCont">
                 <TabContent activeTab={activeTab}>
                   <TabPane tabId="1">

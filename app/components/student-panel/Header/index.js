@@ -80,9 +80,7 @@ const Header = () => {
           <div className="d_res">
             <MenuSidebar />
           </div>
-          {userObj &&
-          userObj.role &&
-          userObj.role.roleName === 'Instructor' ? (
+          {userObj && userObj.role && userObj.role.roleName === 'Instructor' ? (
             <Link to="/dashboard">
               <img
                 src={Logo}
