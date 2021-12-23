@@ -123,7 +123,7 @@ export default function Notification() {
           <div className="profileContent">
             <div className="mainCont">
               <div className="profileHeader">
-                <h3>Notification (3)</h3>
+                <h4>Notification (3)</h4>
                 <button type="button" className="btn btn-default readAllBtn">
                   Mark all as read
                 </button>

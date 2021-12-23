@@ -143,7 +143,7 @@ const GlobalStyle = createGlobalStyle`
       width: 100%;
       .accordin_header {
         align-items: center;
-        background-color: #f4f6f9;
+        background-color: #f4fdf3;
         border: 1px solid #d8d8d8;
         border-radius: 0.313rem;
         display: flex;
@@ -152,6 +152,7 @@ const GlobalStyle = createGlobalStyle`
         // position: relative;
         width: 100%;
         svg {
+          color: #000;
           font-size: 1.5rem;
         }
         button {
@@ -180,6 +181,7 @@ const GlobalStyle = createGlobalStyle`
           font-size: 1.125rem;
           // padding: 0.875rem 1rem 0.875rem 1.75rem;
           svg {
+            color: #000;
             height: 24px;
             margin: 0 0.5rem 0 0;
             width: 24px;
@@ -237,7 +239,7 @@ const GlobalStyle = createGlobalStyle`
       width: 100%;
       .accordin_header {
         align-items: center;
-        background-color: #f4f6f9;
+        background-color: #f4fdf3;
         border: 1px solid #d8d8d8;
         border-radius: 0.313rem;
         display: flex;
@@ -260,6 +262,7 @@ const GlobalStyle = createGlobalStyle`
           text-align: left;
           // padding: 0.875rem 1rem 0.875rem 1.75rem;
           svg {
+            color: #000;
             height: 24px;
             margin: 0 0.5rem 0 0;
             width: 24px;
@@ -268,7 +271,7 @@ const GlobalStyle = createGlobalStyle`
             display: block;
             text-overflow: ellipsis;
             white-space: nowrap;
-            max-width: 30rem;
+            max-width: 40rem;
             overflow: hidden;
           }
         }
@@ -583,7 +586,7 @@ p {
 label {
   display: block;
   line-height: 1.5em;
-  font-size: 0.825rem;
+  font-size: 0.875rem;
   margin: 0 0 0.75rem;
 }
 a {
@@ -623,7 +626,7 @@ a {
     button {
       color: #fff;
       margin: 0 0 0 1rem;
-      min-width: 200px;
+      min-width: 9.375rem;
       padding: 0.75rem;
       &:focus {
         box-shadow: none;
@@ -633,7 +636,7 @@ a {
   .btn_back {
     background-color: transparent;
     border: 1px solid #d8d8d8;
-    color: #404041 !important;
+    color: #8b8b8b !important;
   }
   .btn_save {
     background-color: #255f2b;
@@ -656,7 +659,7 @@ a {
   background-color: #46a135 !important;
   border: 1px solid #46a135 !important;
   color: #fff;
-  min-width: 200px;
+  min-width: 9.375rem;
   padding: 0.75rem;
   &:focus {
     box-shadow: none;
@@ -673,7 +676,7 @@ a {
   button {
     color: #fff;
     margin: 0;
-    min-width: 200px;
+    min-width: 9.375rem;
     padding: 0.75rem;
     &:focus {
       box-shadow: none;
@@ -701,7 +704,7 @@ a {
     button {
       color: #fff;
       margin: 0 0 0 1rem;
-      min-width: 200px;
+      min-width: 9.375rem;
       padding: 0.75rem;
       &:focus {
         box-shadow: none;
@@ -723,7 +726,7 @@ a {
   .btn_back {
     background-color: transparent;
     border: 1px solid #d8d8d8;
-    color: #404041 !important;
+    color: #8b8b8b !important;
   }
   .btn_submit {
     background-color: #46a135;
@@ -991,7 +994,7 @@ a {
   }
   @media (min-width: 1440px) {
     align-items: center;
-    height: 85vh;
+    height: 100vh;
   }
 }
 .disabled {
@@ -1439,7 +1442,7 @@ a {
 .form-control {
   border: 1px solid #d8d8d8;
   font-size: 0.875rem;
-  padding: 0.75rem 1rem;
+  padding: 0.844rem 1rem;
   &:focus {
     box-shadow: none;
   }
@@ -1889,11 +1892,7 @@ a {
   height: 100%;
   width: 100%;
   .add_lecture_list {
-    border-top: 1px solid #d8d8d8;
-    padding: 1.5rem 0;
-    &:first-child {
-      border-top: none;
-    }
+    padding: 0.5rem 0;
   }
   .details_list {
     display: flex;
@@ -2124,7 +2123,7 @@ a {
     width: 100%;
     .view_cont {
       align-items: center;
-      background-color: #f4fcf3;
+      background-color: #f4fdf3;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -2151,13 +2150,14 @@ a {
         padding: 2.5rem;
       }
       img {
+        opacity: 0.5;
         width: 100%;
       }
     }
     .camera {
-      border-color: #d8d8d8;
-      border-style: dashed;
-      border-width: 1px;
+      // border-color: #d8d8d8;
+      // border-style: dashed;
+      // border-width: 1px;
       border-radius: 0.35rem;
       display: flex;
       flex-direction: column;

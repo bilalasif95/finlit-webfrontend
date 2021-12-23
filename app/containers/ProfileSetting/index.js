@@ -61,7 +61,7 @@ export default function ProfileSetting() {
           <div className="profileContent settingMain">
             <div className="mainCont profileSettingCont">
               <div className="profileHeader">
-                <h3>Setting</h3>
+                <h4>Setting</h4>
               </div>
               <div className="customTabs">
                 <Nav tabs>

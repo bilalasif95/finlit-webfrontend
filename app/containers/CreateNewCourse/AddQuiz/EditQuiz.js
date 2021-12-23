@@ -1,38 +1,34 @@
 import React from 'react';
-import {
-    FormGroup,
-    Label,
-    Input,
-    Row,
-    Col,
-    Button,
-    Progress,
-} from 'reactstrap';
+import { FormGroup, Label, Input, Row, Col, Button } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
-import messages from '../messages';
 import _ from 'lodash';
-import Dropzone from 'react-dropzone';
-import { FiUpload } from 'react-icons/fi';
-import { IoIosClose, IoMdChatboxes } from 'react-icons/io';
+import messages from '../messages';
 
 function EditQuiz(props) {
-    const { res, lessonIndex, lessonsList, setLessonsList,
-        saveQuestionHandler, readOnly, item, questionIndex } = props;
-    // const [initialData, setInitialData] = React.useState([...res.quiz.questions])
+  const {
+    res,
+    lessonIndex,
+    lessonsList,
+    setLessonsList,
+    saveQuestionHandler,
+    readOnly,
+    item,
+    questionIndex,
+  } = props;
+  // const [initialData, setInitialData] = React.useState([...res.quiz.questions])
 
-    // React.useEffect(() => {
-    //   setInitialData(res.quiz.questions)
-    // },[res.quiz.questions])
+  // React.useEffect(() => {
+  //  setInitialData(res.quiz.questions)
+  // },[res.quiz.questions])
 
-
-    const addQuestionHandler = (lessonIndex) => {
-        const lessonsArray = _.cloneDeep(lessonsList);
-        const lessonItem = lessonsArray[lessonIndex]
-        lessonItem.showQuiz = true;
-        lessonItem.quiz.questions.push({
-            question: "", possibleAnswers: [], rightAnswer: ""
-        })
-        setLessonsList(lessonsArray);
+  const addQuestionHandler = (lessonIndex) => {
+    const lessonsArray = _.cloneDeep(lessonsList);
+    const lessonItem = lessonsArray[lessonIndex]
+      lessonItem.showQuiz = true;
+      lessonItem.quiz.questions.push({
+      question: "", possibleAnswers: [], rightAnswer: ""
+      })
+      setLessonsList(lessonsArray);
     };
 
 
@@ -55,7 +51,7 @@ function EditQuiz(props) {
         setLessonsList(lessonsArray)
     }
 
-    const cancelQuestionHandler =(questionIndex, lessonIndex)=> {
+    const cancelQuestionHandler = (questionIndex, lessonIndex) => {
         const lessonsArray = _.cloneDeep(lessonsList);
         const lessonItem = lessonsArray[lessonIndex];
         lessonItem.quiz.savedQuestions[questionIndex].editView = false

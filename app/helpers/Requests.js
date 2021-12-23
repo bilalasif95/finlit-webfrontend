@@ -15,14 +15,11 @@ export const apiPatchRequest = (endpoint, payload) =>
 export const apiPutRequest = (endpoint, payload) =>
   apiRequest('PUT', endpoint, { data: payload });
 
-export const apiDeleteRequest = (endpoint, payload, ) =>
+export const apiDeleteRequest = (endpoint, payload) =>
   apiRequest('DELETE', endpoint, payload);
 
 export const apiRequest = (method, endpoint, props = {}) => {
-  
-   let token = getToken();
-  
-  // console.log(token)
+  const token = getToken();
   const params = {
     method,
     baseURL: BASE_URL,
@@ -36,6 +33,5 @@ export const apiRequest = (method, endpoint, props = {}) => {
   if (token) {
     params.headers.Authorization = `Bearer ${token}`;
   }
-
   return axios(params).catch(err => err.response);
 };

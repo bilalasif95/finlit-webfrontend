@@ -63,7 +63,7 @@ export default function MyCourses() {
             <div className="mainCont profileSettingCont">
               {/* Create Course */}
               <div className="profileHeader">
-                <h3>My Courses</h3>
+                <h4>My Courses</h4>
                 <button
                   type="button"
                   className="btn btn-default createBtn"

@@ -47,7 +47,7 @@ const BootstrapInput = withStyles(theme => ({
     border: '1px solid #d8d8d8',
     fontSize: 14,
     color: '#484848',
-    padding: '10px 26px 10px 12px',
+    padding: '15px 26px 15px 15px',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     // Use the system font instead of the default Lato font.
     fontFamily: ['Lato', 'sans-serif'].join(','),
@@ -243,7 +243,7 @@ export default function SignupPage(props) {
                     <FormGroup>
                       <FormControl fullWidth>
                         <Label>
-                          <FormattedMessage {...messages.SelectType} /> {'*'}
+                          <FormattedMessage {...messages.UserType} /> {'*'}
                         </Label>
                         <Select
                           value={roleId}
@@ -281,7 +281,7 @@ export default function SignupPage(props) {
                     <FormGroup>
                       <FormControl fullWidth>
                         <Label>
-                          <FormattedMessage {...messages.SelectProfession} />
+                          <FormattedMessage {...messages.UserProfession} />
                         </Label>
                         <Select
                           value={profession}

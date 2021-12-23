@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  background-color: #fff;
+  background-color: #d8d8d8;
   // box-shadow: 2px 3px 4px #cececeb8;
   z-index: 1;
   top: 0;
   .profileAside {
-    width: 155px;
-    height: 100%;
+    background-color: #fff;
+    width: 9.75rem;
+    // height: 100%;
     position: relative;
     padding: 50px 0px 30px 0px;
     .sideNav {
@@ -38,23 +39,23 @@ const Wrapper = styled.div`
         }
         &:hover {
           background-color: #46a13524;
-          border-left: 4px solid #46a135;
-          color: #46a135;
+          border-left: 4px solid #3e952e;
+          color: #3e952e;
           text-decoration: none;
         }
         &:hover a {
-          color: #46a135;
+          color: #3e952e;
           text-decoration: none;
         }
       }
       .active.sideNavLink {
-        color: #46a135;
+        color: #3e952e;
         text-decoration: none;
         background-color: #46a1353b !important;
-        border-left: 4px solid #46a135;
+        border-left: 4px solid #3e952e;
       }
       .active.sideNavLink a {
-        color: #46a135;
+        color: #3e952e;
       }
     }
     .customDropdown button {
@@ -70,8 +71,8 @@ const Wrapper = styled.div`
       &:active {
         outline: none;
         box-shadow: none !important;
-        border-left: 4px solid #46a135;
-        color: #46a135;
+        border-left: 4px solid #3e952e;
+        color: #3e952e;
         background-color: #46a1353b !important;
       }
     }
@@ -87,7 +88,7 @@ const Wrapper = styled.div`
       margin-bottom: 10px;
       display: inline-block;
       &:hover {
-        color: #46a135;
+        color: #3e952e;
       }
     }
     .homeBtn {
@@ -95,14 +96,14 @@ const Wrapper = styled.div`
       bottom: 20px;
       width: 100%;
       .backBtn {
-        border: 1px solid #d8d8d8;
-        padding: 7px 10px;
+        background-color: #225f2b;
+        border: 1px solid #225f2b;
+        padding: 0.5rem 1.75rem;
         display: table;
         margin: 0px auto;
-        color: #404041;
+        color: #fff;
         border-radius: 5px;
         &:hover {
-          color: #404041;
           text-decoration: none;
         }
       }

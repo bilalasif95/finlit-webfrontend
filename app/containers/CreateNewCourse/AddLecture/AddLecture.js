@@ -1,28 +1,27 @@
 import React from 'react';
-import {
-  FormGroup,
-  Label,
-  Row,
-  Col,
-  Button,
-} from 'reactstrap';
+import { FormGroup, Label, Row, Col, Button } from 'reactstrap';
 import LectureVideoUpload from '../LectureVideoUpload/LectureVideoUpload';
 
 function AddLecture(props) {
-  const { removeLectureHandler, addLectureChangeHandler, lessonsList, setLessonsList,
-    lessonIndex, item, loading, saveLectureHandler } = props;
+  const {
+    removeLectureHandler,
+    addLectureChangeHandler,
+    lessonsList, setLessonsList,
+    lessonIndex,
+    item,
+    loading,
+    saveLectureHandler } = props;
   return (
     <React.Fragment>
       <Row>
         <Col lg={12}>
           <div className="profileHeader">
-            <h3>Lecture</h3>
-
+            <h4>Lecture</h4>
           </div>
         </Col>
       </Row>
-      {item.lectureList.length > 0 && item.lectureList.map((item, i) => {
-        return (
+      {item.lectureList.length > 0 &&
+        item.lectureList.map((item, i) => (
           <div key={i} className="add_lecture_list">
             <Row>
               <Col lg={6}>
@@ -33,7 +32,7 @@ function AddLecture(props) {
                     className="form-control"
                     name="title"
                     value={item.title}
-                    onChange={(e) => addLectureChangeHandler(e, i, lessonIndex)}
+                    onChange={e => addLectureChangeHandler(e, i, lessonIndex)}
                     placeholder="Enter Lecture Title"
                   />
                 </FormGroup>
@@ -43,7 +42,8 @@ function AddLecture(props) {
                   lessonsList={lessonsList}
                   setLessonsList={setLessonsList}
                   lessonIndex={lessonIndex}
-                  lectureIndex={i} />
+                  lectureIndex={i}
+                />
 
               </Col>
               <Col lg={12}>
@@ -62,17 +62,14 @@ function AddLecture(props) {
                     >
                       Save Lecture
                     </Button>
-
                   </div>
                 </div>
               </Col>
             </Row>
           </div>
-        )
-      })}
-
-    </React.Fragment>)
-
+        ))}
+    </React.Fragment>
+  );
 }
 
 export default AddLecture;

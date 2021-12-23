@@ -160,11 +160,16 @@ const App = () => {
       {history.location.pathname === '/reset_password' ||
       // history.location.pathname === '/signup' ||
       // history.location.pathname === '/login' ||
-      // history.location.pathname === '/my_profile' ||
+      history.location.pathname === '/my_profile' ||
       // history.location.pathname === '/email_verification' ||
-      // history.location.pathname === '/notification' ||
-      // history.location.pathname === '/forgot_password' ||
-      // history.location.pathname === '/create_new_password' ||
+      history.location.pathname === '/notification' ||
+      history.location.pathname === '/setting' ||
+      history.location.pathname === '/my_courses' ||
+      history.location.pathname === '/create_course' ||
+      history.location.pathname === '/add_bootcamp' ||
+      history.location.pathname === '/payments' ||
+      history.location.pathname === '/forgot_password' ||
+      history.location.pathname === '/create_new_password' ||
       history.location.pathname === '/two_fa' ? null : (
         <Footer />
       )}

@@ -42,7 +42,7 @@ import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
 import Img from '../../components/Img';
 // import Logo from '../../images/logoS.png';
-import Cam from '../../images/cam.png';
+// import Cam from '../../images/cam.png';
 import { API } from '../../config/config';
 import BasicInfo from '../../components/MyProfilePage/BasicInfo';
 import Sidebar from '../../components/student-panel/Sidebar/index';
@@ -142,7 +142,7 @@ export default function MyProfilePage() {
                     }
                     alt="Profile"
                   />
-                  <Label className="edit">
+                  {/* <Label className="edit">
                     <img src={Cam} alt="Cam" />
                     <input
                       type="file"
@@ -151,7 +151,7 @@ export default function MyProfilePage() {
                       placeholder="Upload Profile Image"
                       onChange={e => updateProfileImg(e)}
                     />
-                  </Label>
+                  </Label> */}
                 </div>
                 <div className="uploadBtns">
                   <Label className="upload">

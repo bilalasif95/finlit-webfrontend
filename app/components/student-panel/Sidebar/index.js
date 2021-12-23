@@ -136,7 +136,7 @@ function Sidebar(props) {
         </div>
         <div className="homeBtn">
           <Link to="/" className="backBtn">
-            Back to Home
+            Go Home
           </Link>
         </div>
       </div>

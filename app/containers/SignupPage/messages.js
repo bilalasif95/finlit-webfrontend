@@ -16,13 +16,13 @@ export default defineMessages({
     id: `${scope}.EmailAddress`,
     defaultMessage: 'Email Address',
   },
-  SelectType: {
-    id: `${scope}.SelectType`,
-    defaultMessage: 'Select Type',
+  UserType: {
+    id: `${scope}.UserType`,
+    defaultMessage: 'User Type',
   },
-  SelectProfession: {
-    id: `${scope}.SelectProfession`,
-    defaultMessage: 'Select Profession',
+  UserProfession: {
+    id: `${scope}.UserProfession`,
+    defaultMessage: 'User Profession',
   },
   SelectGender: {
     id: `${scope}.SelectGender`,

@@ -126,8 +126,7 @@ function MainSection(props) {
               </>
             )}
           </div>
-          {userObj &&
-          userObj.role &&
+          {userObj && userObj.role &&
           userObj.role.roleName === 'Instructor' ? (
             <>
               <div className="stats">
