@@ -42,7 +42,7 @@ import messages from './messages';
 import 'react-toastify/dist/ReactToastify.css';
 import Img from '../../components/Img';
 // import Logo from '../../images/logoS.png';
-import Cam from '../../images/cam.png';
+// import Cam from '../../images/cam.png';
 import { API } from '../../config/config';
 import BasicInfo from '../../components/MyProfilePage/BasicInfo';
 import Sidebar from '../../components/student-panel/Sidebar/index';
