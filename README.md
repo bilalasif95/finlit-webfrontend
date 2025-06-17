@@ -111,6 +111,12 @@ Now you're ready to rumble!
 
 > Please note that this boilerplate is **production-ready and not meant for beginners**! If you're just starting out with react or redux, please refer to https://github.com/petehunt/react-howto instead. If you want a solid, battle-tested base to build your next product upon and have some experience with react, this is the perfect start for you.
 
+## Make Build
+
+```bash
+REACT_APP_API="http://61.85.154.156:3016/" npm run build
+```
+
 ## Documentation
 
 - [**The Hitchhiker's Guide to `react-boilerplate`**](docs/general/introduction.md): An introduction for newcomers to this boilerplate.

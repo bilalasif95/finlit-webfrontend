@@ -10,7 +10,7 @@ export const scope = 'boilerplate.containers.SigninPage';
 export default defineMessages({
   WelcomeBack: {
     id: `${scope}.WelcomeBack`,
-    defaultMessage: 'Welcome Back',
+    defaultMessage: 'Welcome to FinLit',
   },
   EmailAddress: {
     id: `${scope}.EmailAddress`,
@@ -30,7 +30,7 @@ export default defineMessages({
   },
   Login: {
     id: `${scope}.Login`,
-    defaultMessage: 'Log in',
+    defaultMessage: 'Log In',
   },
   DontHaveAccount: {
     id: `${scope}.DontHaveAccount`,
@@ -38,6 +38,10 @@ export default defineMessages({
   },
   CreateAnAccount: {
     id: `${scope}.CreateAnAccount`,
-    defaultMessage: 'Create an account',
+    defaultMessage: 'Sign Up',
+  },
+  WellDone: {
+    id: `${scope}.WellDone`,
+    defaultMessage: 'Well done! Your email has been verified.',
   },
 });
